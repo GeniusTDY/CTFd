@@ -5,7 +5,7 @@ import advancedFormat from "dayjs/plugin/advancedFormat";
 dayjs.extend(advancedFormat);
 
 export const intl = new Intl.DateTimeFormat(
-  localStorage.getItem("language") || navigator.language,
+  (localStorage.getItem("language") || navigator.language).replace("_", "-"),
   {
     dateStyle: "long",
     timeStyle: "short",
