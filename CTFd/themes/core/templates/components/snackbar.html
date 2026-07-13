@@ -8,8 +8,8 @@
     role="alert"
 >
   <small>
-    <strong>Email Unconfirmed</strong><br>
-    <span>To confirm your email address please <a href="{{ url_for('auth.confirm', flow='init') }}">click here</a>.</span>
+    <strong>{% trans %}Email Unconfirmed{% endtrans %}</strong><br>
+    <span>{% trans confirm_url=url_for('auth.confirm', flow='init') %}To confirm your email address please <a href="{{ confirm_url }}">click here</a>.{% endtrans %}</span>
   </small>
   <button type="button" class="btn-close" @click="localStorage.setItem('remind_email_verify', window.init.userId); $el.parentElement.style.display = 'none';" aria-label="Close"></button>
 </div>
