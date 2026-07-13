@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: CTFd\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2025-04-02 07:37-0400\n"
-"PO-Revision-Date: 2026-01-14 01:01\n"
+"PO-Revision-Date: 2026-07-13 00:00\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
 "MIME-Version: 1.0\n"
@@ -852,4 +852,92 @@ msgstr[0] "用户"
 msgid "team"
 msgid_plural "teams"
 msgstr[0] "队伍"
+
+#: CTFd/forms/setup.py:92
+msgid "Control whether users must confirm their email addresses before participating"
+msgstr "控制用户是否必须确认邮箱地址后才能参与"
+
+#: CTFd/forms/setup.py:93 CTFd/forms/setup.py:155
+msgid "Enabled"
+msgstr "启用"
+
+#: CTFd/forms/setup.py:93 CTFd/forms/setup.py:155
+msgid "Disabled"
+msgstr "禁用"
+
+#: CTFd/forms/setup.py:96
+msgid "Team Size"
+msgstr "队伍人数上限"
+
+#: CTFd/forms/setup.py:99
+msgid "Amount of users per team (Teams mode only) Optional."
+msgstr "每队人数上限（仅团队模式）可选项。"
+
+#: CTFd/forms/setup.py:102
+msgid "Challenge Visibility"
+msgstr "题目可见性"
+
+#: CTFd/forms/setup.py:103
+msgid "Control whether users must be logged in to see challenges"
+msgstr "控制用户是否需要登录才能查看题目"
+
+#: CTFd/forms/setup.py:105 CTFd/forms/setup.py:115 CTFd/forms/setup.py:125 CTFd/forms/setup.py:136
+msgid "Public"
+msgstr "公开"
+
+#: CTFd/forms/setup.py:106 CTFd/forms/setup.py:116 CTFd/forms/setup.py:126 CTFd/forms/setup.py:137
+msgid "Private"
+msgstr "私有"
+
+#: CTFd/forms/setup.py:107 CTFd/forms/setup.py:117 CTFd/forms/setup.py:128
+msgid "Admins Only"
+msgstr "仅管理员"
+
+#: CTFd/forms/setup.py:112
+msgid "Account Visibility"
+msgstr "账号可见性"
+
+#: CTFd/forms/setup.py:113
+msgid "Control whether accounts (users & teams) are shown to everyone, only to authenticated users, or only to admins"
+msgstr "控制账号（用户和团队）是对所有人可见、仅对已登录用户可见还是仅对管理员可见"
+
+#: CTFd/forms/setup.py:122
+msgid "Score Visibility"
+msgstr "得分可见性"
+
+#: CTFd/forms/setup.py:123
+msgid "Control whether solves/score are shown to the public, to logged in users, hidden to all non-admins, or only shown to admins"
+msgstr "控制解题记录/得分是对所有人可见、仅对已登录用户可见、对非管理员隐藏还是仅对管理员可见"
+
+#: CTFd/forms/setup.py:127
+msgid "Hidden"
+msgstr "隐藏"
+
+#: CTFd/forms/setup.py:133
+msgid "Registration Visibility"
+msgstr "注册可见性"
+
+#: CTFd/forms/setup.py:134
+msgid "Control whether registration is enabled for everyone or disabled"
+msgstr "控制注册是对所有人开放还是关闭"
+
+#: CTFd/forms/setup.py:138
+msgid "MajorLeagueCyber Only"
+msgstr "仅 MajorLeagueCyber"
+
+#: CTFd/forms/setup.py:154
+msgid "Control whether users can share links commemorating their challenge solves"
+msgstr "控制用户是否可以分享庆祝解题的链接"
+
+#: CTFd/themes/core/templates/setup.html:286
+msgid "Reset"
+msgstr "重置"
+
+#: CTFd/themes/core/templates/setup.html:358
+msgid "MajorLeagueCyber Integration"
+msgstr "MajorLeagueCyber 集成"
+
+#: CTFd/themes/core/templates/setup.html:359
+msgid "MajorLeagueCyber (MLC) is a cyber security event tracker written and maintained by the developers of CTFd."
+msgstr "MajorLeagueCyber (MLC) 是由 CTFd 开发者编写和维护的网络安全赛事追踪平台。"
 

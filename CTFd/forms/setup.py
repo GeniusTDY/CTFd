@@ -89,52 +89,53 @@ class SetupForm(BaseForm):
 
     verify_emails = SelectField(
         _l("Verify Emails"),
-        description="Control whether users must confirm their email addresses before participating",
-        choices=[("true", "Enabled"), ("false", "Disabled")],
+        description=_l("Control whether users must confirm their email addresses before participating"),
+        choices=[("true", _l("Enabled")), ("false", _l("Disabled"))],
         default="false",
     )
     team_size = IntegerField(
+        _l("Team Size"),
         widget=NumberInput(min=0),
-        description="Amount of users per team (Teams mode only) Optional.",
+        description=_l("Amount of users per team (Teams mode only) Optional."),
     )
     challenge_visibility = SelectField(
-        "Challenge Visibility",
-        description="Control whether users must be logged in to see challenges",
+        _l("Challenge Visibility"),
+        description=_l("Control whether users must be logged in to see challenges"),
         choices=[
-            (ChallengeVisibilityTypes.PUBLIC, "Public"),
-            (ChallengeVisibilityTypes.PRIVATE, "Private"),
-            (ChallengeVisibilityTypes.ADMINS, "Admins Only"),
+            (ChallengeVisibilityTypes.PUBLIC, _l("Public")),
+            (ChallengeVisibilityTypes.PRIVATE, _l("Private")),
+            (ChallengeVisibilityTypes.ADMINS, _l("Admins Only")),
         ],
         default=ChallengeVisibilityTypes.PRIVATE,
     )
     account_visibility = SelectField(
-        "Account Visibility",
-        description="Control whether accounts (users & teams) are shown to everyone, only to authenticated users, or only to admins",
+        _l("Account Visibility"),
+        description=_l("Control whether accounts (users & teams) are shown to everyone, only to authenticated users, or only to admins"),
         choices=[
-            (AccountVisibilityTypes.PUBLIC, "Public"),
-            (AccountVisibilityTypes.PRIVATE, "Private"),
-            (AccountVisibilityTypes.ADMINS, "Admins Only"),
+            (AccountVisibilityTypes.PUBLIC, _l("Public")),
+            (AccountVisibilityTypes.PRIVATE, _l("Private")),
+            (AccountVisibilityTypes.ADMINS, _l("Admins Only")),
         ],
         default=AccountVisibilityTypes.PUBLIC,
     )
     score_visibility = SelectField(
-        "Score Visibility",
-        description="Control whether solves/score are shown to the public, to logged in users, hidden to all non-admins, or only shown to admins",
+        _l("Score Visibility"),
+        description=_l("Control whether solves/score are shown to the public, to logged in users, hidden to all non-admins, or only shown to admins"),
         choices=[
-            (ScoreVisibilityTypes.PUBLIC, "Public"),
-            (ScoreVisibilityTypes.PRIVATE, "Private"),
-            (ScoreVisibilityTypes.HIDDEN, "Hidden"),
-            (ScoreVisibilityTypes.ADMINS, "Admins Only"),
+            (ScoreVisibilityTypes.PUBLIC, _l("Public")),
+            (ScoreVisibilityTypes.PRIVATE, _l("Private")),
+            (ScoreVisibilityTypes.HIDDEN, _l("Hidden")),
+            (ScoreVisibilityTypes.ADMINS, _l("Admins Only")),
         ],
         default=AccountVisibilityTypes.PUBLIC,
     )
     registration_visibility = SelectField(
-        "Registration Visibility",
-        description="Control whether registration is enabled for everyone or disabled",
+        _l("Registration Visibility"),
+        description=_l("Control whether registration is enabled for everyone or disabled"),
         choices=[
-            (RegistrationVisibilityTypes.PUBLIC, "Public"),
-            (RegistrationVisibilityTypes.PRIVATE, "Private"),
-            (RegistrationVisibilityTypes.MLC, "MajorLeagueCyber Only"),
+            (RegistrationVisibilityTypes.PUBLIC, _l("Public")),
+            (RegistrationVisibilityTypes.PRIVATE, _l("Private")),
+            (RegistrationVisibilityTypes.MLC, _l("MajorLeagueCyber Only")),
         ],
         default=RegistrationVisibilityTypes.PUBLIC,
     )
@@ -150,8 +151,8 @@ class SetupForm(BaseForm):
 
     social_shares = SelectField(
         _l("Social Shares"),
-        description="Control whether users can share links commemorating their challenge solves",
-        choices=[("true", "Enabled"), ("false", "Disabled")],
+        description=_l("Control whether users can share links commemorating their challenge solves"),
+        choices=[("true", _l("Enabled")), ("false", _l("Disabled"))],
         default="true",
     )
     submit = SubmitField(_l("Finish"))

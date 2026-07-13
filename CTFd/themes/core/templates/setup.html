@@ -283,7 +283,7 @@
 										<input type="color" id="config-color-picker" class="pr-1" style="width: 100px; height: 30px;" value="" @input="setThemeColor">
 									</div>
 									<div class="btn-group">
-										<button type="button" id="config-color-reset" @click="resetThemeColor">Reset</button>
+										<button type="button" id="config-color-reset" @click="resetThemeColor">{% trans %}Reset{% endtrans %}</button>
 									</div>
 								</div>
 								<small class="form-text text-muted">
@@ -310,7 +310,7 @@
 									<input class="form-control" id="start-time" type="time" placeholder="hh:mm" data-preview="#start" @click="processDateTime('start')"/>
 								</div>
 								<div class="col-md-4">
-									<label>UTC Preview</label>
+									<label>{% trans %}UTC Preview{% endtrans %}</label>
 									{{ form.start(class="form-control", id="start-preview", readonly=True) }}
 								</div>
 							</div>
@@ -355,10 +355,10 @@
 							</small>
 						</div>
 						<div class="mb-3">
-							<b>MajorLeagueCyber Integration</b>
-							<p>MajorLeagueCyber (MLC) is a cyber security event tracker written and maintained by the developers of CTFd.</p>
+							<b>{% trans %}MajorLeagueCyber Integration{% endtrans %}</b>
+							<p>{% trans %}MajorLeagueCyber (MLC) is a cyber security event tracker written and maintained by the developers of CTFd.{% endtrans %}</p>
 							<button type="button" id="integration-mlc" class="btn btn-primary btn-block" @click="mlcSetup()">
-								Setup
+								{% trans %}Setup{% endtrans %}
 							</button>
 						</div>
 
