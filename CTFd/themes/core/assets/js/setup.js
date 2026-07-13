@@ -13,7 +13,11 @@ Alpine.data("SetupForm", () => ({
       i.addEventListener("keypress", e => {
         if (e.key == "Enter") {
           e.preventDefault();
-          e.target.closest(".tab-pane").querySelector("button[data-href]").click();
+          let tabPane = e.target.closest(".tab-pane");
+          if (tabPane) {
+            let btn = tabPane.querySelector("button[data-href]");
+            if (btn) btn.click();
+          }
         }
       });
       i.addEventListener("change", e => {
@@ -53,27 +57,31 @@ Alpine.data("SetupForm", () => ({
   },
 
   switchTab(e) {
-    // Handle tab validation
-    let valid_tab = true;
-    let inputs = e.target
-      .closest('[role="tabpanel"]')
-      .querySelectorAll("input,textarea");
+      // Handle tab validation
+      let btn = e.currentTarget;
+      let tabPanel = btn.closest('[role="tabpanel"]');
+      if (!tabPanel) return;
 
-    inputs.forEach(e => {
-      if (e.checkValidity() === false) {
-        e.classList.add("input-filled-invalid");
-        valid_tab = false;
+      let valid_tab = true;
+      let inputs = tabPanel.querySelectorAll("input,textarea");
+
+      inputs.forEach(input => {
+        if (input.checkValidity() === false) {
+          input.classList.add("input-filled-invalid");
+          valid_tab = false;
+        }
+      });
+
+      if (valid_tab == false) {
+        return;
       }
-    });
 
-    if (valid_tab == false) {
-      return;
-    }
-
-    let target = e.target.dataset.href;
-    let tab = this.$root.querySelector(`[data-bs-target="${target}"]`);
-    Tab.getOrCreateInstance(tab).show();
-  },
+      let target = btn.dataset.href;
+      let tab = this.$root.querySelector(`[data-bs-target="${target}"]`);
+      if (tab) {
+        Tab.getOrCreateInstance(tab).show();
+      }
+    },
 
   setThemeColor(e) {
     document.querySelector("#config-color-input").value = e.target.value;
