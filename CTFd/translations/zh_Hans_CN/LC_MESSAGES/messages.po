@@ -925,9 +925,22 @@ msgstr "控制注册是对所有人开放还是关闭"
 msgid "MajorLeagueCyber Only"
 msgstr "仅 MajorLeagueCyber"
 
+#: CTFd/forms/setup.py:152
+msgid "Social Shares"
+msgstr "社交分享"
+
 #: CTFd/forms/setup.py:154
 msgid "Control whether users can share links commemorating their challenge solves"
 msgstr "控制用户是否可以分享庆祝解题的链接"
+
+#: CTFd/themes/core/templates/components/notifications.html:6
+msgid "just now"
+msgstr "刚刚"
+
+#: CTFd/themes/core/templates/components/notifications.html:28
+#: CTFd/themes/core/templates/settings.html:155
+msgid "Got it!"
+msgstr "知道了！"
 
 #: CTFd/themes/core/templates/setup.html:286
 msgid "Reset"
@@ -936,6 +949,26 @@ msgstr "重置"
 #: CTFd/themes/core/templates/setup.html:358
 msgid "MajorLeagueCyber Integration"
 msgstr "MajorLeagueCyber 集成"
+
+#: CTFd/themes/core-deprecated/templates/setup.html:269
+msgid "Set up MLC integration to:"
+msgstr "设置 MLC 集成以："
+
+#: CTFd/themes/core-deprecated/templates/setup.html:271
+msgid "display your event on the MLC website and mailing list"
+msgstr "在 MLC 网站和邮件列表中展示您的赛事"
+
+#: CTFd/themes/core-deprecated/templates/setup.html:272
+msgid "share and track participant statistics"
+msgstr "分享和追踪参赛者统计数据"
+
+#: CTFd/themes/core-deprecated/templates/setup.html:273
+msgid "provide live updates in team Slack or Discord groups"
+msgstr "在团队 Slack 或 Discord 群组中提供实时更新"
+
+#: CTFd/themes/core-deprecated/templates/setup.html:274
+msgid "archive challenges, team participation &amp; more"
+msgstr "存档题目、团队参与情况等更多内容"
 
 #: CTFd/themes/core/templates/setup.html:359
 msgid "MajorLeagueCyber (MLC) is a cyber security event tracker written and maintained by the developers of CTFd."
