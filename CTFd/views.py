@@ -1,6 +1,7 @@
 import os  # noqa: I001
 
 from flask import Blueprint, abort
+from flask_babel import lazy_gettext as _l
 from flask import current_app as app
 from flask import (
     make_response,
@@ -202,15 +203,15 @@ def setup():
     <div class="col-md-6 offset-md-3">
         <img class="w-100 mx-auto d-block" style="max-width: 500px;padding: 50px;padding-top: 14vh;" src="{default_ctf_banner_location}" />
         <h3 class="text-center">
-            <p>A cool CTF platform from <a href="https://ctfd.io">ctfd.io</a></p>
-            <p>Follow us on social media:</p>
+            <p>{_l("A cool CTF platform from")} <a href="https://ctfd.io">ctfd.io</a></p>
+            <p>{_l("Follow us on social media:")}</p>
             <a href="https://twitter.com/ctfdio"><i class="fab fa-twitter fa-2x" aria-hidden="true"></i></a>&nbsp;
             <a href="https://facebook.com/ctfdio"><i class="fab fa-facebook fa-2x" aria-hidden="true"></i></a>&nbsp;
             <a href="https://github.com/ctfd"><i class="fab fa-github fa-2x" aria-hidden="true"></i></a>
         </h3>
         <br>
         <h4 class="text-center">
-            <a href="admin">Click here</a> to login and setup your CTF
+            <a href="admin">{_l("Click here")}</a> {_l("to login and setup your CTF")}
         </h4>
     </div>
 </div>"""

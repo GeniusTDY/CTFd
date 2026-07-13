@@ -974,3 +974,19 @@ msgstr "存档题目、团队参与情况等更多内容"
 msgid "MajorLeagueCyber (MLC) is a cyber security event tracker written and maintained by the developers of CTFd."
 msgstr "MajorLeagueCyber (MLC) 是由 CTFd 开发者编写和维护的网络安全赛事追踪平台。"
 
+#: CTFd/views.py:206
+msgid "A cool CTF platform from"
+msgstr "由"
+
+#: CTFd/views.py:207
+msgid "Follow us on social media:"
+msgstr "在社交媒体上关注我们："
+
+#: CTFd/views.py:214
+msgid "Click here"
+msgstr "点击这里"
+
+#: CTFd/views.py:214
+msgid "to login and setup your CTF"
+msgstr "登录并设置您的CTF"
+
