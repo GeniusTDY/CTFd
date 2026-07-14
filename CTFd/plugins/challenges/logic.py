@@ -1,3 +1,5 @@
+from flask_babel import lazy_gettext as _l
+
 from CTFd.models import Partials
 from CTFd.plugins.flags import FlagException, get_flag_class
 from CTFd.utils.config import is_teams_mode
@@ -12,7 +14,7 @@ def challenge_attempt_any(submission, challenge, flags):
             if get_flag_class(flag.type).compare(flag, submission):
                 return ChallengeResponse(
                     status="correct",
-                    message="Correct",
+                    message=_l("Correct"),
                 )
         except FlagException as e:
             return ChallengeResponse(
@@ -21,7 +23,7 @@ def challenge_attempt_any(submission, challenge, flags):
             )
     return ChallengeResponse(
         status="incorrect",
-        message="Incorrect",
+        message=_l("Incorrect"),
     )
 
 
@@ -51,7 +53,7 @@ def challenge_attempt_all(submission, challenge, flags):
     if target_flags_ids == set(compared_flag_ids):
         return ChallengeResponse(
             status="correct",
-            message="Correct",
+            message=_l("Correct"),
         )
 
     # If we didn't capture all flag IDs we must be missing something.
@@ -59,13 +61,13 @@ def challenge_attempt_all(submission, challenge, flags):
         if get_flag_class(flag.type).compare(flag, submission):
             return ChallengeResponse(
                 status="partial",
-                message="Correct but more flags are required",
+                message=_l("Correct but more flags are required"),
             )
 
     # Input is just wrong
     return ChallengeResponse(
         status="incorrect",
-        message="Incorrect",
+        message=_l("Incorrect"),
     )
 
 
@@ -95,7 +97,7 @@ def challenge_attempt_team(submission, challenge, flags):
         else:
             return ChallengeResponse(
                 status="incorrect",
-                message="Incorrect",
+                message=_l("Incorrect"),
             )
 
         # The submission is correct so compare if we have received from all team members
@@ -103,13 +105,13 @@ def challenge_attempt_team(submission, challenge, flags):
         if member_ids == submitter_ids:
             return ChallengeResponse(
                 status="correct",
-                message="Correct",
+                message=_l("Correct"),
             )
         else:
             # We have not received from all members
             return ChallengeResponse(
                 status="partial",
-                message="Correct but all team members must submit a flag",
+                message=_l("Correct but all team members must submit a flag"),
             )
     else:
         for flag in flags:
@@ -117,7 +119,7 @@ def challenge_attempt_team(submission, challenge, flags):
                 if get_flag_class(flag.type).compare(flag, submission):
                     return ChallengeResponse(
                         status="correct",
-                        message="Correct",
+                        message=_l("Correct"),
                     )
             except FlagException as e:
                 return ChallengeResponse(
@@ -126,5 +128,5 @@ def challenge_attempt_team(submission, challenge, flags):
                 )
         return ChallengeResponse(
             status="incorrect",
-            message="Incorrect",
+            message=_l("Incorrect"),
         )

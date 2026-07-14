@@ -1,7 +1,7 @@
 import os  # noqa: I001
 
 from flask import Blueprint, abort
-from flask_babel import gettext
+from flask_babel import gettext, lazy_gettext as _l
 from flask import current_app as app
 from flask import (
     make_response,
@@ -159,19 +159,19 @@ def setup():
             team_name_email_check = validators.validate_email(name)
 
             if not valid_email:
-                errors.append("Please enter a valid email address")
+                errors.append(_l("Please enter a valid email address"))
             if names:
-                errors.append("That user name is already taken")
+                errors.append(_l("That user name is already taken"))
             if team_name_email_check is True:
-                errors.append("Your user name cannot be an email address")
+                errors.append(_l("Your user name cannot be an email address"))
             if emails:
-                errors.append("That email has already been used")
+                errors.append(_l("That email has already been used"))
             if pass_short:
-                errors.append("Pick a longer password")
+                errors.append(_l("Pick a longer password"))
             if pass_long:
-                errors.append("Pick a shorter password")
+                errors.append(_l("Pick a shorter password"))
             if name_len:
-                errors.append("Pick a longer user name")
+                errors.append(_l("Pick a longer user name"))
 
             if len(errors) > 0:
                 return render_template(
@@ -316,7 +316,7 @@ def settings():
         team_url = url_for("teams.private")
         infos.append(
             markup(
-                f'In order to participate you must either <a href="{team_url}">join or create a team</a>.'
+                gettext('In order to participate you must either <a href="%(url)s">join or create a team</a>.') % {'url': team_url}
             )
         )
 
@@ -328,8 +328,7 @@ def settings():
         confirm_url = markup(url_for("auth.confirm", flow="init"))
         infos.append(
             markup(
-                "Your email address isn't confirmed!<br>"
-                f'To confirm your email address please <a href="{confirm_url}">click here</a>.'
+                gettext('Your email address isn\'t confirmed!<br>To confirm your email address please <a href="%(url)s">click here</a>.') % {'url': confirm_url}
             )
         )
 

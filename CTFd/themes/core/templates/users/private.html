@@ -63,12 +63,12 @@
       <div>
         <h2 class="text-center">
           {% if account.place %}
-            {{ account.place }} <small>place</small>
+            {{ account.place }} <small>{% trans %}place{% endtrans %}</small>
           {% endif %}
         </h2>
         <h2 class="text-center">
           {% if account %}
-            {{ account.get_score(admin=True) }} <small>points</small>
+            {{ account.get_score(admin=True) }} <small>{% trans %}points{% endtrans %}</small>
           {% endif %}
         </h2>
       </div>

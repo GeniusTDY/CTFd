@@ -1,5 +1,7 @@
 import re
 
+from flask_babel import lazy_gettext as _l
+
 from CTFd.plugins import register_plugin_assets_directory
 
 
@@ -64,7 +66,7 @@ class CTFdRegexFlag(BaseFlag):
                 res = re.match(saved, provided)
         # TODO: this needs plugin improvements. See #1425.
         except re.error as e:
-            raise FlagException("Regex parse error occured") from e
+            raise FlagException(_l("Regex parse error occured")) from e
 
         return res and res.group() == provided
 

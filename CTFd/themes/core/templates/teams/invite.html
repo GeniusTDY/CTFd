@@ -19,7 +19,7 @@
           {% trans %}Click the button below to join the team!{% endtrans %}
           <br>
           <small class="text-muted">
-            Or <a href="{{ url_for('teams.new') }}">click here</a> if you'd prefer to create your own team.
+            {% trans url=url_for('teams.new') %}Or <a href="{{ url }}">click here</a> if you'd prefer to create your own team.{% endtrans %}
           </small>
         </p>
 

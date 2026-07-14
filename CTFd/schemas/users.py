@@ -33,7 +33,7 @@ class UserSchema(ma.ModelSchema):
         "email",
         allow_none=False,
         validate=[
-            validate.Email("Emails must be a properly formatted email address"),
+            validate.Email(error="Emails must be a properly formatted email address"),
             validate.Length(min=1, max=128, error="Emails must not be empty"),
         ],
     )

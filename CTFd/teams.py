@@ -1,4 +1,5 @@
 from flask import Blueprint, abort, redirect, render_template, request, url_for
+from flask_babel import lazy_gettext as _l
 
 from CTFd.cache import clear_team_session, clear_user_session
 from CTFd.exceptions import TeamTokenExpiredException, TeamTokenInvalidException
@@ -66,23 +67,21 @@ def invite():
 
     user = get_current_user_attrs()
     if user.team_id:
-        errors.append("You are already in a team. You cannot join another.")
+        errors.append(_l("You are already in a team. You cannot join another."))
 
     try:
         team = Teams.load_invite_code(code)
     except TeamTokenExpiredException:
-        abort(403, description="This invite URL has expired")
+        abort(403, description=_l("This invite URL has expired"))
     except TeamTokenInvalidException:
-        abort(403, description="This invite URL is invalid")
+        abort(403, description=_l("This invite URL is invalid"))
 
     team_size_limit = get_config("team_size", default=0)
 
     if request.method == "GET":
         if team_size_limit:
             infos.append(
-                "Teams are limited to {limit} member{plural}".format(
-                    limit=team_size_limit, plural=pluralize(number=team_size_limit)
-                )
+                _l("Teams are limited to %(limit)s member%(plural)s.") % dict(limit=team_size_limit, plural=pluralize(number=team_size_limit))
             )
 
         return render_template(
@@ -100,9 +99,7 @@ def invite():
 
         if team_size_limit and len(team.members) >= team_size_limit:
             errors.append(
-                "{name} has already reached the team size limit of {limit}".format(
-                    name=team.name, limit=team_size_limit
-                )
+                _l("%(name)s has already reached the team size limit of %(limit)s") % dict(name=team.name, limit=team_size_limit)
             )
             return (
                 render_template(
@@ -131,16 +128,14 @@ def join():
 
     user = get_current_user_attrs()
     if user.team_id:
-        errors.append("You are already in a team. You cannot join another.")
+        errors.append(_l("You are already in a team. You cannot join another."))
 
     if request.method == "GET":
         team_size_limit = get_config("team_size", default=0)
         if team_size_limit:
             plural = "" if team_size_limit == 1 else "s"
             infos.append(
-                "Teams are limited to {limit} member{plural}".format(
-                    limit=team_size_limit, plural=plural
-                )
+                _l("Teams are limited to %(limit)s member%(plural)s.") % dict(limit=team_size_limit, plural=plural)
             )
         return render_template("teams/join_team.html", infos=infos, errors=errors)
 
@@ -181,7 +176,7 @@ def join():
 
             return redirect(url_for("challenges.listing"))
         else:
-            errors.append("That information is incorrect")
+            errors.append(_l("That information is incorrect"))
             return render_template("teams/join_team.html", infos=infos, errors=errors)
 
 
@@ -208,16 +203,14 @@ def new():
 
     user = get_current_user_attrs()
     if user.team_id:
-        errors.append("You are already in a team. You cannot join another.")
+        errors.append(_l("You are already in a team. You cannot join another."))
 
     if request.method == "GET":
         team_size_limit = get_config("team_size", default=0)
         if team_size_limit:
             plural = "" if team_size_limit == 1 else "s"
             infos.append(
-                "Teams are limited to {limit} member{plural}".format(
-                    limit=team_size_limit, plural=plural
-                )
+                _l("Teams are limited to %(limit)s member%(plural)s.") % dict(limit=team_size_limit, plural=plural)
             )
         return render_template("teams/new_team.html", infos=infos, errors=errors)
 
@@ -234,9 +227,9 @@ def new():
 
         existing_team = Teams.query.filter_by(name=teamname).first()
         if existing_team:
-            errors.append("That team name is already taken")
+            errors.append(_l("That team name is already taken"))
         if not teamname:
-            errors.append("That team name is invalid")
+            errors.append(_l("That team name is invalid"))
 
         # Process additional user fields
         fields = {}
@@ -247,7 +240,7 @@ def new():
         for field_id, field in fields.items():
             value = request.form.get(f"fields[{field_id}]", "").strip()
             if field.required is True and (value is None or value == ""):
-                errors.append("Please provide all required fields")
+                errors.append(_l("Please provide all required fields"))
                 break
 
             if field.field_type == "boolean":
@@ -285,13 +278,13 @@ def new():
             valid_country = True
 
         if valid_website is False:
-            errors.append("Websites must be a proper URL starting with http or https")
+            errors.append(_l("Websites must be a proper URL starting with http or https"))
         if valid_affiliation is False:
-            errors.append("Please provide a shorter affiliation")
+            errors.append(_l("Please provide a shorter affiliation"))
         if valid_country is False:
-            errors.append("Invalid country")
+            errors.append(_l("Invalid country"))
         if valid_bracket is False:
-            errors.append("Please provide a valid bracket")
+            errors.append(_l("Please provide a valid bracket"))
 
         if errors:
             return render_template("teams/new_team.html", errors=errors), 403
@@ -354,7 +347,7 @@ def private():
     score = team.get_score(admin=True)
 
     if config.is_scoreboard_frozen():
-        infos.append("Scoreboard has been frozen")
+        infos.append(_l("Scoreboard has been frozen"))
 
     return render_template(
         "teams/private.html",
@@ -388,7 +381,7 @@ def public(team_id):
         return render_template("teams/public.html", team=team, errors=errors)
 
     if config.is_scoreboard_frozen():
-        infos.append("Scoreboard has been frozen")
+        infos.append(_l("Scoreboard has been frozen"))
 
     return render_template(
         "teams/public.html",

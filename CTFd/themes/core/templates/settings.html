@@ -91,7 +91,7 @@
                       class="alert alert-success alert-dismissible submit-row" role="alert"
                       x-cloak="success" x-show="success"
                   >
-                    <strong>Success!</strong>
+                    <strong>{% trans %}Success!{% endtrans %}</strong>
                     {% trans %}Your profile has been updated{% endtrans %}
                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
                     </button>
@@ -206,12 +206,12 @@
 
                       <div class="modal-footer">
                         <button type="button" class="btn btn-danger" data-bs-dismiss="modal">
-                          No
+                          {% trans %}No{% endtrans %}
                         </button>
                         <button
                             type="button" class="btn btn-primary" data-bs-dismiss="modal"
                             @click="deleteSelectedToken()"
-                        >Yes
+                        >{% trans %}Yes{% endtrans %}
                         </button>
                       </div>
                     </div>

@@ -1,4 +1,5 @@
 from flask import Blueprint, render_template
+from flask_babel import lazy_gettext as _l
 
 from CTFd.utils import config
 from CTFd.utils.config.visibility import scores_visible
@@ -20,10 +21,10 @@ def listing():
     infos = get_infos()
 
     if config.is_scoreboard_frozen():
-        infos.append("Scoreboard has been frozen")
+        infos.append(_l("Scoreboard has been frozen"))
 
     if is_admin() is True and scores_visible() is False:
-        infos.append("Scores are not currently visible to users")
+        infos.append(_l("Scores are not currently visible to users"))
 
     standings = get_standings()
     return render_template("scoreboard.html", standings=standings, infos=infos)

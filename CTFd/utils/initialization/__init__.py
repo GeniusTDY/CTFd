@@ -4,6 +4,7 @@ import os
 import sys
 
 from flask import abort, redirect, render_template, request, session, url_for
+from flask_babel import lazy_gettext as _l
 from sqlalchemy.exc import IntegrityError, InvalidRequestError
 from werkzeug.middleware.dispatcher import DispatcherMiddleware
 
@@ -83,7 +84,11 @@ def init_template_globals(app):
         scores_visible,
     )
     from CTFd.utils.countries import get_countries, lookup_country_code
-    from CTFd.utils.countries.geoip import lookup_ip_address, lookup_ip_address_city
+    try:
+        from CTFd.utils.countries.geoip import lookup_ip_address, lookup_ip_address_city
+    except ImportError:
+        lookup_ip_address = lambda addr: None
+        lookup_ip_address_city = lambda addr: None
 
     app.jinja_env.globals.update(config=config)
     app.jinja_env.globals.update(get_pages=get_pages)
@@ -354,11 +359,11 @@ def init_request_processors(app):
                 token_type, token = token.split(" ", 1)
                 user = lookup_user_token(token)
             except UserNotFoundException:
-                abort(401, description="Your access token is invalid")
+                abort(401, description=_l("Your access token is invalid"))
             except UserTokenExpiredException:
-                abort(401, description="Your access token has expired")
+                abort(401, description=_l("Your access token has expired"))
             except Exception:
-                abort(401, description="Invalid authorization header")
+                abort(401, description=_l("Invalid authorization header"))
             else:
                 login_user(user)
 

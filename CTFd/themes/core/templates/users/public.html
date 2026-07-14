@@ -63,12 +63,12 @@
       <div>
         <h2 class="text-center">
           {% if account.place %}
-            {{ account.place }} <small>place</small>
+            {{ account.place }} <small>{% trans %}place{% endtrans %}</small>
           {% endif %}
         </h2>
         <h2 class="text-center">
           {% if account.place %}
-            {{ account.score }} <small>points</small>
+            {{ account.score }} <small>{% trans %}points{% endtrans %}</small>
           {% endif %}
         </h2>
       </div>
@@ -116,7 +116,7 @@
 
       <div class="row">
         <div class="col-md-12">
-          <h3>Solves</h3>
+          <h3>{% trans %}Solves{% endtrans %}</h3>
           <table class="table table-striped align-middle">
             <thead>
             <tr>

@@ -1,4 +1,5 @@
 from flask import Blueprint, render_template, request, url_for
+from flask_babel import lazy_gettext as _l
 
 from CTFd.models import Users
 from CTFd.utils import config
@@ -55,7 +56,7 @@ def private():
     user = get_current_user()
 
     if config.is_scoreboard_frozen():
-        infos.append("Scoreboard has been frozen")
+        infos.append(_l("Scoreboard has been frozen"))
 
     return render_template(
         "users/private.html",
@@ -75,7 +76,7 @@ def public(user_id):
     user = Users.query.filter_by(id=user_id, banned=False, hidden=False).first_or_404()
 
     if config.is_scoreboard_frozen():
-        infos.append("Scoreboard has been frozen")
+        infos.append(_l("Scoreboard has been frozen"))
 
     return render_template(
         "users/public.html", user=user, account=user.account, infos=infos, errors=errors

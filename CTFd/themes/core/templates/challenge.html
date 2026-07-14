@@ -17,7 +17,7 @@
             <li class="nav-item">
               <button class="nav-link challenge-submissions" data-bs-target="#submissions" @click="showSubmissions()">
                 {% if solves != None %}
-                  Submissions
+                  {% trans %}Submissions{% endtrans %}
                 {% endif %}
               </button>
             </li>
@@ -76,7 +76,7 @@
                   <span><i class="fa-solid fa-thumbs-up"></i> {{ ratings.up }}</span>
                   <span class="text-center px-2">
                     {% if ratings.count %}
-                    ({{ ((ratings.up / (ratings.count)) * 100) | int }}% liked)
+                    ({{ ((ratings.up / (ratings.count)) * 100) | int }}% {% trans %}liked{% endtrans %})
                     {% endif %}
                   </span>
                   <span><i class="fa-solid fa-thumbs-down"></i> {{ ratings.down }}</span>
@@ -116,9 +116,9 @@
                     {% else %}
                     <details @toggle="showHint(event)">
                       {% if hint.title %}
-                      <summary>{{ hint.title }} (Cost: {{ hint.cost }} point{{ hint.cost|pluralize }})</summary>
+                      <summary>{{ hint.title }} ({% trans cost=hint.cost %}Cost: {{ cost }} point{% pluralize %}Cost: {{ cost }} points{% endtrans %})</summary>
                       {% else %}
-                      <summary>Unlock Hint for {{ hint.cost }} point{{ hint.cost|pluralize }}</summary>
+                      <summary>{% trans cost=hint.cost %}Unlock Hint for {{ cost }} point{% pluralize %}Unlock Hint for {{ cost }} points{% endtrans %}</summary>
                       {% endif %}
                       <div x-html="html"></div>
                     </details>

@@ -986,3 +986,299 @@ msgstr "在社交媒体上关注我们："
 msgid "<a href=\"admin\">Click here</a> to login and setup your CTF"
 msgstr "<a href=\"admin\">点击此处</a> 登录并设置您的 CTF"
 
+#: CTFd/auth.py:504 CTFd/auth.py:510
+msgid "Your username or password is incorrect"
+msgstr "用户名或密码错误"
+
+#: CTFd/auth.py:128
+msgid "This CTF is not configured to send email.<br> Please contact an organizer to have your password reset."
+msgstr "此 CTF 未配置邮件发送功能。<br> 请联系管理员重置您的密码。"
+
+#: CTFd/auth.py:334 CTFd/views.py:162
+msgid "Please enter a valid email address"
+msgstr "请输入有效的邮箱地址"
+
+#: CTFd/auth.py:340 CTFd/views.py:164
+msgid "That user name is already taken"
+msgstr "该用户名已被占用"
+
+#: CTFd/auth.py:342 CTFd/views.py:166
+msgid "Your user name cannot be an email address"
+msgstr "用户名不能是邮箱地址"
+
+#: CTFd/auth.py:344 CTFd/views.py:168
+msgid "That email has already been used"
+msgstr "该邮箱已被使用"
+
+#: CTFd/auth.py:346 CTFd/views.py:170
+msgid "Pick a longer password"
+msgstr "请设置更长的密码"
+
+#: CTFd/auth.py:352 CTFd/views.py:172
+msgid "Pick a shorter password"
+msgstr "请设置更短的密码"
+
+#: CTFd/auth.py:354 CTFd/views.py:174
+msgid "Pick a longer user name"
+msgstr "请设置更长的用户名"
+
+#: CTFd/auth.py:296 CTFd/teams.py:251
+msgid "Please provide all required fields"
+msgstr "请填写所有必填字段"
+
+#: CTFd/auth.py:357 CTFd/teams.py:289
+msgid "Websites must be a proper URL starting with http or https"
+msgstr "网站地址必须以 http 或 https 开头的正确 URL"
+
+#: CTFd/auth.py:362 CTFd/teams.py:291
+msgid "Please provide a shorter affiliation"
+msgstr "请提供更短的隶属关系"
+
+#: CTFd/auth.py:360 CTFd/teams.py:293
+msgid "Invalid country"
+msgstr "无效的国家/地区"
+
+#: CTFd/auth.py:364 CTFd/teams.py:295
+msgid "Please provide a valid bracket"
+msgstr "请提供有效的组别"
+
+#: CTFd/teams.py:70 CTFd/teams.py:135 CTFd/teams.py:212
+msgid "You are already in a team. You cannot join another."
+msgstr "您已在一个队伍中，无法加入其他队伍。"
+
+#: CTFd/teams.py:75
+msgid "This invite URL has expired"
+msgstr "此邀请链接已过期"
+
+#: CTFd/teams.py:77
+msgid "This invite URL is invalid"
+msgstr "此邀请链接无效"
+
+#: CTFd/teams.py:185
+msgid "That information is incorrect"
+msgstr "信息不正确"
+
+#: CTFd/teams.py:238
+msgid "That team name is already taken"
+msgstr "该队伍名称已被占用"
+
+#: CTFd/teams.py:240
+msgid "That team name is invalid"
+msgstr "该队伍名称无效"
+
+#: CTFd/users.py:59 CTFd/users.py:79 CTFd/scoreboard.py:24 CTFd/teams.py:358 CTFd/teams.py:392
+msgid "Scoreboard has been frozen"
+msgstr "记分板已冻结"
+
+#: CTFd/scoreboard.py:27
+msgid "Scores are not currently visible to users"
+msgstr "当前得分对用户不可见"
+
+#: CTFd/auth.py:538
+msgid "OAuth Settings not configured. Ask your CTF administrator to configure MajorLeagueCyber integration."
+msgstr "OAuth 设置未配置。请联系 CTF 管理员配置 MajorLeagueCyber 集成。"
+
+#: CTFd/auth.py:558
+msgid "OAuth State validation mismatch."
+msgstr "OAuth 状态验证不匹配。"
+
+#: CTFd/auth.py:624
+msgid "Public registration is disabled. Please try again later."
+msgstr "公开注册已关闭。请稍后再试。"
+
+#: CTFd/auth.py:652
+msgid "Teams are limited to {limit} member{plural}."
+msgstr "队伍人数上限为 {limit} 人。"
+
+#: CTFd/auth.py:672
+msgid "OAuth token retrieval failure."
+msgstr "OAuth 令牌获取失败。"
+
+#: CTFd/auth.py:677
+msgid "Received redirect without OAuth code."
+msgstr "收到没有 OAuth 代码的重定向。"
+
+#: CTFd/utils/initialization/__init__.py:358
+msgid "Your access token is invalid"
+msgstr "您的访问令牌无效"
+
+#: CTFd/utils/initialization/__init__.py:360
+msgid "Your access token has expired"
+msgstr "您的访问令牌已过期"
+
+#: CTFd/utils/initialization/__init__.py:362
+msgid "Invalid authorization header"
+msgstr "无效的授权头"
+
+#: CTFd/plugins/challenges/logic.py:17 CTFd/plugins/challenges/logic.py:56 CTFd/plugins/challenges/logic.py:108 CTFd/plugins/challenges/logic.py:122
+msgid "Correct"
+msgstr "正确"
+
+#: CTFd/plugins/challenges/logic.py:26 CTFd/plugins/challenges/logic.py:70 CTFd/plugins/challenges/logic.py:100 CTFd/plugins/challenges/logic.py:131
+msgid "Incorrect"
+msgstr "错误"
+
+#: CTFd/plugins/challenges/logic.py:64
+msgid "Correct but more flags are required"
+msgstr "正确但需要更多 flag"
+
+#: CTFd/plugins/challenges/logic.py:114
+msgid "Correct but all team members must submit a flag"
+msgstr "正确但所有队员都需要提交 flag"
+
+#: CTFd/plugins/flags/__init__.py:69
+msgid "Regex parse error occured"
+msgstr "正则表达式解析错误"
+
+#: CTFd/themes/core/templates/components/snackbar.html:11
+msgid "Email Unconfirmed"
+msgstr "邮箱未确认"
+
+#: CTFd/themes/core/templates/components/snackbar.html:12
+msgid "To confirm your email address please <a href=\"%(url)s\">click here</a>."
+msgstr "要确认您的邮箱地址，请<a href=\"%(url)s\">点击此处</a>。"
+
+#: CTFd/themes/core/templates/challenge.html:20
+msgid "Submissions"
+msgstr "提交记录"
+
+#: CTFd/themes/core/templates/challenge.html:79
+msgid "liked"
+msgstr "的人喜欢"
+
+#: CTFd/themes/core/templates/challenge.html:119
+msgid "Cost: %(cost)s point"
+msgid_plural "Cost: %(cost)s points"
+msgstr[0] "花费：%(cost)s 积分"
+
+#: CTFd/themes/core/templates/challenge.html:121
+msgid "Unlock Hint for %(cost)s point"
+msgid_plural "Unlock Hint for %(cost)s points"
+msgstr[0] "花费 %(cost)s 积分解锁提示"
+
+#: CTFd/auth.py:49
+msgid "Email verification is enabled but email sending isn't available. Please contact an admin to confirm your account"
+msgstr "邮箱验证已启用但无法发送邮件。请联系管理员确认您的账号。"
+
+#: CTFd/auth.py:60
+msgid "Your confirmation link is invalid, please generate a new one"
+msgstr "您的确认链接无效，请重新生成一个。"
+
+#: CTFd/auth.py:153
+msgid "Your account was registered via an authentication provider and does not have an associated password. Please login via your authentication provider."
+msgstr "您的账号通过第三方认证提供商注册，因此没有关联密码。请通过您的认证提供商登录。"
+
+#: CTFd/auth.py:468
+msgid "Preset admin user could not be created. Please contact an administrator"
+msgstr "预设管理员用户无法创建。请联系管理员。"
+
+#: CTFd/auth.py:482
+msgid "Your account was registered with a 3rd party authentication provider. Please try logging in with a configured authentication provider."
+msgstr "您的账号通过第三方认证提供商注册。请尝试使用已配置的认证提供商登录。"
+
+#: CTFd/auth.py:643
+#, python-format
+msgid "Reached the maximum number of teams (%(num)d). Please join an existing team."
+msgstr "已达到最大队伍数量上限 (%(num)d)。请加入一个已有的队伍。"
+
+#: CTFd/views.py:319
+msgid "In order to participate you must either <a href=\"%(url)s\">join or create a team</a>."
+msgstr "要参与比赛，您必须<a href=\"%(url)s\">加入或创建一个队伍</a>。"
+
+#: CTFd/views.py:331
+msgid "Your email address isn't confirmed!\\nTo confirm your email address please <a href=\"%(url)s\">click here</a>."
+msgstr "您的邮箱地址未确认！\\n要确认您的邮箱地址，请<a href=\"%(url)s\">点击此处</a>。"
+
+#: CTFd/teams.py:84
+msgid "Teams are limited to %(limit)s member%(plural)s."
+msgstr "队伍人数上限为 %(limit)s 人。"
+
+#: CTFd/teams.py:102
+msgid "%(name)s has already reached the team size limit of %(limit)s"
+msgstr "%(name)s 已达到队伍人数上限 %(limit)s"
+
+#: CTFd/errors.py:12
+msgid "An Internal Server Error has occurred"
+msgstr "发生了内部服务器错误"
+
+#: CTFd/themes/core/templates/login.html:19
+msgid "Login with Major League Cyber"
+msgstr "使用 Major League Cyber 登录"
+
+#: CTFd/themes/core/templates/register.html:19
+msgid "Login with Major League Cyber"
+msgstr "使用 Major League Cyber 登录"
+
+#: CTFd/themes/core/templates/settings.html:94
+msgid "Success!"
+msgstr "成功！"
+
+#: CTFd/themes/core/templates/settings.html:206
+msgid "No"
+msgstr "否"
+
+#: CTFd/themes/core/templates/settings.html:212
+msgid "Yes"
+msgstr "是"
+
+#: CTFd/themes/core/templates/teams/teams.html:15
+msgid "Searching for teams with <strong>%(field)s</strong> matching <strong>%(q)s</strong>"
+msgstr "搜索字段为 <strong>%(field)s</strong> 匹配 <strong>%(q)s</strong> 的队伍"
+
+#: CTFd/themes/core/templates/teams/teams.html:18
+#, python-format
+msgid "Page %(page)s of %(total)s results"
+msgstr "共%(total)s个结果中的第%(page)s页"
+
+#: CTFd/themes/core/templates/teams/teams.html:72
+msgid "Official"
+msgstr "官方"
+
+#: CTFd/themes/core/templates/teams/public.html:69
+msgid "place"
+msgstr "名次"
+
+#: CTFd/themes/core/templates/teams/public.html:77
+msgid "points"
+msgstr "分数"
+
+#: CTFd/themes/core/templates/teams/private.html:75
+msgid "Success!"
+msgstr "成功！"
+
+#: CTFd/themes/core/templates/teams/private.html:127
+msgid "Success!"
+msgstr "成功！"
+
+#: CTFd/themes/core/templates/teams/private.html:82
+msgid "Error:"
+msgstr "错误："
+
+#: CTFd/themes/core/templates/users/private.html:65
+msgid "place"
+msgstr "名次"
+
+#: CTFd/themes/core/templates/users/private.html:70
+msgid "points"
+msgstr "分数"
+
+#: CTFd/themes/core/templates/users/public.html:65
+msgid "place"
+msgstr "名次"
+
+#: CTFd/themes/core/templates/users/public.html:70
+msgid "points"
+msgstr "分数"
+
+#: CTFd/themes/core/templates/users/public.html:119
+msgid "Solves"
+msgstr "已解决题目"
+
+#: CTFd/themes/core/templates/teams/invite.html:22
+msgid "Or <a href=\"%(url)s\">click here</a> if you'd prefer to create your own team."
+msgstr "或者，如果您想要创建自己的队伍，请<a href=\"%(url)s\">点击此处</a>。"
+
+#: CTFd/themes/core/templates/teams/new_team.html:30
+msgid "After creating your team, share the team name and password with your teammates so they can join your team."
+msgstr "创建队伍后，请将队伍名称和密码分享给您的队友，以便他们加入您的队伍。"
+
