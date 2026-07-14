@@ -1,6 +1,7 @@
 import os  # noqa: I001
 
 from flask import Blueprint, abort
+from flask_babel import gettext
 from flask import current_app as app
 from flask import (
     make_response,
@@ -362,7 +363,20 @@ def static_html(route):
         if page.auth_required and authed() is False:
             return redirect(url_for("auth.login", next=request.full_path))
 
-        return render_template("page.html", content=page.html, title=page.title)
+        content = page.html
+        content = content.replace(
+            'A cool CTF platform from <a href="https://ctfd.io">ctfd.io</a>',
+            gettext('A cool CTF platform from <a href="https://ctfd.io">ctfd.io</a>')
+        )
+        content = content.replace(
+            'Follow us on social media:',
+            gettext('Follow us on social media:')
+        )
+        content = content.replace(
+            '<a href="admin">Click here</a> to login and setup your CTF',
+            gettext('<a href="admin">Click here</a> to login and setup your CTF')
+        )
+        return render_template("page.html", content=content, title=page.title)
 
 
 @views.route("/tos")
