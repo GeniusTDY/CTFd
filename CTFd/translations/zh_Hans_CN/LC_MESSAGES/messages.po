@@ -3043,3 +3043,107 @@ msgstr "确定要切换用户模式吗？\n\n所有提交、奖励、解锁和�
 #: CTFd/themes/admin/assets/js/pages/configs.js:173
 msgid "Are you sure you'd like to switch user modes?\n\nAll teams, submissions, awards, unlocks, and tracking will be deleted!"
 msgstr "确定要切换用户模式吗？\n\n所有队伍、提交、奖励、解锁和追踪数据将被删除！"
+
+# --- API jsonify error messages ---
+
+#: CTFd/api/v1/solutions.py:135
+msgid "A solution for this challenge already exists"
+msgstr "该挑战已存在解答"
+
+#: CTFd/api/v1/users.py:531
+msgid "Email text cannot be empty"
+msgstr "邮件内容不能为空"
+
+#: CTFd/api/v1/teams.py:109
+msgid "Emails can only be queried by admins"
+msgstr "仅管理员可查询邮箱"
+
+#: CTFd/api/v1/files.py:120
+msgid "Location cannot be specified with multiple files"
+msgstr "多个文件时不能指定位置"
+
+#: CTFd/api/v1/exports.py
+msgid "Missing table to export"
+msgstr "缺少要导出的表"
+
+#: CTFd/api/v1/challenges.py:1240
+msgid "Rating value is required"
+msgstr "评分值是必填的"
+
+#: CTFd/api/v1/challenges.py:1248
+msgid "Rating value must be an integer"
+msgstr "评分值必须为整数"
+
+#: CTFd/api/v1/challenges.py:1255
+msgid "Rating value must be either 1 or -1"
+msgstr "评分值必须为 1 或 -1"
+
+#: CTFd/api/v1/challenges.py:1263
+msgid "Review text cannot exceed 2000 characters"
+msgstr "评论内容不能超过 2000 个字符"
+
+#: CTFd/api/v1/submissions.py
+msgid "Solve already exists for this submission"
+msgstr "此提交已存在解答记录"
+
+#: CTFd/api/v1/teams.py:472
+msgid "User has already joined a team"
+msgstr "该用户已加入队伍"
+
+#: CTFd/api/v1/teams.py:507
+msgid "User is not part of this team"
+msgstr "该用户不属于此队伍"
+
+#: CTFd/api/v1/users.py
+msgid "You cannot ban yourself"
+msgstr "你不能封禁自己"
+
+#: CTFd/api/v1/users.py
+msgid "You cannot delete yourself"
+msgstr "你不能删除自己"
+
+#: CTFd/api/v1/unlocks.py
+msgid "You do not have enough points to unlock this hint"
+msgstr "你没有足够的积分来解锁此提示"
+
+#: CTFd/api/v1/hints.py
+msgid "You must login to unlock this hint"
+msgstr "你必须登录才能解锁此提示"
+
+#: CTFd/api/v1/hints.py
+msgid "You must unlock other hints before accessing this hint"
+msgstr "你必须先解锁其他提示才能访问此提示"
+
+#: CTFd/api/v1/unlocks.py
+msgid "You've already unlocked this target"
+msgstr "你已经解锁过此目标"
+
+#: CTFd/api/v1/unlocks.py
+msgid "Unknown target type"
+msgstr "未知的目标类型"
+
+#: CTFd/api/v1/awards.py
+msgid "User doesn't have a team to associate award with"
+msgstr "该用户没有队伍可关联奖励"
+
+#: CTFd/api/v1/modules.py
+msgid "challenge_id is required"
+msgstr "挑战 ID 是必填的"
+
+#: CTFd/api/v1/modules.py
+msgid "audience_id is required"
+msgstr "受众 ID 是必填的"
+
+# --- Hardcoded HTML labels ---
+
+#: CTFd/themes/admin/templates/challenges/update.html:110
+msgid "Initial Value"
+msgstr "初始值"
+
+#: CTFd/themes/admin/templates/challenges/update.html:136
+msgid "Minimum Value"
+msgstr "最小值"
+
+#: CTFd/themes/core-deprecated/templates/errors/404.html:12
+msgid "Sorry about that"
+msgstr "抱歉"
