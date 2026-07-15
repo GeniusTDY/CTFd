@@ -180,6 +180,9 @@ def setup():
                     name=name,
                     email=email,
                     password=password,
+                    name_error=name_len or bool(names) or (team_name_email_check is True),
+                    email_error=not valid_email or bool(emails),
+                    password_error=pass_short or pass_long,
                     state=serialize(generate_nonce()),
                 )
 

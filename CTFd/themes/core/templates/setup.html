@@ -206,21 +206,21 @@
 					<div class="tab-pane fade" id="administration" role="tabpanel">
 						<div class="mb-3">
 							<b>{{ form.name.label }}</b>
-							{{ form.name(class="form-control") }}
+							{{ form.name(class="form-control" + (" input-filled-invalid" if name_error else ""), value=name) }}
 							<small class="form-text text-muted">
 								{{ form.name.description }}
 							</small>
 						</div>
 						<div class="mb-3">
 							<b>{{ form.email.label }}</b>
-							{{ form.email(class="form-control") }}
+							{{ form.email(class="form-control" + (" input-filled-invalid" if email_error else ""), value=email) }}
 							<small class="form-text text-muted">
 								{{ form.email.description }}
 							</small>
 						</div>
 						<div class="mb-3">
 							<b>{{ form.password.label }}</b>
-							{{ form.password(class="form-control") }}
+							{{ form.password(class="form-control" + (" input-filled-invalid" if password_error else ""), value=password) }}
 							<small class="form-text text-muted">
 								{{ form.password.description }}
 							</small>
