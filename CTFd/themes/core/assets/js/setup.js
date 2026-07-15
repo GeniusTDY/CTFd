@@ -60,7 +60,7 @@ Alpine.data("SetupForm", () => ({
       .querySelectorAll("input,textarea");
 
     inputs.forEach(input => {
-      if (input.checkValidity() === false) {
+      if (!input.validity.valid) {
         input.classList.add("input-filled-invalid");
         if (!firstInvalid) {
           firstInvalid = input;
@@ -69,7 +69,10 @@ Alpine.data("SetupForm", () => ({
     });
 
     if (firstInvalid) {
-      firstInvalid.reportValidity();
+      firstInvalid.focus();
+      requestAnimationFrame(() => {
+        firstInvalid.reportValidity();
+      });
       return;
     }
 
@@ -134,7 +137,7 @@ Alpine.data("SetupForm", () => ({
     // Validate all required fields across all tabs
     let requiredFields = this.$root.querySelectorAll("[required]");
     for (let field of requiredFields) {
-      if (!field.checkValidity()) {
+      if (!field.validity.valid) {
         let tabPane = field.closest(".tab-pane");
         if (tabPane) {
           let tabTrigger = this.$root.querySelector(
@@ -144,7 +147,10 @@ Alpine.data("SetupForm", () => ({
             Tab.getOrCreateInstance(tabTrigger).show();
           }
         }
-        field.reportValidity();
+        field.focus();
+        requestAnimationFrame(() => {
+          field.reportValidity();
+        });
         return;
       }
     }
