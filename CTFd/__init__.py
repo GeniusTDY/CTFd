@@ -254,8 +254,7 @@ def create_app(config="CTFd.config.Config"):
         migrations.init_app(app, db)
 
         babel = Babel()
-        babel.init_app(app)
-        babel.localeselector(get_locale)
+        babel.init_app(app, locale_selector=get_locale)
 
         # Alembic sqlite support is lacking so we should just create_all anyway
         if url.drivername.startswith("sqlite"):

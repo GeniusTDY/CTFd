@@ -9,9 +9,9 @@ from wtforms import (
     StringField,
     TextAreaField,
 )
-from wtforms.fields.html5 import EmailField
+from wtforms.fields import EmailField
 from wtforms.validators import InputRequired
-from wtforms.widgets.html5 import NumberInput
+from wtforms.widgets import NumberInput
 
 from CTFd.constants.config import (
     AccountVisibilityTypes,
