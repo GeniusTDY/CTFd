@@ -8,6 +8,21 @@ window.Alpine = Alpine;
 
 Alpine.data("SetupForm", () => ({
   init() {
+    // Custom email validation messages
+    let emailField = this.$root.querySelector('input[type="email"]');
+    if (emailField) {
+      emailField.addEventListener("invalid", e => {
+        if (e.target.validity.valueMissing) {
+          e.target.setCustomValidity("请填写电子邮件地址");
+        } else if (e.target.validity.typeMismatch) {
+          e.target.setCustomValidity("电子邮件地址需包含 '@' 符号");
+        }
+      });
+      emailField.addEventListener("input", e => {
+        e.target.setCustomValidity("");
+      });
+    }
+
     // Bind Enter on any input to clicking the Next button
     this.$root.querySelectorAll("input").forEach(i => {
       i.addEventListener("keypress", e => {

@@ -13,7 +13,7 @@
     ]
   },
   "assets/js/setup.js": {
-    "file": "assets/setup.480cadfb.js",
+    "file": "assets/setup.61e1630e.js",
     "src": "assets/js/setup.js",
     "isEntry": true,
     "imports": [
