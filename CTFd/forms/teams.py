@@ -28,8 +28,8 @@ def attach_team_bracket_field(form_cls):
             for bracket in brackets
         ]
         select_field = SelectField(
-            "Bracket",
-            description="Competition bracket for your team",
+            _l("Bracket"),
+            description=_l("Competition bracket for your team"),
             choices=choices,
             validators=[InputRequired()],
         )

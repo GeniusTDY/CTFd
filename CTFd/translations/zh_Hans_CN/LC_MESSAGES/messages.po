@@ -3489,3 +3489,401 @@ msgstr "将链接插入编辑器"
 
 msgid "Location"
 msgstr "位置"
+
+# --- Added for i18n/zh-cn setup translation ---
+
+msgid "Deletes all user and team accounts and their associated information"
+msgstr "删除所有用户和团队账户及其关联信息"
+
+msgid "Deletes all records that accounts gained points or took an action"
+msgstr "删除所有账户获得积分或采取行动的记录"
+
+msgid "Deletes all challenges and associated data"
+msgstr "删除所有题目及关联数据"
+
+msgid "Deletes all pages and their associated files"
+msgstr "删除所有页面及其关联文件"
+
+msgid "Deletes all notifications"
+msgstr "删除所有通知"
+
+msgid "Reset CTF"
+msgstr "重置 CTF"
+
+msgid "Email Domain Allowlist"
+msgstr "邮箱域名白名单"
+
+msgid "Comma-seperated list of allowable email domains which users can register under (e.g. examplectf.com, example.com, *.example.com)"
+msgstr "允许用户注册的邮箱域名逗号分隔列表（例如 examplectf.com、example.com、*.example.com）"
+
+msgid "Email Domain Blocklist"
+msgstr "邮箱域名黑名单"
+
+msgid "Comma-seperated list of disallowed email domains which users cannot register under (e.g. examplectf.com, example.com, *.example.com)"
+msgstr "不允许用户注册的邮箱域名逗号分隔列表（例如 examplectf.com、example.com、*.example.com）"
+
+msgid "Team Creation"
+msgstr "团队创建"
+
+msgid "Control whether users can create their own teams (Teams mode only)"
+msgstr "控制用户是否可以创建自己的团队（仅团队模式）"
+
+msgid "Maximum Number of Teams"
+msgstr "最大团队数"
+
+msgid "Maximum number of teams allowed to register with this CTF (Teams mode only)"
+msgstr "允许注册此 CTF 的最大团队数（仅团队模式）"
+
+msgid "Maximum Number of Users"
+msgstr "最大用户数"
+
+msgid "Maximum number of user accounts allowed to register with this CTF"
+msgstr "允许注册此 CTF 的最大用户账户数"
+
+msgid "Minimum Password Length for Users"
+msgstr "用户最小密码长度"
+
+msgid "Control whether users must confirm their email addresses before playing"
+msgstr "控制用户是否必须在参与前确认其邮箱地址"
+
+msgid "Team Disbanding"
+msgstr "团队解散"
+
+msgid "Control whether team captains are allowed to disband their own teams"
+msgstr "控制团队队长是否可以解散自己的团队"
+
+msgid "Enabled for Inactive Teams"
+msgstr "对非活跃团队启用"
+
+msgid "Name Changes"
+msgstr "名称修改"
+
+msgid "Control whether users and teams can change their names"
+msgstr "控制用户和团队是否可以更改名称"
+
+msgid "Incorrect Submissions per Minute"
+msgstr "每分钟错误提交数"
+
+msgid "Number of submissions allowed per minute for flag bruteforce protection (default: 10)"
+msgstr "为防止 flag 暴力破解，每分钟允许的提交次数（默认：10）"
+
+msgid "Database Table"
+msgstr "数据库表"
+
+msgid "CSV Type"
+msgstr "CSV 类型"
+
+msgid "Users with Teams"
+msgstr "带团队的用户"
+
+msgid "Type of CSV data"
+msgstr "CSV 数据类型"
+
+msgid "CSV File"
+msgstr "CSV 文件"
+
+msgid "CSV file contents"
+msgstr "CSV 文件内容"
+
+msgid "Enable or Disable social sharing links for challenge solves"
+msgstr "启用或禁用题目解答的社交分享链接"
+
+msgid "Social Share Solve Template"
+msgstr "社交分享解答模板"
+
+msgid "HTML for Share Template"
+msgstr "分享模板的 HTML"
+
+msgid "Terms of Service URL"
+msgstr "服务条款 URL"
+
+msgid "External URL to a Terms of Service document hosted elsewhere"
+msgstr "指向托管在其他位置的服务条款文档的外部 URL"
+
+msgid "Text shown on the Terms of Service page"
+msgstr "服务条款页面上显示的文本"
+
+msgid "Privacy Policy URL"
+msgstr "隐私政策 URL"
+
+msgid "External URL to a Privacy Policy document hosted elsewhere"
+msgstr "指向托管在其他位置的隐私政策文档的外部 URL"
+
+msgid "Text shown on the Privacy Policy page"
+msgstr "隐私政策页面上显示的文本"
+
+msgid "View Self Submissions"
+msgstr "查看自己的提交"
+
+msgid "Allow users to view their previous submissions"
+msgstr "允许用户查看他们之前的提交"
+
+msgid "Max Attempts Behavior"
+msgstr "最大尝试次数行为"
+
+msgid "Set Max Attempts behavior to be a lockout or a timeout"
+msgstr "设置最大尝试次数行为为锁定或超时"
+
+msgid "Max Attempts Timeout Duration"
+msgstr "最大尝试次数超时时长"
+
+msgid "How long the timeout lasts in seconds for max attempts (if set to timeout). Default is 300 seconds"
+msgstr "最大尝试次数超时持续时间（秒）（如果设置为超时）。默认为 300 秒"
+
+msgid "Hints Free Public Access"
+msgstr "提示免费公开访问"
+
+msgid "Control whether users must be logged in to see free hints (hints without cost or requirements)"
+msgstr "控制用户是否必须登录才能查看免费提示（无成本或要求的提示）"
+
+msgid "Control who can see and submit challenge ratings"
+msgstr "控制谁可以查看和提交题目评分"
+
+msgid "Public (users can submit ratings and see aggregated ratings)"
+msgstr "公开（用户可以提交评分并查看汇总评分）"
+
+msgid "Private (users can submit ratings but cannot see aggregated ratings)"
+msgstr "私有（用户可以提交评分但无法查看汇总评分）"
+
+msgid "Disabled (users cannot submit ratings or see aggregated ratings)"
+msgstr "禁用（用户无法提交评分或查看汇总评分）"
+
+msgid "Default Language"
+msgstr "默认语言"
+
+msgid "Language to use if a user does not specify a language in their account settings. By default, CTFd will auto-detect the user's preferred language."
+msgstr "当用户未在账户设置中指定语言时使用的语言。默认情况下，CTFd 会自动检测用户的首选语言。"
+
+msgid "Mail From Address"
+msgstr "发件人地址"
+
+msgid "Email address used to send email"
+msgstr "用于发送邮件的邮箱地址"
+
+msgid "Mail Server Address"
+msgstr "邮件服务器地址"
+
+msgid "Change the email server used by CTFd to send email"
+msgstr "更改 CTFd 用于发送邮件的邮件服务器"
+
+msgid "Mail Server Port"
+msgstr "邮件服务器端口"
+
+msgid "Use Mail Server Username and Password"
+msgstr "使用邮件服务器用户名和密码"
+
+msgid "Username"
+msgstr "用户名"
+
+msgid "Mail Server Account Username"
+msgstr "邮件服务器账户用户名"
+
+msgid "Mail Server Account Password"
+msgstr "邮件服务器账户密码"
+
+msgid "TLS/SSL"
+msgstr "TLS/SSL"
+
+msgid "STARTTLS"
+msgstr "STARTTLS"
+
+msgid "Mailgun API Base URL"
+msgstr "Mailgun API 基础 URL"
+
+msgid "Mailgun API Key"
+msgstr "Mailgun API 密钥"
+
+msgid "Subject"
+msgstr "主题"
+
+msgid "Subject line for registration confirmation email"
+msgstr "注册确认邮件的主题行"
+
+msgid "Body"
+msgstr "正文"
+
+msgid "Email body sent to users after they've finished registering"
+msgstr "用户完成注册后发送的邮件正文"
+
+msgid "Subject line for account verification email"
+msgstr "账户验证邮件的主题行"
+
+msgid "Email body sent to users to confirm their account at the address they provided during registration"
+msgstr "发送给用户以确认其注册时提供的地址的账户的邮件正文"
+
+msgid "Subject line for new account details email"
+msgstr "新账户详情邮件的主题行"
+
+msgid "Email body sent to new users (manually created by an admin) with their initial account details"
+msgstr "发送给新用户（由管理员手动创建）的包含其初始账户详情的邮件正文"
+
+msgid "Subject line for password reset request email"
+msgstr "密码重置请求邮件的主题行"
+
+msgid "Email body sent when a user requests a password reset"
+msgstr "用户请求密码重置时发送的邮件正文"
+
+msgid "Subject line for password reset confirmation email"
+msgstr "密码重置确认邮件的主题行"
+
+msgid "Email body sent when a user successfully resets their password"
+msgstr "用户成功重置密码后发送的邮件正文"
+
+msgid "Maximum number of users per team (Teams mode only)"
+msgstr "每个团队的最大用户数（仅团队模式）"
+
+msgid "lockout"
+msgstr "锁定"
+
+msgid "timeout"
+msgstr "超时"
+
+msgid "Notification title"
+msgstr "通知标题"
+
+msgid "Notification contents. Can consist of HTML and/or Markdown."
+msgstr "通知内容。可以包含 HTML 和/或 Markdown。"
+
+msgid "Notification Type"
+msgstr "通知类型"
+
+msgid "Toast"
+msgstr "提示"
+
+msgid "Alert"
+msgstr "警告"
+
+msgid "Background"
+msgstr "后台"
+
+msgid "What type of notification users receive"
+msgstr "用户接收的通知类型"
+
+msgid "Play Sound"
+msgstr "播放声音"
+
+msgid "Play sound for users when they receive the notification"
+msgstr "用户收到通知时播放声音"
+
+msgid "This is the title shown on the navigation bar"
+msgstr "导航栏上显示的标题"
+
+msgid "This is the URL route that your page will be at (e.g. /page). You can also enter links to link to that page."
+msgstr "页面的 URL 路由（例如 /page）。您也可以输入链接以链接到该页面。"
+
+msgid "Authentication Required"
+msgstr "需要认证"
+
+msgid "Format"
+msgstr "格式"
+
+msgid "The markup format used to render the page"
+msgstr "用于渲染页面的标记格式"
+
+msgid "Current Page"
+msgstr "当前页面"
+
+msgid "New Tab"
+msgstr "新标签页"
+
+msgid "Context to open page in"
+msgstr "页面打开的上下文"
+
+msgid "Attach multiple files using Control+Click or Cmd+Click."
+msgstr "使用 Control+Click 或 Cmd+Click 附加多个文件。"
+
+msgid "Page Type"
+msgstr "页面类型"
+
+msgid "Shield"
+msgstr "盾牌"
+
+msgid "Bug"
+msgstr "Bug"
+
+msgid "Crown"
+msgstr "皇冠"
+
+msgid "Crosshairs"
+msgstr "十字准星"
+
+msgid "Ban"
+msgstr "封禁"
+
+msgid "Lightning"
+msgstr "闪电"
+
+msgid "Skull"
+msgstr "骷髅"
+
+msgid "Brain"
+msgstr "大脑"
+
+msgid "Code"
+msgstr "代码"
+
+msgid "Cowboy"
+msgstr "牛仔"
+
+msgid "Angry"
+msgstr "愤怒"
+
+msgid "Account ID"
+msgstr "账户 ID"
+
+msgid "Challenge ID"
+msgstr "题目 ID"
+
+msgid "Start Time:"
+msgstr "开始时间："
+
+msgid "End Time:"
+msgstr "结束时间："
+
+msgid "Import Error:"
+msgstr "导入错误："
+
+msgid "An error occurred during the import. Please try again."
+msgstr "导入过程中发生错误。请重试。"
+
+msgid "Current Status:"
+msgstr "当前状态："
+
+msgid "Page will redirect upon completion. Refresh page to get latest status."
+msgstr "完成后页面将重定向。刷新页面以获取最新状态。"
+
+msgid "Page will automatically refresh every 5 seconds."
+msgstr "页面将每 5 秒自动刷新一次。"
+
+msgid "Controls whether users play as themselves (User Mode) or join together as teams (Team Mode)."
+msgstr "控制用户是以个人身份参与（用户模式）还是组成团队参与（团队模式）。"
+
+msgid "How many points it costs to see your hint."
+msgstr "查看提示需要花费的积分。"
+
+msgid "Markdown & HTML are supported"
+msgstr "支持 Markdown 和 HTML"
+
+msgid "Challenge to recommend after solving this challenge"
+msgstr "解答此题目后推荐的题目"
+
+msgid "Loading..."
+msgstr "加载中..."
+
+msgid "Page  of  comments"
+msgstr "第  页，共  页评论"
+
+msgid "This image file is larger than 128KB which may result in increased load times. Are you sure you want to use it?"
+msgstr "此图片文件大于 128KB，可能会导致加载时间增加。您确定要使用它吗？"
+
+msgid "This image file is larger than 32KB which may result in increased load times. Are you sure you want to use it?"
+msgstr "此图片文件大于 32KB，可能会导致加载时间增加。您确定要使用它吗？"
+
+msgid "This image file is larger than 512KB which may result in increased load times. Are you sure you want to use it?"
+msgstr "此图片文件大于 512KB，可能会导致加载时间增加。您确定要使用它吗？"
+
+msgid "Competition bracket for your team"
+msgstr "团队的竞赛分组"
+
+msgid "Registration code required to create account"
+msgstr "创建账户所需的注册码"

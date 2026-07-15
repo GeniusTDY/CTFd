@@ -10,29 +10,29 @@
 	<div class="row">
 		<div class="col-md-6 offset-md-3">
 			<p>
-				<b>Start Time:</b> <span id="start-time">{{ start_time }}</span>
-			</p>
-			{% if end_time %}
-			<p>
-				<b>End Time:</b> <span id="end-time">{{ end_time }}</span>
-			</p>
-			{% endif %}
-			{% if import_error %}
-			<p>
-				<b>Import Error:</b> {{ import_error }}
-			</p>
-			<div class="alert alert-danger" role="alert">
-				An error occurred during the import. Please try again. 
-			</div>
-			{% else %}
-			<p>
-				<b>Current Status:</b> {{ import_status }}
-			</p>
-			<div class="alert alert-secondary" role="alert">
-				Page will redirect upon completion. Refresh page to get latest status.<br>
-				Page will automatically refresh every 5 seconds.
-			</div>
-			{% endif %}
+			<b>{% trans %}Start Time:{% endtrans %}</b> <span id="start-time">{{ start_time }}</span>
+		</p>
+		{% if end_time %}
+		<p>
+			<b>{% trans %}End Time:{% endtrans %}</b> <span id="end-time">{{ end_time }}</span>
+		</p>
+		{% endif %}
+		{% if import_error %}
+		<p>
+			<b>{% trans %}Import Error:{% endtrans %}</b> {{ import_error }}
+		</p>
+		<div class="alert alert-danger" role="alert">
+			{% trans %}An error occurred during the import. Please try again.{% endtrans %}
+		</div>
+		{% else %}
+		<p>
+			<b>{% trans %}Current Status:{% endtrans %}</b> {{ import_status }}
+		</p>
+		<div class="alert alert-secondary" role="alert">
+			{% trans %}Page will redirect upon completion. Refresh page to get latest status.{% endtrans %}<br>
+			{% trans %}Page will automatically refresh every 5 seconds.{% endtrans %}
+		</div>
+		{% endif %}
 		</div>
 	</div>
 </div>
