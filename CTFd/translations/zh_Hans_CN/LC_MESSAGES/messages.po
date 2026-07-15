@@ -1841,3 +1841,76 @@ msgstr "现在可以关闭此页面。"
 #: CTFd/themes/admin/templates/users/users.html:25
 msgid "matching"
 msgstr "匹配"
+
+#: CTFd/themes/admin/templates/configs/email.html:53
+msgid "Customize the emails that CTFd sends your users with custom content using <a href=\"https://docs.ctfd.io/docs/settings/emails/#email-content\" target=\"_blank\">predefined variables</a>, mail servers, and addresses."
+msgstr "使用<a href=\"https://docs.ctfd.io/docs/settings/emails/#email-content\" target=\"_blank\">预定义变量</a>、邮件服务器和地址，自定义 CTFd 发送给用户的邮件内容。"
+
+#: CTFd/themes/admin/templates/configs/general.html:17
+msgid "Description of your CTF. Available for use on your custom pages and emails as <code>{ctf_description}</code>."
+msgstr "CTF 的描述信息。可在自定义页面和邮件中通过 <code>{ctf_description}</code> 使用。"
+
+#: CTFd/themes/admin/templates/configs/email.html:215
+msgid "Email sent to new users <i>(manually created by an admin)</i> with their initial account details"
+msgstr "发送给新用户<i>（由管理员手动创建）</i>的邮件，包含其初始账户信息"
+
+#: CTFd/themes/admin/templates/configs/email.html:192
+msgid "Email sent to users to confirm their account at the address they provided during registration. You can require email verification in the <a href=\"#accounts\">Accounts settings</a>."
+msgstr "发送给用户的邮件，用于确认其注册时提供的邮箱地址。您可以在<a href=\"#accounts\">账户设置</a>中要求邮箱验证。"
+
+#: CTFd/themes/admin/templates/configs/email.html:147
+msgid "Mailgun integration is deprecated! Please see your Mailgun account for SMTP credentials."
+msgstr "Mailgun 集成已弃用！请查看您的 Mailgun 账户获取 SMTP 凭据。"
+
+#: CTFd/themes/admin/templates/editor.html:48
+msgid "Route"
+msgstr "路由"
+
+#: CTFd/themes/admin/templates/configs/visibility.html:34
+msgid "Score Visibility is a subset of Account Visibility. \n\t\t\t\tThis means that if accounts are visible to a user then score visibility will control whether they can see the score of that user. \n\t\t\t\tIf accounts are not visibile then score visibility has no effect."
+msgstr "得分可见性是账户可见性的子集。\n这意味着如果账户对用户可见，则得分可见性将控制该用户是否能看到该账户的得分。\n如果账户不可见，则得分可见性设置无效。"
+
+#: CTFd/themes/admin/templates/challenges/challenges.html:38
+msgid "Search for matching challenge"
+msgstr "搜索匹配的挑战"
+
+#: CTFd/themes/admin/templates/teams/teams.html:37
+msgid "Search for matching teams"
+msgstr "搜索匹配的团队"
+
+#: CTFd/themes/admin/templates/configs/theme.html:51
+msgid "Theme headers are inserted just before the <code>&lt;/head&gt;</code> tag on all public facing pages.\n\t\t\t\t\tRequires theme support."
+msgstr "主题页眉代码将插入到所有面向公众页面的 <code>&lt;/head&gt;</code> 标签之前。\n\t\t\t\t\t需要主题支持。"
+
+#: CTFd/themes/admin/templates/configs/theme.html:63
+msgid "Theme footers are inserted just before the <code>&lt;/body&gt;</code> tag on all public facing pages.\n\t\t\t\t\tRequires theme support."
+msgstr "主题页脚代码将插入到所有面向公众页面的 <code>&lt;/body&gt;</code> 标签之前。\n\t\t\t\t\t需要主题支持。"
+
+#: CTFd/themes/admin/templates/editor.html:35
+msgid "Title"
+msgstr "标题"
+
+#: CTFd/themes/admin/templates/configs/logo.html:42
+msgid "Used as the <a href='https://en.wikipedia.org/wiki/Favicon' target='_blank'>favicon</a>. Only PNGs accepted. Must be 32x32px."
+msgstr "用作<a href='https://en.wikipedia.org/wiki/Favicon' target='_blank'>网站图标</a>。仅接受 PNG 格式，必须为 32x32 像素。"
+
+#: CTFd/themes/admin/templates/pages.html:43
+msgid "Authentication"
+msgstr "需要登录"
+
+#: CTFd/themes/admin/templates/pages.html:45
+#: CTFd/themes/admin/templates/pages.html:80
+msgid "Published"
+msgstr "已发布"
+
+#: CTFd/themes/admin/templates/pages.html:66
+msgid "Required"
+msgstr "需要"
+
+#: CTFd/themes/admin/templates/pages.html:78
+msgid "Draft"
+msgstr "草稿"
+
+#: CTFd/themes/admin/templates/configs/visibility.html:48
+msgid "Update"
+msgstr "更新"
