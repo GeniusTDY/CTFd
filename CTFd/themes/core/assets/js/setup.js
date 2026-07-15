@@ -8,34 +8,12 @@ window.Alpine = Alpine;
 
 Alpine.data("SetupForm", () => ({
   init() {
-    // Custom email validation messages
-    let emailField = this.$root.querySelector('input[type="email"]');
-    if (emailField) {
-      emailField.addEventListener("invalid", e => {
-        if (e.target.validity.valueMissing) {
-          e.target.setCustomValidity("请填写电子邮件地址");
-        } else if (e.target.validity.typeMismatch) {
-          e.target.setCustomValidity("电子邮件地址需包含 '@' 符号");
-        }
-      });
-      emailField.addEventListener("input", e => {
-        e.target.setCustomValidity("");
-      });
-    }
-
     // Bind Enter on any input to clicking the Next button
     this.$root.querySelectorAll("input").forEach(i => {
       i.addEventListener("keypress", e => {
         if (e.key == "Enter") {
           e.preventDefault();
           e.target.closest(".tab-pane").querySelector("button[data-href]").click();
-        }
-      });
-      i.addEventListener("change", e => {
-        if (e.target.checkValidity() === false) {
-          e.target.classList.add("input-filled-invalid");
-        } else {
-          e.target.classList.remove("input-filled-invalid");
         }
       });
     });
@@ -74,14 +52,13 @@ Alpine.data("SetupForm", () => ({
       .closest('[role="tabpanel"]')
       .querySelectorAll("input,textarea");
 
-    inputs.forEach(input => {
+    for (let input of inputs) {
       if (!input.validity.valid) {
-        input.classList.add("input-filled-invalid");
         if (!firstInvalid) {
           firstInvalid = input;
         }
       }
-    });
+    }
 
     if (firstInvalid) {
       firstInvalid.focus();
