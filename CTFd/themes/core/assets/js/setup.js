@@ -128,6 +128,25 @@ Alpine.data("SetupForm", () => ({
   },
 
   submitSetup(e) {
+    // Validate all required fields across all tabs
+    let requiredFields = this.$root.querySelectorAll("[required]");
+    for (let field of requiredFields) {
+      if (!field.checkValidity()) {
+        e.preventDefault();
+        let tabPane = field.closest(".tab-pane");
+        if (tabPane) {
+          let tabTrigger = this.$root.querySelector(
+            `[data-bs-target="#${tabPane.id}"]`,
+          );
+          if (tabTrigger) {
+            Tab.getOrCreateInstance(tabTrigger).show();
+          }
+        }
+        field.reportValidity();
+        return;
+      }
+    }
+
     if (document.querySelector("#newsletter-checkbox").checked) {
       let email = e.target.querySelector("input[name=email]").value;
       let params = {
