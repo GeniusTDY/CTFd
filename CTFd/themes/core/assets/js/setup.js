@@ -132,7 +132,6 @@ Alpine.data("SetupForm", () => ({
     let requiredFields = this.$root.querySelectorAll("[required]");
     for (let field of requiredFields) {
       if (!field.checkValidity()) {
-        e.preventDefault();
         let tabPane = field.closest(".tab-pane");
         if (tabPane) {
           let tabTrigger = this.$root.querySelector(
@@ -165,6 +164,9 @@ Alpine.data("SetupForm", () => ({
         ret.join("&");
       document.head.appendChild(script);
     }
+
+    // All validations passed, submit the form
+    e.target.submit();
   },
 }));
 
