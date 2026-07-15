@@ -1914,3 +1914,327 @@ msgstr "草稿"
 #: CTFd/themes/admin/templates/configs/visibility.html:48
 msgid "Update"
 msgstr "更新"
+
+#: CTFd/themes/admin/templates/base.html:43
+msgid "CTFd"
+msgstr "CTFd"
+
+#: CTFd/themes/admin/templates/statistics.html:14
+msgid "users"
+msgstr "用户"
+
+#: CTFd/themes/admin/templates/statistics.html:18
+msgid "teams"
+msgstr "队伍"
+
+#: CTFd/themes/admin/templates/statistics.html:28
+msgid "challenges"
+msgstr "挑战"
+
+#: CTFd/themes/admin/templates/challenges/challenges.html:84
+msgid "State"
+msgstr "状态"
+
+#: CTFd/themes/admin/templates/challenges/update.html:94
+msgid "Static"
+msgstr "静态"
+
+#: CTFd/themes/admin/templates/challenges/update.html:95
+msgid "Linear"
+msgstr "线性"
+
+#: CTFd/themes/admin/templates/challenges/update.html:96
+msgid "Logarithmic"
+msgstr "对数"
+
+#: CTFd/themes/admin/templates/challenges/update.html:9
+msgid "Challenge Name"
+msgstr "挑战名称"
+
+#: CTFd/themes/admin/templates/challenges/update.html:19
+msgid "Challenge Category"
+msgstr "挑战分类"
+
+#: CTFd/themes/admin/templates/challenges/update.html:149
+msgid "Determines how this challenge is solved"
+msgstr "决定此挑战的解答方式"
+
+#: CTFd/themes/admin/templates/challenges/update.html:153
+msgid "Require Any Flag"
+msgstr "需要任一 Flag"
+
+#: CTFd/themes/admin/templates/challenges/update.html:154
+msgid "Require All Flags"
+msgstr "需要所有 Flag"
+
+#: CTFd/themes/admin/templates/challenges/update.html:155
+msgid "Require Any Flags by All Team Members"
+msgstr "需要所有队员提交任一 Flag"
+
+#: CTFd/themes/admin/templates/challenges/update.html:175
+msgid "Changes the state of the challenge (e.g. visible, hidden)"
+msgstr "更改挑战状态（如可见、隐藏）"
+
+#: CTFd/themes/admin/templates/challenges/update.html:179 CTFd/themes/admin/templates/challenges/new.html:62
+msgid "Visible"
+msgstr "可见"
+
+#: CTFd/themes/admin/templates/challenges/new.html:29
+msgid "Static flag for your challenge"
+msgstr "挑战的静态 flag"
+
+#: CTFd/themes/admin/templates/challenges/new.html:39
+msgid "Case Sensitive"
+msgstr "区分大小写"
+
+#: CTFd/themes/admin/templates/challenges/new.html:40
+msgid "Case Insensitive"
+msgstr "不区分大小写"
+
+#: CTFd/themes/admin/templates/challenges/new.html:50
+msgid "Files distributed along with your challenge"
+msgstr "随挑战分发的文件"
+
+#: CTFd/themes/admin/templates/challenges/new.html:59
+msgid "Should the challenge be visible to users"
+msgstr "挑战是否对用户可见"
+
+#: CTFd/themes/admin/templates/challenges/create.html:53
+msgid "Enter value"
+msgstr "输入值"
+
+#: CTFd/themes/admin/templates/submissions.html:33
+msgid "Search for matching submission"
+msgstr "搜索匹配的提交"
+
+#: CTFd/themes/admin/templates/submissions.html:61
+msgid "Show truncated flags"
+msgstr "显示截断的 flag"
+
+#: CTFd/themes/admin/templates/submissions.html:65
+msgid "Show full flags"
+msgstr "显示完整 flag"
+
+#: CTFd/themes/admin/templates/submissions.html:69
+msgid "Delete selected submissions"
+msgstr "删除选中的提交"
+
+#: CTFd/themes/admin/templates/submissions.html:87 CTFd/themes/admin/templates/audiences/audiences.html:21 CTFd/themes/admin/templates/modules/modules.html:21 CTFd/themes/admin/templates/users/users.html:76 CTFd/themes/admin/templates/challenges/challenges.html:78 CTFd/themes/admin/templates/teams/teams.html:76
+msgid "ID"
+msgstr "ID"
+
+#: CTFd/themes/admin/templates/submissions.html:93 CTFd/themes/admin/templates/challenges/challenges.html:83
+msgid "Type"
+msgstr "类型"
+
+#: CTFd/themes/admin/templates/submissions.html:94
+msgid "Provided"
+msgstr "提交内容"
+
+#: CTFd/themes/admin/templates/modules/module.html:23 CTFd/themes/admin/templates/audiences/audience.html:23 CTFd/themes/admin/templates/modals/challenges/module.html:14
+msgid "Save"
+msgstr "保存"
+
+#: CTFd/themes/admin/templates/modules/module.html:39 CTFd/themes/admin/templates/modules/module.html:8
+msgid "Edit Module"
+msgstr "编辑模块"
+
+#: CTFd/themes/admin/templates/modules/module.html:42
+msgid "Delete Module"
+msgstr "删除模块"
+
+#: CTFd/themes/admin/templates/modules/module.html:51
+msgid "Linked Audiences"
+msgstr "已关联的受众"
+
+#: CTFd/themes/admin/templates/modules/module.html:57 CTFd/themes/admin/templates/audiences/audience.html:57
+msgid "Unlink"
+msgstr "取消关联"
+
+#: CTFd/themes/admin/templates/modules/module.html:60
+msgid "No linked audiences (module is invisible to non-admins)."
+msgstr "无关联的受众（模块对非管理员不可见）。"
+
+#: CTFd/themes/admin/templates/modules/module.html:66
+msgid "Select a audience&hellip;"
+msgstr "选择一个受众&hellip;"
+
+#: CTFd/themes/admin/templates/modules/module.html:74
+msgid "Link audience"
+msgstr "关联受众"
+
+#: CTFd/themes/admin/templates/modules/module.html:85
+msgid "Linked Challenges"
+msgstr "已关联的挑战"
+
+#: CTFd/themes/admin/templates/modules/module.html:98 CTFd/themes/admin/templates/audiences/audience.html:104
+msgid "Remove"
+msgstr "移除"
+
+#: CTFd/themes/admin/templates/modules/module.html:107
+msgid "Add challenges"
+msgstr "添加挑战"
+
+#: CTFd/themes/admin/templates/modules/module.html:108
+msgid "Pick one or more challenges to assign to this module. Challenges already in another module will be reassigned."
+msgstr "选择一个或多个挑战分配到此模块。已在其他模块中的挑战将被重新分配。"
+
+#: CTFd/themes/admin/templates/modules/module.html:126
+msgid "Ctrl/Cmd-click to select multiple."
+msgstr "按住 Ctrl/Cmd 可多选。"
+
+#: CTFd/themes/admin/templates/modules/module.html:128
+msgid "Add selected to this module"
+msgstr "将选中的添加到此模块"
+
+#: CTFd/themes/admin/templates/audiences/audience.html:39 CTFd/themes/admin/templates/audiences/audience.html:8
+msgid "Edit Audience"
+msgstr "编辑受众"
+
+#: CTFd/themes/admin/templates/audiences/audience.html:42
+msgid "Delete Audience"
+msgstr "删除受众"
+
+#: CTFd/themes/admin/templates/audiences/audience.html:51
+msgid "Linked Modules"
+msgstr "已关联的模块"
+
+#: CTFd/themes/admin/templates/audiences/audience.html:52
+msgid "Members of this audience gain access to challenges in these modules."
+msgstr "此受众的成员将获得这些模块中挑战的访问权限。"
+
+#: CTFd/themes/admin/templates/audiences/audience.html:60
+msgid "No linked modules."
+msgstr "无关联的模块。"
+
+#: CTFd/themes/admin/templates/audiences/audience.html:66
+msgid "Select a module&hellip;"
+msgstr "选择一个模块&hellip;"
+
+#: CTFd/themes/admin/templates/audiences/audience.html:74
+msgid "Link module"
+msgstr "关联模块"
+
+#: CTFd/themes/admin/templates/audiences/audience.html:85
+msgid "Linked Members"
+msgstr "已关联的成员"
+
+#: CTFd/themes/admin/templates/audiences/audience.html:122
+msgid "Add member"
+msgstr "添加成员"
+
+#: CTFd/themes/admin/templates/audiences/audience.html:125
+msgid "Start typing to search."
+msgstr "开始输入以搜索。"
+
+#: CTFd/themes/admin/templates/teams/team.html:114
+msgid "Member"
+msgstr "成员"
+
+#: CTFd/themes/admin/templates/teams/team.html:264
+msgid "Team Members"
+msgstr "队伍成员"
+
+#: CTFd/themes/admin/templates/teams/team.html:269
+msgid "E-Mail"
+msgstr "邮箱"
+
+#: CTFd/themes/admin/templates/teams/team.html:352 CTFd/themes/admin/templates/teams/team.html:421 CTFd/themes/admin/templates/users/user.html:233 CTFd/themes/admin/templates/users/user.html:296
+msgid "Submitted"
+msgstr "已提交"
+
+#: CTFd/themes/admin/templates/teams/team.html:487 CTFd/themes/admin/templates/users/user.html:358
+msgid "Icon"
+msgstr "图标"
+
+#: CTFd/themes/admin/templates/users/users.html:80
+msgid "Admin"
+msgstr "管理员"
+
+#: CTFd/themes/admin/templates/users/users.html:81
+msgid "Verified"
+msgstr "已验证"
+
+#: CTFd/themes/admin/templates/editor.html:67
+msgid "Target"
+msgstr "目标"
+
+#: CTFd/themes/admin/templates/editor.html:81
+msgid "Content"
+msgstr "内容"
+
+#: CTFd/themes/admin/templates/editor.html:82
+msgid "This is the HTML content of your page"
+msgstr "这是页面的 HTML 内容"
+
+#: CTFd/themes/admin/templates/configs/general.html:8
+msgid "CTF Name"
+msgstr "CTF 名称"
+
+#: CTFd/themes/admin/templates/configs/logo.html:24
+msgid "CTF Logo"
+msgstr "CTF Logo"
+
+#: CTFd/themes/admin/templates/configs/logo.html:29 CTFd/themes/admin/templates/configs/logo.html:64
+msgid "Upload"
+msgstr "上传"
+
+#: CTFd/themes/admin/templates/configs/backup.html:21
+msgid "To download an export click the button below."
+msgstr "点击下方按钮下载导出文件。"
+
+#: CTFd/themes/admin/templates/configs/backup.html:41
+msgid "Import File"
+msgstr "导入文件"
+
+#: CTFd/themes/admin/templates/configs/backup.html:50
+msgid "CSV Importing instructions"
+msgstr "CSV 导入说明"
+
+#: CTFd/themes/admin/templates/configs/registration_code.html:6
+msgid "Registration Code required for account registration (SSO excluded)"
+msgstr "注册账户需要注册码（SSO 登录除外）"
+
+#: CTFd/themes/admin/templates/configs/fields.html:25
+msgid "Custom user fields are shown during registration. Users can optionally edit these fields in their profile."
+msgstr "自定义用户字段在注册时显示。用户可以在个人资料中编辑这些字段。"
+
+#: CTFd/themes/admin/templates/configs/fields.html:33
+msgid "Custom team fields are shown during team creation. Team captains can optionally edit these fields in the team profile."
+msgstr "自定义队伍字段在创建队伍时显示。队长可以在队伍资料中编辑这些字段。"
+
+#: CTFd/themes/admin/templates/configs/usermode.html:63
+msgid "Changing your user mode will also delete all submissions or records that a user took an action."
+msgstr "更改用户模式将删除所有提交记录和用户操作记录。"
+
+#: CTFd/themes/admin/templates/configs/mlc.html:12
+msgid "documentation"
+msgstr "文档"
+
+#: CTFd/themes/admin/templates/macros/forms.html:11 CTFd/themes/admin/templates/modals/users/create.html:18 CTFd/themes/admin/templates/modals/users/create.html:23 CTFd/themes/admin/templates/modals/users/create.html:28 CTFd/themes/admin/templates/modals/teams/create.html:18 CTFd/themes/admin/templates/modals/teams/create.html:23 CTFd/themes/admin/templates/modals/teams/create.html:28
+msgid "Optional"
+msgstr "可选"
+
+#: CTFd/themes/admin/templates/modals/users/addresses.html:6 CTFd/themes/admin/templates/modals/teams/addresses.html:7
+msgid "IP Address"
+msgstr "IP 地址"
+
+#: CTFd/themes/admin/templates/modals/users/addresses.html:7 CTFd/themes/admin/templates/modals/teams/addresses.html:8
+msgid "Last Seen"
+msgstr "最近活跃"
+
+#: CTFd/themes/admin/templates/modals/users/addresses.html:8 CTFd/themes/admin/templates/modals/teams/addresses.html:9
+msgid "City"
+msgstr "城市"
+
+#: CTFd/themes/admin/templates/reset.html:24
+msgid "PERMANENTLY"
+msgstr "永久"
+
+#: CTFd/themes/admin/templates/statistics.html:22
+msgid "IPs"
+msgstr "IP"
+
+#: CTFd/themes/admin/templates/reset.html:33
+msgid "creating a CTFd Export"
+msgstr "创建 CTFd 导出"
