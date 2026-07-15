@@ -3147,3 +3147,345 @@ msgstr "最小值"
 #: CTFd/themes/core-deprecated/templates/errors/404.html:12
 msgid "Sorry about that"
 msgstr "抱歉"
+
+msgid "Write"
+msgstr "编写"
+
+msgid "Preview"
+msgstr "预览"
+
+msgid "Media Library"
+msgstr "媒体库"
+
+msgid "CTFd Page variables"
+msgstr "CTFd 页面变量"
+
+msgid "Exports are an archive of your CTF in its current state. They can be re-imported into other CTFd instances or used by scripts and third parties to calculate statistics."
+msgstr "导出文件是 CTF 当前状态的归档。它们可以重新导入到其他 CTFd 实例中，或被脚本和第三方用于计算统计数据。"
+
+msgid "You can import saved CTFd exports by uploading them below. This will completely wipe your existing CTFd instance and all your data will be replaced by the imported data. You should only import data that you trust!"
+msgstr "你可以通过在下方上传已保存的 CTFd 导出文件来进行导入。这将完全清除你现有的 CTFd 实例，所有数据都将被导入的数据替换。请仅导入你信任的数据！"
+
+msgid "Importing a CTFd export will completely wipe your existing data"
+msgstr "导入 CTFd 导出文件将完全清除你现有的数据"
+
+msgid "CSVs exported from CTFd are not guaranteed to import back in via the Import CSV functionality. See "
+msgstr "从 CTFd 导出的 CSV 不保证能够通过导入 CSV 功能重新导入。详见 "
+
+msgid " for details."
+msgstr "了解详情。"
+
+msgid "Instructions and CSV templates"
+msgstr "说明和 CSV 模板"
+
+msgid "This is the time when the competition will begin. Challenges will automatically unlock and users will be able to submit answers."
+msgstr "这是比赛开始的时间。题目将自动解锁，用户将可以提交答案。"
+
+msgid "* All time fields required"
+msgstr "* 所有时间字段均为必填"
+
+msgid "Month:"
+msgstr "月："
+
+msgid "Day:"
+msgstr "日："
+
+msgid "Year:"
+msgstr "年："
+
+msgid "Hour:"
+msgstr "时："
+
+msgid "Minute:"
+msgstr "分："
+
+msgid "Timezone:"
+msgstr "时区："
+
+msgid "Local Time:"
+msgstr "本地时间："
+
+msgid "Timezone Time:"
+msgstr "时区时间："
+
+msgid "UTC Timestamp:"
+msgstr "UTC 时间戳："
+
+msgid "This is the time when the competition will end. Challenges will automatically close and users won't be able to submit answers."
+msgstr "这是比赛结束的时间。题目将自动关闭，用户将无法提交答案。"
+
+msgid "Allows challenges to be viewed after the End Time, however no new submissions will be recorded."
+msgstr "允许在结束时间之后查看题目，但不会记录新的提交。"
+
+msgid "For participants to be able to submit after End Time but not alter the scoreboard, configure Freeze Time to be your End Time."
+msgstr "若要让参赛者在结束时间之后仍能提交但不影响记分板，请将冻结时间设置为你的结束时间。"
+
+msgid "Freeze time specifies the timestamp that the competition will be frozen to. All solves before the freeze time will be shown, but new solves won't be shown to users."
+msgstr "冻结时间指定比赛将冻结到的时间戳。冻结时间之前的所有解答将会显示，但新的解答不会显示给用户。"
+
+msgid "CTF Timezone:"
+msgstr "CTF 时区："
+
+msgid "The <code>robots.txt</code> file contains instructions that suggest to bots which webpages they should and should not access. Not all bots respect <code>robots.txt</code>."
+msgstr "<code>robots.txt</code> 文件包含向机器人建议其应访问和不应访问哪些网页的指令。并非所有机器人都遵守 <code>robots.txt</code>。"
+
+msgid "Whether CTFd will attempt to sanitize HTML content from content."
+msgstr "CTFd 是否尝试对内容中的 HTML 内容进行净化处理。"
+
+msgid "Required (Disable in config.ini)"
+msgstr "必需（在 config.ini 中禁用）"
+
+msgid "(Submissions, Awards, Unlocks, Tracking)"
+msgstr "（提交、奖励、解锁、跟踪）"
+
+msgid "Share this link for users to join this team"
+msgstr "分享此链接供用户加入该队伍"
+
+msgid "%(count)s members"
+msgstr "%(count)s 名成员"
+
+msgid "Remove %(name)s"
+msgstr "移除 %(name)s"
+
+msgid "IP Geolocation by DB-IP"
+msgstr "由 DB-IP 提供 IP 地理定位"
+
+msgid "Message"
+msgstr "消息"
+
+msgid "Use this to give a brief introduction to your challenge."
+msgstr "用于为你的题目提供简要介绍。"
+
+msgid "Attribution:"
+msgstr "署名："
+
+msgid "Attribution for your challenge"
+msgstr "你的题目的署名"
+
+msgid "(supports markdown)"
+msgstr "（支持 markdown）"
+
+msgid "Connection Info"
+msgstr "连接信息"
+
+msgid "Use this to specify a link, hostname, or connection instructions for your challenge."
+msgstr "用于为你的题目指定链接、主机名或连接说明。"
+
+msgid "This is how many points teams will receive once they solve this challenge."
+msgstr "这是队伍解出该题目后将获得的分数。"
+
+msgid "Position"
+msgstr "位置"
+
+msgid "This is used to order the challenge. Lower positions are first. Position 0 goes to the end to be sorted by challenge value."
+msgstr "用于对题目进行排序。位置越靠前越优先。位置 0 会排到末尾，并按题目分值排序。"
+
+msgid "Scoring Function"
+msgstr "计分函数"
+
+msgid "Static: Challenge <code>Value</code> is awarded as-is"
+msgstr "静态：按题目 <code>分值</code> 原样奖励"
+
+msgid "Linear: Calculated as <code>Initial - (Decay * SolveCount)</code>"
+msgstr "线性：计算方式为 <code>初始值 - (衰减 * 解题数)</code>"
+
+msgid "Logarithmic: Calculated as <code>(((Minimum - Initial) / (Decay^2)) * (SolveCount^2)) + Initial</code>"
+msgstr "对数：计算方式为 <code>(((最小值 - 初始值) / (衰减^2)) * (解题数^2)) + 初始值</code>"
+
+msgid "This is how many points the challenge was worth initially."
+msgstr "这是题目最初的分值。"
+
+msgid "Decay"
+msgstr "衰减"
+
+msgid "Linear: The amount of points deducted per solve. Equal deduction per solve."
+msgstr "线性：每次解题扣除的分数。每次解题扣除相同的分数。"
+
+msgid "Logarithmic: The amount of solves before the challenge reaches its minimum value. Earlier solves will lose less points. Later solves will lose more points"
+msgstr "对数：题目达到最低分值前的解题次数。较早的解题损失较少分数，较晚的解题损失较多分数"
+
+msgid "This is the lowest that the challenge can be worth"
+msgstr "这是题目可以拥有的最低分值"
+
+msgid "Logic"
+msgstr "逻辑"
+
+msgid "Max Attempts"
+msgstr "最大尝试次数"
+
+msgid "Maximum amount of attempts users receive. Leave at 0 for unlimited."
+msgstr "用户获得的最大尝试次数。设为 0 表示不限次数。"
+
+msgid "Challenge Category Order Custom Function"
+msgstr "题目分类排序自定义函数"
+
+msgid "custom compareFn function for Array.sort()"
+msgstr "用于 Array.sort() 的自定义 compareFn 函数"
+
+msgid " used to sort the challenge categories"
+msgstr " 用于对题目分类进行排序"
+
+msgid "Challenge Order Custom Function"
+msgstr "题目排序自定义函数"
+
+msgid " used to sort the challenges within categories"
+msgstr " 用于对分类内的题目进行排序"
+
+msgid "Define a "
+msgstr "定义一个 "
+
+msgid "Use Built-In Syntax Highlighter"
+msgstr "使用内置语法高亮"
+
+msgid "The built-in syntax highlighter is lightweight and fast but may not always correctly highlight all languages. You can disable the built-in highlighter in order to use your own."
+msgstr "内置语法高亮器轻量且快速，但可能无法始终正确高亮所有语言。你可以禁用内置高亮器以使用自己的高亮器。"
+
+msgid "Unauthorized"
+msgstr "未授权"
+
+msgid "Forbidden"
+msgstr "禁止访问"
+
+msgid "Challenge requirements cannot have a null prerequisite"
+msgstr "题目前置要求不能为空"
+
+msgid "Name changes are disabled"
+msgstr "已禁用名称修改"
+
+msgid "Only team members can be promoted to captain"
+msgstr "只有团队成员可以被提升为队长"
+
+msgid "Only the captain can change team captain"
+msgstr "只有队长可以更改队长"
+
+msgid "Only the captain can change the team password"
+msgstr "只有队长可以更改团队密码"
+
+msgid "Please confirm your current password"
+msgstr "请确认您当前的密码"
+
+msgid "Please contact an admin to change your bracket"
+msgstr "请联系管理员更改您的分组"
+
+msgid "Please provide a valid bracket id"
+msgstr "请提供有效的分组 ID"
+
+msgid "Team name has already been taken"
+msgstr "团队名称已被使用"
+
+msgid "Your previous password is incorrect"
+msgstr "您之前的密码不正确"
+
+msgid "Email address is not from an allowed domain"
+msgstr "电子邮箱地址不在允许的域名中"
+
+msgid "User name has already been taken"
+msgstr "用户名已被使用"
+
+msgid "Too many requests. Limit is %s requests in %s seconds"
+msgstr "请求过多。限制为 %s 秒内 %s 次请求"
+
+msgid "Search by name"
+msgstr "按名称搜索"
+
+msgid "Bad Gateway"
+msgstr "网关错误"
+
+msgid "Field Type"
+msgstr "字段类型"
+
+msgid "Text Field"
+msgstr "文本字段"
+
+msgid "Checkbox"
+msgstr "复选框"
+
+msgid "Type of field shown to the user"
+msgstr "向用户显示的字段类型"
+
+msgid "Field Name"
+msgstr "字段名称"
+
+msgid "Field name"
+msgstr "字段名称"
+
+msgid "Field Description"
+msgstr "字段描述"
+
+msgid "Editable by user in profile"
+msgstr "用户可在个人资料中编辑"
+
+msgid "Required on registration"
+msgstr "注册时必填"
+
+msgid "Shown on public profile"
+msgstr "在公开资料中显示"
+
+msgid "Bracket Name"
+msgstr "分组名称"
+
+msgid "Bracket Type"
+msgstr "分组类型"
+
+msgid "Bracket Description"
+msgstr "分组描述"
+
+msgid "File"
+msgstr "文件"
+
+msgid "Media Details"
+msgstr "媒体详情"
+
+msgid "Upload File Location"
+msgstr "上传文件位置"
+
+msgid "Upload Files"
+msgstr "上传文件"
+
+msgid "Create Flag"
+msgstr "创建 Flag"
+
+msgid "Edit Flag"
+msgstr "编辑 Flag"
+
+msgid "Content displayed before hint unlocking"
+msgstr "解锁提示前显示的内容"
+
+msgid "Cost"
+msgstr "花费"
+
+msgid "No ratings yet"
+msgstr "暂无评分"
+
+msgid "Anonymized"
+msgstr "匿名化"
+
+msgid "Behavior if not unlocked"
+msgstr "未解锁时的行为"
+
+msgid "Controls who can view this solution"
+msgstr "控制谁可以查看此解答"
+
+msgid "Tag"
+msgstr "标签"
+
+msgid "Type tag and press Enter"
+msgstr "输入标签并按回车键"
+
+msgid "Type topic and press Enter"
+msgstr "输入主题并按回车键"
+
+msgid "Add comment"
+msgstr "添加评论"
+
+msgid "Delete file"
+msgstr "删除文件"
+
+msgid "Download file"
+msgstr "下载文件"
+
+msgid "Insert link into editor"
+msgstr "将链接插入编辑器"
+
+msgid "Location"
+msgstr "位置"

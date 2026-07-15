@@ -1,3 +1,4 @@
+from flask_babel import gettext
 from marshmallow import ValidationError, post_dump, pre_load, validate
 from marshmallow.fields import Nested
 from marshmallow_sqlalchemy import field_for
@@ -75,12 +76,12 @@ class UserSchema(ma.ModelSchema):
             if user_id:
                 if existing_user and existing_user.id != user_id:
                     raise ValidationError(
-                        "User name has already been taken", field_names=["name"]
+                        gettext("User name has already been taken"), field_names=["name"]
                     )
             else:
                 if existing_user:
                     raise ValidationError(
-                        "User name has already been taken", field_names=["name"]
+                        gettext("User name has already been taken"), field_names=["name"]
                     )
         else:
             if name == current_user.name:
@@ -89,11 +90,11 @@ class UserSchema(ma.ModelSchema):
                 name_changes = get_config("name_changes", default=True)
                 if bool(name_changes) is False:
                     raise ValidationError(
-                        "Name changes are disabled", field_names=["name"]
+                        gettext("Name changes are disabled"), field_names=["name"]
                     )
                 if existing_user:
                     raise ValidationError(
-                        "User name has already been taken", field_names=["name"]
+                        gettext("User name has already been taken"), field_names=["name"]
                     )
 
     @pre_load
@@ -113,12 +114,12 @@ class UserSchema(ma.ModelSchema):
             if user_id:
                 if existing_user and existing_user.id != user_id:
                     raise ValidationError(
-                        "Email address has already been used", field_names=["email"]
+                        gettext("Email address has already been used"), field_names=["email"]
                     )
             else:
                 if existing_user:
                     raise ValidationError(
-                        "Email address has already been used", field_names=["email"]
+                        gettext("Email address has already been used"), field_names=["email"]
                     )
         else:
             if email == current_user.email:
@@ -128,7 +129,7 @@ class UserSchema(ma.ModelSchema):
 
                 if bool(confirm) is False:
                     raise ValidationError(
-                        "Please confirm your current password", field_names=["confirm"]
+                        gettext("Please confirm your current password"), field_names=["confirm"]
                     )
 
                 test = verify_password(
@@ -136,21 +137,21 @@ class UserSchema(ma.ModelSchema):
                 )
                 if test is False:
                     raise ValidationError(
-                        "Your previous password is incorrect", field_names=["confirm"]
+                        gettext("Your previous password is incorrect"), field_names=["confirm"]
                     )
 
                 if existing_user:
                     raise ValidationError(
-                        "Email address has already been used", field_names=["email"]
+                        gettext("Email address has already been used"), field_names=["email"]
                     )
                 if check_email_is_whitelisted(email) is False:
                     raise ValidationError(
-                        "Email address is not from an allowed domain",
+                        gettext("Email address is not from an allowed domain"),
                         field_names=["email"],
                     )
                 if check_email_is_blacklisted(email) is True:
                     raise ValidationError(
-                        "Email address is not from an allowed domain",
+                        gettext("Email address is not from an allowed domain"),
                         field_names=["email"],
                     )
                 if get_config("verify_emails"):
@@ -171,7 +172,7 @@ class UserSchema(ma.ModelSchema):
 
             if password and (bool(confirm) is False):
                 raise ValidationError(
-                    "Please confirm your current password", field_names=["confirm"]
+                    gettext("Please confirm your current password"), field_names=["confirm"]
                 )
 
             if password and confirm:
@@ -189,7 +190,7 @@ class UserSchema(ma.ModelSchema):
                     return data
                 else:
                     raise ValidationError(
-                        "Your previous password is incorrect", field_names=["confirm"]
+                        gettext("Your previous password is incorrect"), field_names=["confirm"]
                     )
             else:
                 data.pop("password", None)
@@ -205,7 +206,7 @@ class UserSchema(ma.ModelSchema):
             bracket = Brackets.query.filter_by(id=bracket_id, type="users").first()
             if bracket is None:
                 raise ValidationError(
-                    "Please provide a valid bracket id", field_names=["bracket_id"]
+                    gettext("Please provide a valid bracket id"), field_names=["bracket_id"]
                 )
         else:
             current_user = get_current_user()
@@ -221,11 +222,11 @@ class UserSchema(ma.ModelSchema):
                 bracket = Brackets.query.filter_by(id=bracket_id, type="users").first()
                 if bracket is None:
                     raise ValidationError(
-                        "Please provide a valid bracket id", field_names=["bracket_id"]
+                        gettext("Please provide a valid bracket id"), field_names=["bracket_id"]
                     )
             else:
                 raise ValidationError(
-                    "Please contact an admin to change your bracket",
+                    gettext("Please contact an admin to change your bracket"),
                     field_names=["bracket_id"],
                 )
 

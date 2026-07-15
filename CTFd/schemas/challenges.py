@@ -1,3 +1,4 @@
+from flask_babel import gettext
 from marshmallow import validate
 from marshmallow.exceptions import ValidationError
 from marshmallow_sqlalchemy import field_for
@@ -18,7 +19,7 @@ class ChallengeRequirementsValidator(validate.Validator):
         prereqs = value.get("prerequisites", [])
         if all(prereqs) is False:
             raise ValidationError(
-                "Challenge requirements cannot have a null prerequisite"
+                gettext("Challenge requirements cannot have a null prerequisite")
             )
 
         return value

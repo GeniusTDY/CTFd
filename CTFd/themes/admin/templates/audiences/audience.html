@@ -116,7 +116,7 @@
 					<input type="text"
 					       class="form-control"
 					       id="add-member-search"
-					       placeholder="Search {{ 'team' if user_mode == 'teams' else 'user' }} by name&hellip;"
+					       placeholder="{% trans %}Search by name{% endtrans %}"
 					       required>
 					<div class="input-group-append">
 						<button type="submit" class="btn btn-secondary" id="add-member-submit" disabled>Add member</button>

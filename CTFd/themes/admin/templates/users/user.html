@@ -89,16 +89,16 @@
 		<h1 id="team-id" class="text-center p-0 m-0">{{ user.name }}</h1>
 		<div class="mb-2">
 			{% if user.type == 'admin' %}
-				<span class="badge badge-primary">admin</span>
+				<span class="badge badge-primary">{% trans %}admin{% endtrans %}</span>
 			{% endif %}
 			{% if user.verified %}
-				<span class="badge badge-success">verified</span>
+				<span class="badge badge-success">{% trans %}verified{% endtrans %}</span>
 			{% endif %}
 			{% if user.hidden %}
-				<span class="badge badge-danger">hidden</span>
+				<span class="badge badge-danger">{% trans %}hidden{% endtrans %}</span>
 			{% endif %}
 			{% if user.banned %}
-				<span class="badge badge-danger">banned</span>
+				<span class="badge badge-danger">{% trans %}banned{% endtrans %}</span>
 			{% endif %}
 		</div>
 
@@ -120,7 +120,7 @@
 		<h2 id="team-email" class="text-center">{{ user.email }}</h2>
 		{% if user.oauth_id %}
 			<a href="https://majorleaguecyber.org/u/{{ user.name }}">
-				<h3><span class="badge badge-primary">Official</span></h3>
+				<h3><span class="badge badge-primary">{% trans %}Official{% endtrans %}</span></h3>
 			</a>
 		{% endif %}
 
@@ -149,13 +149,13 @@
 		<h3 id="team-place" class="text-center">
 			{% if place %}
 				{{ place }}
-				<small>place</small>
+				<small>{% trans %}place{% endtrans %}</small>
 			{% endif %}
 		</h3>
 		<h3 id="team-score" class="text-center">
 			{% if score %}
 				{{ score }}
-				<small>points</small>
+				<small>{% trans %}points{% endtrans %}</small>
 			{% endif %}
 		</h3>
 		<hr class="w-50">
@@ -207,7 +207,7 @@
 
 	<div class="tab-content min-vh-25 pb-5" id="nav-tabContent">
 		<div class="tab-pane fade show active" id="nav-solves" role="tabpanel" aria-labelledby="nav-solves-tab">
-			<h3 class="text-center pt-5 d-block">Solves</h3>
+			<h3 class="text-center pt-5 d-block">{% trans %}Solves{% endtrans %}</h3>
 			<div class="row">
 				<div class="col-md-12">
 					<div class="float-right pb-3">
@@ -229,11 +229,11 @@
 									<input type="checkbox" class="form-check-input" autocomplete="off" data-checkbox-all>&nbsp;
 								</div>
 							</th>
-							<th class="sort-col text-center"><b>Challenge</b></th>
-							<th class="sort-col text-center"><b>Submitted</b></th>
-							<th class="sort-col text-center"><b>Category</b></th>
-							<th class="sort-col text-center"><b>Value</b></th>
-							<th class="sort-col text-center"><b>Time</b></th>
+							<th class="sort-col text-center"><b>{% trans %}Challenge{% endtrans %}</b></th>
+							<th class="sort-col text-center"><b>{% trans %}Submitted{% endtrans %}</b></th>
+							<th class="sort-col text-center"><b>{% trans %}Category{% endtrans %}</b></th>
+							<th class="sort-col text-center"><b>{% trans %}Value{% endtrans %}</b></th>
+							<th class="sort-col text-center"><b>{% trans %}Time{% endtrans %}</b></th>
 						</tr>
 					</thead>
 					<tbody>
@@ -267,7 +267,7 @@
 		</div>
 
 		<div class="tab-pane fade" id="nav-wrong" role="tabpanel" aria-labelledby="nav-wrong-tab">
-			<h3 class="text-center pt-5 d-block">Fails</h3>
+			<h3 class="text-center pt-5 d-block">{% trans %}Fails{% endtrans %}</h3>
 			<div class="row">
 				<div class="col-md-12">
 					<div class="float-right pb-3">
@@ -292,9 +292,9 @@
 										<input type="checkbox" class="form-check-input" autocomplete="off" data-checkbox-all>&nbsp;
 									</div>
 								</th>
-								<th class="sort-col text-center"><b>Challenge</b></th>
-								<th class="sort-col text-center"><b>Submitted</b></th>
-								<th class="sort-col text-center"><b>Time</b></th>
+								<th class="sort-col text-center"><b>{% trans %}Challenge{% endtrans %}</b></th>
+								<th class="sort-col text-center"><b>{% trans %}Submitted{% endtrans %}</b></th>
+								<th class="sort-col text-center"><b>{% trans %}Time{% endtrans %}</b></th>
 							</tr>
 						</thead>
 						<tbody>
@@ -328,7 +328,7 @@
 		</div>
 
 		<div class="tab-pane fade" id="nav-awards" role="tabpanel" aria-labelledby="nav-awards-tab">
-			<h3 class="text-center pt-5 d-block">Awards</h3>
+			<h3 class="text-center pt-5 d-block">{% trans %}Awards{% endtrans %}</h3>
 			<div class="row">
 				<div class="col-md-12">
 					<div class="float-right pb-3">
@@ -350,12 +350,12 @@
 										<input type="checkbox" class="form-check-input" autocomplete="off" data-checkbox-all>&nbsp;
 									</div>
 								</th>
-								<th class="sort-col text-center"><b>Name</b></th>
-								<th class="sort-col text-center"><b>Description</b></th>
-								<th class="sort-col text-center"><b>Date</b></th>
-								<th class="sort-col text-center"><b>Value</b></th>
-								<th class="sort-col text-center"><b>Category</b></th>
-								<th class="sort-col text-center"><b>Icon</b></th>
+								<th class="sort-col text-center"><b>{% trans %}Name{% endtrans %}</b></th>
+								<th class="sort-col text-center"><b>{% trans %}Description{% endtrans %}</b></th>
+								<th class="sort-col text-center"><b>{% trans %}Date{% endtrans %}</b></th>
+								<th class="sort-col text-center"><b>{% trans %}Value{% endtrans %}</b></th>
+								<th class="sort-col text-center"><b>{% trans %}Category{% endtrans %}</b></th>
+								<th class="sort-col text-center"><b>{% trans %}Icon{% endtrans %}</b></th>
 							</tr>
 						</thead>
 						<tbody id="awards-body">
@@ -383,7 +383,7 @@
 		</div>
 
 		<div class="tab-pane fade" id="nav-missing" role="tabpanel" aria-labelledby="nav-missing-tab">
-			<h3 class="text-center pt-5 d-block">Missing</h3>
+			<h3 class="text-center pt-5 d-block">{% trans %}Missing{% endtrans %}</h3>
 			<div class="row">
 				<div class="col-md-12">
 					<div class="float-right pb-3">
@@ -405,9 +405,9 @@
 									<input type="checkbox" class="form-check-input" autocomplete="off" data-checkbox-all>&nbsp;
 								</div>
 							</th>
-							<th class="sort-col text-center"><b>Challenge</b></th>
-							<th class="sort-col text-center"><b>Category</b></th>
-							<th class="sort-col text-center"><b>Value</b></th>
+							<th class="sort-col text-center"><b>{% trans %}Challenge{% endtrans %}</b></th>
+							<th class="sort-col text-center"><b>{% trans %}Category{% endtrans %}</b></th>
+							<th class="sort-col text-center"><b>{% trans %}Value{% endtrans %}</b></th>
 						</tr>
 					</thead>
 					<tbody>

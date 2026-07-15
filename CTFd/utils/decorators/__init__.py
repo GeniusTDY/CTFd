@@ -174,7 +174,7 @@ def ratelimit(method="POST", limit=50, interval=300, key_prefix="rl"):
                     resp = jsonify(
                         {
                             "code": 429,
-                            "message": "Too many requests. Limit is %s requests in %s seconds"
+                            "message": gettext("Too many requests. Limit is %s requests in %s seconds")
                             % (limit, interval),
                         }
                     )

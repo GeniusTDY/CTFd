@@ -1,20 +1,19 @@
 <form>
   <div class="form-group">
-    <label>Challenge Window Size</label>
+    <label>{% trans %}Challenge Window Size{% endtrans %}</label>
     <select class="form-control custom-select" name="challenge_window_size">
-        <option value="sm">Small</option>
-        <option value="norm">Normal</option>
-        <option value="lg">Large</option>
-        <option value="xl">Extra Large</option>
+        <option value="sm">{% trans %}Small{% endtrans %}</option>
+        <option value="norm">{% trans %}Normal{% endtrans %}</option>
+        <option value="lg">{% trans %}Large{% endtrans %}</option>
+        <option value="xl">{% trans %}Extra Large{% endtrans %}</option>
     </select>
   </div>
 
   <div class="form-group">
     <label>
-      Challenge Category Order Custom Function<br>
+      {% trans %}Challenge Category Order Custom Function{% endtrans %}<br>
       <small class="form-text text-muted">
-        Define a <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort#description" target="_blank">custom compareFn function for Array.sort()</a> 
-        used to sort the challenge categories
+        {% trans %}Define a {% endtrans %}<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort#description" target="_blank">{% trans %}custom compareFn function for Array.sort(){% endtrans %}</a>{% trans %} used to sort the challenge categories{% endtrans %}
       </small>
     </label>
     <textarea class="form-control text-monospace" name="challenge_category_order" rows="5"></textarea>
@@ -22,10 +21,9 @@
 
   <div class="form-group">
     <label>
-      Challenge Order Custom Function<br>
+      {% trans %}Challenge Order Custom Function{% endtrans %}<br>
       <small class="form-text text-muted">
-        Define a <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort#description" target="_blank">custom compareFn function for Array.sort()</a> 
-        used to sort the challenges within categories
+        {% trans %}Define a {% endtrans %}<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort#description" target="_blank">{% trans %}custom compareFn function for Array.sort(){% endtrans %}</a>{% trans %} used to sort the challenges within categories{% endtrans %}
       </small>
     </label>
     <textarea class="form-control text-monospace" name="challenge_order" rows="5"></textarea>
@@ -35,13 +33,13 @@
     <div class="form-check">
       <input type="checkbox" class="form-check-input" id="use_builtin_code_highlighter" name="use_builtin_code_highlighter" checked>
       <label class="form-check-label" for="use_builtin_code_highlighter">
-        Use Built-In Syntax Highlighter
+        {% trans %}Use Built-In Syntax Highlighter{% endtrans %}
       </label>
     </div>
     <small class="form-text text-muted">
-      The built-in syntax highlighter is lightweight and fast but may not always correctly highlight all languages. You can disable the built-in highlighter in order to use your own.
+      {% trans %}The built-in syntax highlighter is lightweight and fast but may not always correctly highlight all languages. You can disable the built-in highlighter in order to use your own.{% endtrans %}
     </small>
   </div>
 
-  <button type="submit" class="btn btn-primary float-right mt-4">Update</button>
+  <button type="submit" class="btn btn-primary float-right mt-4">{% trans %}Update{% endtrans %}</button>
 </form>
