@@ -2,7 +2,7 @@ from CTFd.models import Solutions, ma
 from CTFd.utils import string_types
 
 
-class SolutionSchema(ma.ModelSchema):
+class SolutionSchema(ma.SQLAlchemyAutoSchema):
     class Meta:
         model = Solutions
         include_fk = True

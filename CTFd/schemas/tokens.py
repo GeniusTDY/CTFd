@@ -2,7 +2,7 @@ from CTFd.models import Tokens, ma
 from CTFd.utils import string_types
 
 
-class TokenSchema(ma.ModelSchema):
+class TokenSchema(ma.SQLAlchemyAutoSchema):
     class Meta:
         model = Tokens
         include_fk = True

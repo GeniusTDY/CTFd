@@ -6,7 +6,7 @@ from CTFd.schemas.users import UserSchema
 from CTFd.utils import string_types
 
 
-class RatingSchema(ma.ModelSchema):
+class RatingSchema(ma.SQLAlchemyAutoSchema):
     user = fields.Nested(UserSchema, only=["id", "name"])
     challenge = fields.Nested(ChallengeSchema, only=["id", "name", "category"])
 

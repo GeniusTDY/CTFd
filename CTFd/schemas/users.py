@@ -12,7 +12,7 @@ from CTFd.utils.user import get_current_user, is_admin
 from CTFd.utils.validators import validate_country_code, validate_language
 
 
-class UserSchema(ma.ModelSchema):
+class UserSchema(ma.SQLAlchemyAutoSchema):
     class Meta:
         model = Users
         include_fk = True
@@ -55,7 +55,7 @@ class UserSchema(ma.ModelSchema):
     password = field_for(Users, "password", required=True, allow_none=False)
     bracket_id = field_for(Users, "bracket_id")
     fields = Nested(
-        UserFieldEntriesSchema, partial=True, many=True, attribute="field_entries"
+        UserFieldEntriesSchema, many=True, attribute="field_entries"
     )
 
     @pre_load

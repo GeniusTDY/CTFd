@@ -2,7 +2,7 @@ from CTFd.models import Awards, ma
 from CTFd.utils import string_types
 
 
-class AwardSchema(ma.ModelSchema):
+class AwardSchema(ma.SQLAlchemyAutoSchema):
     class Meta:
         model = Awards
         include_fk = True

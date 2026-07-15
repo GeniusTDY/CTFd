@@ -2,7 +2,7 @@ from CTFd.models import Unlocks, ma
 from CTFd.utils import string_types
 
 
-class UnlockSchema(ma.ModelSchema):
+class UnlockSchema(ma.SQLAlchemyAutoSchema):
     class Meta:
         model = Unlocks
         include_fk = True

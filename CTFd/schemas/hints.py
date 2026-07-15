@@ -2,7 +2,7 @@ from CTFd.models import Hints, ma
 from CTFd.utils import string_types
 
 
-class HintSchema(ma.ModelSchema):
+class HintSchema(ma.SQLAlchemyAutoSchema):
     class Meta:
         model = Hints
         include_fk = True

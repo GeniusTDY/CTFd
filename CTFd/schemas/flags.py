@@ -2,7 +2,7 @@ from CTFd.models import Flags, ma
 from CTFd.utils import string_types
 
 
-class FlagSchema(ma.ModelSchema):
+class FlagSchema(ma.SQLAlchemyAutoSchema):
     class Meta:
         model = Flags
         include_fk = True

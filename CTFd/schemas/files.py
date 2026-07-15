@@ -2,7 +2,7 @@ from CTFd.models import Files, ma
 from CTFd.utils import string_types
 
 
-class FileSchema(ma.ModelSchema):
+class FileSchema(ma.SQLAlchemyAutoSchema):
     class Meta:
         model = Files
         include_fk = True

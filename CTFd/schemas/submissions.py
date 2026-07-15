@@ -7,7 +7,7 @@ from CTFd.schemas.users import UserSchema
 from CTFd.utils import string_types
 
 
-class SubmissionSchema(ma.ModelSchema):
+class SubmissionSchema(ma.SQLAlchemyAutoSchema):
     challenge = fields.Nested(ChallengeSchema, only=["id", "name", "category", "value"])
     user = fields.Nested(UserSchema, only=["id", "name"])
     team = fields.Nested(TeamSchema, only=["id", "name"])

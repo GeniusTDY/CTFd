@@ -2,7 +2,7 @@ from CTFd.models import ChallengeTopics, Topics, ma
 from CTFd.utils import string_types
 
 
-class TopicSchema(ma.ModelSchema):
+class TopicSchema(ma.SQLAlchemyAutoSchema):
     class Meta:
         model = Topics
         include_fk = True
@@ -20,7 +20,7 @@ class TopicSchema(ma.ModelSchema):
         super(TopicSchema, self).__init__(*args, **kwargs)
 
 
-class ChallengeTopicSchema(ma.ModelSchema):
+class ChallengeTopicSchema(ma.SQLAlchemyAutoSchema):
     class Meta:
         model = ChallengeTopics
         include_fk = True

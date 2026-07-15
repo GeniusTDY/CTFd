@@ -23,7 +23,7 @@ class ConfigValueField(fields.Field):
             return value
 
 
-class ConfigSchema(ma.ModelSchema):
+class ConfigSchema(ma.SQLAlchemyAutoSchema):
     class Meta:
         model = Configs
         include_fk = True

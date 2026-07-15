@@ -5,7 +5,7 @@ from CTFd.models import Pages, ma
 from CTFd.utils import string_types
 
 
-class PageSchema(ma.ModelSchema):
+class PageSchema(ma.SQLAlchemyAutoSchema):
     class Meta:
         model = Pages
         include_fk = True

@@ -2,7 +2,7 @@ from CTFd.models import Tags, ma
 from CTFd.utils import string_types
 
 
-class TagSchema(ma.ModelSchema):
+class TagSchema(ma.SQLAlchemyAutoSchema):
     class Meta:
         model = Tags
         include_fk = True

@@ -24,7 +24,7 @@ class ChallengeRequirementsValidator(validate.Validator):
         return value
 
 
-class ChallengeSchema(ma.ModelSchema):
+class ChallengeSchema(ma.SQLAlchemyAutoSchema):
     class Meta:
         model = Challenges
         include_fk = True

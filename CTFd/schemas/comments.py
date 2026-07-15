@@ -4,7 +4,7 @@ from CTFd.models import Comments, ma
 from CTFd.schemas.users import UserSchema
 
 
-class CommentSchema(ma.ModelSchema):
+class CommentSchema(ma.SQLAlchemyAutoSchema):
     class Meta:
         model = Comments
         include_fk = True

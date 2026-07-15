@@ -11,7 +11,7 @@ from CTFd.utils.user import get_current_team, get_current_user, is_admin
 from CTFd.utils.validators import validate_country_code
 
 
-class TeamSchema(ma.ModelSchema):
+class TeamSchema(ma.SQLAlchemyAutoSchema):
     class Meta:
         model = Teams
         include_fk = True
@@ -50,7 +50,7 @@ class TeamSchema(ma.ModelSchema):
     country = field_for(Teams, "country", validate=[validate_country_code])
     bracket_id = field_for(Teams, "bracket_id")
     fields = Nested(
-        TeamFieldEntriesSchema, partial=True, many=True, attribute="field_entries"
+        TeamFieldEntriesSchema, many=True, attribute="field_entries"
     )
 
     @pre_load

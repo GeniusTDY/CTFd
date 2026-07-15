@@ -4,7 +4,7 @@ from CTFd.models import Notifications, ma
 from CTFd.utils import string_types
 
 
-class NotificationSchema(ma.ModelSchema):
+class NotificationSchema(ma.SQLAlchemyAutoSchema):
     class Meta:
         model = Notifications
         include_fk = True
