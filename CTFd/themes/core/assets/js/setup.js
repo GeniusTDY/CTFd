@@ -54,19 +54,22 @@ Alpine.data("SetupForm", () => ({
 
   switchTab(e) {
     // Handle tab validation
-    let valid_tab = true;
+    let firstInvalid = null;
     let inputs = e.target
       .closest('[role="tabpanel"]')
       .querySelectorAll("input,textarea");
 
-    inputs.forEach(e => {
-      if (e.checkValidity() === false) {
-        e.classList.add("input-filled-invalid");
-        valid_tab = false;
+    inputs.forEach(input => {
+      if (input.checkValidity() === false) {
+        input.classList.add("input-filled-invalid");
+        if (!firstInvalid) {
+          firstInvalid = input;
+        }
       }
     });
 
-    if (valid_tab == false) {
+    if (firstInvalid) {
+      firstInvalid.reportValidity();
       return;
     }
 
