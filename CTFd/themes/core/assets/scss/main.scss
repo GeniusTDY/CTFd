@@ -54,11 +54,4 @@ select {
   background-size: 8px 10px;
 }
 
-.input-filled-invalid {
-  background-color: transparent !important;
-  border-color: #d46767;
-  box-shadow: 0 0 0 0.1rem #d46767;
-  transition:
-    background-color 0.3s,
-    border-color 0.3s;
-}
+
