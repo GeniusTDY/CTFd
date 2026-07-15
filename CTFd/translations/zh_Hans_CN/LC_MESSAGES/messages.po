@@ -2965,3 +2965,81 @@ msgstr "确定要删除此文件吗？"
 #: CTFd/themes/admin/assets/js/components/configs/fields/Field.vue:173
 msgid "Are you sure you'd like to delete this field?"
 msgstr "确定要删除此字段吗？"
+
+# --- Python validation strings ---
+
+#: CTFd/utils/validators/__init__.py:78
+msgid "Email address has already been used"
+msgstr "该邮箱地址已被使用"
+
+#: CTFd/utils/validators/__init__.py:87
+msgid "Invalid Country"
+msgstr "无效的国家/地区"
+
+#: CTFd/utils/validators/__init__.py:94
+msgid "Invalid Language"
+msgstr "无效的语言"
+
+# --- HintsList.vue ---
+
+#: CTFd/themes/admin/assets/js/components/hints/HintsList.vue:135
+msgid "Delete Hint"
+msgstr "删除提示"
+
+#: CTFd/themes/admin/assets/js/components/hints/HintsList.vue:136
+msgid "Are you sure you want to delete this hint?"
+msgstr "确定要删除此提示吗？"
+
+# --- ChallengeFilesList.vue ---
+
+#: CTFd/themes/admin/assets/js/components/files/ChallengeFilesList.vue:107
+msgid "Delete Files"
+msgstr "删除文件"
+
+# --- Field.vue ---
+
+#: CTFd/themes/admin/assets/js/components/configs/fields/Field.vue:142
+msgid "Field has been updated!"
+msgstr "字段已更新！"
+
+#: CTFd/themes/admin/assets/js/components/configs/fields/Field.vue:165
+msgid "Field has been created!"
+msgstr "字段已创建！"
+
+# --- Configs page ---
+
+#: CTFd/themes/admin/assets/js/pages/configs.js:129
+msgid "Error!"
+msgstr "错误！"
+
+#: CTFd/themes/admin/assets/js/pages/configs.js:132
+msgid "Okay"
+msgstr "确定"
+
+#: CTFd/themes/admin/assets/js/pages/configs.js:192
+msgid "Remove logo"
+msgstr "移除 Logo"
+
+#: CTFd/themes/admin/assets/js/pages/configs.js:158
+msgid "Logo uploading failed!"
+msgstr "上传 Logo 失败！"
+
+#: CTFd/themes/admin/assets/js/pages/configs.js:193
+msgid "Are you sure you'd like to remove the CTF logo?"
+msgstr "确定要移除 CTF Logo 吗？"
+
+#: CTFd/themes/admin/assets/js/pages/configs.js:228
+msgid "Icon uploading failed!"
+msgstr "上传图标失败！"
+
+#: CTFd/themes/admin/assets/js/pages/configs.js:239
+msgid "Are you sure you'd like to remove the small site icon?"
+msgstr "确定要移除站点小图标吗？"
+
+#: CTFd/themes/admin/assets/js/pages/configs.js:170
+msgid "Are you sure you'd like to switch user modes?\n\nAll submissions, awards, unlocks, and tracking will be deleted!"
+msgstr "确定要切换用户模式吗？\n\n所有提交、奖励、解锁和追踪数据将被删除！"
+
+#: CTFd/themes/admin/assets/js/pages/configs.js:173
+msgid "Are you sure you'd like to switch user modes?\n\nAll teams, submissions, awards, unlocks, and tracking will be deleted!"
+msgstr "确定要切换用户模式吗？\n\n所有队伍、提交、奖励、解锁和追踪数据将被删除！"
