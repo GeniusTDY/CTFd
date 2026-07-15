@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+.tab-pane { display: none; }
+.tab-pane.active { display: block; }
+</style>
+</head>
+<body>
+<h2>Test 1: 所有字段可见 (模拟登录/注册)</h2>
+<form id="form1">
+  <input name="name" required>
+  <input type="submit" value="Submit">
+</form>
+
+<h2>Test 2: 隐藏Tab中的required字段 (模拟setup)</h2>
+<div>
+  <div class="tab-pane" id="tab-admin">
+    <input name="name2" required>
+  </div>
+  <div class="tab-pane active" id="tab-final">
+    <input type="submit" value="Finish" form="form2">
+  </div>
+</div>
+<form id="form2"></form>
+
+<script>
+// 检测 form2 提交时的校验状态
+document.getElementById('form2').addEventListener('submit', function(e) {
+  var nameInput = document.querySelector('input[name="name2"]');
+  console.log('name2 validity:', nameInput.validity);
+  console.log('name2 validationMessage:', nameInput.validationMessage);
+  console.log('name2 visible:', nameInput.offsetParent !== null);
+  alert('valid: ' + nameInput.validity.valid + 
+        '\nmessage: ' + nameInput.validationMessage +
+        '\nvisible: ' + (nameInput.offsetParent !== null));
+  e.preventDefault();
+});
+</script>
+</body>
+</html>
