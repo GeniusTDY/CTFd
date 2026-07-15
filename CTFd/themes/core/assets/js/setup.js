@@ -128,26 +128,6 @@ Alpine.data("SetupForm", () => ({
   },
 
   submitSetup(e) {
-    // Check form validity including fields in hidden tabs
-    if (!e.target.checkValidity()) {
-      e.preventDefault();
-      // Find the first invalid field and switch to its tab
-      const invalidField = e.target.querySelector(":invalid");
-      if (invalidField) {
-        const tabPane = invalidField.closest(".tab-pane");
-        if (tabPane && !tabPane.classList.contains("active")) {
-          const tabTrigger = this.$root.querySelector(
-            `[data-bs-target="#${tabPane.id}"]`
-          );
-          if (tabTrigger) {
-            Tab.getOrCreateInstance(tabTrigger).show();
-          }
-        }
-        invalidField.reportValidity();
-      }
-      return;
-    }
-
     if (document.querySelector("#newsletter-checkbox").checked) {
       let email = e.target.querySelector("input[name=email]").value;
       let params = {
