@@ -1,5 +1,5 @@
 from wtforms import RadioField, StringField, TextAreaField
-from wtforms.fields import IntegerField
+from wtforms.fields.html5 import IntegerField
 from flask_babel import lazy_gettext as _l
 
 from CTFd.forms import BaseForm
