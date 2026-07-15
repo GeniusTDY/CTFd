@@ -47,24 +47,16 @@ Alpine.data("SetupForm", () => ({
 
   switchTab(e) {
     // Handle tab validation
-    let firstInvalid = null;
     let inputs = e.target
       .closest('[role="tabpanel"]')
       .querySelectorAll("input,textarea");
 
-    for (let input of inputs) {
-      if (!input.validity.valid) {
-        if (!firstInvalid) {
-          firstInvalid = input;
-        }
-      }
-    }
+    let firstInvalid = Array.from(inputs).find(input => !input.validity.valid);
 
     if (firstInvalid) {
+      e.stopPropagation();
       firstInvalid.focus();
-      requestAnimationFrame(() => {
-        firstInvalid.reportValidity();
-      });
+      firstInvalid.reportValidity();
       return;
     }
 
@@ -128,23 +120,21 @@ Alpine.data("SetupForm", () => ({
   submitSetup(e) {
     // Validate all required fields across all tabs
     let requiredFields = this.$root.querySelectorAll("[required]");
-    for (let field of requiredFields) {
-      if (!field.validity.valid) {
-        let tabPane = field.closest(".tab-pane");
-        if (tabPane) {
-          let tabTrigger = this.$root.querySelector(
-            `[data-bs-target="#${tabPane.id}"]`,
-          );
-          if (tabTrigger) {
-            Tab.getOrCreateInstance(tabTrigger).show();
-          }
+    let firstInvalid = Array.from(requiredFields).find(f => !f.validity.valid);
+
+    if (firstInvalid) {
+      let tabPane = firstInvalid.closest(".tab-pane");
+      if (tabPane) {
+        let tabTrigger = this.$root.querySelector(
+          `[data-bs-target="#${tabPane.id}"]`,
+        );
+        if (tabTrigger) {
+          Tab.getOrCreateInstance(tabTrigger).show();
         }
-        field.focus();
-        requestAnimationFrame(() => {
-          field.reportValidity();
-        });
-        return;
       }
+      firstInvalid.focus();
+      firstInvalid.reportValidity();
+      return;
     }
 
     if (document.querySelector("#newsletter-checkbox").checked) {
