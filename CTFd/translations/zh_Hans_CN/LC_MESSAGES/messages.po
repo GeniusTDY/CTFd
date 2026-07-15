@@ -2238,3 +2238,11 @@ msgstr "IP"
 #: CTFd/themes/admin/templates/reset.html:33
 msgid "creating a CTFd Export"
 msgstr "创建 CTFd 导出"
+
+#: CTFd/themes/admin/templates/configs/mlc.html:7
+msgid "MLC is a CTF stats tracker that provides event scheduling, team tracking, and SSO."
+msgstr "MLC 是一个 CTF 统计跟踪器，提供活动安排、队伍跟踪和 SSO 功能。"
+
+#: CTFd/themes/admin/templates/modules/module.html:52
+msgid "Members of these audiences can access this module's challenges."
+msgstr "这些受众的成员可以访问此模块的挑战。"
