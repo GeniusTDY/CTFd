@@ -8,7 +8,7 @@
 	<div class="modal-dialog">
 		<div class="modal-content">
 			<div class="modal-header">
-				<h2 class="modal-action text-center w-100">Edit User</h2>
+				<h2 class="modal-action text-center w-100">{% trans %}Edit User{% endtrans %}</h2>
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 					<span aria-hidden="true">&times;</span>
 				</button>
@@ -24,7 +24,7 @@
 	<div class="modal-dialog modal-xl">
 		<div class="modal-content">
 			<div class="modal-header">
-				<h2 class="modal-action text-center w-100">User Statistics</h2>
+				<h2 class="modal-action text-center w-100">{% trans %}User Statistics{% endtrans %}</h2>
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 					<span aria-hidden="true">&times;</span>
 				</button>
@@ -40,7 +40,7 @@
 	<div class="modal-dialog">
 		<div class="modal-content">
 			<div class="modal-header">
-				<h2 class="modal-action text-center w-100">Award User</h2>
+				<h2 class="modal-action text-center w-100">{% trans %}Award User{% endtrans %}</h2>
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 					<span aria-hidden="true">&times;</span>
 				</button>
@@ -56,7 +56,7 @@
 	<div class="modal-dialog">
 		<div class="modal-content">
 			<div class="modal-header">
-				<h2 class="modal-action text-center w-100">Email User</h2>
+				<h2 class="modal-action text-center w-100">{% trans %}Email User{% endtrans %}</h2>
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 					<span aria-hidden="true">&times;</span>
 				</button>
@@ -72,7 +72,7 @@
 	<div class="modal-dialog modal-lg">
 		<div class="modal-content">
 			<div class="modal-header">
-				<h2 class="modal-action text-center w-100">IP Addresses</h2>
+				<h2 class="modal-action text-center w-100">{% trans %}IP Addresses{% endtrans %}</h2>
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 					<span aria-hidden="true">&times;</span>
 				</button>
@@ -161,24 +161,24 @@
 		<hr class="w-50">
 		<div class="pt-3">
 			<a class="edit-user text-dark">
-				<i class="btn-fa fas fa-user-edit fa-2x px-2" data-toggle="tooltip" data-placement="top" title="Edit User"></i>
+				<i class="btn-fa fas fa-user-edit fa-2x px-2" data-toggle="tooltip" data-placement="top" title="{% trans %}Edit User{% endtrans %}"></i>
 			</a>
 			<a class="statistics-user text-dark">
-				<i class="btn-fa fas fa-chart-pie fa-2x px-2" data-toggle="tooltip" data-placement="top" title="User Statistics"></i>
+				<i class="btn-fa fas fa-chart-pie fa-2x px-2" data-toggle="tooltip" data-placement="top" title="{% trans %}User Statistics{% endtrans %}"></i>
 			</a>
 			<a class="award-user text-dark">
-				<i class="btn-fa fas fa-trophy fa-2x px-2" data-toggle="tooltip" data-placement="top" title="Award User"></i>
+				<i class="btn-fa fas fa-trophy fa-2x px-2" data-toggle="tooltip" data-placement="top" title="{% trans %}Award User{% endtrans %}"></i>
 			</a>
 			<a class="email-user text-dark">
-				<i class="btn-fa fas fa-envelope fa-2x px-2" data-toggle="tooltip" data-placement="top" title="Email User"></i>
+				<i class="btn-fa fas fa-envelope fa-2x px-2" data-toggle="tooltip" data-placement="top" title="{% trans %}Email User{% endtrans %}"></i>
 			</a>
 			<a class="delete-user text-dark">
-				<i class="btn-fa fas fa-trash-alt fa-2x px-2" data-toggle="tooltip" data-placement="top" title="Delete User"></i>
+				<i class="btn-fa fas fa-trash-alt fa-2x px-2" data-toggle="tooltip" data-placement="top" title="{% trans %}Delete User{% endtrans %}"></i>
 			</a>
 		</div>
 		<div class="pt-3">
 			<a class="addresses-user text-dark">
-				<i class="btn-fa fas fa-network-wired fa-2x px-2" data-toggle="tooltip" data-placement="top" title="IP Addresses"></i>
+				<i class="btn-fa fas fa-network-wired fa-2x px-2" data-toggle="tooltip" data-placement="top" title="{% trans %}IP Addresses{% endtrans %}"></i>
 			</a>
 			{% if user.website %}
 			<a href="{{ user.website }}" target="_blank" class="text-decoration-none text-dark" rel="noopener">
@@ -193,16 +193,16 @@
 <div class="container">
 	<nav class="nav nav-tabs nav-fill pt-5" id="myTab" role="tablist">
 		<a class="nav-item nav-link active" id="nav-solves-tab" data-toggle="tab" href="#nav-solves" role="tab"
-		   aria-controls="nav-solves" aria-selected="true">Solves</a>
+		   aria-controls="nav-solves" aria-selected="true">{% trans %}Solves{% endtrans %}</a>
 
 		<a class="nav-item nav-link" id="nav-wrong-tab" data-toggle="tab" href="#nav-wrong" role="tab"
-		   aria-controls="nav-wrong" aria-selected="false">Fails</a>
+		   aria-controls="nav-wrong" aria-selected="false">{% trans %}Fails{% endtrans %}</a>
 
 		<a class="nav-item nav-link" id="nav-awards-tab" data-toggle="tab" href="#nav-awards" role="tab"
-		   aria-controls="nav-awards" aria-selected="false">Awards</a>
+		   aria-controls="nav-awards" aria-selected="false">{% trans %}Awards{% endtrans %}</a>
 
 		<a class="nav-item nav-link" id="nav-missing-tab" data-toggle="tab" href="#nav-missing" role="tab"
-		   aria-controls="nav-missing" aria-selected="false">Missing</a>
+		   aria-controls="nav-missing" aria-selected="false">{% trans %}Missing{% endtrans %}</a>
 	</nav>
 
 	<div class="tab-content min-vh-25 pb-5" id="nav-tabContent">

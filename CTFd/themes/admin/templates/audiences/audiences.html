@@ -3,9 +3,9 @@
 {% block content %}
 <div class="jumbotron">
 	<div class="container">
-		<h1>Audiences
+		<h1>{% trans %}Audiences{% endtrans %}
 			<a class="no-decoration" href="{{ url_for('admin.audiences_new') }}">
-				<span role="button" data-toggle="tooltip" title="Create Audience">
+				<span role="button" data-toggle="tooltip" title="{% trans %}Create Audience{% endtrans %}">
 					<i class="btn-fa fas fa-plus-circle"></i>
 				</span>
 			</a>

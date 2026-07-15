@@ -6,9 +6,9 @@
 {% block content %}
 <div class="jumbotron">
 	<div class="container">
-		<h1>Pages
+		<h1>{% trans %}Pages{% endtrans %}
 			<a class="no-decoration" href="{{ url_for('admin.pages_new') }}">
-				<span class="create-page" role="button" data-toggle="tooltip" title="Create Page">
+				<span class="create-page" role="button" data-toggle="tooltip" title="{% trans %}Create Page{% endtrans %}">
 					<i class="btn-fa fas fa-plus-circle"></i>
 				</span>
 			</a>
@@ -21,7 +21,7 @@
 		<div class="col-md-12">
 			<div class="float-right pb-3">
 				<div class="btn-group" role="group">
-					<button type="button" class="btn btn-outline-danger" data-toggle="tooltip" title="Delete Pages" id="pages-delete-button">
+					<button type="button" class="btn btn-outline-danger" data-toggle="tooltip" title="{% trans %}Delete Pages{% endtrans %}" id="pages-delete-button">
 						<i class="btn-fa fas fa-trash-alt"></i>
 					</button>
 				</div>

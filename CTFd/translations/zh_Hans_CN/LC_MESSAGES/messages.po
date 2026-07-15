@@ -99,6 +99,10 @@ msgstr "国家"
 msgid "Expiration"
 msgstr "到期时间"
 
+#: CTFd/forms/self.py:60
+msgid "Usage Description"
+msgstr "用途描述"
+
 #: CTFd/forms/self.py:61
 msgid "Generate"
 msgstr "生成"
@@ -1282,3 +1286,558 @@ msgstr "或者，如果您想要创建自己的队伍，请<a href=\"%(url)s\">�
 msgid "After creating your team, share the team name and password with your teammates so they can join your team."
 msgstr "创建队伍后，请将队伍名称和密码分享给您的队友，以便他们加入您的队伍。"
 
+
+#: CTFd/themes/admin/templates/base.html:50
+#: CTFd/themes/admin/templates/statistics.html:6
+msgid "Statistics"
+msgstr "统计信息"
+
+#: CTFd/themes/admin/templates/audiences/audiences.html:6
+#: CTFd/themes/admin/templates/base.html:67
+msgid "Audiences"
+msgstr "受众"
+
+#: CTFd/themes/admin/templates/base.html:128
+msgid "A new CTFd version is available!"
+msgstr "CTFd 有新版本可用！"
+
+#: CTFd/themes/admin/templates/base.html:146
+msgid "Version"
+msgstr "版本"
+
+#: CTFd/themes/admin/templates/config.html:24
+msgid "Appearance"
+msgstr "外观"
+
+#: CTFd/themes/admin/templates/config.html:72
+msgid "Custom Fields"
+msgstr "自定义字段"
+
+#: CTFd/themes/admin/templates/config.html:93
+msgid "Import & Export"
+msgstr "导入与导出"
+
+#: CTFd/themes/admin/templates/config.html:98
+msgid "Security"
+msgstr "安全"
+
+#: CTFd/themes/admin/templates/config.html:101
+msgid "Sanitize"
+msgstr "内容过滤"
+
+#: CTFd/themes/admin/templates/config.html:114
+msgid "Robots.txt"
+msgstr "Robots.txt"
+
+#: CTFd/themes/admin/templates/config.html:158
+msgid "Danger zone"
+msgstr "危险区域"
+
+#: CTFd/themes/admin/templates/config.html:176
+msgid "Close"
+msgstr "关闭"
+
+#: CTFd/themes/admin/templates/import.html:6
+msgid "Import Status"
+msgstr "导入状态"
+
+#: CTFd/themes/admin/templates/audiences/new.html:6
+msgid "New Audience"
+msgstr "新建受众"
+
+#: CTFd/themes/admin/templates/base.html:56
+msgid "All Pages"
+msgstr "所有页面"
+
+#: CTFd/themes/admin/templates/base.html:57
+msgid "New Page"
+msgstr "新建页面"
+
+#: CTFd/themes/admin/templates/base.html:72
+msgid "All Submissions"
+msgstr "所有提交"
+
+#: CTFd/themes/admin/templates/base.html:73
+msgid "Correct Submissions"
+msgstr "正确提交"
+
+#: CTFd/themes/admin/templates/base.html:74
+msgid "Incorrect Submissions"
+msgstr "错误提交"
+
+#: CTFd/themes/admin/templates/config.html:67
+msgid "Scoreboard Brackets"
+msgstr "记分板分组"
+
+#: CTFd/themes/admin/templates/config.html:77
+msgid "Registration Code"
+msgstr "注册码"
+
+#: CTFd/themes/admin/templates/config.html:122
+msgid "Email Notifications"
+msgstr "邮件通知"
+
+#: CTFd/themes/admin/templates/config.html:127
+msgid "Social Sharing"
+msgstr "社交分享"
+
+#: CTFd/themes/admin/templates/config.html:132
+msgid "MajorLeagueCyber"
+msgstr "MajorLeagueCyber"
+
+#: CTFd/themes/admin/templates/challenges/new.html:9
+msgid "Create Challenge"
+msgstr "创建挑战"
+
+#: CTFd/themes/admin/templates/modules/new.html:6
+msgid "New Module"
+msgstr "新建模块"
+
+#: CTFd/themes/admin/templates/users/new.html:10
+msgid "Create User"
+msgstr "创建用户"
+
+#: CTFd/themes/admin/templates/config.html:10
+msgid "Configuration"
+msgstr "系统配置"
+
+#: CTFd/themes/admin/templates/config.html:37
+msgid "Localization"
+msgstr "本地化"
+
+#: CTFd/themes/admin/templates/config.html:41
+msgid "Access"
+msgstr "访问控制"
+
+#: CTFd/themes/admin/templates/config.html:44
+msgid "Visibility"
+msgstr "可见性"
+
+#: CTFd/themes/admin/templates/config.html:49
+msgid "Start and End Time"
+msgstr "开始和结束时间"
+
+#: CTFd/themes/admin/templates/config.html:54
+msgid "Pause"
+msgstr "暂停"
+
+#: CTFd/themes/admin/templates/config.html:62
+msgid "Accounts"
+msgstr "账户"
+
+#: CTFd/themes/admin/templates/config.html:90
+msgid "Backup"
+msgstr "备份"
+
+#: CTFd/themes/admin/templates/config.html:109
+msgid "Legal"
+msgstr "法律条款"
+
+#: CTFd/themes/admin/templates/base.html:101
+#: CTFd/themes/admin/templates/config.html:139
+msgid "Plugins"
+msgstr "插件"
+
+#: CTFd/themes/admin/templates/base.html:77
+msgid "Config"
+msgstr "配置"
+
+#: CTFd/themes/admin/templates/configs/email.html:126
+msgid "(A mail server password is currently set)"
+msgstr "（邮件服务器密码已设置）"
+
+#: CTFd/themes/admin/templates/configs/email.html:114
+msgid "(A mail server username is currently set)"
+msgstr "（邮件服务器用户名已设置）"
+
+#: CTFd/themes/admin/templates/configs/email.html:72
+msgid "Account Details"
+msgstr "账户详情"
+
+#: CTFd/themes/admin/templates/configs/email.html:167
+msgid "Account Registration"
+msgstr "账户注册"
+
+#: CTFd/themes/admin/templates/configs/email.html:190
+msgid "Account Verification"
+msgstr "账户验证"
+
+#: CTFd/themes/admin/templates/teams/team.html:228
+msgid "Add Team Members"
+msgstr "添加团队成员"
+
+#: CTFd/themes/admin/templates/teams/team.html:235
+msgid "Award Team Member"
+msgstr "奖励团队成员"
+
+#: CTFd/themes/admin/templates/users/user.html:170
+msgid "Award User"
+msgstr "奖励用户"
+
+#: CTFd/themes/admin/templates/configs/theme.html:36
+msgid "Base color used for theme features. Requires theme support."
+msgstr "主题功能的基础颜色，需要主题支持。"
+
+#: CTFd/themes/admin/templates/configs/theme.html:78
+msgid "Build"
+msgstr "构建"
+
+#: CTFd/themes/admin/templates/challenges/challenge.html:12
+msgid "Challenge Preview"
+msgstr "挑战预览"
+
+#: CTFd/themes/admin/templates/challenges/challenge.html:93
+msgid "Challenge Ratings"
+msgstr "挑战评分"
+
+#: CTFd/themes/admin/templates/challenges/new.html:80
+msgid "Challenge Types"
+msgstr "挑战类型"
+
+#: CTFd/themes/admin/templates/configs/mlc.html:17
+msgid "Client ID"
+msgstr "客户端 ID"
+
+#: CTFd/themes/admin/templates/configs/mlc.html:25
+msgid "Client Secret"
+msgstr "客户端密钥"
+
+#: CTFd/themes/admin/templates/challenges/challenge.html:97
+msgid "Comments"
+msgstr "评论"
+
+#: CTFd/themes/admin/templates/audiences/audiences.html:8
+msgid "Create Audience"
+msgstr "创建受众"
+
+#: CTFd/themes/admin/templates/modules/modules.html:8
+msgid "Create Module"
+msgstr "创建模块"
+
+#: CTFd/themes/admin/templates/pages.html:11
+msgid "Create Page"
+msgstr "创建页面"
+
+#: CTFd/themes/admin/templates/challenges/challenge.html:101
+msgid "Delete Challenge"
+msgstr "删除挑战"
+
+#: CTFd/themes/admin/templates/challenges/challenges.html:59
+msgid "Delete Challenges"
+msgstr "删除挑战"
+
+#: CTFd/themes/admin/templates/pages.html:24
+msgid "Delete Pages"
+msgstr "删除页面"
+
+#: CTFd/themes/admin/templates/teams/team.html:239
+msgid "Delete Team"
+msgstr "删除团队"
+
+#: CTFd/themes/admin/templates/teams/teams.html:58
+msgid "Delete Teams"
+msgstr "删除团队"
+
+#: CTFd/themes/admin/templates/users/user.html:176
+msgid "Delete User"
+msgstr "删除用户"
+
+#: CTFd/themes/admin/templates/users/users.html:59
+msgid "Delete Users"
+msgstr "删除用户"
+
+#: CTFd/themes/admin/templates/configs/backup.html:10
+msgid "Download CSV"
+msgstr "下载 CSV"
+
+#: CTFd/themes/admin/templates/challenges/challenges.html:56
+msgid "Edit Challenges"
+msgstr "编辑挑战"
+
+#: CTFd/themes/admin/templates/teams/teams.html:55
+msgid "Edit Teams"
+msgstr "编辑团队"
+
+#: CTFd/themes/admin/templates/users/user.html:164
+msgid "Edit User"
+msgstr "编辑用户"
+
+#: CTFd/themes/admin/templates/users/users.html:56
+msgid "Edit Users"
+msgstr "编辑用户"
+
+#: CTFd/themes/admin/templates/users/user.html:173
+msgid "Email User"
+msgstr "邮件用户"
+
+#: CTFd/themes/admin/templates/configs/email.html:51
+msgid "Email notifications"
+msgstr "邮件通知"
+
+#: CTFd/themes/admin/templates/configs/email.html:169
+msgid "Email sent to users after they've finished registering"
+msgstr "用户完成注册后发送的邮件"
+
+#: CTFd/themes/admin/templates/configs/email.html:238
+msgid "Email sent whent a user requests a password reset"
+msgstr "用户请求重置密码时发送的邮件"
+
+#: CTFd/themes/admin/templates/configs/email.html:259
+msgid "Email sent whent a user successfully resets their password"
+msgstr "用户成功重置密码后发送的邮件"
+
+#: CTFd/themes/admin/templates/challenges/create.html:25
+msgid "Enter challenge category"
+msgstr "输入挑战分类"
+
+#: CTFd/themes/admin/templates/challenges/create.html:13
+msgid "Enter challenge name"
+msgstr "输入挑战名称"
+
+#: CTFd/themes/admin/templates/configs/backup.html:4
+msgid "Export"
+msgstr "导出"
+
+#: CTFd/themes/admin/templates/users/user.html:199
+msgid "Fails"
+msgstr "失败"
+
+#: CTFd/themes/admin/templates/challenges/challenge.html:126
+msgid "Files"
+msgstr "文件"
+
+#: CTFd/themes/admin/templates/challenges/challenge.html:134
+msgid "Flags"
+msgstr "旗帜"
+
+#: CTFd/themes/admin/templates/configs/time.html:16
+msgid "Freeze Time"
+msgstr "冻结时间"
+
+#: CTFd/themes/admin/templates/configs/sanitize.html:6
+msgid "HTML Sanitization"
+msgstr "HTML 清理"
+
+#: CTFd/themes/admin/templates/scoreboard.html:14
+msgid "Hide/Unhide Accounts"
+msgstr "隐藏/取消隐藏账户"
+
+#: CTFd/themes/admin/templates/challenges/challenge.html:166
+msgid "Hints"
+msgstr "提示"
+
+#: CTFd/themes/admin/templates/users/user.html:181
+msgid "IP Addresses"
+msgstr "IP 地址"
+
+#: CTFd/themes/admin/templates/configs/backup.html:7
+msgid "Import"
+msgstr "导入"
+
+#: CTFd/themes/admin/templates/configs/backup.html:13
+msgid "Import CSV"
+msgstr "导入 CSV"
+
+#: CTFd/themes/admin/templates/integrations.html:7
+msgid "Integration enabled!"
+msgstr "集成已启用！"
+
+#: CTFd/themes/admin/templates/configs/logo.html:7
+msgid "Logo to use for the website instead of a CTF name."
+msgstr "用于网站的 Logo，替代 CTF 名称。"
+
+#: CTFd/themes/admin/templates/configs/email.html:58
+msgid "Mail Server"
+msgstr "邮件服务器"
+
+#: CTFd/themes/admin/templates/configs/mlc.html:5
+msgid "MajorLeagueCyber integration"
+msgstr "MajorLeagueCyber 集成"
+
+#: CTFd/themes/admin/templates/submissions.html:52
+msgid "Mark submissions correct"
+msgstr "标记提交为正确"
+
+#: CTFd/themes/admin/templates/submissions.html:56
+msgid "Mark submissions incorrect"
+msgstr "标记提交为错误"
+
+#: CTFd/themes/admin/templates/users/user.html:205
+msgid "Missing"
+msgstr "缺失"
+
+#: CTFd/themes/admin/templates/challenges/challenge.html:190
+msgid "Module"
+msgstr "模块"
+
+#: CTFd/themes/admin/templates/modules/modules.html:6
+msgid "Modules"
+msgstr "模块"
+
+#: CTFd/themes/admin/templates/configs/email.html:213
+msgid "New Account Details"
+msgstr "新账户详情"
+
+#: CTFd/themes/admin/templates/challenges/new.html:17
+msgid "Options"
+msgstr "选项"
+
+#: CTFd/themes/admin/templates/pages.html:9
+msgid "Pages"
+msgstr "页面"
+
+#: CTFd/themes/admin/templates/configs/email.html:75
+msgid "Password Reset"
+msgstr "密码重置"
+
+#: CTFd/themes/admin/templates/configs/email.html:257
+msgid "Password Reset Confirmation"
+msgstr "密码重置确认"
+
+#: CTFd/themes/admin/templates/configs/email.html:236
+msgid "Password Reset Request"
+msgstr "密码重置请求"
+
+#: CTFd/themes/admin/templates/configs/pause.html:7
+msgid "Pause CTF"
+msgstr "暂停 CTF"
+
+#: CTFd/themes/admin/templates/challenges/challenge.html:85
+msgid "Preview Challenge"
+msgstr "预览挑战"
+
+#: CTFd/themes/admin/templates/challenges/challenge.html:21
+msgid "Preview may be slightly different from the user-facing interface"
+msgstr "预览可能与用户界面略有不同"
+
+#: CTFd/themes/admin/templates/configs/theme.html:34
+msgid "Primary Color"
+msgstr "主色调"
+
+#: CTFd/themes/admin/templates/configs/legal.html:13
+msgid "Privacy Policy"
+msgstr "隐私政策"
+
+#: CTFd/themes/admin/templates/challenges/challenge.html:32
+msgid "Ratings"
+msgstr "评分"
+
+#: CTFd/themes/admin/templates/configs/email.html:63
+msgid "Registration"
+msgstr "注册"
+
+#: CTFd/themes/admin/templates/configs/logo.html:52
+msgid "Remove Icon"
+msgstr "移除图标"
+
+#: CTFd/themes/admin/templates/configs/logo.html:17
+msgid "Remove Logo"
+msgstr "移除 Logo"
+
+#: CTFd/themes/admin/templates/challenges/challenge.html:174
+msgid "Requirements"
+msgstr "前置要求"
+
+#: CTFd/themes/admin/templates/challenges/challenges.html:25
+msgid "Searching for challenges with"
+msgstr "搜索挑战"
+
+#: CTFd/themes/admin/templates/submissions.html:20
+msgid "Searching for submissions with"
+msgstr "搜索提交"
+
+#: CTFd/themes/admin/templates/teams/teams.html:24
+msgid "Searching for teams with"
+msgstr "搜索团队"
+
+#: CTFd/themes/admin/templates/users/users.html:25
+msgid "Searching for users with"
+msgstr "搜索用户"
+
+#: CTFd/themes/admin/templates/configs/theme.html:85
+msgid "Settings specific to the theme"
+msgstr "主题特定设置"
+
+#: CTFd/themes/admin/templates/challenges/challenge.html:142
+msgid "Solution"
+msgstr "题解"
+
+#: CTFd/themes/admin/templates/configs/logo.html:40
+msgid "Tab Icon"
+msgstr "标签页图标"
+
+#: CTFd/themes/admin/templates/challenges/challenge.html:158
+msgid "Tags"
+msgstr "标签"
+
+#: CTFd/themes/admin/templates/configs/accounts.html:16
+msgid "Team Accounts"
+msgstr "团队账户"
+
+#: CTFd/themes/admin/templates/teams/team.html:42
+msgid "Team Invite"
+msgstr "团队邀请"
+
+#: CTFd/themes/admin/templates/teams/team.html:224
+msgid "Team Invite Link"
+msgstr "团队邀请链接"
+
+#: CTFd/themes/admin/templates/teams/team.html:245
+msgid "Team Statistics"
+msgstr "团队统计"
+
+#: CTFd/themes/admin/templates/configs/legal.html:8
+msgid "Terms of Service"
+msgstr "服务条款"
+
+#: CTFd/themes/admin/templates/configs/theme.html:61
+msgid "Theme Footer"
+msgstr "主题页脚"
+
+#: CTFd/themes/admin/templates/configs/theme.html:49
+msgid "Theme Header"
+msgstr "主题页眉"
+
+#: CTFd/themes/admin/templates/configs/theme.html:74
+msgid "Theme Settings"
+msgstr "主题设置"
+
+#: CTFd/themes/admin/templates/base.html:45
+msgid "Toggle navigation"
+msgstr "切换导航"
+
+#: CTFd/themes/admin/templates/challenges/challenge.html:150
+msgid "Topics"
+msgstr "主题"
+
+#: CTFd/themes/admin/templates/configs/email.html:134
+msgid "Uncheck setting and update to remove username and password"
+msgstr "取消勾选并更新以移除用户名和密码"
+
+#: CTFd/themes/admin/templates/configs/accounts.html:11
+msgid "User Accounts"
+msgstr "用户账户"
+
+#: CTFd/themes/admin/templates/users/user.html:167
+msgid "User Statistics"
+msgstr "用户统计"
+
+#: CTFd/themes/admin/templates/configs/email.html:68
+msgid "Verification"
+msgstr "验证"
+
+#: CTFd/themes/admin/templates/configs/time.html:126
+msgid "View After CTF"
+msgstr "赛后查看"
+
+#: CTFd/themes/admin/templates/configs/general.html:6
+msgid "When no logo is specified, the CTF's name is used instead."
+msgstr "未指定 Logo 时，将使用 CTF 名称代替。"
+
+#: CTFd/themes/admin/templates/integrations.html:8
+msgid "You may now close this tab."
+msgstr "现在可以关闭此页面。"
+
+#: CTFd/themes/admin/templates/users/users.html:25
+msgid "matching"
+msgstr "匹配"

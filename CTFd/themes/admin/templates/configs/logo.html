@@ -2,9 +2,9 @@
 	<form id="logo-upload" class="form-upload" method="POST" enctype="multipart/form-data">
 		<div class="form-group">
 			<label for="ctf_logo">
-				Logo
+				{% trans %}Logo{% endtrans %}
 				<small class="form-text text-muted">
-					Logo to use for the website instead of a CTF name.
+					{% trans %}Logo to use for the website instead of a CTF name.{% endtrans %}
 				</small>
 			</label>
 
@@ -14,7 +14,7 @@
 						 src="{{ url_for('views.files', path=ctf_logo) }}"
 						 height="80">
 					<button type="button" id="remove-logo" class="btn-sm btn-danger">
-						Remove Logo
+						{% trans %}Remove Logo{% endtrans %}
 					</button>
 				</div>
 			{% endif %}
@@ -37,9 +37,9 @@
 	<form id="ctf-small-icon-upload" class="form-upload" method="POST" enctype="multipart/form-data">
 		<div class="form-group">
 			<label for="small_icon">
-				Tab Icon
+				{% trans %}Tab Icon{% endtrans %}
 				<small class="form-text text-muted">
-					Used as the <a href='https://en.wikipedia.org/wiki/Favicon' target='_blank'>favicon</a>. Only PNGs accepted. Must be 32x32px.
+					{% trans %}Used as the <a href='https://en.wikipedia.org/wiki/Favicon' target='_blank'>favicon</a>. Only PNGs accepted. Must be 32x32px.{% endtrans %}
 				</small>
 			</label>
 
@@ -49,7 +49,7 @@
 						 src="{{ url_for('views.files', path=ctf_small_icon) }}"
 						 height="32">
 					<button type="button" id="remove-small-icon" class="btn-sm btn-danger">
-						Remove Icon
+						{% trans %}Remove Icon{% endtrans %}
 					</button>
 				</div>
 			{% endif %}

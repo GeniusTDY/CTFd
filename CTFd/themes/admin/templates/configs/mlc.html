@@ -2,7 +2,7 @@
 	<form method="POST" autocomplete="off" class="w-100">
 		<div style="display:flex; justify-content:space-between;">
 			<h6>
-				MajorLeagueCyber integration
+				{% trans %}MajorLeagueCyber integration{% endtrans %}
 			</h6>
 			<span data-toggle="tooltip" data-placement="top" title="MLC is a CTF stats tracker that provides event scheduling, team tracking, and SSO." aria-hidden="true">
 				<i class="fas fa-question-circle"></i>
@@ -14,7 +14,7 @@
 		<br>
 		<div class="form-group">
 			<label>
-				Client ID
+				{% trans %}Client ID{% endtrans %}
 			</label>
 			<input class="form-control" id='oauth_client_id' name='oauth_client_id' type='text' placeholder=""
 				{% if oauth_client_id is defined and oauth_client_id != None %}value="{{ oauth_client_id }}"{% endif %}>
@@ -22,7 +22,7 @@
 
 		<div class="form-group">
 			<label>
-				Client Secret
+				{% trans %}Client Secret{% endtrans %}
 			</label>
 			<input class="form-control" id='oauth_client_secret' name='oauth_client_secret' type='text' placeholder=""
 				{% if oauth_client_secret is defined and oauth_client_secret != None %}value="{{ oauth_client_secret }}"{% endif %}>

@@ -3,7 +3,7 @@
 		<div class="modal-dialog modal-lg">
 			<div class="modal-content">
 				<div class="modal-header">
-					<h5 class="modal-title">Theme Settings</h5>
+					<h5 class="modal-title">{% trans %}Theme Settings{% endtrans %}</h5>
 				</div>
 				<div class="modal-body">
 				{% include (ctf_theme|string) + "/config.html" ignore missing %}
@@ -31,9 +31,9 @@
 		<div class="form-group">
 			<div style="display: flex; justify-content: space-between; align-items: center;">
 				<label>
-					Primary Color
+					{% trans %}Primary Color{% endtrans %}
 					<small class="form-text text-muted">
-						Base color used for theme features. Requires theme support.
+						{% trans %}Base color used for theme features. Requires theme support.{% endtrans %}
 					</small>
 				</label>
 				<div>
@@ -46,10 +46,10 @@
 		</div>
 		<div class="form-group">
 			<label>
-				Theme Header
+				{% trans %}Theme Header{% endtrans %}
 				<small class="form-text text-muted">
-					Theme headers are inserted just before the <code>&lt;/head&gt;</code> tag on all public facing pages.
-					Requires theme support.
+					{% trans %}Theme headers are inserted just before the <code>&lt;/head&gt;</code> tag on all public facing pages.
+					Requires theme support.{% endtrans %}
 				</small>
 			</label>
 			<!-- TODO: Smaller (expanding) textarea -->
@@ -58,10 +58,10 @@
 
 		<div class="form-group">
 			<label>
-				Theme Footer
+				{% trans %}Theme Footer{% endtrans %}
 				<small class="form-text text-muted">
-					Theme footers are inserted just before the <code>&lt;/body&gt;</code> tag on all public facing pages.
-					Requires theme support.
+					{% trans %}Theme footers are inserted just before the <code>&lt;/body&gt;</code> tag on all public facing pages.
+					Requires theme support.{% endtrans %}
 				</small>
 			</label>
 			<!-- TODO: Smaller (expanding) textarea -->
@@ -71,18 +71,18 @@
 		<div class="form-group">
 			<div style="display: flex; justify-content: space-between;">
 				<label for="ctf_theme">
-					Theme Settings
+					{% trans %}Theme Settings{% endtrans %}
 				</label>
 				<div class="d-block pb-2">
 					<button type="button" class="btn-sm btn-primary" id="theme-settings-button">
-						<i class="fas fa-pencil-alt action-icon"></i> Build
+						<i class="fas fa-pencil-alt action-icon"></i> {% trans %}Build{% endtrans %}
 					</button>
 				</div>
 			</div>
 			<!-- TODO: Smaller (expanding) textarea -->
 			<textarea class="form-control" id="theme-settings" name="theme_settings" rows="7">{{ theme_settings or "" }}</textarea>
 			<small class="form-text text-muted">
-				Settings specific to the theme
+				{% trans %}Settings specific to the theme{% endtrans %}
 			</small>
 		</div>
 

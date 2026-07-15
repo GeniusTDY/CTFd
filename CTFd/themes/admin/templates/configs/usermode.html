@@ -2,8 +2,8 @@
 	<form id="user-mode-form" method="POST" autocomplete="off" class="w-100 custom-config-form">
 		<div class="form-group">
 			<label for="ctf_name">
-				User Mode
-				<small class="form-text text-muted">Controls whether users play as themselves (User Mode) or join together as teams (Team Mode).</small>
+				{% trans %}User Mode{% endtrans %}
+				<small class="form-text text-muted">Controls whether users play as themselves ({% trans %}User Mode{% endtrans %}) or join together as teams (Team Mode).</small>
 			</label>
 
 			<div class="row pt-3">
@@ -16,7 +16,7 @@
 									<div class="form-check">
 										<input class="form-check-input card-radio-clone" type="radio" style="visibility: hidden;" checked>
 										<span class="form-check-label text-center">
-											<h5>Team Mode</h5>
+											<h5>{% trans %}Team Mode{% endtrans %}</h5>
 										</span>
 										<ul class="p-0 small">
 											<li>Participants register accounts and form teams</li>
@@ -40,7 +40,7 @@
 									<div class="form-check">
 										<input class="form-check-input card-radio-clone" type="radio" style="visibility: hidden;" checked>
 										<span class="form-check-label text-center">
-											<h5>User Mode</h5>
+											<h5>{% trans %}User Mode{% endtrans %}</h5>
 										</span>
 										<ul class="p-0 small">
 											<li>Participants only register an individual account</li>

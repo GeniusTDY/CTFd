@@ -3,9 +3,9 @@
 {% block content %}
 <div class="jumbotron">
 	<div class="container">
-		<h1>Modules
+		<h1>{% trans %}Modules{% endtrans %}
 			<a class="no-decoration" href="{{ url_for('admin.modules_new') }}">
-				<span role="button" data-toggle="tooltip" title="Create Module">
+				<span role="button" data-toggle="tooltip" title="{% trans %}Create Module{% endtrans %}">
 					<i class="btn-fa fas fa-plus-circle"></i>
 				</span>
 			</a>

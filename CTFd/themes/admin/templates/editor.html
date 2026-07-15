@@ -32,7 +32,7 @@
 						<div class="col-md-12">
 							{% set title = page.title if page is defined %}
 							<b>{{ form.title.label }}</b>
-							{{ form.title(class="form-control radius", id="route", placeholder="Title", value=title or "") }}
+							{{ form.title(class="form-control radius", id="route", placeholder="{% trans %}Title{% endtrans %}", value=title or "") }}
 							<small class="text-muted">
 								{{ form.title.description }}
 							</small>
@@ -45,7 +45,7 @@
 						<div class="col-md-12">
 							{% set route = page.route if page is defined %}
 							<b>{{ form.route.label }}</b>
-							{{ form.route(class="form-control radius", placeholder="Route", value=route) }}
+							{{ form.route(class="form-control radius", placeholder="{% trans %}Route{% endtrans %}", value=route) }}
 							<small class="text-muted">
 								{{ form.route.description }}
 							</small>

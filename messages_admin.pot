@@ -1,0 +1,852 @@
+# Translations template for PROJECT.
+# Copyright (C) 2026 ORGANIZATION
+# This file is distributed under the same license as the PROJECT project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2026-07-15 03:28+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: CTFd/views.py:319
+#, python-format
+msgid ""
+"In order to participate you must either <a href=\"%(url)s\">join or "
+"create a team</a>."
+msgstr ""
+
+#: CTFd/views.py:331
+#, python-format
+msgid ""
+"Your email address isn't confirmed!<br>To confirm your email address "
+"please <a href=\"%(url)s\">click here</a>."
+msgstr ""
+
+#: CTFd/views.py:368
+msgid "A cool CTF platform from <a href=\"https://ctfd.io\">ctfd.io</a>"
+msgstr ""
+
+#: CTFd/views.py:372
+msgid "Follow us on social media:"
+msgstr ""
+
+#: CTFd/views.py:376
+msgid "<a href=\"admin\">Click here</a> to login and setup your CTF"
+msgstr ""
+
+#: CTFd/themes/admin/templates/base.html:5
+msgid "Admin Panel"
+msgstr ""
+
+#: CTFd/themes/admin/templates/base.html:45
+msgid "Toggle navigation"
+msgstr ""
+
+#: CTFd/themes/admin/templates/base.html:50
+#: CTFd/themes/admin/templates/statistics.html:6
+msgid "Statistics"
+msgstr ""
+
+#: CTFd/themes/admin/templates/base.html:51
+#: CTFd/themes/admin/templates/notifications.html:6
+msgid "Notifications"
+msgstr ""
+
+#: CTFd/themes/admin/templates/base.html:54
+#: CTFd/themes/admin/templates/config.html:106
+#: CTFd/themes/admin/templates/pages.html:9
+msgid "Pages"
+msgstr ""
+
+#: CTFd/themes/admin/templates/base.html:56
+msgid "All Pages"
+msgstr ""
+
+#: CTFd/themes/admin/templates/base.html:57
+msgid "New Page"
+msgstr ""
+
+#: CTFd/themes/admin/templates/base.html:60
+#: CTFd/themes/admin/templates/config.html:59
+#: CTFd/themes/admin/templates/configs/fields.html:12
+#: CTFd/themes/admin/templates/users/users.html:9
+msgid "Users"
+msgstr ""
+
+#: CTFd/themes/admin/templates/base.html:62
+#: CTFd/themes/admin/templates/configs/fields.html:17
+#: CTFd/themes/admin/templates/teams/teams.html:9
+msgid "Teams"
+msgstr ""
+
+#: CTFd/themes/admin/templates/base.html:64
+#: CTFd/themes/admin/templates/scoreboard.html:6
+msgid "Scoreboard"
+msgstr ""
+
+#: CTFd/themes/admin/templates/base.html:65
+#: CTFd/themes/admin/templates/challenges/challenges.html:11
+#: CTFd/themes/admin/templates/config.html:82
+#: CTFd/themes/admin/templates/config.html:85
+msgid "Challenges"
+msgstr ""
+
+#: CTFd/themes/admin/templates/base.html:66
+#: CTFd/themes/admin/templates/modules/modules.html:6
+msgid "Modules"
+msgstr ""
+
+#: CTFd/themes/admin/templates/audiences/audiences.html:6
+#: CTFd/themes/admin/templates/base.html:67
+msgid "Audiences"
+msgstr ""
+
+#: CTFd/themes/admin/templates/base.html:70
+#: CTFd/themes/admin/templates/submissions.html:10
+msgid "Submissions"
+msgstr ""
+
+#: CTFd/themes/admin/templates/base.html:72
+msgid "All Submissions"
+msgstr ""
+
+#: CTFd/themes/admin/templates/base.html:73
+#: CTFd/themes/admin/templates/challenges/challenge.html:89
+msgid "Correct Submissions"
+msgstr ""
+
+#: CTFd/themes/admin/templates/base.html:74
+msgid "Incorrect Submissions"
+msgstr ""
+
+#: CTFd/themes/admin/templates/base.html:77
+msgid "Config"
+msgstr ""
+
+#: CTFd/themes/admin/templates/base.html:101
+#: CTFd/themes/admin/templates/config.html:139
+msgid "Plugins"
+msgstr ""
+
+#: CTFd/themes/admin/templates/base.html:128
+msgid "A new CTFd version is available!"
+msgstr ""
+
+#: CTFd/themes/admin/templates/base.html:142
+msgid "Powered by CTFd"
+msgstr ""
+
+#: CTFd/themes/admin/templates/base.html:146
+msgid "Version"
+msgstr ""
+
+#: CTFd/themes/admin/templates/config.html:10
+msgid "Configuration"
+msgstr ""
+
+#: CTFd/themes/admin/templates/config.html:20
+msgid "General"
+msgstr ""
+
+#: CTFd/themes/admin/templates/config.html:24
+msgid "Appearance"
+msgstr ""
+
+#: CTFd/themes/admin/templates/config.html:27
+#: CTFd/themes/admin/templates/configs/logo.html:5
+msgid "Logo"
+msgstr ""
+
+#: CTFd/themes/admin/templates/config.html:32
+msgid "Theme"
+msgstr ""
+
+#: CTFd/themes/admin/templates/config.html:37
+msgid "Localization"
+msgstr ""
+
+#: CTFd/themes/admin/templates/config.html:41
+msgid "Access"
+msgstr ""
+
+#: CTFd/themes/admin/templates/config.html:44
+msgid "Visibility"
+msgstr ""
+
+#: CTFd/themes/admin/templates/config.html:49
+msgid "Start and End Time"
+msgstr ""
+
+#: CTFd/themes/admin/templates/config.html:54
+msgid "Pause"
+msgstr ""
+
+#: CTFd/themes/admin/templates/config.html:62
+msgid "Accounts"
+msgstr ""
+
+#: CTFd/themes/admin/templates/config.html:67
+#: CTFd/themes/admin/templates/configs/brackets.html:2
+msgid "Scoreboard Brackets"
+msgstr ""
+
+#: CTFd/themes/admin/templates/config.html:72
+#: CTFd/themes/admin/templates/configs/fields.html:3
+msgid "Custom Fields"
+msgstr ""
+
+#: CTFd/themes/admin/templates/config.html:77
+#: CTFd/themes/admin/templates/configs/registration_code.html:5
+msgid "Registration Code"
+msgstr ""
+
+#: CTFd/themes/admin/templates/config.html:90
+msgid "Backup"
+msgstr ""
+
+#: CTFd/themes/admin/templates/config.html:93
+msgid "Import & Export"
+msgstr ""
+
+#: CTFd/themes/admin/templates/config.html:98
+msgid "Security"
+msgstr ""
+
+#: CTFd/themes/admin/templates/config.html:101
+msgid "Sanitize"
+msgstr ""
+
+#: CTFd/themes/admin/templates/config.html:109
+msgid "Legal"
+msgstr ""
+
+#: CTFd/themes/admin/templates/config.html:114
+#: CTFd/themes/admin/templates/configs/robots.html:5
+msgid "Robots.txt"
+msgstr ""
+
+#: CTFd/themes/admin/templates/config.html:119
+msgid "Integrations"
+msgstr ""
+
+#: CTFd/themes/admin/templates/config.html:122
+msgid "Email Notifications"
+msgstr ""
+
+#: CTFd/themes/admin/templates/config.html:127
+msgid "Social Sharing"
+msgstr ""
+
+#: CTFd/themes/admin/templates/config.html:132
+msgid "MajorLeagueCyber"
+msgstr ""
+
+#: CTFd/themes/admin/templates/config.html:158
+msgid "Danger zone"
+msgstr ""
+
+#: CTFd/themes/admin/templates/config.html:161
+#: CTFd/themes/admin/templates/configs/usermode.html:5
+#: CTFd/themes/admin/templates/configs/usermode.html:6
+#: CTFd/themes/admin/templates/configs/usermode.html:43
+msgid "User Mode"
+msgstr ""
+
+#: CTFd/themes/admin/templates/config.html:166
+#: CTFd/themes/admin/templates/reset.html:9
+msgid "Reset"
+msgstr ""
+
+#: CTFd/themes/admin/templates/config.html:174
+msgid "Error:"
+msgstr ""
+
+#: CTFd/themes/admin/templates/config.html:176
+#: CTFd/themes/admin/templates/notifications.html:72
+msgid "Close"
+msgstr ""
+
+#: CTFd/themes/admin/templates/import.html:6
+msgid "Import Status"
+msgstr ""
+
+#: CTFd/themes/admin/templates/integrations.html:7
+msgid "Integration enabled!"
+msgstr ""
+
+#: CTFd/themes/admin/templates/integrations.html:8
+msgid "You may now close this tab."
+msgstr ""
+
+#: CTFd/themes/admin/templates/pages.html:11
+msgid "Create Page"
+msgstr ""
+
+#: CTFd/themes/admin/templates/pages.html:24
+msgid "Delete Pages"
+msgstr ""
+
+#: CTFd/themes/admin/templates/scoreboard.html:14
+msgid "Hide/Unhide Accounts"
+msgstr ""
+
+#: CTFd/themes/admin/templates/submissions.html:20
+msgid "Searching for submissions with"
+msgstr ""
+
+#: CTFd/themes/admin/templates/challenges/challenges.html:25
+#: CTFd/themes/admin/templates/submissions.html:20
+#: CTFd/themes/admin/templates/teams/teams.html:24
+#: CTFd/themes/admin/templates/users/users.html:25
+msgid "matching"
+msgstr ""
+
+#: CTFd/themes/admin/templates/submissions.html:52
+msgid "Mark submissions correct"
+msgstr ""
+
+#: CTFd/themes/admin/templates/submissions.html:56
+msgid "Mark submissions incorrect"
+msgstr ""
+
+#: CTFd/themes/admin/templates/audiences/audiences.html:8
+msgid "Create Audience"
+msgstr ""
+
+#: CTFd/themes/admin/templates/audiences/new.html:6
+msgid "New Audience"
+msgstr ""
+
+#: CTFd/themes/admin/templates/challenges/challenge.html:12
+msgid "Challenge Preview"
+msgstr ""
+
+#: CTFd/themes/admin/templates/challenges/challenge.html:21
+msgid "Preview may be slightly different from the user-facing interface"
+msgstr ""
+
+#: CTFd/themes/admin/templates/challenges/challenge.html:32
+msgid "Ratings"
+msgstr ""
+
+#: CTFd/themes/admin/templates/challenges/challenge.html:53
+#: CTFd/themes/admin/templates/challenges/challenge.html:97
+msgid "Comments"
+msgstr ""
+
+#: CTFd/themes/admin/templates/challenges/challenge.html:85
+msgid "Preview Challenge"
+msgstr ""
+
+#: CTFd/themes/admin/templates/challenges/challenge.html:93
+msgid "Challenge Ratings"
+msgstr ""
+
+#: CTFd/themes/admin/templates/challenges/challenge.html:101
+msgid "Delete Challenge"
+msgstr ""
+
+#: CTFd/themes/admin/templates/challenges/challenge.html:111
+#: CTFd/themes/admin/templates/challenges/challenge.html:126
+msgid "Files"
+msgstr ""
+
+#: CTFd/themes/admin/templates/challenges/challenge.html:112
+#: CTFd/themes/admin/templates/challenges/challenge.html:134
+msgid "Flags"
+msgstr ""
+
+#: CTFd/themes/admin/templates/challenges/challenge.html:113
+#: CTFd/themes/admin/templates/challenges/challenge.html:142
+msgid "Solution"
+msgstr ""
+
+#: CTFd/themes/admin/templates/challenges/challenge.html:114
+#: CTFd/themes/admin/templates/challenges/challenge.html:150
+msgid "Topics"
+msgstr ""
+
+#: CTFd/themes/admin/templates/challenges/challenge.html:115
+#: CTFd/themes/admin/templates/challenges/challenge.html:158
+msgid "Tags"
+msgstr ""
+
+#: CTFd/themes/admin/templates/challenges/challenge.html:116
+#: CTFd/themes/admin/templates/challenges/challenge.html:166
+msgid "Hints"
+msgstr ""
+
+#: CTFd/themes/admin/templates/challenges/challenge.html:117
+#: CTFd/themes/admin/templates/challenges/challenge.html:174
+msgid "Requirements"
+msgstr ""
+
+#: CTFd/themes/admin/templates/challenges/challenge.html:118
+msgid "Next"
+msgstr ""
+
+#: CTFd/themes/admin/templates/challenges/challenge.html:119
+#: CTFd/themes/admin/templates/challenges/challenge.html:190
+msgid "Module"
+msgstr ""
+
+#: CTFd/themes/admin/templates/challenges/challenge.html:182
+msgid "Next Challenge"
+msgstr ""
+
+#: CTFd/themes/admin/templates/challenges/challenges.html:13
+#: CTFd/themes/admin/templates/challenges/new.html:9
+msgid "Create Challenge"
+msgstr ""
+
+#: CTFd/themes/admin/templates/challenges/challenges.html:25
+msgid "Searching for challenges with"
+msgstr ""
+
+#: CTFd/themes/admin/templates/challenges/challenges.html:56
+msgid "Edit Challenges"
+msgstr ""
+
+#: CTFd/themes/admin/templates/challenges/challenges.html:59
+msgid "Delete Challenges"
+msgstr ""
+
+#: CTFd/themes/admin/templates/challenges/create.html:13
+msgid "Enter challenge name"
+msgstr ""
+
+#: CTFd/themes/admin/templates/challenges/create.html:25
+msgid "Enter challenge category"
+msgstr ""
+
+#: CTFd/themes/admin/templates/challenges/new.html:17
+msgid "Options"
+msgstr ""
+
+#: CTFd/themes/admin/templates/challenges/new.html:80
+msgid "Challenge Types"
+msgstr ""
+
+#: CTFd/themes/admin/templates/configs/accounts.html:11
+msgid "User Accounts"
+msgstr ""
+
+#: CTFd/themes/admin/templates/configs/accounts.html:16
+msgid "Team Accounts"
+msgstr ""
+
+#: CTFd/themes/admin/templates/configs/backup.html:4
+msgid "Export"
+msgstr ""
+
+#: CTFd/themes/admin/templates/configs/backup.html:7
+msgid "Import"
+msgstr ""
+
+#: CTFd/themes/admin/templates/configs/backup.html:10
+msgid "Download CSV"
+msgstr ""
+
+#: CTFd/themes/admin/templates/configs/backup.html:13
+msgid "Import CSV"
+msgstr ""
+
+#: CTFd/themes/admin/templates/configs/email.html:51
+msgid "Email notifications"
+msgstr ""
+
+#: CTFd/themes/admin/templates/configs/email.html:53
+msgid ""
+"Customize the emails that CTFd sends your users with custom content using"
+" <a href=\"https://docs.ctfd.io/docs/settings/emails/#email-content\" "
+"target=\"_blank\">predefined variables</a>, mail servers, and addresses."
+msgstr ""
+
+#: CTFd/themes/admin/templates/configs/email.html:58
+msgid "Mail Server"
+msgstr ""
+
+#: CTFd/themes/admin/templates/configs/email.html:63
+msgid "Registration"
+msgstr ""
+
+#: CTFd/themes/admin/templates/configs/email.html:68
+msgid "Verification"
+msgstr ""
+
+#: CTFd/themes/admin/templates/configs/email.html:72
+msgid "Account Details"
+msgstr ""
+
+#: CTFd/themes/admin/templates/configs/email.html:75
+msgid "Password Reset"
+msgstr ""
+
+#: CTFd/themes/admin/templates/configs/email.html:114
+msgid "(A mail server username is currently set)"
+msgstr ""
+
+#: CTFd/themes/admin/templates/configs/email.html:126
+msgid "(A mail server password is currently set)"
+msgstr ""
+
+#: CTFd/themes/admin/templates/configs/email.html:134
+msgid "Uncheck setting and update to remove username and password"
+msgstr ""
+
+#: CTFd/themes/admin/templates/configs/email.html:147
+msgid ""
+"Mailgun integration is deprecated! Please see your Mailgun account for "
+"SMTP credentials."
+msgstr ""
+
+#: CTFd/themes/admin/templates/configs/email.html:167
+msgid "Account Registration"
+msgstr ""
+
+#: CTFd/themes/admin/templates/configs/email.html:169
+msgid "Email sent to users after they've finished registering"
+msgstr ""
+
+#: CTFd/themes/admin/templates/configs/email.html:190
+msgid "Account Verification"
+msgstr ""
+
+#: CTFd/themes/admin/templates/configs/email.html:192
+msgid ""
+"Email sent to users to confirm their account at the address they provided"
+" during registration. You can require email verification in the <a "
+"href=\"#accounts\">Accounts settings</a>."
+msgstr ""
+
+#: CTFd/themes/admin/templates/configs/email.html:213
+msgid "New Account Details"
+msgstr ""
+
+#: CTFd/themes/admin/templates/configs/email.html:215
+msgid ""
+"Email sent to new users <i>(manually created by an admin)</i> with their "
+"initial account details"
+msgstr ""
+
+#: CTFd/themes/admin/templates/configs/email.html:236
+msgid "Password Reset Request"
+msgstr ""
+
+#: CTFd/themes/admin/templates/configs/email.html:238
+msgid "Email sent whent a user requests a password reset"
+msgstr ""
+
+#: CTFd/themes/admin/templates/configs/email.html:257
+msgid "Password Reset Confirmation"
+msgstr ""
+
+#: CTFd/themes/admin/templates/configs/email.html:259
+msgid "Email sent whent a user successfully resets their password"
+msgstr ""
+
+#: CTFd/themes/admin/templates/configs/general.html:5
+msgid "Event Name"
+msgstr ""
+
+#: CTFd/themes/admin/templates/configs/general.html:6
+msgid "When no logo is specified, the CTF's name is used instead."
+msgstr ""
+
+#: CTFd/themes/admin/templates/configs/general.html:14
+msgid "Event Description"
+msgstr ""
+
+#: CTFd/themes/admin/templates/configs/general.html:17
+#, python-brace-format
+msgid ""
+"Description of your CTF. Available for use on your custom pages and "
+"emails as <code>{ctf_description}</code>."
+msgstr ""
+
+#: CTFd/themes/admin/templates/configs/legal.html:8
+msgid "Terms of Service"
+msgstr ""
+
+#: CTFd/themes/admin/templates/configs/legal.html:13
+msgid "Privacy Policy"
+msgstr ""
+
+#: CTFd/themes/admin/templates/configs/logo.html:7
+msgid "Logo to use for the website instead of a CTF name."
+msgstr ""
+
+#: CTFd/themes/admin/templates/configs/logo.html:17
+msgid "Remove Logo"
+msgstr ""
+
+#: CTFd/themes/admin/templates/configs/logo.html:40
+msgid "Tab Icon"
+msgstr ""
+
+#: CTFd/themes/admin/templates/configs/logo.html:42
+msgid ""
+"Used as the <a href='https://en.wikipedia.org/wiki/Favicon' "
+"target='_blank'>favicon</a>. Only PNGs accepted. Must be 32x32px."
+msgstr ""
+
+#: CTFd/themes/admin/templates/configs/logo.html:52
+msgid "Remove Icon"
+msgstr ""
+
+#: CTFd/themes/admin/templates/configs/mlc.html:5
+msgid "MajorLeagueCyber integration"
+msgstr ""
+
+#: CTFd/themes/admin/templates/configs/mlc.html:17
+msgid "Client ID"
+msgstr ""
+
+#: CTFd/themes/admin/templates/configs/mlc.html:25
+msgid "Client Secret"
+msgstr ""
+
+#: CTFd/themes/admin/templates/configs/pause.html:7
+msgid "Pause CTF"
+msgstr ""
+
+#: CTFd/themes/admin/templates/configs/sanitize.html:6
+msgid "HTML Sanitization"
+msgstr ""
+
+#: CTFd/themes/admin/templates/configs/theme.html:6
+#: CTFd/themes/admin/templates/configs/theme.html:74
+msgid "Theme Settings"
+msgstr ""
+
+#: CTFd/themes/admin/templates/configs/theme.html:34
+msgid "Primary Color"
+msgstr ""
+
+#: CTFd/themes/admin/templates/configs/theme.html:36
+msgid "Base color used for theme features. Requires theme support."
+msgstr ""
+
+#: CTFd/themes/admin/templates/configs/theme.html:49
+msgid "Theme Header"
+msgstr ""
+
+#: CTFd/themes/admin/templates/configs/theme.html:51
+msgid ""
+"Theme headers are inserted just before the <code>&lt;/head&gt;</code> tag"
+" on all public facing pages.\n"
+"\t\t\t\t\tRequires theme support."
+msgstr ""
+
+#: CTFd/themes/admin/templates/configs/theme.html:61
+msgid "Theme Footer"
+msgstr ""
+
+#: CTFd/themes/admin/templates/configs/theme.html:63
+msgid ""
+"Theme footers are inserted just before the <code>&lt;/body&gt;</code> tag"
+" on all public facing pages.\n"
+"\t\t\t\t\tRequires theme support."
+msgstr ""
+
+#: CTFd/themes/admin/templates/configs/theme.html:78
+msgid "Build"
+msgstr ""
+
+#: CTFd/themes/admin/templates/configs/theme.html:85
+msgid "Settings specific to the theme"
+msgstr ""
+
+#: CTFd/themes/admin/templates/configs/time.html:6
+msgid "Start Time"
+msgstr ""
+
+#: CTFd/themes/admin/templates/configs/time.html:11
+msgid "End Time"
+msgstr ""
+
+#: CTFd/themes/admin/templates/configs/time.html:16
+msgid "Freeze Time"
+msgstr ""
+
+#: CTFd/themes/admin/templates/configs/time.html:126
+msgid "View After CTF"
+msgstr ""
+
+#: CTFd/themes/admin/templates/configs/usermode.html:19
+msgid "Team Mode"
+msgstr ""
+
+#: CTFd/themes/admin/templates/configs/visibility.html:34
+msgid ""
+"Score Visibility is a subset of Account Visibility. \n"
+"\t\t\t\tThis means that if accounts are visible to a user then score "
+"visibility will control whether they can see the score of that user. \n"
+"\t\t\t\tIf accounts are not visibile then score visibility has no effect."
+msgstr ""
+
+#: CTFd/themes/admin/templates/macros/forms.html:50
+msgid "(Optional)"
+msgstr ""
+
+#: CTFd/themes/admin/templates/modules/modules.html:8
+msgid "Create Module"
+msgstr ""
+
+#: CTFd/themes/admin/templates/modules/new.html:6
+msgid "New Module"
+msgstr ""
+
+#: CTFd/themes/admin/templates/teams/new.html:10
+#: CTFd/themes/admin/templates/teams/teams.html:10
+msgid "Create Team"
+msgstr ""
+
+#: CTFd/themes/admin/templates/teams/team.html:11
+#: CTFd/themes/admin/templates/teams/team.html:220
+msgid "Edit Team"
+msgstr ""
+
+#: CTFd/themes/admin/templates/teams/team.html:27
+#: CTFd/themes/admin/templates/teams/team.html:228
+msgid "Add Team Members"
+msgstr ""
+
+#: CTFd/themes/admin/templates/teams/team.html:42
+msgid "Team Invite"
+msgstr ""
+
+#: CTFd/themes/admin/templates/teams/team.html:75
+#: CTFd/themes/admin/templates/teams/team.html:245
+msgid "Team Statistics"
+msgstr ""
+
+#: CTFd/themes/admin/templates/teams/team.html:91
+#: CTFd/themes/admin/templates/teams/team.html:232
+msgid "Choose Captain"
+msgstr ""
+
+#: CTFd/themes/admin/templates/teams/team.html:107
+#: CTFd/themes/admin/templates/teams/team.html:235
+msgid "Award Team Member"
+msgstr ""
+
+#: CTFd/themes/admin/templates/teams/team.html:141
+#: CTFd/themes/admin/templates/teams/team.html:248
+#: CTFd/themes/admin/templates/users/user.html:75
+#: CTFd/themes/admin/templates/users/user.html:181
+msgid "IP Addresses"
+msgstr ""
+
+#: CTFd/themes/admin/templates/teams/team.html:224
+msgid "Team Invite Link"
+msgstr ""
+
+#: CTFd/themes/admin/templates/teams/team.html:239
+msgid "Delete Team"
+msgstr ""
+
+#: CTFd/themes/admin/templates/teams/team.html:314
+#: CTFd/themes/admin/templates/users/user.html:196
+msgid "Solves"
+msgstr ""
+
+#: CTFd/themes/admin/templates/teams/team.html:317
+#: CTFd/themes/admin/templates/users/user.html:199
+msgid "Fails"
+msgstr ""
+
+#: CTFd/themes/admin/templates/teams/team.html:320
+#: CTFd/themes/admin/templates/users/user.html:202
+msgid "Awards"
+msgstr ""
+
+#: CTFd/themes/admin/templates/teams/team.html:323
+#: CTFd/themes/admin/templates/users/user.html:205
+msgid "Missing"
+msgstr ""
+
+#: CTFd/themes/admin/templates/teams/teams.html:24
+msgid "Searching for teams with"
+msgstr ""
+
+#: CTFd/themes/admin/templates/teams/teams.html:55
+msgid "Edit Teams"
+msgstr ""
+
+#: CTFd/themes/admin/templates/teams/teams.html:58
+msgid "Delete Teams"
+msgstr ""
+
+#: CTFd/themes/admin/templates/users/new.html:10
+#: CTFd/themes/admin/templates/users/users.html:10
+msgid "Create User"
+msgstr ""
+
+#: CTFd/themes/admin/templates/users/user.html:11
+#: CTFd/themes/admin/templates/users/user.html:164
+msgid "Edit User"
+msgstr ""
+
+#: CTFd/themes/admin/templates/users/user.html:27
+#: CTFd/themes/admin/templates/users/user.html:167
+msgid "User Statistics"
+msgstr ""
+
+#: CTFd/themes/admin/templates/users/user.html:43
+#: CTFd/themes/admin/templates/users/user.html:170
+msgid "Award User"
+msgstr ""
+
+#: CTFd/themes/admin/templates/users/user.html:59
+#: CTFd/themes/admin/templates/users/user.html:173
+msgid "Email User"
+msgstr ""
+
+#: CTFd/themes/admin/templates/users/user.html:176
+msgid "Delete User"
+msgstr ""
+
+#: CTFd/themes/admin/templates/users/users.html:25
+msgid "Searching for users with"
+msgstr ""
+
+#: CTFd/themes/admin/templates/users/users.html:56
+msgid "Edit Users"
+msgstr ""
+
+#: CTFd/themes/admin/templates/users/users.html:59
+msgid "Delete Users"
+msgstr ""
+
+#: CTFd/utils/decorators/__init__.py:31
+#, python-format
+msgid "%(ctf_name)s has ended"
+msgstr ""
+
+#: CTFd/utils/decorators/__init__.py:39
+#, python-format
+msgid "%(ctf_name)s has not started yet"
+msgstr ""
+
+#: CTFd/utils/modes/__init__.py:35
+msgid "user"
+msgid_plural "users"
+msgstr[0] ""
+msgstr[1] ""
+
+#: CTFd/utils/modes/__init__.py:37
+msgid "team"
+msgid_plural "teams"
+msgstr[0] ""
+msgstr[1] ""
+
