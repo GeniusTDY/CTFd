@@ -75,7 +75,13 @@
 			{% set badge_state = 'badge-danger' if challenge.state == 'hidden' else 'badge-success' %}
 			<h5>
 				<span class="badge {{ badge_state }} challenge-state">
-					{{ challenge.state }}
+					{% if challenge.state == 'hidden' %}
+						{% trans %}hidden{% endtrans %}
+					{% elif challenge.state == 'visible' %}
+						{% trans %}visible{% endtrans %}
+					{% else %}
+						{{ challenge.state }}
+					{% endif %}
 				</span>
 			</h5>
 			<h3 class="text-center">{{ challenge.value }} {% trans %}points{% endtrans %}</h3>

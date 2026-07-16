@@ -93,7 +93,15 @@
 					<td>{{ c.id }}</td>
 					<td><a href="{{ url_for('admin.challenges_detail', challenge_id=c.id) }}">{{ c.name }}</a></td>
 					<td>{{ c.category }}</td>
-					<td>{{ c.state }}</td>
+					<td>
+					{% if c.state == 'hidden' %}
+						{% trans %}hidden{% endtrans %}
+					{% elif c.state == 'visible' %}
+						{% trans %}visible{% endtrans %}
+					{% else %}
+						{{ c.state }}
+					{% endif %}
+				</td>
 					<td class="text-right">
 						<button class="btn btn-sm btn-outline-danger" data-remove-challenge="{{ c.id }}">{% trans %}Remove{% endtrans %}</button>
 					</td>

@@ -362,7 +362,10 @@ def register():
             errors.append(_l("Pick a longer password"))
         if password_min_length and pass_min:
             errors.append(
-                _l(f"Password must be at least {password_min_length} characters")
+                gettext(
+                    "Password must be at least %(num)d characters",
+                    num=password_min_length,
+                )
             )
         if pass_long:
             errors.append(_l("Pick a shorter password"))
@@ -667,10 +670,16 @@ def oauth_redirect():
 
                 team_size_limit = get_config("team_size", default=0)
                 if team_size_limit and len(team.members) >= team_size_limit:
-                    plural = "" if team_size_limit == 1 else "s"
-                    size_error = _l(
-                        "Teams are limited to {limit} member{plural}."
-                    ).format(limit=team_size_limit, plural=plural)
+                    if team_size_limit == 1:
+                        size_error = gettext(
+                            "Teams are limited to %(limit)d member.",
+                            limit=team_size_limit,
+                        )
+                    else:
+                        size_error = gettext(
+                            "Teams are limited to %(limit)d members.",
+                            limit=team_size_limit,
+                        )
                     error_for(endpoint="auth.login", message=size_error)
                     return redirect(url_for("auth.login"))
 

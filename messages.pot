@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2026-07-16 04:35+0000\n"
+"POT-Creation-Date: 2026-07-16 04:52+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -57,128 +57,138 @@ msgstr ""
 msgid "Please pick a longer password"
 msgstr ""
 
-#: CTFd/auth.py:210 CTFd/auth.py:241
+#: CTFd/auth.py:180 CTFd/auth.py:366 CTFd/schemas/users.py:183
+#, python-format
+msgid "Password must be at least %(num)d characters"
+msgstr ""
+
+#: CTFd/auth.py:211 CTFd/auth.py:242
 msgid "If that account exists you will receive an email, please check your inbox"
 msgstr ""
 
-#: CTFd/auth.py:220
+#: CTFd/auth.py:221
 msgid ""
 "The email address associated with this account was registered via an "
 "authentication provider and does not have an associated password. Please "
 "login via your authentication provider."
 msgstr ""
 
-#: CTFd/auth.py:232
+#: CTFd/auth.py:233
 msgid "Too many password reset attempts. Please try again later."
 msgstr ""
 
-#: CTFd/auth.py:262 CTFd/auth.py:623
+#: CTFd/auth.py:263 CTFd/auth.py:627
 #, python-format
 msgid "Reached the maximum number of users (%(num)s)."
 msgstr ""
 
-#: CTFd/auth.py:300
+#: CTFd/auth.py:301
 msgid "The registration code you entered was incorrect"
 msgstr ""
 
-#: CTFd/auth.py:311 CTFd/teams.py:250
+#: CTFd/auth.py:312 CTFd/teams.py:250
 msgid "Please provide all required fields"
 msgstr ""
 
-#: CTFd/auth.py:349 CTFd/views.py:162
+#: CTFd/auth.py:350 CTFd/views.py:162
 msgid "Please enter a valid email address"
 msgstr ""
 
-#: CTFd/auth.py:351 CTFd/auth.py:353
+#: CTFd/auth.py:352 CTFd/auth.py:354
 msgid "Your email address is not from an allowed domain"
 msgstr ""
 
-#: CTFd/auth.py:355 CTFd/views.py:164
+#: CTFd/auth.py:356 CTFd/views.py:164
 msgid "That user name is already taken"
 msgstr ""
 
-#: CTFd/auth.py:357 CTFd/views.py:166
+#: CTFd/auth.py:358 CTFd/views.py:166
 msgid "Your user name cannot be an email address"
 msgstr ""
 
-#: CTFd/auth.py:359 CTFd/views.py:168
+#: CTFd/auth.py:360 CTFd/views.py:168
 msgid "That email has already been used"
 msgstr ""
 
-#: CTFd/auth.py:361 CTFd/views.py:170
+#: CTFd/auth.py:362 CTFd/views.py:170
 msgid "Pick a longer password"
 msgstr ""
 
-#: CTFd/auth.py:367 CTFd/views.py:172
+#: CTFd/auth.py:371 CTFd/views.py:172
 msgid "Pick a shorter password"
 msgstr ""
 
-#: CTFd/auth.py:369 CTFd/views.py:174
+#: CTFd/auth.py:373 CTFd/views.py:174
 msgid "Pick a longer user name"
 msgstr ""
 
-#: CTFd/auth.py:372 CTFd/schemas/teams.py:44 CTFd/schemas/users.py:47
+#: CTFd/auth.py:376 CTFd/schemas/teams.py:44 CTFd/schemas/users.py:47
 #: CTFd/teams.py:288
 msgid "Websites must be a proper URL starting with http or https"
 msgstr ""
 
-#: CTFd/auth.py:375 CTFd/teams.py:292
+#: CTFd/auth.py:379 CTFd/teams.py:292
 msgid "Invalid country"
 msgstr ""
 
-#: CTFd/auth.py:377 CTFd/teams.py:290
+#: CTFd/auth.py:381 CTFd/teams.py:290
 msgid "Please provide a shorter affiliation"
 msgstr ""
 
-#: CTFd/auth.py:379 CTFd/teams.py:294
+#: CTFd/auth.py:383 CTFd/teams.py:294
 msgid "Please provide a valid bracket"
 msgstr ""
 
-#: CTFd/auth.py:481
+#: CTFd/auth.py:485
 msgid "Preset admin user could not be created. Please contact an administrator"
 msgstr ""
 
-#: CTFd/auth.py:495
+#: CTFd/auth.py:499
 msgid ""
 "Your account was registered with a 3rd party authentication provider. "
 "Please try logging in with a configured authentication provider."
 msgstr ""
 
-#: CTFd/auth.py:521 CTFd/auth.py:527
+#: CTFd/auth.py:525 CTFd/auth.py:531
 msgid "Your username or password is incorrect"
 msgstr ""
 
-#: CTFd/auth.py:554
+#: CTFd/auth.py:558
 msgid ""
 "OAuth Settings not configured. Ask your CTF administrator to configure "
 "MajorLeagueCyber integration."
 msgstr ""
 
-#: CTFd/auth.py:573
+#: CTFd/auth.py:577
 msgid "OAuth State validation mismatch."
 msgstr ""
 
-#: CTFd/auth.py:642
+#: CTFd/auth.py:646
 msgid "Public registration is disabled. Please try again later."
 msgstr ""
 
-#: CTFd/auth.py:659
+#: CTFd/auth.py:663
 #, python-format
 msgid ""
 "Reached the maximum number of teams (%(num)d). Please join an existing "
 "team."
 msgstr ""
 
-#: CTFd/auth.py:671
-#, python-brace-format
-msgid "Teams are limited to {limit} member{plural}."
+#: CTFd/auth.py:675
+#, python-format
+msgid "Teams are limited to %(limit)d member."
 msgstr ""
 
-#: CTFd/auth.py:690
+#: CTFd/auth.py:680
+#, python-format
+msgid "Teams are limited to %(limit)d members."
+msgstr ""
+
+#: CTFd/auth.py:700
 msgid "OAuth token retrieval failure."
 msgstr ""
 
-#: CTFd/auth.py:695
+#: CTFd/auth.py:705
 msgid "Received redirect without OAuth code."
 msgstr ""
 
@@ -905,7 +915,7 @@ msgid ""
 msgstr ""
 
 #: CTFd/forms/config.py:195
-#: CTFd/themes/admin/templates/challenges/challenge.html:93
+#: CTFd/themes/admin/templates/challenges/challenge.html:99
 msgid "Challenge Ratings"
 msgstr ""
 
@@ -1737,11 +1747,6 @@ msgstr ""
 msgid "Email address is not from an allowed domain"
 msgstr ""
 
-#: CTFd/schemas/users.py:183
-#, python-format
-msgid "Password must be at least %(num)d characters"
-msgstr ""
-
 #: CTFd/themes/admin/templates/base.html:5
 #: CTFd/themes/core/templates/components/navbar.html:72
 #: CTFd/themes/core/templates/components/navbar.html:77
@@ -1788,7 +1793,7 @@ msgid "All Submissions"
 msgstr ""
 
 #: CTFd/themes/admin/templates/base.html:73
-#: CTFd/themes/admin/templates/challenges/challenge.html:89
+#: CTFd/themes/admin/templates/challenges/challenge.html:95
 msgid "Correct Submissions"
 msgstr ""
 
@@ -1991,7 +1996,7 @@ msgid "Save"
 msgstr ""
 
 #: CTFd/themes/admin/templates/challenges/challenge.html:53
-#: CTFd/themes/admin/templates/challenges/challenge.html:97
+#: CTFd/themes/admin/templates/challenges/challenge.html:103
 #: CTFd/themes/admin/templates/editor.html:162
 msgid "Comments"
 msgstr ""
@@ -2123,7 +2128,7 @@ msgstr ""
 msgid "IPs"
 msgstr ""
 
-#: CTFd/themes/admin/templates/challenges/challenge.html:81
+#: CTFd/themes/admin/templates/challenges/challenge.html:87
 #: CTFd/themes/admin/templates/statistics.html:25
 #: CTFd/themes/admin/templates/teams/team.html:213
 #: CTFd/themes/admin/templates/users/user.html:158
@@ -2284,7 +2289,7 @@ msgid "Team"
 msgstr ""
 
 #: CTFd/themes/admin/templates/audiences/audience.html:104
-#: CTFd/themes/admin/templates/modules/module.html:98
+#: CTFd/themes/admin/templates/modules/module.html:106
 msgid "Remove"
 msgstr ""
 
@@ -2324,52 +2329,73 @@ msgstr ""
 msgid "Ratings"
 msgstr ""
 
-#: CTFd/themes/admin/templates/challenges/challenge.html:85
+#: CTFd/themes/admin/templates/challenges/challenge.html:79
+#: CTFd/themes/admin/templates/challenges/challenges.html:112
+#: CTFd/themes/admin/templates/challenges/challenges.html:131
+#: CTFd/themes/admin/templates/modules/module.html:98
+#: CTFd/themes/admin/templates/scoreboard/standings.html:47
+#: CTFd/themes/admin/templates/scoreboard/users.html:47
+#: CTFd/themes/admin/templates/teams/team.html:161
+#: CTFd/themes/admin/templates/teams/teams.html:129
+#: CTFd/themes/admin/templates/users/user.html:98
+#: CTFd/themes/admin/templates/users/users.html:142
+msgid "hidden"
+msgstr ""
+
+#: CTFd/themes/admin/templates/challenges/challenge.html:81
+#: CTFd/themes/admin/templates/challenges/challenges.html:114
+#: CTFd/themes/admin/templates/modules/module.html:100
+#: CTFd/themes/admin/templates/scoreboard/standings.html:49
+#: CTFd/themes/admin/templates/scoreboard/users.html:49
+msgid "visible"
+msgstr ""
+
+#: CTFd/themes/admin/templates/challenges/challenge.html:91
 msgid "Preview Challenge"
 msgstr ""
 
-#: CTFd/themes/admin/templates/challenges/challenge.html:101
+#: CTFd/themes/admin/templates/challenges/challenge.html:107
 msgid "Delete Challenge"
 msgstr ""
 
-#: CTFd/themes/admin/templates/challenges/challenge.html:111
-#: CTFd/themes/admin/templates/challenges/challenge.html:126
+#: CTFd/themes/admin/templates/challenges/challenge.html:117
+#: CTFd/themes/admin/templates/challenges/challenge.html:132
 msgid "Files"
 msgstr ""
 
-#: CTFd/themes/admin/templates/challenges/challenge.html:112
-#: CTFd/themes/admin/templates/challenges/challenge.html:134
+#: CTFd/themes/admin/templates/challenges/challenge.html:118
+#: CTFd/themes/admin/templates/challenges/challenge.html:140
 msgid "Flags"
 msgstr ""
 
-#: CTFd/themes/admin/templates/challenges/challenge.html:113
-#: CTFd/themes/admin/templates/challenges/challenge.html:142
+#: CTFd/themes/admin/templates/challenges/challenge.html:119
+#: CTFd/themes/admin/templates/challenges/challenge.html:148
 #: CTFd/themes/admin/templates/challenges/challenges.html:85
 #: CTFd/themes/core/templates/challenge.html:30
 msgid "Solution"
 msgstr ""
 
-#: CTFd/themes/admin/templates/challenges/challenge.html:114
-#: CTFd/themes/admin/templates/challenges/challenge.html:150
+#: CTFd/themes/admin/templates/challenges/challenge.html:120
+#: CTFd/themes/admin/templates/challenges/challenge.html:156
 msgid "Topics"
 msgstr ""
 
-#: CTFd/themes/admin/templates/challenges/challenge.html:115
-#: CTFd/themes/admin/templates/challenges/challenge.html:158
+#: CTFd/themes/admin/templates/challenges/challenge.html:121
+#: CTFd/themes/admin/templates/challenges/challenge.html:164
 msgid "Tags"
 msgstr ""
 
-#: CTFd/themes/admin/templates/challenges/challenge.html:116
-#: CTFd/themes/admin/templates/challenges/challenge.html:166
+#: CTFd/themes/admin/templates/challenges/challenge.html:122
+#: CTFd/themes/admin/templates/challenges/challenge.html:172
 msgid "Hints"
 msgstr ""
 
-#: CTFd/themes/admin/templates/challenges/challenge.html:117
-#: CTFd/themes/admin/templates/challenges/challenge.html:174
+#: CTFd/themes/admin/templates/challenges/challenge.html:123
+#: CTFd/themes/admin/templates/challenges/challenge.html:180
 msgid "Requirements"
 msgstr ""
 
-#: CTFd/themes/admin/templates/challenges/challenge.html:118
+#: CTFd/themes/admin/templates/challenges/challenge.html:124
 #: CTFd/themes/core/templates/setup.html:86
 #: CTFd/themes/core/templates/setup.html:138
 #: CTFd/themes/core/templates/setup.html:202
@@ -2379,14 +2405,14 @@ msgstr ""
 msgid "Next"
 msgstr ""
 
-#: CTFd/themes/admin/templates/challenges/challenge.html:119
-#: CTFd/themes/admin/templates/challenges/challenge.html:190
+#: CTFd/themes/admin/templates/challenges/challenge.html:125
+#: CTFd/themes/admin/templates/challenges/challenge.html:196
 #: CTFd/themes/admin/templates/challenges/challenges.html:81
 #: CTFd/themes/admin/templates/modals/challenges/module.html:4
 msgid "Module"
 msgstr ""
 
-#: CTFd/themes/admin/templates/challenges/challenge.html:182
+#: CTFd/themes/admin/templates/challenges/challenge.html:188
 #: CTFd/themes/admin/templates/challenges/preview.html:6
 #: CTFd/themes/core/templates/challenge.html:209
 msgid "Next Challenge"
@@ -2418,6 +2444,14 @@ msgstr ""
 #: CTFd/themes/admin/templates/challenges/update.html:174
 #: CTFd/themes/admin/templates/modules/module.html:88
 msgid "State"
+msgstr ""
+
+#: CTFd/themes/admin/templates/challenges/challenges.html:133
+msgid "solved"
+msgstr ""
+
+#: CTFd/themes/admin/templates/challenges/challenges.html:135
+msgid "published"
 msgstr ""
 
 #: CTFd/themes/admin/templates/challenges/create.html:8
@@ -3234,33 +3268,33 @@ msgstr ""
 msgid "Linked Challenges"
 msgstr ""
 
-#: CTFd/themes/admin/templates/modules/module.html:102
+#: CTFd/themes/admin/templates/modules/module.html:110
 msgid "No challenges in this module."
 msgstr ""
 
-#: CTFd/themes/admin/templates/modules/module.html:107
+#: CTFd/themes/admin/templates/modules/module.html:115
 msgid "Add challenges"
 msgstr ""
 
-#: CTFd/themes/admin/templates/modules/module.html:108
+#: CTFd/themes/admin/templates/modules/module.html:116
 msgid ""
 "Pick one or more challenges to assign to this module. Challenges already "
 "in another module will be reassigned."
 msgstr ""
 
-#: CTFd/themes/admin/templates/modules/module.html:116
+#: CTFd/themes/admin/templates/modules/module.html:124
 msgid "Uncategorized"
 msgstr ""
 
-#: CTFd/themes/admin/templates/modules/module.html:121
+#: CTFd/themes/admin/templates/modules/module.html:129
 msgid "currently in module"
 msgstr ""
 
-#: CTFd/themes/admin/templates/modules/module.html:126
+#: CTFd/themes/admin/templates/modules/module.html:134
 msgid "Ctrl/Cmd-click to select multiple."
 msgstr ""
 
-#: CTFd/themes/admin/templates/modules/module.html:128
+#: CTFd/themes/admin/templates/modules/module.html:136
 msgid "Add selected to this module"
 msgstr ""
 
@@ -3302,20 +3336,6 @@ msgstr ""
 #: CTFd/themes/core/templates/users/public.html:21
 #: CTFd/themes/core/templates/users/users.html:70
 msgid "Official"
-msgstr ""
-
-#: CTFd/themes/admin/templates/scoreboard/standings.html:47
-#: CTFd/themes/admin/templates/scoreboard/users.html:47
-#: CTFd/themes/admin/templates/teams/team.html:161
-#: CTFd/themes/admin/templates/teams/teams.html:129
-#: CTFd/themes/admin/templates/users/user.html:98
-#: CTFd/themes/admin/templates/users/users.html:142
-msgid "hidden"
-msgstr ""
-
-#: CTFd/themes/admin/templates/scoreboard/standings.html:49
-#: CTFd/themes/admin/templates/scoreboard/users.html:49
-msgid "visible"
 msgstr ""
 
 #: CTFd/themes/admin/templates/teams/new.html:10

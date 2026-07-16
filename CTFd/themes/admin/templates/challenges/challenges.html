@@ -107,7 +107,15 @@
 							<td class="text-center">{{ challenge.type }}</td>
 							<td class="text-center">
 								{% set badge_state = 'badge-danger' if challenge.state == 'hidden' else 'badge-success' %}
-								<span class="badge {{ badge_state }}">{{ challenge.state }}</span>
+								<span class="badge {{ badge_state }}">
+								{% if challenge.state == 'hidden' %}
+									{% trans %}hidden{% endtrans %}
+								{% elif challenge.state == 'visible' %}
+									{% trans %}visible{% endtrans %}
+								{% else %}
+									{{ challenge.state }}
+								{% endif %}
+								</span>
 							</td>
 							<td class="text-center">
 								{% if challenge.solution_id %}
@@ -118,7 +126,17 @@
 									{% else %}
 										{% set badge_state = 'badge-success' %}
 									{% endif %}
-									<span class="badge {{ badge_state }}">{{ challenge.solution.state }}</span>
+									<span class="badge {{ badge_state }}">
+									{% if challenge.solution.state == 'hidden' %}
+										{% trans %}hidden{% endtrans %}
+									{% elif challenge.solution.state == 'solved' %}
+										{% trans %}solved{% endtrans %}
+									{% elif challenge.solution.state == 'published' %}
+										{% trans %}published{% endtrans %}
+									{% else %}
+										{{ challenge.solution.state }}
+									{% endif %}
+									</span>
 								{% endif %}
 							</td>
 						</tr>
