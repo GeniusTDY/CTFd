@@ -9,14 +9,14 @@
 <div class="container">
 	<form id="audience-create-form">
 		<div class="form-group">
-			<label for="name">Name</label>
+			<label for="name">{% trans %}Name{% endtrans %}</label>
 			<input class="form-control" id="name" name="name" type="text" required>
 		</div>
 		<div class="form-group">
-			<label for="description">Description</label>
+			<label for="description">{% trans %}Description{% endtrans %}</label>
 			<textarea class="form-control" id="description" name="description" rows="3"></textarea>
 		</div>
-		<button type="submit" class="btn btn-primary">Create</button>
+		<button type="submit" class="btn btn-primary">{% trans %}Create{% endtrans %}</button>
 	</form>
 </div>
 {% endblock %}
