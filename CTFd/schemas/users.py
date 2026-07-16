@@ -6,7 +6,7 @@ from sqlalchemy.orm import load_only
 
 from CTFd.models import Brackets, UserFieldEntries, UserFields, Users, ma
 from CTFd.schemas.fields import UserFieldEntriesSchema
-from CTFd.utils import get_config, string_types
+from CTFd.utils import get_config, safe_lazy_gettext, string_types
 from CTFd.utils.crypto import verify_password
 from CTFd.utils.email import check_email_is_blacklisted, check_email_is_whitelisted
 from CTFd.utils.user import get_current_user, is_admin
@@ -26,7 +26,7 @@ class UserSchema(ma.ModelSchema):
         required=True,
         allow_none=False,
         validate=[
-            validate.Length(min=1, max=128, error="User names must not be empty")
+            validate.Length(min=1, max=128, error=safe_lazy_gettext("User names must not be empty"))
         ],
     )
     email = field_for(
@@ -34,8 +34,8 @@ class UserSchema(ma.ModelSchema):
         "email",
         allow_none=False,
         validate=[
-            validate.Email(error="Emails must be a properly formatted email address"),
-            validate.Length(min=1, max=128, error="Emails must not be empty"),
+            validate.Email(error=safe_lazy_gettext("Emails must be a properly formatted email address")),
+            validate.Length(min=1, max=128, error=safe_lazy_gettext("Emails must not be empty")),
         ],
     )
     website = field_for(
@@ -44,7 +44,7 @@ class UserSchema(ma.ModelSchema):
         validate=[
             # This is a dirty hack to let website accept empty strings so you can remove your website
             lambda website: validate.URL(
-                error="Websites must be a proper URL starting with http or https",
+                error=safe_lazy_gettext("Websites must be a proper URL starting with http or https"),
                 schemes={"http", "https"},
             )(website)
             if website
@@ -179,7 +179,10 @@ class UserSchema(ma.ModelSchema):
                 password_min_length = int(get_config("password_min_length", default=0))
                 if len(password) < password_min_length:
                     raise ValidationError(
-                        f"Password must be at least {password_min_length} characters",
+                        gettext(
+                            "Password must be at least %(num)d characters",
+                            num=password_min_length,
+                        ),
                         field_names=["password"],
                     )
 
@@ -298,13 +301,19 @@ class UserSchema(ma.ModelSchema):
                     if isinstance(value, str):
                         if value.strip() == "":
                             raise ValidationError(
-                                f"Field '{field.name}' is required",
+                                gettext(
+                                    "Field '%(field)s' is required",
+                                    field=field.name,
+                                ),
                                 field_names=["fields"],
                             )
 
                 if field.editable is False and entry is not None:
                     raise ValidationError(
-                        f"Field '{field.name}' cannot be editted",
+                        gettext(
+                            "Field '%(field)s' cannot be edited",
+                            field=field.name,
+                        ),
                         field_names=["fields"],
                     )
 

@@ -1,6 +1,7 @@
 from typing import List
 
 from flask import abort, request, session
+from flask_babel import gettext
 from flask_restx import Namespace, Resource
 
 from CTFd.api.v1.helpers.request import validate_args
@@ -522,13 +523,13 @@ class UserEmails(Resource):
 
         if get_mail_provider() is None:
             return (
-                {"success": False, "errors": {"": ["Email settings not configured"]}},
+                {"success": False, "errors": {"": [gettext("Email settings not configured")]}},
                 400,
             )
 
         if not text:
             return (
-                {"success": False, "errors": {"text": ["Email text cannot be empty"]}},
+                {"success": False, "errors": {"text": [gettext("Email text cannot be empty")]}},
                 400,
             )
 

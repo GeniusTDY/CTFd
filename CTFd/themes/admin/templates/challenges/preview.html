@@ -3,6 +3,8 @@
 {% block scripts %}
     <script>
         var CHALLENGE_ID = {{ challenge.id }};
+        var NEXT_CHALLENGE_TEXT = {{ _("Next Challenge")|tojson }};
+        var SOLVES_TEXT = {{ _("Solves")|tojson }};
     </script>
     {% if Assets.manifest(_return_none_on_load_failure=True) %}
         {{ Assets.js("assets/js/challenges.js") }}
@@ -36,7 +38,7 @@
                 result_message.text(result.message);
 
                 const next_btn = $(
-                    `<div class='col-md-12 pb-3'><button class='btn btn-info w-100'>Next Challenge</button></div>`
+                    `<div class='col-md-12 pb-3'><button class='btn btn-info w-100'>${NEXT_CHALLENGE_TEXT}</button></div>`
                 ).click(function () {
                     $("#challenge-window").modal("toggle");
                     setTimeout(function () {
@@ -84,7 +86,7 @@
                                     .split(" ")[0]
                             ) +
                             1 +
-                            " Solves"
+                            " " + SOLVES_TEXT
                         );
                     }
 

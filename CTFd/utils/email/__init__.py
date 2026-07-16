@@ -1,4 +1,5 @@
 from flask import url_for
+from flask_babel import gettext
 
 from CTFd.constants.email import (
     DEFAULT_PASSWORD_CHANGE_ALERT_BODY,
@@ -25,12 +26,14 @@ from CTFd.utils.security.email import (
 PROVIDERS = {"smtp": SMTPEmailProvider, "mailgun": MailgunEmailProvider}
 
 
-def sendmail(addr, text, subject="Message from {ctf_name}"):
+def sendmail(addr, text, subject=None):
+    if subject is None:
+        subject = gettext("Message from {ctf_name}")
     subject = safe_format(subject, ctf_name=get_config("ctf_name"))
     provider = get_mail_provider()
     EmailProvider = PROVIDERS.get(provider)
     if EmailProvider is None:
-        return False, "No mail settings configured"
+        return False, gettext("No mail settings configured")
     return EmailProvider.sendmail(addr, text, subject)
 
 

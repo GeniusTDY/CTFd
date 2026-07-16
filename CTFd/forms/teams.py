@@ -191,23 +191,23 @@ class TeamCaptainForm(BaseForm):
     captain_id = SelectField(
         _l("Team Captain"), choices=[], validators=[InputRequired()]
     )
-    submit = SubmitField("Submit")
+    submit = SubmitField(_l("Submit"))
 
 
 class TeamSearchForm(BaseForm):
     field = SelectField(
-        "Search Field",
+        _l("Search Field"),
         choices=[
-            ("name", "Name"),
-            ("id", "ID"),
-            ("affiliation", "Affiliation"),
-            ("website", "Website"),
+            ("name", _l("Name")),
+            ("id", _l("ID")),
+            ("affiliation", _l("Affiliation")),
+            ("website", _l("Website")),
         ],
         default="name",
         validators=[InputRequired()],
     )
-    q = StringField("Parameter", validators=[InputRequired()])
-    submit = SubmitField("Search")
+    q = StringField(_l("Parameter"), validators=[InputRequired()])
+    submit = SubmitField(_l("Search"))
 
 
 class PublicTeamSearchForm(BaseForm):

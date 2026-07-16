@@ -1,0 +1,386 @@
+Total fuzzy entries: 128
+
+1. MSGID: Your confirmation link is invalid, please generate a new one
+   MSGSTR: 您的确认链接无效，请重新生成一个。
+
+2. MSGID: Click Here to Confirm Email
+   MSGSTR: 系统配置
+
+3. MSGID: This CTF is not configured to send email.<br> Please contact an organizer to have your password reset.
+   MSGSTR: 此 CTF 未配置邮件发送功能。<br> 请联系管理员重置您的密码。
+
+4. MSGID: Your account was registered via an authentication provider and does not have an associated password. Please login via yo
+   MSGSTR: 您的账号通过第三方认证提供商注册，因此没有关联密码。请通过您的认证提供商登录。
+
+5. MSGID: The registration code you entered was incorrect
+   MSGSTR: 您输入的注册码不正确
+
+6. MSGID: Please provide all required fields
+   MSGSTR: 请填写所有必填字段
+
+7. MSGID: Please enter a valid email address
+   MSGSTR: 更改邮箱地址
+
+8. MSGID: Your email address is not from an allowed domain
+   MSGSTR: 电子邮箱地址不在允许的域名中
+
+9. MSGID: That user name is already taken
+   MSGSTR: 用户名已被使用
+
+10. MSGID: Your user name cannot be an email address
+   MSGSTR: 您在网站上的用户名
+
+11. MSGID: Websites must be a proper URL starting with http or https
+   MSGSTR: 网站地址必须以 http 或 https 开头的正确 URL
+
+12. MSGID: Invalid country
+   MSGSTR: 无效的国家/地区
+
+13. MSGID: Please provide a shorter affiliation
+   MSGSTR: 请提供有效的分组 ID
+
+14. MSGID: Your account was registered with a 3rd party authentication provider. Please try logging in with a configured authentica
+   MSGSTR: 您的账号通过第三方认证提供商注册。请尝试使用已配置的认证提供商登录。
+
+15. MSGID: %(ctf_name)s has not started yet
+   MSGSTR: %(ctf_name)s 尚未开始
+
+16. MSGID: An Internal Server Error has occurred
+   MSGSTR: 发生了内部服务器错误
+
+17. MSGID: Scoreboard has been frozen
+   MSGSTR: 记分板为空
+
+18. MSGID: Reached the maximum number of teams (%(num)s). Please join an existing team.
+   MSGSTR: 已达到最大队伍数（%(num)s）。请加入现有队伍。
+
+19. MSGID: The underlying challenge type (%(type)s) is not installed. This challenge can not be loaded.
+   MSGSTR: 底层题目类型（%(type)s）未安装。无法加载此题目。
+
+20. MSGID: %(message)s but you already solved this
+   MSGSTR: %(message)s 但您已经解出了此题目
+
+21. MSGID: try
+   MSGSTR: 国家
+
+22. MSGID:  Try again in %(seconds)d seconds
+   MSGSTR:  请在 %(seconds)d 秒后重试
+
+23. MSGID: Email settings not configured
+   MSGSTR: 邮箱未确认
+
+24. MSGID: Never shown to the public
+   MSGSTR: 不对外公开
+
+25. MSGID: Submit
+   MSGSTR: 提交
+
+26. MSGID: User Name or Email
+   MSGSTR: 用户名
+
+27. MSGID: Angry
+   MSGSTR: 愤怒
+
+28. MSGID: Parameter
+   MSGSTR: 参数
+
+29. MSGID: Search
+   MSGSTR: 用户
+
+30. MSGID: Upload Files
+   MSGSTR: 上传
+
+31. MSGID: Deletes all notifications
+   MSGSTR: 删除所有通知
+
+32. MSGID: Comma-seperated list of disallowed email domains which users cannot register under (e.g. examplectf.com, example.com, *.
+   MSGSTR: 不允许用户注册的邮箱域名逗号分隔列表（例如 examplectf.com、example.com、*.example.com）
+
+33. MSGID: Team Creation
+   MSGSTR: 队长
+
+34. MSGID: Enabled for Inactive Teams
+   MSGSTR: 对非活跃团队启用
+
+35. MSGID: Name Changes
+   MSGSTR: 下一题
+
+36. MSGID: Control whether users and teams can change their names
+   MSGSTR: 只有队长可以更改团队密码
+
+37. MSGID: Download CSV
+   MSGSTR: 下载 CSV
+
+38. MSGID: Teams
+   MSGSTR: 团队
+
+39. MSGID: Type of CSV data
+   MSGSTR: CSV 数据类型
+
+40. MSGID: CSV file contents
+   MSGSTR: CSV 文件内容
+
+41. MSGID: HTML for Share Template
+   MSGSTR: 分享模板的 HTML
+
+42. MSGID: Text shown on the Terms of Service page
+   MSGSTR: 服务条款页面上显示的文本
+
+43. MSGID: Text shown on the Privacy Policy page
+   MSGSTR: 隐私政策页面上显示的文本
+
+44. MSGID: Allow users to view their previous submissions
+   MSGSTR: 允许用户查看他们之前的提交
+
+45. MSGID: Set Max Attempts behavior to be a lockout or a timeout
+   MSGSTR: 设置最大尝试次数行为为锁定或超时
+
+46. MSGID: lockout
+   MSGSTR: 注销
+
+47. MSGID: Disabled (users cannot submit ratings or see aggregated ratings)
+   MSGSTR: 禁用（用户无法提交评分或查看汇总评分）
+
+48. MSGID: Control whether users must be logged in to see challenges
+   MSGSTR: 控制用户是否需要登录才能查看题目
+
+49. MSGID: Public
+   MSGSTR: 已发布
+
+50. MSGID: Private
+   MSGSTR: 编写
+
+51. MSGID: Admins Only
+   MSGSTR: 管理面板
+
+52. MSGID: Control whether accounts (users & teams) are shown to everyone, only to authenticated users, or only to admins
+   MSGSTR: 控制账号（用户和团队）是对所有人可见、仅对已登录用户可见还是仅对管理员可见
+
+53. MSGID: Hidden
+   MSGSTR: 隐藏
+
+54. MSGID: Control whether registration is enabled for everyone or disabled
+   MSGSTR: 控制注册是对所有人开放还是关闭
+
+55. MSGID: MajorLeagueCyber Only
+   MSGSTR: MajorLeagueCyber
+
+56. MSGID: Language to use if a user does not specify a language in their account settings. By default, CTFd will auto-detect the u
+   MSGSTR: 当用户未在账户设置中指定语言时使用的语言。默认情况下，CTFd 会自动检测用户的首选语言。
+
+57. MSGID: Email address used to send email
+   MSGSTR: 用于发送邮件的邮箱地址
+
+58. MSGID: Change the email server used by CTFd to send email
+   MSGSTR: 更改 CTFd 用于发送邮件的邮件服务器
+
+59. MSGID: Mail Server Port
+   MSGSTR: 邮件服务器
+
+60. MSGID: Use Mail Server Username and Password
+   MSGSTR: 取消勾选并更新以移除用户名和密码
+
+61. MSGID: TLS/SSL
+   MSGSTR: TLS/SSL
+
+62. MSGID: Mailgun API Key
+   MSGSTR: Mailgun API 密钥
+
+63. MSGID: Subject line for registration confirmation email
+   MSGSTR: 注册确认邮件的主题行
+
+64. MSGID: Body
+   MSGSTR: 牛仔
+
+65. MSGID: Email body sent to users after they've finished registering
+   MSGSTR: 用户完成注册后发送的邮件
+
+66. MSGID: Subject line for account verification email
+   MSGSTR: 账户验证
+
+67. MSGID: Email body sent to users to confirm their account at the address they provided during registration
+   MSGSTR: 发送给用户的邮件，用于确认其注册时提供的邮箱地址。您可以在<a href=\"#accounts\">账户设置</a>中要求邮箱验证。
+
+68. MSGID: Subject line for new account details email
+   MSGSTR: 新账户详情
+
+69. MSGID: Email body sent to new users (manually created by an admin) with their initial account details
+   MSGSTR: 发送给新用户<i>（由管理员手动创建）</i>的邮件，包含其初始账户信息
+
+70. MSGID: Subject line for password reset request email
+   MSGSTR: 密码重置请求
+
+71. MSGID: Email body sent when a user requests a password reset
+   MSGSTR: 用户请求重置密码时发送的邮件
+
+72. MSGID: Subject line for password reset confirmation email
+   MSGSTR: 密码重置确认
+
+73. MSGID: Message
+   MSGSTR: 消息
+
+74. MSGID: Title
+   MSGSTR: 标题
+
+75. MSGID: Notification contents. Can consist of HTML and/or Markdown.
+   MSGSTR: 通知内容。可以包含 HTML 和/或 Markdown。
+
+76. MSGID: Notification Type
+   MSGSTR: 通知
+
+77. MSGID: Toast
+   MSGSTR: 标签
+
+78. MSGID: Alert
+   MSGSTR: 分值
+
+79. MSGID: Draft
+   MSGSTR: 草稿
+
+80. MSGID: Authentication Required
+   MSGSTR: 需要登录
+
+81. MSGID: Format
+   MSGSTR: 正常
+
+82. MSGID: The markup format used to render the page
+   MSGSTR: 用于渲染页面的标记格式
+
+83. MSGID: Target
+   MSGSTR: 大
+
+84. MSGID: Current Page
+   MSGSTR: 创建页面
+
+85. MSGID: Context to open page in
+   MSGSTR: 页面打开的上下文
+
+86. MSGID: Page Type
+   MSGSTR: 挑战类型
+
+87. MSGID: Language
+   MSGSTR: 切换语言
+
+88. MSGID: Expiration
+   MSGSTR: 到期时间
+
+89. MSGID: Usage Description
+   MSGSTR: 描述
+
+90. MSGID: Event Name
+   MSGSTR: 活动名称
+
+91. MSGID: Event Description
+   MSGSTR: 活动描述
+
+92. MSGID: Controls whether users join together in teams to play (Team Mode) or play as themselves (User Mode)
+   MSGSTR: 控制用户是组队（团队模式）还是个人（个人模式）
+
+93. MSGID: Admin Username
+   MSGSTR: 用户名
+
+94. MSGID: Your username for the administration account
+   MSGSTR: 您在网站上的用户名
+
+95. MSGID: Your email address for the administration account
+   MSGSTR: 您的管理员账号邮箱地址
+
+96. MSGID: Logo
+   MSGSTR: 站标
+
+97. MSGID: Logo to use for the website instead of a CTF name. Used as the home page button. Optional.
+   MSGSTR: 用于网站的 Logo，替代 CTF 名称。
+
+98. MSGID: CTFd Theme to use. Can be changed later.
+   MSGSTR: CTFd主题。可稍后更改。
+
+99. MSGID: Theme Color
+   MSGSTR: 主题页脚
+
+100. MSGID: Control whether users must confirm their email addresses before participating
+   MSGSTR: 控制用户是否必须确认邮箱地址后才能参与
+
+101. MSGID: Provided
+   MSGSTR: 提交内容
+
+102. MSGID: Account ID
+   MSGSTR: 账户
+
+103. MSGID: Competition bracket for your team
+   MSGSTR: 团队的竞赛分组
+
+104. MSGID: Team Name
+   MSGSTR: 团队模式
+
+105. MSGID: Team Password
+   MSGSTR: 重置密码
+
+106. MSGID: Your team's public name shown to other competitors
+   MSGSTR: 公开您的队伍名称给其他参赛者
+
+107. MSGID: Set a new team join password
+   MSGSTR: 设置新队伍加入密码
+
+108. MSGID: Banned
+   MSGSTR: 已封禁
+
+109. MSGID: Registration Code
+   MSGSTR: 注册码
+
+110. MSGID: IP Address
+   MSGSTR: IP 地址
+
+111. MSGID: Require password change on next login
+   MSGSTR: 下次登录时需要修改密码
+
+112. MSGID: Email account credentials to user
+   MSGSTR: 新账户详情
+
+113. MSGID: Hint %(id)d
+   MSGSTR: 客户端 ID
+
+114. MSGID: Duplicate solve for user %(user_id)s on challenge %(challenge_id)s
+   MSGSTR: 用户 %(user_id)s 对题目 %(challenge_id)s 的重复解答
+
+115. MSGID: Correct
+   MSGSTR: 得分
+
+116. MSGID: Please contact an admin to change your bracket
+   MSGSTR: 请联系管理员更改您的分组
+
+117. MSGID: Required
+   MSGSTR: 需要
+
+118. MSGID: Options
+   MSGSTR: 选项
+
+119. MSGID: Case Insensitive
+   MSGSTR: 不区分大小写
+
+120. MSGID: CSV Importing instructions
+   MSGSTR: CSV 导入说明
+
+121. MSGID: custom compareFn function for Array.sort()
+   MSGSTR: 用于 Array.sort() 的自定义 compareFn 函数
+
+122. MSGID: Challenge Order Custom Function
+   MSGSTR: 题目排序自定义函数
+
+123. MSGID: Please fill out all required profile fields before continuing
+   MSGSTR: 请填写所有必填的用户资料字段后再继续
+
+124. MSGID: Message from {ctf_name}
+   MSGSTR: 来自 {ctf_name} 的消息
+
+125. MSGID: %(error)s exception occured while handling your request
+   MSGSTR: 处理您的请求时发生 %(error)s 异常
+
+126. MSGID: Your team has been banned from this CTF
+   MSGSTR: 您的队伍已被禁止参加此 CTF
+
+127. MSGID: Your access token is invalid
+   MSGSTR: 访问密钥
+
+128. MSGID: Your access token has expired
+   MSGSTR: 访问密钥
+

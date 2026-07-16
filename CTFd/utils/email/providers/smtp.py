@@ -3,6 +3,8 @@ from email.message import EmailMessage
 from email.utils import formataddr
 from socket import timeout
 
+from flask_babel import gettext
+
 from CTFd.utils import get_app_config, get_config
 from CTFd.utils.email.providers import EmailProvider
 
@@ -66,11 +68,11 @@ class SMTPEmailProvider(EmailProvider):
                 smtp.send_message(msg, from_addr=mailsender_addr)
 
             smtp.quit()
-            return True, "Email sent"
+            return True, gettext("Email sent")
         except smtplib.SMTPException as e:
             return False, str(e)
         except timeout:
-            return False, "SMTP server connection timed out"
+            return False, gettext("SMTP server connection timed out")
         except Exception as e:
             return False, str(e)
 

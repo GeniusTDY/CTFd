@@ -1,6 +1,7 @@
 from email.utils import formataddr
 
 import requests
+from flask_babel import gettext
 
 from CTFd.utils import get_app_config, get_config
 from CTFd.utils.email.providers import EmailProvider
@@ -37,12 +38,13 @@ class MailgunEmailProvider(EmailProvider):
         except requests.RequestException as e:
             return (
                 False,
-                "{error} exception occured while handling your request".format(
-                    error=type(e).__name__
+                gettext(
+                    "%(error)s exception occured while handling your request",
+                    error=type(e).__name__,
                 ),
             )
 
         if r.status_code == 200:
-            return True, "Email sent"
+            return True, gettext("Email sent")
         else:
-            return False, "Mailgun settings are incorrect"
+            return False, gettext("Mailgun settings are incorrect")

@@ -1,4 +1,5 @@
 from flask import Blueprint
+from flask_babel import gettext
 
 from CTFd.exceptions.challenges import (
     ChallengeCreateException,
@@ -58,7 +59,9 @@ class DynamicChallenge(Challenges):
         try:
             self.value = kwargs["initial"]
         except KeyError:
-            raise ChallengeCreateException("Missing initial value for challenge")
+            raise ChallengeCreateException(
+                gettext("Missing initial value for challenge")
+            )
 
 
 class DynamicValueChallenge(BaseChallenge):
@@ -134,7 +137,9 @@ class DynamicValueChallenge(BaseChallenge):
                 try:
                     value = float(value)
                 except (ValueError, TypeError):
-                    raise ChallengeUpdateException(f"Invalid input for '{attr}'")
+                    raise ChallengeUpdateException(
+                        gettext("Invalid input for '%(attr)s'", attr=attr)
+                    )
             setattr(challenge, attr, value)
 
         return DynamicValueChallenge.calculate_value(challenge)

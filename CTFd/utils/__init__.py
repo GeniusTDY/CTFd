@@ -4,6 +4,7 @@ from enum import Enum
 import cmarkgfm
 from cmarkgfm.cmark import Options
 from flask import current_app as app
+from flask_babel import LazyString, gettext
 
 # isort:imports-firstparty
 from CTFd.cache import cache
@@ -13,6 +14,35 @@ from CTFd.models import Configs, db
 string_types = (str,)
 text_type = str
 binary_type = bytes
+
+
+class SafeLazyString(LazyString):
+    """A LazyString that does not eagerly evaluate on __bool__.
+
+    Marshmallow validators do ``self.error = error or self.default_message`` at
+    class definition time. The ``or`` operator triggers ``__bool__`` which on the
+    original ``LazyString`` falls back to ``__len__`` -> ``__str__`` -> ``gettext``,
+    failing outside of a request context. This subclass short-circuits ``__bool__``
+    so the lazy string is returned as-is and only translated when actually rendered.
+    """
+
+    def __bool__(self):
+        return True
+
+    __nonzero__ = __bool__
+
+    def __len__(self):
+        # Avoid triggering translation; only used for truthiness which __bool__ covers.
+        return 1
+
+
+def safe_lazy_gettext(string, **variables):
+    """Like ``lazy_gettext`` but returns a :class:`SafeLazyString`.
+
+    Use this for places (e.g. marshmallow validator ``error=`` kwargs) that
+    evaluate truthiness at import/class-definition time.
+    """
+    return SafeLazyString(gettext, string, **variables)
 
 
 def markdown(md):

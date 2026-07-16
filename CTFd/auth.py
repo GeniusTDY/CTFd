@@ -2,7 +2,7 @@ import requests
 from flask import Blueprint, abort
 from flask import current_app as app
 from flask import redirect, render_template, request, session, url_for
-from flask_babel import lazy_gettext as _l
+from flask_babel import gettext, lazy_gettext as _l
 
 from CTFd.cache import cache, clear_team_session, clear_user_session
 from CTFd.exceptions.email import (
@@ -71,7 +71,9 @@ def confirm(data=None):
             button = """<button style="margin-top: 3rem; padding: 1rem;" onclick="
                 let u = new window.URL(window.location.href);
                 u.searchParams.set('interaction', '1');
-                window.location.href = u;">Click Here to Confirm Email</button>"""
+                window.location.href = u;">{label}</button>""".format(
+                label=gettext("Click Here to Confirm Email")
+            )
             return render_template("page.html", content=button)
 
         user.verified = True
@@ -109,7 +111,13 @@ def confirm(data=None):
                 name=user.name,
             )
             return render_template(
-                "confirm.html", infos=[f"Confirmation email sent to {user.email}!"]
+                "confirm.html",
+                infos=[
+                    gettext(
+                        "Confirmation email sent to %(email)s!",
+                        email=user.email,
+                    )
+                ],
             )
         elif request.method == "GET":
             # User has been directed to the confirm page
@@ -138,7 +146,9 @@ def reset_password(data=None):
         except (UserResetPasswordTokenInvalidException):
             return render_template(
                 "reset_password.html",
-                errors=["Your reset link is invalid, please generate a new one"],
+                errors=[
+                    _l("Your reset link is invalid, please generate a new one")
+                ],
             )
 
         if request.method == "GET":
@@ -166,8 +176,9 @@ def reset_password(data=None):
                 return render_template(
                     "reset_password.html",
                     errors=[
-                        _l(
-                            f"Password must be at least {password_min_length} characters"
+                        gettext(
+                            "Password must be at least %(num)d characters",
+                            num=password_min_length,
                         )
                     ],
                 )
@@ -248,7 +259,10 @@ def register():
     if num_users_limit and num_users >= num_users_limit:
         abort(
             403,
-            description=f"Reached the maximum number of users ({num_users_limit}).",
+            description=_l(
+                "Reached the maximum number of users (%(num)s).",
+                num=num_users_limit,
+            ),
         )
 
     if request.method == "POST":
@@ -606,7 +620,10 @@ def oauth_redirect():
                 if num_users_limit and num_users >= num_users_limit:
                     abort(
                         403,
-                        description=f"Reached the maximum number of users ({num_users_limit}).",
+                        description=_l(
+                            "Reached the maximum number of users (%(num)s).",
+                            num=num_users_limit,
+                        ),
                     )
 
                 # Check if we are allowing registration before creating users

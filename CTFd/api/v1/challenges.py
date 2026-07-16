@@ -3,6 +3,7 @@ from datetime import datetime, timedelta
 from typing import List  # noqa: I001
 
 from flask import abort, render_template, request, session, url_for
+from flask_babel import gettext, lazy_gettext as _l
 from flask_restx import Namespace, Resource
 from sqlalchemy.sql import and_
 
@@ -361,7 +362,10 @@ class Challenge(Resource):
         except KeyError:
             abort(
                 500,
-                f"The underlying challenge type ({chal.type}) is not installed. This challenge can not be loaded.",
+                _l(
+                    "The underlying challenge type (%(type)s) is not installed. This challenge can not be loaded.",
+                    type=chal.type,
+                ),
             )
 
         tags = [
@@ -703,7 +707,7 @@ class ChallengeAttempt(Resource):
                     "success": True,
                     "data": {
                         "status": "paused",
-                        "message": "{} is paused".format(config.ctf_name()),
+                        "message": gettext("%(name)s is paused", name=config.ctf_name()),
                     },
                 },
                 403,
@@ -798,14 +802,17 @@ class ChallengeAttempt(Resource):
                             ).total_seconds()
                         )
                     # Calculate actual time remaining based on oldest fail
-                    response = f"Not accepted. Try again in {time_delay} seconds"
+                    response = gettext(
+                        "Not accepted. Try again in %(seconds)d seconds",
+                        seconds=time_delay,
+                    )
                     response_code = 429
                     if ctftime():
                         chal_class.ratelimited(
                             user=user, team=team, challenge=challenge, request=request
                         )
                 else:  # Use lockout behavior
-                    response = "Not accepted. You have 0 tries remaining"
+                    response = gettext("Not accepted. You have 0 tries remaining")
                     response_code = 403
                 # Expire the cache key directly since we will not hit the normal expire flow
                 cache.expire(acc_kpm_key, time_delay)
@@ -841,7 +848,10 @@ class ChallengeAttempt(Resource):
                     "success": True,
                     "data": {
                         "status": "ratelimited",
-                        "message": f"You're submitting flags too fast. Try again in {time_delay} seconds.",
+                        "message": gettext(
+                            "You're submitting flags too fast. Try again in %(seconds)d seconds.",
+                            seconds=time_delay,
+                        ),
                     },
                 },
                 429,
@@ -894,7 +904,10 @@ class ChallengeAttempt(Resource):
                             "success": True,
                             "data": {
                                 "status": "already_solved",
-                                "message": f"{message} but you already solved this",
+                                "message": gettext(
+                                    "%(message)s but you already solved this",
+                                    message=message,
+                                ),
                             },
                         }
 
@@ -955,12 +968,19 @@ class ChallengeAttempt(Resource):
                 if max_tries:
                     # Off by one since fails has changed since it was gotten
                     attempts_left = max_tries - fails - 1
-                    tries_str = pluralize(attempts_left, singular="try", plural="tries")
+                    tries_str = pluralize(
+                        attempts_left,
+                        singular=gettext("try"),
+                        plural=gettext("tries"),
+                    )
                     # Add a punctuation mark if there isn't one
                     if message[-1] not in "!().;?[]{}":
                         message = message + "."
-                    message = "{} You have {} {} remaining.".format(
-                        message, attempts_left, tries_str
+                    message = gettext(
+                        "%(message)s You have %(num)d %(tries)s remaining.",
+                        message=message,
+                        num=attempts_left,
+                        tries=tries_str,
                     )
                     if attempts_left == 0:
                         max_attempts_behavior = get_config(
@@ -987,9 +1007,15 @@ class ChallengeAttempt(Resource):
                                 remaining_seconds = (
                                     max_attempts_timeout - time_since_fail
                                 )
-                                message += f" Try again in {math.ceil(remaining_seconds)} seconds"
+                                message += gettext(
+                                    " Try again in %(seconds)d seconds",
+                                    seconds=math.ceil(remaining_seconds),
+                                )
                             else:
-                                message += f" Try again in {math.ceil(max_attempts_timeout)} seconds"
+                                message += gettext(
+                                    " Try again in %(seconds)d seconds",
+                                    seconds=math.ceil(max_attempts_timeout),
+                                )
                     return {
                         "success": True,
                         "data": {
@@ -1025,7 +1051,10 @@ class ChallengeAttempt(Resource):
                 "success": True,
                 "data": {
                     "status": "already_solved",
-                    "message": f"{message} but you already solved this",
+                    "message": gettext(
+                        "%(message)s but you already solved this",
+                        message=message,
+                    ),
                 },
             }
 

@@ -6,7 +6,7 @@ from sqlalchemy.orm import load_only
 
 from CTFd.models import Brackets, TeamFieldEntries, TeamFields, Teams, Users, ma
 from CTFd.schemas.fields import TeamFieldEntriesSchema
-from CTFd.utils import get_config, string_types
+from CTFd.utils import get_config, safe_lazy_gettext, string_types
 from CTFd.utils.crypto import verify_password
 from CTFd.utils.user import get_current_team, get_current_user, is_admin
 from CTFd.utils.validators import validate_country_code
@@ -25,14 +25,14 @@ class TeamSchema(ma.ModelSchema):
         required=True,
         allow_none=False,
         validate=[
-            validate.Length(min=1, max=128, error="Team names must not be empty")
+            validate.Length(min=1, max=128, error=safe_lazy_gettext("Team names must not be empty"))
         ],
     )
     email = field_for(
         Teams,
         "email",
         allow_none=False,
-        validate=validate.Email(error="Emails must be a properly formatted email address"),
+        validate=validate.Email(error=safe_lazy_gettext("Emails must be a properly formatted email address")),
     )
     password = field_for(Teams, "password", required=True, allow_none=False)
     website = field_for(
@@ -41,7 +41,7 @@ class TeamSchema(ma.ModelSchema):
         validate=[
             # This is a dirty hack to let website accept empty strings so you can remove your website
             lambda website: validate.URL(
-                error="Websites must be a proper URL starting with http or https",
+                error=safe_lazy_gettext("Websites must be a proper URL starting with http or https"),
                 schemes={"http", "https"},
             )(website)
             if website
@@ -307,13 +307,19 @@ class TeamSchema(ma.ModelSchema):
                     if isinstance(value, str):
                         if value.strip() == "":
                             raise ValidationError(
-                                f"Field '{field.name}' is required",
+                                gettext(
+                                    "Field '%(field)s' is required",
+                                    field=field.name,
+                                ),
                                 field_names=["fields"],
                             )
 
                 if field.editable is False and entry is not None:
                     raise ValidationError(
-                        f"Field '{field.name}' cannot be editted",
+                        gettext(
+                            "Field '%(field)s' cannot be edited",
+                            field=field.name,
+                        ),
                         field_names=["fields"],
                     )
 

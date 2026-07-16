@@ -1,5 +1,5 @@
 from flask import Blueprint, abort, redirect, render_template, request, url_for
-from flask_babel import lazy_gettext as _l
+from flask_babel import gettext, lazy_gettext as _l
 
 from CTFd.cache import clear_team_session, clear_user_session
 from CTFd.exceptions import TeamTokenExpiredException, TeamTokenInvalidException
@@ -155,8 +155,10 @@ def join():
             team_size_limit = get_config("team_size", default=0)
             if team_size_limit and len(team.members) >= team_size_limit:
                 errors.append(
-                    "{name} has already reached the team size limit of {limit}".format(
-                        name=team.name, limit=team_size_limit
+                    gettext(
+                        "%(name)s has already reached the team size limit of %(limit)s",
+                        name=team.name,
+                        limit=team_size_limit,
                     )
                 )
                 return render_template(
@@ -190,7 +192,9 @@ def new():
     if bool(get_config("team_creation", default=True)) is False:
         abort(
             403,
-            description="Team creation is currently disabled. Please join an existing team.",
+            description=_l(
+                "Team creation is currently disabled. Please join an existing team."
+            ),
         )
 
     num_teams_limit = int(get_config("num_teams", default=0))
@@ -198,7 +202,10 @@ def new():
     if num_teams_limit and num_teams >= num_teams_limit:
         abort(
             403,
-            description=f"Reached the maximum number of teams ({num_teams_limit}). Please join an existing team.",
+            description=_l(
+                "Reached the maximum number of teams (%(num)s). Please join an existing team.",
+                num=num_teams_limit,
+            ),
         )
 
     user = get_current_user_attrs()

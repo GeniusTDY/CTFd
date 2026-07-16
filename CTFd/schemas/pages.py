@@ -2,7 +2,7 @@ from marshmallow import pre_load, validate
 from marshmallow_sqlalchemy import field_for
 
 from CTFd.models import Pages, ma
-from CTFd.utils import string_types
+from CTFd.utils import safe_lazy_gettext, string_types
 
 
 class PageSchema(ma.ModelSchema):
@@ -18,7 +18,7 @@ class PageSchema(ma.ModelSchema):
             validate.Length(
                 min=0,
                 max=80,
-                error="Page could not be saved. Your title is too long.",
+                error=safe_lazy_gettext("Page could not be saved. Your title is too long."),
             )
         ],
     )
@@ -31,7 +31,7 @@ class PageSchema(ma.ModelSchema):
             validate.Length(
                 min=0,
                 max=128,
-                error="Page could not be saved. Your route is too long.",
+                error=safe_lazy_gettext("Page could not be saved. Your route is too long."),
             )
         ],
     )
@@ -44,7 +44,7 @@ class PageSchema(ma.ModelSchema):
             validate.Length(
                 min=0,
                 max=65535,
-                error="Page could not be saved. Your content is too long.",
+                error=safe_lazy_gettext("Page could not be saved. Your content is too long."),
             )
         ],
     )
@@ -56,7 +56,7 @@ class PageSchema(ma.ModelSchema):
         validate=[
             validate.OneOf(
                 choices=[None, "_self", "_blank"],
-                error="Invalid link target",
+                error=safe_lazy_gettext("Invalid link target"),
             )
         ],
     )

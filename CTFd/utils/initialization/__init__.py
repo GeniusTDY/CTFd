@@ -4,7 +4,7 @@ import os
 import sys
 
 from flask import abort, redirect, render_template, request, session, url_for
-from flask_babel import lazy_gettext as _l
+from flask_babel import gettext, lazy_gettext as _l
 from sqlalchemy.exc import IntegrityError, InvalidRequestError
 from werkzeug.middleware.dispatcher import DispatcherMiddleware
 
@@ -229,7 +229,7 @@ def init_request_processors(app):
             if request.endpoint == "admin.import_ctf":
                 return
             else:
-                return "Import currently in progress", 403
+                return gettext("Import currently in progress"), 403
         if is_setup() is False:
             if request.endpoint in (
                 "views.setup",
@@ -253,7 +253,7 @@ def init_request_processors(app):
             if request.endpoint == "admin.import_ctf":
                 return
             else:
-                return "Import currently in progress", 403
+                return gettext("Import currently in progress"), 403
 
         if authed():
             user_ips = get_current_user_recent_ips()
@@ -298,7 +298,7 @@ def init_request_processors(app):
             if user and user.banned:
                 return (
                     render_template(
-                        "errors/403.html", error="You have been banned from this CTF"
+                        "errors/403.html", error=gettext("You have been banned from this CTF")
                     ),
                     403,
                 )
@@ -307,7 +307,7 @@ def init_request_processors(app):
                 return (
                     render_template(
                         "errors/403.html",
-                        error="Your team has been banned from this CTF",
+                        error=gettext("Your team has been banned from this CTF"),
                     ),
                     403,
                 )

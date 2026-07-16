@@ -208,7 +208,9 @@ class Hints(db.Model):
 
     @property
     def name(self):
-        return "Hint {id}".format(id=self.id)
+        from flask_babel import gettext
+
+        return gettext("Hint %(id)d", id=self.id)
 
     @property
     def category(self):
@@ -216,7 +218,9 @@ class Hints(db.Model):
 
     @property
     def description(self):
-        return "Hint for {name}".format(name=self.challenge.name)
+        from flask_babel import gettext
+
+        return gettext("Hint for %(name)s", name=self.challenge.name)
 
     @property
     def html(self):

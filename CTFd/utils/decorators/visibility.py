@@ -1,6 +1,7 @@
 import functools
 
 from flask import abort, redirect, render_template, request, url_for
+from flask_babel import gettext
 
 from CTFd.constants.config import (
     AccountVisibilityTypes,
@@ -38,7 +39,7 @@ def check_score_visibility(f):
                 else:
                     return (
                         render_template(
-                            "errors/403.html", error="Scores are currently hidden"
+                            "errors/403.html", error=gettext("Scores are currently hidden")
                         ),
                         403,
                     )
@@ -78,7 +79,9 @@ def check_challenge_visibility(f):
                     else:
                         abort(
                             403,
-                            description="Challenge Visibility is set to Admins Only",
+                            description=gettext(
+                                "Challenge Visibility is set to Admins Only"
+                            ),
                         )
                 else:
                     return redirect(url_for("auth.login", next=request.full_path))

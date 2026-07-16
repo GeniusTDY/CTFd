@@ -1,4 +1,5 @@
 from flask import abort, render_template, request, url_for
+from flask_babel import lazy_gettext as _l
 
 from CTFd.admin import admin
 from CTFd.models import Challenges, Flags, Solves
@@ -53,7 +54,10 @@ def challenges_detail(challenge_id):
     except KeyError:
         abort(
             500,
-            f"The underlying challenge type ({challenge.type}) is not installed. This challenge can not be loaded.",
+            _l(
+                "The underlying challenge type (%(type)s) is not installed. This challenge can not be loaded.",
+                type=challenge.type,
+            ),
         )
 
     update_j2 = render_template(

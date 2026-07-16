@@ -1,6 +1,7 @@
 from dataclasses import dataclass
 
 from flask import Blueprint
+from flask_babel import gettext
 from sqlalchemy.exc import IntegrityError
 
 from CTFd.exceptions.challenges import (
@@ -79,7 +80,11 @@ class BaseChallenge(object):
                 db.session.rollback()
                 if getattr(challenge, attr) is None:
                     raise ChallengeCreateException(
-                        f"Missing '{attr}' but function is {challenge.function}"
+                        gettext(
+                            "Missing '%(attr)s' but function is %(function)s",
+                            attr=attr,
+                            function=challenge.function,
+                        )
                     )
 
         db.session.add(challenge)
@@ -144,7 +149,9 @@ class BaseChallenge(object):
                     value = float(value)
                 except (ValueError, TypeError):
                     db.session.rollback()
-                    raise ChallengeUpdateException(f"Invalid input for '{attr}'")
+                    raise ChallengeUpdateException(
+                        gettext("Invalid input for '%(attr)s'", attr=attr)
+                    )
             setattr(challenge, attr, value)
 
         for attr in ("initial", "minimum", "decay"):
@@ -154,7 +161,11 @@ class BaseChallenge(object):
             ):
                 db.session.rollback()
                 raise ChallengeUpdateException(
-                    f"Missing '{attr}' but function is {challenge.function}"
+                    gettext(
+                        "Missing '%(attr)s' but function is %(function)s",
+                        attr=attr,
+                        function=challenge.function,
+                    )
                 )
 
         db.session.commit()
@@ -267,7 +278,11 @@ class BaseChallenge(object):
         except IntegrityError as e:
             db.session.rollback()
             raise ChallengeSolveException(
-                f"Duplicate solve for user {user.id} on challenge {challenge.id}"
+                gettext(
+                    "Duplicate solve for user %(user_id)s on challenge %(challenge_id)s",
+                    user_id=user.id,
+                    challenge_id=challenge.id,
+                )
             ) from e
 
         # If the challenge is dynamic we should calculate a new value

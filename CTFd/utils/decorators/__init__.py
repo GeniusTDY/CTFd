@@ -206,7 +206,9 @@ def require_complete_profile(f):
                 if user.filled_all_required_fields is False:
                     info_for(
                         "views.settings",
-                        "Please fill out all required profile fields before continuing",
+                        gettext(
+                            "Please fill out all required profile fields before continuing"
+                        ),
                     )
                     return redirect(url_for("views.settings"))
 
@@ -217,7 +219,9 @@ def require_complete_profile(f):
                         # This is an abort because it's difficult for us to flash information on the teams page
                         return abort(
                             403,
-                            description="Please fill in all required team profile fields",
+                            description=gettext(
+                                "Please fill in all required team profile fields"
+                            ),
                         )
 
                 return f(*args, **kwargs)
