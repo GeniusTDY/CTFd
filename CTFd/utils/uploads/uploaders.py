@@ -10,6 +10,7 @@ from urllib.parse import urlparse
 import boto3
 from botocore.client import Config
 from flask import current_app, redirect, send_file
+from flask_babel import gettext
 from freezegun import freeze_time
 from werkzeug.utils import safe_join, secure_filename
 
@@ -82,7 +83,7 @@ class FilesystemUploader(BaseUploader):
 
     def upload(self, file_obj, filename, path=None):
         if len(filename) == 0:
-            raise Exception("Empty filenames cannot be used")
+            raise Exception(gettext("Empty filenames cannot be used"))
 
         # Sanitize directory name
         if path:

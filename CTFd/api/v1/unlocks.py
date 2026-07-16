@@ -1,6 +1,7 @@
 from typing import List
 
 from flask import abort, request
+from flask_babel import gettext
 from flask_restx import Namespace, Resource
 
 from CTFd.api.v1.helpers.request import validate_args
@@ -122,7 +123,7 @@ class UnlockList(Resource):
                     {
                         "success": False,
                         "errors": {
-                            "score": "You do not have enough points to unlock this hint"
+                            "score": gettext("You do not have enough points to unlock this hint")
                         },
                     },
                     400,
@@ -145,7 +146,7 @@ class UnlockList(Resource):
                 return (
                     {
                         "success": False,
-                        "errors": {"target": "You've already unlocked this target"},
+                        "errors": {"target": gettext("You've already unlocked this target")},
                     },
                     400,
                 )
@@ -191,7 +192,7 @@ class UnlockList(Resource):
                 return (
                     {
                         "success": False,
-                        "errors": {"target": "You've already unlocked this target"},
+                        "errors": {"target": gettext("You've already unlocked this target")},
                     },
                     400,
                 )
@@ -206,7 +207,7 @@ class UnlockList(Resource):
             return (
                 {
                     "success": False,
-                    "errors": {"type": "Unknown target type"},
+                    "errors": {"type": gettext("Unknown target type")},
                 },
                 400,
             )

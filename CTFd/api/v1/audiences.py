@@ -1,4 +1,5 @@
 from flask import request
+from flask_babel import gettext
 from flask_restx import Namespace, Resource
 
 from CTFd.api.v1.helpers.request import validate_args
@@ -123,7 +124,7 @@ class AudienceMemberList(Resource):
         if not req.get("user_id") and not req.get("team_id"):
             return {
                 "success": False,
-                "errors": {"": ["Either user_id or team_id is required"]},
+                "errors": {"": [gettext("Either user_id or team_id is required")]},
             }, 400
 
         schema = AudienceMemberSchema()

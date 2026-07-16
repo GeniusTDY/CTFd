@@ -111,7 +111,7 @@ class UserList(Resource):
             if is_admin() is False:
                 return {
                     "success": False,
-                    "errors": {"field": "Emails can only be queried by admins"},
+                    "errors": {"field": gettext("Emails can only be queried by admins")},
                 }, 400
 
         filters = build_model_filters(model=Users, query=q, field=field)
@@ -241,7 +241,7 @@ class UserPublic(Resource):
             data.get("banned") is True or data.get("banned") == "true"
         ):
             return (
-                {"success": False, "errors": {"id": "You cannot ban yourself"}},
+                {"success": False, "errors": {"id": gettext("You cannot ban yourself")}},
                 400,
             )
 
@@ -273,7 +273,7 @@ class UserPublic(Resource):
         # Admins should not be able to delete themselves
         if user_id == session["id"]:
             return (
-                {"success": False, "errors": {"id": "You cannot delete yourself"}},
+                {"success": False, "errors": {"id": gettext("You cannot delete yourself")}},
                 400,
             )
 

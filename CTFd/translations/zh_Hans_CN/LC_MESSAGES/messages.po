@@ -1,9 +1,9 @@
-
+#
 msgid ""
 msgstr ""
 "Project-Id-Version:  CTFd\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2026-07-16 04:52+0000\n"
+"POT-Creation-Date: 2026-07-16 05:39+0000\n"
 "PO-Revision-Date: 2026-07-13 00:00+0000\n"
 "Last-Translator: \n"
 "Language: zh_CN\n"
@@ -14,16 +14,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.17.0\n"
 
-#: CTFd/auth.py:49
-msgid ""
-"Email verification is enabled but email sending isn't available. Please "
-"contact an admin to confirm your account"
-msgstr "邮箱验证已启用但无法发送邮件。请联系管理员确认您的账号。"
-
-#: CTFd/auth.py:60
-msgid "Your confirmation link is invalid, please generate a new one"
-msgstr "您的确认链接无效，请重新生成一个。"
-
 #: CTFd/auth.py:75
 msgid "Click Here to Confirm Email"
 msgstr "点击此处确认邮箱"
@@ -31,145 +21,12 @@ msgstr "点击此处确认邮箱"
 #: CTFd/auth.py:117
 #, python-format
 msgid "Confirmation email sent to %(email)s!"
-msgstr "我们向您的邮箱发送了确认邮件。"
-
-#: CTFd/auth.py:137
-msgid ""
-"This CTF is not configured to send email.<br> Please contact an organizer"
-" to have your password reset."
-msgstr "此 CTF 未配置邮件发送功能。<br> 请联系管理员重置您的密码。"
-
-#: CTFd/auth.py:150
-msgid "Your reset link is invalid, please generate a new one"
-msgstr "您的确认链接无效，请重新生成一个。"
-
-#: CTFd/auth.py:163
-msgid ""
-"Your account was registered via an authentication provider and does not "
-"have an associated password. Please login via your authentication "
-"provider."
-msgstr "您的账号通过第三方认证提供商注册，因此没有关联密码。请通过您的认证提供商登录。"
-
-#: CTFd/auth.py:170
-msgid "Please pick a longer password"
-msgstr "请确认您当前的密码"
+msgstr "确认邮件已发送至 %(email)s！"
 
 #: CTFd/auth.py:180 CTFd/auth.py:366 CTFd/schemas/users.py:183
 #, python-format
 msgid "Password must be at least %(num)d characters"
 msgstr "密码至少需要 %(num)d 个字符"
-
-#: CTFd/auth.py:211 CTFd/auth.py:242
-msgid "If that account exists you will receive an email, please check your inbox"
-msgstr "如果该账户存在，您将收到一封邮件，请检查您的收件箱"
-
-#: CTFd/auth.py:221
-msgid ""
-"The email address associated with this account was registered via an "
-"authentication provider and does not have an associated password. Please "
-"login via your authentication provider."
-msgstr "与此账户关联的邮箱地址是通过身份验证提供商注册的，没有关联密码。请通过您的身份验证提供商登录。"
-
-#: CTFd/auth.py:233
-msgid "Too many password reset attempts. Please try again later."
-msgstr "密码重置尝试次数过多。请稍后再试。"
-
-#: CTFd/auth.py:263 CTFd/auth.py:627
-#, python-format
-msgid "Reached the maximum number of users (%(num)s)."
-msgstr "已达到最大用户数（%(num)s）。"
-
-#: CTFd/auth.py:301
-msgid "The registration code you entered was incorrect"
-msgstr "您输入的注册码不正确"
-
-#: CTFd/auth.py:312 CTFd/teams.py:250
-msgid "Please provide all required fields"
-msgstr "请填写所有必填字段"
-
-#: CTFd/auth.py:350 CTFd/views.py:162
-msgid "Please enter a valid email address"
-msgstr "请输入有效的邮箱地址"
-
-#: CTFd/auth.py:352 CTFd/auth.py:354
-msgid "Your email address is not from an allowed domain"
-msgstr "电子邮箱地址不在允许的域名中"
-
-#: CTFd/auth.py:356 CTFd/views.py:164
-msgid "That user name is already taken"
-msgstr "用户名已被使用"
-
-#: CTFd/auth.py:358 CTFd/views.py:166
-msgid "Your user name cannot be an email address"
-msgstr "用户名不能是邮箱地址"
-
-#: CTFd/auth.py:360 CTFd/views.py:168
-msgid "That email has already been used"
-msgstr "该邮箱地址已被使用"
-
-#: CTFd/auth.py:362 CTFd/views.py:170
-msgid "Pick a longer password"
-msgstr "请设置更长的密码"
-
-#: CTFd/auth.py:371 CTFd/views.py:172
-msgid "Pick a shorter password"
-msgstr "请设置更短的密码"
-
-#: CTFd/auth.py:373 CTFd/views.py:174
-msgid "Pick a longer user name"
-msgstr "请设置更长的用户名"
-
-#: CTFd/auth.py:376 CTFd/schemas/teams.py:44 CTFd/schemas/users.py:47
-#: CTFd/teams.py:288
-msgid "Websites must be a proper URL starting with http or https"
-msgstr "网站地址必须以 http 或 https 开头的正确 URL"
-
-#: CTFd/auth.py:379 CTFd/teams.py:292
-msgid "Invalid country"
-msgstr "无效的国家/地区"
-
-#: CTFd/auth.py:381 CTFd/teams.py:290
-msgid "Please provide a shorter affiliation"
-msgstr "请提供较短的所属机构名称"
-
-#: CTFd/auth.py:383 CTFd/teams.py:294
-msgid "Please provide a valid bracket"
-msgstr "请提供有效的分组 ID"
-
-#: CTFd/auth.py:485
-msgid "Preset admin user could not be created. Please contact an administrator"
-msgstr "预设管理员用户无法创建。请联系管理员。"
-
-#: CTFd/auth.py:499
-msgid ""
-"Your account was registered with a 3rd party authentication provider. "
-"Please try logging in with a configured authentication provider."
-msgstr "您的账号通过第三方认证提供商注册。请尝试使用已配置的认证提供商登录。"
-
-#: CTFd/auth.py:525 CTFd/auth.py:531
-msgid "Your username or password is incorrect"
-msgstr "您之前的密码不正确"
-
-#: CTFd/auth.py:558
-msgid ""
-"OAuth Settings not configured. Ask your CTF administrator to configure "
-"MajorLeagueCyber integration."
-msgstr "OAuth 设置未配置。请联系 CTF 管理员配置 MajorLeagueCyber 集成。"
-
-#: CTFd/auth.py:577
-msgid "OAuth State validation mismatch."
-msgstr "OAuth 状态验证不匹配。"
-
-#: CTFd/auth.py:646
-msgid "Public registration is disabled. Please try again later."
-msgstr "公开注册已关闭。请稍后再试。"
-
-#: CTFd/auth.py:663
-#, python-format
-msgid ""
-"Reached the maximum number of teams (%(num)d). Please join an existing "
-"team."
-msgstr "已达到最大队伍数量上限 (%(num)d)。请加入一个已有的队伍。"
 
 #: CTFd/auth.py:675
 #, python-format
@@ -181,90 +38,10 @@ msgstr "队伍人数上限为 %(limit)d 人。"
 msgid "Teams are limited to %(limit)d members."
 msgstr "队伍人数上限为 %(limit)d 人。"
 
-#: CTFd/auth.py:700
-msgid "OAuth token retrieval failure."
-msgstr "OAuth 令牌获取失败。"
-
-#: CTFd/auth.py:705
-msgid "Received redirect without OAuth code."
-msgstr "收到没有 OAuth 代码的重定向。"
-
-#: CTFd/challenges.py:38 CTFd/utils/decorators/visibility.py:83
-msgid "Challenge Visibility is set to Admins Only"
-msgstr "题目仅对管理员可见"
-
-#: CTFd/challenges.py:41 CTFd/utils/decorators/__init__.py:39
-#, python-format
-msgid "%(ctf_name)s has not started yet"
-msgstr "%(ctf_name)s 尚未开始"
-
-#: CTFd/challenges.py:44
-#, python-format
-msgid "%(ctf_name)s is paused"
-msgstr "%(ctf_name)s 已结束"
-
-#: CTFd/challenges.py:47 CTFd/utils/decorators/__init__.py:31
-#, python-format
-msgid "%(ctf_name)s has ended"
-msgstr "%(ctf_name)s 已结束"
-
-#: CTFd/errors.py:12
-msgid "An Internal Server Error has occurred"
-msgstr "发生了内部服务器错误"
-
-#: CTFd/scoreboard.py:24 CTFd/teams.py:357 CTFd/teams.py:391 CTFd/users.py:59
-#: CTFd/users.py:79
-msgid "Scoreboard has been frozen"
-msgstr "记分板已冻结"
-
-#: CTFd/scoreboard.py:27
-msgid "Scores are not currently visible to users"
-msgstr "挑战是否对用户可见"
-
-#: CTFd/teams.py:70 CTFd/teams.py:131 CTFd/teams.py:213
-msgid "You are already in a team. You cannot join another."
-msgstr "您已在一个队伍中，无法加入其他队伍。"
-
-#: CTFd/teams.py:75
-msgid "This invite URL has expired"
-msgstr "此邀请链接已过期"
-
-#: CTFd/teams.py:77
-msgid "This invite URL is invalid"
-msgstr "此邀请链接无效"
-
-#: CTFd/teams.py:84 CTFd/teams.py:138 CTFd/teams.py:220
-#, python-format
-msgid "Teams are limited to %(limit)s member%(plural)s."
-msgstr "队伍人数上限为 %(limit)s 人。"
-
-#: CTFd/teams.py:102 CTFd/teams.py:159
+#: CTFd/teams.py:159
 #, python-format
 msgid "%(name)s has already reached the team size limit of %(limit)s"
 msgstr "%(name)s 已达到队伍人数上限 %(limit)s"
-
-#: CTFd/teams.py:181
-msgid "That information is incorrect"
-msgstr "信息不正确"
-
-#: CTFd/teams.py:196
-msgid "Team creation is currently disabled. Please join an existing team."
-msgstr "当前已禁用队伍创建。请加入现有队伍。"
-
-#: CTFd/teams.py:206
-#, python-format
-msgid ""
-"Reached the maximum number of teams (%(num)s). Please join an existing "
-"team."
-msgstr "已达到最大队伍数（%(num)s）。请加入现有队伍。"
-
-#: CTFd/teams.py:237
-msgid "That team name is already taken"
-msgstr "团队名称已被使用"
-
-#: CTFd/teams.py:239
-msgid "That team name is invalid"
-msgstr "该队伍名称无效"
 
 #: CTFd/views.py:319
 #, python-format
@@ -292,12 +69,13 @@ msgstr "在社交媒体上关注我们："
 msgid "<a href=\"admin\">Click here</a> to login and setup your CTF"
 msgstr "<a href=\"admin\">点击此处</a> 登录并设置您的 CTF"
 
-#: CTFd/admin/challenges.py:58 CTFd/api/v1/challenges.py:366
-#, python-format
-msgid ""
-"The underlying challenge type (%(type)s) is not installed. This challenge"
-" can not be loaded."
-msgstr "底层题目类型（%(type)s）未安装。无法加载此题目。"
+#: CTFd/api/v1/audiences.py:127
+msgid "Either user_id or team_id is required"
+msgstr "必须提供 user_id 或 team_id"
+
+#: CTFd/api/v1/awards.py:117
+msgid "User doesn't have a team to associate award with"
+msgstr "用户没有队伍来关联奖励"
 
 #: CTFd/api/v1/challenges.py:710
 #, python-format
@@ -341,6 +119,112 @@ msgstr "%(message)s 您还剩 %(num)d %(tries)s。"
 msgid " Try again in %(seconds)d seconds"
 msgstr " 请在 %(seconds)d 秒后重试"
 
+#: CTFd/api/v1/challenges.py:1262
+msgid "You must solve this challenge before rating it"
+msgstr "您必须先解决此题目才能评分"
+
+#: CTFd/api/v1/challenges.py:1269
+msgid "Rating value is required"
+msgstr "评分值是必填的"
+
+#: CTFd/api/v1/challenges.py:1277
+msgid "Rating value must be an integer"
+msgstr "评分值必须是整数"
+
+#: CTFd/api/v1/challenges.py:1284
+msgid "Rating value must be either 1 or -1"
+msgstr "评分值必须是 1 或 -1"
+
+#: CTFd/api/v1/challenges.py:1292
+msgid "Review text cannot exceed 2000 characters"
+msgstr "评论文本不能超过 2000 个字符"
+
+#: CTFd/api/v1/exports.py:30
+msgid "Missing table to export"
+msgstr "缺少要导出的数据表"
+
+#: CTFd/api/v1/files.py:121
+msgid "Location cannot be specified with multiple files"
+msgstr "上传多个文件时不能指定位置"
+
+#: CTFd/api/v1/hints.py:141 CTFd/api/v1/hints.py:154
+msgid "You must login to unlock this hint"
+msgstr "您必须登录才能解锁此提示"
+
+#: CTFd/api/v1/hints.py:183
+msgid "You must unlock other hints before accessing this hint"
+msgstr "您必须先解锁其他提示才能访问此提示"
+
+#: CTFd/api/v1/modules.py:125
+msgid "challenge_id is required"
+msgstr "challenge_id 为必填项"
+
+#: CTFd/api/v1/modules.py:159
+msgid "audience_id is required"
+msgstr "audience_id 为必填项"
+
+#: CTFd/api/v1/solutions.py:136
+msgid "A solution for this challenge already exists"
+msgstr "此题目已存在解答"
+
+#: CTFd/api/v1/submissions.py:204
+msgid "Solve already exists for this submission"
+msgstr "此提交已存在解答"
+
+#: CTFd/api/v1/teams.py:110 CTFd/api/v1/users.py:114
+msgid "Emails can only be queried by admins"
+msgstr "只有管理员才能查询邮箱"
+
+#: CTFd/api/v1/teams.py:324
+msgid "Only team captains can edit team information"
+msgstr "只有队长可以编辑队伍信息"
+
+#: CTFd/api/v1/teams.py:355
+msgid "Team disbanding is currently disabled"
+msgstr "目前禁用了解散队伍功能"
+
+#: CTFd/api/v1/teams.py:365
+msgid "Only team captains can disband their team"
+msgstr "只有队长可以解散队伍"
+
+#: CTFd/api/v1/teams.py:388
+msgid ""
+"You cannot disband your team as it has participated in the event. Please "
+"contact an admin to disband your team or remove a member."
+msgstr "您无法解散已参与活动的队伍。请联系管理员解散队伍或移除成员。"
+
+#: CTFd/api/v1/teams.py:425
+msgid "Only team captains can generate invite codes"
+msgstr "只有队长可以生成邀请码"
+
+#: CTFd/api/v1/teams.py:475
+msgid "User has already joined a team"
+msgstr "用户已加入队伍"
+
+#: CTFd/api/v1/teams.py:510
+msgid "User is not part of this team"
+msgstr "用户不属于此队伍"
+
+#: CTFd/api/v1/unlocks.py:126
+msgid "You do not have enough points to unlock this hint"
+msgstr "您的积分不足以解锁此提示"
+
+#: CTFd/api/v1/unlocks.py:149 CTFd/api/v1/unlocks.py:195
+msgid "You've already unlocked this target"
+msgstr "您已经解锁了此目标"
+
+#: CTFd/api/v1/unlocks.py:210
+msgid "Unknown target type"
+msgstr "未知的目标类型"
+
+#: CTFd/api/v1/users.py:244
+msgid "You cannot ban yourself"
+msgstr "您不能封禁自己"
+
+#: CTFd/api/v1/users.py:276
+msgid "You cannot delete yourself"
+msgstr "您不能删除自己"
+
 #: CTFd/api/v1/users.py:526
 msgid "Email settings not configured"
 msgstr "邮箱设置未配置"
@@ -349,1217 +233,15 @@ msgstr "邮箱设置未配置"
 msgid "Email text cannot be empty"
 msgstr "邮箱不能为空"
 
-#: CTFd/api/v1/statistics/challenges.py:37 CTFd/api/v1/statistics/users.py:31
+#: CTFd/api/v1/statistics/challenges.py:37
+#: CTFd/api/v1/statistics/submissions.py:23 CTFd/api/v1/statistics/users.py:31
 msgid "That could not be found"
 msgstr "未找到该项"
 
-#: CTFd/forms/auth.py:21 CTFd/themes/core/templates/register.html:60
-msgid "Password used to log into your account"
-msgstr "用于登录您账号的密码"
-
-#: CTFd/forms/auth.py:29 CTFd/forms/self.py:21 CTFd/forms/users.py:179
-#: CTFd/themes/admin/templates/teams/team.html:268
-#: CTFd/themes/core/templates/teams/private.html:327
-#: CTFd/themes/core/templates/teams/public.html:95
-msgid "User Name"
-msgstr "用户名"
-
-#: CTFd/forms/auth.py:30 CTFd/themes/core/templates/register.html:38
-msgid "Your username on the site"
-msgstr "您在网站上的用户名"
-
-#: CTFd/forms/auth.py:35 CTFd/forms/auth.py:79 CTFd/forms/self.py:22
-#: CTFd/forms/teams.py:230 CTFd/forms/users.py:147 CTFd/forms/users.py:180
-#: CTFd/themes/admin/templates/users/users.html:78
-msgid "Email"
-msgstr "邮箱"
-
-#: CTFd/forms/auth.py:36 CTFd/themes/core/templates/register.html:49
-msgid "Never shown to the public"
-msgstr "不对外公开"
-
-#: CTFd/forms/auth.py:40 CTFd/forms/auth.py:69 CTFd/forms/auth.py:86
-#: CTFd/forms/config.py:280 CTFd/forms/self.py:24 CTFd/forms/teams.py:231
-#: CTFd/forms/users.py:182
-msgid "Password"
-msgstr "重置密码"
-
-#: CTFd/forms/auth.py:44 CTFd/forms/auth.py:70 CTFd/forms/auth.py:81
-#: CTFd/forms/auth.py:88 CTFd/forms/notifications.py:27 CTFd/forms/self.py:29
-#: CTFd/forms/teams.py:154 CTFd/forms/teams.py:194 CTFd/forms/teams.py:237
-#: CTFd/forms/users.py:193
-#: CTFd/themes/admin/templates/modals/teams/captain.html:20
-#: CTFd/themes/core/templates/challenge.html:187
-#: CTFd/themes/core/templates/challenge.html:271
-msgid "Submit"
-msgstr "提交"
-
-#: CTFd/forms/auth.py:65
-msgid "User Name or Email"
-msgstr "用户名或邮箱"
-
-#: CTFd/forms/auth.py:74
-msgid "Send Confirmation Email"
-msgstr "系统配置"
-
-#: CTFd/forms/awards.py:10 CTFd/forms/challenges.py:13 CTFd/forms/teams.py:201
-#: CTFd/forms/teams.py:217 CTFd/forms/users.py:145 CTFd/forms/users.py:163
-#: CTFd/themes/admin/templates/audiences/audience.html:16
-#: CTFd/themes/admin/templates/audiences/audiences.html:22
-#: CTFd/themes/admin/templates/audiences/new.html:12
-#: CTFd/themes/admin/templates/challenges/challenges.html:79
-#: CTFd/themes/admin/templates/challenges/update.html:8
-#: CTFd/themes/admin/templates/modals/challenges/solves.html:4
-#: CTFd/themes/admin/templates/modules/module.html:16
-#: CTFd/themes/admin/templates/modules/module.html:88
-#: CTFd/themes/admin/templates/modules/modules.html:22
-#: CTFd/themes/admin/templates/modules/new.html:12
-#: CTFd/themes/admin/templates/teams/team.html:481
-#: CTFd/themes/admin/templates/users/user.html:353
-#: CTFd/themes/core/templates/challenge.html:323
-msgid "Name"
-msgstr "名称"
-
-#: CTFd/forms/awards.py:11
-#: CTFd/themes/admin/templates/challenges/challenges.html:82
-#: CTFd/themes/admin/templates/challenges/update.html:64
-#: CTFd/themes/admin/templates/teams/team.html:354
-#: CTFd/themes/admin/templates/teams/team.html:485
-#: CTFd/themes/admin/templates/teams/team.html:544
-#: CTFd/themes/admin/templates/users/user.html:235
-#: CTFd/themes/admin/templates/users/user.html:356
-#: CTFd/themes/admin/templates/users/user.html:410
-#: CTFd/themes/core/templates/teams/private.html:388
-#: CTFd/themes/core/templates/teams/public.html:159
-#: CTFd/themes/core/templates/users/private.html:126
-#: CTFd/themes/core/templates/users/public.html:125
-msgid "Value"
-msgstr "分值"
-
-#: CTFd/forms/awards.py:12 CTFd/forms/challenges.py:15
-#: CTFd/themes/admin/templates/challenges/challenges.html:80
-#: CTFd/themes/admin/templates/challenges/update.html:18
-#: CTFd/themes/admin/templates/modules/module.html:88
-#: CTFd/themes/admin/templates/teams/team.html:353
-#: CTFd/themes/admin/templates/teams/team.html:486
-#: CTFd/themes/admin/templates/teams/team.html:543
-#: CTFd/themes/admin/templates/users/user.html:234
-#: CTFd/themes/admin/templates/users/user.html:357
-#: CTFd/themes/admin/templates/users/user.html:409
-#: CTFd/themes/core/templates/teams/private.html:387
-#: CTFd/themes/core/templates/teams/public.html:158
-#: CTFd/themes/core/templates/users/private.html:125
-#: CTFd/themes/core/templates/users/public.html:124
-msgid "Category"
-msgstr "分类"
-
-#: CTFd/forms/awards.py:13
-#: CTFd/themes/admin/templates/audiences/audience.html:20
-#: CTFd/themes/admin/templates/audiences/audiences.html:23
-#: CTFd/themes/admin/templates/audiences/new.html:16
-#: CTFd/themes/admin/templates/modules/module.html:20
-#: CTFd/themes/admin/templates/modules/modules.html:23
-#: CTFd/themes/admin/templates/modules/new.html:16
-#: CTFd/themes/admin/templates/teams/team.html:483
-#: CTFd/themes/admin/templates/users/user.html:354
-#: CTFd/themes/core/templates/settings.html:226
-msgid "Description"
-msgstr "描述"
-
-#: CTFd/forms/awards.py:14 CTFd/forms/teams.py:111
-#: CTFd/themes/admin/templates/audiences/new.html:19
-#: CTFd/themes/admin/templates/challenges/create.html:67
-#: CTFd/themes/admin/templates/modules/new.html:19
-msgid "Create"
-msgstr "创建"
-
-#: CTFd/forms/awards.py:16 CTFd/themes/admin/templates/teams/team.html:487
-#: CTFd/themes/admin/templates/users/user.html:358
-msgid "Icon"
-msgstr "图标"
-
-#: CTFd/forms/awards.py:18
-#: CTFd/themes/admin/templates/modals/awards/create.html:28
-msgid "None"
-msgstr "无"
-
-#: CTFd/forms/awards.py:19
-#: CTFd/themes/admin/templates/modals/awards/create.html:36
-msgid "Shield"
-msgstr "盾牌"
-
-#: CTFd/forms/awards.py:20
-#: CTFd/themes/admin/templates/modals/awards/create.html:44
-msgid "Bug"
-msgstr "Bug"
-
-#: CTFd/forms/awards.py:21
-#: CTFd/themes/admin/templates/modals/awards/create.html:54
-msgid "Crown"
-msgstr "皇冠"
-
-#: CTFd/forms/awards.py:22
-#: CTFd/themes/admin/templates/modals/awards/create.html:62
-msgid "Crosshairs"
-msgstr "十字准星"
-
-#: CTFd/forms/awards.py:23
-#: CTFd/themes/admin/templates/modals/awards/create.html:70
-msgid "Ban"
-msgstr "封禁"
-
-#: CTFd/forms/awards.py:24
-#: CTFd/themes/admin/templates/modals/awards/create.html:80
-msgid "Lightning"
-msgstr "闪电"
-
-#: CTFd/forms/awards.py:25
-#: CTFd/themes/admin/templates/modals/awards/create.html:88
-msgid "Skull"
-msgstr "骷髅"
-
-#: CTFd/forms/awards.py:26
-#: CTFd/themes/admin/templates/modals/awards/create.html:96
-msgid "Brain"
-msgstr "大脑"
-
-#: CTFd/forms/awards.py:27
-#: CTFd/themes/admin/templates/modals/awards/create.html:106
-msgid "Code"
-msgstr "代码"
-
-#: CTFd/forms/awards.py:28
-#: CTFd/themes/admin/templates/modals/awards/create.html:114
-msgid "Cowboy"
-msgstr "牛仔"
-
-#: CTFd/forms/awards.py:29
-#: CTFd/themes/admin/templates/modals/awards/create.html:122
-msgid "Angry"
-msgstr "愤怒"
-
-#: CTFd/forms/challenges.py:11 CTFd/forms/submissions.py:11
-#: CTFd/forms/teams.py:199 CTFd/forms/teams.py:215 CTFd/forms/users.py:143
-#: CTFd/forms/users.py:161
-msgid "Search Field"
-msgstr "盾牌"
-
-#: CTFd/forms/challenges.py:14 CTFd/forms/submissions.py:14
-#: CTFd/forms/teams.py:202 CTFd/forms/users.py:146
-#: CTFd/themes/admin/templates/audiences/audiences.html:21
-#: CTFd/themes/admin/templates/challenges/challenges.html:78
-#: CTFd/themes/admin/templates/modules/module.html:88
-#: CTFd/themes/admin/templates/modules/modules.html:21
-#: CTFd/themes/admin/templates/submissions.html:87
-#: CTFd/themes/admin/templates/teams/teams.html:76
-#: CTFd/themes/admin/templates/users/users.html:76
-msgid "ID"
-msgstr "ID"
-
-#: CTFd/forms/challenges.py:16 CTFd/forms/users.py:187
-#: CTFd/themes/admin/templates/challenges/challenges.html:83
-#: CTFd/themes/admin/templates/submissions.html:93
-#: CTFd/themes/core/templates/challenge.html:294
-msgid "Type"
-msgstr "类型"
-
-#: CTFd/forms/challenges.py:21 CTFd/forms/submissions.py:22
-#: CTFd/forms/teams.py:209 CTFd/forms/teams.py:224 CTFd/forms/users.py:155
-#: CTFd/forms/users.py:171
-msgid "Parameter"
-msgstr "参数"
-
-#: CTFd/forms/challenges.py:22 CTFd/forms/submissions.py:23
-#: CTFd/forms/teams.py:210 CTFd/forms/teams.py:225 CTFd/forms/users.py:156
-#: CTFd/forms/users.py:175
-msgid "Search"
-msgstr "搜索"
-
-#: CTFd/forms/challenges.py:27 CTFd/forms/pages.py:45
-msgid "Upload Files"
-msgstr "上传文件"
-
-#: CTFd/forms/challenges.py:28 CTFd/forms/pages.py:46
-msgid "Attach multiple files using Control+Click or Cmd+Click."
-msgstr "使用 Control+Click 或 Cmd+Click 附加多个文件"
-
-#: CTFd/forms/challenges.py:31 CTFd/themes/admin/templates/configs/logo.html:29
-#: CTFd/themes/admin/templates/configs/logo.html:64
-msgid "Upload"
-msgstr "上传"
-
-#: CTFd/forms/config.py:33 CTFd/themes/admin/templates/config.html:62
-msgid "Accounts"
-msgstr "账户"
-
-#: CTFd/forms/config.py:34 CTFd/themes/admin/templates/reset.html:45
-msgid "Deletes all user and team accounts and their associated information"
-msgstr "删除所有用户和团队账户及其关联信息"
-
-#: CTFd/forms/config.py:37 CTFd/themes/admin/templates/base.html:70
-#: CTFd/themes/admin/templates/submissions.html:10
-#: CTFd/themes/core/templates/challenge.html:20
-msgid "Submissions"
-msgstr "提交记录"
-
-#: CTFd/forms/config.py:38 CTFd/themes/admin/templates/reset.html:56
-msgid "Deletes all records that accounts gained points or took an action"
-msgstr "删除所有账户获得积分或采取行动的记录"
-
-#: CTFd/forms/config.py:41 CTFd/forms/config.py:128
-#: CTFd/themes/admin/templates/base.html:65
-#: CTFd/themes/admin/templates/challenges/challenges.html:11
-#: CTFd/themes/admin/templates/config.html:82
-#: CTFd/themes/admin/templates/config.html:85
-#: CTFd/themes/core/templates/challenges.html:7
-#: CTFd/themes/core/templates/components/navbar.html:59
-msgid "Challenges"
-msgstr "挑战"
-
-#: CTFd/forms/config.py:41 CTFd/themes/admin/templates/reset.html:67
-msgid "Deletes all challenges and associated data"
-msgstr "删除所有题目及关联数据"
-
-#: CTFd/forms/config.py:44 CTFd/themes/admin/templates/base.html:54
-#: CTFd/themes/admin/templates/config.html:106
-#: CTFd/themes/admin/templates/pages.html:9
-msgid "Pages"
-msgstr "页面"
-
-#: CTFd/forms/config.py:44 CTFd/themes/admin/templates/reset.html:78
-msgid "Deletes all pages and their associated files"
-msgstr "删除所有页面及其关联文件"
-
-#: CTFd/forms/config.py:47 CTFd/themes/admin/templates/base.html:51
-#: CTFd/themes/admin/templates/notifications.html:6
-#: CTFd/themes/core/templates/components/navbar.html:85
-#: CTFd/themes/core/templates/components/navbar.html:91
-#: CTFd/themes/core/templates/notifications.html:7
-msgid "Notifications"
-msgstr "通知"
-
-#: CTFd/forms/config.py:47 CTFd/themes/admin/templates/reset.html:89
-msgid "Deletes all notifications"
-msgstr "删除所有通知"
-
-#: CTFd/forms/config.py:49
-msgid "Reset CTF"
-msgstr "重置"
-
-#: CTFd/forms/config.py:54
-msgid "Email Domain Allowlist"
-msgstr "邮箱域名白名单"
-
-#: CTFd/forms/config.py:55
-msgid ""
-"Comma-seperated list of allowable email domains which users can register "
-"under (e.g. examplectf.com, example.com, *.example.com)"
-msgstr "允许用户注册的邮箱域名逗号分隔列表（例如 examplectf.com、example.com、*.example.com）"
-
-#: CTFd/forms/config.py:58
-msgid "Email Domain Blocklist"
-msgstr "邮箱域名黑名单"
-
-#: CTFd/forms/config.py:59
-msgid ""
-"Comma-seperated list of disallowed email domains which users cannot "
-"register under (e.g. examplectf.com, example.com, *.example.com)"
-msgstr "不允许用户注册的邮箱域名逗号分隔列表（例如 examplectf.com、example.com、*.example.com）"
-
-#: CTFd/forms/config.py:62
-msgid "Team Creation"
-msgstr "创建团队"
-
-#: CTFd/forms/config.py:63
-msgid "Control whether users can create their own teams (Teams mode only)"
-msgstr "控制用户是以个人身份参与（用户模式）还是组成团队参与（团队模式）。"
-
-#: CTFd/forms/config.py:64 CTFd/forms/config.py:89 CTFd/forms/config.py:104
-#: CTFd/forms/config.py:139 CTFd/forms/config.py:174 CTFd/forms/config.py:191
-#: CTFd/forms/setup.py:93 CTFd/forms/setup.py:155
-#: CTFd/themes/admin/templates/configs/sanitize.html:18
-msgid "Enabled"
-msgstr "启用"
-
-#: CTFd/forms/config.py:64 CTFd/forms/config.py:89 CTFd/forms/config.py:97
-#: CTFd/forms/config.py:104 CTFd/forms/config.py:139 CTFd/forms/config.py:174
-#: CTFd/forms/config.py:191 CTFd/forms/setup.py:93 CTFd/forms/setup.py:155
-#: CTFd/themes/admin/templates/configs/sanitize.html:21
-msgid "Disabled"
-msgstr "禁用"
-
-#: CTFd/forms/config.py:69
-msgid "Maximum number of users per team (Teams mode only)"
-msgstr "每个团队的最大用户数（仅团队模式）"
-
-#: CTFd/forms/config.py:72
-msgid "Maximum Number of Teams"
-msgstr "最大团队数"
-
-#: CTFd/forms/config.py:74
-msgid ""
-"Maximum number of teams allowed to register with this CTF (Teams mode "
-"only)"
-msgstr "允许注册此 CTF 的最大团队数（仅团队模式）"
-
-#: CTFd/forms/config.py:77
-msgid "Maximum Number of Users"
-msgstr "最大用户数"
-
-#: CTFd/forms/config.py:79
-msgid "Maximum number of user accounts allowed to register with this CTF"
-msgstr "允许注册此 CTF 的最大用户账户数"
-
-#: CTFd/forms/config.py:82 CTFd/forms/config.py:84
-msgid "Minimum Password Length for Users"
-msgstr "用户最小密码长度"
-
-#: CTFd/forms/config.py:87 CTFd/forms/setup.py:91
-msgid "Verify Emails"
-msgstr "验证邮箱"
-
-#: CTFd/forms/config.py:88
-msgid "Control whether users must confirm their email addresses before playing"
-msgstr "控制用户是否必须在参与前确认其邮箱地址"
-
-#: CTFd/forms/config.py:93
-msgid "Team Disbanding"
-msgstr "团队解散"
-
-#: CTFd/forms/config.py:94
-msgid "Control whether team captains are allowed to disband their own teams"
-msgstr "控制团队队长是否可以解散自己的团队"
-
-#: CTFd/forms/config.py:96
-msgid "Enabled for Inactive Teams"
-msgstr "对非活跃团队启用"
-
-#: CTFd/forms/config.py:102
-msgid "Name Changes"
-msgstr "名称更改"
-
-#: CTFd/forms/config.py:103
-msgid "Control whether users and teams can change their names"
-msgstr "控制用户和团队是否可以更改名称"
-
-#: CTFd/forms/config.py:108
-msgid "Incorrect Submissions per Minute"
-msgstr "错误提交"
-
-#: CTFd/forms/config.py:110
-msgid ""
-"Number of submissions allowed per minute for flag bruteforce protection "
-"(default: 10)"
-msgstr "为防止 flag 暴力破解，每分钟允许的提交次数（默认：10）"
-
-#: CTFd/forms/config.py:113 CTFd/forms/config.py:147 CTFd/forms/config.py:167
-#: CTFd/forms/config.py:350
-#: CTFd/themes/admin/templates/challenges/update.html:188
-#: CTFd/themes/admin/templates/configs/challenges.html:53
-#: CTFd/themes/admin/templates/configs/general.html:23
-#: CTFd/themes/admin/templates/configs/localization.html:16
-#: CTFd/themes/admin/templates/configs/mlc.html:31
-#: CTFd/themes/admin/templates/configs/pause.html:15
-#: CTFd/themes/admin/templates/configs/registration_code.html:12
-#: CTFd/themes/admin/templates/configs/robots.html:12
-#: CTFd/themes/admin/templates/configs/sanitize.html:26
-#: CTFd/themes/admin/templates/configs/theme.html:89
-#: CTFd/themes/admin/templates/configs/time.html:209
-#: CTFd/themes/admin/templates/configs/usermode.html:69
-#: CTFd/themes/admin/templates/configs/visibility.html:48
-#: CTFd/themes/core/templates/config.html:44
-msgid "Update"
-msgstr "更新"
-
-#: CTFd/forms/config.py:117
-msgid "Database Table"
-msgstr "数据库表"
-
-#: CTFd/forms/config.py:118 CTFd/themes/admin/templates/configs/backup.html:10
-#: CTFd/themes/admin/templates/configs/backup.html:56
-msgid "Download CSV"
-msgstr "下载 CSV"
-
-#: CTFd/forms/config.py:123
-msgid "CSV Type"
-msgstr "类型"
-
-#: CTFd/forms/config.py:125 CTFd/themes/admin/templates/base.html:60
-#: CTFd/themes/admin/templates/config.html:59
-#: CTFd/themes/admin/templates/configs/fields.html:12
-#: CTFd/themes/admin/templates/scoreboard.html:33
-#: CTFd/themes/admin/templates/users/users.html:9
-#: CTFd/themes/core/templates/components/navbar.html:36
-#: CTFd/themes/core/templates/users/users.html:6
-msgid "Users"
-msgstr "用户"
-
-#: CTFd/forms/config.py:126 CTFd/themes/admin/templates/base.html:62
-#: CTFd/themes/admin/templates/configs/fields.html:17
-#: CTFd/themes/admin/templates/scoreboard.html:28
-#: CTFd/themes/admin/templates/teams/teams.html:9
-#: CTFd/themes/core/templates/components/navbar.html:43
-#: CTFd/themes/core/templates/teams/teams.html:6
-msgid "Teams"
-msgstr "团队"
-
-#: CTFd/forms/config.py:127
-msgid "Users with Teams"
-msgstr "编辑队伍"
-
-#: CTFd/forms/config.py:130
-msgid "Type of CSV data"
-msgstr "CSV 数据类型"
-
-#: CTFd/forms/config.py:132
-msgid "CSV File"
-msgstr "文件"
-
-#: CTFd/forms/config.py:132
-msgid "CSV file contents"
-msgstr "CSV 文件内容"
-
-#: CTFd/forms/config.py:137 CTFd/forms/setup.py:153
-msgid "Social Shares"
-msgstr "社交分享"
-
-#: CTFd/forms/config.py:138
-msgid "Enable or Disable social sharing links for challenge solves"
-msgstr "启用或禁用题目解答的社交分享链接"
-
-#: CTFd/forms/config.py:143
-msgid "Social Share Solve Template"
-msgstr "社交分享解答模板"
-
-#: CTFd/forms/config.py:144
-msgid "HTML for Share Template"
-msgstr "分享模板的 HTML"
-
-#: CTFd/forms/config.py:152
-msgid "Terms of Service URL"
-msgstr "服务条款"
-
-#: CTFd/forms/config.py:153
-msgid "External URL to a Terms of Service document hosted elsewhere"
-msgstr "指向托管在其他位置的服务条款文档的外部 URL"
-
-#: CTFd/forms/config.py:156 CTFd/themes/admin/templates/configs/legal.html:8
-msgid "Terms of Service"
-msgstr "服务条款"
-
-#: CTFd/forms/config.py:157
-msgid "Text shown on the Terms of Service page"
-msgstr "服务条款页面上显示的文本"
-
-#: CTFd/forms/config.py:160
-msgid "Privacy Policy URL"
-msgstr "隐私政策"
-
-#: CTFd/forms/config.py:161
-msgid "External URL to a Privacy Policy document hosted elsewhere"
-msgstr "指向托管在其他位置的隐私政策文档的外部 URL"
-
-#: CTFd/forms/config.py:164 CTFd/themes/admin/templates/configs/legal.html:13
-msgid "Privacy Policy"
-msgstr "隐私政策"
-
-#: CTFd/forms/config.py:165
-msgid "Text shown on the Privacy Policy page"
-msgstr "隐私政策页面上显示的文本"
-
-#: CTFd/forms/config.py:172
-msgid "View Self Submissions"
-msgstr "所有提交"
-
-#: CTFd/forms/config.py:173
-msgid "Allow users to view their previous submissions"
-msgstr "允许用户查看他们之前的提交"
-
-#: CTFd/forms/config.py:178
-msgid "Max Attempts Behavior"
-msgstr "最大尝试次数"
-
-#: CTFd/forms/config.py:179
-msgid "Set Max Attempts behavior to be a lockout or a timeout"
-msgstr "设置最大尝试次数行为为锁定或超时"
-
-#: CTFd/forms/config.py:180
-msgid "lockout"
-msgstr "锁定"
-
-#: CTFd/forms/config.py:180
-msgid "timeout"
-msgstr "时间"
-
-#: CTFd/forms/config.py:184
-msgid "Max Attempts Timeout Duration"
-msgstr "最大尝试次数超时时长"
-
-#: CTFd/forms/config.py:185
-msgid ""
-"How long the timeout lasts in seconds for max attempts (if set to "
-"timeout). Default is 300 seconds"
-msgstr "最大尝试次数超时持续时间（秒）（如果设置为超时）。默认为 300 秒"
-
-#: CTFd/forms/config.py:189
-msgid "Hints Free Public Access"
-msgstr "提示免费公开访问"
-
-#: CTFd/forms/config.py:190
-msgid ""
-"Control whether users must be logged in to see free hints (hints without "
-"cost or requirements)"
-msgstr "控制用户是否必须登录才能查看免费提示（无成本或要求的提示）"
-
-#: CTFd/forms/config.py:195
-#: CTFd/themes/admin/templates/challenges/challenge.html:99
-msgid "Challenge Ratings"
-msgstr "挑战评分"
-
-#: CTFd/forms/config.py:196
-msgid "Control who can see and submit challenge ratings"
-msgstr "控制谁可以查看和提交题目评分"
-
-#: CTFd/forms/config.py:198
-msgid "Public (users can submit ratings and see aggregated ratings)"
-msgstr "公开（用户可以提交评分并查看汇总评分）"
-
-#: CTFd/forms/config.py:201
-msgid "Private (users can submit ratings but cannot see aggregated ratings)"
-msgstr "私有（用户可以提交评分但无法查看汇总评分）"
-
-#: CTFd/forms/config.py:205
-msgid "Disabled (users cannot submit ratings or see aggregated ratings)"
-msgstr "禁用（用户无法提交评分或查看汇总评分）"
-
-#: CTFd/forms/config.py:214 CTFd/forms/setup.py:102
-msgid "Challenge Visibility"
-msgstr "挑战类型"
-
-#: CTFd/forms/config.py:215 CTFd/forms/setup.py:103
-msgid "Control whether users must be logged in to see challenges"
-msgstr "控制用户是否需要登录才能查看题目"
-
-#: CTFd/forms/config.py:217 CTFd/forms/config.py:227 CTFd/forms/config.py:237
-#: CTFd/forms/config.py:248 CTFd/forms/setup.py:105 CTFd/forms/setup.py:115
-#: CTFd/forms/setup.py:125 CTFd/forms/setup.py:136
-msgid "Public"
-msgstr "公开"
-
-#: CTFd/forms/config.py:218 CTFd/forms/config.py:228 CTFd/forms/config.py:238
-#: CTFd/forms/config.py:249 CTFd/forms/setup.py:106 CTFd/forms/setup.py:116
-#: CTFd/forms/setup.py:126 CTFd/forms/setup.py:137
-msgid "Private"
-msgstr "私有"
-
-#: CTFd/forms/config.py:219 CTFd/forms/config.py:229 CTFd/forms/config.py:240
-#: CTFd/forms/setup.py:107 CTFd/forms/setup.py:117 CTFd/forms/setup.py:128
-msgid "Admins Only"
-msgstr "仅管理员"
-
-#: CTFd/forms/config.py:224 CTFd/forms/setup.py:112
-msgid "Account Visibility"
-msgstr "可见性"
-
-#: CTFd/forms/config.py:225 CTFd/forms/setup.py:113
-msgid ""
-"Control whether accounts (users & teams) are shown to everyone, only to "
-"authenticated users, or only to admins"
-msgstr "控制账号（用户和团队）是对所有人可见、仅对已登录用户可见还是仅对管理员可见"
-
-#: CTFd/forms/config.py:234 CTFd/forms/setup.py:122
-msgid "Score Visibility"
-msgstr "可见性"
-
-#: CTFd/forms/config.py:235 CTFd/forms/setup.py:123
-msgid ""
-"Control whether solves/score are shown to the public, to logged in users,"
-" hidden to all non-admins, or only shown to admins"
-msgstr "控制解题记录/得分是对所有人可见、仅对已登录用户可见、对非管理员隐藏还是仅对管理员可见"
-
-#: CTFd/forms/config.py:239 CTFd/forms/pages.py:24 CTFd/forms/setup.py:127
-#: CTFd/forms/teams.py:235 CTFd/forms/users.py:190
-#: CTFd/themes/admin/templates/challenges/new.html:63
-#: CTFd/themes/admin/templates/challenges/update.html:180
-#: CTFd/themes/admin/templates/pages.html:44
-#: CTFd/themes/admin/templates/pages.html:72
-#: CTFd/themes/admin/templates/teams/teams.html:79
-#: CTFd/themes/admin/templates/users/users.html:82
-msgid "Hidden"
-msgstr "隐藏"
-
-#: CTFd/forms/config.py:245 CTFd/forms/setup.py:133
-msgid "Registration Visibility"
-msgstr "注册"
-
-#: CTFd/forms/config.py:246 CTFd/forms/setup.py:134
-msgid "Control whether registration is enabled for everyone or disabled"
-msgstr "控制注册是对所有人开放还是关闭"
-
-#: CTFd/forms/config.py:250 CTFd/forms/setup.py:138
-msgid "MajorLeagueCyber Only"
-msgstr "MajorLeagueCyber"
-
-#: CTFd/forms/config.py:258
-msgid "Default Language"
-msgstr "无效的语言"
-
-#: CTFd/forms/config.py:259
-msgid ""
-"Language to use if a user does not specify a language in their account "
-"settings. By default, CTFd will auto-detect the user's preferred "
-"language."
-msgstr "当用户未在账户设置中指定语言时使用的语言。默认情况下，CTFd 会自动检测用户的首选语言。"
-
-#: CTFd/forms/config.py:267
-msgid "Mail From Address"
-msgstr "IP 地址"
-
-#: CTFd/forms/config.py:267
-msgid "Email address used to send email"
-msgstr "用于发送邮件的邮箱地址"
-
-#: CTFd/forms/config.py:270
-msgid "Mail Server Address"
-msgstr "邮件服务器"
-
-#: CTFd/forms/config.py:271
-msgid "Change the email server used by CTFd to send email"
-msgstr "更改 CTFd 用于发送邮件的邮件服务器"
-
-#: CTFd/forms/config.py:274 CTFd/forms/config.py:276
-msgid "Mail Server Port"
-msgstr "邮件服务器端口"
-
-#: CTFd/forms/config.py:278
-msgid "Use Mail Server Username and Password"
-msgstr "使用邮件服务器用户名和密码"
-
-#: CTFd/forms/config.py:279
-msgid "Username"
-msgstr "用户名"
-
-#: CTFd/forms/config.py:279
-msgid "Mail Server Account Username"
-msgstr "邮件服务器账户用户名"
-
-#: CTFd/forms/config.py:280
-msgid "Mail Server Account Password"
-msgstr "邮件服务器账户密码"
-
-#: CTFd/forms/config.py:281
-msgid "TLS/SSL"
-msgstr "TLS/SSL"
-
-#: CTFd/forms/config.py:282
-msgid "STARTTLS"
-msgstr "开始时间"
-
-#: CTFd/forms/config.py:286
-msgid "Mailgun API Base URL"
-msgstr "Mailgun API 基础 URL"
-
-#: CTFd/forms/config.py:288
-msgid "Mailgun API Key"
-msgstr "Mailgun API 密钥"
-
-#: CTFd/forms/config.py:292 CTFd/forms/config.py:304 CTFd/forms/config.py:316
-#: CTFd/forms/config.py:328 CTFd/forms/config.py:340
-msgid "Subject"
-msgstr "提交"
-
-#: CTFd/forms/config.py:293
-msgid "Subject line for registration confirmation email"
-msgstr "注册确认邮件的主题行"
-
-#: CTFd/forms/config.py:297 CTFd/forms/config.py:309 CTFd/forms/config.py:321
-#: CTFd/forms/config.py:333 CTFd/forms/config.py:345
-msgid "Body"
-msgstr "正文"
-
-#: CTFd/forms/config.py:298
-msgid "Email body sent to users after they've finished registering"
-msgstr "用户完成注册后发送的邮件"
-
-#: CTFd/forms/config.py:305
-msgid "Subject line for account verification email"
-msgstr "账户验证邮件的主题行"
-
-#: CTFd/forms/config.py:310
-msgid ""
-"Email body sent to users to confirm their account at the address they "
-"provided during registration"
-msgstr "发送给用户的邮件，用于确认其注册时提供的邮箱地址。您可以在<a href=\"#accounts\">账户设置</a>中要求邮箱验证。"
-
-#: CTFd/forms/config.py:317
-msgid "Subject line for new account details email"
-msgstr "新账户详情邮件的主题行"
-
-#: CTFd/forms/config.py:322
-msgid ""
-"Email body sent to new users (manually created by an admin) with their "
-"initial account details"
-msgstr "发送给新用户<i>（由管理员手动创建）</i>的邮件，包含其初始账户信息"
-
-#: CTFd/forms/config.py:329
-msgid "Subject line for password reset request email"
-msgstr "密码重置请求邮件的主题行"
-
-#: CTFd/forms/config.py:334
-msgid "Email body sent when a user requests a password reset"
-msgstr "用户请求重置密码时发送的邮件"
-
-#: CTFd/forms/config.py:341
-msgid "Subject line for password reset confirmation email"
-msgstr "密码重置确认邮件的主题行"
-
-#: CTFd/forms/config.py:346
-msgid "Email body sent when a user successfully resets their password"
-msgstr "用户成功重置密码后发送的邮件"
-
-#: CTFd/forms/email.py:10 CTFd/themes/admin/templates/challenges/update.html:28
-msgid "Message"
-msgstr "消息"
-
-#: CTFd/forms/email.py:11
-msgid "Send"
-msgstr "盾牌"
-
-#: CTFd/forms/notifications.py:10 CTFd/forms/pages.py:17
-#: CTFd/themes/admin/templates/pages.html:41
-msgid "Title"
-msgstr "标题"
-
-#: CTFd/forms/notifications.py:10
-msgid "Notification title"
-msgstr "通知"
-
-#: CTFd/forms/notifications.py:12 CTFd/forms/pages.py:26
-#: CTFd/themes/admin/templates/editor.html:81
-msgid "Content"
-msgstr "内容"
-
-#: CTFd/forms/notifications.py:13
-msgid "Notification contents. Can consist of HTML and/or Markdown."
-msgstr "通知内容。可以包含 HTML 和/或 Markdown。"
-
-#: CTFd/forms/notifications.py:16
-msgid "Notification Type"
-msgstr "通知类型"
-
-#: CTFd/forms/notifications.py:17
-msgid "Toast"
-msgstr "Toast提示"
-
-#: CTFd/forms/notifications.py:17
-msgid "Alert"
-msgstr "警告"
-
-#: CTFd/forms/notifications.py:17
-msgid "Background"
-msgstr "备份"
-
-#: CTFd/forms/notifications.py:19
-msgid "What type of notification users receive"
-msgstr "用户接收的通知类型"
-
-#: CTFd/forms/notifications.py:23
-msgid "Play Sound"
-msgstr "播放声音"
-
-#: CTFd/forms/notifications.py:25
-msgid "Play sound for users when they receive the notification"
-msgstr "用户收到通知时播放声音"
-
-#: CTFd/forms/pages.py:17
-msgid "This is the title shown on the navigation bar"
-msgstr "导航栏上显示的标题"
-
-#: CTFd/forms/pages.py:20 CTFd/themes/admin/templates/pages.html:42
-msgid "Route"
-msgstr "路由"
-
-#: CTFd/forms/pages.py:21
-msgid ""
-"This is the URL route that your page will be at (e.g. /page). You can "
-"also enter links to link to that page."
-msgstr "页面的 URL 路由（例如 /page）。您也可以输入链接以链接到该页面。"
-
-#: CTFd/forms/pages.py:23 CTFd/themes/admin/templates/pages.html:78
-msgid "Draft"
-msgstr "草稿"
-
-#: CTFd/forms/pages.py:25
-msgid "Authentication Required"
-msgstr "需要登录"
-
-#: CTFd/forms/pages.py:28
-msgid "Format"
-msgstr "格式"
-
-#: CTFd/forms/pages.py:29
-msgid "Markdown"
-msgstr "皇冠"
-
-#: CTFd/forms/pages.py:29
-msgid "HTML"
-msgstr "HTML"
-
-#: CTFd/forms/pages.py:32
-msgid "The markup format used to render the page"
-msgstr "用于渲染页面的标记格式"
-
-#: CTFd/forms/pages.py:35
-msgid "Target"
-msgstr "目标"
-
-#: CTFd/forms/pages.py:36
-msgid "Current Page"
-msgstr "当前页面"
-
-#: CTFd/forms/pages.py:36
-msgid "New Tab"
-msgstr "新建页面"
-
-#: CTFd/forms/pages.py:39
-msgid "Context to open page in"
-msgstr "页面打开的上下文"
-
-#: CTFd/forms/pages.py:49
-msgid "Page Type"
-msgstr "页面类型"
-
-#: CTFd/forms/self.py:23 CTFd/forms/users.py:181
-msgid "Language"
-msgstr "语言"
-
-#: CTFd/forms/self.py:25
-msgid "Current Password"
-msgstr "重置密码"
-
-#: CTFd/forms/self.py:26 CTFd/forms/teams.py:140 CTFd/forms/teams.py:203
-#: CTFd/forms/teams.py:218 CTFd/forms/teams.py:233 CTFd/forms/users.py:148
-#: CTFd/forms/users.py:164 CTFd/forms/users.py:184
-#: CTFd/themes/core/templates/teams/teams.html:51
-#: CTFd/themes/core/templates/users/users.html:48
-msgid "Affiliation"
-msgstr "隶属关系"
-
-#: CTFd/forms/self.py:27 CTFd/forms/teams.py:146 CTFd/forms/teams.py:204
-#: CTFd/forms/teams.py:219 CTFd/forms/teams.py:232 CTFd/forms/users.py:149
-#: CTFd/forms/users.py:165 CTFd/forms/users.py:183
-#: CTFd/themes/core/templates/teams/teams.html:50
-#: CTFd/themes/core/templates/users/users.html:47
-msgid "Website"
-msgstr "网站"
-
-#: CTFd/forms/self.py:28 CTFd/forms/teams.py:150 CTFd/forms/teams.py:234
-#: CTFd/forms/users.py:185
-#: CTFd/themes/admin/templates/modals/teams/addresses.html:10
-#: CTFd/themes/admin/templates/modals/users/addresses.html:9
-#: CTFd/themes/admin/templates/teams/teams.html:78
-#: CTFd/themes/admin/templates/users/users.html:79
-#: CTFd/themes/core/templates/teams/teams.html:52
-#: CTFd/themes/core/templates/users/users.html:49
-msgid "Country"
-msgstr "国家"
-
-#: CTFd/forms/self.py:59 CTFd/themes/core/templates/settings.html:225
-msgid "Expiration"
-msgstr "到期时间"
-
-#: CTFd/forms/self.py:60
-msgid "Usage Description"
-msgstr "使用说明"
-
-#: CTFd/forms/self.py:61
-msgid "Generate"
-msgstr "通用"
-
-#: CTFd/forms/setup.py:30 CTFd/themes/admin/templates/configs/general.html:5
-msgid "Event Name"
-msgstr "活动名称"
-
-#: CTFd/forms/setup.py:30
-msgid "The name of your CTF event/workshop"
-msgstr "挑战名称"
-
-#: CTFd/forms/setup.py:33 CTFd/themes/admin/templates/configs/general.html:14
-msgid "Event Description"
-msgstr "活动描述"
-
-#: CTFd/forms/setup.py:33
-msgid "Description for the CTF"
-msgstr "描述"
-
-#: CTFd/forms/setup.py:36 CTFd/forms/setup.py:37
-#: CTFd/themes/admin/templates/config.html:161
-#: CTFd/themes/admin/templates/configs/usermode.html:5
-#: CTFd/themes/admin/templates/configs/usermode.html:43
-msgid "User Mode"
-msgstr "用户模式"
-
-#: CTFd/forms/setup.py:37 CTFd/themes/admin/templates/configs/usermode.html:19
-msgid "Team Mode"
-msgstr "团队模式"
-
-#: CTFd/forms/setup.py:40
-msgid ""
-"Controls whether users join together in teams to play (Team Mode) or play"
-" as themselves (User Mode)"
-msgstr "控制用户是组队（团队模式）还是个人（个人模式）"
-
-#: CTFd/forms/setup.py:46
-msgid "Admin Username"
-msgstr "管理员用户名"
-
-#: CTFd/forms/setup.py:47
-msgid "Your username for the administration account"
-msgstr "您的管理员账号用户名"
-
-#: CTFd/forms/setup.py:51
-msgid "Admin Email"
-msgstr "管理面板"
-
-#: CTFd/forms/setup.py:52
-msgid "Your email address for the administration account"
-msgstr "您的管理员账号邮箱地址"
-
-#: CTFd/forms/setup.py:56
-msgid "Admin Password"
-msgstr "重置密码"
-
-#: CTFd/forms/setup.py:57
-msgid "Your password for the administration account"
-msgstr "您的管理员账号密码"
-
-#: CTFd/forms/setup.py:62 CTFd/themes/admin/templates/config.html:27
-#: CTFd/themes/admin/templates/configs/logo.html:5
-msgid "Logo"
-msgstr "站标"
-
-#: CTFd/forms/setup.py:64
-msgid ""
-"Logo to use for the website instead of a CTF name. Used as the home page "
-"button. Optional."
-msgstr "用于网站的 Logo，替代 CTF 名称。"
-
-#: CTFd/forms/setup.py:68
-msgid "Banner"
-msgstr "已封禁"
-
-#: CTFd/forms/setup.py:68
-msgid "Banner to use for the homepage. Optional."
-msgstr "用作主页的背景图。可选项。"
-
-#: CTFd/forms/setup.py:71 CTFd/themes/admin/templates/configs/logo.html:59
-msgid "Small Icon"
-msgstr "小站标"
-
-#: CTFd/forms/setup.py:73
-msgid ""
-"favicon used in user's browsers. Only PNGs accepted. Must be 32x32px. "
-"Optional."
-msgstr "用户浏览器中使用的图标。仅接受32x32px的PNG文件。可选项。"
-
-#: CTFd/forms/setup.py:77 CTFd/themes/admin/templates/config.html:32
-#: CTFd/themes/admin/templates/configs/theme.html:18
-msgid "Theme"
-msgstr "主题"
-
-#: CTFd/forms/setup.py:78
-msgid "CTFd Theme to use. Can be changed later."
-msgstr "CTFd主题。可稍后更改。"
-
-#: CTFd/forms/setup.py:84
-msgid "Theme Color"
-msgstr "主题颜色"
-
-#: CTFd/forms/setup.py:86
-msgid ""
-"Color used by theme to control aesthetics. Requires theme support. "
-"Optional."
-msgstr "主题功能的基础颜色，需要主题支持。"
-
-#: CTFd/forms/setup.py:92
-msgid ""
-"Control whether users must confirm their email addresses before "
-"participating"
-msgstr "控制用户是否必须确认邮箱地址后才能参与"
-
-#: CTFd/forms/setup.py:97
-msgid "Team Size"
-msgstr "队伍"
-
-#: CTFd/forms/setup.py:99
-msgid "Amount of users per team (Teams mode only) Optional."
-msgstr "每队人数上限（仅团队模式）可选项。"
-
-#: CTFd/forms/setup.py:144 CTFd/themes/admin/templates/configs/time.html:6
-msgid "Start Time"
-msgstr "开始时间"
-
-#: CTFd/forms/setup.py:145
-msgid "Time when your CTF is scheduled to start. Optional."
-msgstr "CTF计划开始的时间。可选项。"
-
-#: CTFd/forms/setup.py:148 CTFd/themes/admin/templates/configs/time.html:11
-msgid "End Time"
-msgstr "结束时间"
-
-#: CTFd/forms/setup.py:149
-msgid "Time when your CTF is scheduled to end. Optional."
-msgstr "您的CTF计划结束的时间。可选项。"
-
-#: CTFd/forms/setup.py:154
-msgid "Control whether users can share links commemorating their challenge solves"
-msgstr "控制用户是否可以分享庆祝解题的链接"
-
-#: CTFd/forms/setup.py:158 CTFd/themes/admin/templates/challenges/new.html:68
-msgid "Finish"
-msgstr "完成"
-
-#: CTFd/forms/submissions.py:13 CTFd/themes/admin/templates/submissions.html:94
-msgid "Provided"
-msgstr "已提供"
-
-#: CTFd/forms/submissions.py:15
-msgid "Account ID"
-msgstr "账户 ID"
-
-#: CTFd/forms/submissions.py:16
-msgid "Challenge ID"
-msgstr "挑战"
-
-#: CTFd/forms/submissions.py:17
-#: CTFd/themes/admin/templates/challenges/update.html:9
-msgid "Challenge Name"
-msgstr "挑战名称"
-
-#: CTFd/forms/teams.py:31 CTFd/forms/users.py:133
-#: CTFd/themes/admin/templates/scoreboard/standings.html:11
-#: CTFd/themes/admin/templates/scoreboard/users.html:11
-msgid "Bracket"
-msgstr "组别"
-
-#: CTFd/forms/teams.py:32
-msgid "Competition bracket for your team"
-msgstr "团队的竞赛分组"
-
-#: CTFd/forms/teams.py:102 CTFd/forms/teams.py:109 CTFd/forms/teams.py:127
-#: CTFd/forms/teams.py:229
-msgid "Team Name"
-msgstr "队伍名称"
-
-#: CTFd/forms/teams.py:103 CTFd/forms/teams.py:110
-msgid "Team Password"
-msgstr "队伍密码"
-
-#: CTFd/forms/teams.py:104 CTFd/forms/teams.py:289
-msgid "Join"
-msgstr "登录"
-
-#: CTFd/forms/teams.py:128
-msgid "Your team's public name shown to other competitors"
-msgstr "公开您的队伍名称给其他参赛者"
-
-#: CTFd/forms/teams.py:131
-msgid "New Team Password"
-msgstr "重置密码"
-
-#: CTFd/forms/teams.py:131
-msgid "Set a new team join password"
-msgstr "设置新队伍加入密码"
-
-#: CTFd/forms/teams.py:134
-msgid "Confirm Current Team Password"
-msgstr "请确认您当前的密码"
-
-#: CTFd/forms/teams.py:136
-msgid ""
-"Provide your current team password (or your password) to update your "
-"team's password"
-msgstr "提供您当前的队伍密码（或您的密码）以更新您团队的密码"
-
-#: CTFd/forms/teams.py:142
-msgid "Your team's affiliation publicly shown to other competitors"
-msgstr "向其他参赛者公开展示您的队伍隶属关系"
-
-#: CTFd/forms/teams.py:147
-msgid "Your team's website publicly shown to other competitors"
-msgstr "向其他参赛者公开展示您的队伍网站"
-
-#: CTFd/forms/teams.py:152
-msgid "Your team's country publicly shown to other competitors"
-msgstr "向其他参赛者公开展示您队伍的国家"
-
-#: CTFd/forms/teams.py:192
-#: CTFd/themes/admin/templates/modals/teams/captain.html:4
-msgid "Team Captain"
-msgstr "队长"
-
-#: CTFd/forms/teams.py:236 CTFd/forms/users.py:191
-#: CTFd/themes/admin/templates/teams/teams.html:80
-#: CTFd/themes/admin/templates/users/users.html:83
-msgid "Banned"
-msgstr "已封禁"
-
-#: CTFd/forms/teams.py:285
-msgid "Invite Link"
-msgstr "团队邀请链接"
-
-#: CTFd/forms/users.py:108 CTFd/themes/admin/templates/config.html:77
-#: CTFd/themes/admin/templates/configs/registration_code.html:5
-#: CTFd/themes/admin/templates/configs/registration_code.html:8
-msgid "Registration Code"
-msgstr "注册码"
-
-#: CTFd/forms/users.py:109
-msgid "Registration code required to create account"
-msgstr "注册账户需要注册码（SSO 登录除外）"
-
-#: CTFd/forms/users.py:134
-msgid "Competition bracket for your user"
-msgstr "用户所在的竞赛组别"
-
-#: CTFd/forms/users.py:150
-#: CTFd/themes/admin/templates/modals/teams/addresses.html:7
-#: CTFd/themes/admin/templates/modals/users/addresses.html:6
-msgid "IP Address"
-msgstr "IP 地址"
-
-#: CTFd/forms/users.py:172
-msgid "Search for matching users"
-msgstr "搜索用户"
-
-#: CTFd/forms/users.py:187
-#: CTFd/themes/admin/templates/audiences/audience.html:89
-#: CTFd/themes/admin/templates/modals/teams/addresses.html:6
-#: CTFd/themes/admin/templates/scoreboard/users.html:10
-#: CTFd/themes/admin/templates/submissions.html:89
-#: CTFd/themes/admin/templates/teams/team.html:351
-#: CTFd/themes/admin/templates/teams/team.html:420
-#: CTFd/themes/admin/templates/teams/team.html:482
-#: CTFd/themes/admin/templates/users/users.html:77
-#: CTFd/themes/core/templates/users/users.html:46
-msgid "User"
-msgstr "用户"
-
-#: CTFd/forms/users.py:187 CTFd/themes/admin/templates/users/users.html:80
-msgid "Admin"
-msgstr "管理员"
-
-#: CTFd/forms/users.py:189 CTFd/themes/admin/templates/users/users.html:81
-msgid "Verified"
-msgstr "已验证"
-
-#: CTFd/forms/users.py:192
-msgid "Require password change on next login"
-msgstr "下次登录时需要修改密码"
-
-#: CTFd/forms/users.py:226
-msgid "Email account credentials to user"
-msgstr "将账号凭据发送至用户邮箱"
+#: CTFd/cli/__init__.py:89
+#, python-format
+msgid "Import Failure: %(error)s"
+msgstr "导入失败：%(error)s"
 
 #: CTFd/models/__init__.py:213
 #, python-format
@@ -1588,33 +270,11 @@ msgstr "'%(attr)s' 的输入无效"
 msgid "Duplicate solve for user %(user_id)s on challenge %(challenge_id)s"
 msgstr "用户 %(user_id)s 对题目 %(challenge_id)s 的重复解答"
 
-#: CTFd/plugins/challenges/logic.py:17 CTFd/plugins/challenges/logic.py:56
-#: CTFd/plugins/challenges/logic.py:108 CTFd/plugins/challenges/logic.py:122
-msgid "Correct"
-msgstr "正确"
-
-#: CTFd/plugins/challenges/logic.py:26 CTFd/plugins/challenges/logic.py:70
-#: CTFd/plugins/challenges/logic.py:100 CTFd/plugins/challenges/logic.py:131
-msgid "Incorrect"
-msgstr "错误提交"
-
-#: CTFd/plugins/challenges/logic.py:64
-msgid "Correct but more flags are required"
-msgstr "正确但需要更多 flag"
-
-#: CTFd/plugins/challenges/logic.py:114
-msgid "Correct but all team members must submit a flag"
-msgstr "正确但所有队员都需要提交 flag"
-
 #: CTFd/plugins/dynamic_challenges/__init__.py:63
 msgid "Missing initial value for challenge"
 msgstr "缺少题目的初始值"
 
-#: CTFd/plugins/flags/__init__.py:69
-msgid "Regex parse error occured"
-msgstr "正则表达式解析错误"
-
-#: CTFd/schemas/challenges.py:11 CTFd/schemas/challenges.py:18
+#: CTFd/schemas/challenges.py:18
 msgid "Error parsing challenge requirements"
 msgstr "解析挑战前置要求时出错"
 
@@ -1622,50 +282,10 @@ msgstr "解析挑战前置要求时出错"
 msgid "Challenge requirements cannot have a null prerequisite"
 msgstr "题目前置要求不能为空"
 
-#: CTFd/schemas/challenges.py:42
-msgid "Challenge could not be saved. Challenge name too long"
-msgstr "题目无法保存。题目名称过长"
-
-#: CTFd/schemas/challenges.py:54
-msgid "Challenge could not be saved. Challenge category too long"
-msgstr "题目无法保存。题目分类过长"
-
-#: CTFd/schemas/challenges.py:67
-msgid "Challenge could not be saved. Challenge description too long"
-msgstr "题目无法保存。题目描述过长"
-
-#: CTFd/schemas/challenges.py:79
-msgid "Challenge could not be saved. Challenge position is invalid"
-msgstr "题目无法保存。题目位置无效"
-
 #: CTFd/schemas/config.py:21
 #, python-format
 msgid "%(key)s config is too long"
 msgstr "%(key)s 配置过长"
-
-#: CTFd/schemas/pages.py:21
-msgid "Page could not be saved. Your title is too long."
-msgstr "页面无法保存。页面标题过长"
-
-#: CTFd/schemas/pages.py:34
-msgid "Page could not be saved. Your route is too long."
-msgstr "页面无法保存。页面路由过长"
-
-#: CTFd/schemas/pages.py:47
-msgid "Page could not be saved. Your content is too long."
-msgstr "页面无法保存。页面内容过长"
-
-#: CTFd/schemas/pages.py:59
-msgid "Invalid link target"
-msgstr "无效的链接目标"
-
-#: CTFd/schemas/teams.py:28
-msgid "Team names must not be empty"
-msgstr "队伍名称不能为空"
-
-#: CTFd/schemas/teams.py:35 CTFd/schemas/users.py:37
-msgid "Emails must be a properly formatted email address"
-msgstr "邮箱必须是格式正确的电子邮件地址"
 
 #: CTFd/schemas/teams.py:72 CTFd/schemas/teams.py:80 CTFd/schemas/teams.py:84
 #: CTFd/schemas/teams.py:99
@@ -1721,20 +341,12 @@ msgstr "请联系管理员更改您的分组"
 #: CTFd/schemas/teams.py:311 CTFd/schemas/users.py:305
 #, python-format
 msgid "Field '%(field)s' is required"
-msgstr "受众 ID 是必填的"
+msgstr "字段 '%(field)s' 是必填的"
 
 #: CTFd/schemas/teams.py:320 CTFd/schemas/users.py:314
 #, python-format
 msgid "Field '%(field)s' cannot be edited"
 msgstr "字段 '%(field)s' 不能被编辑"
-
-#: CTFd/schemas/users.py:29
-msgid "User names must not be empty"
-msgstr "用户名不能为空"
-
-#: CTFd/schemas/users.py:38
-msgid "Emails must not be empty"
-msgstr "邮箱不能为空"
 
 #: CTFd/schemas/users.py:79 CTFd/schemas/users.py:84 CTFd/schemas/users.py:97
 msgid "User name has already been taken"
@@ -1760,6 +372,20 @@ msgstr "切换导航"
 msgid "Statistics"
 msgstr "统计信息"
 
+#: CTFd/themes/admin/templates/base.html:51
+#: CTFd/themes/admin/templates/notifications.html:6
+#: CTFd/themes/core/templates/components/navbar.html:85
+#: CTFd/themes/core/templates/components/navbar.html:91
+#: CTFd/themes/core/templates/notifications.html:7
+msgid "Notifications"
+msgstr "通知"
+
+#: CTFd/themes/admin/templates/base.html:54
+#: CTFd/themes/admin/templates/config.html:106
+#: CTFd/themes/admin/templates/pages.html:9
+msgid "Pages"
+msgstr "页面"
+
 #: CTFd/themes/admin/templates/base.html:56
 msgid "All Pages"
 msgstr "所有页面"
@@ -1768,12 +394,40 @@ msgstr "所有页面"
 msgid "New Page"
 msgstr "新建页面"
 
+#: CTFd/themes/admin/templates/base.html:60
+#: CTFd/themes/admin/templates/config.html:59
+#: CTFd/themes/admin/templates/configs/fields.html:12
+#: CTFd/themes/admin/templates/scoreboard.html:33
+#: CTFd/themes/admin/templates/users/users.html:9
+#: CTFd/themes/core/templates/components/navbar.html:36
+#: CTFd/themes/core/templates/users/users.html:6
+msgid "Users"
+msgstr "用户"
+
+#: CTFd/themes/admin/templates/base.html:62
+#: CTFd/themes/admin/templates/configs/fields.html:17
+#: CTFd/themes/admin/templates/scoreboard.html:28
+#: CTFd/themes/admin/templates/teams/teams.html:9
+#: CTFd/themes/core/templates/components/navbar.html:43
+#: CTFd/themes/core/templates/teams/teams.html:6
+msgid "Teams"
+msgstr "团队"
+
 #: CTFd/themes/admin/templates/base.html:64
 #: CTFd/themes/admin/templates/scoreboard.html:6
 #: CTFd/themes/core/templates/components/navbar.html:52
 #: CTFd/themes/core/templates/scoreboard.html:7
 msgid "Scoreboard"
 msgstr "记分板"
+
+#: CTFd/themes/admin/templates/base.html:65
+#: CTFd/themes/admin/templates/challenges/challenges.html:11
+#: CTFd/themes/admin/templates/config.html:82
+#: CTFd/themes/admin/templates/config.html:85
+#: CTFd/themes/core/templates/challenges.html:7
+#: CTFd/themes/core/templates/components/navbar.html:59
+msgid "Challenges"
+msgstr "挑战"
 
 #: CTFd/themes/admin/templates/base.html:66
 #: CTFd/themes/admin/templates/modules/modules.html:6
@@ -1784,6 +438,12 @@ msgstr "模块"
 #: CTFd/themes/admin/templates/base.html:67
 msgid "Audiences"
 msgstr "受众"
+
+#: CTFd/themes/admin/templates/base.html:70
+#: CTFd/themes/admin/templates/submissions.html:10
+#: CTFd/themes/core/templates/challenge.html:20
+msgid "Submissions"
+msgstr "提交记录"
 
 #: CTFd/themes/admin/templates/base.html:72
 msgid "All Submissions"
@@ -1833,6 +493,16 @@ msgstr "通用"
 msgid "Appearance"
 msgstr "外观"
 
+#: CTFd/themes/admin/templates/config.html:27
+#: CTFd/themes/admin/templates/configs/logo.html:5
+msgid "Logo"
+msgstr "站标"
+
+#: CTFd/themes/admin/templates/config.html:32
+#: CTFd/themes/admin/templates/configs/theme.html:18
+msgid "Theme"
+msgstr "主题"
+
 #: CTFd/themes/admin/templates/config.html:37
 msgid "Localization"
 msgstr "本地化"
@@ -1855,6 +525,10 @@ msgstr "开始和结束时间"
 msgid "Pause"
 msgstr "暂停"
 
+#: CTFd/themes/admin/templates/config.html:62
+msgid "Accounts"
+msgstr "账户"
+
 #: CTFd/themes/admin/templates/config.html:67
 #: CTFd/themes/admin/templates/configs/brackets.html:2
 msgid "Scoreboard Brackets"
@@ -1864,6 +538,12 @@ msgstr "记分板分组"
 #: CTFd/themes/admin/templates/configs/fields.html:3
 msgid "Custom Fields"
 msgstr "自定义字段"
+
+#: CTFd/themes/admin/templates/config.html:77
+#: CTFd/themes/admin/templates/configs/registration_code.html:5
+#: CTFd/themes/admin/templates/configs/registration_code.html:8
+msgid "Registration Code"
+msgstr "注册码"
 
 #: CTFd/themes/admin/templates/config.html:90
 msgid "Backup"
@@ -1910,6 +590,12 @@ msgstr "MajorLeagueCyber"
 #: CTFd/themes/admin/templates/config.html:158
 msgid "Danger zone"
 msgstr "危险区域"
+
+#: CTFd/themes/admin/templates/config.html:161
+#: CTFd/themes/admin/templates/configs/usermode.html:5
+#: CTFd/themes/admin/templates/configs/usermode.html:43
+msgid "User Mode"
+msgstr "用户模式"
 
 #: CTFd/themes/admin/templates/config.html:166
 #: CTFd/themes/admin/templates/reset.html:9
@@ -1964,6 +650,10 @@ msgstr "错误："
 #: CTFd/themes/core/templates/teams/private.html:187
 msgid "Close"
 msgstr "关闭"
+
+#: CTFd/themes/admin/templates/editor.html:81
+msgid "Content"
+msgstr "内容"
 
 #: CTFd/themes/admin/templates/editor.html:82
 msgid "This is the HTML content of your page"
@@ -2046,9 +736,26 @@ msgstr "创建页面"
 msgid "Delete Pages"
 msgstr "删除页面"
 
+#: CTFd/themes/admin/templates/pages.html:41
+msgid "Title"
+msgstr "标题"
+
+#: CTFd/themes/admin/templates/pages.html:42
+msgid "Route"
+msgstr "路由"
+
 #: CTFd/themes/admin/templates/pages.html:43
 msgid "Authentication"
 msgstr "需要登录"
+
+#: CTFd/themes/admin/templates/challenges/new.html:63
+#: CTFd/themes/admin/templates/challenges/update.html:180
+#: CTFd/themes/admin/templates/pages.html:44
+#: CTFd/themes/admin/templates/pages.html:72
+#: CTFd/themes/admin/templates/teams/teams.html:79
+#: CTFd/themes/admin/templates/users/users.html:82
+msgid "Hidden"
+msgstr "隐藏"
 
 #: CTFd/themes/admin/templates/pages.html:45
 #: CTFd/themes/admin/templates/pages.html:80
@@ -2058,6 +765,10 @@ msgstr "已发布"
 #: CTFd/themes/admin/templates/pages.html:66
 msgid "Required"
 msgstr "需要"
+
+#: CTFd/themes/admin/templates/pages.html:78
+msgid "Draft"
+msgstr "草稿"
 
 #: CTFd/themes/admin/templates/reset.html:19
 msgid ""
@@ -2088,22 +799,42 @@ msgstr "创建所需数据的备份，通过"
 msgid "creating a CTFd Export"
 msgstr "创建 CTFd 导出"
 
+#: CTFd/themes/admin/templates/reset.html:45
+msgid "Deletes all user and team accounts and their associated information"
+msgstr "删除所有用户和团队账户及其关联信息"
+
 #: CTFd/themes/admin/templates/reset.html:46
 msgid "(Users, Teams, Submissions, Tracking)"
 msgstr "（用户、队伍、提交、追踪）"
+
+#: CTFd/themes/admin/templates/reset.html:56
+msgid "Deletes all records that accounts gained points or took an action"
+msgstr "删除所有账户获得积分或采取行动的记录"
 
 #: CTFd/themes/admin/templates/configs/usermode.html:64
 #: CTFd/themes/admin/templates/reset.html:57
 msgid "(Submissions, Awards, Unlocks, Tracking)"
 msgstr "（提交、奖励、解锁、跟踪）"
 
+#: CTFd/themes/admin/templates/reset.html:67
+msgid "Deletes all challenges and associated data"
+msgstr "删除所有题目及关联数据"
+
 #: CTFd/themes/admin/templates/reset.html:68
 msgid "(Challenges, Flags, Hints, Tags, Challenge Files)"
 msgstr "（挑战、Flag、提示、标签、挑战文件）"
 
+#: CTFd/themes/admin/templates/reset.html:78
+msgid "Deletes all pages and their associated files"
+msgstr "删除所有页面及其关联文件"
+
 #: CTFd/themes/admin/templates/reset.html:79
 msgid "(Pages, Page Files)"
 msgstr "（页面、页面文件）"
+
+#: CTFd/themes/admin/templates/reset.html:89
+msgid "Deletes all notifications"
+msgstr "删除所有通知"
 
 #: CTFd/themes/admin/templates/reset.html:90
 msgid "(Notifications)"
@@ -2204,6 +935,28 @@ msgstr "显示完整 flag"
 msgid "Delete selected submissions"
 msgstr "删除选中的提交"
 
+#: CTFd/themes/admin/templates/audiences/audiences.html:21
+#: CTFd/themes/admin/templates/challenges/challenges.html:78
+#: CTFd/themes/admin/templates/modules/module.html:88
+#: CTFd/themes/admin/templates/modules/modules.html:21
+#: CTFd/themes/admin/templates/submissions.html:87
+#: CTFd/themes/admin/templates/teams/teams.html:76
+#: CTFd/themes/admin/templates/users/users.html:76
+msgid "ID"
+msgstr "ID"
+
+#: CTFd/themes/admin/templates/audiences/audience.html:89
+#: CTFd/themes/admin/templates/modals/teams/addresses.html:6
+#: CTFd/themes/admin/templates/scoreboard/users.html:10
+#: CTFd/themes/admin/templates/submissions.html:89
+#: CTFd/themes/admin/templates/teams/team.html:351
+#: CTFd/themes/admin/templates/teams/team.html:420
+#: CTFd/themes/admin/templates/teams/team.html:482
+#: CTFd/themes/admin/templates/users/users.html:77
+#: CTFd/themes/core/templates/users/users.html:46
+msgid "User"
+msgstr "用户"
+
 #: CTFd/themes/admin/templates/submissions.html:92
 #: CTFd/themes/admin/templates/teams/team.html:350
 #: CTFd/themes/admin/templates/teams/team.html:419
@@ -2218,6 +971,16 @@ msgstr "删除选中的提交"
 #: CTFd/themes/core/templates/users/public.html:123
 msgid "Challenge"
 msgstr "挑战"
+
+#: CTFd/themes/admin/templates/challenges/challenges.html:83
+#: CTFd/themes/admin/templates/submissions.html:93
+#: CTFd/themes/core/templates/challenge.html:294
+msgid "Type"
+msgstr "类型"
+
+#: CTFd/themes/admin/templates/submissions.html:94
+msgid "Provided"
+msgstr "已提供"
 
 #: CTFd/themes/admin/templates/modals/challenges/solves.html:5
 #: CTFd/themes/admin/templates/submissions.html:95
@@ -2242,6 +1005,34 @@ msgstr "页码"
 #: CTFd/themes/admin/templates/audiences/audience.html:39
 msgid "Edit Audience"
 msgstr "编辑受众"
+
+#: CTFd/themes/admin/templates/audiences/audience.html:16
+#: CTFd/themes/admin/templates/audiences/audiences.html:22
+#: CTFd/themes/admin/templates/audiences/new.html:12
+#: CTFd/themes/admin/templates/challenges/challenges.html:79
+#: CTFd/themes/admin/templates/challenges/update.html:8
+#: CTFd/themes/admin/templates/modals/challenges/solves.html:4
+#: CTFd/themes/admin/templates/modules/module.html:16
+#: CTFd/themes/admin/templates/modules/module.html:88
+#: CTFd/themes/admin/templates/modules/modules.html:22
+#: CTFd/themes/admin/templates/modules/new.html:12
+#: CTFd/themes/admin/templates/teams/team.html:481
+#: CTFd/themes/admin/templates/users/user.html:353
+#: CTFd/themes/core/templates/challenge.html:323
+msgid "Name"
+msgstr "名称"
+
+#: CTFd/themes/admin/templates/audiences/audience.html:20
+#: CTFd/themes/admin/templates/audiences/audiences.html:23
+#: CTFd/themes/admin/templates/audiences/new.html:16
+#: CTFd/themes/admin/templates/modules/module.html:20
+#: CTFd/themes/admin/templates/modules/modules.html:23
+#: CTFd/themes/admin/templates/modules/new.html:16
+#: CTFd/themes/admin/templates/teams/team.html:483
+#: CTFd/themes/admin/templates/users/user.html:354
+#: CTFd/themes/core/templates/settings.html:226
+msgid "Description"
+msgstr "描述"
 
 #: CTFd/themes/admin/templates/audiences/audience.html:42
 msgid "Delete Audience"
@@ -2314,6 +1105,12 @@ msgstr "创建受众"
 msgid "New Audience"
 msgstr "新建受众"
 
+#: CTFd/themes/admin/templates/audiences/new.html:19
+#: CTFd/themes/admin/templates/challenges/create.html:67
+#: CTFd/themes/admin/templates/modules/new.html:19
+msgid "Create"
+msgstr "创建"
+
 #: CTFd/themes/admin/templates/challenges/challenge.html:12
 msgid "Challenge Preview"
 msgstr "挑战预览"
@@ -2350,6 +1147,10 @@ msgstr "可见"
 #: CTFd/themes/admin/templates/challenges/challenge.html:91
 msgid "Preview Challenge"
 msgstr "预览挑战"
+
+#: CTFd/themes/admin/templates/challenges/challenge.html:99
+msgid "Challenge Ratings"
+msgstr "挑战评分"
 
 #: CTFd/themes/admin/templates/challenges/challenge.html:107
 msgid "Delete Challenge"
@@ -2435,6 +1236,37 @@ msgstr "编辑挑战"
 #: CTFd/themes/admin/templates/challenges/challenges.html:59
 msgid "Delete Challenges"
 msgstr "删除挑战"
+
+#: CTFd/themes/admin/templates/challenges/challenges.html:80
+#: CTFd/themes/admin/templates/challenges/update.html:18
+#: CTFd/themes/admin/templates/modules/module.html:88
+#: CTFd/themes/admin/templates/teams/team.html:353
+#: CTFd/themes/admin/templates/teams/team.html:486
+#: CTFd/themes/admin/templates/teams/team.html:543
+#: CTFd/themes/admin/templates/users/user.html:234
+#: CTFd/themes/admin/templates/users/user.html:357
+#: CTFd/themes/admin/templates/users/user.html:409
+#: CTFd/themes/core/templates/teams/private.html:387
+#: CTFd/themes/core/templates/teams/public.html:158
+#: CTFd/themes/core/templates/users/private.html:125
+#: CTFd/themes/core/templates/users/public.html:124
+msgid "Category"
+msgstr "分类"
+
+#: CTFd/themes/admin/templates/challenges/challenges.html:82
+#: CTFd/themes/admin/templates/challenges/update.html:64
+#: CTFd/themes/admin/templates/teams/team.html:354
+#: CTFd/themes/admin/templates/teams/team.html:485
+#: CTFd/themes/admin/templates/teams/team.html:544
+#: CTFd/themes/admin/templates/users/user.html:235
+#: CTFd/themes/admin/templates/users/user.html:356
+#: CTFd/themes/admin/templates/users/user.html:410
+#: CTFd/themes/core/templates/teams/private.html:388
+#: CTFd/themes/core/templates/teams/public.html:159
+#: CTFd/themes/core/templates/users/private.html:126
+#: CTFd/themes/core/templates/users/public.html:125
+msgid "Value"
+msgstr "分值"
 
 #: CTFd/themes/admin/templates/challenges/challenges.html:84
 #: CTFd/themes/admin/templates/challenges/new.html:58
@@ -2537,6 +1369,10 @@ msgstr "挑战是否对用户可见"
 msgid "Visible"
 msgstr "可见"
 
+#: CTFd/themes/admin/templates/challenges/new.html:68
+msgid "Finish"
+msgstr "完成"
+
 #: CTFd/themes/admin/templates/challenges/new.html:80
 msgid "Challenge Types"
 msgstr "挑战类型"
@@ -2557,9 +1393,17 @@ msgstr "挑战类型"
 msgid "Solves"
 msgstr "解答"
 
+#: CTFd/themes/admin/templates/challenges/update.html:9
+msgid "Challenge Name"
+msgstr "挑战名称"
+
 #: CTFd/themes/admin/templates/challenges/update.html:19
 msgid "Challenge Category"
 msgstr "挑战分类"
+
+#: CTFd/themes/admin/templates/challenges/update.html:28
+msgid "Message"
+msgstr "消息"
 
 #: CTFd/themes/admin/templates/challenges/update.html:40
 msgid "Attribution:"
@@ -2700,6 +1544,23 @@ msgstr "用户获得的最大尝试次数。设为 0 表示不限次数。"
 msgid "Changes the state of the challenge (e.g. visible, hidden)"
 msgstr "更改挑战状态（如可见、隐藏）"
 
+#: CTFd/themes/admin/templates/challenges/update.html:188
+#: CTFd/themes/admin/templates/configs/challenges.html:53
+#: CTFd/themes/admin/templates/configs/general.html:23
+#: CTFd/themes/admin/templates/configs/localization.html:16
+#: CTFd/themes/admin/templates/configs/mlc.html:31
+#: CTFd/themes/admin/templates/configs/pause.html:15
+#: CTFd/themes/admin/templates/configs/registration_code.html:12
+#: CTFd/themes/admin/templates/configs/robots.html:12
+#: CTFd/themes/admin/templates/configs/sanitize.html:26
+#: CTFd/themes/admin/templates/configs/theme.html:89
+#: CTFd/themes/admin/templates/configs/time.html:209
+#: CTFd/themes/admin/templates/configs/usermode.html:69
+#: CTFd/themes/admin/templates/configs/visibility.html:48
+#: CTFd/themes/core/templates/config.html:44
+msgid "Update"
+msgstr "更新"
+
 #: CTFd/themes/admin/templates/configs/accounts.html:11
 msgid "User Accounts"
 msgstr "用户账户"
@@ -2717,6 +1578,11 @@ msgstr "导出"
 #: CTFd/themes/admin/templates/configs/backup.html:41
 msgid "Import"
 msgstr "导入"
+
+#: CTFd/themes/admin/templates/configs/backup.html:10
+#: CTFd/themes/admin/templates/configs/backup.html:56
+msgid "Download CSV"
+msgstr "下载 CSV"
 
 #: CTFd/themes/admin/templates/configs/backup.html:13
 #: CTFd/themes/admin/templates/configs/backup.html:87
@@ -2885,6 +1751,10 @@ msgid ""
 "optionally edit these fields in the team profile."
 msgstr "自定义队伍字段在创建队伍时显示。队长可以在队伍资料中编辑这些字段。"
 
+#: CTFd/themes/admin/templates/configs/general.html:5
+msgid "Event Name"
+msgstr "活动名称"
+
 #: CTFd/themes/admin/templates/configs/general.html:6
 msgid "When no logo is specified, the CTF's name is used instead."
 msgstr "未指定 Logo 时，将使用 CTF 名称代替。"
@@ -2893,12 +1763,24 @@ msgstr "未指定 Logo 时，将使用 CTF 名称代替。"
 msgid "CTF Name"
 msgstr "CTF 名称"
 
+#: CTFd/themes/admin/templates/configs/general.html:14
+msgid "Event Description"
+msgstr "活动描述"
+
 #: CTFd/themes/admin/templates/configs/general.html:17
 #, python-brace-format
 msgid ""
 "Description of your CTF. Available for use on your custom pages and "
 "emails as <code>{ctf_description}</code>."
 msgstr "CTF 的描述信息。可在自定义页面和邮件中通过 <code>{ctf_description}</code> 使用。"
+
+#: CTFd/themes/admin/templates/configs/legal.html:8
+msgid "Terms of Service"
+msgstr "服务条款"
+
+#: CTFd/themes/admin/templates/configs/legal.html:13
+msgid "Privacy Policy"
+msgstr "隐私政策"
 
 #: CTFd/themes/admin/templates/configs/logo.html:7
 msgid "Logo to use for the website instead of a CTF name."
@@ -2910,7 +1792,12 @@ msgstr "移除 Logo"
 
 #: CTFd/themes/admin/templates/configs/logo.html:24
 msgid "CTF Logo"
-msgstr "CTF Logo"
+msgstr "CTF 标志"
+
+#: CTFd/themes/admin/templates/configs/logo.html:29
+#: CTFd/themes/admin/templates/configs/logo.html:64
+msgid "Upload"
+msgstr "上传"
 
 #: CTFd/themes/admin/templates/configs/logo.html:40
 msgid "Tab Icon"
@@ -2929,6 +1816,10 @@ msgstr ""
 #: CTFd/themes/admin/templates/configs/logo.html:52
 msgid "Remove Icon"
 msgstr "移除图标"
+
+#: CTFd/themes/admin/templates/configs/logo.html:59
+msgid "Small Icon"
+msgstr "小站标"
 
 #: CTFd/themes/admin/templates/configs/mlc.html:5
 msgid "MajorLeagueCyber integration"
@@ -3000,6 +1891,14 @@ msgstr "CTFd 是否尝试对内容中的 HTML 内容进行净化处理。"
 msgid "Required (Disable in config.ini)"
 msgstr "必需（在 config.ini 中禁用）"
 
+#: CTFd/themes/admin/templates/configs/sanitize.html:18
+msgid "Enabled"
+msgstr "启用"
+
+#: CTFd/themes/admin/templates/configs/sanitize.html:21
+msgid "Disabled"
+msgstr "禁用"
+
 #: CTFd/themes/admin/templates/configs/theme.html:6
 #: CTFd/themes/admin/templates/configs/theme.html:74
 msgid "Theme Settings"
@@ -3056,6 +1955,14 @@ msgstr "构建"
 #: CTFd/themes/admin/templates/configs/theme.html:85
 msgid "Settings specific to the theme"
 msgstr "主题特定设置"
+
+#: CTFd/themes/admin/templates/configs/time.html:6
+msgid "Start Time"
+msgstr "开始时间"
+
+#: CTFd/themes/admin/templates/configs/time.html:11
+msgid "End Time"
+msgstr "结束时间"
 
 #: CTFd/themes/admin/templates/configs/time.html:16
 msgid "Freeze Time"
@@ -3165,6 +2072,10 @@ msgid ""
 " teams (Team Mode)."
 msgstr "控制用户是以个人身份参与（用户模式）还是组成团队参与（团队模式）。"
 
+#: CTFd/themes/admin/templates/configs/usermode.html:19
+msgid "Team Mode"
+msgstr "团队模式"
+
 #: CTFd/themes/admin/templates/configs/usermode.html:22
 #: CTFd/themes/core/templates/setup.html:112
 msgid "Participants register accounts and form teams"
@@ -3224,6 +2135,54 @@ msgstr ""
 "这意味着如果账户对用户可见，则得分可见性将控制该用户是否能看到该账户的得分。\n"
 "如果账户不可见，则得分可见性设置无效。"
 
+#: CTFd/themes/admin/templates/modals/awards/create.html:28
+msgid "None"
+msgstr "无"
+
+#: CTFd/themes/admin/templates/modals/awards/create.html:36
+msgid "Shield"
+msgstr "盾牌"
+
+#: CTFd/themes/admin/templates/modals/awards/create.html:44
+msgid "Bug"
+msgstr "漏洞"
+
+#: CTFd/themes/admin/templates/modals/awards/create.html:54
+msgid "Crown"
+msgstr "皇冠"
+
+#: CTFd/themes/admin/templates/modals/awards/create.html:62
+msgid "Crosshairs"
+msgstr "十字准星"
+
+#: CTFd/themes/admin/templates/modals/awards/create.html:70
+msgid "Ban"
+msgstr "封禁"
+
+#: CTFd/themes/admin/templates/modals/awards/create.html:80
+msgid "Lightning"
+msgstr "闪电"
+
+#: CTFd/themes/admin/templates/modals/awards/create.html:88
+msgid "Skull"
+msgstr "骷髅"
+
+#: CTFd/themes/admin/templates/modals/awards/create.html:96
+msgid "Brain"
+msgstr "大脑"
+
+#: CTFd/themes/admin/templates/modals/awards/create.html:106
+msgid "Code"
+msgstr "代码"
+
+#: CTFd/themes/admin/templates/modals/awards/create.html:114
+msgid "Cowboy"
+msgstr "牛仔"
+
+#: CTFd/themes/admin/templates/modals/awards/create.html:122
+msgid "Angry"
+msgstr "愤怒"
+
 #: CTFd/themes/admin/templates/modals/challenges/module.html:7
 msgid ""
 "Challenges assigned to modules can only be seen by members of the "
@@ -3235,6 +2194,11 @@ msgstr "分配给模块的挑战只能被该模块关联受众的成员看到。
 msgid "none - ungrouped, visible to everyone"
 msgstr "无 - 未分组，对所有人可见"
 
+#: CTFd/themes/admin/templates/modals/teams/addresses.html:7
+#: CTFd/themes/admin/templates/modals/users/addresses.html:6
+msgid "IP Address"
+msgstr "IP 地址"
+
 #: CTFd/themes/admin/templates/modals/teams/addresses.html:8
 #: CTFd/themes/admin/templates/modals/users/addresses.html:7
 msgid "Last Seen"
@@ -3245,10 +2209,29 @@ msgstr "最近活跃"
 msgid "City"
 msgstr "城市"
 
+#: CTFd/themes/admin/templates/modals/teams/addresses.html:10
+#: CTFd/themes/admin/templates/modals/users/addresses.html:9
+#: CTFd/themes/admin/templates/teams/teams.html:78
+#: CTFd/themes/admin/templates/users/users.html:79
+#: CTFd/themes/core/templates/teams/teams.html:52
+#: CTFd/themes/core/templates/users/users.html:49
+msgid "Country"
+msgstr "国家"
+
 #: CTFd/themes/admin/templates/modals/teams/addresses.html:46
 #: CTFd/themes/admin/templates/modals/users/addresses.html:40
 msgid "IP Geolocation by DB-IP"
 msgstr "IP 地理定位由 DB-IP 提供"
+
+#: CTFd/themes/admin/templates/modals/teams/captain.html:4
+msgid "Team Captain"
+msgstr "队长"
+
+#: CTFd/themes/admin/templates/modals/teams/captain.html:20
+#: CTFd/themes/core/templates/challenge.html:187
+#: CTFd/themes/core/templates/challenge.html:271
+msgid "Submit"
+msgstr "提交"
 
 #: CTFd/themes/admin/templates/modals/teams/create.html:18
 #: CTFd/themes/admin/templates/modals/teams/create.html:23
@@ -3340,6 +2323,11 @@ msgstr "新建模块"
 #: CTFd/themes/core/templates/scoreboard.html:36
 msgid "Place"
 msgstr "名次"
+
+#: CTFd/themes/admin/templates/scoreboard/standings.html:11
+#: CTFd/themes/admin/templates/scoreboard/users.html:11
+msgid "Bracket"
+msgstr "组别"
 
 #: CTFd/themes/admin/templates/scoreboard/standings.html:12
 #: CTFd/themes/admin/templates/scoreboard/users.html:12
@@ -3461,6 +2449,12 @@ msgstr "删除队伍"
 msgid "Team Members"
 msgstr "队伍成员"
 
+#: CTFd/themes/admin/templates/teams/team.html:268
+#: CTFd/themes/core/templates/teams/private.html:327
+#: CTFd/themes/core/templates/teams/public.html:95
+msgid "User Name"
+msgstr "用户名"
+
 #: CTFd/themes/admin/templates/teams/team.html:269
 msgid "E-Mail"
 msgstr "邮箱"
@@ -3525,6 +2519,11 @@ msgstr "已提交"
 msgid "Time"
 msgstr "时间"
 
+#: CTFd/themes/admin/templates/teams/team.html:487
+#: CTFd/themes/admin/templates/users/user.html:358
+msgid "Icon"
+msgstr "图标"
+
 #: CTFd/themes/admin/templates/teams/teams.html:24
 msgid "Searching for teams with"
 msgstr "搜索团队"
@@ -3536,6 +2535,11 @@ msgstr "编辑队伍"
 #: CTFd/themes/admin/templates/teams/teams.html:58
 msgid "Delete Teams"
 msgstr "删除队伍"
+
+#: CTFd/themes/admin/templates/teams/teams.html:80
+#: CTFd/themes/admin/templates/users/users.html:83
+msgid "Banned"
+msgstr "已封禁"
 
 #: CTFd/themes/admin/templates/users/new.html:10
 #: CTFd/themes/admin/templates/users/users.html:10
@@ -3583,6 +2587,18 @@ msgstr "编辑用户"
 msgid "Delete Users"
 msgstr "删除用户"
 
+#: CTFd/themes/admin/templates/users/users.html:78
+msgid "Email"
+msgstr "邮箱"
+
+#: CTFd/themes/admin/templates/users/users.html:80
+msgid "Admin"
+msgstr "管理员"
+
+#: CTFd/themes/admin/templates/users/users.html:81
+msgid "Verified"
+msgstr "已验证"
+
 #: CTFd/themes/core/templates/challenge.html:39
 #, python-format
 msgid "%(num)d Solve"
@@ -3616,7 +2632,7 @@ msgstr[0] "次尝试"
 
 #: CTFd/themes/core/templates/challenge.html:175
 msgid "Flag"
-msgstr "Flag"
+msgstr "旗帜"
 
 #: CTFd/themes/core/templates/challenge.html:216
 msgid "Share"
@@ -3754,6 +2770,18 @@ msgstr "还没有通知"
 msgid "Register"
 msgstr "注册"
 
+#: CTFd/themes/core/templates/register.html:38
+msgid "Your username on the site"
+msgstr "您在网站上的用户名"
+
+#: CTFd/themes/core/templates/register.html:49
+msgid "Never shown to the public"
+msgstr "不对外公开"
+
+#: CTFd/themes/core/templates/register.html:60
+msgid "Password used to log into your account"
+msgstr "用于登录您账号的密码"
+
 #: CTFd/themes/core/templates/register.html:78
 #, python-format
 msgid ""
@@ -3853,6 +2881,10 @@ msgstr "是"
 #: CTFd/themes/core/templates/settings.html:224
 msgid "Created"
 msgstr "创建时间"
+
+#: CTFd/themes/core/templates/settings.html:225
+msgid "Expiration"
+msgstr "到期时间"
 
 #: CTFd/themes/core/templates/settings.html:227
 msgid "Delete"
@@ -4064,12 +3096,32 @@ msgid ""
 "<strong>%(q)s</strong>"
 msgstr "搜索字段为 <strong>%(field)s</strong> 匹配 <strong>%(q)s</strong> 的队伍"
 
+#: CTFd/themes/core/templates/teams/teams.html:50
+#: CTFd/themes/core/templates/users/users.html:47
+msgid "Website"
+msgstr "网站"
+
+#: CTFd/themes/core/templates/teams/teams.html:51
+#: CTFd/themes/core/templates/users/users.html:48
+msgid "Affiliation"
+msgstr "隶属关系"
+
 #: CTFd/themes/core/templates/users/users.html:14
 #, python-format
 msgid ""
 "Searching for users with <strong>%(field)s</strong> matching "
 "<strong>%(q)s</strong>"
 msgstr "<strong>%(field)s</strong> 为 <strong>%(q)s</strong> 的用户搜索结果"
+
+#: CTFd/utils/decorators/__init__.py:31
+#, python-format
+msgid "%(ctf_name)s has ended"
+msgstr "%(ctf_name)s 已结束"
+
+#: CTFd/utils/decorators/__init__.py:39
+#, python-format
+msgid "%(ctf_name)s has not started yet"
+msgstr "%(ctf_name)s 尚未开始"
 
 #: CTFd/utils/decorators/__init__.py:177
 #, python-format
@@ -4087,6 +3139,10 @@ msgstr "请填写所有必填字段"
 #: CTFd/utils/decorators/visibility.py:42
 msgid "Scores are currently hidden"
 msgstr "分数当前已隐藏"
+
+#: CTFd/utils/decorators/visibility.py:83
+msgid "Challenge Visibility is set to Admins Only"
+msgstr "题目仅对管理员可见"
 
 #: CTFd/utils/email/__init__.py:31
 #, python-brace-format
@@ -4115,6 +3171,143 @@ msgstr "Mailgun 设置不正确"
 msgid "SMTP server connection timed out"
 msgstr "SMTP 服务器连接超时"
 
+#: CTFd/utils/exports/__init__.py:135
+msgid ""
+"Exception: Importing not currently supported for SQLite databases. See "
+"Github issue #1988."
+msgstr "异常：SQLite 数据库目前不支持导入。参见 GitHub issue #1988。"
+
+#: CTFd/utils/exports/__init__.py:140
+msgid ""
+"Importing not currently supported for SQLite databases. See Github issue "
+"#1988."
+msgstr "SQLite 数据库目前不支持导入。参见 GitHub issue #1988。"
+
+#: CTFd/utils/exports/__init__.py:145
+msgid "zipfile.BadZipfile: zipfile is invalid"
+msgstr "zipfile.BadZipfile：zip 文件无效"
+
+#: CTFd/utils/exports/__init__.py:161
+msgid "zipfile.BadZipfile: zipfile is malicious"
+msgstr "zipfile.BadZipfile：zip 文件包含恶意内容"
+
+#: CTFd/utils/exports/__init__.py:166
+msgid "zipfile.LargeZipFile: zipfile is too large"
+msgstr "zipfile.LargeZipFile：zip 文件过大"
+
+#: CTFd/utils/exports/__init__.py:172
+msgid "Exception: db folder is missing"
+msgstr "异常：缺少 db 文件夹"
+
+#: CTFd/utils/exports/__init__.py:175
+msgid ""
+"CTFd couldn't find the \"db\" folder in this backup. The backup may be "
+"malformed or corrupted and the import process cannot continue."
+msgstr "CTFd 在此备份中找不到 \"db\" 文件夹。备份可能格式不正确或已损坏，导入过程无法继续。"
+
+#: CTFd/utils/exports/__init__.py:185
+msgid "Exception: Could not determine appropriate database version"
+msgstr "异常：无法确定正确的数据库版本"
+
+#: CTFd/utils/exports/__init__.py:189
+msgid ""
+"Could not determine appropriate database version. This backup cannot be "
+"automatically imported."
+msgstr "无法确定正确的数据库版本。此备份无法自动导入。"
+
+#: CTFd/utils/exports/__init__.py:211
+msgid ""
+"Exception: The version of CTFd that this backup is from is too old to be "
+"automatically imported."
+msgstr "异常：此备份的 CTFd 版本过旧，无法自动导入。"
+
+#: CTFd/utils/exports/__init__.py:216
+msgid ""
+"The version of CTFd that this backup is from is too old to be "
+"automatically imported."
+msgstr "此备份的 CTFd 版本过旧，无法自动导入。"
+
+#: CTFd/utils/exports/__init__.py:225
+msgid "started"
+msgstr "已开始"
+
+#: CTFd/utils/exports/__init__.py:236
+msgid ""
+"Exception: The target migration in this backup is not available in this "
+"version of CTFd."
+msgstr "异常：此备份中的目标迁移在当前版本的 CTFd 中不可用。"
+
+#: CTFd/utils/exports/__init__.py:241
+msgid ""
+"The target migration in this backup is not available in this version of "
+"CTFd."
+msgstr "此备份中的目标迁移在当前版本的 CTFd 中不可用。"
+
+#: CTFd/utils/exports/__init__.py:246
+msgid "erasing"
+msgstr "正在清除"
+
+#: CTFd/utils/exports/__init__.py:273
+msgid "erased"
+msgstr "已清除"
+
+#: CTFd/utils/exports/__init__.py:278
+msgid "disabling foreign key checks"
+msgstr "正在禁用外键检查"
+
+#: CTFd/utils/exports/__init__.py:323
+#, python-format
+msgid "inserting %(member)s"
+msgstr "正在插入 %(member)s"
+
+#: CTFd/utils/exports/__init__.py:340
+#, python-format
+msgid "inserting %(member)s %(i)d/%(count)d"
+msgstr "正在插入 %(member)s %(i)d/%(count)d"
+
+#: CTFd/utils/exports/__init__.py:442
+#, python-format
+msgid "Exception: Table name %(table_name)s contains quotes"
+msgstr "异常：表名 %(table_name)s 包含引号"
+
+#: CTFd/utils/exports/__init__.py:448
+#, python-format
+msgid "Table name %(table_name)s contains quotes"
+msgstr "表名 %(table_name)s 包含引号"
+
+#: CTFd/utils/exports/__init__.py:454
+msgid "inserting tables"
+msgstr "正在插入数据表"
+
+#: CTFd/utils/exports/__init__.py:459
+msgid "inserting plugins"
+msgstr "正在插入插件"
+
+#: CTFd/utils/exports/__init__.py:463
+#, python-format
+msgid "inserting plugin %(plugin)s"
+msgstr "正在插入插件 %(plugin)s"
+
+#: CTFd/utils/exports/__init__.py:477
+msgid "uploading files"
+msgstr "正在上传文件"
+
+#: CTFd/utils/exports/__init__.py:493 CTFd/utils/exports/__init__.py:496
+msgid "Encountered invalid upload file in import"
+msgstr "导入时遇到无效的上传文件"
+
+#: CTFd/utils/exports/__init__.py:503
+msgid "running head migrations"
+msgstr "正在执行最新迁移"
+
+#: CTFd/utils/exports/__init__.py:514
+msgid "reenabling foreign key checks"
+msgstr "正在重新启用外键检查"
+
+#: CTFd/utils/exports/__init__.py:523
+msgid "clearing caches"
+msgstr "正在清除缓存"
+
 #: CTFd/utils/initialization/__init__.py:232
 #: CTFd/utils/initialization/__init__.py:256
 msgid "Import currently in progress"
@@ -4128,18 +3321,6 @@ msgstr "您已被禁止参加此 CTF"
 msgid "Your team has been banned from this CTF"
 msgstr "您的队伍已被禁止参加此 CTF"
 
-#: CTFd/utils/initialization/__init__.py:362
-msgid "Your access token is invalid"
-msgstr "您的访问令牌无效"
-
-#: CTFd/utils/initialization/__init__.py:364
-msgid "Your access token has expired"
-msgstr "您的访问令牌已过期"
-
-#: CTFd/utils/initialization/__init__.py:366
-msgid "Invalid authorization header"
-msgstr "无效的队长 ID"
-
 #: CTFd/utils/modes/__init__.py:35
 msgid "user"
 msgid_plural "users"
@@ -4149,6 +3330,14 @@ msgstr[0] "用户"
 msgid "team"
 msgid_plural "teams"
 msgstr[0] "队伍"
+
+#: CTFd/utils/uploads/__init__.py:33
+msgid "Location must contain two parts, a directory and a filename"
+msgstr "位置必须包含两部分：目录和文件名"
+
+#: CTFd/utils/uploads/uploaders.py:86
+msgid "Empty filenames cannot be used"
+msgstr "空文件名不能使用"
 
 #: CTFd/utils/validators/__init__.py:88
 msgid "Invalid Country"
@@ -4160,4 +3349,795 @@ msgstr "无效的语言"
 
 #~ msgid "Teams are limited to {limit} member{plural}."
 #~ msgstr "队伍人数上限为 {limit} 人。"
+
+#~ msgid ""
+#~ "Email verification is enabled but email"
+#~ " sending isn't available. Please contact"
+#~ " an admin to confirm your account"
+#~ msgstr "邮箱验证已启用但无法发送邮件。请联系管理员确认您的账号。"
+
+#~ msgid "Your confirmation link is invalid, please generate a new one"
+#~ msgstr "您的确认链接无效，请重新生成一个。"
+
+#~ msgid ""
+#~ "This CTF is not configured to send"
+#~ " email.<br> Please contact an organizer "
+#~ "to have your password reset."
+#~ msgstr "此 CTF 未配置邮件发送功能。<br> 请联系管理员重置您的密码。"
+
+#~ msgid "Your reset link is invalid, please generate a new one"
+#~ msgstr "您的确认链接无效，请重新生成一个。"
+
+#~ msgid ""
+#~ "Your account was registered via an "
+#~ "authentication provider and does not "
+#~ "have an associated password. Please "
+#~ "login via your authentication provider."
+#~ msgstr "您的账号通过第三方认证提供商注册，因此没有关联密码。请通过您的认证提供商登录。"
+
+#~ msgid "Please pick a longer password"
+#~ msgstr "请确认您当前的密码"
+
+#~ msgid ""
+#~ "If that account exists you will "
+#~ "receive an email, please check your "
+#~ "inbox"
+#~ msgstr "如果该账户存在，您将收到一封邮件，请检查您的收件箱"
+
+#~ msgid ""
+#~ "The email address associated with this"
+#~ " account was registered via an "
+#~ "authentication provider and does not "
+#~ "have an associated password. Please "
+#~ "login via your authentication provider."
+#~ msgstr "与此账户关联的邮箱地址是通过身份验证提供商注册的，没有关联密码。请通过您的身份验证提供商登录。"
+
+#~ msgid "Too many password reset attempts. Please try again later."
+#~ msgstr "密码重置尝试次数过多。请稍后再试。"
+
+#~ msgid "Reached the maximum number of users (%(num)s)."
+#~ msgstr "已达到最大用户数（%(num)s）。"
+
+#~ msgid "The registration code you entered was incorrect"
+#~ msgstr "您输入的注册码不正确"
+
+#~ msgid "Please provide all required fields"
+#~ msgstr "请填写所有必填字段"
+
+#~ msgid "Please enter a valid email address"
+#~ msgstr "请输入有效的邮箱地址"
+
+#~ msgid "Your email address is not from an allowed domain"
+#~ msgstr "电子邮箱地址不在允许的域名中"
+
+#~ msgid "That user name is already taken"
+#~ msgstr "用户名已被使用"
+
+#~ msgid "Your user name cannot be an email address"
+#~ msgstr "用户名不能是邮箱地址"
+
+#~ msgid "That email has already been used"
+#~ msgstr "该邮箱地址已被使用"
+
+#~ msgid "Pick a longer password"
+#~ msgstr "请设置更长的密码"
+
+#~ msgid "Pick a shorter password"
+#~ msgstr "请设置更短的密码"
+
+#~ msgid "Pick a longer user name"
+#~ msgstr "请设置更长的用户名"
+
+#~ msgid "Websites must be a proper URL starting with http or https"
+#~ msgstr "网站地址必须以 http 或 https 开头的正确 URL"
+
+#~ msgid "Invalid country"
+#~ msgstr "无效的国家/地区"
+
+#~ msgid "Please provide a shorter affiliation"
+#~ msgstr "请提供较短的所属机构名称"
+
+#~ msgid "Please provide a valid bracket"
+#~ msgstr "请提供有效的分组 ID"
+
+#~ msgid "Preset admin user could not be created. Please contact an administrator"
+#~ msgstr "预设管理员用户无法创建。请联系管理员。"
+
+#~ msgid ""
+#~ "Your account was registered with a "
+#~ "3rd party authentication provider. Please "
+#~ "try logging in with a configured "
+#~ "authentication provider."
+#~ msgstr "您的账号通过第三方认证提供商注册。请尝试使用已配置的认证提供商登录。"
+
+#~ msgid "Your username or password is incorrect"
+#~ msgstr "您之前的密码不正确"
+
+#~ msgid ""
+#~ "OAuth Settings not configured. Ask your"
+#~ " CTF administrator to configure "
+#~ "MajorLeagueCyber integration."
+#~ msgstr "OAuth 设置未配置。请联系 CTF 管理员配置 MajorLeagueCyber 集成。"
+
+#~ msgid "OAuth State validation mismatch."
+#~ msgstr "OAuth 状态验证不匹配。"
+
+#~ msgid "Public registration is disabled. Please try again later."
+#~ msgstr "公开注册已关闭。请稍后再试。"
+
+#~ msgid ""
+#~ "Reached the maximum number of teams "
+#~ "(%(num)d). Please join an existing team."
+#~ msgstr "已达到最大队伍数量上限 (%(num)d)。请加入一个已有的队伍。"
+
+#~ msgid "OAuth token retrieval failure."
+#~ msgstr "OAuth 令牌获取失败。"
+
+#~ msgid "Received redirect without OAuth code."
+#~ msgstr "收到没有 OAuth 代码的重定向。"
+
+#~ msgid "%(ctf_name)s is paused"
+#~ msgstr "%(ctf_name)s 已结束"
+
+#~ msgid "An Internal Server Error has occurred"
+#~ msgstr "发生了内部服务器错误"
+
+#~ msgid "Scoreboard has been frozen"
+#~ msgstr "记分板已冻结"
+
+#~ msgid "Scores are not currently visible to users"
+#~ msgstr "挑战是否对用户可见"
+
+#~ msgid "You are already in a team. You cannot join another."
+#~ msgstr "您已在一个队伍中，无法加入其他队伍。"
+
+#~ msgid "This invite URL has expired"
+#~ msgstr "此邀请链接已过期"
+
+#~ msgid "This invite URL is invalid"
+#~ msgstr "此邀请链接无效"
+
+#~ msgid "Teams are limited to %(limit)s member%(plural)s."
+#~ msgstr "队伍人数上限为 %(limit)s 人。"
+
+#~ msgid "That information is incorrect"
+#~ msgstr "信息不正确"
+
+#~ msgid "Team creation is currently disabled. Please join an existing team."
+#~ msgstr "当前已禁用队伍创建。请加入现有队伍。"
+
+#~ msgid ""
+#~ "Reached the maximum number of teams "
+#~ "(%(num)s). Please join an existing team."
+#~ msgstr "已达到最大队伍数（%(num)s）。请加入现有队伍。"
+
+#~ msgid "That team name is already taken"
+#~ msgstr "团队名称已被使用"
+
+#~ msgid "That team name is invalid"
+#~ msgstr "该队伍名称无效"
+
+#~ msgid ""
+#~ "The underlying challenge type (%(type)s) "
+#~ "is not installed. This challenge can "
+#~ "not be loaded."
+#~ msgstr "底层题目类型（%(type)s）未安装。无法加载此题目。"
+
+#~ msgid "Password"
+#~ msgstr "重置密码"
+
+#~ msgid "User Name or Email"
+#~ msgstr "用户名或邮箱"
+
+#~ msgid "Send Confirmation Email"
+#~ msgstr "系统配置"
+
+#~ msgid "Search Field"
+#~ msgstr "盾牌"
+
+#~ msgid "Parameter"
+#~ msgstr "参数"
+
+#~ msgid "Search"
+#~ msgstr "搜索"
+
+#~ msgid "Upload Files"
+#~ msgstr "上传文件"
+
+#~ msgid "Attach multiple files using Control+Click or Cmd+Click."
+#~ msgstr "使用 Control+Click 或 Cmd+Click 附加多个文件"
+
+#~ msgid "Reset CTF"
+#~ msgstr "重置"
+
+#~ msgid "Email Domain Allowlist"
+#~ msgstr "邮箱域名白名单"
+
+#~ msgid ""
+#~ "Comma-seperated list of allowable email"
+#~ " domains which users can register "
+#~ "under (e.g. examplectf.com, example.com, "
+#~ "*.example.com)"
+#~ msgstr "允许用户注册的邮箱域名逗号分隔列表（例如 examplectf.com、example.com、*.example.com）"
+
+#~ msgid "Email Domain Blocklist"
+#~ msgstr "邮箱域名黑名单"
+
+#~ msgid ""
+#~ "Comma-seperated list of disallowed email"
+#~ " domains which users cannot register "
+#~ "under (e.g. examplectf.com, example.com, "
+#~ "*.example.com)"
+#~ msgstr "不允许用户注册的邮箱域名逗号分隔列表（例如 examplectf.com、example.com、*.example.com）"
+
+#~ msgid "Team Creation"
+#~ msgstr "创建团队"
+
+#~ msgid "Control whether users can create their own teams (Teams mode only)"
+#~ msgstr "控制用户是以个人身份参与（用户模式）还是组成团队参与（团队模式）。"
+
+#~ msgid "Maximum number of users per team (Teams mode only)"
+#~ msgstr "每个团队的最大用户数（仅团队模式）"
+
+#~ msgid "Maximum Number of Teams"
+#~ msgstr "最大团队数"
+
+#~ msgid ""
+#~ "Maximum number of teams allowed to "
+#~ "register with this CTF (Teams mode "
+#~ "only)"
+#~ msgstr "允许注册此 CTF 的最大团队数（仅团队模式）"
+
+#~ msgid "Maximum Number of Users"
+#~ msgstr "最大用户数"
+
+#~ msgid "Maximum number of user accounts allowed to register with this CTF"
+#~ msgstr "允许注册此 CTF 的最大用户账户数"
+
+#~ msgid "Minimum Password Length for Users"
+#~ msgstr "用户最小密码长度"
+
+#~ msgid "Verify Emails"
+#~ msgstr "验证邮箱"
+
+#~ msgid "Control whether users must confirm their email addresses before playing"
+#~ msgstr "控制用户是否必须在参与前确认其邮箱地址"
+
+#~ msgid "Team Disbanding"
+#~ msgstr "团队解散"
+
+#~ msgid "Control whether team captains are allowed to disband their own teams"
+#~ msgstr "控制团队队长是否可以解散自己的团队"
+
+#~ msgid "Enabled for Inactive Teams"
+#~ msgstr "对非活跃团队启用"
+
+#~ msgid "Name Changes"
+#~ msgstr "名称更改"
+
+#~ msgid "Control whether users and teams can change their names"
+#~ msgstr "控制用户和团队是否可以更改名称"
+
+#~ msgid "Incorrect Submissions per Minute"
+#~ msgstr "错误提交"
+
+#~ msgid ""
+#~ "Number of submissions allowed per minute"
+#~ " for flag bruteforce protection (default:"
+#~ " 10)"
+#~ msgstr "为防止 flag 暴力破解，每分钟允许的提交次数（默认：10）"
+
+#~ msgid "Database Table"
+#~ msgstr "数据库表"
+
+#~ msgid "CSV Type"
+#~ msgstr "类型"
+
+#~ msgid "Users with Teams"
+#~ msgstr "编辑队伍"
+
+#~ msgid "Type of CSV data"
+#~ msgstr "CSV 数据类型"
+
+#~ msgid "CSV File"
+#~ msgstr "文件"
+
+#~ msgid "CSV file contents"
+#~ msgstr "CSV 文件内容"
+
+#~ msgid "Social Shares"
+#~ msgstr "社交分享"
+
+#~ msgid "Enable or Disable social sharing links for challenge solves"
+#~ msgstr "启用或禁用题目解答的社交分享链接"
+
+#~ msgid "Social Share Solve Template"
+#~ msgstr "社交分享解答模板"
+
+#~ msgid "HTML for Share Template"
+#~ msgstr "分享模板的 HTML"
+
+#~ msgid "Terms of Service URL"
+#~ msgstr "服务条款"
+
+#~ msgid "External URL to a Terms of Service document hosted elsewhere"
+#~ msgstr "指向托管在其他位置的服务条款文档的外部 URL"
+
+#~ msgid "Text shown on the Terms of Service page"
+#~ msgstr "服务条款页面上显示的文本"
+
+#~ msgid "Privacy Policy URL"
+#~ msgstr "隐私政策"
+
+#~ msgid "External URL to a Privacy Policy document hosted elsewhere"
+#~ msgstr "指向托管在其他位置的隐私政策文档的外部 URL"
+
+#~ msgid "Text shown on the Privacy Policy page"
+#~ msgstr "隐私政策页面上显示的文本"
+
+#~ msgid "View Self Submissions"
+#~ msgstr "所有提交"
+
+#~ msgid "Allow users to view their previous submissions"
+#~ msgstr "允许用户查看他们之前的提交"
+
+#~ msgid "Max Attempts Behavior"
+#~ msgstr "最大尝试次数"
+
+#~ msgid "Set Max Attempts behavior to be a lockout or a timeout"
+#~ msgstr "设置最大尝试次数行为为锁定或超时"
+
+#~ msgid "lockout"
+#~ msgstr "锁定"
+
+#~ msgid "timeout"
+#~ msgstr "时间"
+
+#~ msgid "Max Attempts Timeout Duration"
+#~ msgstr "最大尝试次数超时时长"
+
+#~ msgid ""
+#~ "How long the timeout lasts in "
+#~ "seconds for max attempts (if set "
+#~ "to timeout). Default is 300 seconds"
+#~ msgstr "最大尝试次数超时持续时间（秒）（如果设置为超时）。默认为 300 秒"
+
+#~ msgid "Hints Free Public Access"
+#~ msgstr "提示免费公开访问"
+
+#~ msgid ""
+#~ "Control whether users must be logged "
+#~ "in to see free hints (hints "
+#~ "without cost or requirements)"
+#~ msgstr "控制用户是否必须登录才能查看免费提示（无成本或要求的提示）"
+
+#~ msgid "Control who can see and submit challenge ratings"
+#~ msgstr "控制谁可以查看和提交题目评分"
+
+#~ msgid "Public (users can submit ratings and see aggregated ratings)"
+#~ msgstr "公开（用户可以提交评分并查看汇总评分）"
+
+#~ msgid "Private (users can submit ratings but cannot see aggregated ratings)"
+#~ msgstr "私有（用户可以提交评分但无法查看汇总评分）"
+
+#~ msgid "Disabled (users cannot submit ratings or see aggregated ratings)"
+#~ msgstr "禁用（用户无法提交评分或查看汇总评分）"
+
+#~ msgid "Challenge Visibility"
+#~ msgstr "挑战类型"
+
+#~ msgid "Control whether users must be logged in to see challenges"
+#~ msgstr "控制用户是否需要登录才能查看题目"
+
+#~ msgid "Public"
+#~ msgstr "公开"
+
+#~ msgid "Private"
+#~ msgstr "私有"
+
+#~ msgid "Admins Only"
+#~ msgstr "仅管理员"
+
+#~ msgid "Account Visibility"
+#~ msgstr "可见性"
+
+#~ msgid ""
+#~ "Control whether accounts (users & teams)"
+#~ " are shown to everyone, only to "
+#~ "authenticated users, or only to admins"
+#~ msgstr "控制账号（用户和团队）是对所有人可见、仅对已登录用户可见还是仅对管理员可见"
+
+#~ msgid "Score Visibility"
+#~ msgstr "可见性"
+
+#~ msgid ""
+#~ "Control whether solves/score are shown "
+#~ "to the public, to logged in users,"
+#~ " hidden to all non-admins, or "
+#~ "only shown to admins"
+#~ msgstr "控制解题记录/得分是对所有人可见、仅对已登录用户可见、对非管理员隐藏还是仅对管理员可见"
+
+#~ msgid "Registration Visibility"
+#~ msgstr "注册"
+
+#~ msgid "Control whether registration is enabled for everyone or disabled"
+#~ msgstr "控制注册是对所有人开放还是关闭"
+
+#~ msgid "MajorLeagueCyber Only"
+#~ msgstr "MajorLeagueCyber"
+
+#~ msgid "Default Language"
+#~ msgstr "无效的语言"
+
+#~ msgid ""
+#~ "Language to use if a user does "
+#~ "not specify a language in their "
+#~ "account settings. By default, CTFd will"
+#~ " auto-detect the user's preferred "
+#~ "language."
+#~ msgstr "当用户未在账户设置中指定语言时使用的语言。默认情况下，CTFd 会自动检测用户的首选语言。"
+
+#~ msgid "Mail From Address"
+#~ msgstr "IP 地址"
+
+#~ msgid "Email address used to send email"
+#~ msgstr "用于发送邮件的邮箱地址"
+
+#~ msgid "Mail Server Address"
+#~ msgstr "邮件服务器"
+
+#~ msgid "Change the email server used by CTFd to send email"
+#~ msgstr "更改 CTFd 用于发送邮件的邮件服务器"
+
+#~ msgid "Mail Server Port"
+#~ msgstr "邮件服务器端口"
+
+#~ msgid "Use Mail Server Username and Password"
+#~ msgstr "使用邮件服务器用户名和密码"
+
+#~ msgid "Username"
+#~ msgstr "用户名"
+
+#~ msgid "Mail Server Account Username"
+#~ msgstr "邮件服务器账户用户名"
+
+#~ msgid "Mail Server Account Password"
+#~ msgstr "邮件服务器账户密码"
+
+#~ msgid "TLS/SSL"
+#~ msgstr "TLS/SSL"
+
+#~ msgid "STARTTLS"
+#~ msgstr "开始时间"
+
+#~ msgid "Mailgun API Base URL"
+#~ msgstr "Mailgun API 基础 URL"
+
+#~ msgid "Mailgun API Key"
+#~ msgstr "Mailgun API 密钥"
+
+#~ msgid "Subject"
+#~ msgstr "提交"
+
+#~ msgid "Subject line for registration confirmation email"
+#~ msgstr "注册确认邮件的主题行"
+
+#~ msgid "Body"
+#~ msgstr "正文"
+
+#~ msgid "Email body sent to users after they've finished registering"
+#~ msgstr "用户完成注册后发送的邮件"
+
+#~ msgid "Subject line for account verification email"
+#~ msgstr "账户验证邮件的主题行"
+
+#~ msgid ""
+#~ "Email body sent to users to "
+#~ "confirm their account at the address "
+#~ "they provided during registration"
+#~ msgstr "发送给用户的邮件，用于确认其注册时提供的邮箱地址。您可以在<a href=\"#accounts\">账户设置</a>中要求邮箱验证。"
+
+#~ msgid "Subject line for new account details email"
+#~ msgstr "新账户详情邮件的主题行"
+
+#~ msgid ""
+#~ "Email body sent to new users "
+#~ "(manually created by an admin) with "
+#~ "their initial account details"
+#~ msgstr "发送给新用户<i>（由管理员手动创建）</i>的邮件，包含其初始账户信息"
+
+#~ msgid "Subject line for password reset request email"
+#~ msgstr "密码重置请求邮件的主题行"
+
+#~ msgid "Email body sent when a user requests a password reset"
+#~ msgstr "用户请求重置密码时发送的邮件"
+
+#~ msgid "Subject line for password reset confirmation email"
+#~ msgstr "密码重置确认邮件的主题行"
+
+#~ msgid "Email body sent when a user successfully resets their password"
+#~ msgstr "用户成功重置密码后发送的邮件"
+
+#~ msgid "Send"
+#~ msgstr "盾牌"
+
+#~ msgid "Notification title"
+#~ msgstr "通知"
+
+#~ msgid "Notification contents. Can consist of HTML and/or Markdown."
+#~ msgstr "通知内容。可以包含 HTML 和/或 Markdown。"
+
+#~ msgid "Notification Type"
+#~ msgstr "通知类型"
+
+#~ msgid "Toast"
+#~ msgstr "Toast提示"
+
+#~ msgid "Alert"
+#~ msgstr "警告"
+
+#~ msgid "Background"
+#~ msgstr "备份"
+
+#~ msgid "What type of notification users receive"
+#~ msgstr "用户接收的通知类型"
+
+#~ msgid "Play Sound"
+#~ msgstr "播放声音"
+
+#~ msgid "Play sound for users when they receive the notification"
+#~ msgstr "用户收到通知时播放声音"
+
+#~ msgid "This is the title shown on the navigation bar"
+#~ msgstr "导航栏上显示的标题"
+
+#~ msgid ""
+#~ "This is the URL route that your"
+#~ " page will be at (e.g. /page). "
+#~ "You can also enter links to link"
+#~ " to that page."
+#~ msgstr "页面的 URL 路由（例如 /page）。您也可以输入链接以链接到该页面。"
+
+#~ msgid "Format"
+#~ msgstr "格式"
+
+#~ msgid "Markdown"
+#~ msgstr "皇冠"
+
+#~ msgid "HTML"
+#~ msgstr "HTML"
+
+#~ msgid "The markup format used to render the page"
+#~ msgstr "用于渲染页面的标记格式"
+
+#~ msgid "Target"
+#~ msgstr "目标"
+
+#~ msgid "Current Page"
+#~ msgstr "当前页面"
+
+#~ msgid "New Tab"
+#~ msgstr "新建页面"
+
+#~ msgid "Context to open page in"
+#~ msgstr "页面打开的上下文"
+
+#~ msgid "Page Type"
+#~ msgstr "页面类型"
+
+#~ msgid "Language"
+#~ msgstr "语言"
+
+#~ msgid "Current Password"
+#~ msgstr "重置密码"
+
+#~ msgid "Usage Description"
+#~ msgstr "使用说明"
+
+#~ msgid "Generate"
+#~ msgstr "通用"
+
+#~ msgid "The name of your CTF event/workshop"
+#~ msgstr "挑战名称"
+
+#~ msgid "Description for the CTF"
+#~ msgstr "描述"
+
+#~ msgid ""
+#~ "Controls whether users join together in"
+#~ " teams to play (Team Mode) or "
+#~ "play as themselves (User Mode)"
+#~ msgstr "控制用户是组队（团队模式）还是个人（个人模式）"
+
+#~ msgid "Admin Username"
+#~ msgstr "管理员用户名"
+
+#~ msgid "Your username for the administration account"
+#~ msgstr "您的管理员账号用户名"
+
+#~ msgid "Admin Email"
+#~ msgstr "管理面板"
+
+#~ msgid "Your email address for the administration account"
+#~ msgstr "您的管理员账号邮箱地址"
+
+#~ msgid "Admin Password"
+#~ msgstr "重置密码"
+
+#~ msgid "Your password for the administration account"
+#~ msgstr "您的管理员账号密码"
+
+#~ msgid ""
+#~ "Logo to use for the website "
+#~ "instead of a CTF name. Used as "
+#~ "the home page button. Optional."
+#~ msgstr "用于网站的 Logo，替代 CTF 名称。"
+
+#~ msgid "Banner"
+#~ msgstr "已封禁"
+
+#~ msgid "Banner to use for the homepage. Optional."
+#~ msgstr "用作主页的背景图。可选项。"
+
+#~ msgid ""
+#~ "favicon used in user's browsers. Only"
+#~ " PNGs accepted. Must be 32x32px. "
+#~ "Optional."
+#~ msgstr "用户浏览器中使用的图标。仅接受32x32px的PNG文件。可选项。"
+
+#~ msgid "CTFd Theme to use. Can be changed later."
+#~ msgstr "CTFd主题。可稍后更改。"
+
+#~ msgid "Theme Color"
+#~ msgstr "主题颜色"
+
+#~ msgid ""
+#~ "Color used by theme to control "
+#~ "aesthetics. Requires theme support. Optional."
+#~ msgstr "主题功能的基础颜色，需要主题支持。"
+
+#~ msgid ""
+#~ "Control whether users must confirm their"
+#~ " email addresses before participating"
+#~ msgstr "控制用户是否必须确认邮箱地址后才能参与"
+
+#~ msgid "Team Size"
+#~ msgstr "队伍"
+
+#~ msgid "Amount of users per team (Teams mode only) Optional."
+#~ msgstr "每队人数上限（仅团队模式）可选项。"
+
+#~ msgid "Time when your CTF is scheduled to start. Optional."
+#~ msgstr "CTF计划开始的时间。可选项。"
+
+#~ msgid "Time when your CTF is scheduled to end. Optional."
+#~ msgstr "您的CTF计划结束的时间。可选项。"
+
+#~ msgid ""
+#~ "Control whether users can share links"
+#~ " commemorating their challenge solves"
+#~ msgstr "控制用户是否可以分享庆祝解题的链接"
+
+#~ msgid "Account ID"
+#~ msgstr "账户 ID"
+
+#~ msgid "Challenge ID"
+#~ msgstr "挑战"
+
+#~ msgid "Competition bracket for your team"
+#~ msgstr "团队的竞赛分组"
+
+#~ msgid "Team Name"
+#~ msgstr "队伍名称"
+
+#~ msgid "Team Password"
+#~ msgstr "队伍密码"
+
+#~ msgid "Join"
+#~ msgstr "登录"
+
+#~ msgid "Your team's public name shown to other competitors"
+#~ msgstr "公开您的队伍名称给其他参赛者"
+
+#~ msgid "New Team Password"
+#~ msgstr "重置密码"
+
+#~ msgid "Set a new team join password"
+#~ msgstr "设置新队伍加入密码"
+
+#~ msgid "Confirm Current Team Password"
+#~ msgstr "请确认您当前的密码"
+
+#~ msgid ""
+#~ "Provide your current team password (or"
+#~ " your password) to update your team's"
+#~ " password"
+#~ msgstr "提供您当前的队伍密码（或您的密码）以更新您团队的密码"
+
+#~ msgid "Your team's affiliation publicly shown to other competitors"
+#~ msgstr "向其他参赛者公开展示您的队伍隶属关系"
+
+#~ msgid "Your team's website publicly shown to other competitors"
+#~ msgstr "向其他参赛者公开展示您的队伍网站"
+
+#~ msgid "Your team's country publicly shown to other competitors"
+#~ msgstr "向其他参赛者公开展示您队伍的国家"
+
+#~ msgid "Invite Link"
+#~ msgstr "团队邀请链接"
+
+#~ msgid "Registration code required to create account"
+#~ msgstr "注册账户需要注册码（SSO 登录除外）"
+
+#~ msgid "Competition bracket for your user"
+#~ msgstr "用户所在的竞赛组别"
+
+#~ msgid "Search for matching users"
+#~ msgstr "搜索用户"
+
+#~ msgid "Require password change on next login"
+#~ msgstr "下次登录时需要修改密码"
+
+#~ msgid "Email account credentials to user"
+#~ msgstr "将账号凭据发送至用户邮箱"
+
+#~ msgid "Correct"
+#~ msgstr "正确"
+
+#~ msgid "Incorrect"
+#~ msgstr "错误提交"
+
+#~ msgid "Correct but more flags are required"
+#~ msgstr "正确但需要更多 flag"
+
+#~ msgid "Correct but all team members must submit a flag"
+#~ msgstr "正确但所有队员都需要提交 flag"
+
+#~ msgid "Regex parse error occured"
+#~ msgstr "正则表达式解析错误"
+
+#~ msgid "Challenge could not be saved. Challenge name too long"
+#~ msgstr "题目无法保存。题目名称过长"
+
+#~ msgid "Challenge could not be saved. Challenge category too long"
+#~ msgstr "题目无法保存。题目分类过长"
+
+#~ msgid "Challenge could not be saved. Challenge description too long"
+#~ msgstr "题目无法保存。题目描述过长"
+
+#~ msgid "Challenge could not be saved. Challenge position is invalid"
+#~ msgstr "题目无法保存。题目位置无效"
+
+#~ msgid "Page could not be saved. Your title is too long."
+#~ msgstr "页面无法保存。页面标题过长"
+
+#~ msgid "Page could not be saved. Your route is too long."
+#~ msgstr "页面无法保存。页面路由过长"
+
+#~ msgid "Page could not be saved. Your content is too long."
+#~ msgstr "页面无法保存。页面内容过长"
+
+#~ msgid "Invalid link target"
+#~ msgstr "无效的链接目标"
+
+#~ msgid "Team names must not be empty"
+#~ msgstr "队伍名称不能为空"
+
+#~ msgid "Emails must be a properly formatted email address"
+#~ msgstr "邮箱必须是格式正确的电子邮件地址"
+
+#~ msgid "User names must not be empty"
+#~ msgstr "用户名不能为空"
+
+#~ msgid "Emails must not be empty"
+#~ msgstr "邮箱不能为空"
+
+#~ msgid "Your access token is invalid"
+#~ msgstr "您的访问令牌无效"
+
+#~ msgid "Your access token has expired"
+#~ msgstr "您的访问令牌已过期"
+
+#~ msgid "Invalid authorization header"
+#~ msgstr "无效的队长 ID"
 
