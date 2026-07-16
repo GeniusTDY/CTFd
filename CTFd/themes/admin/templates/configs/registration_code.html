@@ -3,12 +3,12 @@
 		<div class="form-group">
 			<label for="ctf_name">
 				{% trans %}Registration Code{% endtrans %}
-				<small class="form-text text-muted">{% trans %}Registration Code required for account registration (SSO excluded){% endtrans %}</small>
+				<small class="form-text text-muted">Registration Code required for account registration (SSO excluded)</small>
 			</label>
-			<input class="form-control" id='registration_code' name='registration_code' type='text' placeholder="{% trans %}Registration Code{% endtrans %}"
+			<input class="form-control" id='registration_code' name='registration_code' type='text' placeholder="Registration Code"
 				{% if registration_code is defined and registration_code != None %}value="{{ registration_code }}"{% endif %}>
 		</div>
 
-		<button type="submit" class="btn btn-md btn-primary float-right">{% trans %}Update{% endtrans %}</button>
+		<button type="submit" class="btn btn-md btn-primary float-right">Update</button>
 	</form>
 </div>

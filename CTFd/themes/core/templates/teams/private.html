@@ -6,7 +6,7 @@
       <div class="modal-content">
         <div class="modal-header">
           <h2 class="modal-action text-center w-100">{% trans %}Edit Team{% endtrans %}</h2>
-          <button type="button" class="cursor-pointer btn-close" data-bs-dismiss="modal" aria-label="{% trans %}Close{% endtrans %}">
+          <button type="button" class="cursor-pointer btn-close" data-bs-dismiss="modal" aria-label="Close">
           </button>
         </div>
 
@@ -74,7 +74,7 @@
                 >
                   <strong>{% trans %}Success!{% endtrans %}</strong>
                   {% trans %}Your team's profile has been updated{% endtrans %}
-                  <button type="button" class="cursor-pointer btn-close" data-bs-dismiss="alert" aria-label="{% trans %}Close{% endtrans %}">
+                  <button type="button" class="cursor-pointer btn-close" data-bs-dismiss="alert" aria-label="Close">
                   </button>
                 </div>
 
@@ -82,7 +82,7 @@
                   <div class="alert alert-danger alert-dismissible" role="alert">
                     <span class="sr-only">{% trans %}Error:{% endtrans %}</span>
                     <span x-text="msg"></span>
-                    <button type="button" class="cursor-pointer btn-close" data-bs-dismiss="alert" aria-label="{% trans %}Close{% endtrans %}">
+                    <button type="button" class="cursor-pointer btn-close" data-bs-dismiss="alert" aria-label="Close">
                     </button>
                   </div>
                 </template>
@@ -100,7 +100,7 @@
       <div class="modal-content">
         <div class="modal-header">
           <h2 class="modal-action text-center w-100">{% trans %}Choose Captain{% endtrans %}</h2>
-          <button type="button" class="cursor-pointer btn-close" data-bs-dismiss="modal" aria-label="{% trans %}Close{% endtrans %}">
+          <button type="button" class="cursor-pointer btn-close" data-bs-dismiss="modal" aria-label="Close">
           </button>
         </div>
         <div class="modal-body clearfix">
@@ -123,14 +123,14 @@
                 >
                   <strong>{% trans %}Success!{% endtrans %}</strong>
                   {% trans %}Your captain rights have been transferred{% endtrans %}
-                  <button type="button" class="cursor-pointer btn-close" data-bs-dismiss="alert" aria-label="{% trans %}Close{% endtrans %}">
+                  <button type="button" class="cursor-pointer btn-close" data-bs-dismiss="alert" aria-label="Close">
                   </button>
                 </div>
                 <template x-for="(msg, idx) in errors" :key="idx">
                   <div class="alert alert-danger alert-dismissible" role="alert">
-                    <span class="sr-only">{% trans %}Error:{% endtrans %}</span>
+                    <span class="sr-only">Error:</span>
                     <span x-text="msg"></span>
-                    <button type="button" class="cursor-pointer btn-close" data-bs-dismiss="alert" aria-label="{% trans %}Close{% endtrans %}">
+                    <button type="button" class="cursor-pointer btn-close" data-bs-dismiss="alert" aria-label="Close">
                     </button>
                   </div>
                 </template>
@@ -148,7 +148,7 @@
       <div class="modal-content">
         <div class="modal-header">
           <h2 class="modal-action text-center w-100">{% trans %}Invite Users{% endtrans %}</h2>
-          <button type="button" class="cursor-pointer btn-close" data-bs-dismiss="modal" aria-label="{% trans %}Close{% endtrans %}">
+          <button type="button" class="cursor-pointer btn-close" data-bs-dismiss="modal" aria-label="Close">
           </button>
         </div>
         <div class="modal-body clearfix">
@@ -184,7 +184,7 @@
       <div class="modal-content">
         <div class="modal-header">
           <h2 class="modal-action text-center w-100">{% trans %}Disband Team{% endtrans %}</h2>
-          <button type="button" class="cursor-pointer btn-close" data-bs-dismiss="modal" aria-label="{% trans %}Close{% endtrans %}">
+          <button type="button" class="cursor-pointer btn-close" data-bs-dismiss="modal" aria-label="Close">
           </button>
         </div>
         <div class="modal-body">
@@ -272,14 +272,14 @@
           <i
               class="cursor-pointer fas fa-cogs fa-2x px-2 pt-3"
               data-bs-toggle="tooltip" data-bs-placement="top"
-              title="{% trans %}Edit Team{% endtrans %}"
+              title="Edit Team"
           ></i>
         </a>
         <a class="edit-captain text-white" @click="chooseCaptain()">
           <i
               class="cursor-pointer fas fa-user-tag fa-2x px-2 pt-3"
               data-bs-toggle="tooltip" data-bs-placement="top"
-              title="{% trans %}Choose Captain{% endtrans %}"
+              title="Choose Captain"
           ></i>
         </a>
 
@@ -287,14 +287,14 @@
           <i
               class="cursor-pointer fas fa-ticket-alt fa-2x px-2 pt-3"
               data-bs-toggle="tooltip" data-bs-placement="top"
-              title="{% trans %}Invite Users{% endtrans %}"
+              title="Invite Users"
           ></i>
         </a>
         <a class="disband-team text-white" @click="disbandTeam()">
           <i
               class="cursor-pointer fas fa-trash-alt fa-2x px-2 pt-3"
               data-bs-toggle="tooltip" data-bs-placement="top"
-              title="{% trans %}Disband Team{% endtrans %}"
+              title="Disband Team"
           ></i>
         </a>
       </div>

@@ -4,12 +4,12 @@
 			<h6>
 				{% trans %}MajorLeagueCyber integration{% endtrans %}
 			</h6>
-			<span data-toggle="tooltip" data-placement="top" title="{% trans %}MLC is a CTF stats tracker that provides event scheduling, team tracking, and SSO.{% endtrans %}" aria-hidden="true">
+			<span data-toggle="tooltip" data-placement="top" title="MLC is a CTF stats tracker that provides event scheduling, team tracking, and SSO." aria-hidden="true">
 				<i class="fas fa-question-circle"></i>
 			</span>
 		</div>
 		<small>
-			{% trans %}Begin by registering your event with <a href="https://www.majorleaguecyber.org/">MajorLeagueCyber</a> to get your OAuth Client ID and Client Secret. Need more help? Check out the <a href="https://docs.ctfd.io/docs/settings/mlc" target="_blank">documentation</a>.{% endtrans %}
+			Begin by registering your event with <a href="https://www.majorleaguecyber.org/">MajorLeagueCyber</a> to get your OAuth Client ID and Client Secret. Need more help? Check out the <a href="https://docs.ctfd.io/docs/settings/mlc" target="_blank">documentation</a>.
 		</small>
 		<br>
 		<div class="form-group">
@@ -28,6 +28,6 @@
 				{% if oauth_client_secret is defined and oauth_client_secret != None %}value="{{ oauth_client_secret }}"{% endif %}>
 		</div>
 
-		<button type="submit" class="btn btn-md btn-primary float-right">{% trans %}Update{% endtrans %}</button>
+		<button type="submit" class="btn btn-md btn-primary float-right">Update</button>
 	</form>
 </div>

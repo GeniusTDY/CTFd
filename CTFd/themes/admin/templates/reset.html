@@ -16,20 +16,21 @@
 				<form method="POST" id="reset-ctf-form">
 					<div class="alert alert-danger" role="alert">
 						<p>
-							{% trans %}Resetting your CTFd instance allows you to bulk delete data to prepare it for other events, other classes, or to otherwise get it to a clean state.{% endtrans %}
+							Resetting your CTFd instance allows you to bulk delete data to prepare it for other events,
+							other classes, or to otherwise get it to a clean state.
 						</p>
 
 						<p>
-							{% trans %}Resetting your CTFd instance will delete the selected data{% endtrans %} <strong>{% trans %}PERMANENTLY{% endtrans %}</strong>.
+							Resetting your CTFd instance will delete the selected data <strong>PERMANENTLY</strong>.
 						</p>
 
 						<p>
-							{% trans %}Think carefully before resetting because no automated backups are made and all selected data will be lost.{% endtrans %}
+							Think carefully before resetting because no automated backups are made and all selected data will be lost.
 						</p>
 
 						<span>
 							<strong>
-								{% trans %}Create backups of all data you need by{% endtrans %} <a href="{{ url_for('admin.config', _anchor='backup') }}">{% trans %}creating a CTFd Export{% endtrans %}</a>
+								Create backups of all data you need by <a href="{{ url_for('admin.config', _anchor='backup') }}">creating a CTFd Export</a>
 							</strong>
 						</span>
 					</div>
@@ -42,8 +43,8 @@
 							{{ form.accounts.label(class="form-check-label") }}
 						</div>
 						<span class="text-muted">
-							{% trans %}Deletes all user and team accounts and their associated information{% endtrans %}<br>
-							<small>{% trans %}(Users, Teams, Submissions, Tracking){% endtrans %}</small>
+							Deletes all user and team accounts and their associated information<br>
+							<small>(Users, Teams, Submissions, Tracking)</small>
 						</span>
 					</div>
 
@@ -53,8 +54,8 @@
 							{{ form.submissions.label(class="form-check-label") }}
 						</div>
 						<span class="text-muted">
-							{% trans %}Deletes all records that accounts gained points or took an action{% endtrans %}<br>
-							<small>{% trans %}(Submissions, Awards, Unlocks, Tracking){% endtrans %}</small>
+							Deletes all records that accounts gained points or took an action<br>
+							<small>(Submissions, Awards, Unlocks, Tracking)</small>
 						</span>
 					</div>
 
@@ -64,8 +65,8 @@
 							{{ form.challenges.label(class="form-check-label") }}
 						</div>
 						<span class="text-muted">
-							{% trans %}Deletes all challenges and associated data{% endtrans %}<br>
-							<small>{% trans %}(Challenges, Flags, Hints, Tags, Challenge Files){% endtrans %}</small>
+							Deletes all challenges and associated data<br>
+							<small>(Challenges, Flags, Hints, Tags, Challenge Files)</small>
 						</span>
 					</div>
 
@@ -75,8 +76,8 @@
 							{{ form.pages.label(class="form-check-label") }}
 						</div>
 						<span class="text-muted">
-							{% trans %}Deletes all pages and their associated files{% endtrans %}<br>
-							<small>{% trans %}(Pages, Page Files){% endtrans %}</small>
+							Deletes all pages and their associated files<br>
+							<small>(Pages, Page Files)</small>
 						</span>
 					</div>
 
@@ -86,8 +87,8 @@
 							{{ form.notifications.label(class="form-check-label") }}
 						</div>
 						<span class="text-muted">
-							{% trans %}Deletes all notifications{% endtrans %}<br>
-							<small>{% trans %}(Notifications){% endtrans %}</small>
+							Deletes all notifications<br>
+							<small>(Notifications)</small>
 						</span>
 					</div>
 

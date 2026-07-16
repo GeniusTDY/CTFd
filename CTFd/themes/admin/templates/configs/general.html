@@ -5,7 +5,7 @@
 				{% trans %}Event Name{% endtrans %}
 				<small class="form-text text-muted">{% trans %}When no logo is specified, the CTF's name is used instead.{% endtrans %}</small>
 			</label>
-			<input class="form-control" id='ctf_name' name='ctf_name' type='text' placeholder="{% trans %}CTF Name{% endtrans %}"
+			<input class="form-control" id='ctf_name' name='ctf_name' type='text' placeholder="CTF Name"
 				{% if ctf_name is defined and ctf_name != None %}value="{{ ctf_name }}"{% endif %}>
 		</div>
 
@@ -20,6 +20,6 @@
 			<textarea class="form-control" type="text" id="ctf_description" name="ctf_description" rows="5">{{ ctf_description }}</textarea>
 		</div>
 
-		<button type="submit" class="btn btn-md btn-primary float-right">{% trans %}Update{% endtrans %}</button>
+		<button type="submit" class="btn btn-md btn-primary float-right">Update</button>
 	</form>
 </div>
