@@ -1,4 +1,5 @@
 from flask_restx import Resource
+from flask_babel import gettext
 from sqlalchemy import func
 
 from CTFd.api.v1.statistics import statistics_namespace
@@ -19,5 +20,5 @@ class SubmissionPropertyCounts(Resource):
             )
             return {"success": True, "data": dict(data)}
         else:
-            response = {"success": False, "errors": "That could not be found"}, 404
+            response = {"success": False, "errors": gettext("That could not be found")}, 404
             return response

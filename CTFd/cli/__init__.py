@@ -4,6 +4,7 @@ from pathlib import Path
 
 import click
 from flask import Blueprint, current_app
+from flask_babel import gettext
 
 from CTFd.utils import get_config as get_config_util
 from CTFd.utils import set_config as set_config_util
@@ -84,7 +85,7 @@ def import_ctf(path, delete_import_on_finish=False):
     except Exception as e:
         from CTFd.utils.dates import unix_time
 
-        set_import_error("Import Failure: " + str(e))
+        set_import_error(gettext("Import Failure:") + " " + str(e))
         set_import_end_time(value=unix_time(datetime.datetime.utcnow()))
 
     if delete_import_on_finish:

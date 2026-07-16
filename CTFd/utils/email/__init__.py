@@ -1,5 +1,6 @@
 from flask import url_for
 from flask_babel import gettext
+from flask_babel import lazy_gettext as _l
 
 from CTFd.constants.email import (
     DEFAULT_PASSWORD_CHANGE_ALERT_BODY,
@@ -39,7 +40,7 @@ def sendmail(addr, text, subject=None):
 
 def password_change_alert(email):
     text = safe_format(
-        get_config("password_change_alert_body") or DEFAULT_PASSWORD_CHANGE_ALERT_BODY,
+        get_config("password_change_alert_body") or gettext(DEFAULT_PASSWORD_CHANGE_ALERT_BODY),
         ctf_name=get_config("ctf_name"),
         ctf_description=get_config("ctf_description"),
         url=url_for("auth.reset_password", _external=True),
@@ -47,7 +48,7 @@ def password_change_alert(email):
 
     subject = safe_format(
         get_config("password_change_alert_subject")
-        or DEFAULT_PASSWORD_CHANGE_ALERT_SUBJECT,
+        or gettext(DEFAULT_PASSWORD_CHANGE_ALERT_SUBJECT),
         ctf_name=get_config("ctf_name"),
     )
     return sendmail(addr=email, text=text, subject=subject)
@@ -55,7 +56,7 @@ def password_change_alert(email):
 
 def forgot_password(email):
     text = safe_format(
-        get_config("password_reset_body") or DEFAULT_PASSWORD_RESET_BODY,
+        get_config("password_reset_body") or gettext(DEFAULT_PASSWORD_RESET_BODY),
         ctf_name=get_config("ctf_name"),
         ctf_description=get_config("ctf_description"),
         url=url_for(
@@ -66,7 +67,7 @@ def forgot_password(email):
     )
 
     subject = safe_format(
-        get_config("password_reset_subject") or DEFAULT_PASSWORD_RESET_SUBJECT,
+        get_config("password_reset_subject") or gettext(DEFAULT_PASSWORD_RESET_SUBJECT),
         ctf_name=get_config("ctf_name"),
     )
     return sendmail(addr=email, text=text, subject=subject)
@@ -74,7 +75,7 @@ def forgot_password(email):
 
 def verify_email_address(addr):
     text = safe_format(
-        get_config("verification_email_body") or DEFAULT_VERIFICATION_EMAIL_BODY,
+        get_config("verification_email_body") or gettext(DEFAULT_VERIFICATION_EMAIL_BODY),
         ctf_name=get_config("ctf_name"),
         ctf_description=get_config("ctf_description"),
         url=url_for(
@@ -86,7 +87,7 @@ def verify_email_address(addr):
     )
 
     subject = safe_format(
-        get_config("verification_email_subject") or DEFAULT_VERIFICATION_EMAIL_SUBJECT,
+        get_config("verification_email_subject") or gettext(DEFAULT_VERIFICATION_EMAIL_SUBJECT),
         ctf_name=get_config("ctf_name"),
     )
     return sendmail(addr=addr, text=text, subject=subject)
@@ -95,7 +96,7 @@ def verify_email_address(addr):
 def successful_registration_notification(addr):
     text = safe_format(
         get_config("successful_registration_email_body")
-        or DEFAULT_SUCCESSFUL_REGISTRATION_EMAIL_BODY,
+        or gettext(DEFAULT_SUCCESSFUL_REGISTRATION_EMAIL_BODY),
         ctf_name=get_config("ctf_name"),
         ctf_description=get_config("ctf_description"),
         url=url_for("views.static_html", _external=True),
@@ -103,7 +104,7 @@ def successful_registration_notification(addr):
 
     subject = safe_format(
         get_config("successful_registration_email_subject")
-        or DEFAULT_SUCCESSFUL_REGISTRATION_EMAIL_SUBJECT,
+        or gettext(DEFAULT_SUCCESSFUL_REGISTRATION_EMAIL_SUBJECT),
         ctf_name=get_config("ctf_name"),
     )
     return sendmail(addr=addr, text=text, subject=subject)
@@ -111,7 +112,7 @@ def successful_registration_notification(addr):
 
 def user_created_notification(addr, name, password):
     text = safe_format(
-        get_config("user_creation_email_body") or DEFAULT_USER_CREATION_EMAIL_BODY,
+        get_config("user_creation_email_body") or gettext(DEFAULT_USER_CREATION_EMAIL_BODY),
         ctf_name=get_config("ctf_name"),
         ctf_description=get_config("ctf_description"),
         url=url_for("views.static_html", _external=True),
@@ -121,7 +122,7 @@ def user_created_notification(addr, name, password):
 
     subject = safe_format(
         get_config("user_creation_email_subject")
-        or DEFAULT_USER_CREATION_EMAIL_SUBJECT,
+        or gettext(DEFAULT_USER_CREATION_EMAIL_SUBJECT),
         ctf_name=get_config("ctf_name"),
     )
     return sendmail(addr=addr, text=text, subject=subject)
@@ -181,3 +182,39 @@ def check_email_is_blacklisted(email_address):
 
     # blacklist is not specified - no emails are blacklisted
     return False
+
+
+# 翻译提取标记 - 确保邮件默认常量字符串被 pybabel 提取
+# 这些字符串在 constants/email.py 中定义为常量，通过 gettext(变量) 调用，
+# pybabel 无法从变量调用中提取字符串，因此在此处使用 _l() 显式标记
+_EMAIL_DEFAULTS_I18N = [
+    _l("Confirm your account for {ctf_name}"),
+    _l(
+        "Welcome to {ctf_name}!\n\n"
+        "Click the following link to confirm and activate your account:\n"
+        "{url}"
+        "\n\n"
+        "If the link is not clickable, try copying and pasting it into your browser."
+    ),
+    _l("Successfully registered for {ctf_name}"),
+    _l("You've successfully registered for {ctf_name}!"),
+    _l("Message from {ctf_name}"),
+    _l(
+        "A new account has been created for you for {ctf_name} at {url}. \n\n"
+        "Username: {name}\n"
+        "Password: {password}"
+    ),
+    _l("Password Reset Request from {ctf_name}"),
+    _l(
+        "Did you initiate a password reset on {ctf_name}? "
+        "If you didn't initiate this request you can ignore this email. \n\n"
+        "Click the following link to reset your password:\n{url}\n\n"
+        "If the link is not clickable, try copying and pasting it into your browser."
+    ),
+    _l("Password Change Confirmation for {ctf_name}"),
+    _l(
+        "Your password for {ctf_name} has been changed.\n\n"
+        "If you didn't request a password change you can reset your password here:\n{url}\n\n"
+        "If the link is not clickable, try copying and pasting it into your browser."
+    ),
+]

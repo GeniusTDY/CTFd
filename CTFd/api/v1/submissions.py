@@ -1,6 +1,7 @@
 from typing import List
 
 from flask import request
+from flask_babel import gettext
 from flask_restx import Namespace, Resource
 
 from CTFd.api.v1.helpers.request import validate_args
@@ -200,7 +201,9 @@ class Submission(Resource):
             if existing_solve:
                 return {
                     "success": False,
-                    "errors": {"type": ["Solve already exists for this submission"]},
+                    "errors": {
+                        "type": [gettext("Solve already exists for this submission")]
+                    },
                 }, 400
 
             solve = Solves(

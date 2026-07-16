@@ -1,18 +1,18 @@
 <div class="modal-dialog" role="document">
 	<div class="modal-content">
 		<div class="modal-body">
-			<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+			<button type="button" class="close" data-dismiss="modal" aria-label="{{ _('Close') }}">
 				<span aria-hidden="true">&times;</span>
 			</button>
 			<ul class="nav nav-tabs">
 				<li class="nav-item">
-					<a class="nav-link active" href="#challenge">Challenge</a>
+					<a class="nav-link active" href="#challenge">{{ _("Challenge") }}</a>
 				</li>
 				{% block solves %}
 					<li class="nav-item">
 						<a class="nav-link challenge-solves" href="#solves">
 							{% if solves != None %}
-								{{ solves }} {% if solves > 1 %}Solves{% else %}Solves{% endif %}
+								{{ solves }} {% if solves > 1 %}{{ _("Solves") }}{% else %}{{ _("Solves") }}{% endif %}
 							{% endif %}
 						</a>
 					</li>
@@ -56,16 +56,16 @@
 									<a class="btn btn-info btn-hint btn-block load-hint" href="javascript:;" data-hint-id="{{ hint.id }}">
 										{% if hint.content %}
 											<small>
-												View Hint
+												{{ _("View Hint") }}
 											</small>
 										{% else %}
 											{% if hint.cost %}
 												<small>
-													Unlock Hint for {{ hint.cost }} points
+													{% trans cost=hint.cost %}Unlock Hint for {{ cost }} points{% endtrans %}
 												</small>
 											{% else %}
 												<small>
-													View Hint
+													{{ _("View Hint") }}
 												</small>
 											{% endif %}
 										{% endif %}
@@ -99,7 +99,7 @@
 						<div class="row text-center">
 							<div class="col-md-12">
 								<p>
-									{{ attempts }}/{{ max_attempts }} attempt{{ max_attempts|pluralize }}
+									{{ attempts }}/{{ max_attempts }} {% trans %}attempt{{ max_attempts|pluralize }}{% endtrans %}
 								</p>
 							</div>
 						</div>
@@ -109,13 +109,13 @@
 							<div class="col-md-9 form-group">
 								{% block input %}
 									<input id="challenge-id" class="challenge-id" type="hidden" value="{{ challenge.id }}">
-									<input id="challenge-input" class="challenge-input" type="text" name="answer" placeholder="Flag"/>
+									<input id="challenge-input" class="challenge-input" type="text" name="answer" placeholder="{{ _('Flag') }}"/>
 								{% endblock %}
 							</div>
 							<div class="col-md-3 form-group key-submit">
 								{% block submit %}
 								<button id="challenge-submit" class="challenge-submit" type="submit">
-									Submit
+									{{ _("Submit") }}
 								</button>
 								{% endblock %}
 							</div>
@@ -137,9 +137,9 @@
 								<table class="table table-striped text-center">
 									<thead>
 									<tr>
-										<td><b>Name</b>
+										<td><b>{{ _("Name") }}</b>
 										</td>
-										<td><b>Date</b>
+										<td><b>{{ _("Date") }}</b>
 										</td>
 									</tr>
 									</thead>

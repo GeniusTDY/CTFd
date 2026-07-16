@@ -9,7 +9,7 @@
 			<h1 id="team-id" team-id="{{ team.id }}">{{ team.name }}</h1>
 			{% if team.oauth_id %}
 				<a href="https://majorleaguecyber.org/t/{{ team.name }}">
-					<h3><span class="badge badge-primary">Official</span></h3>
+					<h3><span class="badge badge-primary">{{ _("Official") }}</span></h3>
 				</a>
 			{% endif %}
 			{% if team.affiliation %}
@@ -37,14 +37,14 @@
 				{% if scores_visible() %}
 					{% if place %}
 						{{ place }}
-						<small>place</small>
+						<small>{{ _("place") }}</small>
 					{% endif %}
 				{% endif %}
 			</h2>
 			<h2 id="team-score" class="text-center">
 				{% if score %}
 					{{ score }}
-					<small>points</small>
+					<small>{{ _("points") }}</small>
 				{% endif %}
 			</h2>
 
@@ -65,12 +65,12 @@
 
 		<div class="row">
 			<div class="col-md-12">
-				<h3>Members</h3>
+				<h3>{{ _("Members") }}</h3>
 				<table class="table table-striped">
 					<thead>
 					<tr>
-						<td><b>User Name</b></td>
-						<td><b>Score</b></td>
+						<td><b>{{ _("User Name") }}</b></td>
+						<td><b>{{ _("Score") }}</b></td>
 					</tr>
 					</thead>
 					<tbody>
@@ -120,7 +120,7 @@
 			{% if awards %}
 				<div class="row">
 					<div class="col-md-12">
-						<h3>Awards</h3>
+						<h3>{{ _("Awards") }}</h3>
 					</div>
 					{% for award in awards %}
 						<div class="col-md-3 col-sm-6">
@@ -141,14 +141,14 @@
 
 			<div class="row">
 				<div class="col-md-12">
-					<h3>Solves</h3>
+					<h3>{{ _("Solves") }}</h3>
 					<table class="table table-striped">
 						<thead>
 						<tr>
-							<td><b>Challenge</b></td>
-							<td class="d-none d-md-block d-lg-block"><b>Category</b></td>
-							<td><b>Value</b></td>
-							<td><b>Time</b></td>
+							<td><b>{{ _("Challenge") }}</b></td>
+							<td class="d-none d-md-block d-lg-block"><b>{{ _("Category") }}</b></td>
+							<td><b>{{ _("Value") }}</b></td>
+							<td><b>{{ _("Time") }}</b></td>
 						</tr>
 						</thead>
 						<tbody>
@@ -173,7 +173,7 @@
 		{% else %}
 			<div class="row min-vh-25">
 				<h3 class="opacity-50 text-center w-100 justify-content-center align-self-center">
-					No solves yet
+					{{ _("No solves yet") }}
 				</h3>
 			</div>
 		{% endif %}

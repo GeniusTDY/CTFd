@@ -11,6 +11,7 @@ from pathlib import Path
 
 import dataset
 from flask import current_app as app
+from flask_babel import gettext
 from flask_migrate import upgrade as migration_upgrade
 from sqlalchemy.engine.url import make_url
 from sqlalchemy.exc import IntegrityError, ProgrammingError
@@ -129,15 +130,14 @@ def import_ctf(backup, erase=True, ignore_overrides=False):
     set_import_status(value=None, skip_print=True)
 
     if app.config["SQLALCHEMY_DATABASE_URI"].startswith("sqlite"):
-        set_import_error(
-            "Exception: Importing not currently supported for SQLite databases. See Github issue #1988."
-        )
-        raise Exception(
+        sqlite_error = gettext(
             "Importing not currently supported for SQLite databases. See Github issue #1988."
         )
+        set_import_error(gettext("Exception:") + " " + sqlite_error)
+        raise Exception(sqlite_error)
 
     if not zipfile.is_zipfile(backup):
-        set_import_error("zipfile.BadZipfile: zipfile is invalid")
+        set_import_error(gettext("zipfile.BadZipfile: zipfile is invalid"))
         raise zipfile.BadZipfile
 
     backup = zipfile.ZipFile(backup)
@@ -153,31 +153,33 @@ def import_ctf(backup, erase=True, ignore_overrides=False):
             or "\\\\" in f
         ):
             # Abort on malicious zip files
-            set_import_error("zipfile.BadZipfile: zipfile is malicious")
+            set_import_error(gettext("zipfile.BadZipfile: zipfile is malicious"))
             raise zipfile.BadZipfile
         info = backup.getinfo(f)
         if max_content_length:
             if info.file_size > max_content_length:
-                set_import_error("zipfile.LargeZipFile: zipfile is too large")
+                set_import_error(gettext("zipfile.LargeZipFile: zipfile is too large"))
                 raise zipfile.LargeZipFile
 
     # Get list of directories in zipfile
     member_dirs = [os.path.split(m)[0] for m in members if "/" in m]
     if "db" not in member_dirs:
-        set_import_error("Exception: db folder is missing")
-        raise Exception(
+        db_folder_error = gettext(
             'CTFd couldn\'t find the "db" folder in this backup. '
             "The backup may be malformed or corrupted and the import process cannot continue."
         )
+        set_import_error(gettext("Exception:") + " " + db_folder_error)
+        raise Exception(db_folder_error)
 
     try:
         alembic_version = json.loads(backup.open("db/alembic_version.json").read())
         alembic_version = alembic_version["results"][0]["version_num"]
     except Exception:
-        set_import_error("Exception: Could not determine appropriate database version")
-        raise Exception(
+        db_version_error = gettext(
             "Could not determine appropriate database version. This backup cannot be automatically imported."
         )
+        set_import_error(gettext("Exception:") + " " + db_version_error)
+        raise Exception(db_version_error)
 
     # Check if the alembic version is from CTFd 1.x
     if alembic_version in (
@@ -195,19 +197,18 @@ def import_ctf(backup, erase=True, ignore_overrides=False):
         "dab615389702",
         "e62fd69bd417",
     ):
-        set_import_error(
-            "Exception: The version of CTFd that this backup is from is too old to be automatically imported."
-        )
-        raise Exception(
+        too_old_error = gettext(
             "The version of CTFd that this backup is from is too old to be automatically imported."
         )
+        set_import_error(gettext("Exception:") + " " + too_old_error)
+        raise Exception(too_old_error)
 
     start_time = unix_time(datetime.datetime.utcnow())
 
     set_import_start_time(value=start_time, skip_print=True)
     set_import_end_time(value=None, skip_print=True)
 
-    set_import_status("started")
+    set_import_status(gettext("started"))
 
     sqlite = get_app_config("SQLALCHEMY_DATABASE_URI").startswith("sqlite")
     postgres = get_app_config("SQLALCHEMY_DATABASE_URI").startswith("postgres")
@@ -216,15 +217,14 @@ def import_ctf(backup, erase=True, ignore_overrides=False):
 
     # Only import if we can actually make it to the target migration
     if sqlite is False and alembic_version not in get_available_revisions():
-        set_import_error(
-            "Exception: The target migration in this backup is not available in this version of CTFd."
-        )
-        raise Exception(
+        migration_error = gettext(
             "The target migration in this backup is not available in this version of CTFd."
         )
+        set_import_error(gettext("Exception:") + " " + migration_error)
+        raise Exception(migration_error)
 
     if erase:
-        set_import_status("erasing")
+        set_import_status(gettext("erasing"))
         # Clear out existing connections to release any locks
         db.session.close()
         db.engine.dispose()
@@ -251,12 +251,12 @@ def import_ctf(backup, erase=True, ignore_overrides=False):
         create_database()
         # We explicitly do not want to upgrade or stamp here.
         # The import will have this information.
-        set_import_status("erased")
+        set_import_status(gettext("erased"))
 
     side_db = dataset.connect(get_app_config("SQLALCHEMY_DATABASE_URI"))
 
     try:
-        set_import_status("disabling foreign key checks")
+        set_import_status(gettext("disabling foreign key checks"))
         if postgres:
             side_db.query("SET session_replication_role=replica;")
         else:
@@ -301,7 +301,7 @@ def import_ctf(backup, erase=True, ignore_overrides=False):
     # insertion between official database tables and plugin tables
     def insertion(table_filenames):
         for member in table_filenames:
-            set_import_status(f"inserting {member}")
+            set_import_status(gettext("inserting %(member)s") % {"member": member})
             if member.startswith("db/"):
                 table_name = member[3:-5]
 
@@ -317,7 +317,10 @@ def import_ctf(backup, erase=True, ignore_overrides=False):
                     saved = json.loads(data)
                     count = len(saved["results"])
                     for i, entry in enumerate(saved["results"]):
-                        set_import_status(f"inserting {member} {i}/{count}")
+                        set_import_status(
+                            gettext("inserting %(member)s %(i)d/%(count)d")
+                            % {"member": member, "i": i, "count": count}
+                        )
                         # This is a hack to get SQLite to properly accept datetime values from dataset
                         # See Issue #246
                         if sqlite:
@@ -415,25 +418,22 @@ def import_ctf(backup, erase=True, ignore_overrides=False):
                             )
                             side_db.engine.execute(query)
                         else:
-                            set_import_error(
-                                f"Exception: Table name {table_name} contains quotes"
-                            )
-                            raise Exception(
-                                "Table name {table_name} contains quotes".format(
-                                    table_name=table_name
-                                )
-                            )
+                            quotes_error = gettext(
+                                "Table name %(table_name)s contains quotes"
+                            ) % {"table_name": table_name}
+                            set_import_error(gettext("Exception:") + " " + quotes_error)
+                            raise Exception(quotes_error)
 
     # Insert data from official tables
-    set_import_status("inserting tables")
+    set_import_status(gettext("inserting tables"))
     insertion(first)
 
     # Create tables created by plugins
     # Run plugin migrations
-    set_import_status("inserting plugins")
+    set_import_status(gettext("inserting plugins"))
     plugins = get_plugin_names()
     for plugin in plugins:
-        set_import_status(f"inserting plugin {plugin}")
+        set_import_status(gettext("inserting plugin %(plugin)s") % {"plugin": plugin})
         revision = plugin_current(plugin_name=plugin)
         plugin_upgrade(plugin_name=plugin, revision=revision, lower=None)
 
@@ -446,7 +446,7 @@ def import_ctf(backup, erase=True, ignore_overrides=False):
         plugin_upgrade(plugin_name=plugin)
 
     # Extracting files
-    set_import_status("uploading files")
+    set_import_status(gettext("uploading files"))
     files = [f for f in backup.namelist() if f.startswith("uploads/")]
     uploader = get_uploader()
     for f in files:
@@ -461,14 +461,15 @@ def import_ctf(backup, erase=True, ignore_overrides=False):
 
         # Handle possibility of an absolute path or traversal in the raw filename
         if os.path.isabs(filename) or ".." in filename:
-            set_import_error("Encountered invalid upload file in import")
-            raise Exception("Encountered invalid upload file in import")
+            invalid_upload_error = gettext("Encountered invalid upload file in import")
+            set_import_error(invalid_upload_error)
+            raise Exception(invalid_upload_error)
 
         source = backup.open(f)
         uploader.store(fileobj=source, filename=filename)
 
     # Alembic sqlite support is lacking so we should just create_all anyway
-    set_import_status("running head migrations")
+    set_import_status(gettext("running head migrations"))
     if sqlite:
         app.db.create_all()
         stamp_latest_revision()
@@ -479,7 +480,7 @@ def import_ctf(backup, erase=True, ignore_overrides=False):
         app.db.create_all()
 
     try:
-        set_import_status("reenabling foreign key checks")
+        set_import_status(gettext("reenabling foreign key checks"))
         if postgres:
             side_db.query("SET session_replication_role=DEFAULT;")
         else:
@@ -488,7 +489,7 @@ def import_ctf(backup, erase=True, ignore_overrides=False):
         print("Failed to enable foreign key checks. Continuing.")
 
     # Invalidate all cached data
-    set_import_status("clearing caches")
+    set_import_status(gettext("clearing caches"))
     cache.clear()
 
     # Set theme from backup if it is installed, otherwise fall back to the default theme

@@ -95,19 +95,19 @@
 													</span>
 													{% if radio.data == "teams" %}
 													<ul class="p-0 small">
-														<li>Participants register accounts and form teams</li>
-														<li>If a team member solves a challenge, the entire team receives credit</li>
-														<br>
-														<li>Easier to see which team member solved a challenge</li>
-														<li>May be slightly more difficult to administer</li>
+														<li>{{ _("Participants register accounts and form teams") }}</li>
+													<li>{{ _("If a team member solves a challenge, the entire team receives credit") }}</li>
+													<br>
+													<li>{{ _("Easier to see which team member solved a challenge") }}</li>
+													<li>{{ _("May be slightly more difficult to administer") }}</li>
 													</ul>
 													{% elif radio.data == "users" %}
 													<ul class="p-0 small">
-														<li>Participants only register an individual account</li>
-														<li>Players can share accounts to form pseudo-teams</li>
-														<br>
-														<li>Easier to organize</li>
-														<li>Difficult to attribute solutions to individual team members</li>
+														<li>{{ _("Participants only register an individual account") }}</li>
+													<li>{{ _("Players can share accounts to form pseudo-teams") }}</li>
+													<br>
+													<li>{{ _("Easier to organize") }}</li>
+													<li>{{ _("Difficult to attribute solutions to individual team members") }}</li>
 													</ul>
 													{% endif %}
 												</div>

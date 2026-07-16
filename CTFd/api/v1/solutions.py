@@ -1,6 +1,7 @@
 from typing import List
 
 from flask import abort, request
+from flask_babel import gettext
 from flask_restx import Namespace, Resource
 from sqlalchemy.exc import IntegrityError
 
@@ -132,7 +133,9 @@ class SolutionList(Resource):
             return {
                 "success": False,
                 "errors": {
-                    "challenge_id": ["A solution for this challenge already exists"]
+                    "challenge_id": [
+                        gettext("A solution for this challenge already exists")
+                    ]
                 },
             }, 400
 

@@ -8,8 +8,8 @@
 		<div class="modal-dialog modal-lg">
 			<div class="modal-content">
 				<div class="modal-header">
-					<h2 class="modal-action text-center w-100">Edit Team</h2>
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<h2 class="modal-action text-center w-100">{{ _("Edit Team") }}</h2>
+					<button type="button" class="close" data-dismiss="modal" aria-label="{{ _('Close') }}">
 						<span aria-hidden="true">&times;</span>
 					</button>
 				</div>
@@ -79,8 +79,8 @@
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<div class="modal-header">
-					<h2 class="modal-action text-center w-100">Choose Captain</h2>
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<h2 class="modal-action text-center w-100">{{ _("Choose Captain") }}</h2>
+					<button type="button" class="close" data-dismiss="modal" aria-label="{{ _('Close') }}">
 						<span aria-hidden="true">&times;</span>
 					</button>
 				</div>
@@ -109,8 +109,8 @@
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<div class="modal-header">
-					<h2 class="modal-action text-center w-100">Invite Users</h2>
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<h2 class="modal-action text-center w-100">{{ _("Invite Users") }}</h2>
+					<button type="button" class="close" data-dismiss="modal" aria-label="{{ _('Close') }}">
 						<span aria-hidden="true">&times;</span>
 					</button>
 				</div>
@@ -128,10 +128,10 @@
 								</div>
 							</div>
 							<small class="form-text text-muted">
-								Share this link with your team members for them to join your team
+								{{ _("Share this link with your team members for them to join your team") }}
 							</small>
 							<small class="form-text text-muted">
-								Invite links can be re-used and expire after 1 day
+								{{ _("Invite links can be re-used and expire after 1 day") }}
 							</small>
 						</div>
 					</form>
@@ -146,7 +146,7 @@
 			<h1 id="team-id" team-id="{{ team.id }}">{{ team.name }}</h1>
 			{% if team.oauth_id %}
 				<a href="https://majorleaguecyber.org/t/{{ team.name }}">
-					<h3><span class="badge badge-primary">Official</span></h3>
+					<h3><span class="badge badge-primary">{{ _("Official") }}</span></h3>
 				</a>
 			{% endif %}
 			{% if team.affiliation %}
@@ -174,14 +174,14 @@
 				{% if scores_visible() %}
 					{% if place %}
 						{{ place }}
-						<small>place</small>
+						<small>{{ _("place") }}</small>
 					{% endif %}
 				{% endif %}
 			</h2>
 			<h2 id="team-score" class="text-center">
 				{% if score %}
 					{{ score }}
-					<small>points</small>
+					<small>{{ _("points") }}</small>
 				{% endif %}
 			</h2>
 			<div class="pt-3">
@@ -190,43 +190,43 @@
 						<i class="btn-fa fas fa-cogs fa-2x px-2"
 						   data-toggle="tooltip"
 						   data-placement="top"
-						   title="Edit Team"></i>
+						   title="{{ _('Edit Team') }}"></i>
 
 						<a class="edit-captain">
 							<i class="btn-fa fas fa-user-tag fa-2x px-2" data-toggle="tooltip" data-placement="top"
-							   title="Choose Captain"></i>
+							   title="{{ _('Choose Captain') }}"></i>
 						</a>
 
 						<a class="invite-members">
 							<i class="btn-fa fas fa-ticket-alt fa-2x px-2" data-toggle="tooltip" data-placement="top"
-							   title="Invite Users"></i>
+							   title="{{ _('Invite Users') }}"></i>
 						</a>
 						<a class="disband-team">
 							<i class="btn-fa fas fa-trash-alt fa-2x px-2" data-toggle="tooltip" data-placement="top"
-								title="Disband Team"></i>
+								title="{{ _('Disband Team') }}"></i>
 						</a>
 					{% else %}
 						<i class="btn-fa fas fa-cogs fa-2x px-2 fa-disabled"
 						   data-toggle="tooltip"
 						   data-placement="top"
-						   title="Only team captains can edit team information"></i>
+						   title="{{ _('Only team captains can edit team information') }}"></i>
 						<a class="edit-captain">
 							<i class="btn-fa fas fa-user-tag fa-2x px-2 fa-disabled"
 							   data-toggle="tooltip"
 							   data-placement="top"
-							   title="Only team captains can choose a new captain"></i>
+							   title="{{ _('Only team captains can choose a new captain') }}"></i>
 						</a>
 						<a class="invite-members">
 							<i class="btn-fa fas fa-ticket-alt fa-2x px-2"
 								data-toggle="tooltip"
 								data-placement="top"
-								title="Only team captains can generate invite links"></i>
+								title="{{ _('Only team captains can generate invite links') }}"></i>
 						</a>
 						<a class="disband-team">
 							<i class="btn-fa fas fa-trash-alt fa-2x px-2 fa-disabled"
 								data-toggle="tooltip"
 								data-placement="top"
-								title="Only team captains can disband the team"></i>
+								title="{{ _('Only team captains can disband the team') }}"></i>
 						</a>
 					{% endif %}
 				</a>
@@ -246,12 +246,12 @@
 
 		<div class="row min-vh-25">
 			<div class="col-md-12">
-				<h3>Members</h3>
+				<h3>{{ _("Members") }}</h3>
 				<table class="table table-striped">
 					<thead>
 					<tr>
-						<td><b>User Name</b></td>
-						<td><b>Score</b></td>
+						<td><b>{{ _("User Name") }}</b></td>
+						<td><b>{{ _("Score") }}</b></td>
 					</tr>
 					</thead>
 					<tbody>
@@ -262,7 +262,7 @@
 									{{ member.name }}
 								</a>
 								{% if team.captain_id == member.id %}
-									<span class="badge badge-primary ml-2">Captain</span>
+									<span class="badge badge-primary ml-2">{{ _("Captain") }}</span>
 								{% endif %}
 							</td>
 							<td>{{ member.score }}</td>
@@ -304,7 +304,7 @@
 			{% if awards %}
 				<div class="row">
 					<div class="col-md-12">
-						<h3>Awards</h3>
+						<h3>{{ _("Awards") }}</h3>
 					</div>
 					{% for award in awards %}
 						<div class="col-md-3 col-sm-6">
@@ -325,14 +325,14 @@
 
 			<div class="row">
 				<div class="col-md-12">
-					<h3>Solves</h3>
+					<h3>{{ _("Solves") }}</h3>
 					<table class="table table-striped">
 						<thead>
 						<tr>
-							<td><b>Challenge</b></td>
-							<td class="d-none d-md-block d-lg-block"><b>Category</b></td>
-							<td><b>Value</b></td>
-							<td><b>Time</b></td>
+							<td><b>{{ _("Challenge") }}</b></td>
+							<td class="d-none d-md-block d-lg-block"><b>{{ _("Category") }}</b></td>
+							<td><b>{{ _("Value") }}</b></td>
+							<td><b>{{ _("Time") }}</b></td>
 						</tr>
 						</thead>
 						<tbody>
@@ -357,7 +357,7 @@
 		{% else %}
 			<div class="row min-vh-25">
 				<h3 class="opacity-50 text-center w-100 justify-content-center align-self-center">
-					No solves yet
+					{{ _("No solves yet") }}
 				</h3>
 			</div>
 		{% endif %}

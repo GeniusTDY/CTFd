@@ -20,8 +20,9 @@ def RegistrationForm(*args, **kwargs):
     password_min_length = int(get_config("password_min_length", default=0))
     password_description = _l("Password used to log into your account")
     if password_min_length:
-        password_description += _l(
-            f" (Must be at least {password_min_length} characters)"
+        password_description = _l(
+            "Password used to log into your account (Must be at least %(num)d characters)",
+            num=password_min_length,
         )
 
     class _RegistrationForm(BaseForm):
