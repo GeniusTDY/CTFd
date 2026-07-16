@@ -4,7 +4,7 @@
       <div class="toast-header">
         <strong class="me-auto" x-text="$store.toast.title"></strong>
         <small>{% trans %}just now{% endtrans %}</small>
-        <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+        <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="{% trans %}Close{% endtrans %}"></button>
       </div>
       <div class="toast-body" x-html="$store.toast.html">
       </div>
@@ -19,7 +19,7 @@
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" x-text="$store.modal.title"></h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="{% trans %}Close{% endtrans %}"></button>
         </div>
         <div class="modal-body">
           <p x-html="$store.modal.html"></p>

@@ -25,8 +25,8 @@
 						<div class="row">
 							<div class="col-md-8">
 								<label>
-									Flag:<br>
-									<small class="form-text text-muted">Static flag for your challenge</small>
+									{% trans %}Flag:{% endtrans %}<br>
+								<small class="form-text text-muted">{% trans %}Static flag for your challenge{% endtrans %}</small>
 								</label>
 								<input type="text" class="form-control" name="flag">
 							</div>
@@ -36,8 +36,8 @@
 									<small class="form-text text-muted">&nbsp;</small>
 								</label>
 								<select class="form-control custom-select w-100" name="flag_data">
-									<option value="">Case Sensitive</option>
-									<option value="case_insensitive">Case Insensitive</option>
+									<option value="">{% trans %}Case Sensitive{% endtrans %}</option>
+								<option value="case_insensitive">{% trans %}Case Insensitive{% endtrans %}</option>
 								</select>
 							</div>
 						</div>
@@ -46,26 +46,26 @@
 					<div class="form-group">
 						<div class="form-group">
 							<label>
-								Files:
-								<small class="form-text text-muted">Files distributed along with your challenge</small>
+								{% trans %}Files:{% endtrans %}
+								<small class="form-text text-muted">{% trans %}Files distributed along with your challenge{% endtrans %}</small>
 							</label>
 							<input class="form-control-file" type="file" name="file" multiple="multiple">
-							<sub class="text-muted">Attach multiple files using Control+Click or Cmd+Click</sub>
+							<sub class="text-muted">{% trans %}Attach multiple files using Control+Click or Cmd+Click{% endtrans %}</sub>
 						</div>
 					</div>
 					<div class="form-group">
 						<label>
-							State<br>
-							<small class="form-text text-muted">Should the challenge be visible to users</small>
+							{% trans %}State{% endtrans %}<br>
+							<small class="form-text text-muted">{% trans %}Should the challenge be visible to users{% endtrans %}</small>
 						</label>
 						<select class="form-control custom-select" name="state">
-							<option value="visible">Visible</option>
-							<option value="hidden" selected>Hidden</option>
+							<option value="visible">{% trans %}Visible{% endtrans %}</option>
+							<option value="hidden" selected>{% trans %}Hidden{% endtrans %}</option>
 						</select>
 					</div>
 					<input id="challenge_id" type="hidden" name="challenge_id">
 					<div class="form-group">
-						<button class="btn btn-primary float-right create-challenge-submit" type="submit">Finish</button>
+						<button class="btn btn-primary float-right create-challenge-submit" type="submit">{% trans %}Finish{% endtrans %}</button>
 					</div>
 				</form>
 			</div>

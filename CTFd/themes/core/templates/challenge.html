@@ -3,7 +3,7 @@
     <div class="modal-body py-4 px-4 px-sm-5">
 
       <div>
-        <button type="button" class="btn-close float-end" data-bs-dismiss="modal" aria-label="Close"></button>
+        <button type="button" class="btn-close float-end" data-bs-dismiss="modal" aria-label="{% trans %}Close{% endtrans %}"></button>
 
         <ul class="nav nav-tabs">
           <li class="nav-item">
@@ -216,7 +216,7 @@
                           {% trans %}Share{% endtrans %}
                         </button>
                         <div class="btn-group mt-3" role="group" x-show="share_url">
-                          <button type="button" class="btn btn-sm btn-outline-secondary" @click="copyShareUrl()" data-bs-toggle="tooltip" data-bs-title="Copied!">
+                          <button type="button" class="btn btn-sm btn-outline-secondary" @click="copyShareUrl()" data-bs-toggle="tooltip" data-bs-title="{% trans %}Copied!{% endtrans %}">
                             <i class="fa-solid fa-copy"></i>
                           </button>
                           <a :href="'https://twitter.com/intent/tweet?url=' + encodeURIComponent(share_url)" role="button" class="btn btn-sm btn-outline-secondary" target="_blank">

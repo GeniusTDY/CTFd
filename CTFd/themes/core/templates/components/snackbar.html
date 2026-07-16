@@ -11,6 +11,6 @@
     <strong>{% trans %}Email Unconfirmed{% endtrans %}</strong><br>
     <span>{% trans url=url_for('auth.confirm', flow='init') %}To confirm your email address please <a href="{{ url }}">click here</a>.{% endtrans %}</span>
   </small>
-  <button type="button" class="btn-close" @click="localStorage.setItem('remind_email_verify', window.init.userId); $el.parentElement.style.display = 'none';" aria-label="Close"></button>
+  <button type="button" class="btn-close" @click="localStorage.setItem('remind_email_verify', window.init.userId); $el.parentElement.style.display = 'none';" aria-label="{% trans %}Close{% endtrans %}"></button>
 </div>
 {% endif %}

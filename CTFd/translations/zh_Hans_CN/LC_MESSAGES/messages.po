@@ -1579,11 +1579,11 @@ msgid "Email sent to users after they've finished registering"
 msgstr "用户完成注册后发送的邮件"
 
 #: CTFd/themes/admin/templates/configs/email.html:238
-msgid "Email sent whent a user requests a password reset"
+msgid "Email sent when a user requests a password reset"
 msgstr "用户请求重置密码时发送的邮件"
 
 #: CTFd/themes/admin/templates/configs/email.html:259
-msgid "Email sent whent a user successfully resets their password"
+msgid "Email sent when a user successfully resets their password"
 msgstr "用户成功重置密码后发送的邮件"
 
 #: CTFd/themes/admin/templates/challenges/create.html:25
@@ -3887,3 +3887,201 @@ msgstr "团队的竞赛分组"
 
 msgid "Registration code required to create account"
 msgstr "创建账户所需的注册码"
+
+msgid "Members of these audiences can access this module's challenges."
+msgstr "这些受众的成员可以访问此模块的挑战。"
+
+msgid "No linked audiences (module is invisible to non-admins)."
+msgstr "没有关联的受众（模块对非管理员不可见）。"
+
+msgid "Select a audience&hellip;"
+msgstr "选择一个受众…"
+
+msgid "No challenges in this module."
+msgstr "此模块中没有挑战。"
+
+msgid "Add challenges"
+msgstr "添加挑战"
+
+msgid "Pick one or more challenges to assign to this module. Challenges already in another module will be reassigned."
+msgstr "选择一个或多个挑战分配给此模块。已在其他模块中的挑战将被重新分配。"
+
+msgid "Uncategorized"
+msgstr "未分类"
+
+msgid "currently in module"
+msgstr "当前在模块中"
+
+msgid "Ctrl/Cmd-click to select multiple."
+msgstr "Ctrl/Cmd 点击可选择多个。"
+
+msgid "Add selected to this module"
+msgstr "将选中的添加到此模块"
+
+msgid "Members of this audience gain access to challenges in these modules."
+msgstr "此受众的成员可以访问这些模块中的挑战。"
+
+msgid "No linked modules."
+msgstr "没有关联的模块。"
+
+msgid "Select a module&hellip;"
+msgstr "选择一个模块…"
+
+msgid "No members yet."
+msgstr "尚无成员。"
+
+msgid "Start typing to search."
+msgstr "开始输入以搜索。"
+
+msgid "results"
+msgstr "结果"
+
+msgid "Most Solved:"
+msgstr "最多解答："
+
+msgid "Least Solved:"
+msgstr "最少解答："
+
+msgid "Player Progression"
+msgstr "玩家进度"
+
+msgid "(Top 100)"
+msgstr "（前 100 名）"
+
+msgid "right submissions"
+msgstr "正确提交"
+
+msgid "wrong submissions"
+msgstr "错误提交"
+
+msgid "Attach multiple files using Control+Click or Cmd+Click"
+msgstr "使用 Control+Click 或 Cmd+Click 附加多个文件"
+
+msgid "Registration Code required for account registration (SSO excluded)"
+msgstr "账户注册需要注册码（SSO 除外）"
+
+msgid "Add custom fields to get additional data from your participants"
+msgstr "添加自定义字段以获取参与者的额外信息"
+
+msgid "Custom user fields are shown during registration. Users can optionally edit these fields in the profile."
+msgstr "自定义用户字段在注册时显示。用户可以选择在个人资料中编辑这些字段。"
+
+msgid "Custom team fields are shown during team creation. Team captains can optionally edit these fields in the team profile."
+msgstr "自定义团队字段在创建团队时显示。队长可以选择在团队资料中编辑这些字段。"
+
+msgid "Resetting your CTFd instance allows you to bulk delete data to prepare it for other events,\n\t\t\t\t\t\tother classes, or to otherwise get it to a clean state."
+msgstr "重置 CTFd 实例允许您批量删除数据，以备其他活动、其他课程使用，或使其恢复到干净状态。"
+
+msgid "Resetting your CTFd instance will delete the selected data"
+msgstr "重置 CTFd 实例将删除选定的数据"
+
+msgid "PERMANENTLY"
+msgstr "永久"
+
+msgid "Think carefully before resetting because no automated backups are made and all selected data will be lost."
+msgstr "重置前请仔细考虑，因为不会进行自动备份，所有选定的数据都将丢失。"
+
+msgid "Create backups of all data you need by"
+msgstr "创建所需数据的备份，通过"
+
+msgid "creating a CTFd Export"
+msgstr "创建 CTFd 导出"
+
+msgid "Deletes all user and team accounts and their associated information"
+msgstr "删除所有用户和团队账户及其关联信息"
+
+msgid "(Users, Teams, Submissions, Tracking)"
+msgstr "（用户、队伍、提交、追踪）"
+
+msgid "Deletes all records that accounts gained points or took an action"
+msgstr "删除账户获得积分或采取行动的所有记录"
+
+msgid "(Submissions, Awards, Unlocks, Tracking)"
+msgstr "（提交、奖励、解锁、追踪）"
+
+msgid "Deletes all challenges and associated data"
+msgstr "删除所有挑战和关联数据"
+
+msgid "(Challenges, Flags, Hints, Tags, Challenge Files)"
+msgstr "（挑战、Flag、提示、标签、挑战文件）"
+
+msgid "Deletes all pages and their associated files"
+msgstr "删除所有页面及其关联文件"
+
+msgid "(Pages, Page Files)"
+msgstr "（页面、页面文件）"
+
+msgid "Deletes all notifications"
+msgstr "删除所有通知"
+
+msgid "(Notifications)"
+msgstr "（通知）"
+
+msgid "Page %(page)s of %(total)s results"
+msgstr "第 %(page)s 页，共 %(total)s 条结果"
+
+msgid "Send"
+msgstr "发送"
+
+msgid "Markdown"
+msgstr "Markdown"
+
+msgid "HTML"
+msgstr "HTML"
+
+msgid "No data yet"
+msgstr "暂无数据"
+
+msgid "Build CSS"
+msgstr "构建 CSS"
+
+msgid "Switch themes to change CTFd's aesthetics"
+msgstr "切换主题以改变 CTFd 的外观"
+
+msgid "MLC is a CTF stats tracker that provides event scheduling, team tracking, and SSO."
+msgstr "MLC 是一个 CTF 统计追踪器，提供赛事安排、队伍追踪和 SSO 功能。"
+
+msgid "Begin by registering your event with <a href=\"https://www.majorleaguecyber.org/\">MajorLeagueCyber</a> to get your OAuth Client ID and Client Secret. Need more help? Check out the <a href=\"https://docs.ctfd.io/docs/settings/mlc\" target=\"_blank\">documentation</a>."
+msgstr "首先在 <a href=\"https://www.majorleaguecyber.org/\">MajorLeagueCyber</a> 注册您的赛事以获取 OAuth 客户端 ID 和客户端密钥。需要更多帮助？请查阅<a href=\"https://docs.ctfd.io/docs/settings/mlc\" target=\"_blank\">文档</a>。"
+
+msgid "If that account exists you will receive an email, please check your inbox"
+msgstr "如果该账户存在，您将收到一封邮件，请检查您的收件箱"
+
+msgid "The email address associated with this account was registered via an authentication provider and does not have an associated password. Please login via your authentication provider."
+msgstr "与此账户关联的邮箱地址是通过身份验证提供商注册的，没有关联密码。请通过您的身份验证提供商登录。"
+
+msgid "Challenges assigned to modules can only be seen by members of the audiences linked to that module. Leave unassigned to keep the challenge visible to everyone."
+msgstr "分配给模块的挑战只能被该模块关联受众的成员看到。不分配则保持挑战对所有人可见。"
+
+msgid "none - ungrouped, visible to everyone"
+msgstr "无 - 未分组，对所有人可见"
+
+msgid "Prevent users from submitting answers until unpaused. Challenges can still be viewed."
+msgstr "阻止用户提交答案，直到取消暂停。挑战仍然可以查看。"
+
+msgid "The name of your challenge"
+msgstr "挑战名称"
+
+msgid "The category of your challenge"
+msgstr "挑战类别"
+
+msgid "Use this to give a brief introduction to your challenge."
+msgstr "用于为您的挑战提供简要介绍。"
+
+msgid "This is how many points are rewarded for solving this challenge."
+msgstr "这是解答此挑战所奖励的积分。"
+
+msgid "Name:"
+msgstr "名称："
+
+msgid "Category:"
+msgstr "类别："
+
+msgid "Message:"
+msgstr "消息："
+
+msgid "Value:"
+msgstr "分值："
+
+msgid "IP Geolocation by DB-IP"
+msgstr "IP 地理定位由 DB-IP 提供"

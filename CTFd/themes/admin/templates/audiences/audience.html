@@ -5,22 +5,22 @@
 	<div class="modal-dialog">
 		<div class="modal-content">
 			<div class="modal-header">
-				<h2 class="modal-action text-center w-100">Edit Audience</h2>
-				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+				<h2 class="modal-action text-center w-100">{% trans %}Edit Audience{% endtrans %}</h2>
+			<button type="button" class="close" data-dismiss="modal" aria-label="{% trans %}Close{% endtrans %}">
 					<span aria-hidden="true">&times;</span>
 				</button>
 			</div>
 			<div class="modal-body clearfix">
 				<form id="audience-update-form">
 					<div class="form-group">
-						<label>Name</label>
-						<input class="form-control" name="name" value="{{ audience.name }}" required>
-					</div>
-					<div class="form-group">
-						<label>Description</label>
-						<textarea class="form-control" name="description" rows="3">{{ audience.description or '' }}</textarea>
-					</div>
-					<button type="submit" class="btn btn-primary float-right">Save</button>
+						<label>{% trans %}Name{% endtrans %}</label>
+					<input class="form-control" name="name" value="{{ audience.name }}" required>
+				</div>
+				<div class="form-group">
+					<label>{% trans %}Description{% endtrans %}</label>
+					<textarea class="form-control" name="description" rows="3">{{ audience.description or '' }}</textarea>
+				</div>
+				<button type="submit" class="btn btn-primary float-right">{% trans %}Save{% endtrans %}</button>
 				</form>
 			</div>
 		</div>
@@ -36,10 +36,10 @@
 		<hr class="w-50">
 		<div class="pt-3">
 			<a class="edit-audience text-dark" style="cursor:pointer">
-				<i class="btn-fa fas fa-pen fa-2x px-2" data-toggle="tooltip" data-placement="top" title="Edit Audience"></i>
+				<i class="btn-fa fas fa-pen fa-2x px-2" data-toggle="tooltip" data-placement="top" title="{% trans %}Edit Audience{% endtrans %}"></i>
 			</a>
 			<a class="delete-audience text-dark" style="cursor:pointer">
-				<i class="btn-fa fas fa-trash-alt fa-2x px-2" data-toggle="tooltip" data-placement="top" title="Delete Audience"></i>
+				<i class="btn-fa fas fa-trash-alt fa-2x px-2" data-toggle="tooltip" data-placement="top" title="{% trans %}Delete Audience{% endtrans %}"></i>
 			</a>
 		</div>
 	</div>
@@ -48,22 +48,22 @@
 <div class="container">
 	<div class="row">
 		<div class="col-md-12">
-			<h3>Linked Modules</h3>
-			<p class="text-muted">Members of this audience gain access to challenges in these modules.</p>
+			<h3>{% trans %}Linked Modules{% endtrans %}</h3>
+			<p class="text-muted">{% trans %}Members of this audience gain access to challenges in these modules.{% endtrans %}</p>
 			<ul class="list-group mb-3">
 				{% for m in linked_modules %}
 				<li class="list-group-item d-flex justify-content-between align-items-center">
 					<a href="{{ url_for('admin.modules_detail', module_id=m.id) }}">{{ m.name }}</a>
-					<button class="btn btn-sm btn-outline-danger" data-unlink-module="{{ m.id }}">Unlink</button>
+					<button class="btn btn-sm btn-outline-danger" data-unlink-module="{{ m.id }}">{% trans %}Unlink{% endtrans %}</button>
 				</li>
 				{% else %}
-				<li class="list-group-item text-muted">No linked modules.</li>
+				<li class="list-group-item text-muted">{% trans %}No linked modules.{% endtrans %}</li>
 				{% endfor %}
 			</ul>
 			<form id="link-module-form">
 				<div class="input-group">
 					<select class="form-control custom-select" name="module_id" required>
-						<option value="" disabled selected>Select a module&hellip;</option>
+						<option value="" disabled selected>{% trans %}Select a module&hellip;{% endtrans %}</option>
 						{% for m in all_modules %}
 							{% if m.id not in linked_module_ids %}
 								<option value="{{ m.id }}">{{ m.name }}</option>
@@ -71,7 +71,7 @@
 						{% endfor %}
 					</select>
 					<div class="input-group-append">
-						<button type="submit" class="btn btn-secondary">Link module</button>
+						<button type="submit" class="btn btn-secondary">{% trans %}Link module{% endtrans %}</button>
 					</div>
 				</div>
 			</form>
@@ -82,11 +82,11 @@
 
 	<div class="row">
 		<div class="col-md-12">
-			<h3>Linked Members</h3>
+			<h3>{% trans %}Linked Members{% endtrans %}</h3>
 			<table class="table table-striped border">
 				<thead>
 				<tr>
-					<th>{{ 'Team' if user_mode == 'teams' else 'User' }}</th>
+					<th>{{ _('Team') if user_mode == 'teams' else _('User') }}</th>
 					<th class="text-right"></th>
 				</tr>
 				</thead>
@@ -101,11 +101,11 @@
 						{% endif %}
 					</td>
 					<td class="text-right">
-						<button class="btn btn-sm btn-outline-danger" data-remove-member="{{ m.id }}">Remove</button>
+						<button class="btn btn-sm btn-outline-danger" data-remove-member="{{ m.id }}">{% trans %}Remove{% endtrans %}</button>
 					</td>
 				</tr>
 				{% else %}
-				<tr><td colspan="2" class="text-muted text-center">No members yet.</td></tr>
+				<tr><td colspan="2" class="text-muted text-center">{% trans %}No members yet.{% endtrans %}</td></tr>
 				{% endfor %}
 				</tbody>
 			</table>
@@ -119,10 +119,10 @@
 					       placeholder="{% trans %}Search by name{% endtrans %}"
 					       required>
 					<div class="input-group-append">
-						<button type="submit" class="btn btn-secondary" id="add-member-submit" disabled>Add member</button>
+						<button type="submit" class="btn btn-secondary" id="add-member-submit" disabled>{% trans %}Add member{% endtrans %}</button>
 					</div>
 				</div>
-				<small class="form-text text-muted" id="add-member-hint">Start typing to search.</small>
+				<small class="form-text text-muted" id="add-member-hint">{% trans %}Start typing to search.{% endtrans %}</small>
 			</form>
 			<ul class="list-group mt-2" id="add-member-suggestions" style="display: none;"></ul>
 		</div>

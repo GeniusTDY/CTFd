@@ -1,17 +1,17 @@
 <form id="challenge-module-form">
 	<div class="form-group">
 		<label for="challenge-module-select">
-			Module
+			{% trans %}Module{% endtrans %}
 			<br>
 			<small class="form-text text-muted">
-				Challenges assigned to modules can only be seen by members of the audiences linked to that module. Leave unassigned to keep the challenge visible to everyone.
+				{% trans %}Challenges assigned to modules can only be seen by members of the audiences linked to that module. Leave unassigned to keep the challenge visible to everyone.{% endtrans %}
 			</small>
 		</label>
 		<select class="form-control custom-select w-100" id="challenge-module-select" name="module_id">
-			<option value="">none - ungrouped, visible to everyone</option>
+			<option value="">{% trans %}none - ungrouped, visible to everyone{% endtrans %}</option>
 		</select>
 	</div>
-	<button type="submit" class="btn btn-primary">Save</button>
+	<button type="submit" class="btn btn-primary">{% trans %}Save{% endtrans %}</button>
 </form>
 
 <script>

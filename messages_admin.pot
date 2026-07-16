@@ -543,7 +543,7 @@ msgid "Password Reset Request"
 msgstr ""
 
 #: CTFd/themes/admin/templates/configs/email.html:238
-msgid "Email sent whent a user requests a password reset"
+msgid "Email sent when a user requests a password reset"
 msgstr ""
 
 #: CTFd/themes/admin/templates/configs/email.html:257
@@ -551,7 +551,7 @@ msgid "Password Reset Confirmation"
 msgstr ""
 
 #: CTFd/themes/admin/templates/configs/email.html:259
-msgid "Email sent whent a user successfully resets their password"
+msgid "Email sent when a user successfully resets their password"
 msgstr ""
 
 #: CTFd/themes/admin/templates/configs/general.html:5
