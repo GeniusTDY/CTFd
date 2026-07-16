@@ -15,9 +15,9 @@
 	<form method="POST" autocomplete="off" class="w-100">
 		<div class="form-group">
 			<label for="ctf_theme">
-				Theme
+				{% trans %}Theme{% endtrans %}
 				<small class="form-text text-muted">
-					Switch themes to change CTFd's aesthetics
+					{% trans %}Switch themes to change CTFd's aesthetics{% endtrans %}
 				</small>
 			</label>
 			<select class="form-control custom-select" id="ctf_theme" name="ctf_theme">
@@ -39,7 +39,7 @@
 				<div>
 					<input type="color" id="config-color-picker" class="custom-color-picker">
 					<button type="button" class="btn-sm btn-primary" id="config-color-update">
-						<i class="fas fa-pencil action-icon"></i> Build CSS
+						<i class="fas fa-pencil action-icon"></i> {% trans %}Build CSS{% endtrans %}
 					</button>
 				</div>
 			</div>
@@ -86,6 +86,6 @@
 			</small>
 		</div>
 
-		<button type="submit" class="btn btn-md btn-primary float-right">Update</button>
+		<button type="submit" class="btn btn-md btn-primary float-right">{% trans %}Update{% endtrans %}</button>
 	</form>
 </div>
