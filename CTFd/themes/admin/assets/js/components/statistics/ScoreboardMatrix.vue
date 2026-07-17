@@ -312,7 +312,7 @@
                   <br />
                   <small>{{ challenge.category }}</small>
                   <br />
-                  {{ challenge.value }}pt
+                  {{ challenge.value }}{{ labels.pt }}
                 </div>
               </a>
             </th>
@@ -379,6 +379,7 @@ export default {
         resetAll: _("Reset All"),
         selectAll: _("Select All"),
         none: _("None"),
+        pt: _("pt"),
         filterCategories: _("Filter Categories"),
         searchCategories: _("Search categories..."),
         filterChallenges: _("Filter Challenges"),

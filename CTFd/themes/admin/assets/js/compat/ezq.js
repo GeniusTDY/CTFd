@@ -10,7 +10,9 @@ const modalTpl =
   '    <div class="modal-content">' +
   '      <div class="modal-header">' +
   '        <h5 class="modal-title">{0}</h5>' +
-  '        <button type="button" class="close" data-dismiss="modal" aria-label="Close">' +
+  '        <button type="button" class="close" data-dismiss="modal" aria-label="' +
+  _("Close") +
+  '">' +
   '          <span aria-hidden="true">&times;</span>' +
   "        </button>" +
   "      </div>" +
@@ -26,7 +28,9 @@ const toastTpl =
   '<div class="toast m-3" role="alert">' +
   '  <div class="toast-header">' +
   '    <strong class="mr-auto">{0}</strong>' +
-  '    <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">' +
+  '    <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="' +
+  _("Close") +
+  '">' +
   '      <span aria-hidden="true">&times;</span>' +
   "    </button>" +
   "  </div>" +
@@ -45,7 +49,9 @@ const errorTpl =
   _("Error:") +
   "</span>\n" +
   "  {0}\n" +
-  '  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>\n' +
+  '  <button type="button" class="close" data-dismiss="alert" aria-label="' +
+  _("Close") +
+  '"><span aria-hidden="true">×</span></button>\n' +
   "</div>";
 
 const successTpl =
@@ -54,7 +60,9 @@ const successTpl =
   _("Success!") +
   "</strong>\n" +
   "  {0}\n" +
-  '  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>\n' +
+  '  <button type="button" class="close" data-dismiss="alert" aria-label="' +
+  _("Close") +
+  '"><span aria-hidden="true">×</span></button>\n' +
   "</div>";
 
 const buttonTpl =

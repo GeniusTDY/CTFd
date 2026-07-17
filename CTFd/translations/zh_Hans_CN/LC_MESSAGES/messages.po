@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: CTFd\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2026-07-17 05:15+0000\n"
+"POT-Creation-Date: 2026-07-17 07:00+0000\n"
 "PO-Revision-Date: 2026-07-13 00:00+0000\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
@@ -810,13 +810,13 @@ msgid "Upload Files"
 msgstr "上传文件"
 
 #: CTFd/forms/challenges.py:28 CTFd/forms/pages.py:46
-#: CTFd/themes/admin/assets/js/components/files/ChallengeFilesList.vue:85
+#: CTFd/themes/admin/assets/js/components/files/ChallengeFilesList.vue:86
 #: CTFd/themes/admin/assets/js/components/files/MediaLibrary.vue:242
 msgid "Attach multiple files using Control+Click or Cmd+Click."
 msgstr "使用 Control+Click 或 Cmd+Click 附加多个文件"
 
 #: CTFd/forms/challenges.py:31
-#: CTFd/themes/admin/assets/js/components/files/ChallengeFilesList.vue:88
+#: CTFd/themes/admin/assets/js/components/files/ChallengeFilesList.vue:89
 #: CTFd/themes/admin/assets/js/components/files/MediaLibrary.vue:251
 #: CTFd/themes/admin/templates/configs/logo.html:29
 #: CTFd/themes/admin/templates/configs/logo.html:64
@@ -1793,7 +1793,7 @@ msgid "Search for matching users"
 msgstr "搜索用户"
 
 #: CTFd/forms/users.py:187
-#: CTFd/themes/admin/assets/js/components/statistics/ScoreboardMatrix.vue:446
+#: CTFd/themes/admin/assets/js/components/statistics/ScoreboardMatrix.vue:447
 #: CTFd/themes/admin/templates/audiences/audience.html:89
 #: CTFd/themes/admin/templates/modals/teams/addresses.html:6
 #: CTFd/themes/admin/templates/scoreboard/users.html:10
@@ -2232,7 +2232,60 @@ msgstr "您的挑战已更新！"
 msgid "Got it!"
 msgstr "知道了！"
 
-#: CTFd/themes/admin/assets/js/compat/ezq.js:45
+#: CTFd/themes/admin/assets/js/compat/ezq.js:14
+#: CTFd/themes/admin/assets/js/compat/ezq.js:32
+#: CTFd/themes/admin/assets/js/compat/ezq.js:53
+#: CTFd/themes/admin/assets/js/compat/ezq.js:64
+#: CTFd/themes/admin/assets/js/components/comments/CommentBox.vue:144
+#: CTFd/themes/admin/assets/js/components/configs/brackets/Bracket.vue:81
+#: CTFd/themes/admin/assets/js/components/configs/fields/Field.vue:113
+#: CTFd/themes/admin/assets/js/components/files/MediaLibrary.vue:233
+#: CTFd/themes/admin/assets/js/components/flags/FlagCreationForm.vue:76
+#: CTFd/themes/admin/assets/js/components/flags/FlagEditForm.vue:50
+#: CTFd/themes/admin/assets/js/components/hints/HintCreationForm.vue:122
+#: CTFd/themes/admin/assets/js/components/hints/HintEditForm.vue:130
+#: CTFd/themes/admin/assets/js/components/notifications/Notification.vue:41
+#: CTFd/themes/admin/templates/audiences/audience.html:9
+#: CTFd/themes/admin/templates/challenges/challenge.html:13
+#: CTFd/themes/admin/templates/challenges/challenge.html:33
+#: CTFd/themes/admin/templates/challenges/challenge.html:54
+#: CTFd/themes/admin/templates/config.html:176
+#: CTFd/themes/admin/templates/modules/module.html:9
+#: CTFd/themes/admin/templates/notifications.html:72
+#: CTFd/themes/admin/templates/teams/team.html:12
+#: CTFd/themes/admin/templates/teams/team.html:28
+#: CTFd/themes/admin/templates/teams/team.html:43
+#: CTFd/themes/admin/templates/teams/team.html:76
+#: CTFd/themes/admin/templates/teams/team.html:92
+#: CTFd/themes/admin/templates/teams/team.html:108
+#: CTFd/themes/admin/templates/teams/team.html:142
+#: CTFd/themes/admin/templates/users/user.html:12
+#: CTFd/themes/admin/templates/users/user.html:28
+#: CTFd/themes/admin/templates/users/user.html:44
+#: CTFd/themes/admin/templates/users/user.html:60
+#: CTFd/themes/admin/templates/users/user.html:76
+#: CTFd/themes/core/templates/challenge.html:6
+#: CTFd/themes/core/templates/components/errors.html:5
+#: CTFd/themes/core/templates/components/errors.html:14
+#: CTFd/themes/core/templates/components/notifications.html:7
+#: CTFd/themes/core/templates/components/notifications.html:22
+#: CTFd/themes/core/templates/components/snackbar.html:14
+#: CTFd/themes/core/templates/settings.html:96
+#: CTFd/themes/core/templates/settings.html:107
+#: CTFd/themes/core/templates/settings.html:132
+#: CTFd/themes/core/templates/settings.html:198
+#: CTFd/themes/core/templates/teams/private.html:9
+#: CTFd/themes/core/templates/teams/private.html:77
+#: CTFd/themes/core/templates/teams/private.html:85
+#: CTFd/themes/core/templates/teams/private.html:103
+#: CTFd/themes/core/templates/teams/private.html:126
+#: CTFd/themes/core/templates/teams/private.html:133
+#: CTFd/themes/core/templates/teams/private.html:151
+#: CTFd/themes/core/templates/teams/private.html:187
+msgid "Close"
+msgstr "关闭"
+
+#: CTFd/themes/admin/assets/js/compat/ezq.js:49
 #: CTFd/themes/admin/templates/config.html:174
 #: CTFd/themes/core/templates/settings.html:103
 #: CTFd/themes/core/templates/teams/private.html:83
@@ -2241,20 +2294,20 @@ msgstr "知道了！"
 msgid "Error:"
 msgstr "错误："
 
-#: CTFd/themes/admin/assets/js/compat/ezq.js:54
+#: CTFd/themes/admin/assets/js/compat/ezq.js:60
 #: CTFd/themes/core/templates/settings.html:94
 #: CTFd/themes/core/templates/teams/private.html:75
 #: CTFd/themes/core/templates/teams/private.html:124
 msgid "Success!"
 msgstr "成功！"
 
-#: CTFd/themes/admin/assets/js/compat/ezq.js:64
+#: CTFd/themes/admin/assets/js/compat/ezq.js:72
 #: CTFd/themes/core/templates/settings.html:209
 #: CTFd/themes/core/templates/teams/private.html:204
 msgid "No"
 msgstr "否"
 
-#: CTFd/themes/admin/assets/js/compat/ezq.js:68
+#: CTFd/themes/admin/assets/js/compat/ezq.js:76
 #: CTFd/themes/core/templates/settings.html:214
 #: CTFd/themes/core/templates/teams/private.html:205
 msgid "Yes"
@@ -2340,54 +2393,6 @@ msgstr "上传进度"
 #: CTFd/themes/core/templates/challenge.html:219
 msgid "Copied!"
 msgstr "已复制！"
-
-#: CTFd/themes/admin/assets/js/components/comments/CommentBox.vue:144
-#: CTFd/themes/admin/assets/js/components/configs/brackets/Bracket.vue:81
-#: CTFd/themes/admin/assets/js/components/configs/fields/Field.vue:113
-#: CTFd/themes/admin/assets/js/components/files/MediaLibrary.vue:233
-#: CTFd/themes/admin/assets/js/components/flags/FlagCreationForm.vue:76
-#: CTFd/themes/admin/assets/js/components/flags/FlagEditForm.vue:50
-#: CTFd/themes/admin/assets/js/components/hints/HintCreationForm.vue:122
-#: CTFd/themes/admin/assets/js/components/hints/HintEditForm.vue:130
-#: CTFd/themes/admin/templates/audiences/audience.html:9
-#: CTFd/themes/admin/templates/challenges/challenge.html:13
-#: CTFd/themes/admin/templates/challenges/challenge.html:33
-#: CTFd/themes/admin/templates/challenges/challenge.html:54
-#: CTFd/themes/admin/templates/config.html:176
-#: CTFd/themes/admin/templates/modules/module.html:9
-#: CTFd/themes/admin/templates/notifications.html:72
-#: CTFd/themes/admin/templates/teams/team.html:12
-#: CTFd/themes/admin/templates/teams/team.html:28
-#: CTFd/themes/admin/templates/teams/team.html:43
-#: CTFd/themes/admin/templates/teams/team.html:76
-#: CTFd/themes/admin/templates/teams/team.html:92
-#: CTFd/themes/admin/templates/teams/team.html:108
-#: CTFd/themes/admin/templates/teams/team.html:142
-#: CTFd/themes/admin/templates/users/user.html:12
-#: CTFd/themes/admin/templates/users/user.html:28
-#: CTFd/themes/admin/templates/users/user.html:44
-#: CTFd/themes/admin/templates/users/user.html:60
-#: CTFd/themes/admin/templates/users/user.html:76
-#: CTFd/themes/core/templates/challenge.html:6
-#: CTFd/themes/core/templates/components/errors.html:5
-#: CTFd/themes/core/templates/components/errors.html:14
-#: CTFd/themes/core/templates/components/notifications.html:7
-#: CTFd/themes/core/templates/components/notifications.html:22
-#: CTFd/themes/core/templates/components/snackbar.html:14
-#: CTFd/themes/core/templates/settings.html:96
-#: CTFd/themes/core/templates/settings.html:107
-#: CTFd/themes/core/templates/settings.html:132
-#: CTFd/themes/core/templates/settings.html:198
-#: CTFd/themes/core/templates/teams/private.html:9
-#: CTFd/themes/core/templates/teams/private.html:77
-#: CTFd/themes/core/templates/teams/private.html:85
-#: CTFd/themes/core/templates/teams/private.html:103
-#: CTFd/themes/core/templates/teams/private.html:126
-#: CTFd/themes/core/templates/teams/private.html:133
-#: CTFd/themes/core/templates/teams/private.html:151
-#: CTFd/themes/core/templates/teams/private.html:187
-msgid "Close"
-msgstr "关闭"
 
 #: CTFd/themes/admin/assets/js/components/comments/CommentBox.vue:145
 msgid "Add comment"
@@ -2545,11 +2550,15 @@ msgstr "设置"
 msgid "SHA1:"
 msgstr "SHA1："
 
-#: CTFd/themes/admin/assets/js/components/files/ChallengeFilesList.vue:120
+#: CTFd/themes/admin/assets/js/components/files/ChallengeFilesList.vue:85
+msgid "null"
+msgstr "空"
+
+#: CTFd/themes/admin/assets/js/components/files/ChallengeFilesList.vue:121
 msgid "Delete Files"
 msgstr "删除文件"
 
-#: CTFd/themes/admin/assets/js/components/files/ChallengeFilesList.vue:121
+#: CTFd/themes/admin/assets/js/components/files/ChallengeFilesList.vue:122
 #: CTFd/themes/admin/assets/js/components/files/MediaLibrary.vue:288
 msgid "Are you sure you want to delete this file?"
 msgstr "您确定要删除此文件吗？"
@@ -2685,7 +2694,7 @@ msgstr "下一题"
 msgid "Challenge to recommend after solving this challenge"
 msgstr "解决此题目后推荐的题目"
 
-#: CTFd/themes/admin/assets/js/components/notifications/Notification.vue:43
+#: CTFd/themes/admin/assets/js/components/notifications/Notification.vue:50
 #: CTFd/themes/admin/assets/js/pages/notifications.js:54
 msgid "Are you sure you want to delete this notification?"
 msgstr "您确定要删除此通知吗？"
@@ -2761,7 +2770,7 @@ msgid "Visible"
 msgstr "可见"
 
 #: CTFd/themes/admin/assets/js/components/solution/SolutionEditor.vue:69
-#: CTFd/themes/admin/assets/js/components/statistics/ScoreboardMatrix.vue:396
+#: CTFd/themes/admin/assets/js/components/statistics/ScoreboardMatrix.vue:397
 #: CTFd/themes/admin/assets/js/pages/challenges.js:55
 msgid "Solved"
 msgstr "已解出"
@@ -2796,77 +2805,81 @@ msgid "Select All"
 msgstr "全选"
 
 #: CTFd/themes/admin/assets/js/components/statistics/ScoreboardMatrix.vue:382
+msgid "pt"
+msgstr "分"
+
+#: CTFd/themes/admin/assets/js/components/statistics/ScoreboardMatrix.vue:383
 msgid "Filter Categories"
 msgstr "筛选分类"
 
-#: CTFd/themes/admin/assets/js/components/statistics/ScoreboardMatrix.vue:383
+#: CTFd/themes/admin/assets/js/components/statistics/ScoreboardMatrix.vue:384
 msgid "Search categories..."
 msgstr "搜索分类..."
 
-#: CTFd/themes/admin/assets/js/components/statistics/ScoreboardMatrix.vue:384
+#: CTFd/themes/admin/assets/js/components/statistics/ScoreboardMatrix.vue:385
 msgid "Filter Challenges"
 msgstr "筛选题目"
 
-#: CTFd/themes/admin/assets/js/components/statistics/ScoreboardMatrix.vue:385
+#: CTFd/themes/admin/assets/js/components/statistics/ScoreboardMatrix.vue:386
 msgid "Search challenges..."
 msgstr "搜索题目..."
 
-#: CTFd/themes/admin/assets/js/components/statistics/ScoreboardMatrix.vue:386
+#: CTFd/themes/admin/assets/js/components/statistics/ScoreboardMatrix.vue:387
 msgid "Sort By"
 msgstr "排序方式"
 
-#: CTFd/themes/admin/assets/js/components/statistics/ScoreboardMatrix.vue:387
+#: CTFd/themes/admin/assets/js/components/statistics/ScoreboardMatrix.vue:388
 msgid "Position (Default)"
 msgstr "位置（默认）"
 
-#: CTFd/themes/admin/assets/js/components/statistics/ScoreboardMatrix.vue:388
+#: CTFd/themes/admin/assets/js/components/statistics/ScoreboardMatrix.vue:389
 msgid "ID (Ascending)"
 msgstr "ID（升序）"
 
-#: CTFd/themes/admin/assets/js/components/statistics/ScoreboardMatrix.vue:389
+#: CTFd/themes/admin/assets/js/components/statistics/ScoreboardMatrix.vue:390
 msgid "ID (Descending)"
 msgstr "ID（降序）"
 
-#: CTFd/themes/admin/assets/js/components/statistics/ScoreboardMatrix.vue:390
+#: CTFd/themes/admin/assets/js/components/statistics/ScoreboardMatrix.vue:391
 msgid "Alphabetical (Ascending: A-Z)"
 msgstr "字母升序（A-Z）"
 
-#: CTFd/themes/admin/assets/js/components/statistics/ScoreboardMatrix.vue:391
+#: CTFd/themes/admin/assets/js/components/statistics/ScoreboardMatrix.vue:392
 msgid "Alphabetical (Descending: Z-A)"
 msgstr "字母降序（Z-A）"
 
-#: CTFd/themes/admin/assets/js/components/statistics/ScoreboardMatrix.vue:392
+#: CTFd/themes/admin/assets/js/components/statistics/ScoreboardMatrix.vue:393
 msgid "Points (Ascending)"
 msgstr "分数（升序）"
 
-#: CTFd/themes/admin/assets/js/components/statistics/ScoreboardMatrix.vue:393
+#: CTFd/themes/admin/assets/js/components/statistics/ScoreboardMatrix.vue:394
 msgid "Points (Descending)"
 msgstr "分数（降序）"
 
-#: CTFd/themes/admin/assets/js/components/statistics/ScoreboardMatrix.vue:394
+#: CTFd/themes/admin/assets/js/components/statistics/ScoreboardMatrix.vue:395
 msgid "Filter Brackets"
 msgstr "筛选分组"
 
-#: CTFd/themes/admin/assets/js/components/statistics/ScoreboardMatrix.vue:395
+#: CTFd/themes/admin/assets/js/components/statistics/ScoreboardMatrix.vue:396
 msgid "Search brackets..."
 msgstr "搜索分组..."
 
-#: CTFd/themes/admin/assets/js/components/statistics/ScoreboardMatrix.vue:397
+#: CTFd/themes/admin/assets/js/components/statistics/ScoreboardMatrix.vue:398
 msgid "Attempted"
 msgstr "已尝试"
 
-#: CTFd/themes/admin/assets/js/components/statistics/ScoreboardMatrix.vue:398
+#: CTFd/themes/admin/assets/js/components/statistics/ScoreboardMatrix.vue:399
 msgid "Opened"
 msgstr "已打开"
 
-#: CTFd/themes/admin/assets/js/components/statistics/ScoreboardMatrix.vue:399
+#: CTFd/themes/admin/assets/js/components/statistics/ScoreboardMatrix.vue:400
 #: CTFd/themes/admin/templates/scoreboard/standings.html:9
 #: CTFd/themes/admin/templates/scoreboard/users.html:9
 #: CTFd/themes/core/templates/scoreboard.html:36
 msgid "Place"
 msgstr "名次"
 
-#: CTFd/themes/admin/assets/js/components/statistics/ScoreboardMatrix.vue:400
+#: CTFd/themes/admin/assets/js/components/statistics/ScoreboardMatrix.vue:401
 #: CTFd/themes/admin/templates/scoreboard/standings.html:12
 #: CTFd/themes/admin/templates/scoreboard/users.html:12
 #: CTFd/themes/admin/templates/teams/team.html:270
@@ -2876,23 +2889,23 @@ msgstr "名次"
 msgid "Score"
 msgstr "得分"
 
-#: CTFd/themes/admin/assets/js/components/statistics/ScoreboardMatrix.vue:438
+#: CTFd/themes/admin/assets/js/components/statistics/ScoreboardMatrix.vue:439
 msgid "Filter Teams"
 msgstr "筛选团队"
 
-#: CTFd/themes/admin/assets/js/components/statistics/ScoreboardMatrix.vue:438
+#: CTFd/themes/admin/assets/js/components/statistics/ScoreboardMatrix.vue:439
 msgid "Filter Users"
 msgstr "筛选用户"
 
-#: CTFd/themes/admin/assets/js/components/statistics/ScoreboardMatrix.vue:442
+#: CTFd/themes/admin/assets/js/components/statistics/ScoreboardMatrix.vue:443
 msgid "Search teams..."
 msgstr "搜索团队..."
 
-#: CTFd/themes/admin/assets/js/components/statistics/ScoreboardMatrix.vue:443
+#: CTFd/themes/admin/assets/js/components/statistics/ScoreboardMatrix.vue:444
 msgid "Search users..."
 msgstr "搜索用户..."
 
-#: CTFd/themes/admin/assets/js/components/statistics/ScoreboardMatrix.vue:446
+#: CTFd/themes/admin/assets/js/components/statistics/ScoreboardMatrix.vue:447
 #: CTFd/themes/admin/templates/audiences/audience.html:89
 #: CTFd/themes/admin/templates/teams/teams.html:77
 #: CTFd/themes/core/templates/components/navbar.html:99
@@ -2902,12 +2915,12 @@ msgstr "搜索用户..."
 msgid "Team"
 msgstr "队伍"
 
-#: CTFd/themes/admin/assets/js/components/statistics/ScoreboardMatrix.vue:539
+#: CTFd/themes/admin/assets/js/components/statistics/ScoreboardMatrix.vue:540
 msgid "(No Bracket)"
 msgstr "（无分组）"
 
-#: CTFd/themes/admin/assets/js/components/statistics/ScoreboardMatrix.vue:544
-#: CTFd/themes/admin/assets/js/components/statistics/ScoreboardMatrix.vue:549
+#: CTFd/themes/admin/assets/js/components/statistics/ScoreboardMatrix.vue:545
+#: CTFd/themes/admin/assets/js/components/statistics/ScoreboardMatrix.vue:550
 msgid "Failed to load progression data"
 msgstr "加载进度数据失败"
 

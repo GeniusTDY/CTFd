@@ -20,7 +20,7 @@
             <div class="d-flex flex-row align-items-center">
               <strong class="mr-2 small"> {{ labels.sha1 }} </strong>
               <span class="d-inline-block mr-2 small text-muted">
-                {{ file.sha1sum || "null" }}
+                {{ file.sha1sum || labels.nullValue }}
               </span>
             </div>
           </td>
@@ -82,6 +82,7 @@ export default {
         file: _("File"),
         settings: _("Settings"),
         sha1: _("SHA1:"),
+        nullValue: _("null"),
         attachMultipleFiles: _(
           "Attach multiple files using Control+Click or Cmd+Click.",
         ),
