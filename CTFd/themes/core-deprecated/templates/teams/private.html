@@ -8,8 +8,8 @@
 		<div class="modal-dialog modal-lg">
 			<div class="modal-content">
 				<div class="modal-header">
-					<h2 class="modal-action text-center w-100">Edit Team</h2>
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<h2 class="modal-action text-center w-100">{% trans %}Edit Team{% endtrans %}</h2>
+					<button type="button" class="close" data-dismiss="modal" aria-label="{% trans %}Close{% endtrans %}">
 						<span aria-hidden="true">&times;</span>
 					</button>
 				</div>
@@ -65,9 +65,8 @@
 						{{ render_extra_fields(form.extra) }}
 
 						<div id="results">
-
-						</div>
-						{{ form.submit(class="btn btn-primary btn-outlined float-right modal-action") }}
+					</div>
+					{{ form.submit(class="btn btn-primary btn-outlined float-right modal-action") }}
 					</form>
 					{% endwith %}
 				</div>
@@ -79,8 +78,8 @@
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<div class="modal-header">
-					<h2 class="modal-action text-center w-100">Choose Captain</h2>
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<h2 class="modal-action text-center w-100">{% trans %}Choose Captain{% endtrans %}</h2>
+					<button type="button" class="close" data-dismiss="modal" aria-label="{% trans %}Close{% endtrans %}">
 						<span aria-hidden="true">&times;</span>
 					</button>
 				</div>
@@ -96,8 +95,8 @@
 							{{ form.captain_id(class="form-control custom-select") }}
 						</div>
 						<div id="results">
-						</div>
-						{{ form.submit(class="btn btn-primary btn-outlined float-right modal-action") }}
+					</div>
+					{{ form.submit(class="btn btn-primary btn-outlined float-right modal-action") }}
 					</form>
 					{% endwith %}
 				</div>
@@ -109,8 +108,8 @@
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<div class="modal-header">
-					<h2 class="modal-action text-center w-100">Invite Users</h2>
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<h2 class="modal-action text-center w-100">{% trans %}Invite Users{% endtrans %}</h2>
+					<button type="button" class="close" data-dismiss="modal" aria-label="{% trans %}Close{% endtrans %}">
 						<span aria-hidden="true">&times;</span>
 					</button>
 				</div>
@@ -128,11 +127,11 @@
 								</div>
 							</div>
 							<small class="form-text text-muted">
-								Share this link with your team members for them to join your team
-							</small>
-							<small class="form-text text-muted">
-								Invite links can be re-used and expire after 1 day
-							</small>
+							{% trans %}Share this link with your team members for them to join your team{% endtrans %}
+						</small>
+						<small class="form-text text-muted">
+							{% trans %}Invite links can be re-used and expire after 1 day{% endtrans %}
+						</small>
 						</div>
 					</form>
 					{% endwith %}
@@ -146,7 +145,7 @@
 			<h1 id="team-id" team-id="{{ team.id }}">{{ team.name }}</h1>
 			{% if team.oauth_id %}
 				<a href="https://majorleaguecyber.org/t/{{ team.name }}">
-					<h3><span class="badge badge-primary">Official</span></h3>
+					<h3><span class="badge badge-primary">{% trans %}Official{% endtrans %}</span></h3>
 				</a>
 			{% endif %}
 			{% if team.affiliation %}
@@ -174,14 +173,14 @@
 				{% if scores_visible() %}
 					{% if place %}
 						{{ place }}
-						<small>place</small>
+						<small>{% trans %}place{% endtrans %}</small>
 					{% endif %}
 				{% endif %}
 			</h2>
 			<h2 id="team-score" class="text-center">
 				{% if score %}
 					{{ score }}
-					<small>points</small>
+					<small>{% trans %}points{% endtrans %}</small>
 				{% endif %}
 			</h2>
 			<div class="pt-3">
@@ -190,43 +189,43 @@
 						<i class="btn-fa fas fa-cogs fa-2x px-2"
 						   data-toggle="tooltip"
 						   data-placement="top"
-						   title="Edit Team"></i>
+						   title="{% trans %}Edit Team{% endtrans %}"></i>
 
 						<a class="edit-captain">
 							<i class="btn-fa fas fa-user-tag fa-2x px-2" data-toggle="tooltip" data-placement="top"
-							   title="Choose Captain"></i>
+							   title="{% trans %}Choose Captain{% endtrans %}"></i>
 						</a>
 
 						<a class="invite-members">
 							<i class="btn-fa fas fa-ticket-alt fa-2x px-2" data-toggle="tooltip" data-placement="top"
-							   title="Invite Users"></i>
+							   title="{% trans %}Invite Users{% endtrans %}"></i>
 						</a>
 						<a class="disband-team">
 							<i class="btn-fa fas fa-trash-alt fa-2x px-2" data-toggle="tooltip" data-placement="top"
-								title="Disband Team"></i>
+								title="{% trans %}Disband Team{% endtrans %}"></i>
 						</a>
 					{% else %}
 						<i class="btn-fa fas fa-cogs fa-2x px-2 fa-disabled"
 						   data-toggle="tooltip"
 						   data-placement="top"
-						   title="Only team captains can edit team information"></i>
+						   title="{{ _('Only team captains can edit team information') }}"></i>
 						<a class="edit-captain">
 							<i class="btn-fa fas fa-user-tag fa-2x px-2 fa-disabled"
 							   data-toggle="tooltip"
 							   data-placement="top"
-							   title="Only team captains can choose a new captain"></i>
+							   title="{{ _('Only team captains can choose a new captain') }}"></i>
 						</a>
 						<a class="invite-members">
 							<i class="btn-fa fas fa-ticket-alt fa-2x px-2"
 								data-toggle="tooltip"
 								data-placement="top"
-								title="Only team captains can generate invite links"></i>
+								title="{{ _('Only team captains can generate invite links') }}"></i>
 						</a>
 						<a class="disband-team">
 							<i class="btn-fa fas fa-trash-alt fa-2x px-2 fa-disabled"
 								data-toggle="tooltip"
 								data-placement="top"
-								title="Only team captains can disband the team"></i>
+								title="{{ _('Only team captains can disband the team') }}"></i>
 						</a>
 					{% endif %}
 				</a>
@@ -246,12 +245,12 @@
 
 		<div class="row min-vh-25">
 			<div class="col-md-12">
-				<h3>Members</h3>
+				<h3>{% trans %}Members{% endtrans %}</h3>
 				<table class="table table-striped">
 					<thead>
 					<tr>
-						<td><b>User Name</b></td>
-						<td><b>Score</b></td>
+						<td><b>{% trans %}User Name{% endtrans %}</b></td>
+						<td><b>{% trans %}Score{% endtrans %}</b></td>
 					</tr>
 					</thead>
 					<tbody>
@@ -262,7 +261,7 @@
 									{{ member.name }}
 								</a>
 								{% if team.captain_id == member.id %}
-									<span class="badge badge-primary ml-2">Captain</span>
+									<span class="badge badge-primary ml-2">{% trans %}Captain{% endtrans %}</span>
 								{% endif %}
 							</td>
 							<td>{{ member.score }}</td>
@@ -304,7 +303,7 @@
 			{% if awards %}
 				<div class="row">
 					<div class="col-md-12">
-						<h3>Awards</h3>
+						<h3>{% trans %}Awards{% endtrans %}</h3>
 					</div>
 					{% for award in awards %}
 						<div class="col-md-3 col-sm-6">
@@ -325,14 +324,14 @@
 
 			<div class="row">
 				<div class="col-md-12">
-					<h3>Solves</h3>
+					<h3>{% trans %}Solves{% endtrans %}</h3>
 					<table class="table table-striped">
 						<thead>
 						<tr>
-							<td><b>Challenge</b></td>
-							<td class="d-none d-md-block d-lg-block"><b>Category</b></td>
-							<td><b>Value</b></td>
-							<td><b>Time</b></td>
+							<td><b>{% trans %}Challenge{% endtrans %}</b></td>
+							<td class="d-none d-md-block d-lg-block"><b>{% trans %}Category{% endtrans %}</b></td>
+							<td><b>{% trans %}Value{% endtrans %}</b></td>
+							<td><b>{% trans %}Time{% endtrans %}</b></td>
 						</tr>
 						</thead>
 						<tbody>
@@ -357,7 +356,7 @@
 		{% else %}
 			<div class="row min-vh-25">
 				<h3 class="opacity-50 text-center w-100 justify-content-center align-self-center">
-					No solves yet
+					{% trans %}No solves yet{% endtrans %}
 				</h3>
 			</div>
 		{% endif %}
