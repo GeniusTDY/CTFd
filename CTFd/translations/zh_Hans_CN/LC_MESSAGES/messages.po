@@ -1687,7 +1687,7 @@ msgstr "控制用户是否必须确认邮箱地址后才能参与"
 
 #: CTFd/forms/setup.py:99
 msgid "Amount of users per team (Teams mode only) Optional."
-msgstr "每队人数上限（仅限团队模式）可选项。"
+msgstr "每队人数上限（仅限团队模式）。可选项。"
 
 #: CTFd/forms/setup.py:144 CTFd/themes/admin/templates/configs/time.html:6
 msgid "Start Time"
@@ -4511,7 +4511,7 @@ msgstr "移除 Logo"
 
 #: CTFd/themes/admin/templates/configs/logo.html:24
 msgid "CTF Logo"
-msgstr "CTF 站标"
+msgstr "CTF Logo"
 
 #: CTFd/themes/admin/templates/configs/logo.html:40
 msgid "Tab Icon"
@@ -4588,7 +4588,7 @@ msgstr "HTML 清理"
 
 #: CTFd/themes/admin/templates/configs/sanitize.html:8
 msgid "Whether CTFd will attempt to sanitize HTML content from content."
-msgstr "CTFd 是否尝试对内容中的 HTML 内容进行净化处理。"
+msgstr "CTFd 是否尝试对 HTML 内容进行净化处理。"
 
 #: CTFd/themes/admin/templates/configs/sanitize.html:14
 msgid "Required (Disable in config.ini)"
