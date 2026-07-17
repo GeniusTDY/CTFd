@@ -5180,7 +5180,7 @@ msgstr "管理员"
 msgid ""
 "Searching for users with <strong>%(field)s</strong> matching "
 "<strong>%(q)s</strong>"
-msgstr "<strong>%(field)s</strong> 为 <strong>%(q)s</strong> 的用户搜索结果"
+msgstr "搜索字段为 <strong>%(field)s</strong> 匹配 <strong>%(q)s</strong> 的用户"
 
 #: CTFd/themes/core/assets/js/challenges.js:268
 msgid "Error submitting rating"
