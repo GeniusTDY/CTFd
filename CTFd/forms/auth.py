@@ -21,8 +21,8 @@ def RegistrationForm(*args, **kwargs):
     password_description = _l("Password used to log into your account")
     if password_min_length:
         password_description += _l(
-            f" (Must be at least {password_min_length} characters)"
-        )
+            " (Must be at least %(num)d characters)"
+        ) % {"num": password_min_length}
 
     class _RegistrationForm(BaseForm):
         name = StringField(

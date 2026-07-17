@@ -9,7 +9,7 @@ export function copyToClipboard(event, selector) {
 
   // Show tooltip to user
   $(event.target).tooltip({
-    title: "Copied!",
+    title: _("Copied!"),
     trigger: "manual",
   });
   $(event.target).tooltip("show");

@@ -56,9 +56,9 @@ function loadChalTemplate(challenge) {
               }
 
               ezAlert({
-                title: "Error",
+                title: _("Error"),
                 body: body,
-                button: "OK",
+                button: _("OK"),
               });
             }
           });
@@ -158,10 +158,10 @@ $(() => {
 
   $(".delete-challenge").click(function (_e) {
     ezQuery({
-      title: "Delete Challenge",
-      body: `Are you sure you want to delete <strong>${htmlEntities(
+      title: _("Delete Challenge"),
+      body: _("Are you sure you want to delete ") + "<strong>" + htmlEntities(
         window.CHALLENGE_NAME,
-      )}</strong>`,
+      ) + "</strong>",
       success: function () {
         CTFd.fetch("/api/v1/challenges/" + window.CHALLENGE_ID, {
           method: "DELETE",
@@ -225,8 +225,8 @@ $(() => {
                     break;
                 }
                 ezToast({
-                  title: "Success",
-                  body: "Your challenge has been updated!",
+                  title: _("Success"),
+                  body: _("Your challenge has been updated!"),
                 });
               } else {
                 let body = "";
@@ -236,9 +236,9 @@ $(() => {
                 }
 
                 ezAlert({
-                  title: "Error",
+                  title: _("Error"),
                   body: body,
-                  button: "OK",
+                  button: _("OK"),
                 });
               }
             });
@@ -246,8 +246,8 @@ $(() => {
         // Check if the challenge doesn't have any flags before marking visible
         if (response.data.length === 0 && params.state === "visible") {
           ezQuery({
-            title: "Missing Flags",
-            body: "This challenge does not have any flags meaning it may be unsolveable. Are you sure you'd like to update this challenge?",
+            title: _("Missing Flags"),
+            body: _("This challenge does not have any flags meaning it may be unsolveable. Are you sure you'd like to update this challenge?"),
             success: update_challenge,
           });
         } else {

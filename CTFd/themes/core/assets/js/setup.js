@@ -23,7 +23,7 @@ Alpine.data("SetupForm", () => ({
       if (event.key == "integrations" && event.newValue) {
         let integration = JSON.parse(event.newValue);
         if (integration["name"] == "mlc") {
-          $("#integration-mlc").text("Already Configured").attr("disabled", true);
+          $("#integration-mlc").text(_("Already Configured")).attr("disabled", true);
           window.focus();
           localStorage.removeItem("integrations");
         }
@@ -35,9 +35,9 @@ Alpine.data("SetupForm", () => ({
     if (e.target.files[0].size > limit) {
       if (
         !confirm(
-          `This image file is larger than ${
-            limit / 1000
-          }KB which may result in increased load times. Are you sure you'd like to use this file?`,
+          _("This image file is larger than ") +
+            (limit / 1000) +
+            _("KB which may result in increased load times. Are you sure you'd like to use this file?"),
         )
       ) {
         e.target.value = "";

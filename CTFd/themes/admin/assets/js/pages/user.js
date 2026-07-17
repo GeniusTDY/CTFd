@@ -123,8 +123,8 @@ function updateUser(event) {
 function deleteUser(event) {
   event.preventDefault();
   ezQuery({
-    title: "Delete User",
-    body: "Are you sure you want to delete {0}".format(
+    title: _("Delete User"),
+    body: _("Are you sure you want to delete {0}").format(
       "<strong>" + htmlEntities(window.USER_NAME) + "</strong>",
     ),
     success: function () {
@@ -201,7 +201,7 @@ function emailUser(event) {
         $("#user-mail-form > #results").append(
           ezBadge({
             type: "success",
-            body: "E-Mail sent successfully!",
+            body: _("E-Mail sent successfully!"),
           }),
         );
         $("#user-mail-form").find("input[type=text], textarea").val("");
@@ -230,11 +230,11 @@ function correctSubmissions(_event) {
   let submissionIDs = submissions.map(function () {
     return $(this).data("submission-id");
   });
-  let target = submissionIDs.length === 1 ? "submission" : "submissions";
+  let target = submissionIDs.length === 1 ? _("submission") : _("submissions");
 
   ezQuery({
-    title: "Correct Submissions",
-    body: `Are you sure you want to mark ${submissionIDs.length} ${target} correct?`,
+    title: _("Correct Submissions"),
+    body: _("Are you sure you want to mark ") + submissionIDs.length + " " + target + _(" correct?"),
     success: function () {
       const reqs = [];
       for (var subId of submissionIDs) {
@@ -263,13 +263,13 @@ function deleteSelectedSubmissions(event, target) {
   switch (target) {
     case "solves":
       submissions = $("input[data-submission-type=correct]:checked");
-      type = "solve";
-      title = "Solves";
+      type = _("solve");
+      title = _("Solves");
       break;
     case "fails":
       submissions = $("input[data-submission-type=incorrect]:checked");
-      type = "fail";
-      title = "Fails";
+      type = _("fail");
+      title = _("Fails");
       break;
     default:
       break;
@@ -278,11 +278,11 @@ function deleteSelectedSubmissions(event, target) {
   let submissionIDs = submissions.map(function () {
     return $(this).data("submission-id");
   });
-  let target_string = submissionIDs.length === 1 ? type : type + "s";
+  let target_string = submissionIDs.length === 1 ? type : (target === "solves" ? _("solves") : _("fails"));
 
   ezQuery({
-    title: `Delete ${title}`,
-    body: `Are you sure you want to delete ${submissionIDs.length} ${target_string}?`,
+    title: _("Delete ") + title,
+    body: _("Are you sure you want to delete ") + submissionIDs.length + " " + target_string + _("?"),
     success: function () {
       const reqs = [];
       for (var subId of submissionIDs) {
@@ -299,11 +299,11 @@ function deleteSelectedAwards(_event) {
   let awardIDs = $("input[data-award-id]:checked").map(function () {
     return $(this).data("award-id");
   });
-  let target = awardIDs.length === 1 ? "award" : "awards";
+  let target = awardIDs.length === 1 ? _("award") : _("awards");
 
   ezQuery({
-    title: `Delete Awards`,
-    body: `Are you sure you want to delete ${awardIDs.length} ${target}?`,
+    title: _("Delete Awards"),
+    body: _("Are you sure you want to delete ") + awardIDs.length + " " + target + _("?"),
     success: function () {
       const reqs = [];
       for (var awardID of awardIDs) {
@@ -331,18 +331,16 @@ function solveSelectedMissingChallenges(event) {
       return $(this).data("missing-challenge-id");
     },
   );
-  let target = challengeIDs.length === 1 ? "challenge" : "challenges";
+  let target = challengeIDs.length === 1 ? _("challenge") : _("challenges");
 
   ezQuery({
-    title: `Mark Correct`,
-    body: `Are you sure you want to mark ${
-      challengeIDs.length
-    } ${target} correct for ${htmlEntities(window.USER_NAME)}?`,
+    title: _("Mark Correct"),
+    body: _("Are you sure you want to mark ") + challengeIDs.length + " " + target + _(" correct for ") + htmlEntities(window.USER_NAME) + _("?"),
     success: function () {
       const reqs = [];
       for (var challengeID of challengeIDs) {
         let params = {
-          provided: "MARKED AS SOLVED BY ADMIN",
+          provided: _("MARKED AS SOLVED BY ADMIN"),
           user_id: window.USER_ID,
           team_id: window.TEAM_ID,
           challenge_id: challengeID,

@@ -582,3 +582,34 @@ def robots():
     r = make_response(text, 200)
     r.mimetype = "text/plain"
     return r
+
+
+@views.route("/translations.js")
+def translations_js():
+    import json
+
+    from flask_babel import get_translations
+
+    translations = get_translations()
+    catalog = {}
+    if translations:
+        # GNUTranslations stores its catalog in _catalog
+        cat = getattr(translations, "_catalog", {})
+        for key, value in cat.items():
+            # Only include string keys with non-empty translations
+            if isinstance(key, str) and key and value and key != value:
+                catalog[key] = value
+    js = (
+        "window.CTFdTranslations = "
+        + json.dumps(catalog, ensure_ascii=False)
+        + ";\n"
+        + "window._ = function(text) {\n"
+        + "  if (window.CTFdTranslations && window.CTFdTranslations[text]) {\n"
+        + "    return window.CTFdTranslations[text];\n"
+        + "  }\n"
+        + "  return text;\n"
+        + "};\n"
+    )
+    r = make_response(js, 200)
+    r.mimetype = "application/javascript"
+    return r

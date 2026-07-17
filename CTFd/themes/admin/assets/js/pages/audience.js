@@ -12,9 +12,9 @@ function showErrors(errors) {
     .join("<br>");
 
   ezAlert({
-    title: "Error",
-    body: body || "Something went wrong.",
-    button: "OK",
+    title: _("Error"),
+    body: body || _("Something went wrong."),
+    button: _("OK"),
   });
 }
 
@@ -70,8 +70,8 @@ function updateAudience(event) {
 
 function deleteAudience(_event) {
   ezQuery({
-    title: "Delete Audience",
-    body: "Are you sure you want to delete this audience?",
+    title: _("Delete Audience"),
+    body: _("Are you sure you want to delete this audience?"),
     success: function () {
       CTFd.fetch("/api/v1/audiences/" + window.AUDIENCE_ID, {
         method: "DELETE",
@@ -114,8 +114,8 @@ function addMember(event) {
 function removeMember(event) {
   const memberId = $(event.currentTarget).data("remove-member");
   ezQuery({
-    title: "Remove Member",
-    body: "Are you sure you want to remove this member?",
+    title: _("Remove Member"),
+    body: _("Are you sure you want to remove this member?"),
     success: function () {
       CTFd.fetch(
         "/api/v1/audiences/" + window.AUDIENCE_ID + "/members/" + memberId,
@@ -155,8 +155,8 @@ function linkModule(event) {
 function unlinkModule(event) {
   const moduleId = $(event.currentTarget).data("unlink-module");
   ezQuery({
-    title: "Unlink Module",
-    body: "Are you sure you want to unlink this module from the audience?",
+    title: _("Unlink Module"),
+    body: _("Are you sure you want to unlink this module from the audience?"),
     success: function () {
       CTFd.fetch(
         "/api/v1/modules/" + moduleId + "/audiences/" + window.AUDIENCE_ID,
@@ -189,7 +189,7 @@ function setupMemberSearch() {
     suggestions.empty();
     if (!items.length) {
       suggestions.hide();
-      hint.text("No matches.");
+      hint.text(_("No matches."));
       return;
     }
     items.forEach((it) => {
@@ -202,7 +202,7 @@ function setupMemberSearch() {
           accountField.val(it.id);
           submitBtn.prop("disabled", false);
           suggestions.hide();
-          hint.text("Will add: " + it.name + " (#" + it.id + ")");
+          hint.text(_("Will add: ") + it.name + " (#" + it.id + ")");
         });
       suggestions.append(li);
     });
@@ -216,10 +216,10 @@ function setupMemberSearch() {
     if (searchTimer) clearTimeout(searchTimer);
     if (!q) {
       suggestions.hide();
-      hint.text("Start typing to search.");
+      hint.text(_("Start typing to search."));
       return;
     }
-    hint.text("Searching…");
+    hint.text(_("Searching…"));
     searchTimer = setTimeout(function () {
       CTFd.fetch(endpoint + "?field=name&q=" + encodeURIComponent(q), {
         credentials: "same-origin",
@@ -230,10 +230,10 @@ function setupMemberSearch() {
           if (response.success) {
             renderSuggestions((response.data || []).slice(0, 20));
           } else {
-            hint.text("Search failed.");
+            hint.text(_("Search failed."));
           }
         })
-        .catch(() => hint.text("Search failed."));
+        .catch(() => hint.text(_("Search failed.")));
     }, 200);
   });
 }

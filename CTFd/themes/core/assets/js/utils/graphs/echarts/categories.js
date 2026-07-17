@@ -5,7 +5,7 @@ export function getOption(solves, optionMerge) {
   let option = {
     title: {
       left: "center",
-      text: "Category Breakdown",
+      text: _("Category Breakdown"),
     },
     tooltip: {
       trigger: "item",
@@ -25,7 +25,7 @@ export function getOption(solves, optionMerge) {
     },
     series: [
       {
-        name: "Category Breakdown",
+        name: _("Category Breakdown"),
         type: "pie",
         radius: ["30%", "50%"],
         avoidLabelOverlap: false,

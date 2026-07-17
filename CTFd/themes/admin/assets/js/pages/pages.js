@@ -7,11 +7,11 @@ function deleteSelectedUsers(_event) {
   let pageIDs = $("input[data-page-id]:checked").map(function () {
     return $(this).data("page-id");
   });
-  let target = pageIDs.length === 1 ? "page" : "pages";
+  let target = pageIDs.length === 1 ? _("page") : _("pages");
 
   ezQuery({
-    title: "Delete Pages",
-    body: `Are you sure you want to delete ${pageIDs.length} ${target}?`,
+    title: _("Delete Pages"),
+    body: _("Are you sure you want to delete ") + pageIDs.length + " " + target + _("?"),
     success: function () {
       const reqs = [];
       for (var pageID of pageIDs) {

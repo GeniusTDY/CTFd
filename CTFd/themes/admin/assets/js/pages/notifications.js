@@ -26,9 +26,9 @@ function submit(event) {
     }, 1000);
     if (!response.success) {
       ezAlert({
-        title: "Error",
-        body: "Could not send notification. Please try again.",
-        button: "OK",
+        title: _("Error"),
+        body: _("Could not send notification. Please try again."),
+        button: _("OK"),
       });
     }
 
@@ -51,7 +51,7 @@ function deleteNotification(event) {
   const $elem = $(this);
   const id = $elem.data("notif-id");
 
-  if (confirm("Are you sure you want to delete this notification?")) {
+  if (confirm(_("Are you sure you want to delete this notification?"))) {
     CTFd.api.delete_notification({ notificationId: id }).then((response) => {
       if (response.success) {
         $elem.parent().remove();

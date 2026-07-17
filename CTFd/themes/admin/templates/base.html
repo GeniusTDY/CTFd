@@ -11,6 +11,7 @@
 	{{ Assets.css("assets/css/fonts.scss", theme="admin") }}
 	{{ Assets.css("assets/css/admin.scss", theme="admin") }}
 	{{ Assets.css("assets/css/codemirror.scss", theme="admin") }}
+	<script type="text/javascript" src="{{ url_for('views.translations_js') }}"></script>
 	<script type="text/javascript">
 		var init = {
 			'urlRoot': "{{ request.script_root }}",

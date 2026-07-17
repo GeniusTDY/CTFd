@@ -8,11 +8,11 @@ function deleteSelectedUsers(_event) {
   let userIDs = $("input[data-user-id]:checked").map(function () {
     return $(this).data("user-id");
   });
-  let target = userIDs.length === 1 ? "user" : "users";
+  let target = userIDs.length === 1 ? _("user") : _("users");
 
   ezQuery({
-    title: "Delete Users",
-    body: `Are you sure you want to delete ${userIDs.length} ${target}?`,
+    title: _("Delete Users"),
+    body: _("Are you sure you want to delete ") + userIDs.length + " " + target + _("?"),
     success: function () {
       const reqs = [];
       for (var userID of userIDs) {
@@ -35,36 +35,36 @@ function bulkEditUsers(_event) {
   });
 
   ezAlert({
-    title: "Edit Users",
+    title: _("Edit Users"),
     body: $(`
     <form id="users-bulk-edit">
       <div class="form-group">
-        <label>Verified</label>
+        <label>${_("Verified")}</label>
         <select name="verified" data-initial="">
           <option value="">--</option>
-          <option value="true">True</option>
-          <option value="false">False</option>
+          <option value="true">${_("True")}</option>
+          <option value="false">${_("False")}</option>
         </select>
       </div>
       <div class="form-group">
-        <label>Banned</label>
+        <label>${_("Banned")}</label>
         <select name="banned" data-initial="">
           <option value="">--</option>
-          <option value="true">True</option>
-          <option value="false">False</option>
+          <option value="true">${_("True")}</option>
+          <option value="false">${_("False")}</option>
         </select>
       </div>
       <div class="form-group">
-        <label>Hidden</label>
+        <label>${_("Hidden")}</label>
         <select name="hidden" data-initial="">
           <option value="">--</option>
-          <option value="true">True</option>
-          <option value="false">False</option>
+          <option value="true">${_("True")}</option>
+          <option value="false">${_("False")}</option>
         </select>
       </div>
     </form>
     `),
-    button: "Submit",
+    button: _("Submit"),
     success: function () {
       let data = $("#users-bulk-edit").serializeJSON(true);
       const reqs = [];

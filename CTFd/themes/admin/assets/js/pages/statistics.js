@@ -33,7 +33,7 @@ const graph_configs = {
       const option = {
         title: {
           left: "center",
-          text: "Solve Counts",
+          text: _("Solve Counts"),
         },
         tooltip: {
           trigger: "item",
@@ -49,12 +49,12 @@ const graph_configs = {
           },
         },
         xAxis: {
-          name: "Solve Count",
+          name: _("Solve Count"),
           nameLocation: "middle",
           type: "value",
         },
         yAxis: {
-          name: "Challenge Name",
+          name: _("Challenge Name"),
           nameLocation: "middle",
           nameGap: 60,
           type: "category",
@@ -106,7 +106,7 @@ const graph_configs = {
       let option = {
         title: {
           left: "center",
-          text: "Submission Percentages",
+          text: _("Submission Percentages"),
         },
         tooltip: {
           trigger: "item",
@@ -122,11 +122,11 @@ const graph_configs = {
           orient: "vertical",
           top: "middle",
           right: 0,
-          data: ["Fails", "Solves"],
+          data: [_("Fails"), _("Solves")],
         },
         series: [
           {
-            name: "Submission Percentages",
+            name: _("Submission Percentages"),
             type: "pie",
             radius: ["30%", "50%"],
             avoidLabelOverlap: false,
@@ -170,12 +170,12 @@ const graph_configs = {
             data: [
               {
                 value: fails,
-                name: "Fails",
+                name: _("Fails"),
                 itemStyle: { color: "rgb(207, 38, 0)" },
               },
               {
                 value: solves,
-                name: "Solves",
+                name: _("Solves"),
                 itemStyle: { color: "rgb(0, 209, 64)" },
               },
             ],
@@ -210,7 +210,7 @@ const graph_configs = {
       let option = {
         title: {
           left: "center",
-          text: "Category Breakdown",
+          text: _("Category Breakdown"),
         },
         tooltip: {
           trigger: "item",
@@ -230,7 +230,7 @@ const graph_configs = {
         },
         series: [
           {
-            name: "Category Breakdown",
+            name: _("Category Breakdown"),
             type: "pie",
             radius: ["30%", "50%"],
             label: {
@@ -322,7 +322,7 @@ const graph_configs = {
       let option = {
         title: {
           left: "center",
-          text: "Point Breakdown",
+          text: _("Point Breakdown"),
         },
         tooltip: {
           trigger: "item",
@@ -342,7 +342,7 @@ const graph_configs = {
         },
         series: [
           {
-            name: "Point Breakdown",
+            name: _("Point Breakdown"),
             type: "pie",
             radius: ["30%", "50%"],
             label: {
@@ -399,15 +399,15 @@ const graph_configs = {
 
   "#solve-percentages-graph": {
     layout: (annotations) => ({
-      title: "Solve Percentages per Challenge",
+      title: _("Solve Percentages per Challenge"),
       xaxis: {
-        title: "Challenge Name",
+        title: _("Challenge Name"),
       },
       yaxis: {
-        title: `Percentage of ${
+        title: `${_("Percentage of ")}${
           CTFd.config.userMode.charAt(0).toUpperCase() +
           CTFd.config.userMode.slice(1)
-        } (%)`,
+        }${_(" (%)")}`,
         range: [0, 100],
       },
       annotations: annotations,
@@ -439,7 +439,7 @@ const graph_configs = {
       const option = {
         title: {
           left: "center",
-          text: "Solve Percentages per Challenge",
+          text: _("Solve Percentages per Challenge"),
         },
         tooltip: {
           trigger: "item",
@@ -460,7 +460,7 @@ const graph_configs = {
           },
         },
         xAxis: {
-          name: "Challenge Name",
+          name: _("Challenge Name"),
           nameGap: 40,
           nameLocation: "middle",
           type: "category",
@@ -471,10 +471,10 @@ const graph_configs = {
           },
         },
         yAxis: {
-          name: `"Percentage of ${
+          name: `"${_("Percentage of ")}${
             CTFd.config.userMode.charAt(0).toUpperCase() +
             CTFd.config.userMode.slice(1)
-          } (%)`,
+          }${_(" (%)")}"`,
           nameGap: 50,
           nameLocation: "middle",
           type: "value",
@@ -525,14 +525,14 @@ const graph_configs = {
 
   "#score-distribution-graph": {
     layout: (annotations) => ({
-      title: "Score Distribution",
+      title: _("Score Distribution"),
       xaxis: {
-        title: "Score Bracket",
+        title: _("Score Bracket"),
         showticklabels: true,
         type: "category",
       },
       yaxis: {
-        title: `Number of ${
+        title: `${_("Number of ")}${
           CTFd.config.userMode.charAt(0).toUpperCase() +
           CTFd.config.userMode.slice(1)
         }`,
@@ -566,7 +566,7 @@ const graph_configs = {
       const option = {
         title: {
           left: "center",
-          text: "Score Distribution",
+          text: _("Score Distribution"),
         },
         tooltip: {
           trigger: "item",
@@ -582,14 +582,14 @@ const graph_configs = {
           },
         },
         xAxis: {
-          name: "Score Bracket",
+          name: _("Score Bracket"),
           nameGap: 40,
           nameLocation: "middle",
           type: "category",
           data: brackets,
         },
         yAxis: {
-          name: `Number of ${
+          name: `${_("Number of ")}${
             CTFd.config.userMode.charAt(0).toUpperCase() +
             CTFd.config.userMode.slice(1)
           }`,

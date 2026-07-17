@@ -8,11 +8,11 @@ function deleteSelectedTeams(_event) {
   let teamIDs = $("input[data-team-id]:checked").map(function () {
     return $(this).data("team-id");
   });
-  let target = teamIDs.length === 1 ? "team" : "teams";
+  let target = teamIDs.length === 1 ? _("team") : _("teams");
 
   ezQuery({
-    title: "Delete Teams",
-    body: `Are you sure you want to delete ${teamIDs.length} ${target}?`,
+    title: _("Delete Teams"),
+    body: _("Are you sure you want to delete ") + teamIDs.length + " " + target + _("?"),
     success: function () {
       const reqs = [];
       for (var teamID of teamIDs) {
@@ -35,28 +35,28 @@ function bulkEditTeams(_event) {
   });
 
   ezAlert({
-    title: "Edit Teams",
+    title: _("Edit Teams"),
     body: $(`
     <form id="teams-bulk-edit">
       <div class="form-group">
-        <label>Banned</label>
+        <label>${_("Banned")}</label>
         <select name="banned" data-initial="">
           <option value="">--</option>
-          <option value="true">True</option>
-          <option value="false">False</option>
+          <option value="true">${_("True")}</option>
+          <option value="false">${_("False")}</option>
         </select>
       </div>
       <div class="form-group">
-        <label>Hidden</label>
+        <label>${_("Hidden")}</label>
         <select name="hidden" data-initial="">
           <option value="">--</option>
-          <option value="true">True</option>
-          <option value="false">False</option>
+          <option value="true">${_("True")}</option>
+          <option value="false">${_("False")}</option>
         </select>
       </div>
     </form>
     `),
-    button: "Submit",
+    button: _("Submit"),
     success: function () {
       let data = $("#teams-bulk-edit").serializeJSON(true);
       const reqs = [];

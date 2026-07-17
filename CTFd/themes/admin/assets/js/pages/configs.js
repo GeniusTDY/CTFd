@@ -126,9 +126,9 @@ function updateConfigs(event) {
     } else {
       let errors = _response.errors.value.join("\n");
       ezAlert({
-        title: "Error!",
+        title: _("Error!"),
         body: errors,
-        button: "Okay",
+        button: _("Okay"),
       });
     }
   });
@@ -154,9 +154,9 @@ function uploadLogo(event) {
           window.location.reload();
         } else {
           ezAlert({
-            title: "Error!",
-            body: "Logo uploading failed!",
-            button: "Okay",
+            title: _("Error!"),
+            body: _("Logo uploading failed!"),
+            button: _("Okay"),
           });
         }
       });
@@ -167,10 +167,10 @@ function switchUserMode(event) {
   event.preventDefault();
   let formData = new FormData(event.target);
   let msg =
-    "Are you sure you'd like to switch user modes?\n\nAll submissions, awards, unlocks, and tracking will be deleted!";
+    _("Are you sure you'd like to switch user modes?\n\nAll submissions, awards, unlocks, and tracking will be deleted!");
   if (formData.get("user_mode") == "users") {
     msg =
-      "Are you sure you'd like to switch user modes?\n\nAll teams, submissions, awards, unlocks, and tracking will be deleted!";
+      _("Are you sure you'd like to switch user modes?\n\nAll teams, submissions, awards, unlocks, and tracking will be deleted!");
   }
   if (confirm(msg)) {
     // Use original form to include original input
@@ -189,8 +189,8 @@ function switchUserMode(event) {
 
 function removeLogo() {
   ezQuery({
-    title: "Remove logo",
-    body: "Are you sure you'd like to remove the CTF logo?",
+    title: _("Remove logo"),
+    body: _("Are you sure you'd like to remove the CTF logo?"),
     success: function () {
       const params = {
         value: null,
@@ -224,9 +224,9 @@ function smallIconUpload(event) {
           window.location.reload();
         } else {
           ezAlert({
-            title: "Error!",
-            body: "Icon uploading failed!",
-            button: "Okay",
+            title: _("Error!"),
+            body: _("Icon uploading failed!"),
+            button: _("Okay"),
           });
         }
       });
@@ -235,8 +235,8 @@ function smallIconUpload(event) {
 
 function removeSmallIcon() {
   ezQuery({
-    title: "Remove logo",
-    body: "Are you sure you'd like to remove the small site icon?",
+    title: _("Remove logo"),
+    body: _("Are you sure you'd like to remove the small site icon?"),
     success: function () {
       const params = {
         value: null,
@@ -262,7 +262,7 @@ function importCSV(event) {
 
   let pg = ezProgressBar({
     width: 0,
-    title: "Upload Progress",
+    title: _("Upload Progress"),
   });
 
   $.ajax({
@@ -331,7 +331,7 @@ function importConfig(event) {
 
   let pg = ezProgressBar({
     width: 0,
-    title: "Upload Progress",
+    title: _("Upload Progress"),
   });
 
   $.ajax({

@@ -7,7 +7,7 @@ export function getOption(id, name, solves, awards, optionMerge) {
   let option = {
     title: {
       left: "center",
-      text: "Score over Time",
+      text: _("Score over Time"),
     },
     tooltip: {
       trigger: "axis",

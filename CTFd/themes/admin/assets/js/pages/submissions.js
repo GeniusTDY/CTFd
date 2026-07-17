@@ -14,8 +14,8 @@ function deleteCorrectSubmission(_event) {
   const row = $(this).parent().parent();
 
   ezQuery({
-    title: "Delete Submission",
-    body: "Are you sure you want to delete correct submission from {0} for challenge {1}".format(
+    title: _("Delete Submission"),
+    body: _("Are you sure you want to delete correct submission from {0} for challenge {1}").format(
       "<strong>" + htmlEntities(team_name) + "</strong>",
       "<strong>" + htmlEntities(chal_name) + "</strong>",
     ),
@@ -35,11 +35,11 @@ function deleteSelectedSubmissions(_event) {
   let submissionIDs = $("input[data-submission-id]:checked").map(function () {
     return $(this).data("submission-id");
   });
-  let target = submissionIDs.length === 1 ? "submission" : "submissions";
+  let target = submissionIDs.length === 1 ? _("submission") : _("submissions");
 
   ezQuery({
-    title: "Delete Submissions",
-    body: `Are you sure you want to delete ${submissionIDs.length} ${target}?`,
+    title: _("Delete Submissions"),
+    body: _("Are you sure you want to delete ") + submissionIDs.length + " " + target + _("?"),
     success: function () {
       const reqs = [];
       for (var subId of submissionIDs) {
@@ -56,11 +56,11 @@ function correctSubmissions(_event) {
   let submissionIDs = $("input[data-submission-id]:checked").map(function () {
     return $(this).data("submission-id");
   });
-  let target = submissionIDs.length === 1 ? "submission" : "submissions";
+  let target = submissionIDs.length === 1 ? _("submission") : _("submissions");
 
   ezQuery({
-    title: "Correct Submissions",
-    body: `Are you sure you want to mark ${submissionIDs.length} ${target} correct?`,
+    title: _("Correct Submissions"),
+    body: _("Are you sure you want to mark ") + submissionIDs.length + " " + target + _(" correct?"),
     success: function () {
       const reqs = [];
       for (var subId of submissionIDs) {
@@ -86,11 +86,11 @@ function incorrectSubmissions(_event) {
   let submissionIDs = $("input[data-submission-id]:checked").map(function () {
     return $(this).data("submission-id");
   });
-  let target = submissionIDs.length === 1 ? "submission" : "submissions";
+  let target = submissionIDs.length === 1 ? _("submission") : _("submissions");
 
   ezQuery({
-    title: "Incorrect Submissions",
-    body: `Are you sure you want to mark ${submissionIDs.length} ${target} incorrect?`,
+    title: _("Incorrect Submissions"),
+    body: _("Are you sure you want to mark ") + submissionIDs.length + " " + target + _(" incorrect?"),
     success: function () {
       const reqs = [];
       for (var subId of submissionIDs) {
@@ -146,7 +146,7 @@ function copyFlag(event) {
   navigator.clipboard.writeText(text);
 
   $(event.currentTarget).tooltip({
-    title: "Copied!",
+    title: _("Copied!"),
     trigger: "manual",
   });
   $(event.currentTarget).tooltip("show");

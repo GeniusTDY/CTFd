@@ -29,11 +29,11 @@ function toggleAccount() {
       if (hidden) {
         $btn.data("state", "hidden");
         $btn.addClass("btn-danger").removeClass("btn-success");
-        $btn.text("Hidden");
+        $btn.text(_("Hidden"));
       } else {
         $btn.data("state", "visible");
         $btn.addClass("btn-success").removeClass("btn-danger");
-        $btn.text("Visible");
+        $btn.text(_("Visible"));
       }
     }
   });
@@ -77,20 +77,20 @@ function bulkToggleAccounts(_event) {
   };
 
   ezAlert({
-    title: "Toggle Visibility",
+    title: _("Toggle Visibility"),
     body: $(`
     <form id="scoreboard-bulk-edit">
       <div class="form-group">
-        <label>Visibility</label>
+        <label>${_("Visibility")}</label>
         <select name="visibility" data-initial="">
           <option value="">--</option>
-          <option value="visible">Visible</option>
-          <option value="hidden">Hidden</option>
+          <option value="visible">${_("Visible")}</option>
+          <option value="hidden">${_("Hidden")}</option>
         </select>
       </div>
     </form>
     `),
-    button: "Submit",
+    button: _("Submit"),
     success: function () {
       let data = $("#scoreboard-bulk-edit").serializeJSON(true);
       let state = data.visibility;

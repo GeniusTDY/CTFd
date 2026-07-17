@@ -12,9 +12,9 @@ function showErrors(errors) {
     .join("<br>");
 
   ezAlert({
-    title: "Error",
-    body: body || "Something went wrong.",
-    button: "OK",
+    title: _("Error"),
+    body: body || _("Something went wrong."),
+    button: _("OK"),
   });
 }
 
@@ -70,8 +70,8 @@ function updateModule(event) {
 
 function deleteModule(_event) {
   ezQuery({
-    title: "Delete Module",
-    body: "Are you sure you want to delete this module? Linked challenges will become ungrouped and visible to all.",
+    title: _("Delete Module"),
+    body: _("Are you sure you want to delete this module? Linked challenges will become ungrouped and visible to all."),
     success: function () {
       CTFd.fetch("/api/v1/modules/" + window.MODULE_ID, {
         method: "DELETE",
@@ -113,8 +113,8 @@ function linkAudience(event) {
 function unlinkAudience(event) {
   const audienceId = $(event.currentTarget).data("unlink-audience");
   ezQuery({
-    title: "Unlink Audience",
-    body: "Are you sure you want to unlink this audience?",
+    title: _("Unlink Audience"),
+    body: _("Are you sure you want to unlink this audience?"),
     success: function () {
       CTFd.fetch(
         "/api/v1/modules/" + window.MODULE_ID + "/audiences/" + audienceId,
@@ -160,9 +160,9 @@ function addChallenges(event) {
     const failed = responses.filter((r) => !r.success);
     if (failed.length) {
       ezAlert({
-        title: "Error",
-        body: `${failed.length} of ${ids.length} could not be assigned.`,
-        button: "OK",
+        title: _("Error"),
+        body: failed.length + _(" of ") + ids.length + _(" could not be assigned."),
+        button: _("OK"),
         success: function () {
           window.location.reload();
         },
@@ -176,8 +176,8 @@ function addChallenges(event) {
 function removeChallenge(event) {
   const challengeId = $(event.currentTarget).data("remove-challenge");
   ezQuery({
-    title: "Remove Challenge",
-    body: "Are you sure you want to remove this challenge from the module? It will become ungrouped.",
+    title: _("Remove Challenge"),
+    body: _("Are you sure you want to remove this challenge from the module? It will become ungrouped."),
     success: function () {
       CTFd.fetch("/api/v1/challenges/" + challengeId, {
         method: "PATCH",

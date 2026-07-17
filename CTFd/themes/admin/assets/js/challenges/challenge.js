@@ -43,7 +43,7 @@ function renderSubmissionResponse(response, cb) {
     result_notification.slideDown();
 
     $(".challenge-solves").text(
-      parseInt($(".challenge-solves").text().split(" ")[0]) + 1 + " Solves",
+      parseInt($(".challenge-solves").text().split(" ")[0]) + 1 + _(" Solves"),
     );
 
     answer_input.val("");
@@ -160,8 +160,8 @@ $(() => {
 
   $(".delete-challenge").click(function (_event) {
     ezQuery({
-      title: "Delete Challenge",
-      body: "Are you sure you want to delete {0}".format(
+      title: _("Delete Challenge"),
+      body: _("Are you sure you want to delete {0}").format(
         "<strong>" + htmlEntities(window.CHALLENGE_NAME) + "</strong>",
       ),
       success: function () {
@@ -191,8 +191,8 @@ $(() => {
     }).then(function (data) {
       if (data.success) {
         ezToast({
-          title: "Success",
-          body: "Your challenge has been updated!",
+          title: _("Success"),
+          body: _("Your challenge has been updated!"),
         });
       }
     });

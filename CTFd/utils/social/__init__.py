@@ -12,6 +12,7 @@ from CTFd.utils.formatters import safe_html_format
 from CTFd.utils.humanize.words import pluralize
 from CTFd.utils.security.signing import hmac
 from CTFd.utils.uploads import get_uploader
+from flask_babel import gettext
 
 BASE_TEMPLATE = """<div class="container">
     <div class="row">
@@ -108,7 +109,7 @@ class SolveSocialShare(object):
             team_name=team_name,
             solve_count=solve_count,
             solve_count_word=str(solve_count)
-            + pluralize(solves_count, " solve", " solves"),
+            + pluralize(solves_count, gettext(" solve"), gettext(" solves")),
         )
         asset_url = url_for(
             "social.assets",
@@ -124,7 +125,7 @@ class SolveSocialShare(object):
             '<meta property="og:image" content="{asset_url}" />'
         )
         title = safe_html_format(
-            "{account_name} has solved {challenge_name}",
+            gettext("{account_name} has solved {challenge_name}"),
             account_name=account_name,
             challenge_name=challenge_name,
         )
@@ -160,7 +161,7 @@ class SolveSocialShare(object):
         solves_count = get_solve_counts_for_challenges(challenge_id=challenge_id)
         solve_count = solves_count.get(challenge_id, 0)
         solve_count_word = str(solve_count) + pluralize(
-            solves_count, " solve", " solves"
+            solves_count, gettext(" solve"), gettext(" solves")
         )
 
         # Account information
@@ -179,8 +180,9 @@ class SolveSocialShare(object):
         draw.text(((WIDTH-w)/2, 15), account_name, font=font_lg, fill=(0,0,0,255))
 
         # Draw user sub text
-        _, _, w, h = draw.textbbox((0, 0), "has solved", font=font_md)
-        draw.text(((WIDTH-w)/2, h1 + 35), "has solved", font=font_md, fill=(194, 194, 194,255))
+        has_solved_text = gettext("has solved")
+        _, _, w, h = draw.textbbox((0, 0), has_solved_text, font=font_md)
+        draw.text(((WIDTH-w)/2, h1 + 35), has_solved_text, font=font_md, fill=(194, 194, 194,255))
 
         # Draw challenge name
         _, _, w, h = draw.textbbox((0, 0), challenge_name, font=font_lg)
@@ -191,8 +193,9 @@ class SolveSocialShare(object):
         draw.text(((WIDTH-w)/2, ((HEIGHT-h)/2) + 35), solve_count_word, font=font_md, fill=(194, 194, 194, 255))
 
         # Draw point value
-        _, _, w, h = draw.textbbox((0, 0), f"+{challenge_value} points", font=font_md)
-        draw.text(((WIDTH-w)/2, (HEIGHT-(h + 15))), f"+{challenge_value} points", font=font_md, fill=(194, 194, 194,255))
+        points_text = gettext("+%(challenge_value)d points") % {"challenge_value": challenge_value}
+        _, _, w, h = draw.textbbox((0, 0), points_text, font=font_md)
+        draw.text(((WIDTH-w)/2, (HEIGHT-(h + 15))), points_text, font=font_md, fill=(194, 194, 194,255))
 
         # Draw logo
         fp = get_logo()

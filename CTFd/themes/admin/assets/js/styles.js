@@ -51,7 +51,7 @@ export function bindMarkdownEditor(elem) {
             showMediaLibrary(editor);
           },
           className: "fas fa-file-upload",
-          title: "Media Library",
+          title: _("Media Library"),
         },
         "|",
         "preview",

@@ -58,7 +58,7 @@ export function getSpec(description, values) {
         field: "category",
         type: "nominal",
         scale: {
-          domain: ["Solves", "Fails"],
+          domain: [_("Solves"), _("Fails")],
           range: ["#00d13f", "#cf2600"],
         },
         legend: {
@@ -72,11 +72,11 @@ export function getSpec(description, values) {
 export function getValues(solves, fails) {
   return [
     {
-      category: "Solves",
+      category: _("Solves"),
       value: solves.meta.count,
     },
     {
-      category: "Fails",
+      category: _("Fails"),
       value: fails.meta.count,
     },
   ];

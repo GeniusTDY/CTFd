@@ -2,6 +2,8 @@ import hashlib
 import shutil
 from pathlib import Path
 
+from flask_babel import gettext
+
 from CTFd.models import ChallengeFiles, Files, PageFiles, SolutionFiles, db
 from CTFd.utils import get_app_config
 from CTFd.utils.uploads.uploaders import FilesystemUploader, S3Uploader
@@ -28,7 +30,7 @@ def upload_file(*args, **kwargs):
         path = Path(location)
         if len(path.parts) != 2:
             raise ValueError(
-                "Location must contain two parts, a directory and a filename"
+                gettext("Location must contain two parts, a directory and a filename")
             )
         # Allow location to override the directory and filename
         parent = path.parts[0]

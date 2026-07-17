@@ -7,7 +7,7 @@ export function getOption(mode, places, optionMerge) {
   let option = {
     title: {
       left: "center",
-      text: "Top 10 " + (mode === "teams" ? "Teams" : "Users"),
+      text: _("Top 10 ") + (mode === "teams" ? _("Teams") : _("Users")),
     },
     tooltip: {
       trigger: "axis",

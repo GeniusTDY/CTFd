@@ -8,11 +8,11 @@ function deleteSelectedChallenges(_event) {
   let challengeIDs = $("input[data-challenge-id]:checked").map(function () {
     return $(this).data("challenge-id");
   });
-  let target = challengeIDs.length === 1 ? "challenge" : "challenges";
+  let target = challengeIDs.length === 1 ? _("challenge") : _("challenges");
 
   ezQuery({
-    title: "Delete Challenges",
-    body: `Are you sure you want to delete ${challengeIDs.length} ${target}?`,
+    title: _("Delete Challenges"),
+    body: _("Are you sure you want to delete ") + challengeIDs.length + " " + target + _("?"),
     success: function () {
       const reqs = [];
       for (var chalID of challengeIDs) {
@@ -38,37 +38,37 @@ function bulkEditChallenges(_event) {
   });
 
   ezAlert({
-    title: "Edit Challenges",
+    title: _("Edit Challenges"),
     body: $(`
     <form id="challenges-bulk-edit">
       <div class="form-group">
-        <label>Category</label>
+        <label>${_("Category")}</label>
         <input type="text" name="category" data-initial="" value="">
       </div>
       <div class="form-group">
-        <label>Value</label>
+        <label>${_("Value")}</label>
         <input type="number" name="value" data-initial="" value="">
       </div>
       <div class="form-group">
-        <label>State</label>
+        <label>${_("State")}</label>
         <select name="state" data-initial="">
           <option value="">--</option>
-          <option value="visible">Visible</option>
-          <option value="hidden">Hidden</option>
+          <option value="visible">${_("Visible")}</option>
+          <option value="hidden">${_("Hidden")}</option>
         </select>
       </div>
       <div class="form-group">
-        <label>Solution</label>
+        <label>${_("Solution")}</label>
         <select name="solution" data-initial="">
           <option value="">--</option>
-          <option value="visible">Visible</option>
-          <option value="hidden">Hidden</option>
-          <option value="solved">Solved</option>
+          <option value="visible">${_("Visible")}</option>
+          <option value="hidden">${_("Hidden")}</option>
+          <option value="solved">${_("Solved")}</option>
         </select>
       </div>
     </form>
     `),
-    button: "Submit",
+    button: _("Submit"),
     success: function () {
       const reqs = [];
       let data = $("#challenges-bulk-edit").serializeJSON(true);

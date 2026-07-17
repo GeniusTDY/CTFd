@@ -49,17 +49,17 @@ function submit_form() {
         }
 
         ezAlert({
-          title: "Error",
+          title: _("Error"),
           body: body,
-          button: "OK",
+          button: _("OK"),
         });
         return;
       }
 
       if (method === "PATCH" && response.success) {
         ezToast({
-          title: "Saved",
-          body: "Your changes have been saved",
+          title: _("Saved"),
+          body: _("Your changes have been saved"),
         });
       } else {
         window.location =
