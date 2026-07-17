@@ -1737,7 +1737,7 @@ msgstr "题目名称"
 #: CTFd/themes/admin/templates/scoreboard/standings.html:11
 #: CTFd/themes/admin/templates/scoreboard/users.html:11
 msgid "Bracket"
-msgstr "组别"
+msgstr "分组"
 
 #: CTFd/forms/teams.py:32
 msgid "Competition bracket for your team"
@@ -1819,7 +1819,7 @@ msgstr "注册账户需要注册码"
 
 #: CTFd/forms/users.py:134
 msgid "Competition bracket for your user"
-msgstr "用户所在的竞赛组别"
+msgstr "用户所在的竞赛分组"
 
 #: CTFd/forms/users.py:150
 #: CTFd/themes/admin/templates/modals/teams/addresses.html:7
@@ -3614,7 +3614,7 @@ msgstr "CTFd 有新版本可用！"
 #: CTFd/themes/core-deprecated/templates/base.html:44
 #: CTFd/themes/core/templates/base.html:58
 msgid "Powered by CTFd"
-msgstr "由 CTFd 提供"
+msgstr "由 CTFd 驱动"
 
 #: CTFd/themes/admin/templates/base.html:158
 msgid "Version"
@@ -3674,7 +3674,7 @@ msgstr "安全"
 
 #: CTFd/themes/admin/templates/config.html:101
 msgid "Sanitize"
-msgstr "内容过滤"
+msgstr "HTML 清理"
 
 #: CTFd/themes/admin/templates/config.html:109
 msgid "Legal"
@@ -4120,7 +4120,7 @@ msgstr "结果"
 
 #: CTFd/themes/admin/templates/challenges/challenges.html:38
 msgid "Search for matching challenge"
-msgstr "搜索题目"
+msgstr "搜索匹配的题目"
 
 #: CTFd/themes/admin/templates/challenges/challenges.html:141
 msgid "solved"
@@ -5141,7 +5141,7 @@ msgstr "搜索字段为 <strong>%(field)s</strong> 匹配 <strong>%(q)s</strong>
 #: CTFd/themes/core-deprecated/templates/teams/teams.html:30
 #: CTFd/themes/core/templates/teams/teams.html:29
 msgid "Search for matching teams"
-msgstr "搜索队伍"
+msgstr "搜索匹配的队伍"
 
 #: CTFd/themes/admin/templates/users/new.html:10
 #: CTFd/themes/admin/templates/users/users.html:10
@@ -5439,7 +5439,7 @@ msgstr "个人信息"
 #: CTFd/themes/core-deprecated/templates/settings.html:17
 #: CTFd/themes/core/templates/settings.html:26
 msgid "Access Tokens"
-msgstr "访问密钥"
+msgstr "访问令牌"
 
 #: CTFd/themes/core-deprecated/assets/js/pages/settings.js:17
 #: CTFd/themes/core/templates/settings.html:95
@@ -5449,21 +5449,21 @@ msgstr "您的个人资料已更新"
 #: CTFd/themes/core-deprecated/assets/js/pages/settings.js:87
 #: CTFd/themes/core/templates/settings.html:129
 msgid "API Key Generated"
-msgstr "已生成API密钥"
+msgstr "已生成 API 密钥"
 
 #: CTFd/themes/core/templates/settings.html:137
 msgid "Please copy your API Key, it won't be shown again!"
-msgstr "请复制您的API Key，它将不会再次显示！"
+msgstr "请复制您的 API Key，它将不会再次显示！"
 
 #: CTFd/themes/core-deprecated/templates/settings.html:96
 #: CTFd/themes/core/templates/settings.html:183
 msgid "Active Tokens"
-msgstr "有效密钥"
+msgstr "有效令牌"
 
 #: CTFd/themes/core-deprecated/assets/js/pages/settings.js:102
 #: CTFd/themes/core/templates/settings.html:195
 msgid "Delete Token"
-msgstr "删除密钥"
+msgstr "删除令牌"
 
 #: CTFd/themes/core-deprecated/assets/js/pages/settings.js:103
 #: CTFd/themes/core/templates/settings.html:204
@@ -5490,7 +5490,7 @@ msgstr "设置"
 #: CTFd/themes/core-deprecated/templates/setup.html:37
 #: CTFd/themes/core/templates/setup.html:47
 msgid "Mode"
-msgstr "用户模式"
+msgstr "模式"
 
 #: CTFd/themes/core-deprecated/templates/setup.html:40
 #: CTFd/themes/core/templates/setup.html:53
@@ -5518,14 +5518,14 @@ msgstr "控制 CTFd 不同部分的可见性"
 #: CTFd/themes/core-deprecated/templates/setup.html:154
 #: CTFd/themes/core/templates/setup.html:232
 msgid "Subscribe email address to the CTFd LLC Newsletter for news and updates"
-msgstr "订阅CTFd LLC新闻简报和更新"
+msgstr "订阅 CTFd LLC 新闻简报和更新"
 
 #: CTFd/themes/core-deprecated/templates/setup.html:228
 #: CTFd/themes/core-deprecated/templates/setup.html:249
 #: CTFd/themes/core/templates/setup.html:313
 #: CTFd/themes/core/templates/setup.html:334
 msgid "UTC Preview"
-msgstr "UTC预览"
+msgstr "UTC 预览"
 
 #: CTFd/themes/core-deprecated/templates/setup.html:266
 #: CTFd/themes/core/templates/setup.html:358
