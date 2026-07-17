@@ -9,7 +9,7 @@ const graph_configs = {
       let option = {
         title: {
           left: "center",
-          text: "Score over Time"
+          text: _("Score over Time")
         },
         tooltip: {
           trigger: "axis",
@@ -112,7 +112,7 @@ const graph_configs = {
       let option = {
         title: {
           left: "center",
-          text: "Category Breakdown"
+          text: _("Category Breakdown")
         },
         tooltip: {
           trigger: "item"
@@ -132,7 +132,7 @@ const graph_configs = {
         },
         series: [
           {
-            name: "Category Breakdown",
+            name: _("Category Breakdown"),
             type: "pie",
             radius: ["30%", "50%"],
             avoidLabelOverlap: false,
@@ -219,7 +219,7 @@ const graph_configs = {
       let option = {
         title: {
           left: "center",
-          text: "Solve Percentages"
+          text: _("Solve Percentages")
         },
         tooltip: {
           trigger: "item"
@@ -234,11 +234,11 @@ const graph_configs = {
           orient: "vertical",
           top: "middle",
           right: 0,
-          data: ["Fails", "Solves"]
+          data: [_("Fails"), _("Solves")]
         },
         series: [
           {
-            name: "Solve Percentages",
+            name: _("Solve Percentages"),
             type: "pie",
             radius: ["30%", "50%"],
             avoidLabelOverlap: false,
@@ -282,12 +282,12 @@ const graph_configs = {
             data: [
               {
                 value: fails_count,
-                name: "Fails",
+                name: _("Fails"),
                 itemStyle: { color: "rgb(207, 38, 0)" }
               },
               {
                 value: solves_count,
-                name: "Solves",
+                name: _("Solves"),
                 itemStyle: { color: "rgb(0, 209, 64)" }
               }
             ]

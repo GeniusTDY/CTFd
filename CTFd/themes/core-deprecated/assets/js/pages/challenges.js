@@ -147,7 +147,7 @@ function renderSubmissionResponse(response) {
   result_message.text(result.message);
 
   const next_btn = $(
-    `<div class='col-md-12 pb-3'><button class='btn btn-info w-100'>" + _("Next Challenge") + "</button></div>`
+    `<div class='col-md-12 pb-3'><button class='btn btn-info w-100'>${_("Next Challenge")}</button></div>`
   ).click(function() {
     $("#challenge-window").modal("toggle");
     setTimeout(function() {

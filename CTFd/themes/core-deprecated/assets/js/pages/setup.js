@@ -103,7 +103,9 @@ $(() => {
     if (this.files[0].size > 128000) {
       if (
         !confirm(
-          "This image file is larger than 128KB which may result in increased load times. Are you sure you'd like to use this logo?"
+          _("This image file is larger than ") +
+            "128" +
+            _("KB which may result in increased load times. Are you sure you'd like to use this file?")
         )
       ) {
         this.value = "";
@@ -115,7 +117,9 @@ $(() => {
     if (this.files[0].size > 512000) {
       if (
         !confirm(
-          "This image file is larger than 512KB which may result in increased load times. Are you sure you'd like to use this icon?"
+          _("This image file is larger than ") +
+            "512" +
+            _("KB which may result in increased load times. Are you sure you'd like to use this file?")
         )
       ) {
         this.value = "";
@@ -127,7 +131,9 @@ $(() => {
     if (this.files[0].size > 32000) {
       if (
         !confirm(
-          "This image file is larger than 32KB which may result in increased load times. Are you sure you'd like to use this icon?"
+          _("This image file is larger than ") +
+            "32" +
+            _("KB which may result in increased load times. Are you sure you'd like to use this file?")
         )
       ) {
         this.value = "";
