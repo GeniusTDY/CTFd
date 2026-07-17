@@ -5166,7 +5166,7 @@ msgstr "奖励用户"
 #: CTFd/themes/admin/templates/users/user.html:59
 #: CTFd/themes/admin/templates/users/user.html:173
 msgid "Email User"
-msgstr "邮件用户"
+msgstr "发送邮件"
 
 #: CTFd/themes/admin/templates/users/user.html:92
 #: CTFd/themes/admin/templates/users/users.html:132
@@ -5828,7 +5828,7 @@ msgstr "请填写所有必填的用户资料字段后再继续"
 
 #: CTFd/utils/decorators/__init__.py:223
 msgid "Please fill in all required team profile fields"
-msgstr "请填写所有必填字段"
+msgstr "请填写所有必填的队伍资料字段"
 
 #: CTFd/utils/decorators/visibility.py:42
 msgid "Scores are currently hidden"
