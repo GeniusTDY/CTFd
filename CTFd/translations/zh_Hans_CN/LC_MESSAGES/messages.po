@@ -5775,3 +5775,55 @@ msgstr "无效的国家/地区"
 #: CTFd/utils/validators/__init__.py:95
 msgid "Invalid Language"
 msgstr "无效的语言"
+
+#: CTFd/themes/core-deprecated/templates/setup.html:269
+msgid "Set up MLC integration to:"
+msgstr "设置 MLC 集成以："
+
+#: CTFd/themes/core-deprecated/templates/setup.html:271
+msgid "display your event on the MLC website and mailing list"
+msgstr "在 MLC 网站和邮件列表上展示您的活动"
+
+#: CTFd/themes/core-deprecated/templates/setup.html:272
+msgid "share and track participant statistics"
+msgstr "分享和跟踪参与者统计数据"
+
+#: CTFd/themes/core-deprecated/templates/setup.html:273
+msgid "provide live updates in team Slack or Discord groups"
+msgstr "在团队 Slack 或 Discord 群组中提供实时更新"
+
+#: CTFd/themes/core-deprecated/templates/setup.html:274
+msgid "archive challenges, team participation &amp; more"
+msgstr "归档题目、团队参与情况及更多内容"
+
+#: CTFd/themes/core-deprecated/templates/errors/401.html:9
+msgid "Unauthorized"
+msgstr "未授权"
+
+#: CTFd/themes/core-deprecated/templates/errors/403.html:9
+msgid "Forbidden"
+msgstr "禁止访问"
+
+#: CTFd/themes/core-deprecated/templates/errors/404.html:12
+msgid "Sorry about that"
+msgstr "很抱歉"
+
+#: CTFd/themes/core-deprecated/templates/errors/502.html:11
+msgid "Bad Gateway"
+msgstr "错误的网关"
+
+#: CTFd/themes/core-deprecated/assets/js/pages/challenges.js:23
+msgid "Challenge Hidden!"
+msgstr "题目已隐藏！"
+
+#: CTFd/themes/core-deprecated/assets/js/pages/challenges.js:24
+msgid "You haven't unlocked this challenge yet!"
+msgstr "您尚未解锁此题目！"
+
+#: CTFd/themes/core-deprecated/assets/js/pages/challenges.js:412
+msgid "Unlock Hint?"
+msgstr "解锁提示？"
+
+#: CTFd/themes/core-deprecated/assets/js/pages/challenges.js:413
+msgid "Are you sure you want to open this hint?"
+msgstr "您确定要打开此提示吗？"
