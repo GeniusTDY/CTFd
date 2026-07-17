@@ -461,7 +461,7 @@ msgstr "邮箱设置未配置"
 
 #: CTFd/api/v1/users.py:532
 msgid "Email text cannot be empty"
-msgstr "邮箱不能为空"
+msgstr "邮件正文不能为空"
 
 #: CTFd/api/v1/statistics/challenges.py:37
 #: CTFd/api/v1/statistics/submissions.py:23 CTFd/api/v1/statistics/users.py:31
@@ -1182,7 +1182,7 @@ msgstr "最大尝试次数超时持续时间（秒）（如果设置为超时）
 
 #: CTFd/forms/config.py:190
 msgid "Hints Free Public Access"
-msgstr "提示免费公开访问"
+msgstr "免费提示的公开访问"
 
 #: CTFd/forms/config.py:191
 msgid ""
@@ -1605,7 +1605,7 @@ msgstr "团队模式"
 msgid ""
 "Controls whether users join together in teams to play (Team Mode) or play"
 " as themselves (User Mode)"
-msgstr "控制用户是组队（团队模式）还是个人（个人模式）"
+msgstr "控制用户是组队（团队模式）还是个人参赛（用户模式）"
 
 #: CTFd/forms/setup.py:46
 msgid "Admin Username"
@@ -1640,7 +1640,7 @@ msgstr "站标"
 msgid ""
 "Logo to use for the website instead of a CTF name. Used as the home page "
 "button. Optional."
-msgstr "用于网站的 Logo，替代 CTF 名称。"
+msgstr "用于网站的 Logo，替代 CTF 名称。用作主页按钮。可选项。"
 
 #: CTFd/forms/setup.py:68
 msgid "Banner"
@@ -1677,7 +1677,7 @@ msgstr "主题颜色"
 msgid ""
 "Color used by theme to control aesthetics. Requires theme support. "
 "Optional."
-msgstr "主题功能的基础颜色，需要主题支持。"
+msgstr "主题功能的基础颜色，需要主题支持。可选项。"
 
 #: CTFd/forms/setup.py:92
 msgid ""
@@ -3012,7 +3012,7 @@ msgstr "话题"
 
 #: CTFd/themes/admin/assets/js/components/topics/TopicsList.vue:63
 msgid "Type topic and press Enter"
-msgstr "输入主题并按回车键"
+msgstr "输入话题并按回车键"
 
 #: CTFd/themes/admin/assets/js/pages/audience.js:15
 #: CTFd/themes/admin/assets/js/pages/challenge.js:59
@@ -4767,7 +4767,7 @@ msgstr "参赛者注册账户并组成队伍"
 #: CTFd/themes/core-deprecated/templates/setup.html:99
 #: CTFd/themes/core/templates/setup.html:113
 msgid "If a team member solves a challenge, the entire team receives credit"
-msgstr "如果一个队伍成员解决了一个题目，整个队伍将获得点数"
+msgstr "如果一个队伍成员解决了一个题目，整个队伍将获得积分"
 
 #: CTFd/themes/admin/templates/configs/usermode.html:25
 #: CTFd/themes/core-deprecated/templates/setup.html:101
