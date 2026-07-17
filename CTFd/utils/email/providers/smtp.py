@@ -70,11 +70,11 @@ class SMTPEmailProvider(EmailProvider):
             smtp.quit()
             return True, gettext("Email sent")
         except smtplib.SMTPException as e:
-            return False, str(e)
+            return False, gettext("SMTP error: %(error)s") % {"error": str(e)}
         except timeout:
             return False, gettext("SMTP server connection timed out")
         except Exception as e:
-            return False, str(e)
+            return False, gettext("SMTP error: %(error)s") % {"error": str(e)}
 
 
 def get_smtp(host, port, username=None, password=None, TLS=None, SSL=None, auth=None):

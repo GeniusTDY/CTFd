@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2026-07-17 07:00+0000\n"
+"POT-Creation-Date: 2026-07-17 07:34+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -5516,6 +5516,11 @@ msgstr ""
 
 #: CTFd/utils/email/providers/mailgun.py:50
 msgid "Mailgun settings are incorrect"
+msgstr ""
+
+#: CTFd/utils/email/providers/smtp.py:73 CTFd/utils/email/providers/smtp.py:77
+#, python-format
+msgid "SMTP error: %(error)s"
 msgstr ""
 
 #: CTFd/utils/email/providers/smtp.py:75

@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: CTFd\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2026-07-17 07:00+0000\n"
+"POT-Creation-Date: 2026-07-17 07:34+0000\n"
 "PO-Revision-Date: 2026-07-13 00:00+0000\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
@@ -5566,6 +5566,11 @@ msgstr "邮件用户"
 #: CTFd/utils/email/providers/mailgun.py:50
 msgid "Mailgun settings are incorrect"
 msgstr "Mailgun 设置不正确"
+
+#: CTFd/utils/email/providers/smtp.py:73 CTFd/utils/email/providers/smtp.py:77
+#, python-format
+msgid "SMTP error: %(error)s"
+msgstr "SMTP 错误：%(error)s"
 
 #: CTFd/utils/email/providers/smtp.py:75
 msgid "SMTP server connection timed out"
