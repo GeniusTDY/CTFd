@@ -122,7 +122,7 @@ msgstr "请设置更长的用户名"
 #: CTFd/auth.py:376 CTFd/schemas/teams.py:44 CTFd/schemas/users.py:47
 #: CTFd/teams.py:288
 msgid "Websites must be a proper URL starting with http or https"
-msgstr "网站地址必须以 http 或 https 开头的正确 URL"
+msgstr "网站地址必须是以 http 或 https 开头的正确 URL"
 
 #: CTFd/auth.py:379 CTFd/teams.py:292
 msgid "Invalid country"
@@ -236,7 +236,7 @@ msgstr "此邀请链接无效"
 #: CTFd/teams.py:84 CTFd/teams.py:138 CTFd/teams.py:220
 #, python-format
 msgid "Teams are limited to %(limit)s member%(plural)s."
-msgstr "队伍人数上限为 %(limit)s 名成员%(plural)s。"
+msgstr "队伍人数上限为 %(limit)s 人。"
 
 #: CTFd/teams.py:102 CTFd/teams.py:159
 #, python-format
@@ -259,7 +259,7 @@ msgstr "已达到最大队伍数（%(num)s）。请加入现有队伍。"
 
 #: CTFd/teams.py:237
 msgid "That team name is already taken"
-msgstr "团队名称已被使用"
+msgstr "队伍名称已被使用"
 
 #: CTFd/teams.py:239
 msgid "That team name is invalid"
@@ -281,7 +281,7 @@ msgstr "您的邮箱地址未确认！<br>要确认邮箱地址，请<a href=\"%
 
 #: CTFd/views.py:368
 msgid "A cool CTF platform from <a href=\"https://ctfd.io\">ctfd.io</a>"
-msgstr "一个超酷的 CTF 平台，官网：<a href=\"https://ctfd.io\">ctfd.io</a>"
+msgstr "一个超酷的 CTF 平台，来自 <a href=\"https://ctfd.io\">ctfd.io</a>"
 
 #: CTFd/views.py:372
 msgid "Follow us on social media:"
@@ -332,7 +332,7 @@ msgstr "%(message)s 但您已经解出了此题目"
 
 #: CTFd/api/v1/challenges.py:973
 msgid "try"
-msgstr "次"
+msgstr "尝试"
 
 #: CTFd/api/v1/challenges.py:974
 msgid "tries"
@@ -487,9 +487,9 @@ msgid ""
 "\n"
 "If the link is not clickable, try copying and pasting it into your browser."
 msgstr ""
-"欢迎使用 {ctf_name}！\n"
+"欢迎来到 {ctf_name}！\n"
 "\n"
-"点击以下链接确认并激活你的账户：\n"
+"点击以下链接确认并激活您的账户：\n"
 "{url}\n"
 "\n"
 "如果链接无法点击，请尝试将其复制并粘贴到浏览器中。"
@@ -502,7 +502,7 @@ msgstr "已成功注册 {ctf_name}"
 #: CTFd/constants/email.py:15
 #, python-brace-format
 msgid "You've successfully registered for {ctf_name}!"
-msgstr "你已成功注册 {ctf_name}！"
+msgstr "您已成功注册 {ctf_name}！"
 
 #: CTFd/constants/email.py:17 CTFd/utils/email/__init__.py:31
 #, python-brace-format
@@ -537,9 +537,9 @@ msgid ""
 "\n"
 "If the link is not clickable, try copying and pasting it into your browser."
 msgstr ""
-"你是否在 {ctf_name} 上发起了密码重置？如果你没有发起此请求，可以忽略此邮件。\n"
+"您是否在 {ctf_name} 上发起了密码重置？如果您没有发起此请求，可以忽略此邮件。\n"
 "\n"
-"点击以下链接重置你的密码：\n"
+"点击以下链接重置您的密码：\n"
 "{url}\n"
 "\n"
 "如果链接无法点击，请尝试将其复制并粘贴到浏览器中。"
@@ -559,9 +559,9 @@ msgid ""
 "\n"
 "If the link is not clickable, try copying and pasting it into your browser."
 msgstr ""
-"你在 {ctf_name} 的密码已被更改。\n"
+"您在 {ctf_name} 的密码已被更改。\n"
 "\n"
-"如果你没有请求更改密码，可以在此重置密码：\n"
+"如果您没有请求更改密码，可以在此重置密码：\n"
 "{url}\n"
 "\n"
 "如果链接无法点击，请尝试将其复制并粘贴到浏览器中。"
@@ -829,7 +829,7 @@ msgstr "账户"
 
 #: CTFd/forms/config.py:34 CTFd/themes/admin/templates/reset.html:45
 msgid "Deletes all user and team accounts and their associated information"
-msgstr "删除所有用户和团队账户及其关联信息"
+msgstr "删除所有用户和队伍账户及其关联信息"
 
 #: CTFd/forms/config.py:37 CTFd/themes/admin/templates/base.html:71
 #: CTFd/themes/admin/templates/submissions.html:10
@@ -879,7 +879,7 @@ msgstr "删除所有通知"
 
 #: CTFd/forms/config.py:49
 msgid "Reset CTF"
-msgstr "重置"
+msgstr "重置 CTF"
 
 #: CTFd/forms/config.py:54
 msgid "Email Domain Allowlist"
@@ -903,11 +903,11 @@ msgstr "不允许用户注册的邮箱域名逗号分隔列表（例如 examplec
 
 #: CTFd/forms/config.py:62
 msgid "Team Creation"
-msgstr "创建团队"
+msgstr "创建队伍"
 
 #: CTFd/forms/config.py:63
 msgid "Control whether users can create their own teams (Teams mode only)"
-msgstr "控制用户是以个人身份参与（用户模式）还是组成团队参与（团队模式）。"
+msgstr "控制用户是否可以创建自己的队伍（仅限团队模式）。"
 
 #: CTFd/forms/config.py:64 CTFd/forms/config.py:89 CTFd/forms/config.py:104
 #: CTFd/forms/config.py:139 CTFd/forms/config.py:174 CTFd/forms/config.py:191
@@ -925,16 +925,16 @@ msgstr "禁用"
 
 #: CTFd/forms/config.py:69
 msgid "Maximum number of users per team (Teams mode only)"
-msgstr "每个团队的最大用户数（仅团队模式）"
+msgstr "每个队伍的最大用户数（仅限团队模式）"
 
 #: CTFd/forms/config.py:72
 msgid "Maximum Number of Teams"
-msgstr "最大团队数"
+msgstr "最大队伍数"
 
 #: CTFd/forms/config.py:74
 msgid ""
 "Maximum number of teams allowed to register with this CTF (Teams mode only)"
-msgstr "允许注册此 CTF 的最大团队数（仅团队模式）"
+msgstr "允许注册此 CTF 的最大队伍数（仅限团队模式）"
 
 #: CTFd/forms/config.py:77
 msgid "Maximum Number of Users"
@@ -959,15 +959,15 @@ msgstr "控制用户是否必须在参与前确认其邮箱地址"
 
 #: CTFd/forms/config.py:93
 msgid "Team Disbanding"
-msgstr "团队解散"
+msgstr "队伍解散"
 
 #: CTFd/forms/config.py:94
 msgid "Control whether team captains are allowed to disband their own teams"
-msgstr "控制团队队长是否可以解散自己的团队"
+msgstr "控制队伍队长是否可以解散自己的队伍"
 
 #: CTFd/forms/config.py:96
 msgid "Enabled for Inactive Teams"
-msgstr "对非活跃团队启用"
+msgstr "对非活跃队伍启用"
 
 #: CTFd/forms/config.py:102
 msgid "Name Changes"
@@ -975,7 +975,7 @@ msgstr "名称更改"
 
 #: CTFd/forms/config.py:103
 msgid "Control whether users and teams can change their names"
-msgstr "控制用户和团队是否可以更改名称"
+msgstr "控制用户和队伍是否可以更改名称"
 
 #: CTFd/forms/config.py:108
 msgid "Incorrect Submissions per Minute"
@@ -1044,7 +1044,7 @@ msgstr "用户"
 #: CTFd/themes/core/templates/components/navbar.html:43
 #: CTFd/themes/core/templates/teams/teams.html:6
 msgid "Teams"
-msgstr "团队"
+msgstr "队伍"
 
 #: CTFd/forms/config.py:127
 msgid "Users with Teams"
@@ -1120,7 +1120,7 @@ msgstr "允许用户查看他们之前的提交"
 
 #: CTFd/forms/config.py:178
 msgid "Max Attempts Behavior"
-msgstr "最大尝试次数"
+msgstr "最大尝试次数行为"
 
 #: CTFd/forms/config.py:179
 msgid "Set Max Attempts behavior to be a lockout or a timeout"
@@ -1208,7 +1208,7 @@ msgstr "账户可见性"
 msgid ""
 "Control whether accounts (users & teams) are shown to everyone, only to "
 "authenticated users, or only to admins"
-msgstr "控制账号（用户和团队）是对所有人可见、仅对已登录用户可见还是仅对管理员可见"
+msgstr "控制账号（用户和队伍）是对所有人可见、仅对已登录用户可见还是仅对管理员可见"
 
 #: CTFd/forms/config.py:234 CTFd/forms/setup.py:122
 msgid "Score Visibility"
@@ -1248,7 +1248,7 @@ msgstr "控制注册是对所有人开放还是关闭"
 
 #: CTFd/forms/config.py:250 CTFd/forms/setup.py:138
 msgid "MajorLeagueCyber Only"
-msgstr "MajorLeagueCyber"
+msgstr "仅限 MajorLeagueCyber"
 
 #: CTFd/forms/config.py:258
 msgid "Default Language"
@@ -1270,7 +1270,7 @@ msgstr "用于发送邮件的邮箱地址"
 
 #: CTFd/forms/config.py:270
 msgid "Mail Server Address"
-msgstr "邮件服务器"
+msgstr "邮件服务器地址"
 
 #: CTFd/forms/config.py:271
 msgid "Change the email server used by CTFd to send email"
@@ -1403,11 +1403,11 @@ msgstr "通知类型"
 
 #: CTFd/forms/notifications.py:17
 msgid "Toast"
-msgstr "Toast提示"
+msgstr "Toast"
 
 #: CTFd/forms/notifications.py:17
 msgid "Alert"
-msgstr "警告"
+msgstr "弹窗"
 
 #: CTFd/forms/notifications.py:17
 msgid "Background"
@@ -1445,7 +1445,7 @@ msgstr "草稿"
 
 #: CTFd/forms/pages.py:25
 msgid "Authentication Required"
-msgstr "需要登录"
+msgstr "需要认证"
 
 #: CTFd/forms/pages.py:28
 msgid "Format"
@@ -1536,7 +1536,7 @@ msgstr "活动名称"
 
 #: CTFd/forms/setup.py:30
 msgid "The name of your CTF event/workshop"
-msgstr "您的 CTF 活动/工作坊的名称"
+msgstr "您的 CTF 赛事/活动名称"
 
 #: CTFd/forms/setup.py:33 CTFd/themes/admin/templates/configs/general.html:14
 msgid "Event Description"
@@ -1604,7 +1604,7 @@ msgstr "横幅"
 
 #: CTFd/forms/setup.py:68
 msgid "Banner to use for the homepage. Optional."
-msgstr "用作主页的背景图。可选项。"
+msgstr "用作主页的横幅。可选项。"
 
 #: CTFd/forms/setup.py:71 CTFd/themes/admin/templates/configs/logo.html:59
 msgid "Small Icon"
@@ -1642,11 +1642,11 @@ msgstr "控制用户是否必须确认邮箱地址后才能参与"
 
 #: CTFd/forms/setup.py:97
 msgid "Team Size"
-msgstr "队伍"
+msgstr "队伍人数上限"
 
 #: CTFd/forms/setup.py:99
 msgid "Amount of users per team (Teams mode only) Optional."
-msgstr "每队人数上限（仅团队模式）可选项。"
+msgstr "每队人数上限（仅限团队模式）可选项。"
 
 #: CTFd/forms/setup.py:144 CTFd/themes/admin/templates/configs/time.html:6
 msgid "Start Time"
@@ -1702,7 +1702,7 @@ msgstr "组别"
 
 #: CTFd/forms/teams.py:32
 msgid "Competition bracket for your team"
-msgstr "团队的竞赛分组"
+msgstr "队伍的竞赛分组"
 
 #: CTFd/forms/teams.py:102 CTFd/forms/teams.py:109 CTFd/forms/teams.py:127
 #: CTFd/forms/teams.py:229
@@ -1719,7 +1719,7 @@ msgstr "加入"
 
 #: CTFd/forms/teams.py:128
 msgid "Your team's public name shown to other competitors"
-msgstr "公开您的队伍名称给其他参赛者"
+msgstr "向其他参赛者展示的您的队伍名称"
 
 #: CTFd/forms/teams.py:131
 msgid "New Team Password"
@@ -1731,13 +1731,13 @@ msgstr "设置新队伍加入密码"
 
 #: CTFd/forms/teams.py:134
 msgid "Confirm Current Team Password"
-msgstr "请确认您当前的密码"
+msgstr "请确认您当前的队伍密码"
 
 #: CTFd/forms/teams.py:136
 msgid ""
 "Provide your current team password (or your password) to update your team's "
 "password"
-msgstr "提供您当前的队伍密码（或您的密码）以更新您团队的密码"
+msgstr "提供您当前的队伍密码（或您的密码）以更新您队伍的密码"
 
 #: CTFd/forms/teams.py:142
 msgid "Your team's affiliation publicly shown to other competitors"
@@ -1766,7 +1766,7 @@ msgstr "已封禁"
 
 #: CTFd/forms/teams.py:285
 msgid "Invite Link"
-msgstr "团队邀请链接"
+msgstr "邀请链接"
 
 #: CTFd/forms/users.py:108 CTFd/themes/admin/templates/config.html:77
 #: CTFd/themes/admin/templates/configs/registration_code.html:5
@@ -1776,7 +1776,7 @@ msgstr "注册码"
 
 #: CTFd/forms/users.py:109
 msgid "Registration code required to create account"
-msgstr "注册账户需要注册码（SSO 登录除外）"
+msgstr "注册账户需要注册码"
 
 #: CTFd/forms/users.py:134
 msgid "Competition bracket for your user"
@@ -1858,7 +1858,7 @@ msgstr "正确"
 #: CTFd/plugins/challenges/logic.py:26 CTFd/plugins/challenges/logic.py:70
 #: CTFd/plugins/challenges/logic.py:100 CTFd/plugins/challenges/logic.py:131
 msgid "Incorrect"
-msgstr "错误提交"
+msgstr "错误"
 
 #: CTFd/plugins/challenges/logic.py:64
 msgid "Correct but more flags are required"
@@ -2115,7 +2115,7 @@ msgstr "邮箱必须是格式正确的电子邮件地址"
 #: CTFd/schemas/teams.py:72 CTFd/schemas/teams.py:80 CTFd/schemas/teams.py:84
 #: CTFd/schemas/teams.py:99
 msgid "Team name has already been taken"
-msgstr "团队名称已被使用"
+msgstr "队伍名称已被使用"
 
 #: CTFd/schemas/teams.py:94 CTFd/schemas/users.py:93
 msgid "Name changes are disabled"
@@ -2130,7 +2130,7 @@ msgstr "该邮箱地址已被使用"
 
 #: CTFd/schemas/teams.py:144
 msgid "Only the captain can change the team password"
-msgstr "只有队长可以更改团队密码"
+msgstr "只有队长可以更改队伍密码"
 
 #: CTFd/schemas/teams.py:153 CTFd/schemas/users.py:132
 #: CTFd/schemas/users.py:175
@@ -2148,7 +2148,7 @@ msgstr "无效的队长 ID"
 
 #: CTFd/schemas/teams.py:199
 msgid "Only team members can be promoted to captain"
-msgstr "只有团队成员可以被提升为队长"
+msgstr "只有队伍成员可以被提升为队长"
 
 #: CTFd/schemas/teams.py:204
 msgid "Only the captain can change team captain"
@@ -2410,7 +2410,7 @@ msgstr "评论"
 #: CTFd/themes/core/templates/teams/teams.html:128
 #: CTFd/themes/core/templates/users/users.html:118
 msgid "Page"
-msgstr "页码"
+msgstr "页"
 
 #: CTFd/themes/admin/assets/js/components/comments/CommentBox.vue:148
 #: CTFd/themes/admin/assets/js/components/ratings/RatingsViewer.vue:160
@@ -2446,7 +2446,7 @@ msgstr "分组类型"
 msgid ""
 "If you are using Team Mode and would like the bracket to apply to entire "
 "teams instead of individuals, select Teams."
-msgstr "如果你使用团队模式，并希望分组应用于整个团队而非个人，请选择团队。"
+msgstr "如果您使用团队模式，并希望分组应用于整个队伍而非个人，请选择队伍。"
 
 #: CTFd/themes/admin/assets/js/components/configs/brackets/Bracket.vue:94
 #: CTFd/themes/admin/assets/js/components/configs/fields/Field.vue:125
@@ -2648,7 +2648,7 @@ msgstr "支持 Markdown 和 HTML"
 #: CTFd/themes/admin/assets/js/components/hints/HintEditForm.vue:135
 #: CTFd/themes/admin/assets/js/components/hints/HintsList.vue:95
 msgid "Cost"
-msgstr "消耗"
+msgstr "花费"
 
 #: CTFd/themes/admin/assets/js/components/hints/HintCreationForm.vue:128
 #: CTFd/themes/admin/assets/js/components/hints/HintEditForm.vue:136
@@ -2891,7 +2891,7 @@ msgstr "得分"
 
 #: CTFd/themes/admin/assets/js/components/statistics/ScoreboardMatrix.vue:439
 msgid "Filter Teams"
-msgstr "筛选团队"
+msgstr "筛选队伍"
 
 #: CTFd/themes/admin/assets/js/components/statistics/ScoreboardMatrix.vue:439
 msgid "Filter Users"
@@ -2899,7 +2899,7 @@ msgstr "筛选用户"
 
 #: CTFd/themes/admin/assets/js/components/statistics/ScoreboardMatrix.vue:443
 msgid "Search teams..."
-msgstr "搜索团队..."
+msgstr "搜索队伍..."
 
 #: CTFd/themes/admin/assets/js/components/statistics/ScoreboardMatrix.vue:444
 msgid "Search users..."
@@ -2946,7 +2946,7 @@ msgstr "未找到用户"
 
 #: CTFd/themes/admin/assets/js/components/teams/UserAddForm.vue:93
 msgid "already in a team"
-msgstr "已在团队中"
+msgstr "已在队伍中"
 
 #: CTFd/themes/admin/assets/js/components/teams/UserAddForm.vue:94
 msgid "Add Users"
@@ -2969,7 +2969,7 @@ msgstr " <br><br>您确定要将他们从当前队伍移除并添加到此队伍
 
 #: CTFd/themes/admin/assets/js/components/topics/TopicsList.vue:62
 msgid "Topic"
-msgstr "主题"
+msgstr "话题"
 
 #: CTFd/themes/admin/assets/js/components/topics/TopicsList.vue:63
 msgid "Type topic and press Enter"
@@ -3730,7 +3730,7 @@ msgstr "创建页面"
 
 #: CTFd/themes/admin/templates/pages.html:43
 msgid "Authentication"
-msgstr "需要登录"
+msgstr "认证"
 
 #: CTFd/themes/admin/templates/pages.html:45
 #: CTFd/themes/admin/templates/pages.html:80
@@ -3739,7 +3739,7 @@ msgstr "已发布"
 
 #: CTFd/themes/admin/templates/pages.html:66
 msgid "Required"
-msgstr "需要"
+msgstr "需要认证"
 
 #: CTFd/themes/admin/templates/reset.html:19
 msgid ""
@@ -4008,7 +4008,7 @@ msgstr "Flag"
 #: CTFd/themes/admin/templates/challenges/challenge.html:120
 #: CTFd/themes/admin/templates/challenges/challenge.html:156
 msgid "Topics"
-msgstr "主题"
+msgstr "话题"
 
 #: CTFd/themes/admin/templates/challenges/challenge.html:121
 #: CTFd/themes/admin/templates/challenges/challenge.html:164
@@ -4138,7 +4138,7 @@ msgstr "署名："
 
 #: CTFd/themes/admin/templates/challenges/update.html:42
 msgid "Attribution for your challenge"
-msgstr "你的题目的署名"
+msgstr "您的题目的署名"
 
 #: CTFd/themes/admin/templates/challenges/update.html:42
 msgid "(supports markdown)"
@@ -4152,7 +4152,7 @@ msgstr "连接信息"
 msgid ""
 "Use this to specify a link, hostname, or connection instructions for your "
 "challenge."
-msgstr "用于为你的题目指定链接、主机名或连接说明。"
+msgstr "用于为您的题目指定链接、主机名或连接说明。"
 
 #: CTFd/themes/admin/templates/challenges/update.html:66
 msgid ""
@@ -4236,7 +4236,7 @@ msgstr "用户账户"
 
 #: CTFd/themes/admin/templates/configs/accounts.html:16
 msgid "Team Accounts"
-msgstr "团队账户"
+msgstr "队伍账户"
 
 #: CTFd/themes/admin/templates/configs/backup.html:4
 #: CTFd/themes/admin/templates/configs/backup.html:23
@@ -4270,7 +4270,7 @@ msgid ""
 "completely wipe your existing CTFd instance and all your data will be "
 "replaced by the imported data. You should only import data that you trust!"
 msgstr ""
-"你可以通过在下方上传已保存的 CTFd 导出文件来进行导入。这将完全清除你现有的 CTFd 实例，所有数据都将被导入的数据替换。请仅导入你信任的数据！"
+"您可以通过在下方上传已保存的 CTFd 导出文件来进行导入。这将完全清除您现有的 CTFd 实例，所有数据都将被导入的数据替换。请仅导入您信任的数据！"
 
 #: CTFd/themes/admin/templates/configs/backup.html:33
 msgid "Importing a CTFd export will completely wipe your existing data"
@@ -4660,7 +4660,7 @@ msgstr "允许在结束时间之后查看题目，但不会记录新的提交。
 msgid ""
 "For participants to be able to submit after End Time but not alter the "
 "scoreboard, configure Freeze Time to be your End Time."
-msgstr "若要让参赛者在结束时间之后仍能提交但不影响记分板，请将冻结时间设置为你的结束时间。"
+msgstr "若要让参赛者在结束时间之后仍能提交但不影响记分板，请将冻结时间设置为您的结束时间。"
 
 #: CTFd/themes/admin/templates/configs/time.html:154
 msgid ""
@@ -4707,7 +4707,7 @@ msgstr "参赛者只能注册个人账号"
 #: CTFd/themes/admin/templates/configs/usermode.html:47
 #: CTFd/themes/core/templates/setup.html:121
 msgid "Players can share accounts to form pseudo-teams"
-msgstr "玩家可以以共享账号方式组成团队"
+msgstr "玩家可以以共享账号方式组成队伍"
 
 #: CTFd/themes/admin/templates/configs/usermode.html:49
 #: CTFd/themes/core/templates/setup.html:123
@@ -4717,7 +4717,7 @@ msgstr "更易于组织"
 #: CTFd/themes/admin/templates/configs/usermode.html:50
 #: CTFd/themes/core/templates/setup.html:124
 msgid "Difficult to attribute solutions to individual team members"
-msgstr "难以将解决方案归功于成员个人"
+msgstr "难以将解答归功于队伍中的个人成员"
 
 #: CTFd/themes/admin/templates/configs/usermode.html:63
 msgid ""
@@ -4876,11 +4876,11 @@ msgstr "编辑队伍"
 #: CTFd/themes/admin/templates/teams/team.html:27
 #: CTFd/themes/admin/templates/teams/team.html:228
 msgid "Add Team Members"
-msgstr "添加团队成员"
+msgstr "添加队伍成员"
 
 #: CTFd/themes/admin/templates/teams/team.html:42
 msgid "Team Invite"
-msgstr "团队邀请"
+msgstr "队伍邀请"
 
 #: CTFd/themes/admin/templates/teams/team.html:61
 msgid "Share this link for users to join this team"
@@ -4889,7 +4889,7 @@ msgstr "分享此链接供用户加入该队伍"
 #: CTFd/themes/admin/templates/teams/team.html:75
 #: CTFd/themes/admin/templates/teams/team.html:245
 msgid "Team Statistics"
-msgstr "团队统计"
+msgstr "队伍统计"
 
 #: CTFd/themes/admin/templates/teams/team.html:91
 #: CTFd/themes/admin/templates/teams/team.html:232
@@ -4901,7 +4901,7 @@ msgstr "选择队长"
 #: CTFd/themes/admin/templates/teams/team.html:107
 #: CTFd/themes/admin/templates/teams/team.html:235
 msgid "Award Team Member"
-msgstr "奖励团队成员"
+msgstr "奖励队伍成员"
 
 #: CTFd/themes/admin/templates/teams/team.html:114
 msgid "Member"
@@ -4943,7 +4943,7 @@ msgstr "名次"
 
 #: CTFd/themes/admin/templates/teams/team.html:224
 msgid "Team Invite Link"
-msgstr "团队邀请链接"
+msgstr "队伍邀请链接"
 
 #: CTFd/themes/admin/templates/teams/team.html:264
 msgid "Team Members"
@@ -5481,7 +5481,7 @@ msgstr "解散队伍"
 
 #: CTFd/themes/core/templates/teams/private.html:191
 msgid "Are you sure you want to disband your team?"
-msgstr "你确定要解散你的队伍吗？"
+msgstr "您确定要解散您的队伍吗？"
 
 #: CTFd/themes/core/templates/teams/private.html:323
 #: CTFd/themes/core/templates/teams/public.html:91
@@ -5774,11 +5774,11 @@ msgstr "分享和跟踪参与者统计数据"
 
 #: CTFd/themes/core-deprecated/templates/setup.html:273
 msgid "provide live updates in team Slack or Discord groups"
-msgstr "在团队 Slack 或 Discord 群组中提供实时更新"
+msgstr "在队伍 Slack 或 Discord 群组中提供实时更新"
 
 #: CTFd/themes/core-deprecated/templates/setup.html:274
 msgid "archive challenges, team participation &amp; more"
-msgstr "归档题目、团队参与情况及更多内容"
+msgstr "归档题目、队伍参与情况及更多内容"
 
 #: CTFd/themes/core-deprecated/templates/errors/401.html:9
 msgid "Unauthorized"
