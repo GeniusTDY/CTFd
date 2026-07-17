@@ -46,8 +46,8 @@ $(() => {
 
     $(".disband-team").click(function() {
       ezQuery({
-        title: "Disband Team",
-        body: "Are you sure you want to disband your team?",
+        title: _("Disband Team"),
+        body: _("Are you sure you want to disband your team?"),
         success: function() {
           CTFd.fetch("/api/v1/teams/me", {
             method: "DELETE"
@@ -60,9 +60,9 @@ $(() => {
                 window.location.reload();
               } else {
                 ezAlert({
-                  title: "Error",
+                  title: _("Error"),
                   body: response.errors[""].join(" "),
-                  button: "Got it!"
+                  button: _("Got it!")
                 });
               }
             });

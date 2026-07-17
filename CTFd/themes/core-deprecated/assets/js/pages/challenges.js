@@ -20,9 +20,9 @@ const loadChal = id => {
 
   if (chal.type === "hidden") {
     ezAlert({
-      title: "Challenge Hidden!",
-      body: "You haven't unlocked this challenge yet!",
-      button: "Got it!"
+      title: _("Challenge Hidden!"),
+      body: _("You haven't unlocked this challenge yet!"),
+      button: _("Got it!")
     });
     return;
   }
@@ -147,7 +147,7 @@ function renderSubmissionResponse(response) {
   result_message.text(result.message);
 
   const next_btn = $(
-    `<div class='col-md-12 pb-3'><button class='btn btn-info w-100'>Next Challenge</button></div>`
+    `<div class='col-md-12 pb-3'><button class='btn btn-info w-100'>" + _("Next Challenge") + "</button></div>`
   ).click(function() {
     $("#challenge-window").modal("toggle");
     setTimeout(function() {
@@ -195,7 +195,7 @@ function renderSubmissionResponse(response) {
             .split(" ")[0]
         ) +
           1 +
-          " Solves"
+          " " + _("Solves")
       );
     }
 
@@ -256,7 +256,7 @@ function markSolves() {
 function getSolves(id) {
   return CTFd.api.get_challenge_solves({ challengeId: id }).then(response => {
     const data = response.data;
-    $(".challenge-solves").text(parseInt(data.length) + " Solves");
+    $(".challenge-solves").text(parseInt(data.length) + " " + _("Solves"));
     const box = $("#challenge-solves-names");
     box.empty();
     for (let i = 0; i < data.length; i++) {
@@ -401,16 +401,16 @@ setInterval(update, 300000); // Update every 5 minutes.
 
 const displayHint = data => {
   ezAlert({
-    title: "Hint",
+    title: _("Hint"),
     body: data.html,
-    button: "Got it!"
+    button: _("Got it!")
   });
 };
 
 const displayUnlock = id => {
   ezQuery({
-    title: "Unlock Hint?",
-    body: "Are you sure you want to open this hint?",
+    title: _("Unlock Hint?"),
+    body: _("Are you sure you want to open this hint?"),
     success: () => {
       const params = {
         target: id,
@@ -426,9 +426,9 @@ const displayUnlock = id => {
         }
 
         ezAlert({
-          title: "Error",
+          title: _("Error"),
           body: response.errors.score,
-          button: "Got it!"
+          button: _("Got it!")
         });
       });
     }
