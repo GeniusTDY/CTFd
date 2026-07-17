@@ -5341,7 +5341,8 @@ msgstr "可见性设置"
 msgid "Control the visibility of different sections of CTFd"
 msgstr "控制 CTFd 不同部分的可见性"
 
-#: CTFd/themes/core/templates/setup.html:232
+#: CTFd/themes/core/templates/setup.html:313
+#: CTFd/themes/core-deprecated/templates/setup.html:154
 msgid ""
 "Subscribe email address to the CTFd LLC Newsletter for news and updates"
 msgstr "订阅CTFd LLC新闻简报和更新"
@@ -5356,6 +5357,7 @@ msgid "MajorLeagueCyber Integration"
 msgstr "MajorLeagueCyber 集成"
 
 #: CTFd/themes/core/templates/setup.html:359
+#: CTFd/themes/core-deprecated/templates/setup.html:268
 msgid ""
 "MajorLeagueCyber (MLC) is a cyber security event tracker written and "
 "maintained by the developers of CTFd."
