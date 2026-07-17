@@ -39,7 +39,8 @@ def sendmail(addr, text, subject=None):
 
 def password_change_alert(email):
     text = safe_format(
-        get_config("password_change_alert_body") or gettext(DEFAULT_PASSWORD_CHANGE_ALERT_BODY),
+        get_config("password_change_alert_body")
+        or str(DEFAULT_PASSWORD_CHANGE_ALERT_BODY),
         ctf_name=get_config("ctf_name"),
         ctf_description=get_config("ctf_description"),
         url=url_for("auth.reset_password", _external=True),
@@ -47,7 +48,7 @@ def password_change_alert(email):
 
     subject = safe_format(
         get_config("password_change_alert_subject")
-        or gettext(DEFAULT_PASSWORD_CHANGE_ALERT_SUBJECT),
+        or str(DEFAULT_PASSWORD_CHANGE_ALERT_SUBJECT),
         ctf_name=get_config("ctf_name"),
     )
     return sendmail(addr=email, text=text, subject=subject)
@@ -55,7 +56,7 @@ def password_change_alert(email):
 
 def forgot_password(email):
     text = safe_format(
-        get_config("password_reset_body") or gettext(DEFAULT_PASSWORD_RESET_BODY),
+        get_config("password_reset_body") or str(DEFAULT_PASSWORD_RESET_BODY),
         ctf_name=get_config("ctf_name"),
         ctf_description=get_config("ctf_description"),
         url=url_for(
@@ -66,7 +67,7 @@ def forgot_password(email):
     )
 
     subject = safe_format(
-        get_config("password_reset_subject") or gettext(DEFAULT_PASSWORD_RESET_SUBJECT),
+        get_config("password_reset_subject") or str(DEFAULT_PASSWORD_RESET_SUBJECT),
         ctf_name=get_config("ctf_name"),
     )
     return sendmail(addr=email, text=text, subject=subject)
@@ -74,7 +75,8 @@ def forgot_password(email):
 
 def verify_email_address(addr):
     text = safe_format(
-        get_config("verification_email_body") or gettext(DEFAULT_VERIFICATION_EMAIL_BODY),
+        get_config("verification_email_body")
+        or str(DEFAULT_VERIFICATION_EMAIL_BODY),
         ctf_name=get_config("ctf_name"),
         ctf_description=get_config("ctf_description"),
         url=url_for(
@@ -86,7 +88,8 @@ def verify_email_address(addr):
     )
 
     subject = safe_format(
-        get_config("verification_email_subject") or gettext(DEFAULT_VERIFICATION_EMAIL_SUBJECT),
+        get_config("verification_email_subject")
+        or str(DEFAULT_VERIFICATION_EMAIL_SUBJECT),
         ctf_name=get_config("ctf_name"),
     )
     return sendmail(addr=addr, text=text, subject=subject)
@@ -95,7 +98,7 @@ def verify_email_address(addr):
 def successful_registration_notification(addr):
     text = safe_format(
         get_config("successful_registration_email_body")
-        or gettext(DEFAULT_SUCCESSFUL_REGISTRATION_EMAIL_BODY),
+        or str(DEFAULT_SUCCESSFUL_REGISTRATION_EMAIL_BODY),
         ctf_name=get_config("ctf_name"),
         ctf_description=get_config("ctf_description"),
         url=url_for("views.static_html", _external=True),
@@ -103,7 +106,7 @@ def successful_registration_notification(addr):
 
     subject = safe_format(
         get_config("successful_registration_email_subject")
-        or gettext(DEFAULT_SUCCESSFUL_REGISTRATION_EMAIL_SUBJECT),
+        or str(DEFAULT_SUCCESSFUL_REGISTRATION_EMAIL_SUBJECT),
         ctf_name=get_config("ctf_name"),
     )
     return sendmail(addr=addr, text=text, subject=subject)
@@ -111,7 +114,8 @@ def successful_registration_notification(addr):
 
 def user_created_notification(addr, name, password):
     text = safe_format(
-        get_config("user_creation_email_body") or gettext(DEFAULT_USER_CREATION_EMAIL_BODY),
+        get_config("user_creation_email_body")
+        or str(DEFAULT_USER_CREATION_EMAIL_BODY),
         ctf_name=get_config("ctf_name"),
         ctf_description=get_config("ctf_description"),
         url=url_for("views.static_html", _external=True),
@@ -121,7 +125,7 @@ def user_created_notification(addr, name, password):
 
     subject = safe_format(
         get_config("user_creation_email_subject")
-        or gettext(DEFAULT_USER_CREATION_EMAIL_SUBJECT),
+        or str(DEFAULT_USER_CREATION_EMAIL_SUBJECT),
         ctf_name=get_config("ctf_name"),
     )
     return sendmail(addr=addr, text=text, subject=subject)

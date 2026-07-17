@@ -14,7 +14,7 @@
             type="button"
             class="close"
             data-dismiss="modal"
-            aria-label="Close"
+            :aria-label="labels.close"
           >
             <span aria-hidden="true">&times;</span>
           </button>
@@ -127,6 +127,7 @@ export default {
       content: null,
       selectedHints: [],
       labels: {
+        close: _("Close"),
         hint: _("Hint"),
         title: _("Title"),
         titleHint: _("Content displayed before hint unlocking"),

@@ -4,7 +4,7 @@
       <button
         type="button"
         class="close float-right"
-        aria-label="Close"
+        :aria-label="labels.close"
         @click="deleteBracket()"
       >
         <span aria-hidden="true">&times;</span>
@@ -78,6 +78,7 @@ export default {
     return {
       bracket: this.initialBracket,
       labels: {
+        close: _("Close"),
         bracketName: _("Bracket Name"),
         bracketNameHelp: _(
           'Bracket name (e.g. "Students", "Interns", "Engineers")',
@@ -108,11 +109,11 @@ export default {
       if (this.persisted()) {
         url = `/api/v1/brackets/${this.bracket.id}`;
         method = "PATCH";
-        message = "Bracket has been updated!";
+        message = _("Bracket has been updated!");
       } else {
         url = `/api/v1/brackets`;
         method = "POST";
-        message = "Bracket has been created!";
+        message = _("Bracket has been created!");
       }
       CTFd.fetch(url, {
         method: method,

@@ -14,7 +14,7 @@
             type="button"
             class="close"
             data-dismiss="modal"
-            aria-label="Close"
+            :aria-label="labels.close"
           >
             <span aria-hidden="true">&times;</span>
           </button>
@@ -47,6 +47,7 @@ export default {
       flag: {},
       editForm: "",
       labels: {
+        close: _("Close"),
         editFlag: _("Edit Flag"),
       },
     };

@@ -135,7 +135,9 @@ def import_ctf(backup, erase=True, ignore_overrides=False):
             gettext("Exception: Importing not currently supported for SQLite databases. See Github issue #1988.")
         )
         raise Exception(
-            "Importing not currently supported for SQLite databases. See Github issue #1988."
+            gettext(
+                "Importing not currently supported for SQLite databases. See Github issue #1988."
+            )
         )
 
     if not zipfile.is_zipfile(backup):
@@ -168,8 +170,10 @@ def import_ctf(backup, erase=True, ignore_overrides=False):
     if "db" not in member_dirs:
         set_import_error(gettext("Exception: db folder is missing"))
         raise Exception(
-            'CTFd couldn\'t find the "db" folder in this backup. '
-            "The backup may be malformed or corrupted and the import process cannot continue."
+            gettext(
+                'CTFd couldn\'t find the "db" folder in this backup. '
+                "The backup may be malformed or corrupted and the import process cannot continue."
+            )
         )
 
     try:
@@ -178,7 +182,9 @@ def import_ctf(backup, erase=True, ignore_overrides=False):
     except Exception:
         set_import_error(gettext("Exception: Could not determine appropriate database version"))
         raise Exception(
-            "Could not determine appropriate database version. This backup cannot be automatically imported."
+            gettext(
+                "Could not determine appropriate database version. This backup cannot be automatically imported."
+            )
         )
 
     # Check if the alembic version is from CTFd 1.x
@@ -201,7 +207,9 @@ def import_ctf(backup, erase=True, ignore_overrides=False):
             gettext("Exception: The version of CTFd that this backup is from is too old to be automatically imported.")
         )
         raise Exception(
-            "The version of CTFd that this backup is from is too old to be automatically imported."
+            gettext(
+                "The version of CTFd that this backup is from is too old to be automatically imported."
+            )
         )
 
     start_time = unix_time(datetime.datetime.utcnow())
@@ -222,7 +230,9 @@ def import_ctf(backup, erase=True, ignore_overrides=False):
             gettext("Exception: The target migration in this backup is not available in this version of CTFd.")
         )
         raise Exception(
-            "The target migration in this backup is not available in this version of CTFd."
+            gettext(
+                "The target migration in this backup is not available in this version of CTFd."
+            )
         )
 
     if erase:
@@ -421,9 +431,10 @@ def import_ctf(backup, erase=True, ignore_overrides=False):
                                 gettext("Exception: Table name %(table_name)s contains quotes") % {"table_name": table_name}
                             )
                             raise Exception(
-                                "Table name {table_name} contains quotes".format(
-                                    table_name=table_name
+                                gettext(
+                                    "Table name %(table_name)s contains quotes"
                                 )
+                                % {"table_name": table_name}
                             )
 
     # Insert data from official tables
@@ -464,7 +475,7 @@ def import_ctf(backup, erase=True, ignore_overrides=False):
         # Handle possibility of an absolute path or traversal in the raw filename
         if os.path.isabs(filename) or ".." in filename:
             set_import_error(gettext("Encountered invalid upload file in import"))
-            raise Exception("Encountered invalid upload file in import")
+            raise Exception(gettext("Encountered invalid upload file in import"))
 
         source = backup.open(f)
         uploader.store(fileobj=source, filename=filename)

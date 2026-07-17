@@ -131,9 +131,9 @@
                           labels.selectAll
                         }}</a>
                         /
-                        <a href="#" @click.prevent="deselectAllCategories"
-                          >None</a
-                        >
+                        <a href="#" @click.prevent="deselectAllCategories">{{
+                          labels.none
+                        }}</a>
                       </small>
                     </div>
                   </div>
@@ -200,9 +200,9 @@
                           labels.selectAll
                         }}</a>
                         /
-                        <a href="#" @click.prevent="deselectAllChallenges"
-                          >None</a
-                        >
+                        <a href="#" @click.prevent="deselectAllChallenges">{{
+                          labels.none
+                        }}</a>
                       </small>
                     </div>
                   </div>
@@ -246,9 +246,9 @@
                           labels.selectAll
                         }}</a>
                         /
-                        <a href="#" @click.prevent="deselectAllBrackets"
-                          >None</a
-                        >
+                        <a href="#" @click.prevent="deselectAllBrackets">{{
+                          labels.none
+                        }}</a>
                       </small>
                     </div>
                   </div>

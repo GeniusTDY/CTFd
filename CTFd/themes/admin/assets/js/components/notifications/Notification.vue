@@ -6,7 +6,7 @@
       class="delete-notification close position-absolute p-3"
       style="right: 0"
       data-dismiss="alert"
-      aria-label="Close"
+      :aria-label="labels.close"
       @click="deleteNotification()"
     >
       <span aria-hidden="true">&times;</span>
@@ -34,6 +34,13 @@ export default {
     content: String,
     html: String,
     date: String,
+  },
+  data: function () {
+    return {
+      labels: {
+        close: _("Close"),
+      },
+    };
   },
   methods: {
     localDate: function () {

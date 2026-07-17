@@ -4,7 +4,7 @@
       <button
         type="button"
         class="close float-right"
-        aria-label="Close"
+        :aria-label="labels.close"
         @click="deleteField()"
       >
         <span aria-hidden="true">&times;</span>
@@ -110,6 +110,7 @@ export default {
     return {
       field: this.initialField,
       labels: {
+        close: _("Close"),
         fieldType: _("Field Type"),
         textField: _("Text Field"),
         checkbox: _("Checkbox"),

@@ -14,7 +14,7 @@
             type="button"
             class="close"
             data-dismiss="modal"
-            aria-label="Close"
+            :aria-label="labels.close"
           >
             <span aria-hidden="true">&times;</span>
           </button>
@@ -230,6 +230,7 @@ export default {
       selectedFile: null,
       media_type: "page",
       labels: {
+        close: _("Close"),
         mediaLibrary: _("Media Library"),
         mediaDetails: _("Media Details"),
         link: _("Link:"),

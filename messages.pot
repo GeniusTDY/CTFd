@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2026-07-17 04:35+0000\n"
+"POT-Creation-Date: 2026-07-17 05:19+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -471,6 +471,88 @@ msgstr ""
 msgid "That could not be found"
 msgstr ""
 
+#: CTFd/cli/__init__.py:88
+#, python-format
+msgid "Import Failure: %(error)s"
+msgstr ""
+
+#: CTFd/constants/email.py:3
+#, python-brace-format
+msgid "Confirm your account for {ctf_name}"
+msgstr ""
+
+#: CTFd/constants/email.py:5
+#, python-brace-format
+msgid ""
+"Welcome to {ctf_name}!\n"
+"\n"
+"Click the following link to confirm and activate your account:\n"
+"{url}\n"
+"\n"
+"If the link is not clickable, try copying and pasting it into your "
+"browser."
+msgstr ""
+
+#: CTFd/constants/email.py:12
+#, python-brace-format
+msgid "Successfully registered for {ctf_name}"
+msgstr ""
+
+#: CTFd/constants/email.py:15
+#, python-brace-format
+msgid "You've successfully registered for {ctf_name}!"
+msgstr ""
+
+#: CTFd/constants/email.py:17 CTFd/utils/email/__init__.py:31
+#, python-brace-format
+msgid "Message from {ctf_name}"
+msgstr ""
+
+#: CTFd/constants/email.py:19
+#, python-brace-format
+msgid ""
+"A new account has been created for you for {ctf_name} at {url}. \n"
+"\n"
+"Username: {name}\n"
+"Password: {password}"
+msgstr ""
+
+#: CTFd/constants/email.py:23
+#, python-brace-format
+msgid "Password Reset Request from {ctf_name}"
+msgstr ""
+
+#: CTFd/constants/email.py:25
+#, python-brace-format
+msgid ""
+"Did you initiate a password reset on {ctf_name}? If you didn't initiate "
+"this request you can ignore this email. \n"
+"\n"
+"Click the following link to reset your password:\n"
+"{url}\n"
+"\n"
+"If the link is not clickable, try copying and pasting it into your "
+"browser."
+msgstr ""
+
+#: CTFd/constants/email.py:31
+#, python-brace-format
+msgid "Password Change Confirmation for {ctf_name}"
+msgstr ""
+
+#: CTFd/constants/email.py:34
+#, python-brace-format
+msgid ""
+"Your password for {ctf_name} has been changed.\n"
+"\n"
+"If you didn't request a password change you can reset your password here:"
+"\n"
+"{url}\n"
+"\n"
+"If the link is not clickable, try copying and pasting it into your "
+"browser."
+msgstr ""
+
 #: CTFd/forms/auth.py:21 CTFd/themes/core/templates/register.html:60
 msgid "Password used to log into your account"
 msgstr ""
@@ -511,8 +593,8 @@ msgstr ""
 #: CTFd/forms/auth.py:88 CTFd/forms/notifications.py:27 CTFd/forms/self.py:29
 #: CTFd/forms/teams.py:154 CTFd/forms/teams.py:194 CTFd/forms/teams.py:237
 #: CTFd/forms/users.py:193
-#: CTFd/themes/admin/assets/js/components/hints/HintCreationForm.vue:132
-#: CTFd/themes/admin/assets/js/components/hints/HintEditForm.vue:140
+#: CTFd/themes/admin/assets/js/components/hints/HintCreationForm.vue:133
+#: CTFd/themes/admin/assets/js/components/hints/HintEditForm.vue:141
 #: CTFd/themes/admin/assets/js/pages/challenges.js:87
 #: CTFd/themes/admin/assets/js/pages/scoreboard.js:100
 #: CTFd/themes/admin/assets/js/pages/teams.js:72
@@ -583,7 +665,7 @@ msgstr ""
 msgid "Category"
 msgstr ""
 
-#: CTFd/forms/awards.py:13
+#: CTFd/forms/awards.py:13 CTFd/plugins/flags/assets/regex/create.html:19
 #: CTFd/themes/admin/templates/audiences/audience.html:20
 #: CTFd/themes/admin/templates/audiences/audiences.html:23
 #: CTFd/themes/admin/templates/audiences/new.html:16
@@ -710,19 +792,19 @@ msgid "Search"
 msgstr ""
 
 #: CTFd/forms/challenges.py:27 CTFd/forms/pages.py:45
-#: CTFd/themes/admin/assets/js/components/files/MediaLibrary.vue:240
+#: CTFd/themes/admin/assets/js/components/files/MediaLibrary.vue:241
 msgid "Upload Files"
 msgstr ""
 
 #: CTFd/forms/challenges.py:28 CTFd/forms/pages.py:46
 #: CTFd/themes/admin/assets/js/components/files/ChallengeFilesList.vue:85
-#: CTFd/themes/admin/assets/js/components/files/MediaLibrary.vue:241
+#: CTFd/themes/admin/assets/js/components/files/MediaLibrary.vue:242
 msgid "Attach multiple files using Control+Click or Cmd+Click."
 msgstr ""
 
 #: CTFd/forms/challenges.py:31
 #: CTFd/themes/admin/assets/js/components/files/ChallengeFilesList.vue:88
-#: CTFd/themes/admin/assets/js/components/files/MediaLibrary.vue:250
+#: CTFd/themes/admin/assets/js/components/files/MediaLibrary.vue:251
 #: CTFd/themes/admin/templates/configs/logo.html:29
 #: CTFd/themes/admin/templates/configs/logo.html:64
 msgid "Upload"
@@ -893,7 +975,8 @@ msgid ""
 msgstr ""
 
 #: CTFd/forms/config.py:113 CTFd/forms/config.py:147 CTFd/forms/config.py:167
-#: CTFd/forms/config.py:350
+#: CTFd/forms/config.py:350 CTFd/plugins/flags/assets/regex/edit.html:18
+#: CTFd/plugins/flags/assets/static/edit.html:18
 #: CTFd/themes/admin/assets/js/components/solution/SolutionEditor.vue:77
 #: CTFd/themes/admin/templates/challenges/update.html:188
 #: CTFd/themes/admin/templates/configs/challenges.html:53
@@ -926,7 +1009,7 @@ msgid "CSV Type"
 msgstr ""
 
 #: CTFd/forms/config.py:125
-#: CTFd/themes/admin/assets/js/components/configs/brackets/Bracket.vue:88
+#: CTFd/themes/admin/assets/js/components/configs/brackets/Bracket.vue:89
 #: CTFd/themes/admin/templates/base.html:61
 #: CTFd/themes/admin/templates/config.html:59
 #: CTFd/themes/admin/templates/configs/fields.html:12
@@ -939,7 +1022,7 @@ msgid "Users"
 msgstr ""
 
 #: CTFd/forms/config.py:126
-#: CTFd/themes/admin/assets/js/components/configs/brackets/Bracket.vue:89
+#: CTFd/themes/admin/assets/js/components/configs/brackets/Bracket.vue:90
 #: CTFd/themes/admin/templates/base.html:63
 #: CTFd/themes/admin/templates/configs/fields.html:17
 #: CTFd/themes/admin/templates/scoreboard.html:28
@@ -1280,8 +1363,8 @@ msgid "Send"
 msgstr ""
 
 #: CTFd/forms/notifications.py:10 CTFd/forms/pages.py:17
-#: CTFd/themes/admin/assets/js/components/hints/HintCreationForm.vue:123
-#: CTFd/themes/admin/assets/js/components/hints/HintEditForm.vue:131
+#: CTFd/themes/admin/assets/js/components/hints/HintCreationForm.vue:124
+#: CTFd/themes/admin/assets/js/components/hints/HintEditForm.vue:132
 #: CTFd/themes/admin/assets/js/components/hints/HintsList.vue:93
 #: CTFd/themes/admin/templates/pages.html:41
 msgid "Title"
@@ -1894,6 +1977,72 @@ msgstr ""
 msgid "Regex parse error occured"
 msgstr ""
 
+#: CTFd/plugins/flags/assets/regex/create.html:2
+msgid "Regex Flag"
+msgstr ""
+
+#: CTFd/plugins/flags/assets/regex/create.html:3
+msgid "Enter regex flag data"
+msgstr ""
+
+#: CTFd/plugins/flags/assets/regex/create.html:10
+#: CTFd/plugins/flags/assets/regex/edit.html:10
+#: CTFd/plugins/flags/assets/static/create.html:10
+#: CTFd/plugins/flags/assets/static/edit.html:10
+#: CTFd/themes/admin/templates/challenges/new.html:39
+msgid "Case Sensitive"
+msgstr ""
+
+#: CTFd/plugins/flags/assets/regex/create.html:11
+#: CTFd/plugins/flags/assets/regex/edit.html:11
+#: CTFd/plugins/flags/assets/static/create.html:11
+#: CTFd/plugins/flags/assets/static/edit.html:11
+#: CTFd/themes/admin/templates/challenges/new.html:40
+msgid "Case Insensitive"
+msgstr ""
+
+#: CTFd/plugins/flags/assets/regex/create.html:15
+msgid "Examples"
+msgstr ""
+
+#: CTFd/plugins/flags/assets/regex/create.html:20
+#: CTFd/themes/admin/assets/js/components/flags/FlagList.vue:90
+#: CTFd/themes/core/templates/challenge.html:175
+msgid "Flag"
+msgstr ""
+
+#: CTFd/plugins/flags/assets/regex/create.html:24
+#, python-brace-format
+msgid "Match any content inside of flag{}:"
+msgstr ""
+
+#: CTFd/plugins/flags/assets/regex/create.html:28
+msgid "Match numeric flags:"
+msgstr ""
+
+#: CTFd/plugins/flags/assets/regex/create.html:32
+msgid "Accept flags with or without the flag format prefix:"
+msgstr ""
+
+#: CTFd/plugins/flags/assets/regex/edit.html:2
+msgid "Regex"
+msgstr ""
+
+#: CTFd/plugins/flags/assets/regex/edit.html:3
+msgid "Enter regex key data"
+msgstr ""
+
+#: CTFd/plugins/flags/assets/static/create.html:2
+#: CTFd/plugins/flags/assets/static/edit.html:2
+#: CTFd/themes/admin/templates/challenges/update.html:94
+msgid "Static"
+msgstr ""
+
+#: CTFd/plugins/flags/assets/static/create.html:3
+#: CTFd/plugins/flags/assets/static/edit.html:3
+msgid "Enter static flag data"
+msgstr ""
+
 #: CTFd/schemas/challenges.py:11 CTFd/schemas/challenges.py:18
 msgid "Error parsing challenge requirements"
 msgstr ""
@@ -2024,7 +2173,7 @@ msgstr ""
 msgid "Email address is not from an allowed domain"
 msgstr ""
 
-#: CTFd/themes/admin/assets/js/components/files/MediaLibrary.vue:233
+#: CTFd/themes/admin/assets/js/components/files/MediaLibrary.vue:234
 #: CTFd/themes/admin/assets/js/styles.js:54
 #: CTFd/themes/admin/templates/editor.html:103
 msgid "Media Library"
@@ -2048,9 +2197,9 @@ msgid "Are you sure you want to delete {0}"
 msgstr ""
 
 #: CTFd/themes/admin/assets/js/challenges/challenge.js:194
-#: CTFd/themes/admin/assets/js/components/configs/brackets/Bracket.vue:133
-#: CTFd/themes/admin/assets/js/components/configs/fields/Field.vue:153
-#: CTFd/themes/admin/assets/js/components/configs/fields/Field.vue:176
+#: CTFd/themes/admin/assets/js/components/configs/brackets/Bracket.vue:134
+#: CTFd/themes/admin/assets/js/components/configs/fields/Field.vue:154
+#: CTFd/themes/admin/assets/js/components/configs/fields/Field.vue:177
 #: CTFd/themes/admin/assets/js/pages/challenge.js:230
 msgid "Success"
 msgstr ""
@@ -2177,14 +2326,63 @@ msgid "Copied!"
 msgstr ""
 
 #: CTFd/themes/admin/assets/js/components/comments/CommentBox.vue:144
-msgid "Add comment"
+#: CTFd/themes/admin/assets/js/components/configs/brackets/Bracket.vue:81
+#: CTFd/themes/admin/assets/js/components/configs/fields/Field.vue:113
+#: CTFd/themes/admin/assets/js/components/files/MediaLibrary.vue:233
+#: CTFd/themes/admin/assets/js/components/flags/FlagCreationForm.vue:76
+#: CTFd/themes/admin/assets/js/components/flags/FlagEditForm.vue:50
+#: CTFd/themes/admin/assets/js/components/hints/HintCreationForm.vue:122
+#: CTFd/themes/admin/assets/js/components/hints/HintEditForm.vue:130
+#: CTFd/themes/admin/assets/js/components/notifications/Notification.vue:41
+#: CTFd/themes/admin/templates/audiences/audience.html:9
+#: CTFd/themes/admin/templates/challenges/challenge.html:13
+#: CTFd/themes/admin/templates/challenges/challenge.html:33
+#: CTFd/themes/admin/templates/challenges/challenge.html:54
+#: CTFd/themes/admin/templates/config.html:176
+#: CTFd/themes/admin/templates/modules/module.html:9
+#: CTFd/themes/admin/templates/notifications.html:72
+#: CTFd/themes/admin/templates/teams/team.html:12
+#: CTFd/themes/admin/templates/teams/team.html:28
+#: CTFd/themes/admin/templates/teams/team.html:43
+#: CTFd/themes/admin/templates/teams/team.html:76
+#: CTFd/themes/admin/templates/teams/team.html:92
+#: CTFd/themes/admin/templates/teams/team.html:108
+#: CTFd/themes/admin/templates/teams/team.html:142
+#: CTFd/themes/admin/templates/users/user.html:12
+#: CTFd/themes/admin/templates/users/user.html:28
+#: CTFd/themes/admin/templates/users/user.html:44
+#: CTFd/themes/admin/templates/users/user.html:60
+#: CTFd/themes/admin/templates/users/user.html:76
+#: CTFd/themes/core/templates/challenge.html:6
+#: CTFd/themes/core/templates/components/errors.html:5
+#: CTFd/themes/core/templates/components/errors.html:14
+#: CTFd/themes/core/templates/components/notifications.html:7
+#: CTFd/themes/core/templates/components/notifications.html:22
+#: CTFd/themes/core/templates/components/snackbar.html:14
+#: CTFd/themes/core/templates/settings.html:96
+#: CTFd/themes/core/templates/settings.html:107
+#: CTFd/themes/core/templates/settings.html:132
+#: CTFd/themes/core/templates/settings.html:198
+#: CTFd/themes/core/templates/teams/private.html:9
+#: CTFd/themes/core/templates/teams/private.html:77
+#: CTFd/themes/core/templates/teams/private.html:85
+#: CTFd/themes/core/templates/teams/private.html:103
+#: CTFd/themes/core/templates/teams/private.html:126
+#: CTFd/themes/core/templates/teams/private.html:133
+#: CTFd/themes/core/templates/teams/private.html:151
+#: CTFd/themes/core/templates/teams/private.html:187
+msgid "Close"
 msgstr ""
 
 #: CTFd/themes/admin/assets/js/components/comments/CommentBox.vue:145
-msgid "Comment"
+msgid "Add comment"
 msgstr ""
 
 #: CTFd/themes/admin/assets/js/components/comments/CommentBox.vue:146
+msgid "Comment"
+msgstr ""
+
+#: CTFd/themes/admin/assets/js/components/comments/CommentBox.vue:147
 #: CTFd/themes/admin/assets/js/components/ratings/RatingsViewer.vue:159
 #: CTFd/themes/admin/templates/submissions.html:152
 #: CTFd/themes/admin/templates/teams/teams.html:143
@@ -2194,44 +2392,44 @@ msgstr ""
 msgid "Page"
 msgstr ""
 
-#: CTFd/themes/admin/assets/js/components/comments/CommentBox.vue:147
+#: CTFd/themes/admin/assets/js/components/comments/CommentBox.vue:148
 #: CTFd/themes/admin/assets/js/components/ratings/RatingsViewer.vue:160
 msgid "of"
 msgstr ""
 
-#: CTFd/themes/admin/assets/js/components/comments/CommentBox.vue:148
+#: CTFd/themes/admin/assets/js/components/comments/CommentBox.vue:149
 msgid "comments"
 msgstr ""
 
-#: CTFd/themes/admin/assets/js/components/comments/CommentBox.vue:199
+#: CTFd/themes/admin/assets/js/components/comments/CommentBox.vue:200
 msgid "Are you sure you'd like to delete this comment?"
 msgstr ""
 
-#: CTFd/themes/admin/assets/js/components/configs/brackets/Bracket.vue:81
+#: CTFd/themes/admin/assets/js/components/configs/brackets/Bracket.vue:82
 msgid "Bracket Name"
 msgstr ""
 
-#: CTFd/themes/admin/assets/js/components/configs/brackets/Bracket.vue:82
+#: CTFd/themes/admin/assets/js/components/configs/brackets/Bracket.vue:83
 msgid "Bracket name (e.g. \"Students\", \"Interns\", \"Engineers\")"
 msgstr ""
 
-#: CTFd/themes/admin/assets/js/components/configs/brackets/Bracket.vue:85
 #: CTFd/themes/admin/assets/js/components/configs/brackets/Bracket.vue:86
+#: CTFd/themes/admin/assets/js/components/configs/brackets/Bracket.vue:87
 msgid "Bracket Description"
 msgstr ""
 
-#: CTFd/themes/admin/assets/js/components/configs/brackets/Bracket.vue:87
+#: CTFd/themes/admin/assets/js/components/configs/brackets/Bracket.vue:88
 msgid "Bracket Type"
 msgstr ""
 
-#: CTFd/themes/admin/assets/js/components/configs/brackets/Bracket.vue:90
+#: CTFd/themes/admin/assets/js/components/configs/brackets/Bracket.vue:91
 msgid ""
 "If you are using Team Mode and would like the bracket to apply to entire "
 "teams instead of individuals, select Teams."
 msgstr ""
 
-#: CTFd/themes/admin/assets/js/components/configs/brackets/Bracket.vue:93
-#: CTFd/themes/admin/assets/js/components/configs/fields/Field.vue:124
+#: CTFd/themes/admin/assets/js/components/configs/brackets/Bracket.vue:94
+#: CTFd/themes/admin/assets/js/components/configs/fields/Field.vue:125
 #: CTFd/themes/admin/assets/js/components/next/NextChallenge.vue:51
 #: CTFd/themes/admin/assets/js/components/requirements/Requirements.vue:84
 #: CTFd/themes/admin/templates/audiences/audience.html:23
@@ -2241,7 +2439,15 @@ msgstr ""
 msgid "Save"
 msgstr ""
 
-#: CTFd/themes/admin/assets/js/components/configs/brackets/Bracket.vue:141
+#: CTFd/themes/admin/assets/js/components/configs/brackets/Bracket.vue:112
+msgid "Bracket has been updated!"
+msgstr ""
+
+#: CTFd/themes/admin/assets/js/components/configs/brackets/Bracket.vue:116
+msgid "Bracket has been created!"
+msgstr ""
+
+#: CTFd/themes/admin/assets/js/components/configs/brackets/Bracket.vue:142
 msgid "Are you sure you'd like to delete this bracket?"
 msgstr ""
 
@@ -2249,56 +2455,56 @@ msgstr ""
 msgid "Add New Bracket"
 msgstr ""
 
-#: CTFd/themes/admin/assets/js/components/configs/fields/Field.vue:113
+#: CTFd/themes/admin/assets/js/components/configs/fields/Field.vue:114
 msgid "Field Type"
 msgstr ""
 
-#: CTFd/themes/admin/assets/js/components/configs/fields/Field.vue:114
+#: CTFd/themes/admin/assets/js/components/configs/fields/Field.vue:115
 msgid "Text Field"
 msgstr ""
 
-#: CTFd/themes/admin/assets/js/components/configs/fields/Field.vue:115
+#: CTFd/themes/admin/assets/js/components/configs/fields/Field.vue:116
 msgid "Checkbox"
 msgstr ""
 
-#: CTFd/themes/admin/assets/js/components/configs/fields/Field.vue:116
+#: CTFd/themes/admin/assets/js/components/configs/fields/Field.vue:117
 msgid "Type of field shown to the user"
 msgstr ""
 
-#: CTFd/themes/admin/assets/js/components/configs/fields/Field.vue:117
+#: CTFd/themes/admin/assets/js/components/configs/fields/Field.vue:118
 msgid "Field Name"
 msgstr ""
 
-#: CTFd/themes/admin/assets/js/components/configs/fields/Field.vue:118
+#: CTFd/themes/admin/assets/js/components/configs/fields/Field.vue:119
 msgid "Field name"
 msgstr ""
 
-#: CTFd/themes/admin/assets/js/components/configs/fields/Field.vue:119
 #: CTFd/themes/admin/assets/js/components/configs/fields/Field.vue:120
+#: CTFd/themes/admin/assets/js/components/configs/fields/Field.vue:121
 msgid "Field Description"
 msgstr ""
 
-#: CTFd/themes/admin/assets/js/components/configs/fields/Field.vue:121
+#: CTFd/themes/admin/assets/js/components/configs/fields/Field.vue:122
 msgid "Editable by user in profile"
 msgstr ""
 
-#: CTFd/themes/admin/assets/js/components/configs/fields/Field.vue:122
+#: CTFd/themes/admin/assets/js/components/configs/fields/Field.vue:123
 msgid "Required on registration"
 msgstr ""
 
-#: CTFd/themes/admin/assets/js/components/configs/fields/Field.vue:123
+#: CTFd/themes/admin/assets/js/components/configs/fields/Field.vue:124
 msgid "Shown on public profile"
 msgstr ""
 
-#: CTFd/themes/admin/assets/js/components/configs/fields/Field.vue:154
+#: CTFd/themes/admin/assets/js/components/configs/fields/Field.vue:155
 msgid "Field has been updated!"
 msgstr ""
 
-#: CTFd/themes/admin/assets/js/components/configs/fields/Field.vue:177
+#: CTFd/themes/admin/assets/js/components/configs/fields/Field.vue:178
 msgid "Field has been created!"
 msgstr ""
 
-#: CTFd/themes/admin/assets/js/components/configs/fields/Field.vue:185
+#: CTFd/themes/admin/assets/js/components/configs/fields/Field.vue:186
 msgid "Are you sure you'd like to delete this field?"
 msgstr ""
 
@@ -2329,116 +2535,111 @@ msgid "Delete Files"
 msgstr ""
 
 #: CTFd/themes/admin/assets/js/components/files/ChallengeFilesList.vue:121
-#: CTFd/themes/admin/assets/js/components/files/MediaLibrary.vue:287
+#: CTFd/themes/admin/assets/js/components/files/MediaLibrary.vue:288
 msgid "Are you sure you want to delete this file?"
 msgstr ""
 
-#: CTFd/themes/admin/assets/js/components/files/MediaLibrary.vue:234
+#: CTFd/themes/admin/assets/js/components/files/MediaLibrary.vue:235
 msgid "Media Details"
 msgstr ""
 
-#: CTFd/themes/admin/assets/js/components/files/MediaLibrary.vue:235
+#: CTFd/themes/admin/assets/js/components/files/MediaLibrary.vue:236
 msgid "Link:"
 msgstr ""
 
-#: CTFd/themes/admin/assets/js/components/files/MediaLibrary.vue:236
+#: CTFd/themes/admin/assets/js/components/files/MediaLibrary.vue:237
 msgid "Insert"
 msgstr ""
 
-#: CTFd/themes/admin/assets/js/components/files/MediaLibrary.vue:237
+#: CTFd/themes/admin/assets/js/components/files/MediaLibrary.vue:238
 msgid "Insert link into editor"
 msgstr ""
 
-#: CTFd/themes/admin/assets/js/components/files/MediaLibrary.vue:238
+#: CTFd/themes/admin/assets/js/components/files/MediaLibrary.vue:239
 msgid "Download file"
 msgstr ""
 
-#: CTFd/themes/admin/assets/js/components/files/MediaLibrary.vue:239
+#: CTFd/themes/admin/assets/js/components/files/MediaLibrary.vue:240
 msgid "Delete file"
 msgstr ""
 
-#: CTFd/themes/admin/assets/js/components/files/MediaLibrary.vue:244
+#: CTFd/themes/admin/assets/js/components/files/MediaLibrary.vue:245
 msgid "Upload File Location"
 msgstr ""
 
-#: CTFd/themes/admin/assets/js/components/files/MediaLibrary.vue:245
+#: CTFd/themes/admin/assets/js/components/files/MediaLibrary.vue:246
 msgid "Location"
 msgstr ""
 
-#: CTFd/themes/admin/assets/js/components/files/MediaLibrary.vue:246
+#: CTFd/themes/admin/assets/js/components/files/MediaLibrary.vue:247
 msgid ""
 "Route where file will be accessible (if not provided a random folder will"
 " be used)."
 msgstr ""
 
-#: CTFd/themes/admin/assets/js/components/files/MediaLibrary.vue:249
+#: CTFd/themes/admin/assets/js/components/files/MediaLibrary.vue:250
 msgid "Provide as"
 msgstr ""
 
-#: CTFd/themes/admin/assets/js/components/flags/FlagCreationForm.vue:76
+#: CTFd/themes/admin/assets/js/components/flags/FlagCreationForm.vue:77
 #: CTFd/themes/admin/assets/js/components/flags/FlagList.vue:92
 msgid "Create Flag"
 msgstr ""
 
-#: CTFd/themes/admin/assets/js/components/flags/FlagCreationForm.vue:77
+#: CTFd/themes/admin/assets/js/components/flags/FlagCreationForm.vue:78
 msgid "Choose Flag Type"
 msgstr ""
 
-#: CTFd/themes/admin/assets/js/components/flags/FlagCreationForm.vue:78
+#: CTFd/themes/admin/assets/js/components/flags/FlagCreationForm.vue:79
 #: CTFd/themes/admin/assets/js/components/next/NextChallenge.vue:50
 msgid "--"
 msgstr ""
 
-#: CTFd/themes/admin/assets/js/components/flags/FlagEditForm.vue:50
+#: CTFd/themes/admin/assets/js/components/flags/FlagEditForm.vue:51
 msgid "Edit Flag"
-msgstr ""
-
-#: CTFd/themes/admin/assets/js/components/flags/FlagList.vue:90
-#: CTFd/themes/core/templates/challenge.html:175
-msgid "Flag"
 msgstr ""
 
 #: CTFd/themes/admin/assets/js/components/flags/FlagList.vue:141
 msgid "Are you sure you'd like to delete this flag?"
 msgstr ""
 
-#: CTFd/themes/admin/assets/js/components/hints/HintCreationForm.vue:122
-#: CTFd/themes/admin/assets/js/components/hints/HintEditForm.vue:130
+#: CTFd/themes/admin/assets/js/components/hints/HintCreationForm.vue:123
+#: CTFd/themes/admin/assets/js/components/hints/HintEditForm.vue:131
 #: CTFd/themes/admin/assets/js/components/hints/HintsList.vue:94
 msgid "Hint"
 msgstr ""
 
-#: CTFd/themes/admin/assets/js/components/hints/HintCreationForm.vue:124
-#: CTFd/themes/admin/assets/js/components/hints/HintEditForm.vue:132
-msgid "Content displayed before hint unlocking"
-msgstr ""
-
 #: CTFd/themes/admin/assets/js/components/hints/HintCreationForm.vue:125
 #: CTFd/themes/admin/assets/js/components/hints/HintEditForm.vue:133
-#: CTFd/themes/admin/assets/js/components/solution/SolutionEditor.vue:64
-msgid "Markdown & HTML are supported"
+msgid "Content displayed before hint unlocking"
 msgstr ""
 
 #: CTFd/themes/admin/assets/js/components/hints/HintCreationForm.vue:126
 #: CTFd/themes/admin/assets/js/components/hints/HintEditForm.vue:134
-#: CTFd/themes/admin/assets/js/components/hints/HintsList.vue:95
-msgid "Cost"
+#: CTFd/themes/admin/assets/js/components/solution/SolutionEditor.vue:64
+msgid "Markdown & HTML are supported"
 msgstr ""
 
 #: CTFd/themes/admin/assets/js/components/hints/HintCreationForm.vue:127
 #: CTFd/themes/admin/assets/js/components/hints/HintEditForm.vue:135
-msgid "How many points it costs to see your hint."
+#: CTFd/themes/admin/assets/js/components/hints/HintsList.vue:95
+msgid "Cost"
 msgstr ""
 
 #: CTFd/themes/admin/assets/js/components/hints/HintCreationForm.vue:128
 #: CTFd/themes/admin/assets/js/components/hints/HintEditForm.vue:136
+msgid "How many points it costs to see your hint."
+msgstr ""
+
+#: CTFd/themes/admin/assets/js/components/hints/HintCreationForm.vue:129
+#: CTFd/themes/admin/assets/js/components/hints/HintEditForm.vue:137
 #: CTFd/themes/admin/templates/challenges/challenge.html:123
 #: CTFd/themes/admin/templates/challenges/challenge.html:180
 msgid "Requirements"
 msgstr ""
 
-#: CTFd/themes/admin/assets/js/components/hints/HintCreationForm.vue:129
-#: CTFd/themes/admin/assets/js/components/hints/HintEditForm.vue:137
+#: CTFd/themes/admin/assets/js/components/hints/HintCreationForm.vue:130
+#: CTFd/themes/admin/assets/js/components/hints/HintEditForm.vue:138
 msgid "Hints that must be unlocked before unlocking this hint"
 msgstr ""
 
@@ -2469,7 +2670,7 @@ msgstr ""
 msgid "Challenge to recommend after solving this challenge"
 msgstr ""
 
-#: CTFd/themes/admin/assets/js/components/notifications/Notification.vue:43
+#: CTFd/themes/admin/assets/js/components/notifications/Notification.vue:50
 #: CTFd/themes/admin/assets/js/pages/notifications.js:54
 msgid "Are you sure you want to delete this notification?"
 msgstr ""
@@ -3432,46 +3633,6 @@ msgstr ""
 msgid "Reset"
 msgstr ""
 
-#: CTFd/themes/admin/templates/audiences/audience.html:9
-#: CTFd/themes/admin/templates/challenges/challenge.html:13
-#: CTFd/themes/admin/templates/challenges/challenge.html:33
-#: CTFd/themes/admin/templates/challenges/challenge.html:54
-#: CTFd/themes/admin/templates/config.html:176
-#: CTFd/themes/admin/templates/modules/module.html:9
-#: CTFd/themes/admin/templates/notifications.html:72
-#: CTFd/themes/admin/templates/teams/team.html:12
-#: CTFd/themes/admin/templates/teams/team.html:28
-#: CTFd/themes/admin/templates/teams/team.html:43
-#: CTFd/themes/admin/templates/teams/team.html:76
-#: CTFd/themes/admin/templates/teams/team.html:92
-#: CTFd/themes/admin/templates/teams/team.html:108
-#: CTFd/themes/admin/templates/teams/team.html:142
-#: CTFd/themes/admin/templates/users/user.html:12
-#: CTFd/themes/admin/templates/users/user.html:28
-#: CTFd/themes/admin/templates/users/user.html:44
-#: CTFd/themes/admin/templates/users/user.html:60
-#: CTFd/themes/admin/templates/users/user.html:76
-#: CTFd/themes/core/templates/challenge.html:6
-#: CTFd/themes/core/templates/components/errors.html:5
-#: CTFd/themes/core/templates/components/errors.html:14
-#: CTFd/themes/core/templates/components/notifications.html:7
-#: CTFd/themes/core/templates/components/notifications.html:22
-#: CTFd/themes/core/templates/components/snackbar.html:14
-#: CTFd/themes/core/templates/settings.html:96
-#: CTFd/themes/core/templates/settings.html:107
-#: CTFd/themes/core/templates/settings.html:132
-#: CTFd/themes/core/templates/settings.html:198
-#: CTFd/themes/core/templates/teams/private.html:9
-#: CTFd/themes/core/templates/teams/private.html:77
-#: CTFd/themes/core/templates/teams/private.html:85
-#: CTFd/themes/core/templates/teams/private.html:103
-#: CTFd/themes/core/templates/teams/private.html:126
-#: CTFd/themes/core/templates/teams/private.html:133
-#: CTFd/themes/core/templates/teams/private.html:151
-#: CTFd/themes/core/templates/teams/private.html:187
-msgid "Close"
-msgstr ""
-
 #: CTFd/themes/admin/templates/editor.html:82
 msgid "This is the HTML content of your page"
 msgstr ""
@@ -3915,14 +4076,6 @@ msgstr ""
 msgid "Static flag for your challenge"
 msgstr ""
 
-#: CTFd/themes/admin/templates/challenges/new.html:39
-msgid "Case Sensitive"
-msgstr ""
-
-#: CTFd/themes/admin/templates/challenges/new.html:40
-msgid "Case Insensitive"
-msgstr ""
-
 #: CTFd/themes/admin/templates/challenges/new.html:49
 msgid "Files:"
 msgstr ""
@@ -3989,10 +4142,6 @@ msgstr ""
 
 #: CTFd/themes/admin/templates/challenges/update.html:90
 msgid "How the challenge value will be calculated based on the Decay value"
-msgstr ""
-
-#: CTFd/themes/admin/templates/challenges/update.html:94
-msgid "Static"
 msgstr ""
 
 #: CTFd/themes/admin/templates/challenges/update.html:100
@@ -5339,11 +5488,6 @@ msgstr ""
 msgid "Scores are currently hidden"
 msgstr ""
 
-#: CTFd/utils/email/__init__.py:31
-#, python-brace-format
-msgid "Message from {ctf_name}"
-msgstr ""
-
 #: CTFd/utils/email/__init__.py:36
 msgid "No mail settings configured"
 msgstr ""
@@ -5372,99 +5516,134 @@ msgid ""
 "Github issue #1988."
 msgstr ""
 
-#: CTFd/utils/exports/__init__.py:142
+#: CTFd/utils/exports/__init__.py:139
+msgid ""
+"Importing not currently supported for SQLite databases. See Github issue "
+"#1988."
+msgstr ""
+
+#: CTFd/utils/exports/__init__.py:144
 msgid "zipfile.BadZipfile: zipfile is invalid"
 msgstr ""
 
-#: CTFd/utils/exports/__init__.py:158
+#: CTFd/utils/exports/__init__.py:160
 msgid "zipfile.BadZipfile: zipfile is malicious"
 msgstr ""
 
-#: CTFd/utils/exports/__init__.py:163
+#: CTFd/utils/exports/__init__.py:165
 msgid "zipfile.LargeZipFile: zipfile is too large"
 msgstr ""
 
-#: CTFd/utils/exports/__init__.py:169
+#: CTFd/utils/exports/__init__.py:171
 msgid "Exception: db folder is missing"
 msgstr ""
 
-#: CTFd/utils/exports/__init__.py:179
+#: CTFd/utils/exports/__init__.py:174
+msgid ""
+"CTFd couldn't find the \"db\" folder in this backup. The backup may be "
+"malformed or corrupted and the import process cannot continue."
+msgstr ""
+
+#: CTFd/utils/exports/__init__.py:183
 msgid "Exception: Could not determine appropriate database version"
 msgstr ""
 
-#: CTFd/utils/exports/__init__.py:201
+#: CTFd/utils/exports/__init__.py:186
+msgid ""
+"Could not determine appropriate database version. This backup cannot be "
+"automatically imported."
+msgstr ""
+
+#: CTFd/utils/exports/__init__.py:207
 msgid ""
 "Exception: The version of CTFd that this backup is from is too old to be "
 "automatically imported."
 msgstr ""
 
-#: CTFd/utils/exports/__init__.py:212
+#: CTFd/utils/exports/__init__.py:211
+msgid ""
+"The version of CTFd that this backup is from is too old to be "
+"automatically imported."
+msgstr ""
+
+#: CTFd/utils/exports/__init__.py:220
 msgid "started"
 msgstr ""
 
-#: CTFd/utils/exports/__init__.py:222
+#: CTFd/utils/exports/__init__.py:230
 msgid ""
 "Exception: The target migration in this backup is not available in this "
 "version of CTFd."
 msgstr ""
 
-#: CTFd/utils/exports/__init__.py:229
+#: CTFd/utils/exports/__init__.py:234
+msgid ""
+"The target migration in this backup is not available in this version of "
+"CTFd."
+msgstr ""
+
+#: CTFd/utils/exports/__init__.py:239
 msgid "erasing"
 msgstr ""
 
-#: CTFd/utils/exports/__init__.py:256
+#: CTFd/utils/exports/__init__.py:266
 msgid "erased"
 msgstr ""
 
-#: CTFd/utils/exports/__init__.py:261
+#: CTFd/utils/exports/__init__.py:271
 msgid "disabling foreign key checks"
 msgstr ""
 
-#: CTFd/utils/exports/__init__.py:306
+#: CTFd/utils/exports/__init__.py:316
 #, python-format
 msgid "inserting %(member)s"
 msgstr ""
 
-#: CTFd/utils/exports/__init__.py:322
+#: CTFd/utils/exports/__init__.py:332
 #, python-format
 msgid "inserting %(member)s %(i)d/%(count)d"
 msgstr ""
 
-#: CTFd/utils/exports/__init__.py:421
+#: CTFd/utils/exports/__init__.py:431
 #, python-format
 msgid "Exception: Table name %(table_name)s contains quotes"
 msgstr ""
 
-#: CTFd/utils/exports/__init__.py:430
+#: CTFd/utils/exports/__init__.py:435
+#, python-format
+msgid "Table name %(table_name)s contains quotes"
+msgstr ""
+
+#: CTFd/utils/exports/__init__.py:441
 msgid "inserting tables"
 msgstr ""
 
-#: CTFd/utils/exports/__init__.py:435
+#: CTFd/utils/exports/__init__.py:446
 msgid "inserting plugins"
 msgstr ""
 
-#: CTFd/utils/exports/__init__.py:438
+#: CTFd/utils/exports/__init__.py:449
 #, python-format
 msgid "inserting plugin %(plugin)s"
 msgstr ""
 
-#: CTFd/utils/exports/__init__.py:451
+#: CTFd/utils/exports/__init__.py:462
 msgid "uploading files"
 msgstr ""
 
-#: CTFd/utils/exports/__init__.py:466
+#: CTFd/utils/exports/__init__.py:477 CTFd/utils/exports/__init__.py:478
 msgid "Encountered invalid upload file in import"
 msgstr ""
 
-#: CTFd/utils/exports/__init__.py:473
+#: CTFd/utils/exports/__init__.py:484
 msgid "running head migrations"
 msgstr ""
 
-#: CTFd/utils/exports/__init__.py:484
+#: CTFd/utils/exports/__init__.py:495
 msgid "reenabling foreign key checks"
 msgstr ""
 
-#: CTFd/utils/exports/__init__.py:493
+#: CTFd/utils/exports/__init__.py:504
 msgid "clearing caches"
 msgstr ""
 

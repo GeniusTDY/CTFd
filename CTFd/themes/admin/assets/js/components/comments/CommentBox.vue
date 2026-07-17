@@ -64,7 +64,7 @@
             <button
               type="button"
               class="close"
-              aria-label="Close"
+              :aria-label="labels.close"
               @click="deleteComment(comment.id)"
             >
               <span aria-hidden="true">&times;</span>
@@ -141,6 +141,7 @@ export default {
       comments: [],
       urlRoot: CTFd.config.urlRoot,
       labels: {
+        close: _("Close"),
         addComment: _("Add comment"),
         commentBtn: _("Comment"),
         pageWord: _("Page"),

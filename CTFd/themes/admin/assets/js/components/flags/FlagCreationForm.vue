@@ -15,7 +15,7 @@
             type="button"
             class="close"
             data-dismiss="modal"
-            aria-label="Close"
+            :aria-label="labels.close"
           >
             <span aria-hidden="true">&times;</span>
           </button>
@@ -23,7 +23,7 @@
         <div class="modal-body">
           <div class="create-keys-select-div">
             <label for="create-keys-select" class="control-label">
-              Choose Flag Type
+              {{ labels.chooseFlagType }}
             </label>
             <select
               class="form-control custom-select"
@@ -73,6 +73,7 @@ export default {
       selectedType: null,
       createForm: "",
       labels: {
+        close: _("Close"),
         createFlag: _("Create Flag"),
         chooseFlagType: _("Choose Flag Type"),
         placeholderOption: _("--"),
