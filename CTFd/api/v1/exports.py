@@ -1,6 +1,7 @@
 from datetime import datetime as DateTime
 
 from flask import request, send_file
+from flask_babel import gettext
 from flask_restx import Namespace, Resource
 
 from CTFd.utils.config import ctf_name
@@ -26,7 +27,7 @@ class ExportList(Resource):
             if not table:
                 return {
                     "success": False,
-                    "errors": {"args": "Missing table to export"},
+                    "errors": {"args": gettext("Missing table to export")},
                 }, 400
             output = dump_csv(name=table)
             return send_file(

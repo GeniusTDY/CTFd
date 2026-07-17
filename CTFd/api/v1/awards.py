@@ -1,6 +1,7 @@
 from typing import List
 
 from flask import request
+from flask_babel import gettext
 from flask_restx import Namespace, Resource
 
 from CTFd.api.v1.helpers.request import validate_args
@@ -112,7 +113,7 @@ class AwardList(Resource):
                             "success": False,
                             "errors": {
                                 "team_id": [
-                                    "User doesn't have a team to associate award with"
+                                    gettext("User doesn't have a team to associate award with")
                                 ]
                             },
                         },

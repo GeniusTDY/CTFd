@@ -1,9 +1,9 @@
-
+#
 msgid ""
 msgstr ""
 "Project-Id-Version:  CTFd\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2026-07-16 04:52+0000\n"
+"POT-Creation-Date: 2026-07-17 01:23+0000\n"
 "PO-Revision-Date: 2026-07-13 00:00+0000\n"
 "Last-Translator: \n"
 "Language: zh_CN\n"
@@ -299,6 +299,14 @@ msgid ""
 " can not be loaded."
 msgstr "底层题目类型（%(type)s）未安装。无法加载此题目。"
 
+#: CTFd/api/v1/audiences.py:127
+msgid "Either user_id or team_id is required"
+msgstr "必须提供 user_id 或 team_id"
+
+#: CTFd/api/v1/awards.py:116
+msgid "User doesn't have a team to associate award with"
+msgstr "该用户没有队伍来关联奖励"
+
 #: CTFd/api/v1/challenges.py:710
 #, python-format
 msgid "%(name)s is paused"
@@ -341,6 +349,112 @@ msgstr "%(message)s 您还剩 %(num)d %(tries)s。"
 msgid " Try again in %(seconds)d seconds"
 msgstr " 请在 %(seconds)d 秒后重试"
 
+#: CTFd/api/v1/challenges.py:1262
+msgid "You must solve this challenge before rating it"
+msgstr "您必须先解出此题目才能评分"
+
+#: CTFd/api/v1/challenges.py:1269
+msgid "Rating value is required"
+msgstr "评分值是必填的"
+
+#: CTFd/api/v1/challenges.py:1277
+msgid "Rating value must be an integer"
+msgstr "评分值必须是整数"
+
+#: CTFd/api/v1/challenges.py:1284
+msgid "Rating value must be either 1 or -1"
+msgstr "评分值必须是 1 或 -1"
+
+#: CTFd/api/v1/challenges.py:1292
+msgid "Review text cannot exceed 2000 characters"
+msgstr "评论文本不能超过 2000 个字符"
+
+#: CTFd/api/v1/exports.py:30
+msgid "Missing table to export"
+msgstr "缺少要导出的数据表"
+
+#: CTFd/api/v1/files.py:121
+msgid "Location cannot be specified with multiple files"
+msgstr "指定多个文件时不能设置位置"
+
+#: CTFd/api/v1/hints.py:141 CTFd/api/v1/hints.py:154
+msgid "You must login to unlock this hint"
+msgstr "您必须登录才能解锁此提示"
+
+#: CTFd/api/v1/hints.py:182
+msgid "You must unlock other hints before accessing this hint"
+msgstr "您必须先解锁其他提示才能访问此提示"
+
+#: CTFd/api/v1/modules.py:125
+msgid "challenge_id is required"
+msgstr "challenge_id 是必填的"
+
+#: CTFd/api/v1/modules.py:159
+msgid "audience_id is required"
+msgstr "audience_id 是必填的"
+
+#: CTFd/api/v1/solutions.py:136
+msgid "A solution for this challenge already exists"
+msgstr "此题目已存在解答"
+
+#: CTFd/api/v1/submissions.py:204
+msgid "Solve already exists for this submission"
+msgstr "此提交已存在解题记录"
+
+#: CTFd/api/v1/teams.py:110 CTFd/api/v1/users.py:114
+msgid "Emails can only be queried by admins"
+msgstr "只有管理员才能查询邮箱"
+
+#: CTFd/api/v1/teams.py:324
+msgid "Only team captains can edit team information"
+msgstr "只有队长才能编辑队伍信息"
+
+#: CTFd/api/v1/teams.py:355
+msgid "Team disbanding is currently disabled"
+msgstr "当前已禁用解散队伍功能"
+
+#: CTFd/api/v1/teams.py:365
+msgid "Only team captains can disband their team"
+msgstr "只有队长才能解散队伍"
+
+#: CTFd/api/v1/teams.py:387
+msgid ""
+"You cannot disband your team as it has participated in the event. Please "
+"contact an admin to disband your team or remove a member."
+msgstr "您的队伍已参与比赛，无法解散。请联系管理员解散队伍或移除队员。"
+
+#: CTFd/api/v1/teams.py:422
+msgid "Only team captains can generate invite codes"
+msgstr "只有队长才能生成邀请码"
+
+#: CTFd/api/v1/teams.py:472
+msgid "User has already joined a team"
+msgstr "该用户已加入队伍"
+
+#: CTFd/api/v1/teams.py:507
+msgid "User is not part of this team"
+msgstr "该用户不属于此队伍"
+
+#: CTFd/api/v1/unlocks.py:126
+msgid "You do not have enough points to unlock this hint"
+msgstr "您的积分不足，无法解锁此提示"
+
+#: CTFd/api/v1/unlocks.py:149 CTFd/api/v1/unlocks.py:195
+msgid "You've already unlocked this target"
+msgstr "您已经解锁了此目标"
+
+#: CTFd/api/v1/unlocks.py:210
+msgid "Unknown target type"
+msgstr "未知的目标类型"
+
+#: CTFd/api/v1/users.py:244
+msgid "You cannot ban yourself"
+msgstr "您不能封禁自己"
+
+#: CTFd/api/v1/users.py:276
+msgid "You cannot delete yourself"
+msgstr "您不能删除自己"
+
 #: CTFd/api/v1/users.py:526
 msgid "Email settings not configured"
 msgstr "邮箱设置未配置"
@@ -349,7 +463,8 @@ msgstr "邮箱设置未配置"
 msgid "Email text cannot be empty"
 msgstr "邮箱不能为空"
 
-#: CTFd/api/v1/statistics/challenges.py:37 CTFd/api/v1/statistics/users.py:31
+#: CTFd/api/v1/statistics/challenges.py:37
+#: CTFd/api/v1/statistics/submissions.py:23 CTFd/api/v1/statistics/users.py:31
 msgid "That could not be found"
 msgstr "未找到该项"
 
@@ -491,7 +606,7 @@ msgstr "盾牌"
 #: CTFd/forms/awards.py:20
 #: CTFd/themes/admin/templates/modals/awards/create.html:44
 msgid "Bug"
-msgstr "Bug"
+msgstr "虫子"
 
 #: CTFd/forms/awards.py:21
 #: CTFd/themes/admin/templates/modals/awards/create.html:54
@@ -2910,7 +3025,7 @@ msgstr "移除 Logo"
 
 #: CTFd/themes/admin/templates/configs/logo.html:24
 msgid "CTF Logo"
-msgstr "CTF Logo"
+msgstr "CTF 站标"
 
 #: CTFd/themes/admin/templates/configs/logo.html:40
 msgid "Tab Icon"
@@ -4157,7 +4272,4 @@ msgstr "无效的国家/地区"
 #: CTFd/utils/validators/__init__.py:95
 msgid "Invalid Language"
 msgstr "无效的语言"
-
-#~ msgid "Teams are limited to {limit} member{plural}."
-#~ msgstr "队伍人数上限为 {limit} 人。"
 

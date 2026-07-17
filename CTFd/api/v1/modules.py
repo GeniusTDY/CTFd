@@ -1,4 +1,5 @@
 from flask import request
+from flask_babel import gettext
 from flask_restx import Namespace, Resource
 
 from CTFd.api.v1.helpers.request import validate_args
@@ -121,7 +122,7 @@ class ModuleChallengeList(Resource):
         if not challenge_id:
             return {
                 "success": False,
-                "errors": {"challenge_id": ["challenge_id is required"]},
+                "errors": {"challenge_id": [gettext("challenge_id is required")]},
             }, 400
 
         challenge = Challenges.query.filter_by(id=challenge_id).first_or_404()
@@ -155,7 +156,7 @@ class ModuleAudienceAccessList(Resource):
         if not req.get("audience_id"):
             return {
                 "success": False,
-                "errors": {"audience_id": ["audience_id is required"]},
+                "errors": {"audience_id": [gettext("audience_id is required")]},
             }, 400
 
         schema = ModuleAudienceAccessSchema()

@@ -1259,14 +1259,14 @@ class ChallengeRatings(Resource):
             if int(challenge_id) not in user_solves:
                 return {
                     "success": False,
-                    "errors": {"": ["You must solve this challenge before rating it"]},
+                    "errors": {"": [gettext("You must solve this challenge before rating it")]},
                 }, 403
 
         data = request.get_json()
         if not data or "value" not in data:
             return {
                 "success": False,
-                "errors": {"value": ["Rating value is required"]},
+                "errors": {"value": [gettext("Rating value is required")]},
             }, 400
 
         try:
@@ -1274,14 +1274,14 @@ class ChallengeRatings(Resource):
         except (ValueError, TypeError):
             return {
                 "success": False,
-                "errors": {"value": ["Rating value must be an integer"]},
+                "errors": {"value": [gettext("Rating value must be an integer")]},
             }, 400
 
         # Validate rating value (1-5 scale)
         if abs(rating_value) != 1:
             return {
                 "success": False,
-                "errors": {"value": ["Rating value must be either 1 or -1"]},
+                "errors": {"value": [gettext("Rating value must be either 1 or -1")]},
             }, 400
 
         # Get review text (optional)
@@ -1289,7 +1289,7 @@ class ChallengeRatings(Resource):
         if review_text and len(review_text) > 2000:
             return {
                 "success": False,
-                "errors": {"review": ["Review text cannot exceed 2000 characters"]},
+                "errors": {"review": [gettext("Review text cannot exceed 2000 characters")]},
             }, 400
 
         # Find existing rating or create new one

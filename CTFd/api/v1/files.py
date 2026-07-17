@@ -1,6 +1,7 @@
 from typing import List
 
 from flask import request
+from flask_babel import gettext
 from flask_restx import Namespace, Resource
 
 from CTFd.api.v1.helpers.request import validate_args
@@ -117,7 +118,7 @@ class FilesList(Resource):
             return {
                 "success": False,
                 "errors": {
-                    "location": ["Location cannot be specified with multiple files"]
+                    "location": [gettext("Location cannot be specified with multiple files")]
                 },
             }, 400
 
