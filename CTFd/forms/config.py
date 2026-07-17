@@ -65,6 +65,7 @@ class AccountSettingsForm(BaseForm):
         default="true",
     )
     team_size = IntegerField(
+        _l("Team Size"),
         widget=NumberInput(min=0),
         description=_l("Maximum number of users per team (Teams mode only)"),
     )

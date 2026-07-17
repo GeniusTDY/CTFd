@@ -1640,7 +1640,7 @@ msgid ""
 "participating"
 msgstr "控制用户是否必须确认邮箱地址后才能参与"
 
-#: CTFd/forms/setup.py:97
+#: CTFd/forms/config.py:68 CTFd/forms/setup.py:97
 msgid "Team Size"
 msgstr "队伍人数上限"
 
@@ -5811,3 +5811,15 @@ msgstr "解锁提示？"
 #: CTFd/themes/core-deprecated/assets/js/pages/challenges.js:413
 msgid "Are you sure you want to open this hint?"
 msgstr "您确定要打开此提示吗？"
+
+#: CTFd/themes/admin/templates/challenges/new.html:93
+#: CTFd/themes/admin/templates/challenges/challenges.html:109
+#: CTFd/themes/admin/templates/challenges/challenge.html:76
+msgid "Standard"
+msgstr "标准"
+
+#: CTFd/themes/admin/templates/challenges/new.html:95
+#: CTFd/themes/admin/templates/challenges/challenges.html:111
+#: CTFd/themes/admin/templates/challenges/challenge.html:78
+msgid "Dynamic"
+msgstr "动态"

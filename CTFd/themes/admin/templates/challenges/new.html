@@ -88,7 +88,15 @@
 							<span class="card-title">
 								<div class="form-check">
 									<input class="form-check-input card-radio-clone" type="radio" style="visibility: hidden;" checked>
-									<span class="form-check-label">{{ type }}</span>
+									<span class="form-check-label">
+										{% if type == "standard" %}
+											{% trans %}Standard{% endtrans %}
+										{% elif type == "dynamic" %}
+											{% trans %}Dynamic{% endtrans %}
+										{% else %}
+											{{ type }}
+										{% endif %}
+									</span>
 								</div>
 							</span>
 						</div>
