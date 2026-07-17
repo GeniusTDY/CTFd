@@ -227,15 +227,15 @@
 }
 
 .editor-statusbar .lines:before {
-  content: "lines: ";
+  content: "行数: ";
 }
 
 .editor-statusbar .words:before {
-  content: "words: ";
+  content: "字数: ";
 }
 
 .editor-statusbar .characters:before {
-  content: "characters: ";
+  content: "字符数: ";
 }
 
 .editor-preview-full {
