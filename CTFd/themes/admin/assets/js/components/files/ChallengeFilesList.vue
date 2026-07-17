@@ -3,8 +3,12 @@
     <table id="filesboard" class="table table-striped">
       <thead>
         <tr>
-          <td class="text-center"><b>File</b></td>
-          <td class="text-center"><b>Settings</b></td>
+          <td class="text-center">
+            <b>{{ labels.file }}</b>
+          </td>
+          <td class="text-center">
+            <b>{{ labels.settings }}</b>
+          </td>
         </tr>
       </thead>
       <tbody>
@@ -14,7 +18,7 @@
               file.location.split("/").pop()
             }}</a>
             <div class="d-flex flex-row align-items-center">
-              <strong class="mr-2 small"> SHA1: </strong>
+              <strong class="mr-2 small"> {{ labels.sha1 }} </strong>
               <span class="d-inline-block mr-2 small text-muted">
                 {{ file.sha1sum || "null" }}
               </span>
@@ -44,7 +48,7 @@
             type="file"
           />
           <sub class="text-muted">
-            Attach multiple files using Control+Click or Cmd+Click.
+            {{ labels.attachMultipleFiles }}
           </sub>
         </div>
         <div class="form-group">
@@ -53,7 +57,7 @@
             id="_submit"
             name="_submit"
             type="submit"
-            value="Upload"
+            :value="labels.upload"
           />
         </div>
       </form>
@@ -74,6 +78,15 @@ export default {
     return {
       files: [],
       urlRoot: CTFd.config.urlRoot,
+      labels: {
+        file: _("File"),
+        settings: _("Settings"),
+        sha1: _("SHA1:"),
+        attachMultipleFiles: _(
+          "Attach multiple files using Control+Click or Cmd+Click.",
+        ),
+        upload: _("Upload"),
+      },
     };
   },
   methods: {
@@ -104,8 +117,8 @@ export default {
     },
     deleteFile: function (fileId) {
       ezQuery({
-        title: "Delete Files",
-        body: "Are you sure you want to delete this file?",
+        title: _("Delete Files"),
+        body: _("Are you sure you want to delete this file?"),
         success: () => {
           CTFd.fetch(`/api/v1/files/${fileId}`, {
             method: "DELETE",

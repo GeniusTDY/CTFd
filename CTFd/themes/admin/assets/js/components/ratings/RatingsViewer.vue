@@ -4,7 +4,8 @@
       <div class="col-md-12">
         <!-- Loading State -->
         <div v-if="loading" class="text-center">
-          <i class="fas fa-circle-notch fa-spin spinner"></i> Loading ratings...
+          <i class="fas fa-circle-notch fa-spin spinner"></i>
+          {{ labels.loadingRatings }}
         </div>
 
         <!-- Error State -->
@@ -18,7 +19,7 @@
           class="text-center text-muted py-4"
         >
           <i class="fa fa-star fa-2x mb-3"></i>
-          <p>No ratings yet</p>
+          <p>{{ labels.noRatingsYet }}</p>
         </div>
 
         <!-- Ratings Content -->
@@ -44,7 +45,7 @@
               </div>
               <div class="col-md-4 text-center">
                 <h4>
-                  <strong> Total: {{ meta.summary.count }} </strong>
+                  <strong> {{ labels.total }} {{ meta.summary.count }} </strong>
                 </h4>
               </div>
             </div>
@@ -91,13 +92,14 @@
               class="btn btn-secondary"
               :disabled="loading"
             >
-              <i class="fa fa-arrow-left"></i> Previous
+              <i class="fa fa-arrow-left"></i> {{ labels.previous }}
             </button>
             <div v-else></div>
 
             <!-- Page info -->
             <span class="text-muted">
-              Page {{ meta.pagination.page }} of {{ meta.pagination.pages }}
+              {{ labels.pageWord }} {{ meta.pagination.page }}
+              {{ labels.ofWord }} {{ meta.pagination.pages }}
             </span>
 
             <!-- Next button -->
@@ -107,7 +109,7 @@
               class="btn btn-secondary"
               :disabled="loading"
             >
-              Next <i class="fa fa-arrow-right"></i>
+              {{ labels.next }} <i class="fa fa-arrow-right"></i>
             </button>
             <div v-else></div>
           </div>
@@ -149,6 +151,15 @@ export default {
         },
       },
       urlRoot: CTFd.config.urlRoot,
+      labels: {
+        loadingRatings: _("Loading ratings..."),
+        noRatingsYet: _("No ratings yet"),
+        total: _("Total:"),
+        previous: _("Previous"),
+        pageWord: _("Page"),
+        ofWord: _("of"),
+        next: _("Next"),
+      },
     };
   },
   created() {
@@ -184,12 +195,12 @@ export default {
           this.ratings = data.data;
           this.meta = data.meta;
         } else {
-          this.error = "Failed to load ratings";
+          this.error = _("Failed to load ratings");
           console.error("API Error:", data);
         }
       } catch (err) {
         console.error("Error loading ratings:", err);
-        this.error = "Error loading ratings";
+        this.error = _("Error loading ratings");
       } finally {
         this.loading = false;
       }

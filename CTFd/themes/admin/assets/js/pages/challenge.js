@@ -159,9 +159,11 @@ $(() => {
   $(".delete-challenge").click(function (_e) {
     ezQuery({
       title: _("Delete Challenge"),
-      body: _("Are you sure you want to delete ") + "<strong>" + htmlEntities(
-        window.CHALLENGE_NAME,
-      ) + "</strong>",
+      body:
+        _("Are you sure you want to delete ") +
+        "<strong>" +
+        htmlEntities(window.CHALLENGE_NAME) +
+        "</strong>",
       success: function () {
         CTFd.fetch("/api/v1/challenges/" + window.CHALLENGE_ID, {
           method: "DELETE",
@@ -247,7 +249,9 @@ $(() => {
         if (response.data.length === 0 && params.state === "visible") {
           ezQuery({
             title: _("Missing Flags"),
-            body: _("This challenge does not have any flags meaning it may be unsolveable. Are you sure you'd like to update this challenge?"),
+            body: _(
+              "This challenge does not have any flags meaning it may be unsolveable. Are you sure you'd like to update this challenge?",
+            ),
             success: update_challenge,
           });
         } else {

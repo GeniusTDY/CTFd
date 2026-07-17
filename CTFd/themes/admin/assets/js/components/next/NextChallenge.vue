@@ -3,14 +3,12 @@
     <form @submit.prevent="updateNext">
       <div class="form-group">
         <label>
-          Next Challenge
+          {{ labels.nextChallenge }}
           <br />
-          <small class="text-muted"
-            >Challenge to recommend after solving this challenge</small
-          >
+          <small class="text-muted">{{ labels.challengeToRecommend }}</small>
         </label>
         <select class="form-control custom-select" v-model="selected_id">
-          <option value="null">--</option>
+          <option value="null">{{ labels.noneOption }}</option>
           <option
             v-for="challenge in otherChallenges"
             :value="challenge.id"
@@ -25,7 +23,7 @@
           class="btn btn-success float-right"
           :disabled="!updateAvailable"
         >
-          Save
+          {{ labels.save }}
         </button>
       </div>
     </form>
@@ -44,6 +42,14 @@ export default {
       challenge: null,
       challenges: [],
       selected_id: null,
+      labels: {
+        nextChallenge: _("Next Challenge"),
+        challengeToRecommend: _(
+          "Challenge to recommend after solving this challenge",
+        ),
+        noneOption: _("--"),
+        save: _("Save"),
+      },
     };
   },
   computed: {

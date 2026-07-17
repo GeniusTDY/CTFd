@@ -12,7 +12,12 @@ function deleteSelectedTeams(_event) {
 
   ezQuery({
     title: _("Delete Teams"),
-    body: _("Are you sure you want to delete ") + teamIDs.length + " " + target + _("?"),
+    body:
+      _("Are you sure you want to delete ") +
+      teamIDs.length +
+      " " +
+      target +
+      _("?"),
     success: function () {
       const reqs = [];
       for (var teamID of teamIDs) {
@@ -36,26 +41,34 @@ function bulkEditTeams(_event) {
 
   ezAlert({
     title: _("Edit Teams"),
-    body: $(`
+    body: (() => {
+      const labels = {
+        banned: _("Banned"),
+        hidden: _("Hidden"),
+        trueLabel: _("True"),
+        falseLabel: _("False"),
+      };
+      return $(`
     <form id="teams-bulk-edit">
       <div class="form-group">
-        <label>${_("Banned")}</label>
+        <label>${labels.banned}</label>
         <select name="banned" data-initial="">
           <option value="">--</option>
-          <option value="true">${_("True")}</option>
-          <option value="false">${_("False")}</option>
+          <option value="true">${labels.trueLabel}</option>
+          <option value="false">${labels.falseLabel}</option>
         </select>
       </div>
       <div class="form-group">
-        <label>${_("Hidden")}</label>
+        <label>${labels.hidden}</label>
         <select name="hidden" data-initial="">
           <option value="">--</option>
-          <option value="true">${_("True")}</option>
-          <option value="false">${_("False")}</option>
+          <option value="true">${labels.trueLabel}</option>
+          <option value="false">${labels.falseLabel}</option>
         </select>
       </div>
     </form>
-    `),
+    `);
+    })(),
     button: _("Submit"),
     success: function () {
       let data = $("#teams-bulk-edit").serializeJSON(true);

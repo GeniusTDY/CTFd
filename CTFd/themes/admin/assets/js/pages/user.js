@@ -234,7 +234,12 @@ function correctSubmissions(_event) {
 
   ezQuery({
     title: _("Correct Submissions"),
-    body: _("Are you sure you want to mark ") + submissionIDs.length + " " + target + _(" correct?"),
+    body:
+      _("Are you sure you want to mark ") +
+      submissionIDs.length +
+      " " +
+      target +
+      _(" correct?"),
     success: function () {
       const reqs = [];
       for (var subId of submissionIDs) {
@@ -278,11 +283,21 @@ function deleteSelectedSubmissions(event, target) {
   let submissionIDs = submissions.map(function () {
     return $(this).data("submission-id");
   });
-  let target_string = submissionIDs.length === 1 ? type : (target === "solves" ? _("solves") : _("fails"));
+  let target_string =
+    submissionIDs.length === 1
+      ? type
+      : target === "solves"
+        ? _("solves")
+        : _("fails");
 
   ezQuery({
     title: _("Delete ") + title,
-    body: _("Are you sure you want to delete ") + submissionIDs.length + " " + target_string + _("?"),
+    body:
+      _("Are you sure you want to delete ") +
+      submissionIDs.length +
+      " " +
+      target_string +
+      _("?"),
     success: function () {
       const reqs = [];
       for (var subId of submissionIDs) {
@@ -303,7 +318,12 @@ function deleteSelectedAwards(_event) {
 
   ezQuery({
     title: _("Delete Awards"),
-    body: _("Are you sure you want to delete ") + awardIDs.length + " " + target + _("?"),
+    body:
+      _("Are you sure you want to delete ") +
+      awardIDs.length +
+      " " +
+      target +
+      _("?"),
     success: function () {
       const reqs = [];
       for (var awardID of awardIDs) {
@@ -335,7 +355,14 @@ function solveSelectedMissingChallenges(event) {
 
   ezQuery({
     title: _("Mark Correct"),
-    body: _("Are you sure you want to mark ") + challengeIDs.length + " " + target + _(" correct for ") + htmlEntities(window.USER_NAME) + _("?"),
+    body:
+      _("Are you sure you want to mark ") +
+      challengeIDs.length +
+      " " +
+      target +
+      _(" correct for ") +
+      htmlEntities(window.USER_NAME) +
+      _("?"),
     success: function () {
       const reqs = [];
       for (var challengeID of challengeIDs) {

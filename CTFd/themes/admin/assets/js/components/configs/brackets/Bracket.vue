@@ -14,36 +14,37 @@
     <div class="row">
       <div class="col-md-9">
         <div class="form-group">
-          <label>Bracket Name</label>
+          <label>{{ labels.bracketName }}</label>
           <input type="text" class="form-control" v-model.lazy="bracket.name" />
           <small class="form-text text-muted">
-            Bracket name (e.g. "Students", "Interns", "Engineers")
+            {{ labels.bracketNameHelp }}
           </small>
         </div>
       </div>
 
       <div class="col-md-12">
         <div class="form-group">
-          <label>Bracket Description</label>
+          <label>{{ labels.bracketDescription }}</label>
           <input
             type="text"
             class="form-control"
             v-model.lazy="bracket.description"
           />
-          <small class="form-text text-muted">Bracket Description</small>
+          <small class="form-text text-muted">{{
+            labels.bracketDescriptionHelp
+          }}</small>
         </div>
       </div>
 
       <div class="col-md-12">
-        <label>Bracket Type</label>
+        <label>{{ labels.bracketType }}</label>
         <select class="custom-select" v-model.lazy="bracket.type">
           <option></option>
-          <option value="users">Users</option>
-          <option value="teams">Teams</option>
+          <option value="users">{{ labels.users }}</option>
+          <option value="teams">{{ labels.teams }}</option>
         </select>
         <small class="form-text text-muted">
-          If you are using Team Mode and would like the bracket to apply to
-          entire teams instead of individuals, select Teams.
+          {{ labels.bracketTypeHelp }}
         </small>
       </div>
     </div>
@@ -56,7 +57,7 @@
             type="button"
             @click="saveBracket()"
           >
-            Save
+            {{ labels.save }}
           </button>
         </div>
       </div>
@@ -76,6 +77,21 @@ export default {
   data: function () {
     return {
       bracket: this.initialBracket,
+      labels: {
+        bracketName: _("Bracket Name"),
+        bracketNameHelp: _(
+          'Bracket name (e.g. "Students", "Interns", "Engineers")',
+        ),
+        bracketDescription: _("Bracket Description"),
+        bracketDescriptionHelp: _("Bracket Description"),
+        bracketType: _("Bracket Type"),
+        users: _("Users"),
+        teams: _("Teams"),
+        bracketTypeHelp: _(
+          "If you are using Team Mode and would like the bracket to apply to entire teams instead of individuals, select Teams.",
+        ),
+        save: _("Save"),
+      },
     };
   },
   methods: {
@@ -114,7 +130,7 @@ export default {
           if (response.success === true) {
             this.bracket = response.data;
             ezToast({
-              title: "Success",
+              title: _("Success"),
               body: message,
               delay: 1000,
             });
@@ -122,7 +138,7 @@ export default {
         });
     },
     deleteBracket: function () {
-      if (confirm("Are you sure you'd like to delete this bracket?")) {
+      if (confirm(_("Are you sure you'd like to delete this bracket?"))) {
         if (this.persisted()) {
           CTFd.fetch(`/api/v1/brackets/${this.bracket.id}`, {
             method: "DELETE",

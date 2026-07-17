@@ -404,10 +404,11 @@ const graph_configs = {
         title: _("Challenge Name"),
       },
       yaxis: {
-        title: `${_("Percentage of ")}${
+        title:
+          _("Percentage of ") +
           CTFd.config.userMode.charAt(0).toUpperCase() +
-          CTFd.config.userMode.slice(1)
-        }${_(" (%)")}`,
+          CTFd.config.userMode.slice(1) +
+          _(" (%)"),
         range: [0, 100],
       },
       annotations: annotations,
@@ -471,10 +472,11 @@ const graph_configs = {
           },
         },
         yAxis: {
-          name: `"${_("Percentage of ")}${
+          name:
+            _("Percentage of ") +
             CTFd.config.userMode.charAt(0).toUpperCase() +
-            CTFd.config.userMode.slice(1)
-          }${_(" (%)")}"`,
+            CTFd.config.userMode.slice(1) +
+            _(" (%)"),
           nameGap: 50,
           nameLocation: "middle",
           type: "value",
@@ -532,10 +534,10 @@ const graph_configs = {
         type: "category",
       },
       yaxis: {
-        title: `${_("Number of ")}${
+        title:
+          _("Number of ") +
           CTFd.config.userMode.charAt(0).toUpperCase() +
-          CTFd.config.userMode.slice(1)
-        }`,
+          CTFd.config.userMode.slice(1),
       },
       annotations: annotations,
     }),
@@ -589,10 +591,10 @@ const graph_configs = {
           data: brackets,
         },
         yAxis: {
-          name: `${_("Number of ")}${
+          name:
+            _("Number of ") +
             CTFd.config.userMode.charAt(0).toUpperCase() +
-            CTFd.config.userMode.slice(1)
-          }`,
+            CTFd.config.userMode.slice(1),
           nameGap: 50,
           nameLocation: "middle",
           type: "value",

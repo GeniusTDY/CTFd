@@ -36,8 +36,10 @@ Alpine.data("SetupForm", () => ({
       if (
         !confirm(
           _("This image file is larger than ") +
-            (limit / 1000) +
-            _("KB which may result in increased load times. Are you sure you'd like to use this file?"),
+            limit / 1000 +
+            _(
+              "KB which may result in increased load times. Are you sure you'd like to use this file?",
+            ),
         )
       ) {
         e.target.value = "";
@@ -125,9 +127,7 @@ Alpine.data("SetupForm", () => ({
     if (firstInvalid) {
       let tabPane = firstInvalid.closest(".tab-pane");
       if (tabPane) {
-        let tabTrigger = this.$root.querySelector(
-          `[data-bs-target="#${tabPane.id}"]`,
-        );
+        let tabTrigger = this.$root.querySelector(`[data-bs-target="#${tabPane.id}"]`);
         if (tabTrigger) {
           Tab.getOrCreateInstance(tabTrigger).show();
         }

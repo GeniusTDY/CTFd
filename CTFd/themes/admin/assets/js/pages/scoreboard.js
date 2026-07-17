@@ -78,18 +78,25 @@ function bulkToggleAccounts(_event) {
 
   ezAlert({
     title: _("Toggle Visibility"),
-    body: $(`
+    body: (() => {
+      const labels = {
+        visibility: _("Visibility"),
+        visible: _("Visible"),
+        hidden: _("Hidden"),
+      };
+      return $(`
     <form id="scoreboard-bulk-edit">
       <div class="form-group">
-        <label>${_("Visibility")}</label>
+        <label>${labels.visibility}</label>
         <select name="visibility" data-initial="">
           <option value="">--</option>
-          <option value="visible">${_("Visible")}</option>
-          <option value="hidden">${_("Hidden")}</option>
+          <option value="visible">${labels.visible}</option>
+          <option value="hidden">${labels.hidden}</option>
         </select>
       </div>
     </form>
-    `),
+    `);
+    })(),
     button: _("Submit"),
     success: function () {
       let data = $("#scoreboard-bulk-edit").serializeJSON(true);

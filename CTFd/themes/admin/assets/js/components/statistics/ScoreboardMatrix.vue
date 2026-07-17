@@ -19,7 +19,7 @@
                 aria-expanded="false"
                 aria-controls="collapseFilters"
               >
-                <i class="fas fa-filter mr-2"></i> Filter Matrix Data
+                <i class="fas fa-filter mr-2"></i> {{ labels.filterMatrixData }}
               </button>
             </h2>
           </div>
@@ -33,13 +33,13 @@
               <div
                 class="d-flex justify-content-between align-items-center mb-3"
               >
-                <h5 class="mb-0">Filters</h5>
+                <h5 class="mb-0">{{ labels.filters }}</h5>
                 <div>
                   <button
                     class="btn btn-secondary btn-sm"
                     @click="resetFilters"
                   >
-                    Reset All
+                    {{ labels.resetAll }}
                   </button>
                 </div>
               </div>
@@ -48,17 +48,13 @@
                 <div class="col-md-3 mb-3 mb-md-0">
                   <div class="card p-2 shadow-sm filter-col">
                     <h6>
-                      Filter {{ userMode === "teams" ? "Teams" : "Users" }}
+                      {{ filterUsersLabel }}
                     </h6>
                     <input
                       type="text"
                       class="form-control form-control-sm mb-2"
                       v-model="userSearch"
-                      :placeholder="
-                        'Search ' +
-                        (userMode === 'teams' ? 'teams' : 'users') +
-                        '...'
-                      "
+                      :placeholder="searchUsersPlaceholder"
                     />
                     <div class="filter-list">
                       <div
@@ -85,11 +81,13 @@
                     </div>
                     <div class="mt-1">
                       <small>
-                        <a href="#" @click.prevent="selectAllUsers"
-                          >Select All</a
-                        >
+                        <a href="#" @click.prevent="selectAllUsers">{{
+                          labels.selectAll
+                        }}</a>
                         /
-                        <a href="#" @click.prevent="deselectAllUsers">None</a>
+                        <a href="#" @click.prevent="deselectAllUsers">{{
+                          labels.none
+                        }}</a>
                       </small>
                     </div>
                   </div>
@@ -97,12 +95,12 @@
 
                 <div class="col-md-3 mb-3 mb-md-0">
                   <div class="card p-2 shadow-sm filter-col">
-                    <h6>Filter Categories</h6>
+                    <h6>{{ labels.filterCategories }}</h6>
                     <input
                       type="text"
                       class="form-control form-control-sm mb-2"
                       v-model="categorySearch"
-                      placeholder="Search categories..."
+                      :placeholder="labels.searchCategories"
                     />
                     <div class="filter-list">
                       <div
@@ -129,9 +127,9 @@
                     </div>
                     <div class="mt-1">
                       <small>
-                        <a href="#" @click.prevent="selectAllCategories"
-                          >Select All</a
-                        >
+                        <a href="#" @click.prevent="selectAllCategories">{{
+                          labels.selectAll
+                        }}</a>
                         /
                         <a href="#" @click.prevent="deselectAllCategories"
                           >None</a
@@ -143,29 +141,35 @@
 
                 <div class="col-md-3 mb-3 mb-md-0">
                   <div class="card p-2 shadow-sm filter-col">
-                    <h6>Filter Challenges</h6>
+                    <h6>{{ labels.filterChallenges }}</h6>
                     <input
                       type="text"
                       class="form-control form-control-sm mb-2"
                       v-model="challengeSearch"
-                      placeholder="Search challenges..."
+                      :placeholder="labels.searchChallenges"
                     />
-                    <label class="mb-0">Sort By</label>
+                    <label class="mb-0">{{ labels.sortBy }}</label>
                     <select
                       class="form-control form-control-sm mb-2"
                       v-model="challengeSort"
                     >
-                      <option value="position">Position (Default)</option>
-                      <option value="id">ID (Ascending)</option>
-                      <option value="id-desc">ID (Descending)</option>
+                      <option value="position">
+                        {{ labels.positionDefault }}
+                      </option>
+                      <option value="id">{{ labels.idAscending }}</option>
+                      <option value="id-desc">{{ labels.idDescending }}</option>
                       <option value="name-asc">
-                        Alphabetical (Ascending: A-Z)
+                        {{ labels.alphabeticalAscending }}
                       </option>
                       <option value="name-desc">
-                        Alphabetical (Descending: Z-A)
+                        {{ labels.alphabeticalDescending }}
                       </option>
-                      <option value="value-asc">Points (Ascending)</option>
-                      <option value="value-desc">Points (Descending)</option>
+                      <option value="value-asc">
+                        {{ labels.pointsAscending }}
+                      </option>
+                      <option value="value-desc">
+                        {{ labels.pointsDescending }}
+                      </option>
                     </select>
                     <div class="filter-list">
                       <div
@@ -192,9 +196,9 @@
                     </div>
                     <div class="mt-1">
                       <small>
-                        <a href="#" @click.prevent="selectAllChallenges"
-                          >Select All</a
-                        >
+                        <a href="#" @click.prevent="selectAllChallenges">{{
+                          labels.selectAll
+                        }}</a>
                         /
                         <a href="#" @click.prevent="deselectAllChallenges"
                           >None</a
@@ -206,12 +210,12 @@
 
                 <div class="col-md-3">
                   <div class="card p-2 shadow-sm filter-col">
-                    <h6>Filter Brackets</h6>
+                    <h6>{{ labels.filterBrackets }}</h6>
                     <input
                       type="text"
                       class="form-control form-control-sm mb-2"
                       v-model="bracketSearch"
-                      placeholder="Search brackets..."
+                      :placeholder="labels.searchBrackets"
                     />
                     <div class="filter-list">
                       <div
@@ -238,9 +242,9 @@
                     </div>
                     <div class="mt-1">
                       <small>
-                        <a href="#" @click.prevent="selectAllBrackets"
-                          >Select All</a
-                        >
+                        <a href="#" @click.prevent="selectAllBrackets">{{
+                          labels.selectAll
+                        }}</a>
                         /
                         <a href="#" @click.prevent="deselectAllBrackets"
                           >None</a
@@ -262,21 +266,21 @@
           style="width: 15px; height: 15px; background-color: #28a745"
           class="mr-1 border"
         ></div>
-        <small>Solved</small>
+        <small>{{ labels.solved }}</small>
       </div>
       <div class="d-flex align-items-center mr-3">
         <div
           style="width: 15px; height: 15px; background-color: #ffc107"
           class="mr-1 border"
         ></div>
-        <small>Attempted</small>
+        <small>{{ labels.attempted }}</small>
       </div>
       <div class="d-flex align-items-center">
         <div
           style="width: 15px; height: 15px; background-color: #17a2b8"
           class="mr-1 border"
         ></div>
-        <small>Opened</small>
+        <small>{{ labels.opened }}</small>
       </div>
     </div>
 
@@ -284,11 +288,15 @@
       <table class="table table-striped table-sm mb-0" id="matrix-scoreboard">
         <thead class="thead-dark">
           <tr>
-            <th class="sticky-header sticky-col-place text-center">Place</th>
-            <th class="sticky-header sticky-col-name text-center">
-              {{ userMode === "teams" ? "Team" : "User" }}
+            <th class="sticky-header sticky-col-place text-center">
+              {{ labels.place }}
             </th>
-            <th class="sticky-header sticky-col-score text-center">Score</th>
+            <th class="sticky-header sticky-col-name text-center">
+              {{ userLabel }}
+            </th>
+            <th class="sticky-header sticky-col-score text-center">
+              {{ labels.score }}
+            </th>
             <th
               v-for="challenge in displayChallenges"
               :key="challenge.id"
@@ -365,6 +373,32 @@ export default {
       selectedBracketIds: [],
       challengeSort: "position",
       userMode: "",
+      labels: {
+        filterMatrixData: _("Filter Matrix Data"),
+        filters: _("Filters"),
+        resetAll: _("Reset All"),
+        selectAll: _("Select All"),
+        none: _("None"),
+        filterCategories: _("Filter Categories"),
+        searchCategories: _("Search categories..."),
+        filterChallenges: _("Filter Challenges"),
+        searchChallenges: _("Search challenges..."),
+        sortBy: _("Sort By"),
+        positionDefault: _("Position (Default)"),
+        idAscending: _("ID (Ascending)"),
+        idDescending: _("ID (Descending)"),
+        alphabeticalAscending: _("Alphabetical (Ascending: A-Z)"),
+        alphabeticalDescending: _("Alphabetical (Descending: Z-A)"),
+        pointsAscending: _("Points (Ascending)"),
+        pointsDescending: _("Points (Descending)"),
+        filterBrackets: _("Filter Brackets"),
+        searchBrackets: _("Search brackets..."),
+        solved: _("Solved"),
+        attempted: _("Attempted"),
+        opened: _("Opened"),
+        place: _("Place"),
+        score: _("Score"),
+      },
     };
   },
   created() {
@@ -400,6 +434,17 @@ export default {
     },
   },
   computed: {
+    filterUsersLabel() {
+      return this.userMode === "teams" ? _("Filter Teams") : _("Filter Users");
+    },
+    searchUsersPlaceholder() {
+      return this.userMode === "teams"
+        ? _("Search teams...")
+        : _("Search users...");
+    },
+    userLabel() {
+      return this.userMode === "teams" ? _("Team") : _("User");
+    },
     filteredUserList() {
       if (!this.userSearch) return this.users;
       const lower = this.userSearch.toLowerCase();
@@ -491,17 +536,17 @@ export default {
             if (hasNoBracketUsers) {
               this.brackets.unshift({
                 id: "no_bracket",
-                name: "(No Bracket)",
+                name: _("(No Bracket)"),
               });
             }
             this.restoreSettings();
           } else {
-            this.error = "Failed to load progression data";
+            this.error = _("Failed to load progression data");
           }
         })
         .catch((err) => {
           console.error("Failed to fetch progression data", err);
-          this.error = "Failed to load progression data";
+          this.error = _("Failed to load progression data");
         })
         .finally(() => {
           this.loading = false;

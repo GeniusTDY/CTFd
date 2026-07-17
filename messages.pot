@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2026-07-17 02:36+0000\n"
+"POT-Creation-Date: 2026-07-17 04:35+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -510,10 +510,13 @@ msgstr ""
 #: CTFd/forms/auth.py:44 CTFd/forms/auth.py:70 CTFd/forms/auth.py:81
 #: CTFd/forms/auth.py:88 CTFd/forms/notifications.py:27 CTFd/forms/self.py:29
 #: CTFd/forms/teams.py:154 CTFd/forms/teams.py:194 CTFd/forms/teams.py:237
-#: CTFd/forms/users.py:193 CTFd/themes/admin/assets/js/pages/challenges.js:71
-#: CTFd/themes/admin/assets/js/pages/scoreboard.js:93
-#: CTFd/themes/admin/assets/js/pages/teams.js:59
-#: CTFd/themes/admin/assets/js/pages/users.js:67
+#: CTFd/forms/users.py:193
+#: CTFd/themes/admin/assets/js/components/hints/HintCreationForm.vue:132
+#: CTFd/themes/admin/assets/js/components/hints/HintEditForm.vue:140
+#: CTFd/themes/admin/assets/js/pages/challenges.js:87
+#: CTFd/themes/admin/assets/js/pages/scoreboard.js:100
+#: CTFd/themes/admin/assets/js/pages/teams.js:72
+#: CTFd/themes/admin/assets/js/pages/users.js:81
 #: CTFd/themes/admin/templates/modals/teams/captain.html:20
 #: CTFd/themes/core/templates/challenge.html:187
 #: CTFd/themes/core/templates/challenge.html:271
@@ -546,7 +549,7 @@ msgstr ""
 msgid "Name"
 msgstr ""
 
-#: CTFd/forms/awards.py:11
+#: CTFd/forms/awards.py:11 CTFd/themes/admin/assets/js/pages/challenges.js:50
 #: CTFd/themes/admin/templates/challenges/challenges.html:82
 #: CTFd/themes/admin/templates/challenges/update.html:64
 #: CTFd/themes/admin/templates/teams/team.html:354
@@ -563,6 +566,7 @@ msgid "Value"
 msgstr ""
 
 #: CTFd/forms/awards.py:12 CTFd/forms/challenges.py:15
+#: CTFd/themes/admin/assets/js/pages/challenges.js:49
 #: CTFd/themes/admin/templates/challenges/challenges.html:80
 #: CTFd/themes/admin/templates/challenges/update.html:18
 #: CTFd/themes/admin/templates/modules/module.html:88
@@ -593,6 +597,7 @@ msgid "Description"
 msgstr ""
 
 #: CTFd/forms/awards.py:14 CTFd/forms/teams.py:111
+#: CTFd/themes/admin/assets/js/components/solution/SolutionEditor.vue:77
 #: CTFd/themes/admin/templates/audiences/new.html:19
 #: CTFd/themes/admin/templates/challenges/create.html:67
 #: CTFd/themes/admin/templates/modules/new.html:19
@@ -605,6 +610,7 @@ msgid "Icon"
 msgstr ""
 
 #: CTFd/forms/awards.py:18
+#: CTFd/themes/admin/assets/js/components/statistics/ScoreboardMatrix.vue:381
 #: CTFd/themes/admin/templates/modals/awards/create.html:28
 msgid "None"
 msgstr ""
@@ -672,6 +678,7 @@ msgstr ""
 
 #: CTFd/forms/challenges.py:14 CTFd/forms/submissions.py:14
 #: CTFd/forms/teams.py:202 CTFd/forms/users.py:146
+#: CTFd/themes/admin/assets/js/components/hints/HintsList.vue:92
 #: CTFd/themes/admin/templates/audiences/audiences.html:21
 #: CTFd/themes/admin/templates/challenges/challenges.html:78
 #: CTFd/themes/admin/templates/modules/module.html:88
@@ -683,6 +690,7 @@ msgid "ID"
 msgstr ""
 
 #: CTFd/forms/challenges.py:16 CTFd/forms/users.py:187
+#: CTFd/themes/admin/assets/js/components/flags/FlagList.vue:89
 #: CTFd/themes/admin/templates/challenges/challenges.html:83
 #: CTFd/themes/admin/templates/submissions.html:93
 #: CTFd/themes/core/templates/challenge.html:294
@@ -702,14 +710,20 @@ msgid "Search"
 msgstr ""
 
 #: CTFd/forms/challenges.py:27 CTFd/forms/pages.py:45
+#: CTFd/themes/admin/assets/js/components/files/MediaLibrary.vue:240
 msgid "Upload Files"
 msgstr ""
 
 #: CTFd/forms/challenges.py:28 CTFd/forms/pages.py:46
+#: CTFd/themes/admin/assets/js/components/files/ChallengeFilesList.vue:85
+#: CTFd/themes/admin/assets/js/components/files/MediaLibrary.vue:241
 msgid "Attach multiple files using Control+Click or Cmd+Click."
 msgstr ""
 
-#: CTFd/forms/challenges.py:31 CTFd/themes/admin/templates/configs/logo.html:29
+#: CTFd/forms/challenges.py:31
+#: CTFd/themes/admin/assets/js/components/files/ChallengeFilesList.vue:88
+#: CTFd/themes/admin/assets/js/components/files/MediaLibrary.vue:250
+#: CTFd/themes/admin/templates/configs/logo.html:29
 #: CTFd/themes/admin/templates/configs/logo.html:64
 msgid "Upload"
 msgstr ""
@@ -880,6 +894,7 @@ msgstr ""
 
 #: CTFd/forms/config.py:113 CTFd/forms/config.py:147 CTFd/forms/config.py:167
 #: CTFd/forms/config.py:350
+#: CTFd/themes/admin/assets/js/components/solution/SolutionEditor.vue:77
 #: CTFd/themes/admin/templates/challenges/update.html:188
 #: CTFd/themes/admin/templates/configs/challenges.html:53
 #: CTFd/themes/admin/templates/configs/general.html:23
@@ -910,7 +925,9 @@ msgstr ""
 msgid "CSV Type"
 msgstr ""
 
-#: CTFd/forms/config.py:125 CTFd/themes/admin/templates/base.html:61
+#: CTFd/forms/config.py:125
+#: CTFd/themes/admin/assets/js/components/configs/brackets/Bracket.vue:88
+#: CTFd/themes/admin/templates/base.html:61
 #: CTFd/themes/admin/templates/config.html:59
 #: CTFd/themes/admin/templates/configs/fields.html:12
 #: CTFd/themes/admin/templates/scoreboard.html:33
@@ -921,7 +938,9 @@ msgstr ""
 msgid "Users"
 msgstr ""
 
-#: CTFd/forms/config.py:126 CTFd/themes/admin/templates/base.html:63
+#: CTFd/forms/config.py:126
+#: CTFd/themes/admin/assets/js/components/configs/brackets/Bracket.vue:89
+#: CTFd/themes/admin/templates/base.html:63
 #: CTFd/themes/admin/templates/configs/fields.html:17
 #: CTFd/themes/admin/templates/scoreboard.html:28
 #: CTFd/themes/admin/templates/teams/teams.html:9
@@ -1107,7 +1126,13 @@ msgstr ""
 
 #: CTFd/forms/config.py:239 CTFd/forms/pages.py:24 CTFd/forms/setup.py:127
 #: CTFd/forms/teams.py:235 CTFd/forms/users.py:190
+#: CTFd/themes/admin/assets/js/components/requirements/Requirements.vue:81
+#: CTFd/themes/admin/assets/js/components/solution/SolutionEditor.vue:67
+#: CTFd/themes/admin/assets/js/pages/challenges.js:54
 #: CTFd/themes/admin/assets/js/pages/scoreboard.js:32
+#: CTFd/themes/admin/assets/js/pages/scoreboard.js:85
+#: CTFd/themes/admin/assets/js/pages/teams.js:47
+#: CTFd/themes/admin/assets/js/pages/users.js:48
 #: CTFd/themes/admin/templates/challenges/new.html:63
 #: CTFd/themes/admin/templates/challenges/update.html:180
 #: CTFd/themes/admin/templates/pages.html:44
@@ -1255,6 +1280,9 @@ msgid "Send"
 msgstr ""
 
 #: CTFd/forms/notifications.py:10 CTFd/forms/pages.py:17
+#: CTFd/themes/admin/assets/js/components/hints/HintCreationForm.vue:123
+#: CTFd/themes/admin/assets/js/components/hints/HintEditForm.vue:131
+#: CTFd/themes/admin/assets/js/components/hints/HintsList.vue:93
 #: CTFd/themes/admin/templates/pages.html:41
 msgid "Title"
 msgstr ""
@@ -1264,6 +1292,7 @@ msgid "Notification title"
 msgstr ""
 
 #: CTFd/forms/notifications.py:12 CTFd/forms/pages.py:26
+#: CTFd/themes/admin/assets/js/components/solution/SolutionEditor.vue:63
 #: CTFd/themes/admin/templates/editor.html:81
 msgid "Content"
 msgstr ""
@@ -1563,7 +1592,7 @@ msgstr ""
 #: CTFd/forms/submissions.py:17
 #: CTFd/themes/admin/assets/js/pages/statistics.js:57
 #: CTFd/themes/admin/assets/js/pages/statistics.js:404
-#: CTFd/themes/admin/assets/js/pages/statistics.js:463
+#: CTFd/themes/admin/assets/js/pages/statistics.js:464
 #: CTFd/themes/admin/templates/challenges/update.html:9
 msgid "Challenge Name"
 msgstr ""
@@ -1631,6 +1660,8 @@ msgid "Team Captain"
 msgstr ""
 
 #: CTFd/forms/teams.py:236 CTFd/forms/users.py:191
+#: CTFd/themes/admin/assets/js/pages/teams.js:46
+#: CTFd/themes/admin/assets/js/pages/users.js:47
 #: CTFd/themes/admin/templates/teams/teams.html:80
 #: CTFd/themes/admin/templates/users/users.html:83
 msgid "Banned"
@@ -1660,11 +1691,12 @@ msgstr ""
 msgid "IP Address"
 msgstr ""
 
-#: CTFd/forms/users.py:172
+#: CTFd/forms/users.py:172 CTFd/themes/admin/templates/users/users.html:38
 msgid "Search for matching users"
 msgstr ""
 
 #: CTFd/forms/users.py:187
+#: CTFd/themes/admin/assets/js/components/statistics/ScoreboardMatrix.vue:446
 #: CTFd/themes/admin/templates/audiences/audience.html:89
 #: CTFd/themes/admin/templates/modals/teams/addresses.html:6
 #: CTFd/themes/admin/templates/scoreboard/users.html:10
@@ -1681,7 +1713,8 @@ msgstr ""
 msgid "Admin"
 msgstr ""
 
-#: CTFd/forms/users.py:189 CTFd/themes/admin/templates/users/users.html:81
+#: CTFd/forms/users.py:189 CTFd/themes/admin/assets/js/pages/users.js:46
+#: CTFd/themes/admin/templates/users/users.html:81
 msgid "Verified"
 msgstr ""
 
@@ -1740,6 +1773,121 @@ msgstr ""
 
 #: CTFd/plugins/dynamic_challenges/__init__.py:63
 msgid "Missing initial value for challenge"
+msgstr ""
+
+#: CTFd/plugins/dynamic_challenges/assets/create.html:5
+msgid ""
+"Dynamic value challenges decrease in value as they receive solves. The "
+"more solves a dynamic challenge has,\n"
+"\tthe lower its value is to everyone who has solved it."
+msgstr ""
+
+#: CTFd/plugins/dynamic_challenges/assets/create.html:13
+#: CTFd/plugins/dynamic_challenges/assets/update.html:14
+#: CTFd/themes/admin/templates/challenges/update.html:110
+msgid "Initial Value"
+msgstr ""
+
+#: CTFd/plugins/dynamic_challenges/assets/create.html:15
+msgid "This is how many points the challenge is worth initially."
+msgstr ""
+
+#: CTFd/plugins/dynamic_challenges/assets/create.html:18
+#: CTFd/themes/admin/templates/challenges/create.html:53
+msgid "Enter value"
+msgstr ""
+
+#: CTFd/plugins/dynamic_challenges/assets/create.html:22
+#: CTFd/plugins/dynamic_challenges/assets/update.html:23
+msgid "Decay Function"
+msgstr ""
+
+#: CTFd/plugins/dynamic_challenges/assets/create.html:24
+#: CTFd/plugins/dynamic_challenges/assets/update.html:25
+msgid "How the dynamic value will be calculated based on the Decay value"
+msgstr ""
+
+#: CTFd/plugins/dynamic_challenges/assets/create.html:26
+#: CTFd/plugins/dynamic_challenges/assets/update.html:27
+msgid "Linear: Calculated as"
+msgstr ""
+
+#: CTFd/plugins/dynamic_challenges/assets/create.html:27
+#: CTFd/plugins/dynamic_challenges/assets/update.html:28
+msgid "Logarithmic: Calculated as"
+msgstr ""
+
+#: CTFd/plugins/dynamic_challenges/assets/create.html:32
+#: CTFd/plugins/dynamic_challenges/assets/update.html:33
+#: CTFd/themes/admin/templates/challenges/update.html:95
+msgid "Linear"
+msgstr ""
+
+#: CTFd/plugins/dynamic_challenges/assets/create.html:33
+#: CTFd/plugins/dynamic_challenges/assets/update.html:34
+#: CTFd/themes/admin/templates/challenges/update.html:96
+msgid "Logarithmic"
+msgstr ""
+
+#: CTFd/plugins/dynamic_challenges/assets/create.html:38
+#: CTFd/plugins/dynamic_challenges/assets/update.html:39
+#: CTFd/themes/admin/templates/challenges/update.html:121
+msgid "Decay"
+msgstr ""
+
+#: CTFd/plugins/dynamic_challenges/assets/create.html:40
+#: CTFd/plugins/dynamic_challenges/assets/update.html:41
+#: CTFd/themes/admin/templates/challenges/update.html:123
+msgid "The decay value is used differently depending on the above Decay Function"
+msgstr ""
+
+#: CTFd/plugins/dynamic_challenges/assets/create.html:42
+#: CTFd/plugins/dynamic_challenges/assets/update.html:43
+#: CTFd/themes/admin/templates/challenges/update.html:125
+msgid ""
+"Linear: The amount of points deducted per solve. Equal deduction per "
+"solve."
+msgstr ""
+
+#: CTFd/plugins/dynamic_challenges/assets/create.html:43
+#: CTFd/plugins/dynamic_challenges/assets/update.html:44
+msgid ""
+"Logarithmic: The amount of solves before the challenge reaches its "
+"minimum value. Earlier solves will lose less\n"
+"\t\t\t\t\tpoints. Later solves will lose more points"
+msgstr ""
+
+#: CTFd/plugins/dynamic_challenges/assets/create.html:48
+msgid "Enter Decay value"
+msgstr ""
+
+#: CTFd/plugins/dynamic_challenges/assets/create.html:52
+#: CTFd/plugins/dynamic_challenges/assets/update.html:53
+#: CTFd/themes/admin/templates/challenges/update.html:136
+msgid "Minimum Value"
+msgstr ""
+
+#: CTFd/plugins/dynamic_challenges/assets/create.html:54
+#: CTFd/plugins/dynamic_challenges/assets/update.html:55
+#: CTFd/themes/admin/templates/challenges/update.html:138
+msgid "This is the lowest that the challenge can be worth"
+msgstr ""
+
+#: CTFd/plugins/dynamic_challenges/assets/create.html:57
+msgid "Enter minimum value"
+msgstr ""
+
+#: CTFd/plugins/dynamic_challenges/assets/update.html:5
+msgid "Current Value"
+msgstr ""
+
+#: CTFd/plugins/dynamic_challenges/assets/update.html:7
+msgid "This is how many points the challenge is worth right now."
+msgstr ""
+
+#: CTFd/plugins/dynamic_challenges/assets/update.html:16
+#: CTFd/themes/admin/templates/challenges/update.html:112
+msgid "This is how many points the challenge was worth initially."
 msgstr ""
 
 #: CTFd/plugins/flags/__init__.py:69
@@ -1876,6 +2024,7 @@ msgstr ""
 msgid "Email address is not from an allowed domain"
 msgstr ""
 
+#: CTFd/themes/admin/assets/js/components/files/MediaLibrary.vue:233
 #: CTFd/themes/admin/assets/js/styles.js:54
 #: CTFd/themes/admin/templates/editor.html:103
 msgid "Media Library"
@@ -1892,19 +2041,22 @@ msgid "Delete Challenge"
 msgstr ""
 
 #: CTFd/themes/admin/assets/js/challenges/challenge.js:164
-#: CTFd/themes/admin/assets/js/pages/team.js:532
+#: CTFd/themes/admin/assets/js/pages/team.js:564
 #: CTFd/themes/admin/assets/js/pages/user.js:127
 #, python-brace-format
 msgid "Are you sure you want to delete {0}"
 msgstr ""
 
 #: CTFd/themes/admin/assets/js/challenges/challenge.js:194
-#: CTFd/themes/admin/assets/js/pages/challenge.js:228
+#: CTFd/themes/admin/assets/js/components/configs/brackets/Bracket.vue:133
+#: CTFd/themes/admin/assets/js/components/configs/fields/Field.vue:153
+#: CTFd/themes/admin/assets/js/components/configs/fields/Field.vue:176
+#: CTFd/themes/admin/assets/js/pages/challenge.js:230
 msgid "Success"
 msgstr ""
 
 #: CTFd/themes/admin/assets/js/challenges/challenge.js:195
-#: CTFd/themes/admin/assets/js/pages/challenge.js:229
+#: CTFd/themes/admin/assets/js/pages/challenge.js:231
 msgid "Your challenge has been updated!"
 msgstr ""
 
@@ -1915,7 +2067,7 @@ msgstr ""
 msgid "Got it!"
 msgstr ""
 
-#: CTFd/themes/admin/assets/js/compat/ezq.js:44
+#: CTFd/themes/admin/assets/js/compat/ezq.js:45
 #: CTFd/themes/admin/templates/config.html:174
 #: CTFd/themes/core/templates/settings.html:103
 #: CTFd/themes/core/templates/teams/private.html:83
@@ -1924,20 +2076,20 @@ msgstr ""
 msgid "Error:"
 msgstr ""
 
-#: CTFd/themes/admin/assets/js/compat/ezq.js:51
+#: CTFd/themes/admin/assets/js/compat/ezq.js:54
 #: CTFd/themes/core/templates/settings.html:94
 #: CTFd/themes/core/templates/teams/private.html:75
 #: CTFd/themes/core/templates/teams/private.html:124
 msgid "Success!"
 msgstr ""
 
-#: CTFd/themes/admin/assets/js/compat/ezq.js:59
+#: CTFd/themes/admin/assets/js/compat/ezq.js:64
 #: CTFd/themes/core/templates/settings.html:209
 #: CTFd/themes/core/templates/teams/private.html:204
 msgid "No"
 msgstr ""
 
-#: CTFd/themes/admin/assets/js/compat/ezq.js:61
+#: CTFd/themes/admin/assets/js/compat/ezq.js:68
 #: CTFd/themes/core/templates/settings.html:214
 #: CTFd/themes/core/templates/teams/private.html:205
 msgid "Yes"
@@ -1968,8 +2120,8 @@ msgstr ""
 #: CTFd/themes/admin/assets/js/compat/graphs.js:286
 #: CTFd/themes/admin/assets/js/pages/statistics.js:125
 #: CTFd/themes/admin/assets/js/pages/statistics.js:173
-#: CTFd/themes/admin/assets/js/pages/team.js:161
-#: CTFd/themes/admin/assets/js/pages/user.js:272
+#: CTFd/themes/admin/assets/js/pages/team.js:166
+#: CTFd/themes/admin/assets/js/pages/user.js:277
 #: CTFd/themes/admin/templates/teams/team.html:317
 #: CTFd/themes/admin/templates/teams/team.html:394
 #: CTFd/themes/admin/templates/users/user.html:199
@@ -1989,8 +2141,8 @@ msgstr ""
 #: CTFd/themes/admin/assets/js/compat/graphs.js:291
 #: CTFd/themes/admin/assets/js/pages/statistics.js:125
 #: CTFd/themes/admin/assets/js/pages/statistics.js:178
-#: CTFd/themes/admin/assets/js/pages/team.js:156
-#: CTFd/themes/admin/assets/js/pages/user.js:267
+#: CTFd/themes/admin/assets/js/pages/team.js:161
+#: CTFd/themes/admin/assets/js/pages/user.js:272
 #: CTFd/themes/admin/templates/challenges/preview.html:7
 #: CTFd/themes/admin/templates/teams/team.html:314
 #: CTFd/themes/admin/templates/teams/team.html:328
@@ -2012,24 +2164,594 @@ msgid "Solves"
 msgstr ""
 
 #: CTFd/themes/admin/assets/js/compat/helpers.js:28
-#: CTFd/themes/admin/assets/js/pages/configs.js:265
-#: CTFd/themes/admin/assets/js/pages/configs.js:334
+#: CTFd/themes/admin/assets/js/pages/configs.js:267
+#: CTFd/themes/admin/assets/js/pages/configs.js:341
 msgid "Upload Progress"
 msgstr ""
 
 #: CTFd/themes/admin/assets/js/compat/ui.js:12
-#: CTFd/themes/admin/assets/js/pages/submissions.js:149
+#: CTFd/themes/admin/assets/js/pages/submissions.js:166
 #: CTFd/themes/core/assets/js/utils/clipboard.js:5
 #: CTFd/themes/core/templates/challenge.html:219
 msgid "Copied!"
 msgstr ""
 
+#: CTFd/themes/admin/assets/js/components/comments/CommentBox.vue:144
+msgid "Add comment"
+msgstr ""
+
+#: CTFd/themes/admin/assets/js/components/comments/CommentBox.vue:145
+msgid "Comment"
+msgstr ""
+
+#: CTFd/themes/admin/assets/js/components/comments/CommentBox.vue:146
+#: CTFd/themes/admin/assets/js/components/ratings/RatingsViewer.vue:159
+#: CTFd/themes/admin/templates/submissions.html:152
+#: CTFd/themes/admin/templates/teams/teams.html:143
+#: CTFd/themes/admin/templates/users/users.html:155
+#: CTFd/themes/core/templates/teams/teams.html:128
+#: CTFd/themes/core/templates/users/users.html:118
+msgid "Page"
+msgstr ""
+
+#: CTFd/themes/admin/assets/js/components/comments/CommentBox.vue:147
+#: CTFd/themes/admin/assets/js/components/ratings/RatingsViewer.vue:160
+msgid "of"
+msgstr ""
+
+#: CTFd/themes/admin/assets/js/components/comments/CommentBox.vue:148
+msgid "comments"
+msgstr ""
+
+#: CTFd/themes/admin/assets/js/components/comments/CommentBox.vue:199
+msgid "Are you sure you'd like to delete this comment?"
+msgstr ""
+
+#: CTFd/themes/admin/assets/js/components/configs/brackets/Bracket.vue:81
+msgid "Bracket Name"
+msgstr ""
+
+#: CTFd/themes/admin/assets/js/components/configs/brackets/Bracket.vue:82
+msgid "Bracket name (e.g. \"Students\", \"Interns\", \"Engineers\")"
+msgstr ""
+
+#: CTFd/themes/admin/assets/js/components/configs/brackets/Bracket.vue:85
+#: CTFd/themes/admin/assets/js/components/configs/brackets/Bracket.vue:86
+msgid "Bracket Description"
+msgstr ""
+
+#: CTFd/themes/admin/assets/js/components/configs/brackets/Bracket.vue:87
+msgid "Bracket Type"
+msgstr ""
+
+#: CTFd/themes/admin/assets/js/components/configs/brackets/Bracket.vue:90
+msgid ""
+"If you are using Team Mode and would like the bracket to apply to entire "
+"teams instead of individuals, select Teams."
+msgstr ""
+
+#: CTFd/themes/admin/assets/js/components/configs/brackets/Bracket.vue:93
+#: CTFd/themes/admin/assets/js/components/configs/fields/Field.vue:124
+#: CTFd/themes/admin/assets/js/components/next/NextChallenge.vue:51
+#: CTFd/themes/admin/assets/js/components/requirements/Requirements.vue:84
+#: CTFd/themes/admin/templates/audiences/audience.html:23
+#: CTFd/themes/admin/templates/editor.html:143
+#: CTFd/themes/admin/templates/modals/challenges/module.html:14
+#: CTFd/themes/admin/templates/modules/module.html:23
+msgid "Save"
+msgstr ""
+
+#: CTFd/themes/admin/assets/js/components/configs/brackets/Bracket.vue:141
+msgid "Are you sure you'd like to delete this bracket?"
+msgstr ""
+
+#: CTFd/themes/admin/assets/js/components/configs/brackets/BracketList.vue:38
+msgid "Add New Bracket"
+msgstr ""
+
+#: CTFd/themes/admin/assets/js/components/configs/fields/Field.vue:113
+msgid "Field Type"
+msgstr ""
+
+#: CTFd/themes/admin/assets/js/components/configs/fields/Field.vue:114
+msgid "Text Field"
+msgstr ""
+
+#: CTFd/themes/admin/assets/js/components/configs/fields/Field.vue:115
+msgid "Checkbox"
+msgstr ""
+
+#: CTFd/themes/admin/assets/js/components/configs/fields/Field.vue:116
+msgid "Type of field shown to the user"
+msgstr ""
+
+#: CTFd/themes/admin/assets/js/components/configs/fields/Field.vue:117
+msgid "Field Name"
+msgstr ""
+
+#: CTFd/themes/admin/assets/js/components/configs/fields/Field.vue:118
+msgid "Field name"
+msgstr ""
+
+#: CTFd/themes/admin/assets/js/components/configs/fields/Field.vue:119
+#: CTFd/themes/admin/assets/js/components/configs/fields/Field.vue:120
+msgid "Field Description"
+msgstr ""
+
+#: CTFd/themes/admin/assets/js/components/configs/fields/Field.vue:121
+msgid "Editable by user in profile"
+msgstr ""
+
+#: CTFd/themes/admin/assets/js/components/configs/fields/Field.vue:122
+msgid "Required on registration"
+msgstr ""
+
+#: CTFd/themes/admin/assets/js/components/configs/fields/Field.vue:123
+msgid "Shown on public profile"
+msgstr ""
+
+#: CTFd/themes/admin/assets/js/components/configs/fields/Field.vue:154
+msgid "Field has been updated!"
+msgstr ""
+
+#: CTFd/themes/admin/assets/js/components/configs/fields/Field.vue:177
+msgid "Field has been created!"
+msgstr ""
+
+#: CTFd/themes/admin/assets/js/components/configs/fields/Field.vue:185
+msgid "Are you sure you'd like to delete this field?"
+msgstr ""
+
+#: CTFd/themes/admin/assets/js/components/configs/fields/FieldList.vue:43
+msgid "Add New Field"
+msgstr ""
+
+#: CTFd/themes/admin/assets/js/components/files/ChallengeFilesList.vue:82
+msgid "File"
+msgstr ""
+
+#: CTFd/themes/admin/assets/js/components/files/ChallengeFilesList.vue:83
+#: CTFd/themes/admin/assets/js/components/flags/FlagList.vue:91
+#: CTFd/themes/admin/assets/js/components/hints/HintsList.vue:96
+#: CTFd/themes/core/templates/components/navbar.html:124
+#: CTFd/themes/core/templates/components/navbar.html:129
+#: CTFd/themes/core/templates/settings.html:8
+#: CTFd/themes/core/templates/setup.html:50
+msgid "Settings"
+msgstr ""
+
+#: CTFd/themes/admin/assets/js/components/files/ChallengeFilesList.vue:84
+msgid "SHA1:"
+msgstr ""
+
+#: CTFd/themes/admin/assets/js/components/files/ChallengeFilesList.vue:120
+msgid "Delete Files"
+msgstr ""
+
+#: CTFd/themes/admin/assets/js/components/files/ChallengeFilesList.vue:121
+#: CTFd/themes/admin/assets/js/components/files/MediaLibrary.vue:287
+msgid "Are you sure you want to delete this file?"
+msgstr ""
+
+#: CTFd/themes/admin/assets/js/components/files/MediaLibrary.vue:234
+msgid "Media Details"
+msgstr ""
+
+#: CTFd/themes/admin/assets/js/components/files/MediaLibrary.vue:235
+msgid "Link:"
+msgstr ""
+
+#: CTFd/themes/admin/assets/js/components/files/MediaLibrary.vue:236
+msgid "Insert"
+msgstr ""
+
+#: CTFd/themes/admin/assets/js/components/files/MediaLibrary.vue:237
+msgid "Insert link into editor"
+msgstr ""
+
+#: CTFd/themes/admin/assets/js/components/files/MediaLibrary.vue:238
+msgid "Download file"
+msgstr ""
+
+#: CTFd/themes/admin/assets/js/components/files/MediaLibrary.vue:239
+msgid "Delete file"
+msgstr ""
+
+#: CTFd/themes/admin/assets/js/components/files/MediaLibrary.vue:244
+msgid "Upload File Location"
+msgstr ""
+
+#: CTFd/themes/admin/assets/js/components/files/MediaLibrary.vue:245
+msgid "Location"
+msgstr ""
+
+#: CTFd/themes/admin/assets/js/components/files/MediaLibrary.vue:246
+msgid ""
+"Route where file will be accessible (if not provided a random folder will"
+" be used)."
+msgstr ""
+
+#: CTFd/themes/admin/assets/js/components/files/MediaLibrary.vue:249
+msgid "Provide as"
+msgstr ""
+
+#: CTFd/themes/admin/assets/js/components/flags/FlagCreationForm.vue:76
+#: CTFd/themes/admin/assets/js/components/flags/FlagList.vue:92
+msgid "Create Flag"
+msgstr ""
+
+#: CTFd/themes/admin/assets/js/components/flags/FlagCreationForm.vue:77
+msgid "Choose Flag Type"
+msgstr ""
+
+#: CTFd/themes/admin/assets/js/components/flags/FlagCreationForm.vue:78
+#: CTFd/themes/admin/assets/js/components/next/NextChallenge.vue:50
+msgid "--"
+msgstr ""
+
+#: CTFd/themes/admin/assets/js/components/flags/FlagEditForm.vue:50
+msgid "Edit Flag"
+msgstr ""
+
+#: CTFd/themes/admin/assets/js/components/flags/FlagList.vue:90
+#: CTFd/themes/core/templates/challenge.html:175
+msgid "Flag"
+msgstr ""
+
+#: CTFd/themes/admin/assets/js/components/flags/FlagList.vue:141
+msgid "Are you sure you'd like to delete this flag?"
+msgstr ""
+
+#: CTFd/themes/admin/assets/js/components/hints/HintCreationForm.vue:122
+#: CTFd/themes/admin/assets/js/components/hints/HintEditForm.vue:130
+#: CTFd/themes/admin/assets/js/components/hints/HintsList.vue:94
+msgid "Hint"
+msgstr ""
+
+#: CTFd/themes/admin/assets/js/components/hints/HintCreationForm.vue:124
+#: CTFd/themes/admin/assets/js/components/hints/HintEditForm.vue:132
+msgid "Content displayed before hint unlocking"
+msgstr ""
+
+#: CTFd/themes/admin/assets/js/components/hints/HintCreationForm.vue:125
+#: CTFd/themes/admin/assets/js/components/hints/HintEditForm.vue:133
+#: CTFd/themes/admin/assets/js/components/solution/SolutionEditor.vue:64
+msgid "Markdown & HTML are supported"
+msgstr ""
+
+#: CTFd/themes/admin/assets/js/components/hints/HintCreationForm.vue:126
+#: CTFd/themes/admin/assets/js/components/hints/HintEditForm.vue:134
+#: CTFd/themes/admin/assets/js/components/hints/HintsList.vue:95
+msgid "Cost"
+msgstr ""
+
+#: CTFd/themes/admin/assets/js/components/hints/HintCreationForm.vue:127
+#: CTFd/themes/admin/assets/js/components/hints/HintEditForm.vue:135
+msgid "How many points it costs to see your hint."
+msgstr ""
+
+#: CTFd/themes/admin/assets/js/components/hints/HintCreationForm.vue:128
+#: CTFd/themes/admin/assets/js/components/hints/HintEditForm.vue:136
+#: CTFd/themes/admin/templates/challenges/challenge.html:123
+#: CTFd/themes/admin/templates/challenges/challenge.html:180
+msgid "Requirements"
+msgstr ""
+
+#: CTFd/themes/admin/assets/js/components/hints/HintCreationForm.vue:129
+#: CTFd/themes/admin/assets/js/components/hints/HintEditForm.vue:137
+msgid "Hints that must be unlocked before unlocking this hint"
+msgstr ""
+
+#: CTFd/themes/admin/assets/js/components/hints/HintsList.vue:97
+msgid "Create Hint"
+msgstr ""
+
+#: CTFd/themes/admin/assets/js/components/hints/HintsList.vue:146
+msgid "An error occurred while updating this hint. Please try again."
+msgstr ""
+
+#: CTFd/themes/admin/assets/js/components/hints/HintsList.vue:153
+msgid "Delete Hint"
+msgstr ""
+
+#: CTFd/themes/admin/assets/js/components/hints/HintsList.vue:154
+msgid "Are you sure you want to delete this hint?"
+msgstr ""
+
+#: CTFd/themes/admin/assets/js/components/next/NextChallenge.vue:46
+#: CTFd/themes/admin/templates/challenges/challenge.html:188
+#: CTFd/themes/admin/templates/challenges/preview.html:6
+#: CTFd/themes/core/templates/challenge.html:209
+msgid "Next Challenge"
+msgstr ""
+
+#: CTFd/themes/admin/assets/js/components/next/NextChallenge.vue:47
+msgid "Challenge to recommend after solving this challenge"
+msgstr ""
+
+#: CTFd/themes/admin/assets/js/components/notifications/Notification.vue:43
+#: CTFd/themes/admin/assets/js/pages/notifications.js:54
+msgid "Are you sure you want to delete this notification?"
+msgstr ""
+
+#: CTFd/themes/admin/assets/js/components/ratings/RatingsViewer.vue:155
+msgid "Loading ratings..."
+msgstr ""
+
+#: CTFd/themes/admin/assets/js/components/ratings/RatingsViewer.vue:156
+msgid "No ratings yet"
+msgstr ""
+
+#: CTFd/themes/admin/assets/js/components/ratings/RatingsViewer.vue:157
+msgid "Total:"
+msgstr ""
+
+#: CTFd/themes/admin/assets/js/components/ratings/RatingsViewer.vue:158
+msgid "Previous"
+msgstr ""
+
+#: CTFd/themes/admin/assets/js/components/ratings/RatingsViewer.vue:161
+#: CTFd/themes/admin/templates/challenges/challenge.html:124
+#: CTFd/themes/core/templates/setup.html:86
+#: CTFd/themes/core/templates/setup.html:138
+#: CTFd/themes/core/templates/setup.html:202
+#: CTFd/themes/core/templates/setup.html:238
+#: CTFd/themes/core/templates/setup.html:296
+#: CTFd/themes/core/templates/setup.html:345
+msgid "Next"
+msgstr ""
+
+#: CTFd/themes/admin/assets/js/components/ratings/RatingsViewer.vue:198
+msgid "Failed to load ratings"
+msgstr ""
+
+#: CTFd/themes/admin/assets/js/components/ratings/RatingsViewer.vue:203
+msgid "Error loading ratings"
+msgstr ""
+
+#: CTFd/themes/admin/assets/js/components/requirements/Requirements.vue:80
+msgid "Behavior if not unlocked"
+msgstr ""
+
+#: CTFd/themes/admin/assets/js/components/requirements/Requirements.vue:82
+msgid "Anonymized"
+msgstr ""
+
+#: CTFd/themes/admin/assets/js/components/requirements/Requirements.vue:83
+#: CTFd/themes/admin/templates/editor.html:90
+msgid "Preview"
+msgstr ""
+
+#: CTFd/themes/admin/assets/js/components/solution/SolutionEditor.vue:65
+#: CTFd/themes/admin/assets/js/pages/challenges.js:51
+#: CTFd/themes/admin/templates/challenges/challenges.html:84
+#: CTFd/themes/admin/templates/challenges/new.html:58
+#: CTFd/themes/admin/templates/challenges/update.html:174
+#: CTFd/themes/admin/templates/modules/module.html:88
+msgid "State"
+msgstr ""
+
+#: CTFd/themes/admin/assets/js/components/solution/SolutionEditor.vue:66
+msgid "Controls who can view this solution"
+msgstr ""
+
+#: CTFd/themes/admin/assets/js/components/solution/SolutionEditor.vue:68
+#: CTFd/themes/admin/assets/js/pages/challenges.js:53
+#: CTFd/themes/admin/assets/js/pages/scoreboard.js:36
+#: CTFd/themes/admin/assets/js/pages/scoreboard.js:84
+#: CTFd/themes/admin/templates/challenges/new.html:62
+#: CTFd/themes/admin/templates/challenges/update.html:179
+msgid "Visible"
+msgstr ""
+
+#: CTFd/themes/admin/assets/js/components/solution/SolutionEditor.vue:69
+#: CTFd/themes/admin/assets/js/components/statistics/ScoreboardMatrix.vue:396
+#: CTFd/themes/admin/assets/js/pages/challenges.js:55
+msgid "Solved"
+msgstr ""
+
+#: CTFd/themes/admin/assets/js/components/solution/SolutionEditor.vue:70
+msgid "Loading..."
+msgstr ""
+
+#: CTFd/themes/admin/assets/js/components/solution/SolutionEditor.vue:77
+#: CTFd/themes/admin/assets/js/pages/challenges.js:52
+#: CTFd/themes/admin/templates/challenges/challenge.html:119
+#: CTFd/themes/admin/templates/challenges/challenge.html:148
+#: CTFd/themes/admin/templates/challenges/challenges.html:85
+#: CTFd/themes/core/templates/challenge.html:30
+msgid "Solution"
+msgstr ""
+
+#: CTFd/themes/admin/assets/js/components/statistics/ScoreboardMatrix.vue:377
+msgid "Filter Matrix Data"
+msgstr ""
+
+#: CTFd/themes/admin/assets/js/components/statistics/ScoreboardMatrix.vue:378
+msgid "Filters"
+msgstr ""
+
+#: CTFd/themes/admin/assets/js/components/statistics/ScoreboardMatrix.vue:379
+msgid "Reset All"
+msgstr ""
+
+#: CTFd/themes/admin/assets/js/components/statistics/ScoreboardMatrix.vue:380
+msgid "Select All"
+msgstr ""
+
+#: CTFd/themes/admin/assets/js/components/statistics/ScoreboardMatrix.vue:382
+msgid "Filter Categories"
+msgstr ""
+
+#: CTFd/themes/admin/assets/js/components/statistics/ScoreboardMatrix.vue:383
+msgid "Search categories..."
+msgstr ""
+
+#: CTFd/themes/admin/assets/js/components/statistics/ScoreboardMatrix.vue:384
+msgid "Filter Challenges"
+msgstr ""
+
+#: CTFd/themes/admin/assets/js/components/statistics/ScoreboardMatrix.vue:385
+msgid "Search challenges..."
+msgstr ""
+
+#: CTFd/themes/admin/assets/js/components/statistics/ScoreboardMatrix.vue:386
+msgid "Sort By"
+msgstr ""
+
+#: CTFd/themes/admin/assets/js/components/statistics/ScoreboardMatrix.vue:387
+msgid "Position (Default)"
+msgstr ""
+
+#: CTFd/themes/admin/assets/js/components/statistics/ScoreboardMatrix.vue:388
+msgid "ID (Ascending)"
+msgstr ""
+
+#: CTFd/themes/admin/assets/js/components/statistics/ScoreboardMatrix.vue:389
+msgid "ID (Descending)"
+msgstr ""
+
+#: CTFd/themes/admin/assets/js/components/statistics/ScoreboardMatrix.vue:390
+msgid "Alphabetical (Ascending: A-Z)"
+msgstr ""
+
+#: CTFd/themes/admin/assets/js/components/statistics/ScoreboardMatrix.vue:391
+msgid "Alphabetical (Descending: Z-A)"
+msgstr ""
+
+#: CTFd/themes/admin/assets/js/components/statistics/ScoreboardMatrix.vue:392
+msgid "Points (Ascending)"
+msgstr ""
+
+#: CTFd/themes/admin/assets/js/components/statistics/ScoreboardMatrix.vue:393
+msgid "Points (Descending)"
+msgstr ""
+
+#: CTFd/themes/admin/assets/js/components/statistics/ScoreboardMatrix.vue:394
+msgid "Filter Brackets"
+msgstr ""
+
+#: CTFd/themes/admin/assets/js/components/statistics/ScoreboardMatrix.vue:395
+msgid "Search brackets..."
+msgstr ""
+
+#: CTFd/themes/admin/assets/js/components/statistics/ScoreboardMatrix.vue:397
+msgid "Attempted"
+msgstr ""
+
+#: CTFd/themes/admin/assets/js/components/statistics/ScoreboardMatrix.vue:398
+msgid "Opened"
+msgstr ""
+
+#: CTFd/themes/admin/assets/js/components/statistics/ScoreboardMatrix.vue:399
+#: CTFd/themes/admin/templates/scoreboard/standings.html:9
+#: CTFd/themes/admin/templates/scoreboard/users.html:9
+#: CTFd/themes/core/templates/scoreboard.html:36
+msgid "Place"
+msgstr ""
+
+#: CTFd/themes/admin/assets/js/components/statistics/ScoreboardMatrix.vue:400
+#: CTFd/themes/admin/templates/scoreboard/standings.html:12
+#: CTFd/themes/admin/templates/scoreboard/users.html:12
+#: CTFd/themes/admin/templates/teams/team.html:270
+#: CTFd/themes/core/templates/scoreboard.html:38
+#: CTFd/themes/core/templates/teams/private.html:328
+#: CTFd/themes/core/templates/teams/public.html:96
+msgid "Score"
+msgstr ""
+
+#: CTFd/themes/admin/assets/js/components/statistics/ScoreboardMatrix.vue:438
+msgid "Filter Teams"
+msgstr ""
+
+#: CTFd/themes/admin/assets/js/components/statistics/ScoreboardMatrix.vue:438
+msgid "Filter Users"
+msgstr ""
+
+#: CTFd/themes/admin/assets/js/components/statistics/ScoreboardMatrix.vue:442
+msgid "Search teams..."
+msgstr ""
+
+#: CTFd/themes/admin/assets/js/components/statistics/ScoreboardMatrix.vue:443
+msgid "Search users..."
+msgstr ""
+
+#: CTFd/themes/admin/assets/js/components/statistics/ScoreboardMatrix.vue:446
+#: CTFd/themes/admin/templates/audiences/audience.html:89
+#: CTFd/themes/admin/templates/teams/teams.html:77
+#: CTFd/themes/core/templates/components/navbar.html:99
+#: CTFd/themes/core/templates/components/navbar.html:104
+#: CTFd/themes/core/templates/teams/team_enrollment.html:6
+#: CTFd/themes/core/templates/teams/teams.html:49
+msgid "Team"
+msgstr ""
+
+#: CTFd/themes/admin/assets/js/components/statistics/ScoreboardMatrix.vue:539
+msgid "(No Bracket)"
+msgstr ""
+
+#: CTFd/themes/admin/assets/js/components/statistics/ScoreboardMatrix.vue:544
+#: CTFd/themes/admin/assets/js/components/statistics/ScoreboardMatrix.vue:549
+msgid "Failed to load progression data"
+msgstr ""
+
+#: CTFd/themes/admin/assets/js/components/tags/TagsList.vue:44
+msgid "Tag"
+msgstr ""
+
+#: CTFd/themes/admin/assets/js/components/tags/TagsList.vue:45
+msgid "Type tag and press Enter"
+msgstr ""
+
+#: CTFd/themes/admin/assets/js/components/teams/UserAddForm.vue:90
+msgid "Search Users"
+msgstr ""
+
+#: CTFd/themes/admin/assets/js/components/teams/UserAddForm.vue:91
+msgid "Search for users"
+msgstr ""
+
+#: CTFd/themes/admin/assets/js/components/teams/UserAddForm.vue:92
+msgid "No users found"
+msgstr ""
+
+#: CTFd/themes/admin/assets/js/components/teams/UserAddForm.vue:93
+msgid "already in a team"
+msgstr ""
+
+#: CTFd/themes/admin/assets/js/components/teams/UserAddForm.vue:94
+msgid "Add Users"
+msgstr ""
+
+#: CTFd/themes/admin/assets/js/components/teams/UserAddForm.vue:202
+msgid "Confirm Team Removal"
+msgstr ""
+
+#: CTFd/themes/admin/assets/js/components/teams/UserAddForm.vue:204
+msgid "The following users are currently in teams:<br><br> "
+msgstr ""
+
+#: CTFd/themes/admin/assets/js/components/teams/UserAddForm.vue:206
+msgid ""
+" <br><br>Are you sure you want to remove them from their current teams "
+"and add them to this one? <br><br>All of their challenge solves, "
+"attempts, awards, and unlocked hints will also be deleted!"
+msgstr ""
+
+#: CTFd/themes/admin/assets/js/components/topics/TopicsList.vue:62
+msgid "Topic"
+msgstr ""
+
+#: CTFd/themes/admin/assets/js/components/topics/TopicsList.vue:63
+msgid "Type topic and press Enter"
+msgstr ""
+
 #: CTFd/themes/admin/assets/js/pages/audience.js:15
 #: CTFd/themes/admin/assets/js/pages/challenge.js:59
-#: CTFd/themes/admin/assets/js/pages/challenge.js:239
+#: CTFd/themes/admin/assets/js/pages/challenge.js:241
 #: CTFd/themes/admin/assets/js/pages/editor.js:52
 #: CTFd/themes/admin/assets/js/pages/module.js:15
-#: CTFd/themes/admin/assets/js/pages/module.js:163
+#: CTFd/themes/admin/assets/js/pages/module.js:165
 #: CTFd/themes/admin/assets/js/pages/notifications.js:29
 msgid "Error"
 msgstr ""
@@ -2041,10 +2763,10 @@ msgstr ""
 
 #: CTFd/themes/admin/assets/js/pages/audience.js:17
 #: CTFd/themes/admin/assets/js/pages/challenge.js:61
-#: CTFd/themes/admin/assets/js/pages/challenge.js:241
+#: CTFd/themes/admin/assets/js/pages/challenge.js:243
 #: CTFd/themes/admin/assets/js/pages/editor.js:54
 #: CTFd/themes/admin/assets/js/pages/module.js:17
-#: CTFd/themes/admin/assets/js/pages/module.js:165
+#: CTFd/themes/admin/assets/js/pages/module.js:168
 #: CTFd/themes/admin/assets/js/pages/notifications.js:31
 msgid "OK"
 msgstr ""
@@ -2059,7 +2781,7 @@ msgid "Are you sure you want to delete this audience?"
 msgstr ""
 
 #: CTFd/themes/admin/assets/js/pages/audience.js:117
-#: CTFd/themes/admin/assets/js/pages/team.js:507
+#: CTFd/themes/admin/assets/js/pages/team.js:537
 msgid "Remove Member"
 msgstr ""
 
@@ -2097,38 +2819,38 @@ msgstr ""
 msgid "Search failed."
 msgstr ""
 
-#: CTFd/themes/admin/assets/js/pages/challenge.js:162
-#: CTFd/themes/admin/assets/js/pages/challenges.js:15
-#: CTFd/themes/admin/assets/js/pages/pages.js:14
-#: CTFd/themes/admin/assets/js/pages/submissions.js:42
-#: CTFd/themes/admin/assets/js/pages/team.js:174
-#: CTFd/themes/admin/assets/js/pages/team.js:195
-#: CTFd/themes/admin/assets/js/pages/teams.js:15
-#: CTFd/themes/admin/assets/js/pages/user.js:285
-#: CTFd/themes/admin/assets/js/pages/user.js:306
-#: CTFd/themes/admin/assets/js/pages/users.js:15
+#: CTFd/themes/admin/assets/js/pages/challenge.js:163
+#: CTFd/themes/admin/assets/js/pages/challenges.js:16
+#: CTFd/themes/admin/assets/js/pages/pages.js:15
+#: CTFd/themes/admin/assets/js/pages/submissions.js:45
+#: CTFd/themes/admin/assets/js/pages/team.js:185
+#: CTFd/themes/admin/assets/js/pages/team.js:211
+#: CTFd/themes/admin/assets/js/pages/teams.js:16
+#: CTFd/themes/admin/assets/js/pages/user.js:296
+#: CTFd/themes/admin/assets/js/pages/user.js:322
+#: CTFd/themes/admin/assets/js/pages/users.js:16
 msgid "Are you sure you want to delete "
 msgstr ""
 
-#: CTFd/themes/admin/assets/js/pages/challenge.js:249
+#: CTFd/themes/admin/assets/js/pages/challenge.js:251
 msgid "Missing Flags"
 msgstr ""
 
-#: CTFd/themes/admin/assets/js/pages/challenge.js:250
+#: CTFd/themes/admin/assets/js/pages/challenge.js:252
 msgid ""
 "This challenge does not have any flags meaning it may be unsolveable. Are"
 " you sure you'd like to update this challenge?"
 msgstr ""
 
 #: CTFd/themes/admin/assets/js/pages/challenges.js:11
-#: CTFd/themes/admin/assets/js/pages/team.js:223
-#: CTFd/themes/admin/assets/js/pages/user.js:334
+#: CTFd/themes/admin/assets/js/pages/team.js:243
+#: CTFd/themes/admin/assets/js/pages/user.js:354
 msgid "challenge"
 msgstr ""
 
 #: CTFd/themes/admin/assets/js/pages/challenges.js:11
-#: CTFd/themes/admin/assets/js/pages/team.js:223
-#: CTFd/themes/admin/assets/js/pages/user.js:334
+#: CTFd/themes/admin/assets/js/pages/team.js:243
+#: CTFd/themes/admin/assets/js/pages/user.js:354
 #: CTFd/themes/admin/templates/statistics.html:28
 msgid "challenges"
 msgstr ""
@@ -2138,34 +2860,34 @@ msgstr ""
 msgid "Delete Challenges"
 msgstr ""
 
-#: CTFd/themes/admin/assets/js/pages/challenges.js:15
-#: CTFd/themes/admin/assets/js/pages/pages.js:14
-#: CTFd/themes/admin/assets/js/pages/submissions.js:42
-#: CTFd/themes/admin/assets/js/pages/team.js:174
-#: CTFd/themes/admin/assets/js/pages/team.js:195
-#: CTFd/themes/admin/assets/js/pages/team.js:227
-#: CTFd/themes/admin/assets/js/pages/teams.js:15
-#: CTFd/themes/admin/assets/js/pages/user.js:285
-#: CTFd/themes/admin/assets/js/pages/user.js:306
-#: CTFd/themes/admin/assets/js/pages/user.js:338
-#: CTFd/themes/admin/assets/js/pages/users.js:15
+#: CTFd/themes/admin/assets/js/pages/challenges.js:20
+#: CTFd/themes/admin/assets/js/pages/pages.js:19
+#: CTFd/themes/admin/assets/js/pages/submissions.js:49
+#: CTFd/themes/admin/assets/js/pages/team.js:189
+#: CTFd/themes/admin/assets/js/pages/team.js:215
+#: CTFd/themes/admin/assets/js/pages/team.js:254
+#: CTFd/themes/admin/assets/js/pages/teams.js:20
+#: CTFd/themes/admin/assets/js/pages/user.js:300
+#: CTFd/themes/admin/assets/js/pages/user.js:326
+#: CTFd/themes/admin/assets/js/pages/user.js:365
+#: CTFd/themes/admin/assets/js/pages/users.js:20
 msgid "?"
 msgstr ""
 
-#: CTFd/themes/admin/assets/js/pages/challenges.js:41
+#: CTFd/themes/admin/assets/js/pages/challenges.js:46
 #: CTFd/themes/admin/templates/challenges/challenges.html:56
 msgid "Edit Challenges"
 msgstr ""
 
 #: CTFd/themes/admin/assets/js/pages/configs.js:129
 #: CTFd/themes/admin/assets/js/pages/configs.js:157
-#: CTFd/themes/admin/assets/js/pages/configs.js:227
+#: CTFd/themes/admin/assets/js/pages/configs.js:229
 msgid "Error!"
 msgstr ""
 
 #: CTFd/themes/admin/assets/js/pages/configs.js:131
 #: CTFd/themes/admin/assets/js/pages/configs.js:159
-#: CTFd/themes/admin/assets/js/pages/configs.js:229
+#: CTFd/themes/admin/assets/js/pages/configs.js:231
 msgid "Okay"
 msgstr ""
 
@@ -2173,7 +2895,7 @@ msgstr ""
 msgid "Logo uploading failed!"
 msgstr ""
 
-#: CTFd/themes/admin/assets/js/pages/configs.js:170
+#: CTFd/themes/admin/assets/js/pages/configs.js:169
 msgid ""
 "Are you sure you'd like to switch user modes?\n"
 "\n"
@@ -2187,21 +2909,29 @@ msgid ""
 "All teams, submissions, awards, unlocks, and tracking will be deleted!"
 msgstr ""
 
-#: CTFd/themes/admin/assets/js/pages/configs.js:192
-#: CTFd/themes/admin/assets/js/pages/configs.js:238
+#: CTFd/themes/admin/assets/js/pages/configs.js:194
+#: CTFd/themes/admin/assets/js/pages/configs.js:240
 msgid "Remove logo"
 msgstr ""
 
-#: CTFd/themes/admin/assets/js/pages/configs.js:193
+#: CTFd/themes/admin/assets/js/pages/configs.js:195
 msgid "Are you sure you'd like to remove the CTF logo?"
 msgstr ""
 
-#: CTFd/themes/admin/assets/js/pages/configs.js:228
+#: CTFd/themes/admin/assets/js/pages/configs.js:230
 msgid "Icon uploading failed!"
 msgstr ""
 
-#: CTFd/themes/admin/assets/js/pages/configs.js:239
+#: CTFd/themes/admin/assets/js/pages/configs.js:241
 msgid "Are you sure you'd like to remove the small site icon?"
+msgstr ""
+
+#: CTFd/themes/admin/assets/js/pages/configs.js:283
+msgid "Line "
+msgstr ""
+
+#: CTFd/themes/admin/assets/js/pages/configs.js:285
+msgid ": "
 msgstr ""
 
 #: CTFd/themes/admin/assets/js/pages/editor.js:61
@@ -2223,27 +2953,27 @@ msgid ""
 "become ungrouped and visible to all."
 msgstr ""
 
-#: CTFd/themes/admin/assets/js/pages/module.js:116
+#: CTFd/themes/admin/assets/js/pages/module.js:118
 msgid "Unlink Audience"
 msgstr ""
 
-#: CTFd/themes/admin/assets/js/pages/module.js:117
+#: CTFd/themes/admin/assets/js/pages/module.js:119
 msgid "Are you sure you want to unlink this audience?"
 msgstr ""
 
-#: CTFd/themes/admin/assets/js/pages/module.js:164
+#: CTFd/themes/admin/assets/js/pages/module.js:167
 msgid " of "
 msgstr ""
 
-#: CTFd/themes/admin/assets/js/pages/module.js:164
+#: CTFd/themes/admin/assets/js/pages/module.js:167
 msgid " could not be assigned."
 msgstr ""
 
-#: CTFd/themes/admin/assets/js/pages/module.js:179
+#: CTFd/themes/admin/assets/js/pages/module.js:182
 msgid "Remove Challenge"
 msgstr ""
 
-#: CTFd/themes/admin/assets/js/pages/module.js:180
+#: CTFd/themes/admin/assets/js/pages/module.js:183
 msgid ""
 "Are you sure you want to remove this challenge from the module? It will "
 "become ungrouped."
@@ -2251,10 +2981,6 @@ msgstr ""
 
 #: CTFd/themes/admin/assets/js/pages/notifications.js:30
 msgid "Could not send notification. Please try again."
-msgstr ""
-
-#: CTFd/themes/admin/assets/js/pages/notifications.js:54
-msgid "Are you sure you want to delete this notification?"
 msgstr ""
 
 #: CTFd/themes/admin/assets/js/pages/pages.js:10
@@ -2278,14 +3004,15 @@ msgstr ""
 msgid "Are you sure you want to reset your CTFd instance?"
 msgstr ""
 
-#: CTFd/themes/admin/assets/js/pages/scoreboard.js:36
-#: CTFd/themes/admin/templates/challenges/new.html:62
-#: CTFd/themes/admin/templates/challenges/update.html:179
-msgid "Visible"
-msgstr ""
-
 #: CTFd/themes/admin/assets/js/pages/scoreboard.js:80
 msgid "Toggle Visibility"
+msgstr ""
+
+#: CTFd/themes/admin/assets/js/pages/scoreboard.js:83
+#: CTFd/themes/admin/templates/config.html:44
+#: CTFd/themes/admin/templates/scoreboard/standings.html:13
+#: CTFd/themes/admin/templates/scoreboard/users.html:13
+msgid "Visibility"
 msgstr ""
 
 #: CTFd/themes/admin/assets/js/pages/statistics.js:36
@@ -2307,18 +3034,33 @@ msgid "Point Breakdown"
 msgstr ""
 
 #: CTFd/themes/admin/assets/js/pages/statistics.js:402
-#: CTFd/themes/admin/assets/js/pages/statistics.js:442
+#: CTFd/themes/admin/assets/js/pages/statistics.js:443
 msgid "Solve Percentages per Challenge"
 msgstr ""
 
-#: CTFd/themes/admin/assets/js/pages/statistics.js:528
-#: CTFd/themes/admin/assets/js/pages/statistics.js:569
-msgid "Score Distribution"
+#: CTFd/themes/admin/assets/js/pages/statistics.js:408
+#: CTFd/themes/admin/assets/js/pages/statistics.js:476
+msgid "Percentage of "
+msgstr ""
+
+#: CTFd/themes/admin/assets/js/pages/statistics.js:411
+#: CTFd/themes/admin/assets/js/pages/statistics.js:479
+msgid " (%)"
 msgstr ""
 
 #: CTFd/themes/admin/assets/js/pages/statistics.js:530
-#: CTFd/themes/admin/assets/js/pages/statistics.js:585
+#: CTFd/themes/admin/assets/js/pages/statistics.js:571
+msgid "Score Distribution"
+msgstr ""
+
+#: CTFd/themes/admin/assets/js/pages/statistics.js:532
+#: CTFd/themes/admin/assets/js/pages/statistics.js:587
 msgid "Score Bracket"
+msgstr ""
+
+#: CTFd/themes/admin/assets/js/pages/statistics.js:538
+#: CTFd/themes/admin/assets/js/pages/statistics.js:595
+msgid "Number of "
 msgstr ""
 
 #: CTFd/themes/admin/assets/js/pages/submissions.js:17
@@ -2332,27 +3074,27 @@ msgid ""
 " {1}"
 msgstr ""
 
-#: CTFd/themes/admin/assets/js/pages/submissions.js:38
-#: CTFd/themes/admin/assets/js/pages/submissions.js:59
-#: CTFd/themes/admin/assets/js/pages/submissions.js:89
+#: CTFd/themes/admin/assets/js/pages/submissions.js:40
+#: CTFd/themes/admin/assets/js/pages/submissions.js:66
+#: CTFd/themes/admin/assets/js/pages/submissions.js:101
 #: CTFd/themes/admin/assets/js/pages/team.js:122
 #: CTFd/themes/admin/assets/js/pages/user.js:233
 msgid "submission"
 msgstr ""
 
-#: CTFd/themes/admin/assets/js/pages/submissions.js:38
-#: CTFd/themes/admin/assets/js/pages/submissions.js:59
-#: CTFd/themes/admin/assets/js/pages/submissions.js:89
+#: CTFd/themes/admin/assets/js/pages/submissions.js:40
+#: CTFd/themes/admin/assets/js/pages/submissions.js:66
+#: CTFd/themes/admin/assets/js/pages/submissions.js:101
 #: CTFd/themes/admin/assets/js/pages/team.js:122
 #: CTFd/themes/admin/assets/js/pages/user.js:233
 msgid "submissions"
 msgstr ""
 
-#: CTFd/themes/admin/assets/js/pages/submissions.js:41
+#: CTFd/themes/admin/assets/js/pages/submissions.js:43
 msgid "Delete Submissions"
 msgstr ""
 
-#: CTFd/themes/admin/assets/js/pages/submissions.js:62
+#: CTFd/themes/admin/assets/js/pages/submissions.js:69
 #: CTFd/themes/admin/assets/js/pages/team.js:125
 #: CTFd/themes/admin/assets/js/pages/user.js:236
 #: CTFd/themes/admin/templates/base.html:74
@@ -2360,103 +3102,103 @@ msgstr ""
 msgid "Correct Submissions"
 msgstr ""
 
-#: CTFd/themes/admin/assets/js/pages/submissions.js:63
-#: CTFd/themes/admin/assets/js/pages/submissions.js:93
-#: CTFd/themes/admin/assets/js/pages/team.js:126
-#: CTFd/themes/admin/assets/js/pages/team.js:227
-#: CTFd/themes/admin/assets/js/pages/user.js:237
-#: CTFd/themes/admin/assets/js/pages/user.js:338
+#: CTFd/themes/admin/assets/js/pages/submissions.js:71
+#: CTFd/themes/admin/assets/js/pages/submissions.js:106
+#: CTFd/themes/admin/assets/js/pages/team.js:127
+#: CTFd/themes/admin/assets/js/pages/team.js:248
+#: CTFd/themes/admin/assets/js/pages/user.js:238
+#: CTFd/themes/admin/assets/js/pages/user.js:359
 msgid "Are you sure you want to mark "
 msgstr ""
 
-#: CTFd/themes/admin/assets/js/pages/submissions.js:63
-#: CTFd/themes/admin/assets/js/pages/team.js:126
-#: CTFd/themes/admin/assets/js/pages/user.js:237
+#: CTFd/themes/admin/assets/js/pages/submissions.js:75
+#: CTFd/themes/admin/assets/js/pages/team.js:131
+#: CTFd/themes/admin/assets/js/pages/user.js:242
 msgid " correct?"
 msgstr ""
 
-#: CTFd/themes/admin/assets/js/pages/submissions.js:92
+#: CTFd/themes/admin/assets/js/pages/submissions.js:104
 #: CTFd/themes/admin/templates/base.html:75
 msgid "Incorrect Submissions"
 msgstr ""
 
-#: CTFd/themes/admin/assets/js/pages/submissions.js:93
+#: CTFd/themes/admin/assets/js/pages/submissions.js:110
 msgid " incorrect?"
-msgstr ""
-
-#: CTFd/themes/admin/assets/js/pages/team.js:155
-#: CTFd/themes/admin/assets/js/pages/user.js:266
-msgid "solve"
 msgstr ""
 
 #: CTFd/themes/admin/assets/js/pages/team.js:160
 #: CTFd/themes/admin/assets/js/pages/user.js:271
+msgid "solve"
+msgstr ""
+
+#: CTFd/themes/admin/assets/js/pages/team.js:165
+#: CTFd/themes/admin/assets/js/pages/user.js:276
 msgid "fail"
 msgstr ""
 
-#: CTFd/themes/admin/assets/js/pages/team.js:170
-#: CTFd/themes/admin/assets/js/pages/user.js:281
+#: CTFd/themes/admin/assets/js/pages/team.js:179
+#: CTFd/themes/admin/assets/js/pages/user.js:290
 msgid "solves"
 msgstr ""
 
-#: CTFd/themes/admin/assets/js/pages/team.js:170
-#: CTFd/themes/admin/assets/js/pages/user.js:281
+#: CTFd/themes/admin/assets/js/pages/team.js:180
+#: CTFd/themes/admin/assets/js/pages/user.js:291
 msgid "fails"
 msgstr ""
 
-#: CTFd/themes/admin/assets/js/pages/team.js:173
-#: CTFd/themes/admin/assets/js/pages/user.js:284
+#: CTFd/themes/admin/assets/js/pages/team.js:183
+#: CTFd/themes/admin/assets/js/pages/user.js:294
 msgid "Delete "
 msgstr ""
 
-#: CTFd/themes/admin/assets/js/pages/team.js:191
-#: CTFd/themes/admin/assets/js/pages/user.js:302
+#: CTFd/themes/admin/assets/js/pages/team.js:206
+#: CTFd/themes/admin/assets/js/pages/user.js:317
 msgid "award"
 msgstr ""
 
-#: CTFd/themes/admin/assets/js/pages/team.js:191
-#: CTFd/themes/admin/assets/js/pages/user.js:302
+#: CTFd/themes/admin/assets/js/pages/team.js:206
+#: CTFd/themes/admin/assets/js/pages/user.js:317
 msgid "awards"
 msgstr ""
 
-#: CTFd/themes/admin/assets/js/pages/team.js:194
-#: CTFd/themes/admin/assets/js/pages/user.js:305
+#: CTFd/themes/admin/assets/js/pages/team.js:209
+#: CTFd/themes/admin/assets/js/pages/user.js:320
 msgid "Delete Awards"
 msgstr ""
 
-#: CTFd/themes/admin/assets/js/pages/team.js:226
-#: CTFd/themes/admin/assets/js/pages/team.js:235
-#: CTFd/themes/admin/assets/js/pages/user.js:337
+#: CTFd/themes/admin/assets/js/pages/team.js:246
+#: CTFd/themes/admin/assets/js/pages/team.js:265
+#: CTFd/themes/admin/assets/js/pages/user.js:357
 msgid "Mark Correct"
 msgstr ""
 
-#: CTFd/themes/admin/assets/js/pages/team.js:227
-#: CTFd/themes/admin/assets/js/pages/user.js:338
+#: CTFd/themes/admin/assets/js/pages/team.js:252
+#: CTFd/themes/admin/assets/js/pages/user.js:363
 msgid " correct for "
 msgstr ""
 
-#: CTFd/themes/admin/assets/js/pages/team.js:230
+#: CTFd/themes/admin/assets/js/pages/team.js:257
 msgid "User Attribution"
 msgstr ""
 
-#: CTFd/themes/admin/assets/js/pages/team.js:231
+#: CTFd/themes/admin/assets/js/pages/team.js:259
 msgid "Which user on "
 msgstr ""
 
-#: CTFd/themes/admin/assets/js/pages/team.js:231
+#: CTFd/themes/admin/assets/js/pages/team.js:261
 msgid " solved these challenges?"
 msgstr ""
 
-#: CTFd/themes/admin/assets/js/pages/team.js:241
-#: CTFd/themes/admin/assets/js/pages/user.js:343
+#: CTFd/themes/admin/assets/js/pages/team.js:271
+#: CTFd/themes/admin/assets/js/pages/user.js:370
 msgid "MARKED AS SOLVED BY ADMIN"
 msgstr ""
 
-#: CTFd/themes/admin/assets/js/pages/team.js:455
+#: CTFd/themes/admin/assets/js/pages/team.js:485
 msgid "Please select a team member"
 msgstr ""
 
-#: CTFd/themes/admin/assets/js/pages/team.js:508
+#: CTFd/themes/admin/assets/js/pages/team.js:538
 #, python-brace-format
 msgid ""
 "Are you sure you want to remove {0} from {1}? <br><br><strong>All of "
@@ -2464,7 +3206,7 @@ msgid ""
 " deleted!</strong>"
 msgstr ""
 
-#: CTFd/themes/admin/assets/js/pages/team.js:531
+#: CTFd/themes/admin/assets/js/pages/team.js:563
 #: CTFd/themes/admin/templates/teams/team.html:239
 msgid "Delete Team"
 msgstr ""
@@ -2472,7 +3214,9 @@ msgstr ""
 #: CTFd/themes/admin/assets/js/pages/teams.js:11
 #: CTFd/utils/modes/__init__.py:37
 msgid "team"
-msgstr ""
+msgid_plural "teams"
+msgstr[0] ""
+msgstr[1] ""
 
 #: CTFd/themes/admin/assets/js/pages/teams.js:11
 #: CTFd/themes/admin/templates/statistics.html:18
@@ -2484,9 +3228,19 @@ msgstr ""
 msgid "Delete Teams"
 msgstr ""
 
-#: CTFd/themes/admin/assets/js/pages/teams.js:38
+#: CTFd/themes/admin/assets/js/pages/teams.js:43
 #: CTFd/themes/admin/templates/teams/teams.html:55
 msgid "Edit Teams"
+msgstr ""
+
+#: CTFd/themes/admin/assets/js/pages/teams.js:48
+#: CTFd/themes/admin/assets/js/pages/users.js:49
+msgid "True"
+msgstr ""
+
+#: CTFd/themes/admin/assets/js/pages/teams.js:49
+#: CTFd/themes/admin/assets/js/pages/users.js:50
+msgid "False"
 msgstr ""
 
 #: CTFd/themes/admin/assets/js/pages/user.js:126
@@ -2501,7 +3255,9 @@ msgstr ""
 #: CTFd/themes/admin/assets/js/pages/users.js:11
 #: CTFd/utils/modes/__init__.py:35
 msgid "user"
-msgstr ""
+msgid_plural "users"
+msgstr[0] ""
+msgstr[1] ""
 
 #: CTFd/themes/admin/assets/js/pages/users.js:11
 #: CTFd/themes/admin/templates/statistics.html:14
@@ -2513,7 +3269,7 @@ msgstr ""
 msgid "Delete Users"
 msgstr ""
 
-#: CTFd/themes/admin/assets/js/pages/users.js:38
+#: CTFd/themes/admin/assets/js/pages/users.js:43
 #: CTFd/themes/admin/templates/users/users.html:56
 msgid "Edit Users"
 msgstr ""
@@ -2604,12 +3360,6 @@ msgstr ""
 
 #: CTFd/themes/admin/templates/config.html:41
 msgid "Access"
-msgstr ""
-
-#: CTFd/themes/admin/templates/config.html:44
-#: CTFd/themes/admin/templates/scoreboard/standings.html:13
-#: CTFd/themes/admin/templates/scoreboard/users.html:13
-msgid "Visibility"
 msgstr ""
 
 #: CTFd/themes/admin/templates/config.html:49
@@ -2730,19 +3480,8 @@ msgstr ""
 msgid "Write"
 msgstr ""
 
-#: CTFd/themes/admin/templates/editor.html:90
-msgid "Preview"
-msgstr ""
-
 #: CTFd/themes/admin/templates/editor.html:132
 msgid "CTFd Page variables"
-msgstr ""
-
-#: CTFd/themes/admin/templates/audiences/audience.html:23
-#: CTFd/themes/admin/templates/editor.html:143
-#: CTFd/themes/admin/templates/modals/challenges/module.html:14
-#: CTFd/themes/admin/templates/modules/module.html:23
-msgid "Save"
 msgstr ""
 
 #: CTFd/themes/admin/templates/challenges/challenge.html:53
@@ -2902,14 +3641,10 @@ msgid "wrong submissions"
 msgstr ""
 
 #: CTFd/themes/admin/templates/submissions.html:20
-msgid "Searching for submissions with"
-msgstr ""
-
-#: CTFd/themes/admin/templates/challenges/challenges.html:25
-#: CTFd/themes/admin/templates/submissions.html:20
-#: CTFd/themes/admin/templates/teams/teams.html:24
-#: CTFd/themes/admin/templates/users/users.html:25
-msgid "matching"
+#, python-format
+msgid ""
+"Searching for submissions with <strong>%(field)s</strong> matching "
+"<strong>%(q)s</strong>"
 msgstr ""
 
 #: CTFd/themes/admin/templates/submissions.html:23
@@ -2919,6 +3654,10 @@ msgstr ""
 #: CTFd/themes/core/templates/users/users.html:17
 #, python-format
 msgid "Page %(page)s of %(total)s results"
+msgstr ""
+
+#: CTFd/themes/admin/templates/submissions.html:33
+msgid "Search for matching submission"
 msgstr ""
 
 #: CTFd/themes/admin/templates/submissions.html:52
@@ -2967,14 +3706,6 @@ msgstr ""
 msgid "Date"
 msgstr ""
 
-#: CTFd/themes/admin/templates/submissions.html:152
-#: CTFd/themes/admin/templates/teams/teams.html:143
-#: CTFd/themes/admin/templates/users/users.html:155
-#: CTFd/themes/core/templates/teams/teams.html:128
-#: CTFd/themes/core/templates/users/users.html:118
-msgid "Page"
-msgstr ""
-
 #: CTFd/themes/admin/templates/audiences/audience.html:8
 #: CTFd/themes/admin/templates/audiences/audience.html:39
 msgid "Edit Audience"
@@ -3007,15 +3738,6 @@ msgstr ""
 
 #: CTFd/themes/admin/templates/audiences/audience.html:85
 msgid "Linked Members"
-msgstr ""
-
-#: CTFd/themes/admin/templates/audiences/audience.html:89
-#: CTFd/themes/admin/templates/teams/teams.html:77
-#: CTFd/themes/core/templates/components/navbar.html:99
-#: CTFd/themes/core/templates/components/navbar.html:104
-#: CTFd/themes/core/templates/teams/team_enrollment.html:6
-#: CTFd/themes/core/templates/teams/teams.html:49
-msgid "Team"
 msgstr ""
 
 #: CTFd/themes/admin/templates/audiences/audience.html:104
@@ -3090,13 +3812,6 @@ msgstr ""
 msgid "Flags"
 msgstr ""
 
-#: CTFd/themes/admin/templates/challenges/challenge.html:119
-#: CTFd/themes/admin/templates/challenges/challenge.html:148
-#: CTFd/themes/admin/templates/challenges/challenges.html:85
-#: CTFd/themes/core/templates/challenge.html:30
-msgid "Solution"
-msgstr ""
-
 #: CTFd/themes/admin/templates/challenges/challenge.html:120
 #: CTFd/themes/admin/templates/challenges/challenge.html:156
 msgid "Topics"
@@ -3112,32 +3827,11 @@ msgstr ""
 msgid "Hints"
 msgstr ""
 
-#: CTFd/themes/admin/templates/challenges/challenge.html:123
-#: CTFd/themes/admin/templates/challenges/challenge.html:180
-msgid "Requirements"
-msgstr ""
-
-#: CTFd/themes/admin/templates/challenges/challenge.html:124
-#: CTFd/themes/core/templates/setup.html:86
-#: CTFd/themes/core/templates/setup.html:138
-#: CTFd/themes/core/templates/setup.html:202
-#: CTFd/themes/core/templates/setup.html:238
-#: CTFd/themes/core/templates/setup.html:296
-#: CTFd/themes/core/templates/setup.html:345
-msgid "Next"
-msgstr ""
-
 #: CTFd/themes/admin/templates/challenges/challenge.html:125
 #: CTFd/themes/admin/templates/challenges/challenge.html:196
 #: CTFd/themes/admin/templates/challenges/challenges.html:81
 #: CTFd/themes/admin/templates/modals/challenges/module.html:4
 msgid "Module"
-msgstr ""
-
-#: CTFd/themes/admin/templates/challenges/challenge.html:188
-#: CTFd/themes/admin/templates/challenges/preview.html:6
-#: CTFd/themes/core/templates/challenge.html:209
-msgid "Next Challenge"
 msgstr ""
 
 #: CTFd/themes/admin/templates/challenges/challenges.html:13
@@ -3146,18 +3840,18 @@ msgid "Create Challenge"
 msgstr ""
 
 #: CTFd/themes/admin/templates/challenges/challenges.html:25
-msgid "Searching for challenges with"
+#, python-format
+msgid ""
+"Searching for challenges with <strong>%(field)s</strong> matching "
+"<strong>%(q)s</strong>"
 msgstr ""
 
 #: CTFd/themes/admin/templates/challenges/challenges.html:28
 msgid "results"
 msgstr ""
 
-#: CTFd/themes/admin/templates/challenges/challenges.html:84
-#: CTFd/themes/admin/templates/challenges/new.html:58
-#: CTFd/themes/admin/templates/challenges/update.html:174
-#: CTFd/themes/admin/templates/modules/module.html:88
-msgid "State"
+#: CTFd/themes/admin/templates/challenges/challenges.html:38
+msgid "Search for matching challenge"
 msgstr ""
 
 #: CTFd/themes/admin/templates/challenges/challenges.html:133
@@ -3207,10 +3901,6 @@ msgstr ""
 
 #: CTFd/themes/admin/templates/challenges/create.html:50
 msgid "This is how many points are rewarded for solving this challenge."
-msgstr ""
-
-#: CTFd/themes/admin/templates/challenges/create.html:53
-msgid "Enter value"
 msgstr ""
 
 #: CTFd/themes/admin/templates/challenges/new.html:17
@@ -3305,14 +3995,6 @@ msgstr ""
 msgid "Static"
 msgstr ""
 
-#: CTFd/themes/admin/templates/challenges/update.html:95
-msgid "Linear"
-msgstr ""
-
-#: CTFd/themes/admin/templates/challenges/update.html:96
-msgid "Logarithmic"
-msgstr ""
-
 #: CTFd/themes/admin/templates/challenges/update.html:100
 msgid "Static: Challenge <code>Value</code> is awarded as-is"
 msgstr ""
@@ -3327,41 +4009,11 @@ msgid ""
 "(SolveCount^2)) + Initial</code>"
 msgstr ""
 
-#: CTFd/themes/admin/templates/challenges/update.html:110
-msgid "Initial Value"
-msgstr ""
-
-#: CTFd/themes/admin/templates/challenges/update.html:112
-msgid "This is how many points the challenge was worth initially."
-msgstr ""
-
-#: CTFd/themes/admin/templates/challenges/update.html:121
-msgid "Decay"
-msgstr ""
-
-#: CTFd/themes/admin/templates/challenges/update.html:123
-msgid "The decay value is used differently depending on the above Decay Function"
-msgstr ""
-
-#: CTFd/themes/admin/templates/challenges/update.html:125
-msgid ""
-"Linear: The amount of points deducted per solve. Equal deduction per "
-"solve."
-msgstr ""
-
 #: CTFd/themes/admin/templates/challenges/update.html:126
 msgid ""
 "Logarithmic: The amount of solves before the challenge reaches its "
 "minimum value. Earlier solves will lose less points. Later solves will "
 "lose more points"
-msgstr ""
-
-#: CTFd/themes/admin/templates/challenges/update.html:136
-msgid "Minimum Value"
-msgstr ""
-
-#: CTFd/themes/admin/templates/challenges/update.html:138
-msgid "This is the lowest that the challenge can be worth"
 msgstr ""
 
 #: CTFd/themes/admin/templates/challenges/update.html:148
@@ -3995,21 +4647,6 @@ msgstr ""
 msgid "New Module"
 msgstr ""
 
-#: CTFd/themes/admin/templates/scoreboard/standings.html:9
-#: CTFd/themes/admin/templates/scoreboard/users.html:9
-#: CTFd/themes/core/templates/scoreboard.html:36
-msgid "Place"
-msgstr ""
-
-#: CTFd/themes/admin/templates/scoreboard/standings.html:12
-#: CTFd/themes/admin/templates/scoreboard/users.html:12
-#: CTFd/themes/admin/templates/teams/team.html:270
-#: CTFd/themes/core/templates/scoreboard.html:38
-#: CTFd/themes/core/templates/teams/private.html:328
-#: CTFd/themes/core/templates/teams/public.html:96
-msgid "Score"
-msgstr ""
-
 #: CTFd/themes/admin/templates/scoreboard/standings.html:31
 #: CTFd/themes/admin/templates/scoreboard/standings.html:35
 #: CTFd/themes/admin/templates/scoreboard/users.html:31
@@ -4171,7 +4808,16 @@ msgid "Time"
 msgstr ""
 
 #: CTFd/themes/admin/templates/teams/teams.html:24
-msgid "Searching for teams with"
+#: CTFd/themes/core/templates/teams/teams.html:15
+#, python-format
+msgid ""
+"Searching for teams with <strong>%(field)s</strong> matching "
+"<strong>%(q)s</strong>"
+msgstr ""
+
+#: CTFd/themes/admin/templates/teams/teams.html:37
+#: CTFd/themes/core/templates/teams/teams.html:29
+msgid "Search for matching teams"
 msgstr ""
 
 #: CTFd/themes/admin/templates/users/new.html:10
@@ -4205,7 +4851,11 @@ msgid "admin"
 msgstr ""
 
 #: CTFd/themes/admin/templates/users/users.html:25
-msgid "Searching for users with"
+#: CTFd/themes/core/templates/users/users.html:14
+#, python-format
+msgid ""
+"Searching for users with <strong>%(field)s</strong> matching "
+"<strong>%(q)s</strong>"
 msgstr ""
 
 #: CTFd/themes/core/assets/js/challenges.js:268
@@ -4233,7 +4883,9 @@ msgstr ""
 #: CTFd/themes/core/templates/challenge.html:39
 #, python-format
 msgid "%(num)d Solve"
-msgstr ""
+msgid_plural "%(num)d Solves"
+msgstr[0] ""
+msgstr[1] ""
 
 #: CTFd/themes/core/templates/challenge.html:79
 msgid "liked"
@@ -4246,20 +4898,22 @@ msgstr ""
 #: CTFd/themes/core/templates/challenge.html:119
 #, python-format
 msgid "Cost: %(cost)s point"
-msgstr ""
+msgid_plural "Cost: %(cost)s points"
+msgstr[0] ""
+msgstr[1] ""
 
 #: CTFd/themes/core/templates/challenge.html:121
 #, python-format
 msgid "Unlock Hint for %(cost)s point"
-msgstr ""
+msgid_plural "Unlock Hint for %(cost)s points"
+msgstr[0] ""
+msgstr[1] ""
 
 #: CTFd/themes/core/templates/challenge.html:160
 msgid "attempt"
-msgstr ""
-
-#: CTFd/themes/core/templates/challenge.html:175
-msgid "Flag"
-msgstr ""
+msgid_plural "attempts"
+msgstr[0] ""
+msgstr[1] ""
 
 #: CTFd/themes/core/templates/challenge.html:216
 msgid "Share"
@@ -4421,13 +5075,6 @@ msgstr ""
 
 #: CTFd/themes/core/templates/scoreboard.html:60
 msgid "Scoreboard is empty"
-msgstr ""
-
-#: CTFd/themes/core/templates/components/navbar.html:124
-#: CTFd/themes/core/templates/components/navbar.html:129
-#: CTFd/themes/core/templates/settings.html:8
-#: CTFd/themes/core/templates/setup.html:50
-msgid "Settings"
 msgstr ""
 
 #: CTFd/themes/core/templates/components/navbar.html:112
@@ -4592,7 +5239,6 @@ msgid "Join Team"
 msgstr ""
 
 #: CTFd/themes/core/templates/teams/invite.html:15
-#: CTFd/themes/core/templates/teams/team_enrollment.html:12
 msgid "Welcome to"
 msgstr ""
 
@@ -4655,6 +5301,11 @@ msgstr ""
 msgid "No solves yet"
 msgstr ""
 
+#: CTFd/themes/core/templates/teams/team_enrollment.html:12
+#, python-format
+msgid "Welcome to %(name)s!"
+msgstr ""
+
 #: CTFd/themes/core/templates/teams/team_enrollment.html:14
 msgid "In order to participate you must either join or create a team."
 msgstr ""
@@ -4671,23 +5322,9 @@ msgstr ""
 msgid "Create Unofficial Team"
 msgstr ""
 
-#: CTFd/themes/core/templates/teams/teams.html:15
-#, python-format
-msgid ""
-"Searching for teams with <strong>%(field)s</strong> matching "
-"<strong>%(q)s</strong>"
-msgstr ""
-
-#: CTFd/themes/core/templates/users/users.html:14
-#, python-format
-msgid ""
-"Searching for users with <strong>%(field)s</strong> matching "
-"<strong>%(q)s</strong>"
-msgstr ""
-
 #: CTFd/utils/decorators/__init__.py:177
 #, python-format
-msgid "Too many requests. Limit is %s requests in %s seconds"
+msgid "Too many requests. Limit is %(limit)s requests in %(interval)s seconds"
 msgstr ""
 
 #: CTFd/utils/decorators/__init__.py:210

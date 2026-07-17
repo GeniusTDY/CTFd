@@ -13,9 +13,9 @@
 
     <div class="form-group">
       <label
-        >Tag
+        >{{ labels.tag }}
         <br />
-        <small class="text-muted">Type tag and press Enter</small>
+        <small class="text-muted">{{ labels.typeTagAndPressEnter }}</small>
       </label>
       <input
         id="tags-add-input"
@@ -40,6 +40,10 @@ export default {
     return {
       tags: [],
       tagValue: "",
+      labels: {
+        tag: _("Tag"),
+        typeTagAndPressEnter: _("Type tag and press Enter"),
+      },
     };
   },
   methods: {

@@ -7,7 +7,7 @@
             class="form-control mb-2"
             rows="2"
             id="comment-input"
-            placeholder="Add comment"
+            :placeholder="labels.addComment"
             v-model.lazy="comment"
           ></textarea>
           <button
@@ -15,7 +15,7 @@
             type="submit"
             @click="submitComment()"
           >
-            Comment
+            {{ labels.commentBtn }}
           </button>
         </div>
       </div>
@@ -46,7 +46,8 @@
       <div class="col-md-12">
         <div class="text-center">
           <small class="text-muted"
-            >Page {{ page }} of {{ total }} comments</small
+            >{{ labels.pageWord }} {{ page }} {{ labels.ofWord }} {{ total }}
+            {{ labels.commentsWord }}</small
           >
         </div>
       </div>
@@ -108,7 +109,8 @@
       <div class="col-md-12">
         <div class="text-center">
           <small class="text-muted"
-            >Page {{ page }} of {{ total }} comments</small
+            >{{ labels.pageWord }} {{ page }} {{ labels.ofWord }} {{ total }}
+            {{ labels.commentsWord }}</small
           >
         </div>
       </div>
@@ -138,6 +140,13 @@ export default {
       comment: "",
       comments: [],
       urlRoot: CTFd.config.urlRoot,
+      labels: {
+        addComment: _("Add comment"),
+        commentBtn: _("Comment"),
+        pageWord: _("Page"),
+        ofWord: _("of"),
+        commentsWord: _("comments"),
+      },
     };
   },
   methods: {
@@ -187,7 +196,7 @@ export default {
       this.comment = "";
     },
     deleteComment: function (commentId) {
-      if (confirm("Are you sure you'd like to delete this comment?")) {
+      if (confirm(_("Are you sure you'd like to delete this comment?"))) {
         helpers.comments.delete_comment(commentId).then((response) => {
           if (response.success === true) {
             for (let i = this.comments.length - 1; i >= 0; --i) {

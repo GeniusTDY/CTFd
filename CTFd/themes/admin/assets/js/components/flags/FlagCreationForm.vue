@@ -6,7 +6,7 @@
           <div class="container">
             <div class="row">
               <div class="col-md-12">
-                <h3>Create Flag</h3>
+                <h3>{{ labels.createFlag }}</h3>
               </div>
             </div>
           </div>
@@ -29,7 +29,7 @@
               class="form-control custom-select"
               @change="selectType($event)"
             >
-              <option>--</option>
+              <option>{{ labels.placeholderOption }}</option>
               <option
                 v-for="type in Object.keys(types)"
                 :value="type"
@@ -47,7 +47,7 @@
               type="submit"
               v-if="createForm"
             >
-              Create Flag
+              {{ labels.createFlag }}
             </button>
           </form>
         </div>
@@ -72,6 +72,11 @@ export default {
       types: {},
       selectedType: null,
       createForm: "",
+      labels: {
+        createFlag: _("Create Flag"),
+        chooseFlagType: _("Choose Flag Type"),
+        placeholderOption: _("--"),
+      },
     };
   },
   methods: {

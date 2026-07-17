@@ -2,46 +2,47 @@
 
 {% block value %}
 <div class="form-group">
-	<label for="value">Current Value<br>
+	<label for="value">{% trans %}Current Value{% endtrans %}<br>
 		<small class="form-text text-muted">
-			This is how many points the challenge is worth right now.
+			{% trans %}This is how many points the challenge is worth right now.{% endtrans %}
 		</small>
 	</label>
 	<input type="number" class="form-control chal-value" name="value" value="{{ challenge.value }}" disabled>
 </div>
 
 <div class="form-group">
-	<label for="value">Initial Value<br>
+	<label for="value">{% trans %}Initial Value{% endtrans %}<br>
 		<small class="form-text text-muted">
-			This is how many points the challenge was worth initially.
+			{% trans %}This is how many points the challenge was worth initially.{% endtrans %}
 		</small>
 	</label>
 	<input type="number" class="form-control chal-initial" name="initial" value="{{ challenge.initial }}" required>
 </div>
 
 <div class="form-group">
-	<label for="value">Decay Function<br>
+	<label for="value">{% trans %}Decay Function{% endtrans %}<br>
 		<small class="form-text text-muted">
-			<span>How the dynamic value will be calculated based on the Decay value</span>
+			<span>{% trans %}How the dynamic value will be calculated based on the Decay value{% endtrans %}</span>
 			<ul>
-				<li>Linear: Calculated as <code>Initial - (Decay * SolveCount)</code></li>
-				<li>Logarithmic: Calculated as <code>(((Minimum - Initial) / (Decay^2)) * (SolveCount^2)) + Initial</code></li>
+				<li>{% trans %}Linear: Calculated as{% endtrans %} <code>Initial - (Decay * SolveCount)</code></li>
+				<li>{% trans %}Logarithmic: Calculated as{% endtrans %} <code>(((Minimum - Initial) / (Decay^2)) * (SolveCount^2)) + Initial</code></li>
 			</ul>
 		</small>
 	</label>
 	<select name="function" class="custom-select">
-		<option value="linear" {% if challenge.function == "linear" %}selected{% endif %}>Linear</option>
-		<option value="logarithmic" {% if challenge.function == "logarithmic" %}selected{% endif %}>Logarithmic</option>
+		<option value="linear" {% if challenge.function == "linear" %}selected{% endif %}>{% trans %}Linear{% endtrans %}</option>
+		<option value="logarithmic" {% if challenge.function == "logarithmic" %}selected{% endif %}>{% trans %}Logarithmic{% endtrans %}</option>
 	</select>
 </div>
 
 <div class="form-group">
-	<label for="value">Decay<br>
+	<label for="value">{% trans %}Decay{% endtrans %}<br>
 		<small class="form-text text-muted">
-			<span>The decay value is used differently depending on the above Decay Function</span>
+			<span>{% trans %}The decay value is used differently depending on the above Decay Function{% endtrans %}</span>
 			<ul>
-				<li>Linear: The amount of points deducted per solve. Equal deduction per solve.</li>
-				<li>Logarithmic: The amount of solves before the challenge reaches its minimum value. Earlier solves will lose less points. Later solves will lose more points</li>
+				<li>{% trans %}Linear: The amount of points deducted per solve. Equal deduction per solve.{% endtrans %}</li>
+				<li>{% trans %}Logarithmic: The amount of solves before the challenge reaches its minimum value. Earlier solves will lose less
+					points. Later solves will lose more points{% endtrans %}</li>
 			</ul>
 		</small>
 	</label>
@@ -49,9 +50,9 @@
 </div>
 
 <div class="form-group">
-	<label for="value">Minimum Value<br>
+	<label for="value">{% trans %}Minimum Value{% endtrans %}<br>
 		<small class="form-text text-muted">
-			This is the lowest that the challenge can be worth
+			{% trans %}This is the lowest that the challenge can be worth{% endtrans %}
 		</small>
 	</label>
 	<input type="number" class="form-control chal-minimum" name="minimum" value="{{ challenge.minimum }}" required>

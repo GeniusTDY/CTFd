@@ -6,7 +6,7 @@
           <div class="container">
             <div class="row">
               <div class="col-md-12">
-                <h3 class="text-center">Edit Flag</h3>
+                <h3 class="text-center">{{ labels.editFlag }}</h3>
               </div>
             </div>
           </div>
@@ -46,6 +46,9 @@ export default {
     return {
       flag: {},
       editForm: "",
+      labels: {
+        editFlag: _("Edit Flag"),
+      },
     };
   },
   watch: {

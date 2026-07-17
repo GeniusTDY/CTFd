@@ -6,7 +6,7 @@
           <div class="container">
             <div class="row">
               <div class="col-md-12">
-                <h3 class="text-center">Media Library</h3>
+                <h3 class="text-center">{{ labels.mediaLibrary }}</h3>
               </div>
             </div>
           </div>
@@ -47,7 +47,7 @@
                   </div>
                 </div>
                 <div class="col-md-6" id="media-library-details">
-                  <h4 class="text-center">Media Details</h4>
+                  <h4 class="text-center">{{ labels.mediaDetails }}</h4>
                   <div id="media-item">
                     <div class="text-center" id="media-icon">
                       <div v-if="this.selectedFile">
@@ -90,7 +90,7 @@
 
                     <div class="form-group">
                       <div v-if="this.selectedFile">
-                        Link:
+                        {{ labels.link }}
                         <input
                           class="form-control"
                           type="text"
@@ -100,7 +100,7 @@
                         />
                       </div>
                       <div v-else>
-                        Link:
+                        {{ labels.link }}
                         <input
                           class="form-control"
                           type="text"
@@ -119,9 +119,9 @@
                             id="media-insert"
                             data-toggle="tooltip"
                             data-placement="top"
-                            title="Insert link into editor"
+                            :title="labels.insertLinkIntoEditor"
                           >
-                            Insert
+                            {{ labels.insert }}
                           </button>
                         </div>
                         <div class="col-md-3">
@@ -131,7 +131,7 @@
                             id="media-download"
                             data-toggle="tooltip"
                             data-placement="top"
-                            title="Download file"
+                            :title="labels.downloadFile"
                           >
                             <i class="fas fa-download"></i>
                           </button>
@@ -143,7 +143,7 @@
                             id="media-delete"
                             data-toggle="tooltip"
                             data-placement="top"
-                            title="Delete file"
+                            :title="labels.deleteFile"
                           >
                             <i class="far fa-trash-alt"></i>
                           </button>
@@ -160,7 +160,7 @@
             <div class="form-row pt-3">
               <div class="col">
                 <div class="form-group">
-                  <label for="media-files">Upload Files</label>
+                  <label for="media-files">{{ labels.uploadFiles }}</label>
                   <input
                     type="file"
                     name="file"
@@ -169,23 +169,22 @@
                     multiple
                   />
                   <sub class="help-block">
-                    Attach multiple files using Control+Click or Cmd+Click.
+                    {{ labels.attachMultipleFiles }}
                   </sub>
                 </div>
               </div>
               <div class="col">
                 <div class="form-group">
-                  <label>Upload File Location</label>
+                  <label>{{ labels.uploadFileLocation }}</label>
                   <input
                     class="form-control"
                     type="text"
                     name="location"
-                    placeholder="Location"
+                    :placeholder="labels.location"
                   />
                   <sub class="help-block">
-                    Route where file will be accessible (if not provided a
-                    random folder will be used). <br />
-                    Provide as <code>directory/filename.ext</code>
+                    {{ labels.routeHelp }} <br />
+                    {{ labels.provideAs }} <code>directory/filename.ext</code>
                   </sub>
                 </div>
               </div>
@@ -200,7 +199,7 @@
               type="submit"
               class="btn btn-primary media-upload-button"
             >
-              Upload
+              {{ labels.upload }}
             </button>
           </div>
         </div>
@@ -230,6 +229,26 @@ export default {
       files: [],
       selectedFile: null,
       media_type: "page",
+      labels: {
+        mediaLibrary: _("Media Library"),
+        mediaDetails: _("Media Details"),
+        link: _("Link:"),
+        insert: _("Insert"),
+        insertLinkIntoEditor: _("Insert link into editor"),
+        downloadFile: _("Download file"),
+        deleteFile: _("Delete file"),
+        uploadFiles: _("Upload Files"),
+        attachMultipleFiles: _(
+          "Attach multiple files using Control+Click or Cmd+Click.",
+        ),
+        uploadFileLocation: _("Upload File Location"),
+        location: _("Location"),
+        routeHelp: _(
+          "Route where file will be accessible (if not provided a random folder will be used).",
+        ),
+        provideAs: _("Provide as"),
+        upload: _("Upload"),
+      },
     };
   },
   methods: {
@@ -265,7 +284,7 @@ export default {
     deleteSelectedFile: function () {
       const file_id = this.selectedFile.id;
 
-      if (confirm("Are you sure you want to delete this file?")) {
+      if (confirm(_("Are you sure you want to delete this file?"))) {
         CTFd.fetch("/api/v1/files/" + file_id, {
           method: "DELETE",
         }).then((response) => {

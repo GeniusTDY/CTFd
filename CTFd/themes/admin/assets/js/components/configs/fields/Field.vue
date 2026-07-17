@@ -14,38 +14,36 @@
     <div class="row">
       <div class="col-md-3">
         <div class="form-group">
-          <label>Field Type</label>
+          <label>{{ labels.fieldType }}</label>
           <select
             class="form-control custom-select"
             v-model.lazy="field.field_type"
           >
-            <option value="text">Text Field</option>
-            <option value="boolean">Checkbox</option>
+            <option value="text">{{ labels.textField }}</option>
+            <option value="boolean">{{ labels.checkbox }}</option>
           </select>
-          <small class="form-text text-muted"
-            >Type of field shown to the user</small
-          >
+          <small class="form-text text-muted">{{ labels.fieldTypeHelp }}</small>
         </div>
       </div>
       <div class="col-md-9">
         <div class="form-group">
-          <label>Field Name</label>
+          <label>{{ labels.fieldName }}</label>
           <input type="text" class="form-control" v-model.lazy="field.name" />
-          <small class="form-text text-muted">Field name</small>
+          <small class="form-text text-muted">{{ labels.fieldNameHelp }}</small>
         </div>
       </div>
 
       <div class="col-md-12">
         <div class="form-group">
-          <label>Field Description</label>
+          <label>{{ labels.fieldDescription }}</label>
           <input
             type="text"
             class="form-control"
             v-model.lazy="field.description"
           />
-          <small id="emailHelp" class="form-text text-muted"
-            >Field Description</small
-          >
+          <small id="emailHelp" class="form-text text-muted">{{
+            labels.fieldDescriptionHelp
+          }}</small>
         </div>
       </div>
 
@@ -57,7 +55,7 @@
               type="checkbox"
               v-model.lazy="field.editable"
             />
-            Editable by user in profile
+            {{ labels.editableByUser }}
           </label>
         </div>
         <div class="form-check">
@@ -67,7 +65,7 @@
               type="checkbox"
               v-model.lazy="field.required"
             />
-            Required on registration
+            {{ labels.requiredOnRegistration }}
           </label>
         </div>
         <div class="form-check">
@@ -77,7 +75,7 @@
               type="checkbox"
               v-model.lazy="field.public"
             />
-            Shown on public profile
+            {{ labels.shownOnPublicProfile }}
           </label>
         </div>
       </div>
@@ -91,7 +89,7 @@
             type="button"
             @click="saveField()"
           >
-            Save
+            {{ labels.save }}
           </button>
         </div>
       </div>
@@ -111,6 +109,20 @@ export default {
   data: function () {
     return {
       field: this.initialField,
+      labels: {
+        fieldType: _("Field Type"),
+        textField: _("Text Field"),
+        checkbox: _("Checkbox"),
+        fieldTypeHelp: _("Type of field shown to the user"),
+        fieldName: _("Field Name"),
+        fieldNameHelp: _("Field name"),
+        fieldDescription: _("Field Description"),
+        fieldDescriptionHelp: _("Field Description"),
+        editableByUser: _("Editable by user in profile"),
+        requiredOnRegistration: _("Required on registration"),
+        shownOnPublicProfile: _("Shown on public profile"),
+        save: _("Save"),
+      },
     };
   },
   methods: {
@@ -138,8 +150,8 @@ export default {
             if (response.success === true) {
               this.field = response.data;
               ezToast({
-                title: "Success",
-                body: "Field has been updated!",
+                title: _("Success"),
+                body: _("Field has been updated!"),
                 delay: 1000,
               });
             }
@@ -161,8 +173,8 @@ export default {
             if (response.success === true) {
               this.field = response.data;
               ezToast({
-                title: "Success",
-                body: "Field has been created!",
+                title: _("Success"),
+                body: _("Field has been created!"),
                 delay: 1000,
               });
             }
@@ -170,7 +182,7 @@ export default {
       }
     },
     deleteField: function () {
-      if (confirm("Are you sure you'd like to delete this field?")) {
+      if (confirm(_("Are you sure you'd like to delete this field?"))) {
         if (this.persistedField()) {
           CTFd.fetch(`/api/v1/configs/fields/${this.field.id}`, {
             method: "DELETE",

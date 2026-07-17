@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: CTFd\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2026-07-17 02:36+0000\n"
+"POT-Creation-Date: 2026-07-17 04:31+0000\n"
 "PO-Revision-Date: 2026-07-13 00:00+0000\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
@@ -13,7 +13,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 "Generated-By: Babel 2.17.0\n"
-"X-Generator: \n"
 
 #: CTFd/auth.py:49
 msgid ""
@@ -507,10 +506,13 @@ msgstr "重置密码"
 #: CTFd/forms/auth.py:44 CTFd/forms/auth.py:70 CTFd/forms/auth.py:81
 #: CTFd/forms/auth.py:88 CTFd/forms/notifications.py:27 CTFd/forms/self.py:29
 #: CTFd/forms/teams.py:154 CTFd/forms/teams.py:194 CTFd/forms/teams.py:237
-#: CTFd/forms/users.py:193 CTFd/themes/admin/assets/js/pages/challenges.js:71
-#: CTFd/themes/admin/assets/js/pages/scoreboard.js:93
-#: CTFd/themes/admin/assets/js/pages/teams.js:59
-#: CTFd/themes/admin/assets/js/pages/users.js:67
+#: CTFd/forms/users.py:193
+#: CTFd/themes/admin/assets/js/components/hints/HintCreationForm.vue:132
+#: CTFd/themes/admin/assets/js/components/hints/HintEditForm.vue:140
+#: CTFd/themes/admin/assets/js/pages/challenges.js:87
+#: CTFd/themes/admin/assets/js/pages/scoreboard.js:100
+#: CTFd/themes/admin/assets/js/pages/teams.js:72
+#: CTFd/themes/admin/assets/js/pages/users.js:81
 #: CTFd/themes/admin/templates/modals/teams/captain.html:20
 #: CTFd/themes/core/templates/challenge.html:187
 #: CTFd/themes/core/templates/challenge.html:271
@@ -543,7 +545,7 @@ msgstr "系统配置"
 msgid "Name"
 msgstr "名称"
 
-#: CTFd/forms/awards.py:11
+#: CTFd/forms/awards.py:11 CTFd/themes/admin/assets/js/pages/challenges.js:50
 #: CTFd/themes/admin/templates/challenges/challenges.html:82
 #: CTFd/themes/admin/templates/challenges/update.html:64
 #: CTFd/themes/admin/templates/teams/team.html:354
@@ -560,6 +562,7 @@ msgid "Value"
 msgstr "分值"
 
 #: CTFd/forms/awards.py:12 CTFd/forms/challenges.py:15
+#: CTFd/themes/admin/assets/js/pages/challenges.js:49
 #: CTFd/themes/admin/templates/challenges/challenges.html:80
 #: CTFd/themes/admin/templates/challenges/update.html:18
 #: CTFd/themes/admin/templates/modules/module.html:88
@@ -590,6 +593,7 @@ msgid "Description"
 msgstr "描述"
 
 #: CTFd/forms/awards.py:14 CTFd/forms/teams.py:111
+#: CTFd/themes/admin/assets/js/components/solution/SolutionEditor.vue:77
 #: CTFd/themes/admin/templates/audiences/new.html:19
 #: CTFd/themes/admin/templates/challenges/create.html:67
 #: CTFd/themes/admin/templates/modules/new.html:19
@@ -602,6 +606,7 @@ msgid "Icon"
 msgstr "图标"
 
 #: CTFd/forms/awards.py:18
+#: CTFd/themes/admin/assets/js/components/statistics/ScoreboardMatrix.vue:381
 #: CTFd/themes/admin/templates/modals/awards/create.html:28
 msgid "None"
 msgstr "无"
@@ -669,6 +674,7 @@ msgstr "盾牌"
 
 #: CTFd/forms/challenges.py:14 CTFd/forms/submissions.py:14
 #: CTFd/forms/teams.py:202 CTFd/forms/users.py:146
+#: CTFd/themes/admin/assets/js/components/hints/HintsList.vue:92
 #: CTFd/themes/admin/templates/audiences/audiences.html:21
 #: CTFd/themes/admin/templates/challenges/challenges.html:78
 #: CTFd/themes/admin/templates/modules/module.html:88
@@ -680,6 +686,7 @@ msgid "ID"
 msgstr "ID"
 
 #: CTFd/forms/challenges.py:16 CTFd/forms/users.py:187
+#: CTFd/themes/admin/assets/js/components/flags/FlagList.vue:89
 #: CTFd/themes/admin/templates/challenges/challenges.html:83
 #: CTFd/themes/admin/templates/submissions.html:93
 #: CTFd/themes/core/templates/challenge.html:294
@@ -699,14 +706,19 @@ msgid "Search"
 msgstr "搜索"
 
 #: CTFd/forms/challenges.py:27 CTFd/forms/pages.py:45
+#: CTFd/themes/admin/assets/js/components/files/MediaLibrary.vue:240
 msgid "Upload Files"
 msgstr "上传文件"
 
 #: CTFd/forms/challenges.py:28 CTFd/forms/pages.py:46
+#: CTFd/themes/admin/assets/js/components/files/ChallengeFilesList.vue:85
+#: CTFd/themes/admin/assets/js/components/files/MediaLibrary.vue:241
 msgid "Attach multiple files using Control+Click or Cmd+Click."
 msgstr "使用 Control+Click 或 Cmd+Click 附加多个文件"
 
 #: CTFd/forms/challenges.py:31
+#: CTFd/themes/admin/assets/js/components/files/ChallengeFilesList.vue:88
+#: CTFd/themes/admin/assets/js/components/files/MediaLibrary.vue:250
 #: CTFd/themes/admin/templates/configs/logo.html:29
 #: CTFd/themes/admin/templates/configs/logo.html:64
 msgid "Upload"
@@ -878,6 +890,7 @@ msgstr "为防止 flag 暴力破解，每分钟允许的提交次数（默认：
 
 #: CTFd/forms/config.py:113 CTFd/forms/config.py:147 CTFd/forms/config.py:167
 #: CTFd/forms/config.py:350
+#: CTFd/themes/admin/assets/js/components/solution/SolutionEditor.vue:77
 #: CTFd/themes/admin/templates/challenges/update.html:188
 #: CTFd/themes/admin/templates/configs/challenges.html:53
 #: CTFd/themes/admin/templates/configs/general.html:23
@@ -908,7 +921,9 @@ msgstr "下载 CSV"
 msgid "CSV Type"
 msgstr "类型"
 
-#: CTFd/forms/config.py:125 CTFd/themes/admin/templates/base.html:61
+#: CTFd/forms/config.py:125
+#: CTFd/themes/admin/assets/js/components/configs/brackets/Bracket.vue:88
+#: CTFd/themes/admin/templates/base.html:61
 #: CTFd/themes/admin/templates/config.html:59
 #: CTFd/themes/admin/templates/configs/fields.html:12
 #: CTFd/themes/admin/templates/scoreboard.html:33
@@ -919,7 +934,9 @@ msgstr "类型"
 msgid "Users"
 msgstr "用户"
 
-#: CTFd/forms/config.py:126 CTFd/themes/admin/templates/base.html:63
+#: CTFd/forms/config.py:126
+#: CTFd/themes/admin/assets/js/components/configs/brackets/Bracket.vue:89
+#: CTFd/themes/admin/templates/base.html:63
 #: CTFd/themes/admin/templates/configs/fields.html:17
 #: CTFd/themes/admin/templates/scoreboard.html:28
 #: CTFd/themes/admin/templates/teams/teams.html:9
@@ -1105,7 +1122,13 @@ msgstr "控制解题记录/得分是对所有人可见、仅对已登录用户�
 
 #: CTFd/forms/config.py:239 CTFd/forms/pages.py:24 CTFd/forms/setup.py:127
 #: CTFd/forms/teams.py:235 CTFd/forms/users.py:190
+#: CTFd/themes/admin/assets/js/components/requirements/Requirements.vue:81
+#: CTFd/themes/admin/assets/js/components/solution/SolutionEditor.vue:67
+#: CTFd/themes/admin/assets/js/pages/challenges.js:54
 #: CTFd/themes/admin/assets/js/pages/scoreboard.js:32
+#: CTFd/themes/admin/assets/js/pages/scoreboard.js:85
+#: CTFd/themes/admin/assets/js/pages/teams.js:47
+#: CTFd/themes/admin/assets/js/pages/users.js:48
 #: CTFd/themes/admin/templates/challenges/new.html:63
 #: CTFd/themes/admin/templates/challenges/update.html:180
 #: CTFd/themes/admin/templates/pages.html:44
@@ -1253,6 +1276,9 @@ msgid "Send"
 msgstr "盾牌"
 
 #: CTFd/forms/notifications.py:10 CTFd/forms/pages.py:17
+#: CTFd/themes/admin/assets/js/components/hints/HintCreationForm.vue:123
+#: CTFd/themes/admin/assets/js/components/hints/HintEditForm.vue:131
+#: CTFd/themes/admin/assets/js/components/hints/HintsList.vue:93
 #: CTFd/themes/admin/templates/pages.html:41
 msgid "Title"
 msgstr "标题"
@@ -1262,6 +1288,7 @@ msgid "Notification title"
 msgstr "通知"
 
 #: CTFd/forms/notifications.py:12 CTFd/forms/pages.py:26
+#: CTFd/themes/admin/assets/js/components/solution/SolutionEditor.vue:63
 #: CTFd/themes/admin/templates/editor.html:81
 msgid "Content"
 msgstr "内容"
@@ -1562,7 +1589,7 @@ msgstr "挑战"
 #: CTFd/forms/submissions.py:17
 #: CTFd/themes/admin/assets/js/pages/statistics.js:57
 #: CTFd/themes/admin/assets/js/pages/statistics.js:404
-#: CTFd/themes/admin/assets/js/pages/statistics.js:463
+#: CTFd/themes/admin/assets/js/pages/statistics.js:464
 #: CTFd/themes/admin/templates/challenges/update.html:9
 msgid "Challenge Name"
 msgstr "挑战名称"
@@ -1630,6 +1657,8 @@ msgid "Team Captain"
 msgstr "队长"
 
 #: CTFd/forms/teams.py:236 CTFd/forms/users.py:191
+#: CTFd/themes/admin/assets/js/pages/teams.js:46
+#: CTFd/themes/admin/assets/js/pages/users.js:47
 #: CTFd/themes/admin/templates/teams/teams.html:80
 #: CTFd/themes/admin/templates/users/users.html:83
 msgid "Banned"
@@ -1659,11 +1688,12 @@ msgstr "用户所在的竞赛组别"
 msgid "IP Address"
 msgstr "IP 地址"
 
-#: CTFd/forms/users.py:172
+#: CTFd/forms/users.py:172 CTFd/themes/admin/templates/users/users.html:38
 msgid "Search for matching users"
 msgstr "搜索用户"
 
 #: CTFd/forms/users.py:187
+#: CTFd/themes/admin/assets/js/components/statistics/ScoreboardMatrix.vue:446
 #: CTFd/themes/admin/templates/audiences/audience.html:89
 #: CTFd/themes/admin/templates/modals/teams/addresses.html:6
 #: CTFd/themes/admin/templates/scoreboard/users.html:10
@@ -1680,7 +1710,8 @@ msgstr "用户"
 msgid "Admin"
 msgstr "管理员"
 
-#: CTFd/forms/users.py:189 CTFd/themes/admin/templates/users/users.html:81
+#: CTFd/forms/users.py:189 CTFd/themes/admin/assets/js/pages/users.js:46
+#: CTFd/themes/admin/templates/users/users.html:81
 msgid "Verified"
 msgstr "已验证"
 
@@ -1740,6 +1771,123 @@ msgstr "正确但所有队员都需要提交 flag"
 #: CTFd/plugins/dynamic_challenges/__init__.py:63
 msgid "Missing initial value for challenge"
 msgstr "缺少题目的初始值"
+
+#: CTFd/plugins/dynamic_challenges/assets/create.html:5
+msgid ""
+"Dynamic value challenges decrease in value as they receive solves. The more solves a dynamic challenge has,\n"
+"\tthe lower its value is to everyone who has solved it."
+msgstr ""
+"动态分值题目的分值会随着解出次数的增加而降低。一道动态题目被解出的次数越多，\n"
+"\t所有解出者获得的分值就越低。"
+
+#: CTFd/plugins/dynamic_challenges/assets/create.html:13
+#: CTFd/plugins/dynamic_challenges/assets/update.html:14
+#: CTFd/themes/admin/templates/challenges/update.html:110
+msgid "Initial Value"
+msgstr "初始值"
+
+#: CTFd/plugins/dynamic_challenges/assets/create.html:15
+msgid "This is how many points the challenge is worth initially."
+msgstr "这是题目最初的价值。"
+
+#: CTFd/plugins/dynamic_challenges/assets/create.html:18
+#: CTFd/themes/admin/templates/challenges/create.html:53
+msgid "Enter value"
+msgstr "输入值"
+
+#: CTFd/plugins/dynamic_challenges/assets/create.html:22
+#: CTFd/plugins/dynamic_challenges/assets/update.html:23
+msgid "Decay Function"
+msgstr "衰减函数"
+
+#: CTFd/plugins/dynamic_challenges/assets/create.html:24
+#: CTFd/plugins/dynamic_challenges/assets/update.html:25
+msgid "How the dynamic value will be calculated based on the Decay value"
+msgstr "动态分值如何基于衰减值进行计算"
+
+#: CTFd/plugins/dynamic_challenges/assets/create.html:26
+#: CTFd/plugins/dynamic_challenges/assets/update.html:27
+msgid "Linear: Calculated as"
+msgstr "线性：计算方式为"
+
+#: CTFd/plugins/dynamic_challenges/assets/create.html:27
+#: CTFd/plugins/dynamic_challenges/assets/update.html:28
+msgid "Logarithmic: Calculated as"
+msgstr "对数：计算方式为"
+
+#: CTFd/plugins/dynamic_challenges/assets/create.html:32
+#: CTFd/plugins/dynamic_challenges/assets/update.html:33
+#: CTFd/themes/admin/templates/challenges/update.html:95
+msgid "Linear"
+msgstr "线性"
+
+#: CTFd/plugins/dynamic_challenges/assets/create.html:33
+#: CTFd/plugins/dynamic_challenges/assets/update.html:34
+#: CTFd/themes/admin/templates/challenges/update.html:96
+msgid "Logarithmic"
+msgstr "对数"
+
+#: CTFd/plugins/dynamic_challenges/assets/create.html:38
+#: CTFd/plugins/dynamic_challenges/assets/update.html:39
+#: CTFd/themes/admin/templates/challenges/update.html:121
+msgid "Decay"
+msgstr "衰减"
+
+#: CTFd/plugins/dynamic_challenges/assets/create.html:40
+#: CTFd/plugins/dynamic_challenges/assets/update.html:41
+#: CTFd/themes/admin/templates/challenges/update.html:123
+msgid ""
+"The decay value is used differently depending on the above Decay Function"
+msgstr "衰减值的使用方式取决于上面选择的衰减函数"
+
+#: CTFd/plugins/dynamic_challenges/assets/create.html:42
+#: CTFd/plugins/dynamic_challenges/assets/update.html:43
+#: CTFd/themes/admin/templates/challenges/update.html:125
+msgid ""
+"Linear: The amount of points deducted per solve. Equal deduction per solve."
+msgstr "线性：每次解题扣除的分数。每次解题扣除相同的分数。"
+
+#: CTFd/plugins/dynamic_challenges/assets/create.html:43
+#: CTFd/plugins/dynamic_challenges/assets/update.html:44
+msgid ""
+"Logarithmic: The amount of solves before the challenge reaches its minimum value. Earlier solves will lose less\n"
+"\t\t\t\t\tpoints. Later solves will lose more points"
+msgstr ""
+"对数：题目达到最小值前所需的解出次数。较早解出将损失较少\n"
+"\t\t\t\t\t分值。较晚解出将损失更多分值"
+
+#: CTFd/plugins/dynamic_challenges/assets/create.html:48
+msgid "Enter Decay value"
+msgstr "输入衰减值"
+
+#: CTFd/plugins/dynamic_challenges/assets/create.html:52
+#: CTFd/plugins/dynamic_challenges/assets/update.html:53
+#: CTFd/themes/admin/templates/challenges/update.html:136
+msgid "Minimum Value"
+msgstr "最小值"
+
+#: CTFd/plugins/dynamic_challenges/assets/create.html:54
+#: CTFd/plugins/dynamic_challenges/assets/update.html:55
+#: CTFd/themes/admin/templates/challenges/update.html:138
+msgid "This is the lowest that the challenge can be worth"
+msgstr "这是题目可以拥有的最低分值"
+
+#: CTFd/plugins/dynamic_challenges/assets/create.html:57
+msgid "Enter minimum value"
+msgstr "输入最小值"
+
+#: CTFd/plugins/dynamic_challenges/assets/update.html:5
+msgid "Current Value"
+msgstr "当前值"
+
+#: CTFd/plugins/dynamic_challenges/assets/update.html:7
+msgid "This is how many points the challenge is worth right now."
+msgstr "这是题目当前的价值。"
+
+#: CTFd/plugins/dynamic_challenges/assets/update.html:16
+#: CTFd/themes/admin/templates/challenges/update.html:112
+msgid "This is how many points the challenge was worth initially."
+msgstr "这是题目最初的分值。"
 
 #: CTFd/plugins/flags/__init__.py:69
 msgid "Regex parse error occured"
@@ -1875,6 +2023,7 @@ msgstr "用户名已被使用"
 msgid "Email address is not from an allowed domain"
 msgstr "电子邮箱地址不在允许的域名中"
 
+#: CTFd/themes/admin/assets/js/components/files/MediaLibrary.vue:233
 #: CTFd/themes/admin/assets/js/styles.js:54
 #: CTFd/themes/admin/templates/editor.html:103
 msgid "Media Library"
@@ -1891,19 +2040,22 @@ msgid "Delete Challenge"
 msgstr "删除挑战"
 
 #: CTFd/themes/admin/assets/js/challenges/challenge.js:164
-#: CTFd/themes/admin/assets/js/pages/team.js:532
+#: CTFd/themes/admin/assets/js/pages/team.js:564
 #: CTFd/themes/admin/assets/js/pages/user.js:127
 #, python-brace-format
 msgid "Are you sure you want to delete {0}"
 msgstr "您确定要删除 {0} 吗"
 
 #: CTFd/themes/admin/assets/js/challenges/challenge.js:194
-#: CTFd/themes/admin/assets/js/pages/challenge.js:228
+#: CTFd/themes/admin/assets/js/components/configs/brackets/Bracket.vue:133
+#: CTFd/themes/admin/assets/js/components/configs/fields/Field.vue:153
+#: CTFd/themes/admin/assets/js/components/configs/fields/Field.vue:176
+#: CTFd/themes/admin/assets/js/pages/challenge.js:230
 msgid "Success"
 msgstr "成功"
 
 #: CTFd/themes/admin/assets/js/challenges/challenge.js:195
-#: CTFd/themes/admin/assets/js/pages/challenge.js:229
+#: CTFd/themes/admin/assets/js/pages/challenge.js:231
 msgid "Your challenge has been updated!"
 msgstr "您的挑战已更新！"
 
@@ -1914,7 +2066,7 @@ msgstr "您的挑战已更新！"
 msgid "Got it!"
 msgstr "知道了！"
 
-#: CTFd/themes/admin/assets/js/compat/ezq.js:44
+#: CTFd/themes/admin/assets/js/compat/ezq.js:45
 #: CTFd/themes/admin/templates/config.html:174
 #: CTFd/themes/core/templates/settings.html:103
 #: CTFd/themes/core/templates/teams/private.html:83
@@ -1923,20 +2075,20 @@ msgstr "知道了！"
 msgid "Error:"
 msgstr "错误："
 
-#: CTFd/themes/admin/assets/js/compat/ezq.js:51
+#: CTFd/themes/admin/assets/js/compat/ezq.js:54
 #: CTFd/themes/core/templates/settings.html:94
 #: CTFd/themes/core/templates/teams/private.html:75
 #: CTFd/themes/core/templates/teams/private.html:124
 msgid "Success!"
 msgstr "成功！"
 
-#: CTFd/themes/admin/assets/js/compat/ezq.js:59
+#: CTFd/themes/admin/assets/js/compat/ezq.js:64
 #: CTFd/themes/core/templates/settings.html:209
 #: CTFd/themes/core/templates/teams/private.html:204
 msgid "No"
 msgstr "否"
 
-#: CTFd/themes/admin/assets/js/compat/ezq.js:61
+#: CTFd/themes/admin/assets/js/compat/ezq.js:68
 #: CTFd/themes/core/templates/settings.html:214
 #: CTFd/themes/core/templates/teams/private.html:205
 msgid "Yes"
@@ -1967,8 +2119,8 @@ msgstr "解答百分比"
 #: CTFd/themes/admin/assets/js/compat/graphs.js:286
 #: CTFd/themes/admin/assets/js/pages/statistics.js:125
 #: CTFd/themes/admin/assets/js/pages/statistics.js:173
-#: CTFd/themes/admin/assets/js/pages/team.js:161
-#: CTFd/themes/admin/assets/js/pages/user.js:272
+#: CTFd/themes/admin/assets/js/pages/team.js:166
+#: CTFd/themes/admin/assets/js/pages/user.js:277
 #: CTFd/themes/admin/templates/teams/team.html:317
 #: CTFd/themes/admin/templates/teams/team.html:394
 #: CTFd/themes/admin/templates/users/user.html:199
@@ -1988,8 +2140,8 @@ msgstr "失败"
 #: CTFd/themes/admin/assets/js/compat/graphs.js:291
 #: CTFd/themes/admin/assets/js/pages/statistics.js:125
 #: CTFd/themes/admin/assets/js/pages/statistics.js:178
-#: CTFd/themes/admin/assets/js/pages/team.js:156
-#: CTFd/themes/admin/assets/js/pages/user.js:267
+#: CTFd/themes/admin/assets/js/pages/team.js:161
+#: CTFd/themes/admin/assets/js/pages/user.js:272
 #: CTFd/themes/admin/templates/challenges/preview.html:7
 #: CTFd/themes/admin/templates/teams/team.html:314
 #: CTFd/themes/admin/templates/teams/team.html:328
@@ -2011,24 +2163,594 @@ msgid "Solves"
 msgstr "解答"
 
 #: CTFd/themes/admin/assets/js/compat/helpers.js:28
-#: CTFd/themes/admin/assets/js/pages/configs.js:265
-#: CTFd/themes/admin/assets/js/pages/configs.js:334
+#: CTFd/themes/admin/assets/js/pages/configs.js:267
+#: CTFd/themes/admin/assets/js/pages/configs.js:341
 msgid "Upload Progress"
 msgstr "上传进度"
 
 #: CTFd/themes/admin/assets/js/compat/ui.js:12
-#: CTFd/themes/admin/assets/js/pages/submissions.js:149
+#: CTFd/themes/admin/assets/js/pages/submissions.js:166
 #: CTFd/themes/core/assets/js/utils/clipboard.js:5
 #: CTFd/themes/core/templates/challenge.html:219
 msgid "Copied!"
 msgstr "已复制！"
 
+#: CTFd/themes/admin/assets/js/components/comments/CommentBox.vue:144
+msgid "Add comment"
+msgstr "添加评论"
+
+#: CTFd/themes/admin/assets/js/components/comments/CommentBox.vue:145
+msgid "Comment"
+msgstr "评论"
+
+#: CTFd/themes/admin/assets/js/components/comments/CommentBox.vue:146
+#: CTFd/themes/admin/assets/js/components/ratings/RatingsViewer.vue:159
+#: CTFd/themes/admin/templates/submissions.html:152
+#: CTFd/themes/admin/templates/teams/teams.html:143
+#: CTFd/themes/admin/templates/users/users.html:155
+#: CTFd/themes/core/templates/teams/teams.html:128
+#: CTFd/themes/core/templates/users/users.html:118
+msgid "Page"
+msgstr "页码"
+
+#: CTFd/themes/admin/assets/js/components/comments/CommentBox.vue:147
+#: CTFd/themes/admin/assets/js/components/ratings/RatingsViewer.vue:160
+msgid "of"
+msgstr "共"
+
+#: CTFd/themes/admin/assets/js/components/comments/CommentBox.vue:148
+msgid "comments"
+msgstr "条评论"
+
+#: CTFd/themes/admin/assets/js/components/comments/CommentBox.vue:199
+msgid "Are you sure you'd like to delete this comment?"
+msgstr "您确定要删除此评论吗？"
+
+#: CTFd/themes/admin/assets/js/components/configs/brackets/Bracket.vue:81
+msgid "Bracket Name"
+msgstr "分组名称"
+
+#: CTFd/themes/admin/assets/js/components/configs/brackets/Bracket.vue:82
+msgid "Bracket name (e.g. \"Students\", \"Interns\", \"Engineers\")"
+msgstr "分组名称（例如\"学生\"、\"实习生\"、\"工程师\"）"
+
+#: CTFd/themes/admin/assets/js/components/configs/brackets/Bracket.vue:85
+#: CTFd/themes/admin/assets/js/components/configs/brackets/Bracket.vue:86
+msgid "Bracket Description"
+msgstr "分组描述"
+
+#: CTFd/themes/admin/assets/js/components/configs/brackets/Bracket.vue:87
+msgid "Bracket Type"
+msgstr "分组类型"
+
+#: CTFd/themes/admin/assets/js/components/configs/brackets/Bracket.vue:90
+msgid ""
+"If you are using Team Mode and would like the bracket to apply to entire "
+"teams instead of individuals, select Teams."
+msgstr "如果你使用团队模式，并希望分组应用于整个团队而非个人，请选择团队。"
+
+#: CTFd/themes/admin/assets/js/components/configs/brackets/Bracket.vue:93
+#: CTFd/themes/admin/assets/js/components/configs/fields/Field.vue:124
+#: CTFd/themes/admin/assets/js/components/next/NextChallenge.vue:51
+#: CTFd/themes/admin/assets/js/components/requirements/Requirements.vue:84
+#: CTFd/themes/admin/templates/audiences/audience.html:23
+#: CTFd/themes/admin/templates/editor.html:143
+#: CTFd/themes/admin/templates/modals/challenges/module.html:14
+#: CTFd/themes/admin/templates/modules/module.html:23
+msgid "Save"
+msgstr "保存"
+
+#: CTFd/themes/admin/assets/js/components/configs/brackets/Bracket.vue:141
+msgid "Are you sure you'd like to delete this bracket?"
+msgstr "您确定要删除此分组吗？"
+
+#: CTFd/themes/admin/assets/js/components/configs/brackets/BracketList.vue:38
+msgid "Add New Bracket"
+msgstr "添加新分组"
+
+#: CTFd/themes/admin/assets/js/components/configs/fields/Field.vue:113
+msgid "Field Type"
+msgstr "字段类型"
+
+#: CTFd/themes/admin/assets/js/components/configs/fields/Field.vue:114
+msgid "Text Field"
+msgstr "文本字段"
+
+#: CTFd/themes/admin/assets/js/components/configs/fields/Field.vue:115
+msgid "Checkbox"
+msgstr "复选框"
+
+#: CTFd/themes/admin/assets/js/components/configs/fields/Field.vue:116
+msgid "Type of field shown to the user"
+msgstr "向用户显示的字段类型"
+
+#: CTFd/themes/admin/assets/js/components/configs/fields/Field.vue:117
+msgid "Field Name"
+msgstr "字段名称"
+
+#: CTFd/themes/admin/assets/js/components/configs/fields/Field.vue:118
+msgid "Field name"
+msgstr "字段名称"
+
+#: CTFd/themes/admin/assets/js/components/configs/fields/Field.vue:119
+#: CTFd/themes/admin/assets/js/components/configs/fields/Field.vue:120
+msgid "Field Description"
+msgstr "字段描述"
+
+#: CTFd/themes/admin/assets/js/components/configs/fields/Field.vue:121
+msgid "Editable by user in profile"
+msgstr "用户可在资料中编辑"
+
+#: CTFd/themes/admin/assets/js/components/configs/fields/Field.vue:122
+msgid "Required on registration"
+msgstr "注册时必填"
+
+#: CTFd/themes/admin/assets/js/components/configs/fields/Field.vue:123
+msgid "Shown on public profile"
+msgstr "在公开资料中显示"
+
+#: CTFd/themes/admin/assets/js/components/configs/fields/Field.vue:154
+msgid "Field has been updated!"
+msgstr "字段已更新！"
+
+#: CTFd/themes/admin/assets/js/components/configs/fields/Field.vue:177
+msgid "Field has been created!"
+msgstr "字段已创建！"
+
+#: CTFd/themes/admin/assets/js/components/configs/fields/Field.vue:185
+msgid "Are you sure you'd like to delete this field?"
+msgstr "您确定要删除此字段吗？"
+
+#: CTFd/themes/admin/assets/js/components/configs/fields/FieldList.vue:43
+msgid "Add New Field"
+msgstr "添加新字段"
+
+#: CTFd/themes/admin/assets/js/components/files/ChallengeFilesList.vue:82
+msgid "File"
+msgstr "文件"
+
+#: CTFd/themes/admin/assets/js/components/files/ChallengeFilesList.vue:83
+#: CTFd/themes/admin/assets/js/components/flags/FlagList.vue:91
+#: CTFd/themes/admin/assets/js/components/hints/HintsList.vue:96
+#: CTFd/themes/core/templates/components/navbar.html:124
+#: CTFd/themes/core/templates/components/navbar.html:129
+#: CTFd/themes/core/templates/settings.html:8
+#: CTFd/themes/core/templates/setup.html:50
+msgid "Settings"
+msgstr "设置"
+
+#: CTFd/themes/admin/assets/js/components/files/ChallengeFilesList.vue:84
+msgid "SHA1:"
+msgstr "SHA1："
+
+#: CTFd/themes/admin/assets/js/components/files/ChallengeFilesList.vue:120
+msgid "Delete Files"
+msgstr "删除文件"
+
+#: CTFd/themes/admin/assets/js/components/files/ChallengeFilesList.vue:121
+#: CTFd/themes/admin/assets/js/components/files/MediaLibrary.vue:287
+msgid "Are you sure you want to delete this file?"
+msgstr "您确定要删除此文件吗？"
+
+#: CTFd/themes/admin/assets/js/components/files/MediaLibrary.vue:234
+msgid "Media Details"
+msgstr "媒体详情"
+
+#: CTFd/themes/admin/assets/js/components/files/MediaLibrary.vue:235
+msgid "Link:"
+msgstr "链接："
+
+#: CTFd/themes/admin/assets/js/components/files/MediaLibrary.vue:236
+msgid "Insert"
+msgstr "插入"
+
+#: CTFd/themes/admin/assets/js/components/files/MediaLibrary.vue:237
+msgid "Insert link into editor"
+msgstr "将链接插入编辑器"
+
+#: CTFd/themes/admin/assets/js/components/files/MediaLibrary.vue:238
+msgid "Download file"
+msgstr "下载文件"
+
+#: CTFd/themes/admin/assets/js/components/files/MediaLibrary.vue:239
+msgid "Delete file"
+msgstr "删除文件"
+
+#: CTFd/themes/admin/assets/js/components/files/MediaLibrary.vue:244
+msgid "Upload File Location"
+msgstr "上传文件位置"
+
+#: CTFd/themes/admin/assets/js/components/files/MediaLibrary.vue:245
+msgid "Location"
+msgstr "位置"
+
+#: CTFd/themes/admin/assets/js/components/files/MediaLibrary.vue:246
+msgid ""
+"Route where file will be accessible (if not provided a random folder will be"
+" used)."
+msgstr "文件可访问的路径（如未提供，将使用随机文件夹）。"
+
+#: CTFd/themes/admin/assets/js/components/files/MediaLibrary.vue:249
+msgid "Provide as"
+msgstr "提供方式"
+
+#: CTFd/themes/admin/assets/js/components/flags/FlagCreationForm.vue:76
+#: CTFd/themes/admin/assets/js/components/flags/FlagList.vue:92
+msgid "Create Flag"
+msgstr "创建 Flag"
+
+#: CTFd/themes/admin/assets/js/components/flags/FlagCreationForm.vue:77
+msgid "Choose Flag Type"
+msgstr "选择 Flag 类型"
+
+#: CTFd/themes/admin/assets/js/components/flags/FlagCreationForm.vue:78
+#: CTFd/themes/admin/assets/js/components/next/NextChallenge.vue:50
+msgid "--"
+msgstr "--"
+
+#: CTFd/themes/admin/assets/js/components/flags/FlagEditForm.vue:50
+msgid "Edit Flag"
+msgstr "编辑 Flag"
+
+#: CTFd/themes/admin/assets/js/components/flags/FlagList.vue:90
+#: CTFd/themes/core/templates/challenge.html:175
+msgid "Flag"
+msgstr "Flag"
+
+#: CTFd/themes/admin/assets/js/components/flags/FlagList.vue:141
+msgid "Are you sure you'd like to delete this flag?"
+msgstr "您确定要删除此 flag 吗？"
+
+#: CTFd/themes/admin/assets/js/components/hints/HintCreationForm.vue:122
+#: CTFd/themes/admin/assets/js/components/hints/HintEditForm.vue:130
+#: CTFd/themes/admin/assets/js/components/hints/HintsList.vue:94
+msgid "Hint"
+msgstr "提示"
+
+#: CTFd/themes/admin/assets/js/components/hints/HintCreationForm.vue:124
+#: CTFd/themes/admin/assets/js/components/hints/HintEditForm.vue:132
+msgid "Content displayed before hint unlocking"
+msgstr "提示解锁前显示的内容"
+
+#: CTFd/themes/admin/assets/js/components/hints/HintCreationForm.vue:125
+#: CTFd/themes/admin/assets/js/components/hints/HintEditForm.vue:133
+#: CTFd/themes/admin/assets/js/components/solution/SolutionEditor.vue:64
+msgid "Markdown & HTML are supported"
+msgstr "支持 Markdown 和 HTML"
+
+#: CTFd/themes/admin/assets/js/components/hints/HintCreationForm.vue:126
+#: CTFd/themes/admin/assets/js/components/hints/HintEditForm.vue:134
+#: CTFd/themes/admin/assets/js/components/hints/HintsList.vue:95
+msgid "Cost"
+msgstr "消耗"
+
+#: CTFd/themes/admin/assets/js/components/hints/HintCreationForm.vue:127
+#: CTFd/themes/admin/assets/js/components/hints/HintEditForm.vue:135
+msgid "How many points it costs to see your hint."
+msgstr "查看提示所需的积分。"
+
+#: CTFd/themes/admin/assets/js/components/hints/HintCreationForm.vue:128
+#: CTFd/themes/admin/assets/js/components/hints/HintEditForm.vue:136
+#: CTFd/themes/admin/templates/challenges/challenge.html:123
+#: CTFd/themes/admin/templates/challenges/challenge.html:180
+msgid "Requirements"
+msgstr "前置要求"
+
+#: CTFd/themes/admin/assets/js/components/hints/HintCreationForm.vue:129
+#: CTFd/themes/admin/assets/js/components/hints/HintEditForm.vue:137
+msgid "Hints that must be unlocked before unlocking this hint"
+msgstr "解锁此提示前必须先解锁的提示"
+
+#: CTFd/themes/admin/assets/js/components/hints/HintsList.vue:97
+msgid "Create Hint"
+msgstr "创建提示"
+
+#: CTFd/themes/admin/assets/js/components/hints/HintsList.vue:146
+msgid "An error occurred while updating this hint. Please try again."
+msgstr "更新此提示时出错。请重试。"
+
+#: CTFd/themes/admin/assets/js/components/hints/HintsList.vue:153
+msgid "Delete Hint"
+msgstr "删除提示"
+
+#: CTFd/themes/admin/assets/js/components/hints/HintsList.vue:154
+msgid "Are you sure you want to delete this hint?"
+msgstr "您确定要删除此提示吗？"
+
+#: CTFd/themes/admin/assets/js/components/next/NextChallenge.vue:46
+#: CTFd/themes/admin/templates/challenges/challenge.html:188
+#: CTFd/themes/admin/templates/challenges/preview.html:6
+#: CTFd/themes/core/templates/challenge.html:209
+msgid "Next Challenge"
+msgstr "下一题"
+
+#: CTFd/themes/admin/assets/js/components/next/NextChallenge.vue:47
+msgid "Challenge to recommend after solving this challenge"
+msgstr "解决此题目后推荐的题目"
+
+#: CTFd/themes/admin/assets/js/components/notifications/Notification.vue:43
+#: CTFd/themes/admin/assets/js/pages/notifications.js:54
+msgid "Are you sure you want to delete this notification?"
+msgstr "您确定要删除此通知吗？"
+
+#: CTFd/themes/admin/assets/js/components/ratings/RatingsViewer.vue:155
+msgid "Loading ratings..."
+msgstr "正在加载评分..."
+
+#: CTFd/themes/admin/assets/js/components/ratings/RatingsViewer.vue:156
+msgid "No ratings yet"
+msgstr "暂无评分"
+
+#: CTFd/themes/admin/assets/js/components/ratings/RatingsViewer.vue:157
+msgid "Total:"
+msgstr "总计："
+
+#: CTFd/themes/admin/assets/js/components/ratings/RatingsViewer.vue:158
+msgid "Previous"
+msgstr "上一页"
+
+#: CTFd/themes/admin/assets/js/components/ratings/RatingsViewer.vue:161
+#: CTFd/themes/admin/templates/challenges/challenge.html:124
+#: CTFd/themes/core/templates/setup.html:86
+#: CTFd/themes/core/templates/setup.html:138
+#: CTFd/themes/core/templates/setup.html:202
+#: CTFd/themes/core/templates/setup.html:238
+#: CTFd/themes/core/templates/setup.html:296
+#: CTFd/themes/core/templates/setup.html:345
+msgid "Next"
+msgstr "下一页"
+
+#: CTFd/themes/admin/assets/js/components/ratings/RatingsViewer.vue:198
+msgid "Failed to load ratings"
+msgstr "加载评分失败"
+
+#: CTFd/themes/admin/assets/js/components/ratings/RatingsViewer.vue:203
+msgid "Error loading ratings"
+msgstr "加载评分时出错"
+
+#: CTFd/themes/admin/assets/js/components/requirements/Requirements.vue:80
+msgid "Behavior if not unlocked"
+msgstr "未解锁时的行为"
+
+#: CTFd/themes/admin/assets/js/components/requirements/Requirements.vue:82
+msgid "Anonymized"
+msgstr "匿名化"
+
+#: CTFd/themes/admin/assets/js/components/requirements/Requirements.vue:83
+#: CTFd/themes/admin/templates/editor.html:90
+msgid "Preview"
+msgstr "预览"
+
+#: CTFd/themes/admin/assets/js/components/solution/SolutionEditor.vue:65
+#: CTFd/themes/admin/assets/js/pages/challenges.js:51
+#: CTFd/themes/admin/templates/challenges/challenges.html:84
+#: CTFd/themes/admin/templates/challenges/new.html:58
+#: CTFd/themes/admin/templates/challenges/update.html:174
+#: CTFd/themes/admin/templates/modules/module.html:88
+msgid "State"
+msgstr "状态"
+
+#: CTFd/themes/admin/assets/js/components/solution/SolutionEditor.vue:66
+msgid "Controls who can view this solution"
+msgstr "控制谁可以查看此题解"
+
+#: CTFd/themes/admin/assets/js/components/solution/SolutionEditor.vue:68
+#: CTFd/themes/admin/assets/js/pages/challenges.js:53
+#: CTFd/themes/admin/assets/js/pages/scoreboard.js:36
+#: CTFd/themes/admin/assets/js/pages/scoreboard.js:84
+#: CTFd/themes/admin/templates/challenges/new.html:62
+#: CTFd/themes/admin/templates/challenges/update.html:179
+msgid "Visible"
+msgstr "可见"
+
+#: CTFd/themes/admin/assets/js/components/solution/SolutionEditor.vue:69
+#: CTFd/themes/admin/assets/js/components/statistics/ScoreboardMatrix.vue:396
+#: CTFd/themes/admin/assets/js/pages/challenges.js:55
+msgid "Solved"
+msgstr "已解出"
+
+#: CTFd/themes/admin/assets/js/components/solution/SolutionEditor.vue:70
+msgid "Loading..."
+msgstr "加载中..."
+
+#: CTFd/themes/admin/assets/js/components/solution/SolutionEditor.vue:77
+#: CTFd/themes/admin/assets/js/pages/challenges.js:52
+#: CTFd/themes/admin/templates/challenges/challenge.html:119
+#: CTFd/themes/admin/templates/challenges/challenge.html:148
+#: CTFd/themes/admin/templates/challenges/challenges.html:85
+#: CTFd/themes/core/templates/challenge.html:30
+msgid "Solution"
+msgstr "题解"
+
+#: CTFd/themes/admin/assets/js/components/statistics/ScoreboardMatrix.vue:377
+msgid "Filter Matrix Data"
+msgstr "筛选矩阵数据"
+
+#: CTFd/themes/admin/assets/js/components/statistics/ScoreboardMatrix.vue:378
+msgid "Filters"
+msgstr "筛选器"
+
+#: CTFd/themes/admin/assets/js/components/statistics/ScoreboardMatrix.vue:379
+msgid "Reset All"
+msgstr "全部重置"
+
+#: CTFd/themes/admin/assets/js/components/statistics/ScoreboardMatrix.vue:380
+msgid "Select All"
+msgstr "全选"
+
+#: CTFd/themes/admin/assets/js/components/statistics/ScoreboardMatrix.vue:382
+msgid "Filter Categories"
+msgstr "筛选分类"
+
+#: CTFd/themes/admin/assets/js/components/statistics/ScoreboardMatrix.vue:383
+msgid "Search categories..."
+msgstr "搜索分类..."
+
+#: CTFd/themes/admin/assets/js/components/statistics/ScoreboardMatrix.vue:384
+msgid "Filter Challenges"
+msgstr "筛选题目"
+
+#: CTFd/themes/admin/assets/js/components/statistics/ScoreboardMatrix.vue:385
+msgid "Search challenges..."
+msgstr "搜索题目..."
+
+#: CTFd/themes/admin/assets/js/components/statistics/ScoreboardMatrix.vue:386
+msgid "Sort By"
+msgstr "排序方式"
+
+#: CTFd/themes/admin/assets/js/components/statistics/ScoreboardMatrix.vue:387
+msgid "Position (Default)"
+msgstr "位置（默认）"
+
+#: CTFd/themes/admin/assets/js/components/statistics/ScoreboardMatrix.vue:388
+msgid "ID (Ascending)"
+msgstr "ID（升序）"
+
+#: CTFd/themes/admin/assets/js/components/statistics/ScoreboardMatrix.vue:389
+msgid "ID (Descending)"
+msgstr "ID（降序）"
+
+#: CTFd/themes/admin/assets/js/components/statistics/ScoreboardMatrix.vue:390
+msgid "Alphabetical (Ascending: A-Z)"
+msgstr "字母升序（A-Z）"
+
+#: CTFd/themes/admin/assets/js/components/statistics/ScoreboardMatrix.vue:391
+msgid "Alphabetical (Descending: Z-A)"
+msgstr "字母降序（Z-A）"
+
+#: CTFd/themes/admin/assets/js/components/statistics/ScoreboardMatrix.vue:392
+msgid "Points (Ascending)"
+msgstr "分数（升序）"
+
+#: CTFd/themes/admin/assets/js/components/statistics/ScoreboardMatrix.vue:393
+msgid "Points (Descending)"
+msgstr "分数（降序）"
+
+#: CTFd/themes/admin/assets/js/components/statistics/ScoreboardMatrix.vue:394
+msgid "Filter Brackets"
+msgstr "筛选分组"
+
+#: CTFd/themes/admin/assets/js/components/statistics/ScoreboardMatrix.vue:395
+msgid "Search brackets..."
+msgstr "搜索分组..."
+
+#: CTFd/themes/admin/assets/js/components/statistics/ScoreboardMatrix.vue:397
+msgid "Attempted"
+msgstr "已尝试"
+
+#: CTFd/themes/admin/assets/js/components/statistics/ScoreboardMatrix.vue:398
+msgid "Opened"
+msgstr "已打开"
+
+#: CTFd/themes/admin/assets/js/components/statistics/ScoreboardMatrix.vue:399
+#: CTFd/themes/admin/templates/scoreboard/standings.html:9
+#: CTFd/themes/admin/templates/scoreboard/users.html:9
+#: CTFd/themes/core/templates/scoreboard.html:36
+msgid "Place"
+msgstr "名次"
+
+#: CTFd/themes/admin/assets/js/components/statistics/ScoreboardMatrix.vue:400
+#: CTFd/themes/admin/templates/scoreboard/standings.html:12
+#: CTFd/themes/admin/templates/scoreboard/users.html:12
+#: CTFd/themes/admin/templates/teams/team.html:270
+#: CTFd/themes/core/templates/scoreboard.html:38
+#: CTFd/themes/core/templates/teams/private.html:328
+#: CTFd/themes/core/templates/teams/public.html:96
+msgid "Score"
+msgstr "得分"
+
+#: CTFd/themes/admin/assets/js/components/statistics/ScoreboardMatrix.vue:438
+msgid "Filter Teams"
+msgstr "筛选团队"
+
+#: CTFd/themes/admin/assets/js/components/statistics/ScoreboardMatrix.vue:438
+msgid "Filter Users"
+msgstr "筛选用户"
+
+#: CTFd/themes/admin/assets/js/components/statistics/ScoreboardMatrix.vue:442
+msgid "Search teams..."
+msgstr "搜索团队..."
+
+#: CTFd/themes/admin/assets/js/components/statistics/ScoreboardMatrix.vue:443
+msgid "Search users..."
+msgstr "搜索用户..."
+
+#: CTFd/themes/admin/assets/js/components/statistics/ScoreboardMatrix.vue:446
+#: CTFd/themes/admin/templates/audiences/audience.html:89
+#: CTFd/themes/admin/templates/teams/teams.html:77
+#: CTFd/themes/core/templates/components/navbar.html:99
+#: CTFd/themes/core/templates/components/navbar.html:104
+#: CTFd/themes/core/templates/teams/team_enrollment.html:6
+#: CTFd/themes/core/templates/teams/teams.html:49
+msgid "Team"
+msgstr "队伍"
+
+#: CTFd/themes/admin/assets/js/components/statistics/ScoreboardMatrix.vue:539
+msgid "(No Bracket)"
+msgstr "（无分组）"
+
+#: CTFd/themes/admin/assets/js/components/statistics/ScoreboardMatrix.vue:544
+#: CTFd/themes/admin/assets/js/components/statistics/ScoreboardMatrix.vue:549
+msgid "Failed to load progression data"
+msgstr "加载进度数据失败"
+
+#: CTFd/themes/admin/assets/js/components/tags/TagsList.vue:44
+msgid "Tag"
+msgstr "标签"
+
+#: CTFd/themes/admin/assets/js/components/tags/TagsList.vue:45
+msgid "Type tag and press Enter"
+msgstr "输入标签并按回车键"
+
+#: CTFd/themes/admin/assets/js/components/teams/UserAddForm.vue:90
+msgid "Search Users"
+msgstr "搜索用户"
+
+#: CTFd/themes/admin/assets/js/components/teams/UserAddForm.vue:91
+msgid "Search for users"
+msgstr "搜索用户"
+
+#: CTFd/themes/admin/assets/js/components/teams/UserAddForm.vue:92
+msgid "No users found"
+msgstr "未找到用户"
+
+#: CTFd/themes/admin/assets/js/components/teams/UserAddForm.vue:93
+msgid "already in a team"
+msgstr "已在团队中"
+
+#: CTFd/themes/admin/assets/js/components/teams/UserAddForm.vue:94
+msgid "Add Users"
+msgstr "添加用户"
+
+#: CTFd/themes/admin/assets/js/components/teams/UserAddForm.vue:202
+msgid "Confirm Team Removal"
+msgstr "确认移出队伍"
+
+#: CTFd/themes/admin/assets/js/components/teams/UserAddForm.vue:204
+msgid "The following users are currently in teams:<br><br> "
+msgstr "以下用户当前已在队伍中：<br><br> "
+
+#: CTFd/themes/admin/assets/js/components/teams/UserAddForm.vue:206
+msgid ""
+" <br><br>Are you sure you want to remove them from their current teams and "
+"add them to this one? <br><br>All of their challenge solves, attempts, "
+"awards, and unlocked hints will also be deleted!"
+msgstr " <br><br>您确定要将他们从当前队伍移除并添加到此队伍吗？<br><br>其所有挑战解答、尝试、奖励和解锁的提示也将被删除！"
+
+#: CTFd/themes/admin/assets/js/components/topics/TopicsList.vue:62
+msgid "Topic"
+msgstr "主题"
+
+#: CTFd/themes/admin/assets/js/components/topics/TopicsList.vue:63
+msgid "Type topic and press Enter"
+msgstr "输入主题并按回车键"
+
 #: CTFd/themes/admin/assets/js/pages/audience.js:15
 #: CTFd/themes/admin/assets/js/pages/challenge.js:59
-#: CTFd/themes/admin/assets/js/pages/challenge.js:239
+#: CTFd/themes/admin/assets/js/pages/challenge.js:241
 #: CTFd/themes/admin/assets/js/pages/editor.js:52
 #: CTFd/themes/admin/assets/js/pages/module.js:15
-#: CTFd/themes/admin/assets/js/pages/module.js:163
+#: CTFd/themes/admin/assets/js/pages/module.js:165
 #: CTFd/themes/admin/assets/js/pages/notifications.js:29
 msgid "Error"
 msgstr "错误"
@@ -2040,10 +2762,10 @@ msgstr "出错了。"
 
 #: CTFd/themes/admin/assets/js/pages/audience.js:17
 #: CTFd/themes/admin/assets/js/pages/challenge.js:61
-#: CTFd/themes/admin/assets/js/pages/challenge.js:241
+#: CTFd/themes/admin/assets/js/pages/challenge.js:243
 #: CTFd/themes/admin/assets/js/pages/editor.js:54
 #: CTFd/themes/admin/assets/js/pages/module.js:17
-#: CTFd/themes/admin/assets/js/pages/module.js:165
+#: CTFd/themes/admin/assets/js/pages/module.js:168
 #: CTFd/themes/admin/assets/js/pages/notifications.js:31
 msgid "OK"
 msgstr "确定"
@@ -2058,7 +2780,7 @@ msgid "Are you sure you want to delete this audience?"
 msgstr "您确定要删除此受众吗？"
 
 #: CTFd/themes/admin/assets/js/pages/audience.js:117
-#: CTFd/themes/admin/assets/js/pages/team.js:507
+#: CTFd/themes/admin/assets/js/pages/team.js:537
 msgid "Remove Member"
 msgstr "移除成员"
 
@@ -2096,38 +2818,38 @@ msgstr "搜索中…"
 msgid "Search failed."
 msgstr "搜索失败。"
 
-#: CTFd/themes/admin/assets/js/pages/challenge.js:162
-#: CTFd/themes/admin/assets/js/pages/challenges.js:15
-#: CTFd/themes/admin/assets/js/pages/pages.js:14
-#: CTFd/themes/admin/assets/js/pages/submissions.js:42
-#: CTFd/themes/admin/assets/js/pages/team.js:174
-#: CTFd/themes/admin/assets/js/pages/team.js:195
-#: CTFd/themes/admin/assets/js/pages/teams.js:15
-#: CTFd/themes/admin/assets/js/pages/user.js:285
-#: CTFd/themes/admin/assets/js/pages/user.js:306
-#: CTFd/themes/admin/assets/js/pages/users.js:15
+#: CTFd/themes/admin/assets/js/pages/challenge.js:163
+#: CTFd/themes/admin/assets/js/pages/challenges.js:16
+#: CTFd/themes/admin/assets/js/pages/pages.js:15
+#: CTFd/themes/admin/assets/js/pages/submissions.js:45
+#: CTFd/themes/admin/assets/js/pages/team.js:185
+#: CTFd/themes/admin/assets/js/pages/team.js:211
+#: CTFd/themes/admin/assets/js/pages/teams.js:16
+#: CTFd/themes/admin/assets/js/pages/user.js:296
+#: CTFd/themes/admin/assets/js/pages/user.js:322
+#: CTFd/themes/admin/assets/js/pages/users.js:16
 msgid "Are you sure you want to delete "
 msgstr "您确定要删除 "
 
-#: CTFd/themes/admin/assets/js/pages/challenge.js:249
+#: CTFd/themes/admin/assets/js/pages/challenge.js:251
 msgid "Missing Flags"
 msgstr "缺少 Flag"
 
-#: CTFd/themes/admin/assets/js/pages/challenge.js:250
+#: CTFd/themes/admin/assets/js/pages/challenge.js:252
 msgid ""
 "This challenge does not have any flags meaning it may be unsolveable. Are "
 "you sure you'd like to update this challenge?"
 msgstr "此挑战没有任何 flag，意味着它可能无法解答。您确定要更新此挑战吗？"
 
 #: CTFd/themes/admin/assets/js/pages/challenges.js:11
-#: CTFd/themes/admin/assets/js/pages/team.js:223
-#: CTFd/themes/admin/assets/js/pages/user.js:334
+#: CTFd/themes/admin/assets/js/pages/team.js:243
+#: CTFd/themes/admin/assets/js/pages/user.js:354
 msgid "challenge"
 msgstr "挑战"
 
 #: CTFd/themes/admin/assets/js/pages/challenges.js:11
-#: CTFd/themes/admin/assets/js/pages/team.js:223
-#: CTFd/themes/admin/assets/js/pages/user.js:334
+#: CTFd/themes/admin/assets/js/pages/team.js:243
+#: CTFd/themes/admin/assets/js/pages/user.js:354
 #: CTFd/themes/admin/templates/statistics.html:28
 msgid "challenges"
 msgstr "挑战"
@@ -2137,34 +2859,34 @@ msgstr "挑战"
 msgid "Delete Challenges"
 msgstr "删除挑战"
 
-#: CTFd/themes/admin/assets/js/pages/challenges.js:15
-#: CTFd/themes/admin/assets/js/pages/pages.js:14
-#: CTFd/themes/admin/assets/js/pages/submissions.js:42
-#: CTFd/themes/admin/assets/js/pages/team.js:174
-#: CTFd/themes/admin/assets/js/pages/team.js:195
-#: CTFd/themes/admin/assets/js/pages/team.js:227
-#: CTFd/themes/admin/assets/js/pages/teams.js:15
-#: CTFd/themes/admin/assets/js/pages/user.js:285
-#: CTFd/themes/admin/assets/js/pages/user.js:306
-#: CTFd/themes/admin/assets/js/pages/user.js:338
-#: CTFd/themes/admin/assets/js/pages/users.js:15
+#: CTFd/themes/admin/assets/js/pages/challenges.js:20
+#: CTFd/themes/admin/assets/js/pages/pages.js:19
+#: CTFd/themes/admin/assets/js/pages/submissions.js:49
+#: CTFd/themes/admin/assets/js/pages/team.js:189
+#: CTFd/themes/admin/assets/js/pages/team.js:215
+#: CTFd/themes/admin/assets/js/pages/team.js:254
+#: CTFd/themes/admin/assets/js/pages/teams.js:20
+#: CTFd/themes/admin/assets/js/pages/user.js:300
+#: CTFd/themes/admin/assets/js/pages/user.js:326
+#: CTFd/themes/admin/assets/js/pages/user.js:365
+#: CTFd/themes/admin/assets/js/pages/users.js:20
 msgid "?"
 msgstr "？"
 
-#: CTFd/themes/admin/assets/js/pages/challenges.js:41
+#: CTFd/themes/admin/assets/js/pages/challenges.js:46
 #: CTFd/themes/admin/templates/challenges/challenges.html:56
 msgid "Edit Challenges"
 msgstr "编辑挑战"
 
 #: CTFd/themes/admin/assets/js/pages/configs.js:129
 #: CTFd/themes/admin/assets/js/pages/configs.js:157
-#: CTFd/themes/admin/assets/js/pages/configs.js:227
+#: CTFd/themes/admin/assets/js/pages/configs.js:229
 msgid "Error!"
 msgstr "错误！"
 
 #: CTFd/themes/admin/assets/js/pages/configs.js:131
 #: CTFd/themes/admin/assets/js/pages/configs.js:159
-#: CTFd/themes/admin/assets/js/pages/configs.js:229
+#: CTFd/themes/admin/assets/js/pages/configs.js:231
 msgid "Okay"
 msgstr "好的"
 
@@ -2172,7 +2894,7 @@ msgstr "好的"
 msgid "Logo uploading failed!"
 msgstr "站标上传失败！"
 
-#: CTFd/themes/admin/assets/js/pages/configs.js:170
+#: CTFd/themes/admin/assets/js/pages/configs.js:169
 msgid ""
 "Are you sure you'd like to switch user modes?\n"
 "\n"
@@ -2192,22 +2914,30 @@ msgstr ""
 "\n"
 "所有队伍、提交、奖励、解锁和跟踪记录都将被删除！"
 
-#: CTFd/themes/admin/assets/js/pages/configs.js:192
-#: CTFd/themes/admin/assets/js/pages/configs.js:238
+#: CTFd/themes/admin/assets/js/pages/configs.js:194
+#: CTFd/themes/admin/assets/js/pages/configs.js:240
 msgid "Remove logo"
 msgstr "移除站标"
 
-#: CTFd/themes/admin/assets/js/pages/configs.js:193
+#: CTFd/themes/admin/assets/js/pages/configs.js:195
 msgid "Are you sure you'd like to remove the CTF logo?"
 msgstr "您确定要移除 CTF 站标吗？"
 
-#: CTFd/themes/admin/assets/js/pages/configs.js:228
+#: CTFd/themes/admin/assets/js/pages/configs.js:230
 msgid "Icon uploading failed!"
 msgstr "图标上传失败！"
 
-#: CTFd/themes/admin/assets/js/pages/configs.js:239
+#: CTFd/themes/admin/assets/js/pages/configs.js:241
 msgid "Are you sure you'd like to remove the small site icon?"
 msgstr "您确定要移除小站标吗？"
+
+#: CTFd/themes/admin/assets/js/pages/configs.js:283
+msgid "Line "
+msgstr "第 "
+
+#: CTFd/themes/admin/assets/js/pages/configs.js:285
+msgid ": "
+msgstr "："
 
 #: CTFd/themes/admin/assets/js/pages/editor.js:61
 msgid "Saved"
@@ -2228,27 +2958,27 @@ msgid ""
 "ungrouped and visible to all."
 msgstr "您确定要删除此模块吗？关联的挑战将取消分组并对所有人可见。"
 
-#: CTFd/themes/admin/assets/js/pages/module.js:116
+#: CTFd/themes/admin/assets/js/pages/module.js:118
 msgid "Unlink Audience"
 msgstr "取消关联受众"
 
-#: CTFd/themes/admin/assets/js/pages/module.js:117
+#: CTFd/themes/admin/assets/js/pages/module.js:119
 msgid "Are you sure you want to unlink this audience?"
 msgstr "您确定要取消关联此受众吗？"
 
-#: CTFd/themes/admin/assets/js/pages/module.js:164
+#: CTFd/themes/admin/assets/js/pages/module.js:167
 msgid " of "
 msgstr " / "
 
-#: CTFd/themes/admin/assets/js/pages/module.js:164
+#: CTFd/themes/admin/assets/js/pages/module.js:167
 msgid " could not be assigned."
 msgstr " 无法分配。"
 
-#: CTFd/themes/admin/assets/js/pages/module.js:179
+#: CTFd/themes/admin/assets/js/pages/module.js:182
 msgid "Remove Challenge"
 msgstr "移除挑战"
 
-#: CTFd/themes/admin/assets/js/pages/module.js:180
+#: CTFd/themes/admin/assets/js/pages/module.js:183
 msgid ""
 "Are you sure you want to remove this challenge from the module? It will "
 "become ungrouped."
@@ -2257,10 +2987,6 @@ msgstr "您确定要从此模块中移除此挑战吗？它将取消分组。"
 #: CTFd/themes/admin/assets/js/pages/notifications.js:30
 msgid "Could not send notification. Please try again."
 msgstr "无法发送通知。请重试。"
-
-#: CTFd/themes/admin/assets/js/pages/notifications.js:54
-msgid "Are you sure you want to delete this notification?"
-msgstr "您确定要删除此通知吗？"
 
 #: CTFd/themes/admin/assets/js/pages/pages.js:10
 msgid "page"
@@ -2283,15 +3009,16 @@ msgstr "重置 CTF？"
 msgid "Are you sure you want to reset your CTFd instance?"
 msgstr "您确定要重置您的 CTFd 实例吗？"
 
-#: CTFd/themes/admin/assets/js/pages/scoreboard.js:36
-#: CTFd/themes/admin/templates/challenges/new.html:62
-#: CTFd/themes/admin/templates/challenges/update.html:179
-msgid "Visible"
-msgstr "可见"
-
 #: CTFd/themes/admin/assets/js/pages/scoreboard.js:80
 msgid "Toggle Visibility"
 msgstr "切换可见性"
+
+#: CTFd/themes/admin/assets/js/pages/scoreboard.js:83
+#: CTFd/themes/admin/templates/config.html:44
+#: CTFd/themes/admin/templates/scoreboard/standings.html:13
+#: CTFd/themes/admin/templates/scoreboard/users.html:13
+msgid "Visibility"
+msgstr "可见性"
 
 #: CTFd/themes/admin/assets/js/pages/statistics.js:36
 msgid "Solve Counts"
@@ -2312,19 +3039,34 @@ msgid "Point Breakdown"
 msgstr "积分细分"
 
 #: CTFd/themes/admin/assets/js/pages/statistics.js:402
-#: CTFd/themes/admin/assets/js/pages/statistics.js:442
+#: CTFd/themes/admin/assets/js/pages/statistics.js:443
 msgid "Solve Percentages per Challenge"
 msgstr "各挑战解答百分比"
 
-#: CTFd/themes/admin/assets/js/pages/statistics.js:528
-#: CTFd/themes/admin/assets/js/pages/statistics.js:569
+#: CTFd/themes/admin/assets/js/pages/statistics.js:408
+#: CTFd/themes/admin/assets/js/pages/statistics.js:476
+msgid "Percentage of "
+msgstr "百分比（"
+
+#: CTFd/themes/admin/assets/js/pages/statistics.js:411
+#: CTFd/themes/admin/assets/js/pages/statistics.js:479
+msgid " (%)"
+msgstr "）"
+
+#: CTFd/themes/admin/assets/js/pages/statistics.js:530
+#: CTFd/themes/admin/assets/js/pages/statistics.js:571
 msgid "Score Distribution"
 msgstr "分数分布"
 
-#: CTFd/themes/admin/assets/js/pages/statistics.js:530
-#: CTFd/themes/admin/assets/js/pages/statistics.js:585
+#: CTFd/themes/admin/assets/js/pages/statistics.js:532
+#: CTFd/themes/admin/assets/js/pages/statistics.js:587
 msgid "Score Bracket"
 msgstr "分数区间"
+
+#: CTFd/themes/admin/assets/js/pages/statistics.js:538
+#: CTFd/themes/admin/assets/js/pages/statistics.js:595
+msgid "Number of "
+msgstr "数量："
 
 #: CTFd/themes/admin/assets/js/pages/submissions.js:17
 msgid "Delete Submission"
@@ -2337,27 +3079,27 @@ msgid ""
 "{1}"
 msgstr "您确定要删除 {0} 对挑战 {1} 的正确提交吗"
 
-#: CTFd/themes/admin/assets/js/pages/submissions.js:38
-#: CTFd/themes/admin/assets/js/pages/submissions.js:59
-#: CTFd/themes/admin/assets/js/pages/submissions.js:89
+#: CTFd/themes/admin/assets/js/pages/submissions.js:40
+#: CTFd/themes/admin/assets/js/pages/submissions.js:66
+#: CTFd/themes/admin/assets/js/pages/submissions.js:101
 #: CTFd/themes/admin/assets/js/pages/team.js:122
 #: CTFd/themes/admin/assets/js/pages/user.js:233
 msgid "submission"
 msgstr "提交"
 
-#: CTFd/themes/admin/assets/js/pages/submissions.js:38
-#: CTFd/themes/admin/assets/js/pages/submissions.js:59
-#: CTFd/themes/admin/assets/js/pages/submissions.js:89
+#: CTFd/themes/admin/assets/js/pages/submissions.js:40
+#: CTFd/themes/admin/assets/js/pages/submissions.js:66
+#: CTFd/themes/admin/assets/js/pages/submissions.js:101
 #: CTFd/themes/admin/assets/js/pages/team.js:122
 #: CTFd/themes/admin/assets/js/pages/user.js:233
 msgid "submissions"
 msgstr "提交"
 
-#: CTFd/themes/admin/assets/js/pages/submissions.js:41
+#: CTFd/themes/admin/assets/js/pages/submissions.js:43
 msgid "Delete Submissions"
 msgstr "删除提交"
 
-#: CTFd/themes/admin/assets/js/pages/submissions.js:62
+#: CTFd/themes/admin/assets/js/pages/submissions.js:69
 #: CTFd/themes/admin/assets/js/pages/team.js:125
 #: CTFd/themes/admin/assets/js/pages/user.js:236
 #: CTFd/themes/admin/templates/base.html:74
@@ -2365,103 +3107,103 @@ msgstr "删除提交"
 msgid "Correct Submissions"
 msgstr "正确提交"
 
-#: CTFd/themes/admin/assets/js/pages/submissions.js:63
-#: CTFd/themes/admin/assets/js/pages/submissions.js:93
-#: CTFd/themes/admin/assets/js/pages/team.js:126
-#: CTFd/themes/admin/assets/js/pages/team.js:227
-#: CTFd/themes/admin/assets/js/pages/user.js:237
-#: CTFd/themes/admin/assets/js/pages/user.js:338
+#: CTFd/themes/admin/assets/js/pages/submissions.js:71
+#: CTFd/themes/admin/assets/js/pages/submissions.js:106
+#: CTFd/themes/admin/assets/js/pages/team.js:127
+#: CTFd/themes/admin/assets/js/pages/team.js:248
+#: CTFd/themes/admin/assets/js/pages/user.js:238
+#: CTFd/themes/admin/assets/js/pages/user.js:359
 msgid "Are you sure you want to mark "
 msgstr "您确定要标记 "
 
-#: CTFd/themes/admin/assets/js/pages/submissions.js:63
-#: CTFd/themes/admin/assets/js/pages/team.js:126
-#: CTFd/themes/admin/assets/js/pages/user.js:237
+#: CTFd/themes/admin/assets/js/pages/submissions.js:75
+#: CTFd/themes/admin/assets/js/pages/team.js:131
+#: CTFd/themes/admin/assets/js/pages/user.js:242
 msgid " correct?"
 msgstr " 为正确吗？"
 
-#: CTFd/themes/admin/assets/js/pages/submissions.js:92
+#: CTFd/themes/admin/assets/js/pages/submissions.js:104
 #: CTFd/themes/admin/templates/base.html:75
 msgid "Incorrect Submissions"
 msgstr "错误提交"
 
-#: CTFd/themes/admin/assets/js/pages/submissions.js:93
+#: CTFd/themes/admin/assets/js/pages/submissions.js:110
 msgid " incorrect?"
 msgstr " 为错误吗？"
 
-#: CTFd/themes/admin/assets/js/pages/team.js:155
-#: CTFd/themes/admin/assets/js/pages/user.js:266
+#: CTFd/themes/admin/assets/js/pages/team.js:160
+#: CTFd/themes/admin/assets/js/pages/user.js:271
 msgid "solve"
 msgstr "解答"
 
-#: CTFd/themes/admin/assets/js/pages/team.js:160
-#: CTFd/themes/admin/assets/js/pages/user.js:271
+#: CTFd/themes/admin/assets/js/pages/team.js:165
+#: CTFd/themes/admin/assets/js/pages/user.js:276
 msgid "fail"
 msgstr "失败"
 
-#: CTFd/themes/admin/assets/js/pages/team.js:170
-#: CTFd/themes/admin/assets/js/pages/user.js:281
+#: CTFd/themes/admin/assets/js/pages/team.js:179
+#: CTFd/themes/admin/assets/js/pages/user.js:290
 msgid "solves"
 msgstr "解答"
 
-#: CTFd/themes/admin/assets/js/pages/team.js:170
-#: CTFd/themes/admin/assets/js/pages/user.js:281
+#: CTFd/themes/admin/assets/js/pages/team.js:180
+#: CTFd/themes/admin/assets/js/pages/user.js:291
 msgid "fails"
 msgstr "失败"
 
-#: CTFd/themes/admin/assets/js/pages/team.js:173
-#: CTFd/themes/admin/assets/js/pages/user.js:284
+#: CTFd/themes/admin/assets/js/pages/team.js:183
+#: CTFd/themes/admin/assets/js/pages/user.js:294
 msgid "Delete "
 msgstr "删除 "
 
-#: CTFd/themes/admin/assets/js/pages/team.js:191
-#: CTFd/themes/admin/assets/js/pages/user.js:302
+#: CTFd/themes/admin/assets/js/pages/team.js:206
+#: CTFd/themes/admin/assets/js/pages/user.js:317
 msgid "award"
 msgstr "奖励"
 
-#: CTFd/themes/admin/assets/js/pages/team.js:191
-#: CTFd/themes/admin/assets/js/pages/user.js:302
+#: CTFd/themes/admin/assets/js/pages/team.js:206
+#: CTFd/themes/admin/assets/js/pages/user.js:317
 msgid "awards"
 msgstr "奖励"
 
-#: CTFd/themes/admin/assets/js/pages/team.js:194
-#: CTFd/themes/admin/assets/js/pages/user.js:305
+#: CTFd/themes/admin/assets/js/pages/team.js:209
+#: CTFd/themes/admin/assets/js/pages/user.js:320
 msgid "Delete Awards"
 msgstr "删除奖励"
 
-#: CTFd/themes/admin/assets/js/pages/team.js:226
-#: CTFd/themes/admin/assets/js/pages/team.js:235
-#: CTFd/themes/admin/assets/js/pages/user.js:337
+#: CTFd/themes/admin/assets/js/pages/team.js:246
+#: CTFd/themes/admin/assets/js/pages/team.js:265
+#: CTFd/themes/admin/assets/js/pages/user.js:357
 msgid "Mark Correct"
 msgstr "标记为正确"
 
-#: CTFd/themes/admin/assets/js/pages/team.js:227
-#: CTFd/themes/admin/assets/js/pages/user.js:338
+#: CTFd/themes/admin/assets/js/pages/team.js:252
+#: CTFd/themes/admin/assets/js/pages/user.js:363
 msgid " correct for "
 msgstr " 为正确，对象："
 
-#: CTFd/themes/admin/assets/js/pages/team.js:230
+#: CTFd/themes/admin/assets/js/pages/team.js:257
 msgid "User Attribution"
 msgstr "用户归属"
 
-#: CTFd/themes/admin/assets/js/pages/team.js:231
+#: CTFd/themes/admin/assets/js/pages/team.js:259
 msgid "Which user on "
 msgstr "哪个用户在 "
 
-#: CTFd/themes/admin/assets/js/pages/team.js:231
+#: CTFd/themes/admin/assets/js/pages/team.js:261
 msgid " solved these challenges?"
 msgstr " 上解答了这些挑战？"
 
-#: CTFd/themes/admin/assets/js/pages/team.js:241
-#: CTFd/themes/admin/assets/js/pages/user.js:343
+#: CTFd/themes/admin/assets/js/pages/team.js:271
+#: CTFd/themes/admin/assets/js/pages/user.js:370
 msgid "MARKED AS SOLVED BY ADMIN"
 msgstr "由管理员标记为已解答"
 
-#: CTFd/themes/admin/assets/js/pages/team.js:455
+#: CTFd/themes/admin/assets/js/pages/team.js:485
 msgid "Please select a team member"
 msgstr "请选择一名队伍成员"
 
-#: CTFd/themes/admin/assets/js/pages/team.js:508
+#: CTFd/themes/admin/assets/js/pages/team.js:538
 #, python-brace-format
 msgid ""
 "Are you sure you want to remove {0} from {1}? <br><br><strong>All of their "
@@ -2470,7 +3212,7 @@ msgid ""
 msgstr ""
 "您确定要从 {1} 中移除 {0} 吗？<br><br><strong>其所有挑战解答、尝试、奖励和解锁的提示也将被删除！</strong>"
 
-#: CTFd/themes/admin/assets/js/pages/team.js:531
+#: CTFd/themes/admin/assets/js/pages/team.js:563
 #: CTFd/themes/admin/templates/teams/team.html:239
 msgid "Delete Team"
 msgstr "删除队伍"
@@ -2478,7 +3220,8 @@ msgstr "删除队伍"
 #: CTFd/themes/admin/assets/js/pages/teams.js:11
 #: CTFd/utils/modes/__init__.py:37
 msgid "team"
-msgstr "队伍"
+msgid_plural "teams"
+msgstr[0] "队伍"
 
 #: CTFd/themes/admin/assets/js/pages/teams.js:11
 #: CTFd/themes/admin/templates/statistics.html:18
@@ -2490,10 +3233,20 @@ msgstr "队伍"
 msgid "Delete Teams"
 msgstr "删除队伍"
 
-#: CTFd/themes/admin/assets/js/pages/teams.js:38
+#: CTFd/themes/admin/assets/js/pages/teams.js:43
 #: CTFd/themes/admin/templates/teams/teams.html:55
 msgid "Edit Teams"
 msgstr "编辑队伍"
+
+#: CTFd/themes/admin/assets/js/pages/teams.js:48
+#: CTFd/themes/admin/assets/js/pages/users.js:49
+msgid "True"
+msgstr "是"
+
+#: CTFd/themes/admin/assets/js/pages/teams.js:49
+#: CTFd/themes/admin/assets/js/pages/users.js:50
+msgid "False"
+msgstr "否"
 
 #: CTFd/themes/admin/assets/js/pages/user.js:126
 #: CTFd/themes/admin/templates/users/user.html:176
@@ -2507,7 +3260,8 @@ msgstr "邮件发送成功！"
 #: CTFd/themes/admin/assets/js/pages/users.js:11
 #: CTFd/utils/modes/__init__.py:35
 msgid "user"
-msgstr "用户"
+msgid_plural "users"
+msgstr[0] "用户"
 
 #: CTFd/themes/admin/assets/js/pages/users.js:11
 #: CTFd/themes/admin/templates/statistics.html:14
@@ -2519,7 +3273,7 @@ msgstr "用户"
 msgid "Delete Users"
 msgstr "删除用户"
 
-#: CTFd/themes/admin/assets/js/pages/users.js:38
+#: CTFd/themes/admin/assets/js/pages/users.js:43
 #: CTFd/themes/admin/templates/users/users.html:56
 msgid "Edit Users"
 msgstr "编辑用户"
@@ -2611,12 +3365,6 @@ msgstr "本地化"
 #: CTFd/themes/admin/templates/config.html:41
 msgid "Access"
 msgstr "访问控制"
-
-#: CTFd/themes/admin/templates/config.html:44
-#: CTFd/themes/admin/templates/scoreboard/standings.html:13
-#: CTFd/themes/admin/templates/scoreboard/users.html:13
-msgid "Visibility"
-msgstr "可见性"
 
 #: CTFd/themes/admin/templates/config.html:49
 msgid "Start and End Time"
@@ -2736,20 +3484,9 @@ msgstr "这是页面的 HTML 内容"
 msgid "Write"
 msgstr "编写"
 
-#: CTFd/themes/admin/templates/editor.html:90
-msgid "Preview"
-msgstr "预览"
-
 #: CTFd/themes/admin/templates/editor.html:132
 msgid "CTFd Page variables"
 msgstr "CTFd 页面变量"
-
-#: CTFd/themes/admin/templates/audiences/audience.html:23
-#: CTFd/themes/admin/templates/editor.html:143
-#: CTFd/themes/admin/templates/modals/challenges/module.html:14
-#: CTFd/themes/admin/templates/modules/module.html:23
-msgid "Save"
-msgstr "保存"
 
 #: CTFd/themes/admin/templates/challenges/challenge.html:53
 #: CTFd/themes/admin/templates/challenges/challenge.html:103
@@ -2907,15 +3644,11 @@ msgid "wrong submissions"
 msgstr "错误提交"
 
 #: CTFd/themes/admin/templates/submissions.html:20
-msgid "Searching for submissions with"
-msgstr "搜索提交"
-
-#: CTFd/themes/admin/templates/challenges/challenges.html:25
-#: CTFd/themes/admin/templates/submissions.html:20
-#: CTFd/themes/admin/templates/teams/teams.html:24
-#: CTFd/themes/admin/templates/users/users.html:25
-msgid "matching"
-msgstr "匹配"
+#, python-format
+msgid ""
+"Searching for submissions with <strong>%(field)s</strong> matching "
+"<strong>%(q)s</strong>"
+msgstr "搜索字段为 <strong>%(field)s</strong> 匹配 <strong>%(q)s</strong> 的提交"
 
 #: CTFd/themes/admin/templates/submissions.html:23
 #: CTFd/themes/admin/templates/teams/teams.html:27
@@ -2925,6 +3658,10 @@ msgstr "匹配"
 #, python-format
 msgid "Page %(page)s of %(total)s results"
 msgstr "共 %(total)s 条结果中的第 %(page)s 页"
+
+#: CTFd/themes/admin/templates/submissions.html:33
+msgid "Search for matching submission"
+msgstr "搜索提交"
 
 #: CTFd/themes/admin/templates/submissions.html:52
 msgid "Mark submissions correct"
@@ -2972,14 +3709,6 @@ msgstr "挑战"
 msgid "Date"
 msgstr "日期"
 
-#: CTFd/themes/admin/templates/submissions.html:152
-#: CTFd/themes/admin/templates/teams/teams.html:143
-#: CTFd/themes/admin/templates/users/users.html:155
-#: CTFd/themes/core/templates/teams/teams.html:128
-#: CTFd/themes/core/templates/users/users.html:118
-msgid "Page"
-msgstr "页码"
-
 #: CTFd/themes/admin/templates/audiences/audience.html:8
 #: CTFd/themes/admin/templates/audiences/audience.html:39
 msgid "Edit Audience"
@@ -3013,15 +3742,6 @@ msgstr "关联模块"
 #: CTFd/themes/admin/templates/audiences/audience.html:85
 msgid "Linked Members"
 msgstr "已关联的成员"
-
-#: CTFd/themes/admin/templates/audiences/audience.html:89
-#: CTFd/themes/admin/templates/teams/teams.html:77
-#: CTFd/themes/core/templates/components/navbar.html:99
-#: CTFd/themes/core/templates/components/navbar.html:104
-#: CTFd/themes/core/templates/teams/team_enrollment.html:6
-#: CTFd/themes/core/templates/teams/teams.html:49
-msgid "Team"
-msgstr "队伍"
 
 #: CTFd/themes/admin/templates/audiences/audience.html:104
 #: CTFd/themes/admin/templates/modules/module.html:106
@@ -3095,13 +3815,6 @@ msgstr "文件"
 msgid "Flags"
 msgstr "旗帜"
 
-#: CTFd/themes/admin/templates/challenges/challenge.html:119
-#: CTFd/themes/admin/templates/challenges/challenge.html:148
-#: CTFd/themes/admin/templates/challenges/challenges.html:85
-#: CTFd/themes/core/templates/challenge.html:30
-msgid "Solution"
-msgstr "题解"
-
 #: CTFd/themes/admin/templates/challenges/challenge.html:120
 #: CTFd/themes/admin/templates/challenges/challenge.html:156
 msgid "Topics"
@@ -3117,21 +3830,6 @@ msgstr "标签"
 msgid "Hints"
 msgstr "提示"
 
-#: CTFd/themes/admin/templates/challenges/challenge.html:123
-#: CTFd/themes/admin/templates/challenges/challenge.html:180
-msgid "Requirements"
-msgstr "前置要求"
-
-#: CTFd/themes/admin/templates/challenges/challenge.html:124
-#: CTFd/themes/core/templates/setup.html:86
-#: CTFd/themes/core/templates/setup.html:138
-#: CTFd/themes/core/templates/setup.html:202
-#: CTFd/themes/core/templates/setup.html:238
-#: CTFd/themes/core/templates/setup.html:296
-#: CTFd/themes/core/templates/setup.html:345
-msgid "Next"
-msgstr "下一页"
-
 #: CTFd/themes/admin/templates/challenges/challenge.html:125
 #: CTFd/themes/admin/templates/challenges/challenge.html:196
 #: CTFd/themes/admin/templates/challenges/challenges.html:81
@@ -3139,31 +3837,25 @@ msgstr "下一页"
 msgid "Module"
 msgstr "模块"
 
-#: CTFd/themes/admin/templates/challenges/challenge.html:188
-#: CTFd/themes/admin/templates/challenges/preview.html:6
-#: CTFd/themes/core/templates/challenge.html:209
-msgid "Next Challenge"
-msgstr "下一题"
-
 #: CTFd/themes/admin/templates/challenges/challenges.html:13
 #: CTFd/themes/admin/templates/challenges/new.html:9
 msgid "Create Challenge"
 msgstr "创建挑战"
 
 #: CTFd/themes/admin/templates/challenges/challenges.html:25
-msgid "Searching for challenges with"
-msgstr "搜索挑战"
+#, python-format
+msgid ""
+"Searching for challenges with <strong>%(field)s</strong> matching "
+"<strong>%(q)s</strong>"
+msgstr "搜索字段为 <strong>%(field)s</strong> 匹配 <strong>%(q)s</strong> 的题目"
 
 #: CTFd/themes/admin/templates/challenges/challenges.html:28
 msgid "results"
 msgstr "结果"
 
-#: CTFd/themes/admin/templates/challenges/challenges.html:84
-#: CTFd/themes/admin/templates/challenges/new.html:58
-#: CTFd/themes/admin/templates/challenges/update.html:174
-#: CTFd/themes/admin/templates/modules/module.html:88
-msgid "State"
-msgstr "状态"
+#: CTFd/themes/admin/templates/challenges/challenges.html:38
+msgid "Search for matching challenge"
+msgstr "搜索挑战"
 
 #: CTFd/themes/admin/templates/challenges/challenges.html:133
 msgid "solved"
@@ -3213,10 +3905,6 @@ msgstr "分值："
 #: CTFd/themes/admin/templates/challenges/create.html:50
 msgid "This is how many points are rewarded for solving this challenge."
 msgstr "这是解答此挑战所奖励的积分。"
-
-#: CTFd/themes/admin/templates/challenges/create.html:53
-msgid "Enter value"
-msgstr "输入值"
 
 #: CTFd/themes/admin/templates/challenges/new.html:17
 msgid "Options"
@@ -3311,14 +3999,6 @@ msgstr "如何根据衰减值计算挑战分值"
 msgid "Static"
 msgstr "静态"
 
-#: CTFd/themes/admin/templates/challenges/update.html:95
-msgid "Linear"
-msgstr "线性"
-
-#: CTFd/themes/admin/templates/challenges/update.html:96
-msgid "Logarithmic"
-msgstr "对数"
-
 #: CTFd/themes/admin/templates/challenges/update.html:100
 msgid "Static: Challenge <code>Value</code> is awarded as-is"
 msgstr "静态：按题目 <code>分值</code> 原样奖励"
@@ -3333,42 +4013,12 @@ msgid ""
 "(SolveCount^2)) + Initial</code>"
 msgstr "对数：计算方式为 <code>(((最小值 - 初始值) / (衰减^2)) * (解题数^2)) + 初始值</code>"
 
-#: CTFd/themes/admin/templates/challenges/update.html:110
-msgid "Initial Value"
-msgstr "初始值"
-
-#: CTFd/themes/admin/templates/challenges/update.html:112
-msgid "This is how many points the challenge was worth initially."
-msgstr "这是题目最初的分值。"
-
-#: CTFd/themes/admin/templates/challenges/update.html:121
-msgid "Decay"
-msgstr "衰减"
-
-#: CTFd/themes/admin/templates/challenges/update.html:123
-msgid ""
-"The decay value is used differently depending on the above Decay Function"
-msgstr "衰减值的使用方式取决于上面选择的衰减函数"
-
-#: CTFd/themes/admin/templates/challenges/update.html:125
-msgid ""
-"Linear: The amount of points deducted per solve. Equal deduction per solve."
-msgstr "线性：每次解题扣除的分数。每次解题扣除相同的分数。"
-
 #: CTFd/themes/admin/templates/challenges/update.html:126
 msgid ""
 "Logarithmic: The amount of solves before the challenge reaches its minimum "
 "value. Earlier solves will lose less points. Later solves will lose more "
 "points"
 msgstr "对数：题目达到最低分值前的解题次数。较早的解题损失较少分数，较晚的解题损失较多分数"
-
-#: CTFd/themes/admin/templates/challenges/update.html:136
-msgid "Minimum Value"
-msgstr "最小值"
-
-#: CTFd/themes/admin/templates/challenges/update.html:138
-msgid "This is the lowest that the challenge can be worth"
-msgstr "这是题目可以拥有的最低分值"
 
 #: CTFd/themes/admin/templates/challenges/update.html:148
 msgid "Logic"
@@ -4028,21 +4678,6 @@ msgstr "创建模块"
 msgid "New Module"
 msgstr "新建模块"
 
-#: CTFd/themes/admin/templates/scoreboard/standings.html:9
-#: CTFd/themes/admin/templates/scoreboard/users.html:9
-#: CTFd/themes/core/templates/scoreboard.html:36
-msgid "Place"
-msgstr "名次"
-
-#: CTFd/themes/admin/templates/scoreboard/standings.html:12
-#: CTFd/themes/admin/templates/scoreboard/users.html:12
-#: CTFd/themes/admin/templates/teams/team.html:270
-#: CTFd/themes/core/templates/scoreboard.html:38
-#: CTFd/themes/core/templates/teams/private.html:328
-#: CTFd/themes/core/templates/teams/public.html:96
-msgid "Score"
-msgstr "得分"
-
 #: CTFd/themes/admin/templates/scoreboard/standings.html:31
 #: CTFd/themes/admin/templates/scoreboard/standings.html:35
 #: CTFd/themes/admin/templates/scoreboard/users.html:31
@@ -4204,8 +4839,17 @@ msgid "Time"
 msgstr "时间"
 
 #: CTFd/themes/admin/templates/teams/teams.html:24
-msgid "Searching for teams with"
-msgstr "搜索团队"
+#: CTFd/themes/core/templates/teams/teams.html:15
+#, python-format
+msgid ""
+"Searching for teams with <strong>%(field)s</strong> matching "
+"<strong>%(q)s</strong>"
+msgstr "搜索字段为 <strong>%(field)s</strong> 匹配 <strong>%(q)s</strong> 的队伍"
+
+#: CTFd/themes/admin/templates/teams/teams.html:37
+#: CTFd/themes/core/templates/teams/teams.html:29
+msgid "Search for matching teams"
+msgstr "搜索队伍"
 
 #: CTFd/themes/admin/templates/users/new.html:10
 #: CTFd/themes/admin/templates/users/users.html:10
@@ -4238,8 +4882,12 @@ msgid "admin"
 msgstr "管理员"
 
 #: CTFd/themes/admin/templates/users/users.html:25
-msgid "Searching for users with"
-msgstr "搜索用户"
+#: CTFd/themes/core/templates/users/users.html:14
+#, python-format
+msgid ""
+"Searching for users with <strong>%(field)s</strong> matching "
+"<strong>%(q)s</strong>"
+msgstr "<strong>%(field)s</strong> 为 <strong>%(q)s</strong> 的用户搜索结果"
 
 #: CTFd/themes/core/assets/js/challenges.js:268
 msgid "Error submitting rating"
@@ -4266,7 +4914,8 @@ msgstr "前 10 "
 #: CTFd/themes/core/templates/challenge.html:39
 #, python-format
 msgid "%(num)d Solve"
-msgstr "%(num)d 个解答"
+msgid_plural "%(num)d Solves"
+msgstr[0] "%(num)d 个解答"
 
 #: CTFd/themes/core/templates/challenge.html:79
 msgid "liked"
@@ -4279,20 +4928,19 @@ msgstr "查看提示"
 #: CTFd/themes/core/templates/challenge.html:119
 #, python-format
 msgid "Cost: %(cost)s point"
-msgstr "花费：%(cost)s 积分"
+msgid_plural "Cost: %(cost)s points"
+msgstr[0] "花费：%(cost)s 积分"
 
 #: CTFd/themes/core/templates/challenge.html:121
 #, python-format
 msgid "Unlock Hint for %(cost)s point"
-msgstr "花费 %(cost)s 积分解锁提示"
+msgid_plural "Unlock Hint for %(cost)s points"
+msgstr[0] "花费 %(cost)s 积分解锁提示"
 
 #: CTFd/themes/core/templates/challenge.html:160
 msgid "attempt"
-msgstr "次尝试"
-
-#: CTFd/themes/core/templates/challenge.html:175
-msgid "Flag"
-msgstr "Flag"
+msgid_plural "attempts"
+msgstr[0] "次尝试"
 
 #: CTFd/themes/core/templates/challenge.html:216
 msgid "Share"
@@ -4460,13 +5108,6 @@ msgstr "全部"
 msgid "Scoreboard is empty"
 msgstr "记分板为空"
 
-#: CTFd/themes/core/templates/components/navbar.html:124
-#: CTFd/themes/core/templates/components/navbar.html:129
-#: CTFd/themes/core/templates/settings.html:8
-#: CTFd/themes/core/templates/setup.html:50
-msgid "Settings"
-msgstr "设置"
-
 #: CTFd/themes/core/templates/components/navbar.html:112
 #: CTFd/themes/core/templates/components/navbar.html:117
 #: CTFd/themes/core/templates/settings.html:21
@@ -4630,7 +5271,6 @@ msgid "Join Team"
 msgstr "加入队伍"
 
 #: CTFd/themes/core/templates/teams/invite.html:15
-#: CTFd/themes/core/templates/teams/team_enrollment.html:12
 msgid "Welcome to"
 msgstr "欢迎来到"
 
@@ -4693,6 +5333,11 @@ msgstr "成员"
 msgid "No solves yet"
 msgstr "暂无解答"
 
+#: CTFd/themes/core/templates/teams/team_enrollment.html:12
+#, python-format
+msgid "Welcome to %(name)s!"
+msgstr "欢迎来到 %(name)s！"
+
 #: CTFd/themes/core/templates/teams/team_enrollment.html:14
 msgid "In order to participate you must either join or create a team."
 msgstr "参与比赛必须加入或创建一个队伍。"
@@ -4709,24 +5354,10 @@ msgstr "加入非官方队伍"
 msgid "Create Unofficial Team"
 msgstr "创建非官方队伍"
 
-#: CTFd/themes/core/templates/teams/teams.html:15
-#, python-format
-msgid ""
-"Searching for teams with <strong>%(field)s</strong> matching "
-"<strong>%(q)s</strong>"
-msgstr "搜索字段为 <strong>%(field)s</strong> 匹配 <strong>%(q)s</strong> 的队伍"
-
-#: CTFd/themes/core/templates/users/users.html:14
-#, python-format
-msgid ""
-"Searching for users with <strong>%(field)s</strong> matching "
-"<strong>%(q)s</strong>"
-msgstr "<strong>%(field)s</strong> 为 <strong>%(q)s</strong> 的用户搜索结果"
-
 #: CTFd/utils/decorators/__init__.py:177
 #, python-format
-msgid "Too many requests. Limit is %s requests in %s seconds"
-msgstr "请求过多。限制为 %s 秒内 %s 次请求"
+msgid "Too many requests. Limit is %(limit)s requests in %(interval)s seconds"
+msgstr "请求过多。限制为 %(interval)s 秒内 %(limit)s 次请求"
 
 #: CTFd/utils/decorators/__init__.py:210
 msgid "Please fill out all required profile fields before continuing"

@@ -19,9 +19,15 @@
     <table id="flagsboard" class="table table-striped">
       <thead>
         <tr>
-          <td class="text-center"><b>Type</b></td>
-          <td class="text-center"><b>Flag</b></td>
-          <td class="text-center"><b>Settings</b></td>
+          <td class="text-center">
+            <b>{{ labels.type }}</b>
+          </td>
+          <td class="text-center">
+            <b>{{ labels.flag }}</b>
+          </td>
+          <td class="text-center">
+            <b>{{ labels.settings }}</b>
+          </td>
         </tr>
       </thead>
       <tbody>
@@ -55,7 +61,7 @@
         class="btn btn-success d-inline-block float-right"
         @click="addFlag()"
       >
-        Create Flag
+        {{ labels.createFlag }}
       </button>
     </div>
   </div>
@@ -79,6 +85,12 @@ export default {
     return {
       flags: [],
       editing_flag_id: null,
+      labels: {
+        type: _("Type"),
+        flag: _("Flag"),
+        settings: _("Settings"),
+        createFlag: _("Create Flag"),
+      },
     };
   },
   methods: {
@@ -126,7 +138,7 @@ export default {
       $(modal).modal();
     },
     deleteFlag: function (flag_id) {
-      if (confirm("Are you sure you'd like to delete this flag?")) {
+      if (confirm(_("Are you sure you'd like to delete this flag?"))) {
         CTFd.fetch(`/api/v1/flags/${flag_id}`, {
           method: "DELETE",
         })

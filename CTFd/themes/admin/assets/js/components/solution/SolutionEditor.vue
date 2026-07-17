@@ -3,8 +3,8 @@
     <form method="POST" @submit.prevent="submitSolution">
       <div class="form-group">
         <label>
-          Content<br />
-          <small>Markdown &amp; HTML are supported</small>
+          {{ labels.content }}<br />
+          <small>{{ labels.markdownHtmlSupported }}</small>
         </label>
         <textarea
           type="text"
@@ -21,24 +21,24 @@
 
       <div class="form-group">
         <label>
-          State<br />
-          <small>Controls who can view this solution</small>
+          {{ labels.state }}<br />
+          <small>{{ labels.controlsWhoCanView }}</small>
         </label>
         <select class="form-control custom-select" name="state" v-model="state">
-          <option value="hidden">Hidden</option>
-          <option value="visible">Visible</option>
-          <option value="solved">Solved</option>
+          <option value="hidden">{{ labels.hidden }}</option>
+          <option value="visible">{{ labels.visible }}</option>
+          <option value="solved">{{ labels.solved }}</option>
         </select>
       </div>
       <button class="btn btn-primary float-right" type="submit">
-        {{ solution_id ? "Update" : "Create" }} Solution
+        {{ solutionButtonLabel }}
       </button>
       <div
         v-if="loading"
         class="spinner-border spinner-border-sm ml-2"
         role="status"
       >
-        <span class="sr-only">Loading...</span>
+        <span class="sr-only">{{ labels.loading }}</span>
       </div>
     </form>
   </div>
@@ -59,7 +59,24 @@ export default {
       content: "",
       state: "hidden",
       loading: false,
+      labels: {
+        content: _("Content"),
+        markdownHtmlSupported: _("Markdown & HTML are supported"),
+        state: _("State"),
+        controlsWhoCanView: _("Controls who can view this solution"),
+        hidden: _("Hidden"),
+        visible: _("Visible"),
+        solved: _("Solved"),
+        loading: _("Loading..."),
+      },
     };
+  },
+  computed: {
+    solutionButtonLabel() {
+      return (
+        (this.solution_id ? _("Update") : _("Create")) + " " + _("Solution")
+      );
+    },
   },
   watch: {
     solution_id: {

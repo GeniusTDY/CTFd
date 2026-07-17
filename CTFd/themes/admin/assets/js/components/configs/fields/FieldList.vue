@@ -17,7 +17,7 @@
           type="button"
           @click="addField()"
         >
-          Add New Field
+          {{ labels.addNewField }}
         </button>
       </div>
     </div>
@@ -39,6 +39,9 @@ export default {
   data: function () {
     return {
       fields: [],
+      labels: {
+        addNewField: _("Add New Field"),
+      },
     };
   },
   methods: {

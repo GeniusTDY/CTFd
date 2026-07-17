@@ -12,7 +12,12 @@ function deleteSelectedChallenges(_event) {
 
   ezQuery({
     title: _("Delete Challenges"),
-    body: _("Are you sure you want to delete ") + challengeIDs.length + " " + target + _("?"),
+    body:
+      _("Are you sure you want to delete ") +
+      challengeIDs.length +
+      " " +
+      target +
+      _("?"),
     success: function () {
       const reqs = [];
       for (var chalID of challengeIDs) {
@@ -39,35 +44,46 @@ function bulkEditChallenges(_event) {
 
   ezAlert({
     title: _("Edit Challenges"),
-    body: $(`
+    body: (() => {
+      const labels = {
+        category: _("Category"),
+        value: _("Value"),
+        state: _("State"),
+        solution: _("Solution"),
+        visible: _("Visible"),
+        hidden: _("Hidden"),
+        solved: _("Solved"),
+      };
+      return $(`
     <form id="challenges-bulk-edit">
       <div class="form-group">
-        <label>${_("Category")}</label>
+        <label>${labels.category}</label>
         <input type="text" name="category" data-initial="" value="">
       </div>
       <div class="form-group">
-        <label>${_("Value")}</label>
+        <label>${labels.value}</label>
         <input type="number" name="value" data-initial="" value="">
       </div>
       <div class="form-group">
-        <label>${_("State")}</label>
+        <label>${labels.state}</label>
         <select name="state" data-initial="">
           <option value="">--</option>
-          <option value="visible">${_("Visible")}</option>
-          <option value="hidden">${_("Hidden")}</option>
+          <option value="visible">${labels.visible}</option>
+          <option value="hidden">${labels.hidden}</option>
         </select>
       </div>
       <div class="form-group">
-        <label>${_("Solution")}</label>
+        <label>${labels.solution}</label>
         <select name="solution" data-initial="">
           <option value="">--</option>
-          <option value="visible">${_("Visible")}</option>
-          <option value="hidden">${_("Hidden")}</option>
-          <option value="solved">${_("Solved")}</option>
+          <option value="visible">${labels.visible}</option>
+          <option value="hidden">${labels.hidden}</option>
+          <option value="solved">${labels.solved}</option>
         </select>
       </div>
     </form>
-    `),
+    `);
+    })(),
     button: _("Submit"),
     success: function () {
       const reqs = [];

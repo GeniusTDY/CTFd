@@ -11,7 +11,12 @@ function deleteSelectedUsers(_event) {
 
   ezQuery({
     title: _("Delete Pages"),
-    body: _("Are you sure you want to delete ") + pageIDs.length + " " + target + _("?"),
+    body:
+      _("Are you sure you want to delete ") +
+      pageIDs.length +
+      " " +
+      target +
+      _("?"),
     success: function () {
       const reqs = [];
       for (var pageID of pageIDs) {

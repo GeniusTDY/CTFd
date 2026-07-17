@@ -22,11 +22,21 @@
     <table class="table table-striped">
       <thead>
         <tr>
-          <td class="text-center"><b>ID</b></td>
-          <td class="text-center"><b>Title</b></td>
-          <td class="text-center"><b>Hint</b></td>
-          <td class="text-center"><b>Cost</b></td>
-          <td class="text-center"><b>Settings</b></td>
+          <td class="text-center">
+            <b>{{ labels.id }}</b>
+          </td>
+          <td class="text-center">
+            <b>{{ labels.title }}</b>
+          </td>
+          <td class="text-center">
+            <b>{{ labels.hint }}</b>
+          </td>
+          <td class="text-center">
+            <b>{{ labels.cost }}</b>
+          </td>
+          <td class="text-center">
+            <b>{{ labels.settings }}</b>
+          </td>
         </tr>
       </thead>
       <tbody>
@@ -54,7 +64,7 @@
     </table>
     <div class="col-md-12">
       <button class="btn btn-success float-right" @click="addHint">
-        Create Hint
+        {{ labels.createHint }}
       </button>
     </div>
   </div>
@@ -78,6 +88,14 @@ export default {
     return {
       hints: [],
       editing_hint_id: null,
+      labels: {
+        id: _("ID"),
+        title: _("Title"),
+        hint: _("Hint"),
+        cost: _("Cost"),
+        settings: _("Settings"),
+        createHint: _("Create Hint"),
+      },
     };
   },
   methods: {
@@ -125,15 +143,15 @@ export default {
           }
         } else {
           alert(
-            "An error occurred while updating this hint. Please try again.",
+            _("An error occurred while updating this hint. Please try again."),
           );
         }
       });
     },
     deleteHint: function (hintId) {
       ezQuery({
-        title: "Delete Hint",
-        body: "Are you sure you want to delete this hint?",
+        title: _("Delete Hint"),
+        body: _("Are you sure you want to delete this hint?"),
         success: () => {
           CTFd.fetch(`/api/v1/hints/${hintId}`, {
             method: "DELETE",

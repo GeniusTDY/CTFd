@@ -71,7 +71,9 @@ function updateModule(event) {
 function deleteModule(_event) {
   ezQuery({
     title: _("Delete Module"),
-    body: _("Are you sure you want to delete this module? Linked challenges will become ungrouped and visible to all."),
+    body: _(
+      "Are you sure you want to delete this module? Linked challenges will become ungrouped and visible to all.",
+    ),
     success: function () {
       CTFd.fetch("/api/v1/modules/" + window.MODULE_ID, {
         method: "DELETE",
@@ -161,7 +163,8 @@ function addChallenges(event) {
     if (failed.length) {
       ezAlert({
         title: _("Error"),
-        body: failed.length + _(" of ") + ids.length + _(" could not be assigned."),
+        body:
+          failed.length + _(" of ") + ids.length + _(" could not be assigned."),
         button: _("OK"),
         success: function () {
           window.location.reload();
@@ -177,7 +180,9 @@ function removeChallenge(event) {
   const challengeId = $(event.currentTarget).data("remove-challenge");
   ezQuery({
     title: _("Remove Challenge"),
-    body: _("Are you sure you want to remove this challenge from the module? It will become ungrouped."),
+    body: _(
+      "Are you sure you want to remove this challenge from the module? It will become ungrouped.",
+    ),
     success: function () {
       CTFd.fetch("/api/v1/challenges/" + challengeId, {
         method: "PATCH",

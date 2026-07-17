@@ -15,7 +15,7 @@
           type="button"
           @click="addBracket()"
         >
-          Add New Bracket
+          {{ labels.addNewBracket }}
         </button>
       </div>
     </div>
@@ -34,6 +34,9 @@ export default {
   data: function () {
     return {
       brackets: [],
+      labels: {
+        addNewBracket: _("Add New Bracket"),
+      },
     };
   },
   methods: {

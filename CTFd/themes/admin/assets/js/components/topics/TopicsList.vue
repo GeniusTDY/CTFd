@@ -9,9 +9,9 @@
 
     <div class="form-group">
       <label>
-        Topic
+        {{ labels.topic }}
         <br />
-        <small class="text-muted">Type topic and press Enter</small>
+        <small class="text-muted">{{ labels.typeTopicAndPressEnter }}</small>
       </label>
       <input
         id="tags-add-input"
@@ -58,6 +58,10 @@ export default {
       topicResults: [],
       selectedResultIdx: 0,
       awaitingSearch: false,
+      labels: {
+        topic: _("Topic"),
+        typeTopicAndPressEnter: _("Type topic and press Enter"),
+      },
     };
   },
   methods: {

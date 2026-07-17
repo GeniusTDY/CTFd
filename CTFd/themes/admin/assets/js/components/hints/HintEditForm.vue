@@ -6,7 +6,7 @@
           <div class="container">
             <div class="row">
               <div class="col-md-12">
-                <h3>Hint</h3>
+                <h3>{{ labels.hint }}</h3>
               </div>
             </div>
           </div>
@@ -26,8 +26,8 @@
                 <div class="col-md-12">
                   <div class="form-group">
                     <label>
-                      Title<br />
-                      <small>Content displayed before hint unlocking</small>
+                      {{ labels.title }}<br />
+                      <small>{{ labels.titleHint }}</small>
                     </label>
                     <input
                       type="text"
@@ -40,8 +40,8 @@
 
                   <div class="form-group">
                     <label>
-                      Hint<br />
-                      <small>Markdown &amp; HTML are supported</small>
+                      {{ labels.hint }}<br />
+                      <small>{{ labels.markdownSupported }}</small>
                     </label>
                     <!-- Explicitly don't put the markdown class on this because we will add it later -->
                     <textarea
@@ -56,8 +56,8 @@
 
                   <div class="form-group">
                     <label>
-                      Cost<br />
-                      <small>How many points it costs to see your hint.</small>
+                      {{ labels.cost }}<br />
+                      <small>{{ labels.costHint }}</small>
                     </label>
                     <input
                       type="number"
@@ -69,11 +69,8 @@
 
                   <div class="form-group">
                     <label>
-                      Requirements<br />
-                      <small
-                        >Hints that must be unlocked before unlocking this
-                        hint</small
-                      >
+                      {{ labels.requirements }}<br />
+                      <small>{{ labels.requirementsHint }}</small>
                     </label>
                     <div
                       class="form-check"
@@ -99,7 +96,9 @@
             <div class="container">
               <div class="row">
                 <div class="col-md-12">
-                  <button class="btn btn-primary float-right">Submit</button>
+                  <button class="btn btn-primary float-right">
+                    {{ labels.submit }}
+                  </button>
                 </div>
               </div>
             </div>
@@ -127,6 +126,19 @@ export default {
       title: null,
       content: null,
       selectedHints: [],
+      labels: {
+        hint: _("Hint"),
+        title: _("Title"),
+        titleHint: _("Content displayed before hint unlocking"),
+        markdownSupported: _("Markdown & HTML are supported"),
+        cost: _("Cost"),
+        costHint: _("How many points it costs to see your hint."),
+        requirements: _("Requirements"),
+        requirementsHint: _(
+          "Hints that must be unlocked before unlocking this hint",
+        ),
+        submit: _("Submit"),
+      },
     };
   },
   computed: {

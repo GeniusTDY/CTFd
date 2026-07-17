@@ -166,11 +166,13 @@ function uploadLogo(event) {
 function switchUserMode(event) {
   event.preventDefault();
   let formData = new FormData(event.target);
-  let msg =
-    _("Are you sure you'd like to switch user modes?\n\nAll submissions, awards, unlocks, and tracking will be deleted!");
+  let msg = _(
+    "Are you sure you'd like to switch user modes?\n\nAll submissions, awards, unlocks, and tracking will be deleted!",
+  );
   if (formData.get("user_mode") == "users") {
-    msg =
-      _("Are you sure you'd like to switch user modes?\n\nAll teams, submissions, awards, unlocks, and tracking will be deleted!");
+    msg = _(
+      "Are you sure you'd like to switch user modes?\n\nAll teams, submissions, awards, unlocks, and tracking will be deleted!",
+    );
   }
   if (confirm(msg)) {
     // Use original form to include original input
@@ -277,7 +279,12 @@ function importCSV(event) {
         let errors = JSON.parse(resp.responseText);
         let errorText = "";
         errors.forEach((element) => {
-          errorText += `Line ${element[0]}: ${JSON.stringify(element[1])}\n`;
+          errorText +=
+            _("Line ") +
+            element[0] +
+            _(": ") +
+            JSON.stringify(element[1]) +
+            "\n";
         });
 
         // Show errors

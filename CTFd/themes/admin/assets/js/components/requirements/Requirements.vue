@@ -38,16 +38,16 @@
 
       <div class="form-group">
         <label>
-          <b>Behavior if not unlocked</b>
+          <b>{{ labels.behaviorIfNotUnlocked }}</b>
         </label>
         <select
           class="form-control custom-select"
           name="anonymize"
           v-model="selectedAnonymize"
         >
-          <option :value="false">Hidden</option>
-          <option :value="true">Anonymized</option>
-          <option value="preview">Preview</option>
+          <option :value="false">{{ labels.hidden }}</option>
+          <option :value="true">{{ labels.anonymized }}</option>
+          <option value="preview">{{ labels.preview }}</option>
         </select>
       </div>
 
@@ -56,7 +56,7 @@
           class="btn btn-success float-right"
           :disabled="!newRequirements"
         >
-          Save
+          {{ labels.save }}
         </button>
       </div>
     </form>
@@ -76,6 +76,13 @@ export default {
       requirements: {},
       selectedRequirements: [],
       selectedAnonymize: null,
+      labels: {
+        behaviorIfNotUnlocked: _("Behavior if not unlocked"),
+        hidden: _("Hidden"),
+        anonymized: _("Anonymized"),
+        preview: _("Preview"),
+        save: _("Save"),
+      },
     };
   },
   computed: {

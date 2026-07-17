@@ -15,7 +15,9 @@ function deleteCorrectSubmission(_event) {
 
   ezQuery({
     title: _("Delete Submission"),
-    body: _("Are you sure you want to delete correct submission from {0} for challenge {1}").format(
+    body: _(
+      "Are you sure you want to delete correct submission from {0} for challenge {1}",
+    ).format(
       "<strong>" + htmlEntities(team_name) + "</strong>",
       "<strong>" + htmlEntities(chal_name) + "</strong>",
     ),
@@ -39,7 +41,12 @@ function deleteSelectedSubmissions(_event) {
 
   ezQuery({
     title: _("Delete Submissions"),
-    body: _("Are you sure you want to delete ") + submissionIDs.length + " " + target + _("?"),
+    body:
+      _("Are you sure you want to delete ") +
+      submissionIDs.length +
+      " " +
+      target +
+      _("?"),
     success: function () {
       const reqs = [];
       for (var subId of submissionIDs) {
@@ -60,7 +67,12 @@ function correctSubmissions(_event) {
 
   ezQuery({
     title: _("Correct Submissions"),
-    body: _("Are you sure you want to mark ") + submissionIDs.length + " " + target + _(" correct?"),
+    body:
+      _("Are you sure you want to mark ") +
+      submissionIDs.length +
+      " " +
+      target +
+      _(" correct?"),
     success: function () {
       const reqs = [];
       for (var subId of submissionIDs) {
@@ -90,7 +102,12 @@ function incorrectSubmissions(_event) {
 
   ezQuery({
     title: _("Incorrect Submissions"),
-    body: _("Are you sure you want to mark ") + submissionIDs.length + " " + target + _(" incorrect?"),
+    body:
+      _("Are you sure you want to mark ") +
+      submissionIDs.length +
+      " " +
+      target +
+      _(" incorrect?"),
     success: function () {
       const reqs = [];
       for (var subId of submissionIDs) {

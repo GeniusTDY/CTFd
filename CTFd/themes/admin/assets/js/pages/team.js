@@ -123,7 +123,12 @@ function correctSubmissions(_event) {
 
   ezQuery({
     title: _("Correct Submissions"),
-    body: _("Are you sure you want to mark ") + submissionIDs.length + " " + target + _(" correct?"),
+    body:
+      _("Are you sure you want to mark ") +
+      submissionIDs.length +
+      " " +
+      target +
+      _(" correct?"),
     success: function () {
       const reqs = [];
       for (var subId of submissionIDs) {
@@ -167,11 +172,21 @@ function deleteSelectedSubmissions(event, target) {
   let submissionIDs = submissions.map(function () {
     return $(this).data("submission-id");
   });
-  let target_string = submissionIDs.length === 1 ? type : (target === "solves" ? _("solves") : _("fails"));
+  let target_string =
+    submissionIDs.length === 1
+      ? type
+      : target === "solves"
+        ? _("solves")
+        : _("fails");
 
   ezQuery({
     title: _("Delete ") + title,
-    body: _("Are you sure you want to delete ") + submissionIDs.length + " " + target_string + _("?"),
+    body:
+      _("Are you sure you want to delete ") +
+      submissionIDs.length +
+      " " +
+      target_string +
+      _("?"),
     success: function () {
       const reqs = [];
       for (var subId of submissionIDs) {
@@ -192,7 +207,12 @@ function deleteSelectedAwards(_event) {
 
   ezQuery({
     title: _("Delete Awards"),
-    body: _("Are you sure you want to delete ") + awardIDs.length + " " + target + _("?"),
+    body:
+      _("Are you sure you want to delete ") +
+      awardIDs.length +
+      " " +
+      target +
+      _("?"),
     success: function () {
       const reqs = [];
       for (var awardID of awardIDs) {
@@ -224,11 +244,21 @@ function solveSelectedMissingChallenges(event) {
 
   ezQuery({
     title: _("Mark Correct"),
-    body: _("Are you sure you want to mark ") + challengeIDs.length + " " + target + _(" correct for ") + htmlEntities(window.TEAM_NAME) + _("?"),
+    body:
+      _("Are you sure you want to mark ") +
+      challengeIDs.length +
+      " " +
+      target +
+      _(" correct for ") +
+      htmlEntities(window.TEAM_NAME) +
+      _("?"),
     success: function () {
       ezAlert({
         title: _("User Attribution"),
-        body: _("Which user on ") + htmlEntities(window.TEAM_NAME) + _(" solved these challenges?") +
+        body:
+          _("Which user on ") +
+          htmlEntities(window.TEAM_NAME) +
+          _(" solved these challenges?") +
           '<div class="pb-3" id="query-team-member-solve">' +
           $("#team-member-select").html() +
           "</div>",
@@ -505,7 +535,9 @@ $(() => {
 
     ezQuery({
       title: _("Remove Member"),
-      body: _("Are you sure you want to remove {0} from {1}? <br><br><strong>All of their challenge solves, attempts, awards, and unlocked hints will also be deleted!</strong>").format(
+      body: _(
+        "Are you sure you want to remove {0} from {1}? <br><br><strong>All of their challenge solves, attempts, awards, and unlocked hints will also be deleted!</strong>",
+      ).format(
         "<strong>" + htmlEntities(member_name) + "</strong>",
         "<strong>" + htmlEntities(window.TEAM_NAME) + "</strong>",
       ),
