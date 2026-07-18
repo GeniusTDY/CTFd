@@ -129,7 +129,7 @@ msgstr "无效的国家/地区"
 
 #: CTFd/auth.py:381 CTFd/teams.py:290
 msgid "Please provide a shorter affiliation"
-msgstr "请提供较短的所属机构名称"
+msgstr "请提供较短的隶属关系"
 
 #: CTFd/auth.py:383 CTFd/teams.py:294
 msgid "Please provide a valid bracket"
@@ -314,11 +314,11 @@ msgstr "%(name)s 已暂停"
 #: CTFd/api/v1/challenges.py:806
 #, python-format
 msgid "Not accepted. Try again in %(seconds)d seconds"
-msgstr "不接受。请在 %(seconds)d 秒后重试"
+msgstr "未通过。请在 %(seconds)d 秒后重试"
 
 #: CTFd/api/v1/challenges.py:815
 msgid "Not accepted. You have 0 tries remaining"
-msgstr "不接受。您还剩 0 次尝试机会"
+msgstr "未通过。您还剩 0 次尝试机会"
 
 #: CTFd/api/v1/challenges.py:852
 #, python-format
@@ -1634,7 +1634,7 @@ msgstr "您的管理员账户密码"
 #: CTFd/forms/setup.py:62 CTFd/themes/admin/templates/config.html:27
 #: CTFd/themes/admin/templates/configs/logo.html:5
 msgid "Logo"
-msgstr "站标"
+msgstr "Logo"
 
 #: CTFd/forms/setup.py:64
 msgid ""
@@ -1652,7 +1652,7 @@ msgstr "用作主页的横幅。可选项。"
 
 #: CTFd/forms/setup.py:71 CTFd/themes/admin/templates/configs/logo.html:59
 msgid "Small Icon"
-msgstr "小站标"
+msgstr "小图标"
 
 #: CTFd/forms/setup.py:73
 msgid ""
@@ -1770,7 +1770,7 @@ msgstr "设置新队伍加入密码"
 
 #: CTFd/forms/teams.py:134
 msgid "Confirm Current Team Password"
-msgstr "请确认您当前的队伍密码"
+msgstr "确认当前队伍密码"
 
 #: CTFd/forms/teams.py:136
 msgid ""
@@ -1984,10 +1984,8 @@ msgstr "衰减值的使用方式取决于上面选择的衰减函数"
 #: CTFd/plugins/dynamic_challenges/assets/create.html:42
 #: CTFd/plugins/dynamic_challenges/assets/update.html:43
 #: CTFd/themes/admin/templates/challenges/update.html:125
-msgid ""
-"Linear: The amount of points deducted per solve. Equal deduction per "
-"solve."
-msgstr "线性：每次解题扣除的分数。每次解题扣除相同的分数。"
+msgid "Linear: The amount of points deducted per solve. Equal deduction per solve."
+msgstr "线性：每次解题扣除的分值。每次解题扣除相同的分值。"
 
 #: CTFd/plugins/dynamic_challenges/assets/create.html:43
 #: CTFd/plugins/dynamic_challenges/assets/update.html:44
@@ -2013,7 +2011,7 @@ msgstr "最小值"
 #: CTFd/plugins/dynamic_challenges/assets/update.html:55
 #: CTFd/themes/admin/templates/challenges/update.html:138
 msgid "This is the lowest that the challenge can be worth"
-msgstr "这是题目可以拥有的最低分值"
+msgstr "这是题目可达到的最低分值"
 
 #: CTFd/plugins/dynamic_challenges/assets/create.html:57
 msgid "Enter minimum value"
@@ -2025,7 +2023,7 @@ msgstr "当前值"
 
 #: CTFd/plugins/dynamic_challenges/assets/update.html:7
 msgid "This is how many points the challenge is worth right now."
-msgstr "这是题目当前的价值。"
+msgstr "这是题目当前的分值。"
 
 #: CTFd/plugins/dynamic_challenges/assets/update.html:16
 #: CTFd/themes/admin/templates/challenges/update.html:112
@@ -3082,7 +3080,7 @@ msgstr "开始输入以搜索。"
 
 #: CTFd/themes/admin/assets/js/pages/audience.js:222
 msgid "Searching…"
-msgstr "搜索中…"
+msgstr "搜索中..."
 
 #: CTFd/themes/admin/assets/js/pages/audience.js:233
 #: CTFd/themes/admin/assets/js/pages/audience.js:236
@@ -3163,7 +3161,7 @@ msgstr "好的"
 
 #: CTFd/themes/admin/assets/js/pages/configs.js:158
 msgid "Logo uploading failed!"
-msgstr "站标上传失败！"
+msgstr "Logo 上传失败！"
 
 #: CTFd/themes/admin/assets/js/pages/configs.js:169
 msgid ""
@@ -3188,11 +3186,11 @@ msgstr ""
 #: CTFd/themes/admin/assets/js/pages/configs.js:194
 #: CTFd/themes/admin/assets/js/pages/configs.js:240
 msgid "Remove logo"
-msgstr "移除站标"
+msgstr "移除 Logo"
 
 #: CTFd/themes/admin/assets/js/pages/configs.js:195
 msgid "Are you sure you'd like to remove the CTF logo?"
-msgstr "您确定要移除 CTF 站标吗？"
+msgstr "您确定要移除 CTF Logo 吗？"
 
 #: CTFd/themes/admin/assets/js/pages/configs.js:230
 msgid "Icon uploading failed!"
@@ -3200,7 +3198,7 @@ msgstr "图标上传失败！"
 
 #: CTFd/themes/admin/assets/js/pages/configs.js:241
 msgid "Are you sure you'd like to remove the small site icon?"
-msgstr "您确定要移除小站标吗？"
+msgstr "您确定要移除小图标吗？"
 
 #: CTFd/themes/admin/assets/js/pages/configs.js:283
 msgid "Line "
@@ -3208,7 +3206,7 @@ msgstr "第 "
 
 #: CTFd/themes/admin/assets/js/pages/configs.js:285
 msgid ": "
-msgstr "："
+msgstr " 行："
 
 #: CTFd/themes/admin/assets/js/pages/editor.js:61
 msgid "Saved"
@@ -3317,12 +3315,12 @@ msgstr "各题目解答百分比"
 #: CTFd/themes/admin/assets/js/pages/statistics.js:408
 #: CTFd/themes/admin/assets/js/pages/statistics.js:476
 msgid "Percentage of "
-msgstr "百分比（"
+msgstr "占比："
 
 #: CTFd/themes/admin/assets/js/pages/statistics.js:411
 #: CTFd/themes/admin/assets/js/pages/statistics.js:479
 msgid " (%)"
-msgstr "）"
+msgstr " (%)"
 
 #: CTFd/themes/admin/assets/js/pages/statistics.js:530
 #: CTFd/themes/admin/assets/js/pages/statistics.js:571
@@ -3872,7 +3870,7 @@ msgstr "最少解答："
 
 #: CTFd/themes/admin/templates/statistics.html:48
 msgid "Player Progression"
-msgstr "玩家进度"
+msgstr "参赛者进度"
 
 #: CTFd/themes/admin/templates/statistics.html:48
 msgid "(Top 100)"
@@ -4144,11 +4142,11 @@ msgstr "输入题目名称"
 
 #: CTFd/themes/admin/templates/challenges/create.html:20
 msgid "Category:"
-msgstr "类别："
+msgstr "分类："
 
 #: CTFd/themes/admin/templates/challenges/create.html:22
 msgid "The category of your challenge"
-msgstr "题目类别"
+msgstr "题目分类"
 
 #: CTFd/themes/admin/templates/challenges/create.html:25
 msgid "Enter challenge category"
@@ -4791,7 +4789,7 @@ msgstr "参赛者只能注册个人账户"
 #: CTFd/themes/core-deprecated/templates/setup.html:107
 #: CTFd/themes/core/templates/setup.html:121
 msgid "Players can share accounts to form pseudo-teams"
-msgstr "玩家可以以共享账户方式组成队伍"
+msgstr "参赛者可以通过共享账户组成伪队伍"
 
 #: CTFd/themes/admin/templates/configs/usermode.html:49
 #: CTFd/themes/core-deprecated/templates/setup.html:109
@@ -5453,7 +5451,7 @@ msgstr "已生成 API 密钥"
 
 #: CTFd/themes/core/templates/settings.html:137
 msgid "Please copy your API Key, it won't be shown again!"
-msgstr "请复制您的 API Key，它将不会再次显示！"
+msgstr "请复制您的 API 密钥，它将不会再次显示！"
 
 #: CTFd/themes/core-deprecated/templates/settings.html:96
 #: CTFd/themes/core/templates/settings.html:183
@@ -5640,7 +5638,7 @@ msgstr "创建队伍后，请将队伍名称和密码分享给您的队友，以
 
 #: CTFd/themes/core/templates/teams/private.html:76
 msgid "Your team's profile has been updated"
-msgstr "您的队伍简介已更新"
+msgstr "您的队伍资料已更新"
 
 #: CTFd/themes/core/templates/teams/private.html:125
 msgid "Your captain rights have been transferred"
