@@ -737,11 +737,6 @@ msgstr "无"
 msgid "Shield"
 msgstr "盾牌"
 
-#: CTFd/forms/awards.py:20
-#: CTFd/themes/admin/templates/modals/awards/create.html:44
-msgid "Bug"
-msgstr "Bug"
-
 #: CTFd/forms/awards.py:21
 #: CTFd/themes/admin/templates/modals/awards/create.html:54
 msgid "Crown"
@@ -792,19 +787,6 @@ msgstr "愤怒"
 #: CTFd/forms/users.py:161
 msgid "Search Field"
 msgstr "搜索字段"
-
-#: CTFd/forms/challenges.py:14 CTFd/forms/submissions.py:14
-#: CTFd/forms/teams.py:202 CTFd/forms/users.py:146
-#: CTFd/themes/admin/assets/js/components/hints/HintsList.vue:92
-#: CTFd/themes/admin/templates/audiences/audiences.html:21
-#: CTFd/themes/admin/templates/challenges/challenges.html:78
-#: CTFd/themes/admin/templates/modules/module.html:88
-#: CTFd/themes/admin/templates/modules/modules.html:21
-#: CTFd/themes/admin/templates/submissions.html:87
-#: CTFd/themes/admin/templates/teams/teams.html:76
-#: CTFd/themes/admin/templates/users/users.html:76
-msgid "ID"
-msgstr "ID"
 
 #: CTFd/forms/challenges.py:16 CTFd/forms/users.py:187
 #: CTFd/themes/admin/assets/js/components/flags/FlagList.vue:89
@@ -1333,14 +1315,6 @@ msgstr "邮件服务器账户用户名"
 msgid "Mail Server Account Password"
 msgstr "邮件服务器账户密码"
 
-#: CTFd/forms/config.py:282
-msgid "TLS/SSL"
-msgstr "TLS/SSL"
-
-#: CTFd/forms/config.py:283
-msgid "STARTTLS"
-msgstr "STARTTLS"
-
 #: CTFd/forms/config.py:287
 msgid "Mailgun API Base URL"
 msgstr "Mailgun API 基础 URL"
@@ -1438,10 +1412,6 @@ msgid "Notification Type"
 msgstr "通知类型"
 
 #: CTFd/forms/notifications.py:17
-msgid "Toast"
-msgstr "Toast"
-
-#: CTFd/forms/notifications.py:17
 msgid "Alert"
 msgstr "提醒"
 
@@ -1486,14 +1456,6 @@ msgstr "需要认证"
 #: CTFd/forms/pages.py:28
 msgid "Format"
 msgstr "格式"
-
-#: CTFd/forms/pages.py:29
-msgid "Markdown"
-msgstr "Markdown"
-
-#: CTFd/forms/pages.py:29
-msgid "HTML"
-msgstr "HTML"
 
 #: CTFd/forms/pages.py:32
 msgid "The markup format used to render the page"
@@ -1630,11 +1592,6 @@ msgstr "管理员密码"
 #: CTFd/forms/setup.py:57
 msgid "Your password for the administration account"
 msgstr "您的管理员账户密码"
-
-#: CTFd/forms/setup.py:62 CTFd/themes/admin/templates/config.html:27
-#: CTFd/themes/admin/templates/configs/logo.html:5
-msgid "Logo"
-msgstr "Logo"
 
 #: CTFd/forms/setup.py:64
 msgid ""
@@ -2061,13 +2018,6 @@ msgstr "不区分大小写"
 #: CTFd/plugins/flags/assets/regex/create.html:15
 msgid "Examples"
 msgstr "示例"
-
-#: CTFd/plugins/flags/assets/regex/create.html:20
-#: CTFd/themes/admin/assets/js/components/flags/FlagList.vue:90
-#: CTFd/themes/core-deprecated/templates/challenge.html:112
-#: CTFd/themes/core/templates/challenge.html:175
-msgid "Flag"
-msgstr "Flag"
 
 #: CTFd/plugins/flags/assets/regex/create.html:24
 #, python-brace-format
@@ -2638,11 +2588,6 @@ msgstr "创建 Flag"
 #: CTFd/themes/admin/assets/js/components/flags/FlagCreationForm.vue:78
 msgid "Choose Flag Type"
 msgstr "选择 Flag 类型"
-
-#: CTFd/themes/admin/assets/js/components/flags/FlagCreationForm.vue:79
-#: CTFd/themes/admin/assets/js/components/next/NextChallenge.vue:50
-msgid "--"
-msgstr "--"
 
 #: CTFd/themes/admin/assets/js/components/flags/FlagEditForm.vue:51
 msgid "Edit Flag"
@@ -3317,11 +3262,6 @@ msgstr "各题目解答百分比"
 msgid "Percentage of "
 msgstr "占比："
 
-#: CTFd/themes/admin/assets/js/pages/statistics.js:411
-#: CTFd/themes/admin/assets/js/pages/statistics.js:479
-msgid " (%)"
-msgstr " (%)"
-
 #: CTFd/themes/admin/assets/js/pages/statistics.js:530
 #: CTFd/themes/admin/assets/js/pages/statistics.js:571
 msgid "Score Distribution"
@@ -3678,11 +3618,6 @@ msgstr "HTML 清理"
 msgid "Legal"
 msgstr "法律条款"
 
-#: CTFd/themes/admin/templates/config.html:114
-#: CTFd/themes/admin/templates/configs/robots.html:5
-msgid "Robots.txt"
-msgstr "Robots.txt"
-
 #: CTFd/themes/admin/templates/config.html:119
 #: CTFd/themes/core-deprecated/templates/setup.html:49
 #: CTFd/themes/core/templates/setup.html:62
@@ -3696,10 +3631,6 @@ msgstr "邮件通知"
 #: CTFd/themes/admin/templates/config.html:127
 msgid "Social Sharing"
 msgstr "社交分享"
-
-#: CTFd/themes/admin/templates/config.html:132
-msgid "MajorLeagueCyber"
-msgstr "MajorLeagueCyber"
 
 #: CTFd/themes/admin/templates/config.html:158
 msgid "Danger zone"
@@ -4506,10 +4437,6 @@ msgstr "用于网站的 Logo，替代 CTF 名称。"
 #: CTFd/themes/admin/templates/configs/logo.html:17
 msgid "Remove Logo"
 msgstr "移除 Logo"
-
-#: CTFd/themes/admin/templates/configs/logo.html:24
-msgid "CTF Logo"
-msgstr "CTF Logo"
 
 #: CTFd/themes/admin/templates/configs/logo.html:40
 msgid "Tab Icon"
@@ -5789,10 +5716,6 @@ msgstr "禁止访问"
 msgid "Sorry about that"
 msgstr "很抱歉"
 
-#: CTFd/themes/core-deprecated/templates/errors/429.html:9
-msgid "429"
-msgstr "429"
-
 #: CTFd/themes/core-deprecated/templates/errors/502.html:11
 msgid "Bad Gateway"
 msgstr "网关错误"
@@ -6089,17 +6012,8 @@ msgstr "用户名不能为空"
 msgid "Emails must not be empty"
 msgstr "邮箱不能为空"
 
-msgid "CTFd"
-msgstr "CTFd"
-
 msgid "invalid theme_settings"
 msgstr "无效的主题设置"
-
-msgid " -- "
-msgstr " -- "
-
-msgid "???"
-msgstr "???"
 
 msgid "Invalid query: %s"
 msgstr "无效的查询：%s"
