@@ -235,7 +235,7 @@ msgstr "此邀请链接无效"
 #: CTFd/teams.py:84 CTFd/teams.py:138 CTFd/teams.py:220
 #, python-format
 msgid "Teams are limited to %(limit)s member%(plural)s."
-msgstr "队伍人数上限为 %(limit)s 人。"
+msgstr "队伍人数上限为 %(limit)s 人%(plural)s。"
 
 #: CTFd/teams.py:102 CTFd/teams.py:159
 #, python-format
