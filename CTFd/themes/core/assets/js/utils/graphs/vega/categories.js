@@ -57,6 +57,10 @@ export function getSpec(description, values) {
       color: {
         field: "category",
         type: "nominal",
+        // scale: {
+        //   domain: ["Solves", "Fails"],
+        //   range: ["#00d13f", "#cf2600"],
+        // },
         legend: {
           orient: "bottom",
         },

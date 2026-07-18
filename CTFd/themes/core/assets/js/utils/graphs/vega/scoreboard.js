@@ -33,6 +33,8 @@ export function getValues(scoreboardDetail) {
     for (let j = 0; j < team["solves"].length; j++) {
       team_score.push(team["solves"][j].value);
       times.push(team["solves"][j].date);
+      // const date = dayjs(team["solves"][j].date);
+      // times.push(date.toDate());
     }
 
     const total_scores = cumulativeSum(team_score);
