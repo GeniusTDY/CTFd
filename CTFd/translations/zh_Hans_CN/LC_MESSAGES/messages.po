@@ -1248,7 +1248,7 @@ msgstr "控制账户（用户和队伍）是对所有人可见、仅对已登录
 
 #: CTFd/forms/config.py:235 CTFd/forms/setup.py:122
 msgid "Score Visibility"
-msgstr "分数可见性"
+msgstr "得分可见性"
 
 #: CTFd/forms/config.py:236 CTFd/forms/setup.py:123
 msgid ""
@@ -1385,7 +1385,7 @@ msgstr "新账户详情邮件的主题行"
 msgid ""
 "Email body sent to new users (manually created by an admin) with their "
 "initial account details"
-msgstr "发送给新用户<i>（由管理员手动创建）</i>的邮件，包含其初始账户信息"
+msgstr "发送给新用户（由管理员手动创建）的邮件，包含其初始账户信息"
 
 #: CTFd/forms/config.py:330
 msgid "Subject line for password reset request email"
@@ -1677,7 +1677,7 @@ msgstr "主题颜色"
 msgid ""
 "Color used by theme to control aesthetics. Requires theme support. "
 "Optional."
-msgstr "主题功能的基础颜色，需要主题支持。可选项。"
+msgstr "主题用于控制美观的颜色，需要主题支持。可选项。"
 
 #: CTFd/forms/setup.py:92
 msgid ""
@@ -3325,12 +3325,12 @@ msgstr " (%)"
 #: CTFd/themes/admin/assets/js/pages/statistics.js:530
 #: CTFd/themes/admin/assets/js/pages/statistics.js:571
 msgid "Score Distribution"
-msgstr "分数分布"
+msgstr "得分分布"
 
 #: CTFd/themes/admin/assets/js/pages/statistics.js:532
 #: CTFd/themes/admin/assets/js/pages/statistics.js:587
 msgid "Score Bracket"
-msgstr "分数区间"
+msgstr "得分区间"
 
 #: CTFd/themes/admin/assets/js/pages/statistics.js:538
 #: CTFd/themes/admin/assets/js/pages/statistics.js:595
@@ -3818,7 +3818,7 @@ msgstr "创建 CTFd 导出"
 
 #: CTFd/themes/admin/templates/reset.html:46
 msgid "(Users, Teams, Submissions, Tracking)"
-msgstr "（用户、队伍、提交、追踪）"
+msgstr "（用户、队伍、提交、跟踪）"
 
 #: CTFd/themes/admin/templates/configs/usermode.html:64
 #: CTFd/themes/admin/templates/reset.html:57
@@ -4229,7 +4229,7 @@ msgstr "用于为您的题目指定链接、主机名或连接说明。"
 
 #: CTFd/themes/admin/templates/challenges/update.html:66
 msgid "This is how many points teams will receive once they solve this challenge."
-msgstr "这是队伍解出该题目后将获得的分数。"
+msgstr "这是队伍解出该题目后将获得的积分。"
 
 #: CTFd/themes/admin/templates/challenges/update.html:76
 msgid "Position"
@@ -4268,7 +4268,7 @@ msgid ""
 "Logarithmic: The amount of solves before the challenge reaches its "
 "minimum value. Earlier solves will lose less points. Later solves will "
 "lose more points"
-msgstr "对数：题目达到最低分值前的解题次数。较早的解题损失较少分数，较晚的解题损失较多分数"
+msgstr "对数：题目达到最小值前的解出次数。较早的解题损失较少分值，较晚的解题损失较多分值"
 
 #: CTFd/themes/admin/templates/challenges/update.html:148
 msgid "Logic"
@@ -4535,7 +4535,7 @@ msgstr "MajorLeagueCyber 集成"
 msgid ""
 "MLC is a CTF stats tracker that provides event scheduling, team tracking,"
 " and SSO."
-msgstr "MLC 是一个 CTF 统计追踪器，提供赛事安排、队伍追踪和 SSO 功能。"
+msgstr "MLC 是一个 CTF 统计跟踪器，提供赛事安排、队伍跟踪和 SSO 功能。"
 
 #: CTFd/themes/admin/templates/configs/mlc.html:12
 msgid ""
@@ -4586,7 +4586,7 @@ msgstr "HTML 清理"
 
 #: CTFd/themes/admin/templates/configs/sanitize.html:8
 msgid "Whether CTFd will attempt to sanitize HTML content from content."
-msgstr "CTFd 是否尝试对 HTML 内容进行净化处理。"
+msgstr "CTFd 是否尝试对 HTML 内容进行清理。"
 
 #: CTFd/themes/admin/templates/configs/sanitize.html:14
 msgid "Required (Disable in config.ini)"
@@ -4783,7 +4783,7 @@ msgstr "可能稍难管理"
 #: CTFd/themes/core-deprecated/templates/setup.html:106
 #: CTFd/themes/core/templates/setup.html:120
 msgid "Participants only register an individual account"
-msgstr "参赛者只能注册个人账户"
+msgstr "参赛者仅注册个人账户"
 
 #: CTFd/themes/admin/templates/configs/usermode.html:47
 #: CTFd/themes/core-deprecated/templates/setup.html:107
@@ -5341,9 +5341,9 @@ msgstr "请点击邮件中的链接确认您的账户。"
 #: CTFd/themes/core/templates/confirm.html:26
 #: CTFd/themes/core/templates/confirm.html:37
 msgid ""
-"If the email doesn’t arrive, check your spam folder or contact an "
+"If the email doesn't arrive, check your spam folder or contact an "
 "administrator to manually verify your account."
-msgstr "如果确认邮件没有到达，请检查您的垃圾邮件文件夹或联系管理员手动验证您的账户。"
+msgstr "如果未收到邮件，请检查您的垃圾邮件文件夹或联系管理员手动验证您的账户。"
 
 #: CTFd/themes/core-deprecated/templates/confirm.html:30
 #: CTFd/themes/core/templates/confirm.html:30
@@ -5397,7 +5397,7 @@ msgid ""
 "target=\"_blank\">privacy policy</a> and <a href=\"%(tos_link)s\" "
 "target=\"_blank\">terms of service</a>"
 msgstr ""
-"继续注册即代表您同意<a href=\"%(privacy_link)s\" target=\"_blank\">隐私政策</a>和<a "
+"注册即表示您同意<a href=\"%(privacy_link)s\" target=\"_blank\">隐私政策</a>和<a "
 "href=\"%(tos_link)s\" target=\"_blank\">服务条款</a>"
 
 #: CTFd/themes/core-deprecated/templates/reset_password.html:9
@@ -5451,7 +5451,7 @@ msgstr "已生成 API 密钥"
 
 #: CTFd/themes/core/templates/settings.html:137
 msgid "Please copy your API Key, it won't be shown again!"
-msgstr "请复制您的 API 密钥，它将不会再次显示！"
+msgstr "请复制您的 API 密钥，它将不再显示！"
 
 #: CTFd/themes/core-deprecated/templates/settings.html:96
 #: CTFd/themes/core/templates/settings.html:183
@@ -5535,7 +5535,7 @@ msgstr "MajorLeagueCyber 集成"
 msgid ""
 "MajorLeagueCyber (MLC) is a cyber security event tracker written and "
 "maintained by the developers of CTFd."
-msgstr "MajorLeagueCyber (MLC) 是由 CTFd 开发者编写和维护的网络安全赛事追踪平台。"
+msgstr "MajorLeagueCyber (MLC) 是由 CTFd 开发者编写和维护的网络安全赛事跟踪平台。"
 
 #: CTFd/themes/core-deprecated/templates/components/navbar.html:106
 #: CTFd/themes/core-deprecated/templates/components/navbar.html:110
@@ -5591,7 +5591,7 @@ msgstr "请求次数过多"
 #: CTFd/themes/core-deprecated/templates/errors/429.html:12
 #: CTFd/themes/core/templates/errors/429.html:10
 msgid "Please slow down!"
-msgstr "请减慢您的请求速度！"
+msgstr "请降低请求频率！"
 
 #: CTFd/themes/core/templates/errors/429.html:13
 msgid "429 Too Many Requests"
@@ -5642,7 +5642,7 @@ msgstr "您的队伍资料已更新"
 
 #: CTFd/themes/core/templates/teams/private.html:125
 msgid "Your captain rights have been transferred"
-msgstr "您的队长权利已经转让"
+msgstr "您的队长权限已转让"
 
 #: CTFd/themes/core-deprecated/templates/teams/private.html:111
 #: CTFd/themes/core-deprecated/templates/teams/private.html:201
@@ -5748,7 +5748,7 @@ msgid ""
 "If the email doesn't arrive, check your spam folder or\n"
 "\t\t\tcontact an administrator to manually verify your account."
 msgstr ""
-"如果确认邮件没有到达，请检查您的垃圾邮件文件夹或\n"
+"如果未收到邮件，请检查您的垃圾邮件文件夹或\n"
 "\t\t\t\t联系管理员手动验证您的账户。"
 
 #: CTFd/themes/core-deprecated/templates/register.html:63
@@ -5759,13 +5759,13 @@ msgid ""
 "href=\"%(tos_link)s\" rel=\"noopener\" target=\"_blank\">terms of "
 "service</a>"
 msgstr ""
-"继续注册即代表您同意<a href=\"%(privacy_link)s\" rel=\"noopener\" "
+"注册即表示您同意<a href=\"%(privacy_link)s\" rel=\"noopener\" "
 "target=\"_blank\">隐私政策</a>和<a href=\"%(tos_link)s\" rel=\"noopener\" "
 "target=\"_blank\">服务条款</a>"
 
 #: CTFd/themes/core-deprecated/templates/setup.html:269
 msgid "Set up MLC integration to:"
-msgstr "设置 MLC 集成以："
+msgstr "设置 MLC 集成后可以："
 
 #: CTFd/themes/core-deprecated/templates/setup.html:271
 msgid "display your event on the MLC website and mailing list"
@@ -5830,7 +5830,7 @@ msgstr "请填写所有必填的队伍资料字段"
 
 #: CTFd/utils/decorators/visibility.py:42
 msgid "Scores are currently hidden"
-msgstr "分数当前已隐藏"
+msgstr "得分当前已隐藏"
 
 #: CTFd/utils/email/__init__.py:36
 msgid "No mail settings configured"
@@ -6072,13 +6072,13 @@ msgid "Challenge could not be saved. Challenge position is invalid"
 msgstr "题目无法保存。题目位置无效"
 
 msgid "Page could not be saved. Your title is too long."
-msgstr "页面无法保存。页面标题过长"
+msgstr "页面无法保存。页面标题过长。"
 
 msgid "Page could not be saved. Your route is too long."
-msgstr "页面无法保存。页面路由过长"
+msgstr "页面无法保存。页面路由过长。"
 
 msgid "Page could not be saved. Your content is too long."
-msgstr "页面无法保存。页面内容过长"
+msgstr "页面无法保存。页面内容过长。"
 
 msgid "Invalid link target"
 msgstr "无效的链接目标"
