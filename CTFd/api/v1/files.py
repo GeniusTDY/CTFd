@@ -124,7 +124,6 @@ class FilesList(Resource):
 
         objs = []
         for f in files:
-            # uploads.upload_file(file=f, chalid=req.get('challenge'))
             try:
                 obj = uploads.upload_file(file=f, **form_args)
             except ValueError as e:

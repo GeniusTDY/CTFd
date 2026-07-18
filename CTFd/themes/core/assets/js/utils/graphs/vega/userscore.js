@@ -12,7 +12,6 @@ export function getSpec(description, values) {
       type: "area",
       line: true,
       point: true,
-      // interpolate: "step-after",
       tooltip: { content: "data", nearest: true },
     },
     encoding: {
@@ -34,8 +33,6 @@ export function getValues(solves, awards) {
   });
 
   for (let i = 0; i < total.length; i++) {
-    // const date = dayjs(total[i].date);
-    // times.push(date.toDate());
     const date = total[i].date;
     times.push(date);
     try {
@@ -49,7 +46,6 @@ export function getValues(solves, awards) {
 
   let values = [];
   times.forEach((time, index) => {
-    // option.xAxis[0].data.push(time);
     values.push({
       time: time,
       score: scores[index],

@@ -5,10 +5,6 @@ export function colorHash(str) {
     hash = str.charCodeAt(i) + ((hash << 5) - hash);
     hash = hash & hash;
   }
-  // Range calculation
-  // diff = max - min;
-  // x = ((hash % diff) + diff) % diff;
-  // return x + min;
   // Calculate HSL values
   // Range from 0 to 360
   let h = ((hash % 360) + 360) % 360;
