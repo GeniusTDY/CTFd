@@ -1,0 +1,211 @@
+{% macro t(text) -%}
+{%- set locale = get_locale() or '' -%}
+{%- if locale.startswith('zh') -%}
+  {%- if text == 'Test your skills and solve challenging problems' -%}测试你的技能，解决具有挑战性的问题
+  {%- elif text == 'All Categories' -%}所有分类
+  {%- elif text == 'Loading challenges...' -%}正在加载题目...
+  {%- elif text == 'Easy' -%}简单
+  {%- elif text == 'Medium' -%}中等
+  {%- elif text == 'Hard' -%}困难
+  {%- elif text == 'Start' -%}开始
+  {%- elif text == 'Solved' -%}已解出
+  {%- elif text == 'Competitor' -%}参赛者
+  {%- elif text == 'Points' -%}分数
+  {%- elif text == 'Rank' -%}排名
+  {%- elif text == 'Progress' -%}进度
+  {%- elif text == 'Notifications' -%}通知
+  {%- elif text == 'Activity' -%}动态
+  {%- elif text == 'No notifications yet' -%}暂无通知
+  {%- elif text == 'No recent activity' -%}暂无近期动态
+  {%- elif text == 'View All' -%}查看全部
+  {%- elif text == 'View Scoreboard' -%}查看排行榜
+  {%- elif text == 'Welcome to WMCTF!' -%}欢迎来到 WMCTF！
+  {%- elif text == 'Good luck in the competition!' -%}祝你比赛顺利！
+  {%- elif text == 'Just now' -%}刚刚
+  {%- elif text == 'Welcome Back' -%}欢迎回来
+  {%- elif text == 'Sign in to continue your CTF journey' -%}登录以继续你的 CTF 之旅
+  {%- elif text == 'Join WMCTF' -%}加入 WMCTF
+  {%- elif text == 'Create your account and start competing' -%}创建你的账户，开始竞赛
+  {%- elif text == 'Design by' -%}设计者
+  {%- elif text == 'Powered by CTFd' -%}由 CTFd 提供技术支持
+  {%- elif text == 'challenges' -%}题目
+  {%- elif text == 'solved' -%}已解出
+  {%- elif text == 'Toggle theme' -%}切换主题
+  {%- elif text == 'Change language' -%}切换语言
+  {%- elif text == 'See how you rank against other competitors and track your progress in real-time.' -%}查看你在其他参赛者中的排名，实时追踪你的进度
+  {%- elif text == '1st Place' -%}第一名
+  {%- elif text == '2nd Place' -%}第二名
+  {%- elif text == '3rd Place' -%}第三名
+  {%- elif text == 'Score Progression' -%}得分趋势
+  {%- elif text == 'Loading score graph...' -%}正在加载得分图表...
+  {%- elif text == 'Filter by Category' -%}按分类筛选
+  {%- elif text == 'All' -%}全部
+  {%- elif text == 'Challenge Completion Matrix' -%}题目完成矩阵
+  {%- elif text == 'Score' -%}得分
+  {%- elif text == 'No scores yet' -%}暂无得分
+  {%- elif text == 'Be the first to solve a challenge and claim the top spot!' -%}成为第一个解决题目的人，抢占榜首！
+  {%- elif text == 'Start Challenges' -%}开始挑战
+  {%- elif text == 'First Blood' -%}一血
+  {%- elif text == 'Second Blood' -%}二血
+  {%- elif text == 'Third Blood' -%}三血
+  {%- elif text == 'Enter your username or email' -%}输入你的用户名或邮箱
+  {%- elif text == 'Enter your password' -%}输入你的密码
+  {%- elif text == 'Choose your username' -%}选择你的用户名
+  {%- elif text == 'Enter your email address' -%}输入你的邮箱地址
+  {%- elif text == 'Create a secure password' -%}创建一个安全的密码
+  {%- elif text == 'Search for matching teams' -%}搜索匹配的队伍
+  {%- elif text == '3D Scoreboard' -%}3D 排行榜
+  {%- elif text == 'Admin Only' -%}仅管理员
+  {%- elif text == 'Experience the competition in immersive 3D! Watch teams solve challenges in real-time.' -%}在沉浸式 3D 中体验比赛！实时观看队伍解答题目
+  {%- elif text == 'This page is only accessible to administrators and provides real-time submission monitoring.' -%}此页面仅管理员可访问，提供实时提交监控
+  {%- elif text == '3D Competition Arena' -%}3D 竞赛竞技场
+  {%- elif text == 'Reset View' -%}重置视角
+  {%- elif text == 'Test Effect' -%}测试效果
+  {%- elif text == 'Fullscreen' -%}全屏
+  {%- elif text == 'Loading 3D Arena...' -%}正在加载 3D 竞技场...
+  {%- elif text == 'Real-time Leaderboard' -%}实时排行榜
+  {%- elif text == 'Loading rankings...' -%}正在加载排名...
+  {%- elif text == 'Login with Major League Cyber' -%}使用 Major League Cyber 登录
+  {%- elif text == 'Register with Major League Cyber' -%}使用 Major League Cyber 注册
+  {%- elif text == 'Live Activity Feed' -%}实时动态
+  {%- elif text == 'Loading activity...' -%}正在加载动态...
+  {%- elif text == 'Difficulty' -%}难度
+  {%- elif text == 'Total Teams' -%}队伍总数
+  {%- elif text == 'Total Solves' -%}解题总数
+  {%- elif text == 'Total Challenges' -%}题目总数
+  {%- elif text == 'Stop Auto' -%}停止自动
+  {%- elif text == 'Auto Rotate' -%}自动旋转
+  {%- elif text == 'Team Name' -%}队伍名称
+  {%- elif text == 'Unknown Challenge' -%}未知题目
+  {%- elif text == 'Unknown Category' -%}未知分类
+  {%- elif text == 'No description available' -%}暂无描述
+  {%- elif text == 'Score over Time' -%}得分趋势
+  {%- elif text == 'Category Breakdown' -%}分类细分
+  {%- elif text == 'Solve Percentages' -%}解题百分比
+  {%- elif text == 'Success!' -%}成功！
+  {%- elif text == 'Got it!' -%}知道了！
+  {%- elif text == 'No' -%}否
+  {%- elif text == 'Yes' -%}是
+  {%- elif text == 'Error' -%}错误
+  {%- elif text == 'Loading...' -%}加载中……
+  {%- elif text == 'Auto-refresh' -%}自动刷新
+  {%- elif text == 'Auto-refresh every 15 seconds' -%}每15秒自动刷新
+  {%- elif text == 'Auto-refresh every 30 seconds' -%}每30秒自动刷新
+  {%- elif text == 'Auto-refresh every 60 seconds' -%}每60秒自动刷新
+  {%- elif text == 'New correct submission detected' -%}检测到新的正确提交
+  {%- elif text == 'Notifying 3D system with submission' -%}正在通知 3D 系统提交
+  {%- elif text == 'Error loading top rankings' -%}加载排行榜失败
+  {%- elif text == 'Error loading statistics' -%}加载统计数据失败
+  {%- elif text == 'Error loading recent activity' -%}加载近期动态失败
+  {%- elif text == 'Error loading leaderboard' -%}加载排行榜失败
+  {%- elif text == 'Error loading data' -%}加载数据失败
+  {%- elif text == 'Error submitting rating' -%}提交评分时出错
+  {%- elif text == 'Error processing' -%}处理失败
+  {%- elif text == 'Edit Team' -%}编辑队伍
+  {%- elif text == 'Choose Captain' -%}选择队长
+  {%- elif text == 'Invite Users' -%}邀请用户
+  {%- elif text == 'Disband Team' -%}解散队伍
+  {%- elif text == 'Expert' -%}专家
+  {%- elif text == 'pts' -%}分
+  {%- elif text == 'Solves' -%}解题
+  {%- elif text == 'Fails' -%}失败
+  {%- elif text == 'place' -%}名次
+  {%- elif text == 'points' -%}积分
+  {%- elif text == 'Official' -%}官方
+  {%- elif text == 'Sign In' -%}登录
+  {%- elif text == 'Create Account' -%}创建账户
+  {%- elif text == 'or' -%}或
+  {%- elif text == 'Remember me' -%}记住我
+  {%- elif text == 'Forgot password?' -%}忘记密码？
+  {%- elif text == "Don't have an account?" -%}还没有账户？
+  {%- elif text == 'Create one here' -%}在这里创建一个
+  {%- elif text == 'Your username on the site' -%}您在网站上的用户名
+  {%- elif text == 'Never shown to the public' -%}不对外公开
+  {%- elif text == 'Password used to log into your account' -%}用于登录您的账户的密码
+  {%- elif text == 'Already have an account?' -%}已有账户？
+  {%- elif text == 'Sign in here' -%}在这里登录
+  {%- elif text == 'Flag' -%}Flag
+  {%- elif text == 'By registering, you agree to the' -%}注册即表示您同意
+  {%- elif text == 'privacy policy' -%}隐私政策
+  {%- elif text == 'and' -%}和
+  {%- elif text == 'terms of service' -%}服务条款
+  {%- elif text == 'Email Unconfirmed' -%}邮箱未确认
+  {%- elif text == 'To confirm your email address please' -%}要确认你的邮箱地址，请
+  {%- elif text == 'click here' -%}点击这里
+  {%- elif text == 'Copied!' -%}已复制！
+  {%- elif text == 'liked' -%}好评
+  {%- elif text == 'Cost:' -%}消耗：
+  {%- elif text == 'Unlock Hint for' -%}解锁提示消耗
+  {%- elif text == 'Challenge Name' -%}题目名称
+  {%- elif text == 'Challenge description here...' -%}题目描述加载中...
+  {%- elif text == 'Web' -%}Web
+  {%- elif text == 'Solving...' -%}正在解题中...
+  {%- elif text == 'Solving:' -%}正在解决：
+  {%- elif text == 'solves' -%}解题
+  {%- elif text == 'Teams' -%}队伍
+  {%- elif text == 'Users' -%}用户
+  {%- elif text == 'just now' -%}刚刚
+  {%- elif text == 'm ago' -%}分钟前
+  {%- elif text == 'h ago' -%}小时前
+  {%- elif text == 'd ago' -%}天前
+  {%- elif text == 'Already Configured' -%}已配置
+  {%- elif text == 'Reset' -%}重置
+  {%- elif text == 'UTC Preview' -%}UTC 预览
+  {%- elif text == 'Setup' -%}设置
+  {%- elif text == 'MajorLeagueCyber Integration' -%}MajorLeagueCyber 集成
+  {%- elif text == 'MajorLeagueCyber (MLC) is a cyber security event tracker written and maintained by the developers of CTFd.' -%}MajorLeagueCyber (MLC) 是由 CTFd 开发者编写和维护的网络安全赛事跟踪平台。
+  {%- elif text == 'Top 10 Teams' -%}前 10 名队伍
+  {%- elif text == 'Top 10 Users' -%}前 10 名用户
+  {%- elif text == 'Update' -%}更新
+  {%- elif text == 'Challenge Window Size' -%}题目窗口大小
+  {%- elif text == 'Small' -%}小
+  {%- elif text == 'Normal' -%}正常
+  {%- elif text == 'Large' -%}大
+  {%- elif text == 'Extra Large' -%}超大
+  {%- elif text == 'Use Built-In Syntax Highlighter' -%}使用内置语法高亮
+  {%- elif text == 'Challenge Category Order Custom Function' -%}题目分类排序自定义函数
+  {%- elif text == 'Challenge Order Custom Function' -%}题目排序自定义函数
+  {%- elif text == 'Define a' -%}定义一个
+  {%- elif text == 'custom compareFn function for Array.sort()' -%}Array.sort() 的自定义 compareFn 函数
+  {%- elif text == 'used to sort the challenge categories' -%}用于对题目分类进行排序
+  {%- elif text == 'used to sort the challenges within categories' -%}用于对分类内的题目进行排序
+  {%- elif text == 'The built-in syntax highlighter is lightweight and fast but may not always correctly highlight all languages. You can disable the built-in highlighter in order to use your own.' -%}内置语法高亮器轻量且快速，但可能无法始终正确高亮所有语言。您可以禁用内置高亮器以使用自己的高亮器。
+  {%- elif text == 'Error:' -%}错误：
+  {%- elif text == 'Searching for teams with' -%}搜索队伍，字段
+  {%- elif text == 'matching' -%}匹配
+  {%- elif text == 'Page' -%}第
+  {%- elif text == 'of' -%}页，共
+  {%- elif text == 'results' -%}条结果
+  {%- elif text == 'After creating your team, share the team name and password with your teammates so they can join your team.' -%}创建队伍后，请将队伍名称和密码分享给您的队友，以便他们加入您的队伍。
+  {%- elif text == "Or click here if you'd prefer to create your own team." -%}或者，如果您想要创建自己的队伍，请点击这里。
+  {%- elif text == 'Or' -%}或者
+  {%- elif text == "if you'd prefer to create your own team." -%}如果您想要创建自己的队伍。
+  {%- elif text == 'This image file is larger than' -%}此图片文件大于
+  {%- elif text == 'which may result in increased load times. Are you sure you\'d like to use this file?' -%}可能会导致加载时间增加。您确定要使用此文件吗？
+  {%- elif text == 'Solved a challenge' -%}解决了一道题目
+  {%- elif text == 'User' -%}用户
+  {%- elif text == 'Challenge' -%}题目
+  {%- elif text == 's ago' -%}秒前
+  {%- elif text == 'Are you sure you\'d like to unlock this hint?' -%}确定要解锁此提示吗？
+  {%- elif text == 'Are you sure you\'d like to unlock this solution?' -%}确定要解锁此题解吗？
+  {%- elif text == 'Close' -%}关闭
+  {%- elif text == 'Toggle navigation' -%}切换导航
+  {%- elif text == 'Team' -%}队伍
+  {%- else -%}{{ text }}{%- endif -%}
+{%- else -%}{{ text }}{%- endif -%}
+{%- endmacro %}
+
+{# placeholder 翻译辅助 #}
+{% macro ph(text) -%}
+{%- set locale = get_locale() or '' -%}
+{%- if locale.startswith('zh') -%}
+  {%- if text == 'Enter your username or email' -%}输入你的用户名或邮箱
+  {%- elif text == 'Enter your password' -%}输入你的密码
+  {%- elif text == 'Choose your username' -%}选择你的用户名
+  {%- elif text == 'Enter your email address' -%}输入你的邮箱地址
+  {%- elif text == 'Create a secure password' -%}创建一个安全的密码
+  {%- elif text == 'Search for matching teams' -%}搜索匹配的队伍
+  {%- elif text == 'Search for matching users' -%}搜索匹配的用户
+  {%- else -%}{{ text }}{%- endif -%}
+{%- else -%}{{ text }}{%- endif -%}
+{%- endmacro %}

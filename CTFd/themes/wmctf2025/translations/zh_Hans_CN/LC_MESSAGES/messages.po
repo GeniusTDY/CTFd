@@ -1,0 +1,191 @@
+#
+msgid ""
+msgstr ""
+"Project-Id-Version:  WMCTF2025 Theme\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2026-07-18 08:00+0000\n"
+"PO-Revision-Date: 2026-07-18 08:00+0000\n"
+"Last-Translator: \n"
+"Language: zh_CN\n"
+"Language-Team: Chinese Simplified\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: manual\n"
+
+#: templates/challenges.html
+msgid "Test your skills and solve challenging problems"
+msgstr "测试你的技能，解决具有挑战性的问题"
+
+#: templates/challenges.html
+msgid "All Categories"
+msgstr "所有分类"
+
+#: templates/challenges.html
+msgid "Loading challenges..."
+msgstr "正在加载题目..."
+
+#: templates/challenges.html
+msgid "Easy"
+msgstr "简单"
+
+#: templates/challenges.html
+msgid "Medium"
+msgstr "中等"
+
+#: templates/challenges.html
+msgid "Hard"
+msgstr "困难"
+
+#: templates/challenges.html
+msgid "Start"
+msgstr "开始"
+
+#: templates/challenges.html
+msgid "Solved"
+msgstr "已解决"
+
+#: templates/challenges.html
+msgid "Competitor"
+msgstr "参赛者"
+
+#: templates/challenges.html
+msgid "Points"
+msgstr "分数"
+
+#: templates/challenges.html
+msgid "Rank"
+msgstr "排名"
+
+#: templates/challenges.html
+msgid "Progress"
+msgstr "进度"
+
+#: templates/challenges.html
+msgid "Notifications"
+msgstr "通知"
+
+#: templates/challenges.html
+msgid "Activity"
+msgstr "动态"
+
+#: templates/challenges.html
+msgid "No notifications yet"
+msgstr "暂无通知"
+
+#: templates/challenges.html
+msgid "No recent activity"
+msgstr "暂无近期动态"
+
+#: templates/challenges.html
+msgid "View All"
+msgstr "查看全部"
+
+#: templates/challenges.html
+msgid "View Scoreboard"
+msgstr "查看排行榜"
+
+#: templates/challenges.html
+msgid "Welcome to WMCTF!"
+msgstr "欢迎来到 WMCTF！"
+
+#: templates/challenges.html
+msgid "Good luck in the competition!"
+msgstr "祝你比赛顺利！"
+
+#: templates/challenges.html
+msgid "Just now"
+msgstr "刚刚"
+
+#: templates/scoreboard.html
+msgid "See how you rank against other competitors and track your progress in real-time."
+msgstr "查看你在其他参赛者中的排名，实时追踪你的进度。"
+
+#: templates/scoreboard.html
+msgid "1st Place"
+msgstr "第一名"
+
+#: templates/scoreboard.html
+msgid "2nd Place"
+msgstr "第二名"
+
+#: templates/scoreboard.html
+msgid "3rd Place"
+msgstr "第三名"
+
+#: templates/scoreboard.html
+msgid "Score Progression"
+msgstr "得分趋势"
+
+#: templates/scoreboard.html
+msgid "Loading score graph..."
+msgstr "正在加载得分图表..."
+
+#: templates/scoreboard.html
+msgid "Filter by Category"
+msgstr "按分类筛选"
+
+#: templates/scoreboard.html
+msgid "All"
+msgstr "全部"
+
+#: templates/scoreboard.html
+msgid "Challenge Completion Matrix"
+msgstr "题目完成矩阵"
+
+#: templates/scoreboard.html
+msgid "Score"
+msgstr "得分"
+
+#: templates/scoreboard.html
+msgid "No scores yet"
+msgstr "暂无得分"
+
+#: templates/scoreboard.html
+msgid "Be the first to solve a challenge and claim the top spot!"
+msgstr "成为第一个解决题目的人，抢占榜首！"
+
+#: templates/scoreboard.html
+msgid "Start Challenges"
+msgstr "开始挑战"
+
+#: templates/login.html
+msgid "Welcome Back"
+msgstr "欢迎回来"
+
+#: templates/login.html
+msgid "Sign in to continue your CTF journey"
+msgstr "登录以继续你的 CTF 之旅"
+
+#: templates/register.html
+msgid "Join WMCTF"
+msgstr "加入 WMCTF"
+
+#: templates/register.html
+msgid "Create your account and start competing"
+msgstr "创建你的账户，开始竞赛"
+
+#: templates/base.html
+msgid "Design by"
+msgstr "设计者"
+
+#: templates/base.html
+msgid "Powered by CTFd"
+msgstr "由 CTFd 提供技术支持"
+
+#: templates/challenges.html
+msgid "challenges"
+msgstr "个题目"
+
+#: templates/challenges.html
+msgid "solved"
+msgstr "已解决"
+
+#: templates/navbar.html
+msgid "Toggle theme"
+msgstr "切换主题"
+
+#: templates/navbar.html
+msgid "Change language"
+msgstr "切换语言"
