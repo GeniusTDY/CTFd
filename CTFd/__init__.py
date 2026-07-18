@@ -257,6 +257,19 @@ def create_app(config="CTFd.config.Config"):
         babel.locale_selector_func = get_locale
         babel.init_app(app)
 
+        # Add theme-specific translation directories
+        theme_translations = os.path.join(
+            os.path.dirname(os.path.abspath(__file__)),
+            "themes", "wmctf2025", "translations"
+        )
+        if os.path.isdir(theme_translations):
+            existing = app.config.get(
+                "BABEL_TRANSLATION_DIRECTORIES", "translations"
+            )
+            app.config["BABEL_TRANSLATION_DIRECTORIES"] = (
+                existing + ";" + theme_translations
+            )
+
         # Alembic sqlite support is lacking so we should just create_all anyway
         if url.drivername.startswith("sqlite"):
             # Enable foreign keys for SQLite. This must be before the
