@@ -37,7 +37,7 @@ msgstr "确认邮件已发送至 %(email)s！"
 msgid ""
 "This CTF is not configured to send email.<br> Please contact an organizer"
 " to have your password reset."
-msgstr "此 CTF 未配置邮件发送功能。<br> 请联系管理员重置您的密码。"
+msgstr "此 CTF 未配置邮件发送功能。<br> 请联系赛事组织者重置您的密码。"
 
 #: CTFd/auth.py:150
 msgid "Your reset link is invalid, please generate a new one"
@@ -575,7 +575,7 @@ msgstr ""
 #: CTFd/forms/auth.py:21 CTFd/themes/core-deprecated/templates/register.html:46
 #: CTFd/themes/core/templates/register.html:60
 msgid "Password used to log into your account"
-msgstr "用于登录您账户的密码"
+msgstr "用于登录您的账户的密码"
 
 #: CTFd/forms/auth.py:24
 #, python-format
@@ -898,7 +898,7 @@ msgstr "邮箱域名白名单"
 msgid ""
 "Comma-seperated list of allowable email domains which users can register "
 "under (e.g. examplectf.com, example.com, *.example.com)"
-msgstr "允许用户注册的邮箱域名逗号分隔列表（例如 examplectf.com、example.com、*.example.com）"
+msgstr "允许用户注册的邮箱域名列表，以逗号分隔（例如 examplectf.com、example.com、*.example.com）"
 
 #: CTFd/forms/config.py:58
 msgid "Email Domain Blocklist"
@@ -908,7 +908,7 @@ msgstr "邮箱域名黑名单"
 msgid ""
 "Comma-seperated list of disallowed email domains which users cannot "
 "register under (e.g. examplectf.com, example.com, *.example.com)"
-msgstr "不允许用户注册的邮箱域名逗号分隔列表（例如 examplectf.com、example.com、*.example.com）"
+msgstr "不允许用户注册的邮箱域名列表，以逗号分隔（例如 examplectf.com、example.com、*.example.com）"
 
 #: CTFd/forms/config.py:62
 msgid "Team Creation"
@@ -916,7 +916,7 @@ msgstr "创建队伍"
 
 #: CTFd/forms/config.py:63
 msgid "Control whether users can create their own teams (Teams mode only)"
-msgstr "控制用户是否可以创建自己的队伍（仅限团队模式）。"
+msgstr "控制用户是否可以创建自己的队伍（仅限队伍模式）"
 
 #: CTFd/forms/config.py:64 CTFd/forms/config.py:90 CTFd/forms/config.py:105
 #: CTFd/forms/config.py:140 CTFd/forms/config.py:175 CTFd/forms/config.py:192
@@ -938,7 +938,7 @@ msgstr "队伍人数上限"
 
 #: CTFd/forms/config.py:70
 msgid "Maximum number of users per team (Teams mode only)"
-msgstr "每个队伍的最大用户数（仅限团队模式）"
+msgstr "每个队伍的最大用户数（仅限队伍模式）"
 
 #: CTFd/forms/config.py:73
 msgid "Maximum Number of Teams"
@@ -948,7 +948,7 @@ msgstr "最大队伍数"
 msgid ""
 "Maximum number of teams allowed to register with this CTF (Teams mode "
 "only)"
-msgstr "允许注册此 CTF 的最大队伍数（仅限团队模式）"
+msgstr "允许注册此 CTF 的最大队伍数（仅限队伍模式）"
 
 #: CTFd/forms/config.py:78
 msgid "Maximum Number of Users"
@@ -1086,11 +1086,11 @@ msgstr "社交分享"
 
 #: CTFd/forms/config.py:139
 msgid "Enable or Disable social sharing links for challenge solves"
-msgstr "启用或禁用题目解答的社交分享链接"
+msgstr "启用或禁用题目解题的社交分享链接"
 
 #: CTFd/forms/config.py:144
 msgid "Social Share Solve Template"
-msgstr "社交分享解答模板"
+msgstr "社交分享解题模板"
 
 #: CTFd/forms/config.py:145
 msgid "HTML for Share Template"
@@ -1142,7 +1142,7 @@ msgstr "最大尝试次数行为"
 
 #: CTFd/forms/config.py:180
 msgid "Set Max Attempts behavior to be a lockout or a timeout"
-msgstr "设置最大尝试次数行为为锁定或超时"
+msgstr "将最大尝试次数行为设置为锁定或超时"
 
 #: CTFd/forms/config.py:181
 msgid "lockout"
@@ -1164,13 +1164,13 @@ msgstr "最大尝试次数超时持续时间（秒）（如果设置为超时）
 
 #: CTFd/forms/config.py:190
 msgid "Hints Free Public Access"
-msgstr "免费提示的公开访问"
+msgstr "免费提示的公开访问权限"
 
 #: CTFd/forms/config.py:191
 msgid ""
 "Control whether users must be logged in to see free hints (hints without "
 "cost or requirements)"
-msgstr "控制用户是否必须登录才能查看免费提示（无成本或要求的提示）"
+msgstr "控制用户是否必须登录才能查看免费提示（无需消耗积分或其他条件的提示）"
 
 #: CTFd/forms/config.py:196
 #: CTFd/themes/admin/templates/challenges/challenge.html:107
@@ -1349,7 +1349,7 @@ msgstr "账户验证邮件的主题行"
 msgid ""
 "Email body sent to users to confirm their account at the address they "
 "provided during registration"
-msgstr "发送给用户的邮件，用于确认其注册时提供的邮箱地址。"
+msgstr "发送给用户的邮件，用于确认其注册时提供的邮箱地址"
 
 #: CTFd/forms/config.py:318
 msgid "Subject line for new account details email"
@@ -1561,13 +1561,13 @@ msgstr "用户模式"
 
 #: CTFd/forms/setup.py:37 CTFd/themes/admin/templates/configs/usermode.html:19
 msgid "Team Mode"
-msgstr "团队模式"
+msgstr "队伍模式"
 
 #: CTFd/forms/setup.py:40
 msgid ""
 "Controls whether users join together in teams to play (Team Mode) or play"
 " as themselves (User Mode)"
-msgstr "控制用户是组队（团队模式）还是个人参赛（用户模式）"
+msgstr "控制用户是组队（队伍模式）还是个人参赛（用户模式）"
 
 #: CTFd/forms/setup.py:46
 msgid "Admin Username"
@@ -1644,7 +1644,7 @@ msgstr "控制用户是否必须确认邮箱地址后才能参与"
 
 #: CTFd/forms/setup.py:99
 msgid "Amount of users per team (Teams mode only) Optional."
-msgstr "每队人数上限（仅限团队模式）。可选项。"
+msgstr "每队人数上限（仅限队伍模式）。可选项。"
 
 #: CTFd/forms/setup.py:144 CTFd/themes/admin/templates/configs/time.html:6
 msgid "Start Time"
@@ -1664,7 +1664,7 @@ msgstr "您的 CTF 计划结束的时间。可选项。"
 
 #: CTFd/forms/setup.py:154
 msgid "Control whether users can share links commemorating their challenge solves"
-msgstr "控制用户是否可以分享纪念解题的链接"
+msgstr "控制用户是否可以分享庆祝解题的链接"
 
 #: CTFd/forms/setup.py:158 CTFd/themes/admin/templates/challenges/new.html:68
 msgid "Finish"
@@ -1672,7 +1672,7 @@ msgstr "完成"
 
 #: CTFd/forms/submissions.py:13 CTFd/themes/admin/templates/submissions.html:94
 msgid "Provided"
-msgstr "已提供"
+msgstr "提交内容"
 
 #: CTFd/forms/submissions.py:15
 msgid "Account ID"
@@ -1745,7 +1745,7 @@ msgstr "向其他参赛者公开展示您的队伍网站"
 
 #: CTFd/forms/teams.py:152
 msgid "Your team's country publicly shown to other competitors"
-msgstr "向其他参赛者公开展示您队伍的国家/地区"
+msgstr "向其他参赛者公开展示您的队伍所属国家/地区"
 
 #: CTFd/forms/teams.py:192
 #: CTFd/themes/admin/templates/modals/teams/captain.html:4
@@ -1846,7 +1846,7 @@ msgstr "'%(attr)s' 的输入无效"
 #: CTFd/plugins/challenges/__init__.py:282
 #, python-format
 msgid "Duplicate solve for user %(user_id)s on challenge %(challenge_id)s"
-msgstr "用户 %(user_id)s 对题目 %(challenge_id)s 的重复解答"
+msgstr "用户 %(user_id)s 对题目 %(challenge_id)s 的重复解题"
 
 #: CTFd/plugins/challenges/logic.py:17 CTFd/plugins/challenges/logic.py:56
 #: CTFd/plugins/challenges/logic.py:108 CTFd/plugins/challenges/logic.py:122
@@ -2104,7 +2104,7 @@ msgstr "只有队伍成员可以被提升为队长"
 
 #: CTFd/schemas/teams.py:204
 msgid "Only the captain can change team captain"
-msgstr "只有队长可以更改队长"
+msgstr "只有队长可以转让队长身份"
 
 #: CTFd/schemas/teams.py:218 CTFd/schemas/teams.py:234
 #: CTFd/schemas/users.py:212 CTFd/schemas/users.py:228
@@ -2141,7 +2141,7 @@ msgstr "媒体库"
 
 #: CTFd/themes/admin/assets/js/challenges/challenge.js:46
 msgid " Solves"
-msgstr " 次解答"
+msgstr " 次解题"
 
 #: CTFd/themes/admin/assets/js/challenges/challenge.js:163
 #: CTFd/themes/admin/assets/js/pages/challenge.js:161
@@ -2293,7 +2293,7 @@ msgstr "分类细分"
 #: CTFd/themes/core/assets/js/utils/graphs/echarts/solve-percentage.js:7
 #: CTFd/themes/core/assets/js/utils/graphs/echarts/solve-percentage.js:26
 msgid "Solve Percentages"
-msgstr "解答百分比"
+msgstr "解题百分比"
 
 #: CTFd/themes/admin/assets/js/compat/graphs.js:238
 #: CTFd/themes/admin/assets/js/compat/graphs.js:286
@@ -2347,7 +2347,7 @@ msgstr "失败"
 #: CTFd/themes/core/templates/users/public.html:119
 #: CTFd/themes/core/templates/users/public.html:171
 msgid "Solves"
-msgstr "解答"
+msgstr "解题"
 
 #: CTFd/themes/admin/assets/js/compat/helpers.js:28
 #: CTFd/themes/admin/assets/js/pages/configs.js:267
@@ -2418,7 +2418,7 @@ msgstr "分组类型"
 msgid ""
 "If you are using Team Mode and would like the bracket to apply to entire "
 "teams instead of individuals, select Teams."
-msgstr "如果您使用团队模式，并希望分组应用于整个队伍而非个人，请选择队伍。"
+msgstr "如果您使用队伍模式，并希望分组应用于整个队伍而非个人，请选择队伍。"
 
 #: CTFd/themes/admin/assets/js/components/configs/brackets/Bracket.vue:94
 #: CTFd/themes/admin/assets/js/components/configs/fields/Field.vue:125
@@ -2619,7 +2619,7 @@ msgstr "支持 Markdown 和 HTML"
 #: CTFd/themes/admin/assets/js/components/hints/HintEditForm.vue:135
 #: CTFd/themes/admin/assets/js/components/hints/HintsList.vue:95
 msgid "Cost"
-msgstr "花费"
+msgstr "消耗积分"
 
 #: CTFd/themes/admin/assets/js/components/hints/HintCreationForm.vue:128
 #: CTFd/themes/admin/assets/js/components/hints/HintEditForm.vue:136
@@ -2636,7 +2636,7 @@ msgstr "前置要求"
 #: CTFd/themes/admin/assets/js/components/hints/HintCreationForm.vue:130
 #: CTFd/themes/admin/assets/js/components/hints/HintEditForm.vue:138
 msgid "Hints that must be unlocked before unlocking this hint"
-msgstr "解锁此提示前必须先解锁的提示"
+msgstr "解锁此提示前必须先解锁的其他提示"
 
 #: CTFd/themes/admin/assets/js/components/hints/HintsList.vue:97
 msgid "Create Hint"
@@ -2663,7 +2663,7 @@ msgstr "下一题"
 
 #: CTFd/themes/admin/assets/js/components/next/NextChallenge.vue:47
 msgid "Challenge to recommend after solving this challenge"
-msgstr "解决此题目后推荐的题目"
+msgstr "解出此题目后推荐的题目"
 
 #: CTFd/themes/admin/assets/js/components/notifications/Notification.vue:50
 #: CTFd/themes/admin/assets/js/pages/notifications.js:54
@@ -2700,7 +2700,7 @@ msgstr "上一页"
 #: CTFd/themes/core/templates/setup.html:296
 #: CTFd/themes/core/templates/setup.html:345
 msgid "Next"
-msgstr "下一页"
+msgstr "下一步"
 
 #: CTFd/themes/admin/assets/js/components/ratings/RatingsViewer.vue:198
 msgid "Failed to load ratings"
@@ -2947,15 +2947,15 @@ msgid ""
 " <br><br>Are you sure you want to remove them from their current teams "
 "and add them to this one? <br><br>All of their challenge solves, "
 "attempts, awards, and unlocked hints will also be deleted!"
-msgstr " <br><br>您确定要将他们从当前队伍移除并添加到此队伍吗？<br><br>其所有题目解答、尝试、奖励和解锁的提示也将被删除！"
+msgstr " <br><br>您确定要将他们从当前队伍移除并添加到此队伍吗？<br><br>其所有题目解题、尝试、奖励和解锁的提示也将被删除！"
 
 #: CTFd/themes/admin/assets/js/components/topics/TopicsList.vue:62
 msgid "Topic"
-msgstr "话题"
+msgstr "主题"
 
 #: CTFd/themes/admin/assets/js/components/topics/TopicsList.vue:63
 msgid "Type topic and press Enter"
-msgstr "输入话题并按回车键"
+msgstr "输入主题并按回车键"
 
 #: CTFd/themes/admin/assets/js/pages/audience.js:15
 #: CTFd/themes/admin/assets/js/pages/challenge.js:59
@@ -3053,7 +3053,7 @@ msgstr "缺少 Flag"
 msgid ""
 "This challenge does not have any flags meaning it may be unsolveable. Are"
 " you sure you'd like to update this challenge?"
-msgstr "此题目没有任何 Flag，意味着它可能无法解答。您确定要更新此题目吗？"
+msgstr "此题目没有任何 Flag，意味着它可能无法解题。您确定要更新此题目吗？"
 
 #: CTFd/themes/admin/assets/js/pages/challenges.js:11
 #: CTFd/themes/admin/assets/js/pages/team.js:243
@@ -3255,7 +3255,7 @@ msgstr "积分细分"
 #: CTFd/themes/admin/assets/js/pages/statistics.js:402
 #: CTFd/themes/admin/assets/js/pages/statistics.js:443
 msgid "Solve Percentages per Challenge"
-msgstr "各题目解答百分比"
+msgstr "各题目解题百分比"
 
 #: CTFd/themes/admin/assets/js/pages/statistics.js:408
 #: CTFd/themes/admin/assets/js/pages/statistics.js:476
@@ -3343,7 +3343,7 @@ msgstr " 为错误吗？"
 #: CTFd/themes/admin/assets/js/pages/team.js:160
 #: CTFd/themes/admin/assets/js/pages/user.js:271
 msgid "solve"
-msgstr "解答"
+msgstr "解题"
 
 #: CTFd/themes/admin/assets/js/pages/team.js:165
 #: CTFd/themes/admin/assets/js/pages/user.js:276
@@ -3353,7 +3353,7 @@ msgstr "失败"
 #: CTFd/themes/admin/assets/js/pages/team.js:179
 #: CTFd/themes/admin/assets/js/pages/user.js:290
 msgid "solves"
-msgstr "解答"
+msgstr "解题"
 
 #: CTFd/themes/admin/assets/js/pages/team.js:180
 #: CTFd/themes/admin/assets/js/pages/user.js:291
@@ -3418,7 +3418,7 @@ msgid ""
 "Are you sure you want to remove {0} from {1}? <br><br><strong>All of "
 "their challenge solves, attempts, awards, and unlocked hints will also be"
 " deleted!</strong>"
-msgstr "您确定要从 {1} 中移除 {0} 吗？<br><br><strong>其所有题目解答、尝试、奖励和解锁的提示也将被删除！</strong>"
+msgstr "您确定要从 {1} 中移除 {0} 吗？<br><br><strong>其所有题目解题、尝试、奖励和解锁的提示也将被删除！</strong>"
 
 #: CTFd/themes/admin/assets/js/pages/team.js:563
 #: CTFd/themes/admin/templates/teams/team.html:239
@@ -3560,7 +3560,7 @@ msgstr "版本"
 
 #: CTFd/themes/admin/templates/config.html:10
 msgid "Configuration"
-msgstr "系统配置"
+msgstr "配置"
 
 #: CTFd/themes/admin/templates/config.html:20
 #: CTFd/themes/core-deprecated/templates/setup.html:34
@@ -3578,7 +3578,7 @@ msgstr "本地化"
 
 #: CTFd/themes/admin/templates/config.html:41
 msgid "Access"
-msgstr "访问控制"
+msgstr "访问权限"
 
 #: CTFd/themes/admin/templates/config.html:49
 msgid "Start and End Time"
@@ -3634,7 +3634,7 @@ msgstr "社交分享"
 
 #: CTFd/themes/admin/templates/config.html:158
 msgid "Danger zone"
-msgstr "危险区域"
+msgstr "危险操作区"
 
 #: CTFd/themes/admin/templates/config.html:166
 #: CTFd/themes/admin/templates/reset.html:9
@@ -3793,11 +3793,11 @@ msgstr "积分"
 
 #: CTFd/themes/admin/templates/statistics.html:34
 msgid "Most Solved:"
-msgstr "最多解答："
+msgstr "解题最多："
 
 #: CTFd/themes/admin/templates/statistics.html:39
 msgid "Least Solved:"
-msgstr "最少解答："
+msgstr "解题最少："
 
 #: CTFd/themes/admin/templates/statistics.html:48
 msgid "Player Progression"
@@ -3820,7 +3820,7 @@ msgstr "错误提交"
 msgid ""
 "Searching for submissions with <strong>%(field)s</strong> matching "
 "<strong>%(q)s</strong>"
-msgstr "搜索字段为 <strong>%(field)s</strong> 匹配 <strong>%(q)s</strong> 的提交"
+msgstr "正在搜索 <strong>%(field)s</strong> 匹配 <strong>%(q)s</strong> 的提交"
 
 #: CTFd/themes/admin/templates/submissions.html:23
 #: CTFd/themes/admin/templates/teams/teams.html:27
@@ -4012,7 +4012,7 @@ msgstr "Flag"
 #: CTFd/themes/admin/templates/challenges/challenge.html:128
 #: CTFd/themes/admin/templates/challenges/challenge.html:164
 msgid "Topics"
-msgstr "话题"
+msgstr "主题"
 
 #: CTFd/themes/admin/templates/challenges/challenge.html:129
 #: CTFd/themes/admin/templates/challenges/challenge.html:172
@@ -4041,7 +4041,7 @@ msgstr "创建题目"
 msgid ""
 "Searching for challenges with <strong>%(field)s</strong> matching "
 "<strong>%(q)s</strong>"
-msgstr "搜索字段为 <strong>%(field)s</strong> 匹配 <strong>%(q)s</strong> 的题目"
+msgstr "正在搜索 <strong>%(field)s</strong> 匹配 <strong>%(q)s</strong> 的题目"
 
 #: CTFd/themes/admin/templates/challenges/challenges.html:28
 msgid "results"
@@ -4085,7 +4085,7 @@ msgstr "输入题目分类"
 
 #: CTFd/themes/admin/templates/challenges/create.html:33
 msgid "Message:"
-msgstr "消息："
+msgstr "描述："
 
 #: CTFd/themes/admin/templates/challenges/create.html:35
 #: CTFd/themes/admin/templates/challenges/update.html:30
@@ -4098,7 +4098,7 @@ msgstr "分值："
 
 #: CTFd/themes/admin/templates/challenges/create.html:50
 msgid "This is how many points are rewarded for solving this challenge."
-msgstr "这是解出此题目所奖励的积分。"
+msgstr "这是解出此题获得的积分。"
 
 #: CTFd/themes/admin/templates/challenges/new.html:17
 msgid "Options"
@@ -4182,7 +4182,7 @@ msgstr "如何根据衰减值计算题目分值"
 
 #: CTFd/themes/admin/templates/challenges/update.html:100
 msgid "Static: Challenge <code>Value</code> is awarded as-is"
-msgstr "静态：按题目 <code>分值</code> 原样奖励"
+msgstr "静态：题目 <code>分值</code> 按原值奖励"
 
 #: CTFd/themes/admin/templates/challenges/update.html:101
 msgid "Linear: Calculated as <code>Initial - (Decay * SolveCount)</code>"
@@ -4199,7 +4199,7 @@ msgid ""
 "Logarithmic: The amount of solves before the challenge reaches its "
 "minimum value. Earlier solves will lose less points. Later solves will "
 "lose more points"
-msgstr "对数：题目达到最小值前所需的解出次数。较早解出将损失较少分值。较晚解出将损失更多分值"
+msgstr "对数：题目达到最小值前所需的解出次数。较早解出将损失较少分值。较晚解出将损失更多分值。"
 
 #: CTFd/themes/admin/templates/challenges/update.html:148
 msgid "Logic"
@@ -4207,7 +4207,7 @@ msgstr "逻辑"
 
 #: CTFd/themes/admin/templates/challenges/update.html:149
 msgid "Determines how this challenge is solved"
-msgstr "决定此题目的解答方式"
+msgstr "决定此题目的解题方式"
 
 #: CTFd/themes/admin/templates/challenges/update.html:153
 msgid "Require Any Flag"
@@ -4462,7 +4462,7 @@ msgstr "MajorLeagueCyber 集成"
 msgid ""
 "MLC is a CTF stats tracker that provides event scheduling, team tracking,"
 " and SSO."
-msgstr "MLC 是一个 CTF 统计跟踪器，提供赛事安排、队伍跟踪和 SSO 功能。"
+msgstr "MLC 是一个 CTF 统计跟踪器，提供赛事安排、队伍跟踪和 SSO。"
 
 #: CTFd/themes/admin/templates/configs/mlc.html:12
 msgid ""
@@ -4670,7 +4670,7 @@ msgid ""
 "Freeze time specifies the timestamp that the competition will be frozen "
 "to. All solves before the freeze time will be shown, but new solves won't"
 " be shown to users."
-msgstr "冻结时间指定比赛将冻结到的时间戳。冻结时间之前的所有解答将会显示，但新的解答不会显示给用户。"
+msgstr "冻结时间指定比赛将冻结到的时间戳。冻结时间之前的所有解题将会显示，但新的解题不会显示给用户。"
 
 #: CTFd/themes/admin/templates/configs/time.html:184
 msgid "CTF Timezone:"
@@ -4680,7 +4680,7 @@ msgstr "CTF 时区："
 msgid ""
 "Controls whether users play as themselves (User Mode) or join together as"
 " teams (Team Mode)."
-msgstr "控制用户是以个人身份参与（用户模式）还是组成团队参与（团队模式）。"
+msgstr "控制用户是以个人身份参与（用户模式）还是组成队伍参与（队伍模式）。"
 
 #: CTFd/themes/admin/templates/configs/usermode.html:22
 #: CTFd/themes/core-deprecated/templates/setup.html:98
@@ -4716,7 +4716,7 @@ msgstr "参赛者仅注册个人账户"
 #: CTFd/themes/core-deprecated/templates/setup.html:107
 #: CTFd/themes/core/templates/setup.html:121
 msgid "Players can share accounts to form pseudo-teams"
-msgstr "参赛者可以通过共享账户组成伪队伍"
+msgstr "参赛者可以通过共享账户组成非正式队伍"
 
 #: CTFd/themes/admin/templates/configs/usermode.html:49
 #: CTFd/themes/core-deprecated/templates/setup.html:109
@@ -4728,7 +4728,7 @@ msgstr "更易于组织"
 #: CTFd/themes/core-deprecated/templates/setup.html:110
 #: CTFd/themes/core/templates/setup.html:124
 msgid "Difficult to attribute solutions to individual team members"
-msgstr "难以将解答归功于队伍中的个人成员"
+msgstr "难以将解题归功于队伍中的个人成员"
 
 #: CTFd/themes/admin/templates/configs/usermode.html:63
 msgid ""
@@ -5060,7 +5060,7 @@ msgstr "时间"
 msgid ""
 "Searching for teams with <strong>%(field)s</strong> matching "
 "<strong>%(q)s</strong>"
-msgstr "搜索字段为 <strong>%(field)s</strong> 匹配 <strong>%(q)s</strong> 的队伍"
+msgstr "正在搜索 <strong>%(field)s</strong> 匹配 <strong>%(q)s</strong> 的队伍"
 
 #: CTFd/themes/admin/templates/teams/teams.html:37
 #: CTFd/themes/core-deprecated/templates/teams/teams.html:30
@@ -5105,7 +5105,7 @@ msgstr "管理员"
 msgid ""
 "Searching for users with <strong>%(field)s</strong> matching "
 "<strong>%(q)s</strong>"
-msgstr "搜索字段为 <strong>%(field)s</strong> 匹配 <strong>%(q)s</strong> 的用户"
+msgstr "正在搜索 <strong>%(field)s</strong> 匹配 <strong>%(q)s</strong> 的用户"
 
 #: CTFd/themes/core/assets/js/challenges.js:268
 msgid "Error submitting rating"
@@ -5134,7 +5134,7 @@ msgstr "前 10 "
 #, python-format
 msgid "%(num)d Solve"
 msgid_plural "%(num)d Solves"
-msgstr[0] "%(num)d 次解答"
+msgstr[0] "%(num)d 次解题"
 
 #: CTFd/themes/core/templates/challenge.html:79
 msgid "liked"
@@ -5150,13 +5150,13 @@ msgstr "查看提示"
 #, python-format
 msgid "Cost: %(cost)s point"
 msgid_plural "Cost: %(cost)s points"
-msgstr[0] "花费：%(cost)s 积分"
+msgstr[0] "消耗：%(cost)s 积分"
 
 #: CTFd/themes/core/templates/challenge.html:121
 #, python-format
 msgid "Unlock Hint for %(cost)s point"
 msgid_plural "Unlock Hint for %(cost)s points"
-msgstr[0] "花费 %(cost)s 积分解锁提示"
+msgstr[0] "消耗 %(cost)s 积分解锁提示"
 
 #: CTFd/themes/core-deprecated/templates/challenge.html:102
 #: CTFd/themes/core/templates/challenge.html:160
@@ -5170,7 +5170,7 @@ msgstr "分享"
 
 #: CTFd/themes/core/templates/challenge.html:239
 msgid "Rate this challenge:"
-msgstr "评分此题："
+msgstr "为此题评分："
 
 #: CTFd/themes/core/templates/challenge.html:261
 msgid "Write a review (optional)"
@@ -5359,7 +5359,7 @@ msgstr "记分板为空"
 #: CTFd/themes/core/templates/components/navbar.html:117
 #: CTFd/themes/core/templates/settings.html:21
 msgid "Profile"
-msgstr "个人信息"
+msgstr "个人资料"
 
 #: CTFd/themes/core-deprecated/templates/settings.html:17
 #: CTFd/themes/core/templates/settings.html:26
@@ -5398,7 +5398,7 @@ msgstr "您确定要删除此令牌吗？"
 #: CTFd/themes/core-deprecated/templates/settings.html:100
 #: CTFd/themes/core/templates/settings.html:224
 msgid "Created"
-msgstr "创建时间"
+msgstr "已创建"
 
 #: CTFd/themes/core-deprecated/templates/settings.html:103
 #: CTFd/themes/core/templates/settings.html:227
@@ -5443,7 +5443,7 @@ msgstr "控制 CTFd 不同部分的可见性"
 #: CTFd/themes/core-deprecated/templates/setup.html:154
 #: CTFd/themes/core/templates/setup.html:232
 msgid "Subscribe email address to the CTFd LLC Newsletter for news and updates"
-msgstr "订阅 CTFd LLC 新闻简报和更新"
+msgstr "订阅 CTFd LLC 邮件通讯以获取新闻和更新"
 
 #: CTFd/themes/core-deprecated/templates/setup.html:228
 #: CTFd/themes/core-deprecated/templates/setup.html:249
@@ -5508,7 +5508,7 @@ msgstr "未找到文件"
 
 #: CTFd/themes/core/templates/errors/404.html:12
 msgid "404 Not Found"
-msgstr "404 页面未找到"
+msgstr "404 未找到"
 
 #: CTFd/themes/core-deprecated/templates/errors/429.html:11
 #: CTFd/themes/core/templates/errors/429.html:9
@@ -5616,7 +5616,7 @@ msgstr "成员"
 #: CTFd/themes/core/templates/users/private.html:213
 #: CTFd/themes/core/templates/users/public.html:214
 msgid "No solves yet"
-msgstr "暂无解答"
+msgstr "暂无解题"
 
 #: CTFd/themes/core/templates/teams/team_enrollment.html:12
 #, python-format
@@ -5662,7 +5662,7 @@ msgstr "您确定要打开此提示吗？"
 #: CTFd/themes/core-deprecated/templates/challenge.html:64
 #, python-format
 msgid "Unlock Hint for %(cost)s points"
-msgstr "花费 %(cost)s 积分解锁提示"
+msgstr "消耗 %(cost)s 积分解锁提示"
 
 #: CTFd/themes/core-deprecated/templates/confirm.html:42
 msgid ""
@@ -5936,15 +5936,15 @@ msgstr "您的访问令牌已过期"
 
 #: CTFd/utils/initialization/__init__.py:366
 msgid "Invalid authorization header"
-msgstr "无效的授权头"
+msgstr "无效的授权请求头"
 
 #: CTFd/utils/social/__init__.py:112 CTFd/utils/social/__init__.py:164
 msgid " solve"
-msgstr " 次解答"
+msgstr " 次解题"
 
 #: CTFd/utils/social/__init__.py:112 CTFd/utils/social/__init__.py:164
 msgid " solves"
-msgstr " 次解答"
+msgstr " 次解题"
 
 #: CTFd/utils/social/__init__.py:128
 #, python-brace-format
