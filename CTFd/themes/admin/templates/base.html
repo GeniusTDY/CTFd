@@ -27,17 +27,13 @@
 		}
 	</script>
 	{% block stylesheets %} {% endblock %}
-	<script>
-		// 根据语言设置本地化编辑器状态栏标签
-		(function() {
-			var lang = document.cookie.split('; ').find(function(row) { return row.startsWith('language='); });
-			if (lang && lang.split('=')[1] === 'zh_CN') {
-				var style = document.createElement('style');
-				style.textContent = '.editor-statusbar .lines:before{content:"行数: "}.editor-statusbar .words:before{content:"字数: "}.editor-statusbar .characters:before{content:"字符数: "}';
-				document.head.appendChild(style);
-			}
-		})();
-	</script>
+	{% if get_locale() == 'zh_CN' %}
+	<style>
+		.editor-statusbar .lines:before{content:"行数: "}
+		.editor-statusbar .words:before{content:"字数: "}
+		.editor-statusbar .characters:before{content:"字符数: "}
+	</style>
+	{% endif %}
 	{% for stylesheet in get_registered_admin_stylesheets() %}
 		{% if stylesheet.startswith('http') %}
 			<link rel="stylesheet" type="text/css" href="{{ stylesheet }}">
