@@ -318,7 +318,7 @@ msgstr "未通过。请在 %(seconds)d 秒后重试"
 
 #: CTFd/api/v1/challenges.py:815
 msgid "Not accepted. You have 0 tries remaining"
-msgstr "未通过。您还剩 0 次尝试机会"
+msgstr "未通过。您还剩 0 次尝试"
 
 #: CTFd/api/v1/challenges.py:852
 #, python-format
@@ -861,7 +861,7 @@ msgstr "提交"
 
 #: CTFd/forms/config.py:38 CTFd/themes/admin/templates/reset.html:56
 msgid "Deletes all records that accounts gained points or took an action"
-msgstr "删除所有账户获得积分或采取行动的记录"
+msgstr "删除所有账户获得积分或操作的记录"
 
 #: CTFd/forms/config.py:41 CTFd/forms/config.py:129
 #: CTFd/themes/admin/templates/base.html:77
@@ -2173,7 +2173,7 @@ msgstr "字段 '%(field)s' 是必填的"
 #: CTFd/schemas/teams.py:320 CTFd/schemas/users.py:314
 #, python-format
 msgid "Field '%(field)s' cannot be edited"
-msgstr "字段 '%(field)s' 不能被编辑"
+msgstr "字段 '%(field)s' 无法编辑"
 
 #: CTFd/schemas/users.py:79 CTFd/schemas/users.py:84 CTFd/schemas/users.py:97
 msgid "User name has already been taken"
