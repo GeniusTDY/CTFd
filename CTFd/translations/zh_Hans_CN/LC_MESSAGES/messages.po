@@ -1930,7 +1930,7 @@ msgstr "初始值"
 
 #: CTFd/plugins/dynamic_challenges/assets/create.html:15
 msgid "This is how many points the challenge is worth initially."
-msgstr "这是题目最初的价值。"
+msgstr "这是题目最初的分值。"
 
 #: CTFd/plugins/dynamic_challenges/assets/create.html:18
 #: CTFd/themes/admin/templates/challenges/create.html:53
