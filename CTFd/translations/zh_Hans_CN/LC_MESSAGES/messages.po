@@ -2453,7 +2453,7 @@ msgstr "分组名称"
 
 #: CTFd/themes/admin/assets/js/components/configs/brackets/Bracket.vue:83
 msgid "Bracket name (e.g. \"Students\", \"Interns\", \"Engineers\")"
-msgstr "分组名称（例如"学生"、"实习生"、"工程师"）"
+msgstr "分组名称（例如\"学生\"、\"实习生\"、\"工程师\"）"
 
 #: CTFd/themes/admin/assets/js/components/configs/brackets/Bracket.vue:86
 #: CTFd/themes/admin/assets/js/components/configs/brackets/Bracket.vue:87
@@ -5737,12 +5737,6 @@ msgstr "您确定要打开此提示吗？"
 msgid "Unlock Hint for %(cost)s points"
 msgstr "花费 %(cost)s 积分解锁提示"
 
-#: CTFd/themes/core-deprecated/templates/confirm.html:26
-msgid ""
-"If the email doesn't arrive, check your spam folder or contact an "
-"administrator to manually verify your account."
-msgstr "如果未收到邮件，请检查您的垃圾邮件文件夹或联系管理员手动验证您的账户。"
-
 #: CTFd/themes/core-deprecated/templates/confirm.html:42
 msgid ""
 "If the email doesn't arrive, check your spam folder or\n"
@@ -6094,4 +6088,19 @@ msgstr "用户名不能为空"
 
 msgid "Emails must not be empty"
 msgstr "邮箱不能为空"
+
+msgid "CTFd"
+msgstr "CTFd"
+
+msgid "invalid theme_settings"
+msgstr "无效的主题设置"
+
+msgid " -- "
+msgstr " -- "
+
+msgid "???"
+msgstr "???"
+
+msgid "Invalid query: %s"
+msgstr "无效的查询：%s"
 

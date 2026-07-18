@@ -53,7 +53,7 @@ $.get(CTFd.config.urlRoot + "/api/v1/challenges/types", function (response) {
   const data = response.data;
   const chal_type_amt = Object.keys(data).length;
   if (chal_type_amt > 1) {
-    const option = "<option> -- </option>";
+    const option = "<option>" + _(" -- ") + "</option>";
     $("#create-chals-select").append(option);
     for (const key in data) {
       const challenge = data[key];
