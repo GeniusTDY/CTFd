@@ -3466,7 +3466,7 @@ msgstr " 上解答了这些题目？"
 #: CTFd/themes/admin/assets/js/pages/team.js:271
 #: CTFd/themes/admin/assets/js/pages/user.js:370
 msgid "MARKED AS SOLVED BY ADMIN"
-msgstr "由管理员标记为已解答"
+msgstr "由管理员标记为已解出"
 
 #: CTFd/themes/admin/assets/js/pages/team.js:485
 msgid "Please select a team member"
@@ -4122,7 +4122,7 @@ msgstr "搜索匹配的题目"
 
 #: CTFd/themes/admin/templates/challenges/challenges.html:141
 msgid "solved"
-msgstr "已解答"
+msgstr "已解出"
 
 #: CTFd/themes/admin/templates/challenges/challenges.html:143
 msgid "published"
@@ -4268,7 +4268,7 @@ msgid ""
 "Logarithmic: The amount of solves before the challenge reaches its "
 "minimum value. Earlier solves will lose less points. Later solves will "
 "lose more points"
-msgstr "对数：题目达到最小值前所需的解出次数。较早解出将损失较少分值，较晚解出将损失更多分值"
+msgstr "对数：题目达到最小值前所需的解出次数。较早解出将损失较少分值。较晚解出将损失更多分值"
 
 #: CTFd/themes/admin/templates/challenges/update.html:148
 msgid "Logic"
@@ -4807,7 +4807,7 @@ msgstr "难以将解答归功于队伍中的个人成员"
 msgid ""
 "Changing your user mode will also delete all submissions or records that "
 "a user took an action."
-msgstr "更改用户模式将删除所有提交记录和用户操作记录。"
+msgstr "更改用户模式也将删除所有提交记录和用户操作记录。"
 
 #: CTFd/themes/admin/templates/configs/visibility.html:34
 msgid ""
@@ -5379,7 +5379,7 @@ msgstr "忘记密码？"
 #: CTFd/themes/core-deprecated/templates/notifications.html:11
 #: CTFd/themes/core/templates/notifications.html:14
 msgid "There are no notifications yet"
-msgstr "还没有通知"
+msgstr "暂无通知"
 
 #: CTFd/themes/core-deprecated/templates/components/navbar.html:118
 #: CTFd/themes/core-deprecated/templates/components/navbar.html:122
@@ -5749,7 +5749,7 @@ msgid ""
 "\t\t\tcontact an administrator to manually verify your account."
 msgstr ""
 "如果未收到邮件，请检查您的垃圾邮件文件夹或\n"
-"\t\t\t\t联系管理员手动验证您的账户。"
+"\t\t\t联系管理员手动验证您的账户。"
 
 #: CTFd/themes/core-deprecated/templates/register.html:63
 #, python-format
@@ -6087,7 +6087,7 @@ msgid "Team names must not be empty"
 msgstr "队伍名称不能为空"
 
 msgid "Emails must be a properly formatted email address"
-msgstr "邮箱必须是格式正确的电子邮件地址"
+msgstr "邮箱必须是格式正确的邮箱地址"
 
 msgid "User names must not be empty"
 msgstr "用户名不能为空"
