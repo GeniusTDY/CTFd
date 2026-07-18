@@ -332,7 +332,7 @@ msgstr "%(message)s 但您已经解出了此题目"
 
 #: CTFd/api/v1/challenges.py:973
 msgid "try"
-msgstr "尝试"
+msgstr "次尝试"
 
 #: CTFd/api/v1/challenges.py:974
 msgid "tries"
@@ -2881,11 +2881,11 @@ msgstr "字母降序（Z-A）"
 
 #: CTFd/themes/admin/assets/js/components/statistics/ScoreboardMatrix.vue:393
 msgid "Points (Ascending)"
-msgstr "分数（升序）"
+msgstr "分值（升序）"
 
 #: CTFd/themes/admin/assets/js/components/statistics/ScoreboardMatrix.vue:394
 msgid "Points (Descending)"
-msgstr "分数（降序）"
+msgstr "分值（降序）"
 
 #: CTFd/themes/admin/assets/js/components/statistics/ScoreboardMatrix.vue:395
 msgid "Filter Brackets"
@@ -3449,7 +3449,7 @@ msgstr "标记为正确"
 #: CTFd/themes/admin/assets/js/pages/team.js:252
 #: CTFd/themes/admin/assets/js/pages/user.js:363
 msgid " correct for "
-msgstr " 为正确，对象："
+msgstr " 为正确，归属："
 
 #: CTFd/themes/admin/assets/js/pages/team.js:257
 msgid "User Attribution"
@@ -4268,7 +4268,7 @@ msgid ""
 "Logarithmic: The amount of solves before the challenge reaches its "
 "minimum value. Earlier solves will lose less points. Later solves will "
 "lose more points"
-msgstr "对数：题目达到最小值前的解出次数。较早的解题损失较少分值，较晚的解题损失较多分值"
+msgstr "对数：题目达到最小值前所需的解出次数。较早解出将损失较少分值，较晚解出将损失更多分值"
 
 #: CTFd/themes/admin/templates/challenges/update.html:148
 msgid "Logic"
@@ -4765,13 +4765,13 @@ msgstr "参赛者注册账户并组成队伍"
 #: CTFd/themes/core-deprecated/templates/setup.html:99
 #: CTFd/themes/core/templates/setup.html:113
 msgid "If a team member solves a challenge, the entire team receives credit"
-msgstr "如果一个队伍成员解决了一个题目，整个队伍将获得积分"
+msgstr "如果一个队伍成员解出了一个题目，整个队伍将获得积分"
 
 #: CTFd/themes/admin/templates/configs/usermode.html:25
 #: CTFd/themes/core-deprecated/templates/setup.html:101
 #: CTFd/themes/core/templates/setup.html:115
 msgid "Easier to see which team member solved a challenge"
-msgstr "更容易看到哪个队伍成员解决了题目"
+msgstr "更容易看到哪个队伍成员解出了题目"
 
 #: CTFd/themes/admin/templates/configs/usermode.html:26
 #: CTFd/themes/core-deprecated/templates/setup.html:102
@@ -5091,7 +5091,7 @@ msgstr "移除 %(name)s"
 #: CTFd/themes/core/templates/users/private.html:98
 #: CTFd/themes/core/templates/users/public.html:98
 msgid "Awards"
-msgstr "获奖情况"
+msgstr "奖励"
 
 #: CTFd/themes/admin/templates/teams/team.html:323
 #: CTFd/themes/admin/templates/teams/team.html:520
@@ -5211,7 +5211,7 @@ msgstr[0] "%(num)d 个解答"
 
 #: CTFd/themes/core/templates/challenge.html:79
 msgid "liked"
-msgstr "的人喜欢"
+msgstr "好评"
 
 #: CTFd/themes/core-deprecated/templates/challenge.html:59
 #: CTFd/themes/core-deprecated/templates/challenge.html:68
@@ -5741,7 +5741,7 @@ msgstr "花费 %(cost)s 积分解锁提示"
 msgid ""
 "If the email doesn't arrive, check your spam folder or contact an "
 "administrator to manually verify your account."
-msgstr "如果确认邮件没有到达，请检查您的垃圾邮件文件夹或联系管理员手动验证您的账户。"
+msgstr "如果未收到邮件，请检查您的垃圾邮件文件夹或联系管理员手动验证您的账户。"
 
 #: CTFd/themes/core-deprecated/templates/confirm.html:42
 msgid ""
