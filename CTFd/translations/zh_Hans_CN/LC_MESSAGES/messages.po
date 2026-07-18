@@ -68,7 +68,7 @@ msgid ""
 "The email address associated with this account was registered via an "
 "authentication provider and does not have an associated password. Please "
 "login via your authentication provider."
-msgstr "与此账户关联的邮箱地址是通过身份验证提供商注册的，没有关联密码。请通过您的身份验证提供商登录。"
+msgstr "与此账户关联的邮箱地址是通过认证提供商注册的，没有关联密码。请通过您的认证提供商登录。"
 
 #: CTFd/auth.py:233
 msgid "Too many password reset attempts. Please try again later."
@@ -1695,7 +1695,7 @@ msgstr "开始时间"
 
 #: CTFd/forms/setup.py:145
 msgid "Time when your CTF is scheduled to start. Optional."
-msgstr "CTF 计划开始的时间。可选项。"
+msgstr "您的 CTF 计划开始的时间。可选项。"
 
 #: CTFd/forms/setup.py:148 CTFd/themes/admin/templates/configs/time.html:11
 msgid "End Time"
