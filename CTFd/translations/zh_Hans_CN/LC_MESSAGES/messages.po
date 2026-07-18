@@ -3552,7 +3552,7 @@ msgstr "CTFd 有新版本可用！"
 #: CTFd/themes/core-deprecated/templates/base.html:44
 #: CTFd/themes/core/templates/base.html:58
 msgid "Powered by CTFd"
-msgstr "由 CTFd 驱动"
+msgstr "由 CTFd 提供技术支持"
 
 #: CTFd/themes/admin/templates/base.html:158
 msgid "Version"
