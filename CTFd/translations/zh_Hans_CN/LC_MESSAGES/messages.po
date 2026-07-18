@@ -476,7 +476,7 @@ msgstr "导入失败：%(error)s"
 #: CTFd/constants/email.py:3
 #, python-brace-format
 msgid "Confirm your account for {ctf_name}"
-msgstr "确认你在 {ctf_name} 的账户"
+msgstr "确认您在 {ctf_name} 的账户"
 
 #: CTFd/constants/email.py:5
 #, python-brace-format
@@ -519,7 +519,7 @@ msgid ""
 "Username: {name}\n"
 "Password: {password}"
 msgstr ""
-"已在 {url} 为你创建了 {ctf_name} 的新账户。\n"
+"已在 {url} 为您创建了 {ctf_name} 的新账户。\n"
 "\n"
 "用户名：{name}\n"
 "密码：{password}"
@@ -551,7 +551,7 @@ msgstr ""
 #: CTFd/constants/email.py:31
 #, python-brace-format
 msgid "Password Change Confirmation for {ctf_name}"
-msgstr "{ctf_name} 密码更改确认"
+msgstr "来自 {ctf_name} 的密码更改确认"
 
 #: CTFd/constants/email.py:34
 #, python-brace-format
@@ -740,7 +740,7 @@ msgstr "盾牌"
 #: CTFd/forms/awards.py:20
 #: CTFd/themes/admin/templates/modals/awards/create.html:44
 msgid "Bug"
-msgstr "虫子"
+msgstr "Bug"
 
 #: CTFd/forms/awards.py:21
 #: CTFd/themes/admin/templates/modals/awards/create.html:54
@@ -1658,7 +1658,7 @@ msgstr "小站标"
 msgid ""
 "favicon used in user's browsers. Only PNGs accepted. Must be 32x32px. "
 "Optional."
-msgstr "用户浏览器中使用的图标。仅接受32x32px的PNG文件。可选项。"
+msgstr "用户浏览器中使用的网站图标（favicon）。仅接受32x32px的PNG文件。可选项。"
 
 #: CTFd/forms/setup.py:77 CTFd/themes/admin/templates/config.html:32
 #: CTFd/themes/admin/templates/configs/theme.html:18
@@ -1707,7 +1707,7 @@ msgstr "您的 CTF 计划结束的时间。可选项。"
 
 #: CTFd/forms/setup.py:154
 msgid "Control whether users can share links commemorating their challenge solves"
-msgstr "控制用户是否可以分享庆祝解题的链接"
+msgstr "控制用户是否可以分享纪念解题的链接"
 
 #: CTFd/forms/setup.py:158 CTFd/themes/admin/templates/challenges/new.html:68
 msgid "Finish"
@@ -4350,7 +4350,7 @@ msgstr ""
 
 #: CTFd/themes/admin/templates/configs/backup.html:33
 msgid "Importing a CTFd export will completely wipe your existing data"
-msgstr "导入 CTFd 导出文件将完全清除你现有的数据"
+msgstr "导入 CTFd 导出文件将完全清除您现有的数据"
 
 #: CTFd/themes/admin/templates/configs/backup.html:38
 msgid "Import File"
@@ -5319,7 +5319,7 @@ msgid ""
 "The built-in syntax highlighter is lightweight and fast but may not "
 "always correctly highlight all languages. You can disable the built-in "
 "highlighter in order to use your own."
-msgstr "内置语法高亮器轻量且快速，但可能无法始终正确高亮所有语言。你可以禁用内置高亮器以使用自己的高亮器。"
+msgstr "内置语法高亮器轻量且快速，但可能无法始终正确高亮所有语言。您可以禁用内置高亮器以使用自己的高亮器。"
 
 #: CTFd/themes/core-deprecated/templates/confirm.html:9
 #: CTFd/themes/core/templates/confirm.html:7
