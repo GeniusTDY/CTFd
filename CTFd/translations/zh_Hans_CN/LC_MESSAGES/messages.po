@@ -93,7 +93,7 @@ msgstr "请输入有效的邮箱地址"
 
 #: CTFd/auth.py:352 CTFd/auth.py:354
 msgid "Your email address is not from an allowed domain"
-msgstr "电子邮箱地址不在允许的域名中"
+msgstr "您的邮箱地址不在允许的域名中"
 
 #: CTFd/auth.py:356 CTFd/views.py:164
 msgid "That user name is already taken"
@@ -133,7 +133,7 @@ msgstr "请提供较短的隶属关系"
 
 #: CTFd/auth.py:383 CTFd/teams.py:294
 msgid "Please provide a valid bracket"
-msgstr "请提供有效的分组 ID"
+msgstr "请提供有效的分组"
 
 #: CTFd/auth.py:485
 msgid "Preset admin user could not be created. Please contact an administrator"
@@ -168,7 +168,7 @@ msgstr "公开注册已关闭。请稍后再试。"
 msgid ""
 "Reached the maximum number of teams (%(num)d). Please join an existing "
 "team."
-msgstr "已达到最大队伍数量上限 (%(num)d)。请加入一个已有的队伍。"
+msgstr "已达到最大队伍数（%(num)d）。请加入现有队伍。"
 
 #: CTFd/auth.py:675
 #, python-format
@@ -323,7 +323,7 @@ msgstr "未通过。您还剩 0 次尝试机会"
 #: CTFd/api/v1/challenges.py:852
 #, python-format
 msgid "You're submitting flags too fast. Try again in %(seconds)d seconds."
-msgstr "您提交 flag 的速度太快。请在 %(seconds)d 秒后重试。"
+msgstr "您提交 Flag 的速度太快。请在 %(seconds)d 秒后重试。"
 
 #: CTFd/api/v1/challenges.py:908 CTFd/api/v1/challenges.py:1055
 #, python-format
@@ -394,7 +394,7 @@ msgstr "audience_id 是必填的"
 
 #: CTFd/api/v1/solutions.py:136
 msgid "A solution for this challenge already exists"
-msgstr "此题目已存在解答"
+msgstr "此题目已存在题解"
 
 #: CTFd/api/v1/submissions.py:204
 msgid "Solve already exists for this submission"
@@ -857,7 +857,7 @@ msgstr "删除所有用户和队伍账户及其关联信息"
 #: CTFd/themes/admin/templates/submissions.html:10
 #: CTFd/themes/core/templates/challenge.html:20
 msgid "Submissions"
-msgstr "提交记录"
+msgstr "提交"
 
 #: CTFd/forms/config.py:38 CTFd/themes/admin/templates/reset.html:56
 msgid "Deletes all records that accounts gained points or took an action"
@@ -1016,7 +1016,7 @@ msgstr "每分钟错误提交次数"
 msgid ""
 "Number of submissions allowed per minute for flag bruteforce protection "
 "(default: 10)"
-msgstr "为防止 flag 暴力破解，每分钟允许的提交次数（默认：10）"
+msgstr "为防止 Flag 暴力破解，每分钟允许的提交次数（默认：10）"
 
 #: CTFd/forms/config.py:114 CTFd/forms/config.py:148 CTFd/forms/config.py:168
 #: CTFd/forms/config.py:351 CTFd/plugins/flags/assets/regex/edit.html:18
@@ -1658,7 +1658,7 @@ msgstr "小图标"
 msgid ""
 "favicon used in user's browsers. Only PNGs accepted. Must be 32x32px. "
 "Optional."
-msgstr "用户浏览器中使用的网站图标（favicon）。仅接受32x32px的PNG文件。可选项。"
+msgstr "用户浏览器中使用的网站图标（favicon）。仅接受 32x32px 的 PNG 文件。可选项。"
 
 #: CTFd/forms/setup.py:77 CTFd/themes/admin/templates/config.html:32
 #: CTFd/themes/admin/templates/configs/theme.html:18
@@ -1903,11 +1903,11 @@ msgstr "错误"
 
 #: CTFd/plugins/challenges/logic.py:64
 msgid "Correct but more flags are required"
-msgstr "正确但需要更多 flag"
+msgstr "正确但需要更多 Flag"
 
 #: CTFd/plugins/challenges/logic.py:114
 msgid "Correct but all team members must submit a flag"
-msgstr "正确但所有队员都需要提交 flag"
+msgstr "正确但所有队员都需要提交 Flag"
 
 #: CTFd/plugins/dynamic_challenges/__init__.py:63
 msgid "Missing initial value for challenge"
@@ -2040,7 +2040,7 @@ msgstr "正则 Flag"
 
 #: CTFd/plugins/flags/assets/regex/create.html:3
 msgid "Enter regex flag data"
-msgstr "输入正则 flag 数据"
+msgstr "输入正则 Flag 数据"
 
 #: CTFd/plugins/flags/assets/regex/create.html:10
 #: CTFd/plugins/flags/assets/regex/edit.html:10
@@ -2076,11 +2076,11 @@ msgstr "匹配 flag{} 中的任何内容："
 
 #: CTFd/plugins/flags/assets/regex/create.html:28
 msgid "Match numeric flags:"
-msgstr "匹配数字 flag："
+msgstr "匹配数字 Flag："
 
 #: CTFd/plugins/flags/assets/regex/create.html:32
 msgid "Accept flags with or without the flag format prefix:"
-msgstr "接受带或不带 flag 格式前缀的 flag："
+msgstr "接受带或不带 Flag 格式前缀的 Flag："
 
 #: CTFd/plugins/flags/assets/regex/edit.html:2
 msgid "Regex"
@@ -2099,7 +2099,7 @@ msgstr "静态"
 #: CTFd/plugins/flags/assets/static/create.html:3
 #: CTFd/plugins/flags/assets/static/edit.html:3
 msgid "Enter static flag data"
-msgstr "输入静态 flag 数据"
+msgstr "输入静态 Flag 数据"
 
 #: CTFd/schemas/challenges.py:18
 msgid "Error parsing challenge requirements"
@@ -2181,7 +2181,7 @@ msgstr "用户名已被使用"
 
 #: CTFd/schemas/users.py:149 CTFd/schemas/users.py:154
 msgid "Email address is not from an allowed domain"
-msgstr "电子邮箱地址不在允许的域名中"
+msgstr "邮箱地址不在允许的域名中"
 
 #: CTFd/themes/admin/assets/js/components/files/MediaLibrary.vue:234
 #: CTFd/themes/admin/assets/js/styles.js:54
@@ -2204,7 +2204,7 @@ msgstr "删除题目"
 #: CTFd/themes/admin/assets/js/pages/user.js:127
 #, python-brace-format
 msgid "Are you sure you want to delete {0}"
-msgstr "您确定要删除 {0} 吗"
+msgstr "您确定要删除 {0} 吗？"
 
 #: CTFd/themes/admin/assets/js/challenges/challenge.js:194
 #: CTFd/themes/admin/assets/js/components/configs/brackets/Bracket.vue:134
@@ -2453,7 +2453,7 @@ msgstr "分组名称"
 
 #: CTFd/themes/admin/assets/js/components/configs/brackets/Bracket.vue:83
 msgid "Bracket name (e.g. \"Students\", \"Interns\", \"Engineers\")"
-msgstr "分组名称（例如\"学生\"、\"实习生\"、\"工程师\"）"
+msgstr "分组名称（例如"学生"、"实习生"、"工程师"）"
 
 #: CTFd/themes/admin/assets/js/components/configs/brackets/Bracket.vue:86
 #: CTFd/themes/admin/assets/js/components/configs/brackets/Bracket.vue:87
@@ -2650,7 +2650,7 @@ msgstr "编辑 Flag"
 
 #: CTFd/themes/admin/assets/js/components/flags/FlagList.vue:141
 msgid "Are you sure you'd like to delete this flag?"
-msgstr "您确定要删除此 flag 吗？"
+msgstr "您确定要删除此 Flag 吗？"
 
 #: CTFd/themes/admin/assets/js/components/hints/HintCreationForm.vue:123
 #: CTFd/themes/admin/assets/js/components/hints/HintEditForm.vue:131
@@ -2727,7 +2727,7 @@ msgstr "您确定要删除此通知吗？"
 
 #: CTFd/themes/admin/assets/js/components/ratings/RatingsViewer.vue:155
 msgid "Loading ratings..."
-msgstr "正在加载评分..."
+msgstr "正在加载评分……"
 
 #: CTFd/themes/admin/assets/js/components/ratings/RatingsViewer.vue:156
 msgid "No ratings yet"
@@ -2808,7 +2808,7 @@ msgstr "已解出"
 
 #: CTFd/themes/admin/assets/js/components/solution/SolutionEditor.vue:70
 msgid "Loading..."
-msgstr "加载中..."
+msgstr "加载中……"
 
 #: CTFd/themes/admin/assets/js/components/solution/SolutionEditor.vue:77
 #: CTFd/themes/admin/assets/js/pages/challenges.js:52
@@ -2845,7 +2845,7 @@ msgstr "筛选分类"
 
 #: CTFd/themes/admin/assets/js/components/statistics/ScoreboardMatrix.vue:384
 msgid "Search categories..."
-msgstr "搜索分类..."
+msgstr "搜索分类……"
 
 #: CTFd/themes/admin/assets/js/components/statistics/ScoreboardMatrix.vue:385
 msgid "Filter Challenges"
@@ -2853,7 +2853,7 @@ msgstr "筛选题目"
 
 #: CTFd/themes/admin/assets/js/components/statistics/ScoreboardMatrix.vue:386
 msgid "Search challenges..."
-msgstr "搜索题目..."
+msgstr "搜索题目……"
 
 #: CTFd/themes/admin/assets/js/components/statistics/ScoreboardMatrix.vue:387
 msgid "Sort By"
@@ -2893,7 +2893,7 @@ msgstr "筛选分组"
 
 #: CTFd/themes/admin/assets/js/components/statistics/ScoreboardMatrix.vue:396
 msgid "Search brackets..."
-msgstr "搜索分组..."
+msgstr "搜索分组……"
 
 #: CTFd/themes/admin/assets/js/components/statistics/ScoreboardMatrix.vue:398
 msgid "Attempted"
@@ -2932,11 +2932,11 @@ msgstr "筛选用户"
 
 #: CTFd/themes/admin/assets/js/components/statistics/ScoreboardMatrix.vue:443
 msgid "Search teams..."
-msgstr "搜索队伍..."
+msgstr "搜索队伍……"
 
 #: CTFd/themes/admin/assets/js/components/statistics/ScoreboardMatrix.vue:444
 msgid "Search users..."
-msgstr "搜索用户..."
+msgstr "搜索用户……"
 
 #: CTFd/themes/admin/assets/js/components/statistics/ScoreboardMatrix.vue:447
 #: CTFd/themes/admin/templates/audiences/audience.html:89
@@ -3080,7 +3080,7 @@ msgstr "开始输入以搜索。"
 
 #: CTFd/themes/admin/assets/js/pages/audience.js:222
 msgid "Searching…"
-msgstr "搜索中..."
+msgstr "搜索中……"
 
 #: CTFd/themes/admin/assets/js/pages/audience.js:233
 #: CTFd/themes/admin/assets/js/pages/audience.js:236
@@ -3108,7 +3108,7 @@ msgstr "缺少 Flag"
 msgid ""
 "This challenge does not have any flags meaning it may be unsolveable. Are"
 " you sure you'd like to update this challenge?"
-msgstr "此题目没有任何 flag，意味着它可能无法解答。您确定要更新此题目吗？"
+msgstr "此题目没有任何 Flag，意味着它可能无法解答。您确定要更新此题目吗？"
 
 #: CTFd/themes/admin/assets/js/pages/challenges.js:11
 #: CTFd/themes/admin/assets/js/pages/team.js:243
@@ -3291,11 +3291,11 @@ msgstr "可见性"
 
 #: CTFd/themes/admin/assets/js/pages/statistics.js:36
 msgid "Solve Counts"
-msgstr "解答数量"
+msgstr "解题数"
 
 #: CTFd/themes/admin/assets/js/pages/statistics.js:52
 msgid "Solve Count"
-msgstr "解答数量"
+msgstr "解题数"
 
 #: CTFd/themes/admin/assets/js/pages/statistics.js:109
 #: CTFd/themes/admin/assets/js/pages/statistics.js:129
@@ -3346,7 +3346,7 @@ msgstr "删除提交"
 msgid ""
 "Are you sure you want to delete correct submission from {0} for challenge"
 " {1}"
-msgstr "您确定要删除 {0} 对题目 {1} 的正确提交吗"
+msgstr "您确定要删除 {0} 对题目 {1} 的正确提交吗？"
 
 #: CTFd/themes/admin/assets/js/pages/submissions.js:40
 #: CTFd/themes/admin/assets/js/pages/submissions.js:66
@@ -3461,7 +3461,7 @@ msgstr "哪个用户在 "
 
 #: CTFd/themes/admin/assets/js/pages/team.js:261
 msgid " solved these challenges?"
-msgstr " 上解答了这些题目？"
+msgstr " 上解出了这些题目？"
 
 #: CTFd/themes/admin/assets/js/pages/team.js:271
 #: CTFd/themes/admin/assets/js/pages/user.js:370
@@ -3916,11 +3916,11 @@ msgstr "标记提交为错误"
 
 #: CTFd/themes/admin/templates/submissions.html:61
 msgid "Show truncated flags"
-msgstr "显示截断的 flag"
+msgstr "显示截断的 Flag"
 
 #: CTFd/themes/admin/templates/submissions.html:65
 msgid "Show full flags"
-msgstr "显示完整 flag"
+msgstr "显示完整 Flag"
 
 #: CTFd/themes/admin/templates/submissions.html:69
 msgid "Delete selected submissions"
@@ -4167,7 +4167,7 @@ msgstr "分值："
 
 #: CTFd/themes/admin/templates/challenges/create.html:50
 msgid "This is how many points are rewarded for solving this challenge."
-msgstr "这是解答此题目所奖励的积分。"
+msgstr "这是解出此题目所奖励的积分。"
 
 #: CTFd/themes/admin/templates/challenges/new.html:17
 msgid "Options"
@@ -4179,7 +4179,7 @@ msgstr "Flag："
 
 #: CTFd/themes/admin/templates/challenges/new.html:29
 msgid "Static flag for your challenge"
-msgstr "题目的静态 flag"
+msgstr "题目的静态 Flag"
 
 #: CTFd/themes/admin/templates/challenges/new.html:49
 msgid "Files:"
@@ -4215,7 +4215,7 @@ msgstr "您的题目的署名"
 
 #: CTFd/themes/admin/templates/challenges/update.html:42
 msgid "(supports markdown)"
-msgstr "（支持 markdown）"
+msgstr "（支持 Markdown）"
 
 #: CTFd/themes/admin/templates/challenges/update.html:52
 msgid "Connection Info"
@@ -4470,7 +4470,7 @@ msgstr "用户成功重置密码后发送的邮件"
 
 #: CTFd/themes/admin/templates/configs/fields.html:6
 msgid "Add custom fields to get additional data from your participants"
-msgstr "添加自定义字段以获取参与者的额外信息"
+msgstr "添加自定义字段以获取参赛者的额外信息"
 
 #: CTFd/themes/admin/templates/configs/fields.html:25
 msgid ""
@@ -4807,7 +4807,7 @@ msgstr "难以将解答归功于队伍中的个人成员"
 msgid ""
 "Changing your user mode will also delete all submissions or records that "
 "a user took an action."
-msgstr "更改用户模式也将删除所有提交记录和用户操作记录。"
+msgstr "更改用户模式也将删除所有提交或用户操作记录。"
 
 #: CTFd/themes/admin/templates/configs/visibility.html:34
 msgid ""
@@ -4850,7 +4850,7 @@ msgstr "分配给模块的题目只能被该模块关联受众的成员看到。
 
 #: CTFd/themes/admin/templates/modals/challenges/module.html:11
 msgid "none - ungrouped, visible to everyone"
-msgstr "无 - 未分组，对所有人可见"
+msgstr "无——未分组，对所有人可见"
 
 #: CTFd/themes/admin/templates/modals/teams/addresses.html:8
 #: CTFd/themes/admin/templates/modals/users/addresses.html:7
@@ -5207,7 +5207,7 @@ msgstr "前 10 "
 #, python-format
 msgid "%(num)d Solve"
 msgid_plural "%(num)d Solves"
-msgstr[0] "%(num)d 个解答"
+msgstr[0] "%(num)d 次解答"
 
 #: CTFd/themes/core/templates/challenge.html:79
 msgid "liked"
@@ -5243,7 +5243,7 @@ msgstr "分享"
 
 #: CTFd/themes/core/templates/challenge.html:239
 msgid "Rate this challenge:"
-msgstr "评价此题："
+msgstr "评分此题："
 
 #: CTFd/themes/core/templates/challenge.html:261
 msgid "Write a review (optional)"
@@ -5251,7 +5251,7 @@ msgstr "写评价（可选）"
 
 #: CTFd/themes/core/templates/challenge.html:275
 msgid "Thank you for your rating!"
-msgstr "感谢您的评价！"
+msgstr "感谢您的评分！"
 
 #: CTFd/themes/core/templates/challenge.html:293
 msgid "Submission"
@@ -5773,7 +5773,7 @@ msgstr "在 MLC 网站和邮件列表上展示您的活动"
 
 #: CTFd/themes/core-deprecated/templates/setup.html:272
 msgid "share and track participant statistics"
-msgstr "分享和跟踪参与者统计数据"
+msgstr "分享和跟踪参赛者统计数据"
 
 #: CTFd/themes/core-deprecated/templates/setup.html:273
 msgid "provide live updates in team Slack or Discord groups"
@@ -6003,11 +6003,11 @@ msgstr "导入正在进行中"
 
 #: CTFd/utils/initialization/__init__.py:301
 msgid "You have been banned from this CTF"
-msgstr "您已被禁止参加此 CTF"
+msgstr "您已被此 CTF 封禁"
 
 #: CTFd/utils/initialization/__init__.py:310
 msgid "Your team has been banned from this CTF"
-msgstr "您的队伍已被禁止参加此 CTF"
+msgstr "您的队伍已被此 CTF 封禁"
 
 #: CTFd/utils/initialization/__init__.py:362
 msgid "Your access token is invalid"
@@ -6032,11 +6032,11 @@ msgstr " 次解答"
 #: CTFd/utils/social/__init__.py:128
 #, python-brace-format
 msgid "{account_name} has solved {challenge_name}"
-msgstr "{account_name} 解答了 {challenge_name}"
+msgstr "{account_name} 解出了 {challenge_name}"
 
 #: CTFd/utils/social/__init__.py:183
 msgid "has solved"
-msgstr "解答了"
+msgstr "解出了"
 
 #: CTFd/utils/social/__init__.py:196
 #, python-format
