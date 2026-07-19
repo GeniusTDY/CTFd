@@ -219,14 +219,18 @@ a {
 }
 
 // Modern form controls
-input, select, textarea {
+// Exclude non-text input types (checkbox, radio, file, submit, button,
+// color, image, range, hidden) so their native appearance is preserved.
+input:not([type="checkbox"]):not([type="radio"]):not([type="file"]):not([type="submit"]):not([type="button"]):not([type="color"]):not([type="image"]):not([type="range"]):not([type="hidden"]),
+select,
+textarea {
   border-radius: var(--radius-md) !important;
   border: 2px solid var(--light-border) !important;
   padding: 0.75rem 1rem !important;
   font-size: 0.9rem !important;
   transition: all 0.2s ease !important;
   background: var(--light-card) !important;
-  
+
   &:focus {
     border-color: var(--wmctf-primary) !important;
     box-shadow: 0 0 0 3px rgba(0, 122, 255, 0.1) !important;
@@ -235,7 +239,9 @@ input, select, textarea {
 }
 
 [data-bs-theme="dark"] {
-  input, select, textarea {
+  input:not([type="checkbox"]):not([type="radio"]):not([type="file"]):not([type="submit"]):not([type="button"]):not([type="color"]):not([type="image"]):not([type="range"]):not([type="hidden"]),
+  select,
+  textarea {
     border-color: var(--dark-border) !important;
     background: var(--dark-card) !important;
     color: var(--dark-text) !important;
