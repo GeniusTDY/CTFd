@@ -656,8 +656,13 @@ blockquote {
 
 // Enhanced footer with Apple Design
 .footer {
-  position: absolute;
-  bottom: 0;
+  // Use static positioning instead of absolute so the footer flows with
+  // the document. The previous `position: absolute; bottom: 0` rule (in
+  // both _sticky-footer.scss and the original main.scss) caused the footer
+  // to always stick to the viewport bottom, obscuring the bottom of long
+  // pages (e.g. the setup wizard on mobile) and preventing users from
+  // scrolling to see the "Next"/"Finish" buttons beneath it.
+  position: static;
   width: 100%;
   height: 60px; // 紧凑高度
   background: var(--light-surface);
