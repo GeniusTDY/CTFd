@@ -99,7 +99,7 @@
 							{% endif %}
 							<li class="nav-item">
 								<a class="nav-link" href="{{ route }}" {% if menu.link_target %}target="{{ menu.link_target }}"{% endif %}>
-									{{ menu.title }}
+									{{ _(menu.title) }}
 								</a>
 							</li>
 						{% endfor %}
@@ -109,7 +109,7 @@
 							<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{% trans %}Plugins{% endtrans %} <span class="caret"></span></a>
 							<ul class="dropdown-menu">
 									{% for plugin in plugins %}
-											<a class="dropdown-item" href="{{ request.script_root }}{{ plugin.route }}">{{ plugin.name }}</a>
+											<a class="dropdown-item" href="{{ request.script_root }}{{ plugin.route }}">{{ _(plugin.name) }}</a>
 									{% endfor %}
 							</ul>
 						</li>
