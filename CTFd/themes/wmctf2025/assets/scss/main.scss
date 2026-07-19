@@ -1197,3 +1197,20 @@ blockquote {
     padding: 0.3em 0.6em;
   }
 }
+
+// Setup wizard: reserve breathing room below the "Next" button so it
+// doesn't sit flush against the (now static) footer.
+// The Next button wrapper uses Bootstrap's `.float-end` (`float: right`),
+// which escapes the tab-pane's content box and ignores `padding-bottom`.
+// The clearfix `::after` forces the tab-pane to contain the float so the
+// padding actually pushes the footer down. Unlike `display: flow-root`,
+// this does not override Bootstrap's `display: none` on inactive tabs.
+#setup-form .tab-pane {
+  padding-bottom: 1.5rem;
+
+  &::after {
+    content: "";
+    display: block;
+    clear: both;
+  }
+}
