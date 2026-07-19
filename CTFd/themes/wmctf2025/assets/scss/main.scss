@@ -115,6 +115,18 @@ body {
   color: var(--light-text);
   transition: background-color 0.3s ease, color 0.3s ease;
   padding-top: 70px; // 减少导航栏间隙
+  // 为 fixed footer 预留空间：footer 高度 + 与内容的间距。
+  // footer 在所有断点高度不同（桌面 60px / 平板 80px / 手机 70px），
+  // 同步预留对应空间避免遮挡内容底部（如 setup 页面的 Next 按钮）。
+  padding-bottom: calc(60px + 1.5rem);
+
+  @media (max-width: 768px) {
+    padding-bottom: calc(80px + 1.5rem);
+  }
+
+  @media (max-width: 480px) {
+    padding-bottom: calc(70px + 1.5rem);
+  }
 }
 
 // Dark mode
@@ -656,13 +668,11 @@ blockquote {
 
 // Enhanced footer with Apple Design
 .footer {
-  // Use static positioning instead of absolute so the footer flows with
-  // the document. The previous `position: absolute; bottom: 0` rule (in
-  // both _sticky-footer.scss and the original main.scss) caused the footer
-  // to always stick to the viewport bottom, obscuring the bottom of long
-  // pages (e.g. the setup wizard on mobile) and preventing users from
-  // scrolling to see the "Next"/"Finish" buttons beneath it.
-  position: static;
+  // 紧贴视口底部（与顶部 fixed navbar 形成对称设计）。
+  // 配合 body padding-bottom 预留 footer 高度 + 间距，避免遮挡内容底部。
+  position: fixed;
+  bottom: 0;
+  left: 0;
   width: 100%;
   height: 60px; // 紧凑高度
   background: var(--light-surface);
@@ -1198,16 +1208,11 @@ blockquote {
   }
 }
 
-// Setup wizard: reserve breathing room below the "Next" button so it
-// doesn't sit flush against the (now static) footer.
-// The Next button wrapper uses Bootstrap's `.float-end` (`float: right`),
-// which escapes the tab-pane's content box and ignores `padding-bottom`.
-// The clearfix `::after` forces the tab-pane to contain the float so the
-// padding actually pushes the footer down. Unlike `display: flow-root`,
-// this does not override Bootstrap's `display: none` on inactive tabs.
+// Setup wizard: clearfix so the floated `.float-end` Next-button wrapper
+// is contained inside each `.tab-pane`. The bottom spacing between the
+// Next button and the fixed footer is now provided by `body padding-bottom`,
+// so no extra `padding-bottom` is needed here.
 #setup-form .tab-pane {
-  padding-bottom: 1.5rem;
-
   &::after {
     content: "";
     display: block;

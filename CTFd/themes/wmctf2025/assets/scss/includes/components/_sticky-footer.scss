@@ -1,11 +1,12 @@
 /* Sticky footer styles
 -------------------------------------------------- */
-// Footer is now `position: static` (see main.scss `.footer`), so the legacy
-// sticky-footer scaffolding (`html { position: relative; min-height: 100% }`,
-// `main { margin-bottom: 60px }`, and `.footer { position: absolute; bottom: 0 }`)
-// has been removed. The previous absolute positioning caused the footer to
-// overlay the bottom of long pages and prevented users from scrolling to
-// content (e.g. setup wizard on mobile) below it.
+// Footer is now `position: fixed; bottom: 0` (see main.scss `.footer`),
+// so the legacy sticky-footer scaffolding (`html { position: relative;
+// min-height: 100% }`, `main { margin-bottom: 60px }`, and
+// `.footer { position: absolute; bottom: 0 }`) has been removed.
+// Bottom spacing is provided by `body padding-bottom`, which reserves
+// footer height + gap so content (e.g. setup wizard's Next button) is
+// never obscured.
 .footer {
   width: 100%;
 
