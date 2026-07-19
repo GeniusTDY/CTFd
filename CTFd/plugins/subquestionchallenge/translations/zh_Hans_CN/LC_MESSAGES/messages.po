@@ -1,0 +1,77 @@
+# Chinese (Simplified) translations for CTFd-Sub-Question plugin
+msgid ""
+msgstr ""
+"Project-Id-Version: CTFd-Sub-Question 1.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-07-19 00:00+0800\n"
+"PO-Revision-Date: 2026-07-19 00:00+0800\n"
+"Last-Translator: \n"
+"Language-Team: Chinese (Simplified)\n"
+"Language: zh_Hans_CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+# Admin create template - description block
+msgid "Sub Question Challenges are a type of challenge that allows you to create a challenge with multiple questions and flags."
+msgstr "多问题挑战是一种允许创建包含多个问题和 flag 的挑战类型。"
+
+msgid "Each question is worth a certain number of points, and the challenge is considered solved when all questions are answered correctly."
+msgstr "每个问题都有对应的分值，当所有问题都回答正确后，该挑战才算完成。"
+
+msgid "You can also set a maximum number of attempts for each question."
+msgstr "您还可以为每个问题设置最大尝试次数。"
+
+msgid "By HITCON ReCTF Team."
+msgstr "由 HITCON ReCTF 团队开发。"
+
+# Admin create template - form fields
+msgid "Connection Info"
+msgstr "连接信息"
+
+msgid "Connection information (optional)"
+msgstr "连接信息（可选）"
+
+msgid "Max Attempts"
+msgstr "最大尝试次数"
+
+msgid "0 for unlimited"
+msgstr "0 表示无限制"
+
+msgid "Questions & Flags"
+msgstr "问题与 Flag"
+
+msgid "Question %(num)s"
+msgstr "问题 %(num)s"
+
+msgid "Enter question text"
+msgstr "输入问题文本"
+
+msgid "Flag %(num)s"
+msgstr "Flag %(num)s"
+
+msgid "Enter flag"
+msgstr "输入 flag"
+
+msgid "Points"
+msgstr "分值"
+
+msgid "Add Question"
+msgstr "添加问题"
+
+msgid "Remove Last Question"
+msgstr "移除最后一个问题"
+
+msgid "State"
+msgstr "状态"
+
+msgid "Visible"
+msgstr "可见"
+
+msgid "Hidden"
+msgstr "隐藏"
+
+# Challenge type name (shown in admin dropdown)
+msgid "Sub Question Challenge"
+msgstr "多问题挑战"
