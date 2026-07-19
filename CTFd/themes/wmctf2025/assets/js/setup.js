@@ -67,6 +67,14 @@ Alpine.data("SetupForm", () => ({
     });
 
     if (valid_tab == false) {
+      // 触发浏览器原生验证消息弹窗，与登录/注册页面原生 form submit 行为一致。
+      // `checkValidity()` 仅检查不报告；`reportValidity()` 才会显示原生气泡。
+      const firstInvalid = Array.from(inputs).find(
+        el => el.checkValidity() === false,
+      );
+      if (firstInvalid) {
+        firstInvalid.reportValidity();
+      }
       return;
     }
 
