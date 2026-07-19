@@ -53,3 +53,17 @@ select {
   background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 5'%3e%3cpath fill='%23343a40' d='M2 0L0 2h4zm0 5L0 3h4z'/%3e%3c/svg%3e");
   background-size: 8px 10px;
 }
+
+// 移动端 navbar 内的 dropdown（如语言切换菜单，25+ 项语言）展开后会超出
+// 视口且无法滚动到下方项（dropdown 是 absolute 定位，不撑开文档高度）。
+// 仅在移动端断点（与 navbar-expand-md 一致）给 dropdown-menu 加可滚动的
+// 最大高度。值取 50vh 而非 60vh，因为 dropdown 起始位置已经较低（位于
+// navbar collapse 下方），需要为其留出顶部偏移空间，使 dropdown 底部
+// 尽量落在视口内。
+@media (max-width: 767.98px) {
+  .navbar-collapse .dropdown-menu {
+    max-height: 50vh;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+}
