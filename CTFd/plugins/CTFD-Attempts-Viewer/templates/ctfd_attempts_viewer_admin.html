@@ -1,0 +1,83 @@
+{% extends "admin/base.html" %}
+
+{% block content %}
+<div class="jumbotron">
+    <div class="container">
+        <h1>{{ _("Attempts Viewer") }}</h1>
+    </div>
+</div>
+<div class="container mt-5">
+    <p>{{ _("This plugin allows players to view their attempts history.") }}<br> {{ _("It adds:") }}</p>
+<ul>
+    <li>{{ _('An "Attempts" tab in the challenge modal, showing team attempts for that specific challenge.') }}</li>
+    <li>{{ _('It also provides a "Your attempts history" button on the') }} <a href="/challenges">{{ _("challenges") }}</a> {{ _("page, allowing you to view all attempts made during the event (to be enabled below).") }}</li>
+</ul>
+
+<hr>
+<br>
+    <h4>{{ _("Display settings:") }}</h4>
+    <form id="attempts-settings-form">
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="showMainButton">
+            <label class="form-check-label" for="showMainButton">
+                {{ _("Show main button (Challenges page)") }}
+            </label>
+        </div>
+        <button type="submit" class="btn btn-primary mt-3">{{ _("Save") }}</button>
+    </form>
+    <div id="saveMessage" class="mt-3"></div>
+</div>
+<br><br> 
+<footer>
+  <p style="text-align: center;">
+    <a href="https://hackolyte.fr/">
+      <img src="https://hackolyte.fr/wp-content/uploads/2024/09/cropped-cropped-logo.png" alt="{{ _("Hack'olyte logo") }}" style="height: 30px; vertical-align: middle; margin-right: 5px;">
+    </a>
+    {{ _("Plugin developed by the association") }} <a href="https://hackolyte.fr/">Hack'olyte</a>{{ _(" ") }} - v1.3
+  </p>
+</footer>
+
+<script>
+var AT_I18N = {
+    settings_saved: "{{ js_i18n['settings_saved'] }}",
+    error_saving: "{{ js_i18n['error_saving'] }}",
+    network_error: "{{ js_i18n['network_error'] }}"
+};
+document.getElementById("attempts-settings-form").addEventListener("submit", function (e) {
+    e.preventDefault();
+    const showMain = document.getElementById("showMainButton").checked;
+    const csrfToken = window.init.csrfNonce;
+    fetch('/plugins/ctfd-attempts-viewer/admin/save', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'CSRF-Token': csrfToken
+        },
+        body: JSON.stringify({
+            show_main_button: showMain
+        })
+    })
+    .then(res => res.json())
+    .then(data => {
+        if (data.success) {
+            document.getElementById("saveMessage").innerHTML = "<span class='text-success'>" + AT_I18N.settings_saved + "</span>";
+        } else {
+            document.getElementById("saveMessage").innerHTML = "<span class='text-danger'>" + AT_I18N.error_saving + "</span>";
+        }
+    })
+    .catch(() => {
+        document.getElementById("saveMessage").innerHTML = "<span class='text-danger'>" + AT_I18N.network_error + "</span>";
+    });
+});
+
+// Load current value on page open
+fetch('/plugins/ctfd-attempts-viewer/api/settings')
+    .then(res => res.json())
+    .then(configs => {
+        document.getElementById("showMainButton").checked = configs.show_main_button;
+    })
+    .catch(() => {
+        document.getElementById("showMainButton").checked = false;
+    });
+</script>
+{% endblock %}

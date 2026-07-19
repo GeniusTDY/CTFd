@@ -1,0 +1,237 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container py-5">
+  
+  <h1 class="mb-4">{{ _("Attempts History") }} -  <a href="/challenges" class="btn btn-outline-secondary">
+  ← {{ _("Back to challenges") }}
+</a> </h1>
+<p>{{ _("Below you will find the attempts made by your team on the various challenges during the event.") }}</p>  
+<hr><br><br>
+
+<!-- Filter bar -->
+<div class="d-flex gap-4 flex-wrap align-items-end mb-4">
+  <div>
+    <label for="challenge-filter" class="form-label fw-bold">{{ _("Filter by challenge:") }}</label>
+    <select id="challenge-filter" class="form-select" style="min-width: 200px;">
+      <option value="all">{{ _("All") }}</option>
+    </select>
+  </div>
+
+  <div>
+    <label for="user-filter" class="form-label fw-bold">{{ _("Filter by player:") }}</label>
+    <select id="user-filter" class="form-select" style="min-width: 200px;">
+      <option value="all">{{ _("All") }}</option>
+    </select>
+  </div>
+
+  <div>
+    <label for="type-filter" class="form-label fw-bold">{{ _("Filter by status:") }}</label>
+    <select id="type-filter" class="form-select" style="min-width: 150px;">
+      <option value="all">{{ _("All") }}</option>
+      <option value="correct">{{ _("Correct") }}</option>
+      <option value="incorrect">{{ _("Incorrect") }}</option>
+    </select>
+  </div>
+</div>
+<br>
+<div id="attempts-container"></div>
+<div id="pagination" class="mt-4"></div>
+<br><br>
+<footer>
+  <p style="text-align: center;">
+    <a href="https://hackolyte.fr/">
+      <img src="https://hackolyte.fr/wp-content/uploads/2024/09/cropped-cropped-logo.png" alt="{{ _("Hack'olyte logo") }}" style="height: 30px; vertical-align: middle; margin-right: 5px;">
+    </a>
+    {{ _("Plugin developed by the association") }} <a href="https://hackolyte.fr/">Hack'olyte</a>{{ _(" ") }} - v1.3
+  </p>
+</footer>
+
+<script>
+var AT_I18N = {
+    player: "{{ js_i18n['player'] }}",
+    challenge: "{{ js_i18n['challenge'] }}",
+    answer_tried: "{{ js_i18n['answer_tried'] }}",
+    correct_header: "{{ js_i18n['correct_answer'] }}",
+    correct: "{{ js_i18n['correct'] }}",
+    incorrect: "{{ js_i18n['incorrect'] }}",
+    submission_date: "{{ js_i18n['date'] }}",
+    copy: "{{ js_i18n['copy'] }}",
+    no_attempts: "{{ js_i18n['no_attempts'] }}",
+    error_loading: "{{ js_i18n['error_loading'] }}"
+};
+(async () => {
+  const container = document.getElementById("attempts-container");
+  const pagination = document.getElementById("pagination");
+  const filterSelect = document.getElementById("challenge-filter");
+  const userFilter = document.getElementById("user-filter");
+  const typeFilter = document.getElementById("type-filter");
+
+  const PAGE_SIZE = 10;
+  let currentPage = 1;
+  let submissions = [];
+  let filteredSubs = [];
+
+  function renderPage(page) {
+    while (container.firstChild) {
+      container.removeChild(container.firstChild);
+    }
+
+    const start = (page - 1) * PAGE_SIZE;
+    const end = start + PAGE_SIZE;
+    const pageData = filteredSubs.slice(start, end);
+
+    const responsiveDiv = document.createElement("div");
+    responsiveDiv.className = "table-responsive";
+
+    const table = document.createElement("table");
+    table.className = "table table-striped table-bordered";
+
+    const thead = document.createElement("thead");
+    const headerRow = document.createElement("tr");
+    [AT_I18N.player, AT_I18N.challenge, AT_I18N.answer_tried, AT_I18N.correct_header, AT_I18N.submission_date].forEach(header => {
+      const th = document.createElement("th");
+      th.textContent = header;
+      headerRow.appendChild(th);
+    });
+    thead.appendChild(headerRow);
+    table.appendChild(thead);
+
+    const tbody = document.createElement("tbody");
+    pageData.forEach(sub => {
+      const tr = document.createElement("tr");
+
+      const tdUser = document.createElement("td");
+      tdUser.textContent = sub.user_name;
+      tr.appendChild(tdUser);
+
+      const tdChallenge = document.createElement("td");
+      tdChallenge.textContent = sub.challenge_name;
+      tr.appendChild(tdChallenge);
+
+      const tdSubmission = document.createElement("td");
+      const isGeo = sub.submission.includes("lat:");
+
+      if (isGeo) {
+        const span = document.createElement("span");
+        span.textContent = sub.submission;
+        tdSubmission.appendChild(span);
+      } else {
+        const icon = document.createElement("i");
+        icon.className = "fas fa-clipboard me-2 text-primary";
+        icon.title = AT_I18N.copy;
+        icon.style.cursor = "pointer";
+
+        icon.addEventListener("click", () => {
+          navigator.clipboard.writeText(sub.submission).then(() => {
+            icon.style.color = "#28a745";
+            setTimeout(() => { icon.style.color = ""; }, 1000);
+          });
+        });
+
+        tdSubmission.appendChild(icon);
+        const textNode = document.createTextNode(" " + sub.submission);
+        tdSubmission.appendChild(textNode);
+      }
+      tr.appendChild(tdSubmission);
+
+      const tdType = document.createElement("td");
+      tdType.textContent = sub.type === "correct" ? ("\u2705 " + AT_I18N.correct) : ("\u274C " + AT_I18N.incorrect);
+      tr.appendChild(tdType);
+
+      const tdDate = document.createElement("td");
+      tdDate.textContent = new Date(sub.date).toLocaleString();
+      tr.appendChild(tdDate);
+
+      tbody.appendChild(tr);
+    });
+
+    table.appendChild(tbody);
+    responsiveDiv.appendChild(table);
+    container.appendChild(responsiveDiv);
+
+    while (pagination.firstChild) {
+      pagination.removeChild(pagination.firstChild);
+    }
+    
+    const totalPages = Math.ceil(filteredSubs.length / PAGE_SIZE);
+
+    for (let i = 1; i <= totalPages; i++) {
+      const btn = document.createElement("button");
+      btn.className = "btn btn-sm " + (i === page ? "btn-primary" : "btn-outline-primary") + " mx-1";
+      btn.textContent = i;
+
+      btn.addEventListener("click", () => {
+        currentPage = i;
+        renderPage(i);
+      });
+
+      pagination.appendChild(btn);
+    }
+  }
+
+  function applyFilter() {
+    const selectedChallenge = filterSelect.value;
+    const selectedUser = userFilter.value;
+    const selectedType = typeFilter.value;
+
+    filteredSubs = submissions.filter(sub => {
+      const matchChallenge = selectedChallenge === "all" || sub.challenge_id.toString() === selectedChallenge;
+      const matchUser = selectedUser === "all" || sub.user_name === selectedUser;
+      const matchType = selectedType === "all" || sub.type === selectedType;
+      return matchChallenge && matchUser && matchType;
+    });
+
+    currentPage = 1;
+    renderPage(currentPage);
+  }
+
+  try {
+    const res = await fetch("/plugins/ctfd-attempts-viewer/api/my-team-submissions");
+    const result = await res.json();
+    if (!result.success || !result.data.length) {
+      container.textContent = AT_I18N.no_attempts;
+      return;
+    }
+
+    submissions = result.data.sort((a, b) => new Date(b.date) - new Date(a.date));
+
+    // Challenges
+    const challengeMap = {};
+    submissions.forEach(sub => {
+      challengeMap[sub.challenge_id] = sub.challenge_name;
+    });
+    Object.entries(challengeMap).forEach(([id, name]) => {
+      const option = document.createElement("option");
+      option.value = id;
+      option.textContent = name;
+      filterSelect.appendChild(option);
+    });
+
+    // Users
+    const userSet = new Set(submissions.map(s => s.user_name));
+    userSet.forEach(user => {
+      const option = document.createElement("option");
+      option.value = user;
+      option.textContent = user;
+      userFilter.appendChild(option);
+    });
+
+    filterSelect.addEventListener("change", applyFilter);
+    userFilter.addEventListener("change", applyFilter);
+    typeFilter.addEventListener("change", applyFilter);
+
+    applyFilter();
+
+  } catch (err) {
+    console.error("Error API:", err);
+    const alertDiv = document.createElement("div");
+    alertDiv.className = "alert alert-danger";
+    alertDiv.textContent = AT_I18N.error_loading;
+    container.appendChild(alertDiv);
+  }
+})();
+</script>
+
+</div>
+{% endblock %}
