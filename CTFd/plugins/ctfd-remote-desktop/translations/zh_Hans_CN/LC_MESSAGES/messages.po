@@ -1551,7 +1551,7 @@ msgstr "主机上线"
 
 #: src/templates/remote_desktop_dashboard.html:693
 msgid "Orphan Reaped"
-msgstr "孤儿进程已回收"
+msgstr "孤儿容器已回收"
 
 #: src/templates/remote_desktop_dashboard.html:697
 msgid "success"
