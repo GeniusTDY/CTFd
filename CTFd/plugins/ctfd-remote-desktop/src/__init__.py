@@ -13,7 +13,12 @@ from types import FrameType
 from typing import Callable
 
 from flask import Flask
+from flask_babel import gettext, lazy_gettext
 from CTFd.plugins import register_user_page_menu_bar
+from CTFd.utils.plugins import (
+    get_menubar_plugins as _original_get_menubar_plugins,
+    get_configurable_plugins as _original_get_configurable_plugins,
+)
 
 from .docker_host_manager import DockerHostManager, LOCAL_CONTEXT_NAME, LOCAL_SOCKET_PATH, _get_host_gateway
 from .orchestrator import Orchestrator
@@ -56,6 +61,22 @@ def _claim_scheduler_leader() -> bool:
         if fd is not None:
             fd.close()
         return False
+
+
+def _translated_get_menubar_plugins():
+    # Wrap each plugin's name with gettext so the sidebar entry under
+    # the admin "Plugins" dropdown can be translated without touching CTFd core.
+    plugins = _original_get_menubar_plugins()
+    return [p._replace(name=gettext(p.name)) for p in plugins]
+
+
+def _translated_get_configurable_plugins():
+    # Wrap each plugin's name with gettext so the entry under the admin
+    # Config page sidebar ("Plugins" section) can be translated without
+    # touching CTFd core. Complements _translated_get_menubar_plugins,
+    # which only covers the top-nav "Plugins" dropdown.
+    plugins = _original_get_configurable_plugins()
+    return [p._replace(name=gettext(p.name)) for p in plugins]
 
 
 logger = logging.getLogger(__name__)
@@ -158,6 +179,17 @@ def load(app: Flask) -> None:
     if plugin_translations not in current:
         app.config["BABEL_TRANSLATION_DIRECTORIES"] = f"{current};{plugin_translations}"
 
+    # Override the Jinja2 globals so the admin "Plugins" entries — both the
+    # top-nav dropdown (get_menubar_plugins) and the admin Config page sidebar
+    # (get_configurable_plugins) — are rendered through gettext. This makes
+    # "Remote Desktop" translate to "远程桌面" in zh_CN without touching CTFd
+    # core templates. English stays intact: gettext returns the original msgid
+    # when no translation catalog is active.
+    app.jinja_env.globals.update(
+        get_menubar_plugins=_translated_get_menubar_plugins,
+        get_configurable_plugins=_translated_get_configurable_plugins,
+    )
+
     app.db.create_all()
 
     host_manager = DockerHostManager()
@@ -182,7 +214,9 @@ def load(app: Flask) -> None:
         return resp
 
     app.register_blueprint(remote_desktop_bp)
-    register_user_page_menu_bar("Remote Desktop", "/remote-desktop")
+    # lazy_gettext defers translation until render time, so the navbar entry
+    # follows the active locale (zh_CN -> "远程桌面", en -> "Remote Desktop").
+    register_user_page_menu_bar(lazy_gettext("Remote Desktop"), "/remote-desktop")
 
     # register config template in the DictLoader so {% include %} on
     # /admin/config can find it without hardcoding the plugin folder name

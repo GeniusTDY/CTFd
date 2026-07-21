@@ -1950,3 +1950,7 @@ msgstr "暂无命令"
 #, python-format
 msgid "Showing %(from)s-%(to)s of %(total)s"
 msgstr "显示 %(total)s 条中的 %(from)s-%(to)s"
+
+#: src/__init__.py:219
+msgid "Remote Desktop"
+msgstr "远程桌面"
