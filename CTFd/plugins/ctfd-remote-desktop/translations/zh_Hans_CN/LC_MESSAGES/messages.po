@@ -293,7 +293,7 @@ msgstr "极短的会话可能表明远程桌面配置存在问题"
 
 #: src/routes.py:886
 msgid "users who left before using most of their time"
-msgstr "在用完大部分时间前就离开的用户"
+msgstr "未用完大部分时间就离开的用户"
 
 #: src/routes.py:887
 msgid "used most of the base session time"
@@ -364,7 +364,7 @@ msgstr "远程桌面不可用"
 
 #: src/templates/remote_desktop.html:363
 msgid "This feature has been disabled by an administrator. Check back later."
-msgstr "此功能已被管理员禁用，请稍后再来。"
+msgstr "此功能已被管理员禁用，请稍后重试。"
 
 #: src/templates/remote_desktop.html:367
 msgid "Verify Your Email"
@@ -490,7 +490,7 @@ msgstr "会话启动后，可从底部栏使用桌面、终端和 SSH 模式。"
 msgid ""
 "Sessions expire after a set time to save resources and keep your "
 "environment fresh."
-msgstr "会话在设定时间后过期，以节省资源并保持环境始终如新。"
+msgstr "会话在设定时间后过期，以节省资源并保持环境清爽。"
 
 #: src/templates/remote_desktop.html:469 src/templates/remote_desktop.html:565
 #: src/templates/remote_desktop.html:591 src/templates/remote_desktop.html:644
@@ -558,7 +558,7 @@ msgstr "正在添加..."
 msgid ""
 "Your session will expire in less than 5 minutes. Consider extending your "
 "session."
-msgstr "您的会话将在不到 5 分钟后过期，建议延迟。"
+msgstr "您的会话将在不到 5 分钟后过期，建议延迟您的会话。"
 
 #: src/templates/remote_desktop.html:918
 msgid ""
@@ -577,7 +577,7 @@ msgstr "感谢您的反馈！"
 
 #: src/templates/remote_desktop.html:938
 msgid "Type something to send"
-msgstr "请输入要发送的内容"
+msgstr "输入要发送的内容"
 
 #: src/templates/remote_desktop.html:993
 msgid "Sending..."
@@ -735,7 +735,7 @@ msgid ""
 "How long a desktop session lasts before it expires. Users will see a "
 "countdown timer. Set higher for longer competitions, lower to save server"
 " resources."
-msgstr "桌面会话在过期前的持续时间。用户将看到倒计时。较长的比赛可设置较高值，较低的值可节省服务器资源。"
+msgstr "桌面会话在过期前的持续时间。用户将看到倒计时。持续时间较长的比赛可设置较高值，较低的值可节省服务器资源。"
 
 #: src/templates/remote_desktop_config.html:80
 msgid "Extension Duration"
@@ -757,7 +757,7 @@ msgid ""
 "How many times a user can extend their session. Set to 0 for no "
 "extensions (hard time limit). Higher values let users keep their desktop "
 "alive longer."
-msgstr "用户可延迟的次数。设为 0 表示不可延迟（硬性时间限制）。较高的值允许用户让桌面保持更长时间。"
+msgstr "用户可延迟的次数。设为 0 表示不可延迟（硬性时间限制）。较高的值允许用户让桌面保持活跃更长时间。"
 
 #: src/templates/remote_desktop_config.html:94
 msgid "Timeouts"
@@ -928,7 +928,7 @@ msgstr "主机名（SSH）"
 msgid ""
 "SSH target for remote hosts, leave blank if a matching docker context "
 "exists on the host"
-msgstr "远程主机的 SSH 目标，如果主机上存在匹配的 docker context 则留空"
+msgstr "远程主机的 SSH 目标，如果主机上存在匹配的 Docker context 则留空"
 
 #: src/templates/remote_desktop_config.html:210
 msgid "Address users use to connect to VNC sessions on this host"
@@ -1551,7 +1551,7 @@ msgstr "主机上线"
 
 #: src/templates/remote_desktop_dashboard.html:693
 msgid "Orphan Reaped"
-msgstr "已清理孤儿"
+msgstr "孤儿进程已回收"
 
 #: src/templates/remote_desktop_dashboard.html:697
 msgid "success"
@@ -1623,7 +1623,7 @@ msgstr "apt 错误"
 
 #: src/templates/remote_desktop_dashboard.html:714
 msgid "apt broken packages"
-msgstr "apt 损坏的包"
+msgstr "apt 损坏的软件包"
 
 #: src/templates/remote_desktop_dashboard.html:715
 msgid "not executable"
@@ -1691,7 +1691,7 @@ msgstr "管道破裂"
 
 #: src/templates/remote_desktop_dashboard.html:731
 msgid "alarm timeout"
-msgstr "闹钟超时"
+msgstr "定时器超时"
 
 #: src/templates/remote_desktop_dashboard.html:732
 msgid "terminated"
@@ -1719,11 +1719,11 @@ msgstr "ctrl-z"
 
 #: src/templates/remote_desktop_dashboard.html:738
 msgid "bg read from tty"
-msgstr "后台从 tty 读取"
+msgstr "后台进程从 tty 读取"
 
 #: src/templates/remote_desktop_dashboard.html:739
 msgid "bg write to tty"
-msgstr "后台写入 tty"
+msgstr "后台进程向 tty 写入"
 
 #: src/templates/remote_desktop_dashboard.html:740
 msgid "cpu time exceeded"
