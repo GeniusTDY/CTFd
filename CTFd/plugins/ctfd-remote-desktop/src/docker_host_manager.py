@@ -383,7 +383,7 @@ class DockerHostManager:
                     self._clear_client(context_name)
                     raise
             else:
-                raise docker.errors.DockerException(f"failed to find available ports after retries: {last_err}")
+                raise docker.errors.DockerException(_("failed to find available ports after retries: %(error)s", error=str(last_err)))
 
             port_map: dict[str, int] = {}
             for attempt in range(5):
@@ -405,7 +405,7 @@ class DockerHostManager:
                     time.sleep(0.3)
 
             if not port_map:
-                raise Exception(f"could not get port mappings for {name}")
+                raise Exception(_("could not get port mappings for %(name)s", name=name))
 
             return {
                 "container_id": container.id,

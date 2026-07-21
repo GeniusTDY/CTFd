@@ -126,7 +126,7 @@ def _require_confirm():
     # guard against stray POSTs (admin xss, hijacked session, fat finger) wiping audit data
     payload = request.get_json(silent=True) or {}
     if payload.get("confirm") != "DELETE":
-        return jsonify({"error": 'confirmation required: post body must contain {"confirm": "DELETE"}'}), 400
+        return jsonify({"error": _('confirmation required: post body must contain {"confirm": "DELETE"}')}), 400
     return None
 
 

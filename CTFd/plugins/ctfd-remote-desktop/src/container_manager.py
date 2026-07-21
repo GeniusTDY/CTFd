@@ -703,7 +703,7 @@ class ContainerManager:
             container_data = {
                 "user_id": row.user_id,
                 # inv: dashboard JS at remote_desktop_dashboard.html:1074,1093 uses these via innerHTML; must stay _esc'd
-                "username": _esc(user.name) if user else "Unknown",
+                "username": _esc(user.name) if user else _("Unknown"),
                 **user_flags(user),
                 "container_name": _esc(row.container_name),
                 "container_id": row.container_id,

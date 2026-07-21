@@ -305,7 +305,7 @@ msgstr "已用完所有续期，建议增加时长或续期次数"
 
 #: src/routes.py:897
 msgid "needed a bit more time than the base session"
-msgstr "使用了比基础会话略长的时间"
+msgstr "需要比基础会话略长的时间"
 
 #: src/routes.py:899
 #, python-format
@@ -474,7 +474,7 @@ msgstr "这是一个临时环境，会话之间不会保存任何内容。"
 
 #: src/templates/remote_desktop.html:463
 msgid "Avoid logging into anything sensitive."
-msgstr "避免在此环境中登录任何敏感账户或服务。"
+msgstr "避免登录任何敏感内容。"
 
 #: src/templates/remote_desktop.html:464
 msgid "If something breaks, just stop and start a new session."
@@ -1818,7 +1818,7 @@ msgstr "%(ctx)s：可访问"
 #: src/templates/remote_desktop_dashboard.html:849
 #, python-format
 msgid "%(parts)s (age %(age)s, leftover with no db row)"
-msgstr "%(parts)s（存活 %(age)s，无数据库记录的遗留项）"
+msgstr "%(parts)s（存在时间 %(age)s，无数据库记录的遗留项）"
 
 #: src/templates/remote_desktop_dashboard.html:909
 #: src/templates/remote_desktop_dashboard.html:1048
@@ -1954,3 +1954,21 @@ msgstr "显示 %(total)s 条中的 %(from)s-%(to)s"
 #: src/__init__.py:219
 msgid "Remote Desktop"
 msgstr "远程桌面"
+
+#: src/container_manager.py:706
+msgid "Unknown"
+msgstr "未知"
+
+#: src/routes.py:129
+msgid "confirmation required: post body must contain {\"confirm\": \"DELETE\"}"
+msgstr "需要确认：POST 请求体必须包含 {\"confirm\": \"DELETE\"}"
+
+#: src/docker_host_manager.py:386
+#, python-format
+msgid "failed to find available ports after retries: %(error)s"
+msgstr "重试后未能找到可用端口：%(error)s"
+
+#: src/docker_host_manager.py:408
+#, python-format
+msgid "could not get port mappings for %(name)s"
+msgstr "无法获取 %(name)s 的端口映射"
