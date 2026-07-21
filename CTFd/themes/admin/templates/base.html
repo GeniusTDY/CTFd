@@ -126,14 +126,16 @@
 							</span>
 						</a>
 						<form x-data="LanguageForm">
-							<div class="dropdown-menu dropdown-menu-right">
+							<ul class="dropdown-menu dropdown-menu-right">
 								{% set curr_lang = get_locale() %}
 								{%- for lang in Languages.names.items() %}
-								<span class="dropdown-item {{ 'bg-primary text-white' if (curr_lang == lang[0]) }}" @click="set" value="{{ lang[0] }}">
-									{{ lang[1] }}
-								</span>
+								<li>
+									<span class="dropdown-item {{ 'bg-primary text-white' if (curr_lang == lang[0]) }}" @click="set" value="{{ lang[0] }}">
+										{{ lang[1] }}
+									</span>
+								</li>
 								{%- endfor %}
-							</div>
+							</ul>
 						</form>
 					</li>
 					<li class="nav-item">
@@ -180,7 +182,8 @@
 	{% endblock %}
 
 	<script>
-		document.addEventListener('alpine:init', () => {
+		document.addEventListener('DOMContentLoaded', function() {
+			if (!window.Alpine) return;
 			Alpine.data('LanguageForm', () => ({
 				async set(event) {
 					let language = event.target.getAttribute('value');
@@ -197,6 +200,7 @@
 					window.location.reload();
 				},
 			}));
+			Alpine.start();
 		});
 	</script>
 
