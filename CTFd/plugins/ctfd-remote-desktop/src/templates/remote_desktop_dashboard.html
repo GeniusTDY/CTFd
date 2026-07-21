@@ -214,6 +214,18 @@
 		z-index: 1000;
 		pointer-events: none;
 	}
+
+	@media (max-width: 768px) {
+		.cfg-help:hover::after {
+			left: 0;
+			transform: none;
+		}
+
+		.cfg-help:hover::before {
+			left: 7px;
+			transform: none;
+		}
+	}
 </style>
 
 <div class="jumbotron">
