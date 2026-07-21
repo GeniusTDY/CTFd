@@ -631,11 +631,11 @@ function startSession() {
         if (ok && data.status === 'creating') {
             hideSessionError();
             pollCreationStatus();
-        } else if (data.error === 'Session creation already in progress') {
+        } else if (data.error_code === 'session_creation_in_progress') {
             // session is being created already, latch onto the existing creation
             hideSessionError();
             pollCreationStatus();
-        } else if (data.error === 'Session already exists') {
+        } else if (data.error_code === 'session_already_exists') {
             // page state is stale, reload to show the active session
             reloadPage();
         } else {

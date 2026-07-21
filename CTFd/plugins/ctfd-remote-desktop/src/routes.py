@@ -277,7 +277,7 @@ def create_routes(container_manager: ContainerManager, orchestrator: Orchestrato
                 username=user.name,
                 level="warning",
             )
-            return jsonify({"error": _("Session already exists")}), 400
+            return jsonify({"error": _("Session already exists"), "error_code": "session_already_exists"}), 400
 
         creation_status = container_manager.get_creation_status(user.id)
         if creation_status and creation_status.get("status") not in ["failed", "none"]:
@@ -288,7 +288,7 @@ def create_routes(container_manager: ContainerManager, orchestrator: Orchestrato
                 username=user.name,
                 level="warning",
             )
-            return jsonify({"error": _("Session creation already in progress")}), 400
+            return jsonify({"error": _("Session creation already in progress"), "error_code": "session_creation_in_progress"}), 400
 
         # localhost in a container is the container itself, swap to
         # host.docker.internal + extra_hosts so firefox can reach the host

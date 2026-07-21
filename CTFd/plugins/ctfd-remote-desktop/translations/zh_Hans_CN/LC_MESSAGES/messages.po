@@ -239,11 +239,11 @@ msgstr "该用户没有活跃会话"
 #: src/routes.py:536
 #, python-format
 msgid "admin %(admin)s extended session for %(target)s"
-msgstr "管理员 %(admin)s 延长了 %(target)s 的会话"
+msgstr "管理员 %(admin)s 为 %(target)s 续期了会话"
 
 #: src/routes.py:548
 msgid "Failed to extend session"
-msgstr "延长会话失败"
+msgstr "续期会话失败"
 
 #: src/routes.py:575 src/templates/remote_desktop_dashboard.html:835
 #, python-format
@@ -569,7 +569,7 @@ msgid ""
 msgstr ""
 "描述 bug 或功能。\n"
 "\n"
-"如果是 bug：您当时在做什么？发生了什么？您期望的结果是什么？如果是视觉问题，请粘贴图片链接（imgur、0x0.st）。"
+"对于 bug：您当时在做什么？发生了什么？您期望的结果是什么？如果是视觉问题，请粘贴图片链接（imgur、0x0.st）。"
 
 #: src/templates/remote_desktop.html:931
 msgid "Thanks for your feedback!"
@@ -688,7 +688,7 @@ msgid ""
 "Where to pull the Linux username inside the desktop. Normalized to "
 "lowercase letters and numbers, falls back to user{id} if the result is "
 "empty."
-msgstr "在桌面内提取 Linux 用户名的来源。会被标准化为小写字母和数字，如果结果为空则回退为 user{id}。"
+msgstr "桌面内 Linux 用户名的获取来源。会被标准化为小写字母和数字，如果结果为空则回退为 user{id}。"
 
 #: src/templates/remote_desktop_config.html:55
 msgid "CTFd Display Name"
@@ -1019,7 +1019,7 @@ msgstr "本地 Docker socket 可访问。"
 
 #: src/templates/remote_desktop_config.html:435
 msgid "No contexts configured"
-msgstr "未配置任何 context"
+msgstr "未配置任何 contexts"
 
 #: src/templates/remote_desktop_config.html:449
 msgid "DISABLED"
@@ -1188,7 +1188,7 @@ msgstr "可用"
 #: src/templates/remote_desktop_config.html:749
 #, python-format
 msgid "Newest build found across contexts. %(size)sMB, built %(created)s"
-msgstr "在所有 context 中找到的最新构建。%(size)sMB，构建于 %(created)s"
+msgstr "在所有 contexts 中找到的最新构建。%(size)sMB，构建于 %(created)s"
 
 #: src/templates/remote_desktop_config.html:754
 #, python-format
@@ -1972,3 +1972,15 @@ msgstr "重试后未能找到可用端口：%(error)s"
 #, python-format
 msgid "could not get port mappings for %(name)s"
 msgstr "无法获取 %(name)s 的端口映射"
+
+#: src/orchestrator.py:58
+msgid "connection failed"
+msgstr "连接失败"
+
+#: src/orchestrator.py:58
+msgid "image not found"
+msgstr "镜像未找到"
+
+#: src/orchestrator.py:124
+msgid "unreachable"
+msgstr "不可达"

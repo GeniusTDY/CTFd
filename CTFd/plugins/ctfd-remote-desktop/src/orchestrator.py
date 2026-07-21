@@ -55,7 +55,7 @@ class Orchestrator:
                     meta["image"] = image_info
                 events.append(("host_healthy", _("context %(name)s is healthy", name=name), "info", meta))
             else:
-                reason = "connection failed" if not is_connected else "image not found"
+                reason = _("connection failed") if not is_connected else _("image not found")
                 events.append(
                     (
                         "host_unhealthy",
@@ -127,7 +127,7 @@ class Orchestrator:
             logger.warning(f"context {context_name} marked unhealthy: {reason}")
             event_logger.log_event(
                 "host_unhealthy",
-                _("context %(context_name)s marked unhealthy: %(reason)s", context_name=context_name, reason=reason),
+                _("context %(context_name)s marked unhealthy: %(reason)s", context_name=context_name, reason=_(reason)),
                 level="warning",
                 metadata={"context_name": context_name, "reason": reason},
             )

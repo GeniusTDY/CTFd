@@ -443,7 +443,7 @@ class ContainerManager:
 
             existing_row = DesktopContainerInfoModel.query.filter_by(user_id=user_id).first()
             if existing_row:
-                return {"success": False, "error": _("Session already exists")}
+                return {"success": False, "error": _("Session already exists"), "error_code": "session_already_exists"}
 
             self.creation_status[user_id] = {"status": "queued", "message": _("Queued...")}
 
