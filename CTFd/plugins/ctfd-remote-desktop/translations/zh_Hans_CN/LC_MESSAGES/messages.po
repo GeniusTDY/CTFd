@@ -117,7 +117,7 @@ msgstr "在 %(ctx_name)s 上清理了孤儿容器 %(name)s"
 #: src/container_manager.py:898
 #, python-format
 msgid "admin %(admin)s killed all sessions (%(killed)s total)"
-msgstr "管理员 %(admin)s 清除了所有会话（共 %(killed)s 个）"
+msgstr "管理员 %(admin)s 终止了所有会话（共 %(killed)s 个）"
 
 #: src/docker_host_manager.py:184
 #, python-format
@@ -164,7 +164,7 @@ msgstr "用户 %(uid)s"
 
 #: src/routes.py:263 src/routes.py:397
 msgid "Remote Desktop is currently disabled"
-msgstr "远程桌面当前已禁用"
+msgstr "远程桌面目前已禁用"
 
 #: src/routes.py:268 src/routes.py:402
 msgid "Email verification required"
@@ -172,11 +172,11 @@ msgstr "需要邮箱验证"
 
 #: src/routes.py:275
 msgid "attempted to create session but already exists"
-msgstr "尝试创建会话但已存在"
+msgstr "尝试创建会话，但会话已存在"
 
 #: src/routes.py:286
 msgid "attempted to create session but creation already in progress"
-msgstr "尝试创建会话但创建已在进行中"
+msgstr "尝试创建会话，但创建已在进行中"
 
 #: src/routes.py:291
 msgid "Session creation already in progress"
@@ -305,7 +305,7 @@ msgstr "已用完所有续期，建议增加时长或续期次数"
 
 #: src/routes.py:897
 msgid "needed a bit more time than the base session"
-msgstr "需要的基础会话时间略多一些"
+msgstr "使用了比基础会话略长的时间"
 
 #: src/routes.py:899
 #, python-format
@@ -408,7 +408,7 @@ msgstr "会话剩余时间"
 
 #: src/templates/remote_desktop.html:415 src/templates/remote_desktop.html:541
 msgid "Add more time to your session"
-msgstr "为会话增加更多时间"
+msgstr "延长会话时间"
 
 #: src/templates/remote_desktop.html:416 src/templates/remote_desktop.html:545
 #: src/templates/remote_desktop.html:548
@@ -474,7 +474,7 @@ msgstr "这是一个临时环境，会话之间不会保存任何内容。"
 
 #: src/templates/remote_desktop.html:463
 msgid "Avoid logging into anything sensitive."
-msgstr "避免登录任何敏感账户。"
+msgstr "避免在此环境中登录任何敏感账户或服务。"
 
 #: src/templates/remote_desktop.html:464
 msgid "If something breaks, just stop and start a new session."
@@ -490,7 +490,7 @@ msgstr "会话启动后，可从底部栏使用桌面、终端和 SSH 模式。"
 msgid ""
 "Sessions expire after a set time to save resources and keep your "
 "environment fresh."
-msgstr "会话在设定时间后过期，以节省资源并保持环境新鲜。"
+msgstr "会话在设定时间后过期，以节省资源并保持环境始终如新。"
 
 #: src/templates/remote_desktop.html:469 src/templates/remote_desktop.html:565
 #: src/templates/remote_desktop.html:591 src/templates/remote_desktop.html:644
@@ -558,7 +558,7 @@ msgstr "正在添加..."
 msgid ""
 "Your session will expire in less than 5 minutes. Consider extending your "
 "session."
-msgstr "您的会话将在不到 5 分钟后过期，请考虑续期会话。"
+msgstr "您的会话将在不到 5 分钟后过期，建议续期。"
 
 #: src/templates/remote_desktop.html:918
 msgid ""
@@ -569,7 +569,7 @@ msgid ""
 msgstr ""
 "描述 bug 或功能。\n"
 "\n"
-"如果是 bug：您当时在做什么？发生了什么？您期望的结果是什么？如果是视觉问题，请粘贴图片链接（imgur, 0x0.st）。"
+"如果是 bug：您当时在做什么？发生了什么？您期望的结果是什么？如果是视觉问题，请粘贴图片链接（imgur、0x0.st）。"
 
 #: src/templates/remote_desktop.html:931
 msgid "Thanks for your feedback!"
@@ -577,7 +577,7 @@ msgstr "感谢您的反馈！"
 
 #: src/templates/remote_desktop.html:938
 msgid "Type something to send"
-msgstr "输入一些内容以发送"
+msgstr "请输入要发送的内容"
 
 #: src/templates/remote_desktop.html:993
 msgid "Sending..."
@@ -700,7 +700,7 @@ msgstr "邮箱（@ 之前部分）"
 
 #: src/templates/remote_desktop_config.html:60
 msgid "Cap Drop"
-msgstr "丢弃 Cap"
+msgstr "Cap Drop"
 
 #: src/templates/remote_desktop_config.html:60
 msgid ""
@@ -711,7 +711,7 @@ msgstr "要从容器中丢弃的 Linux capabilities，以逗号分隔。使用 A
 
 #: src/templates/remote_desktop_config.html:64
 msgid "Cap Add"
-msgstr "添加 Cap"
+msgstr "Cap Add"
 
 #: src/templates/remote_desktop_config.html:64
 msgid ""
@@ -757,7 +757,7 @@ msgid ""
 "How many times a user can extend their session. Set to 0 for no "
 "extensions (hard time limit). Higher values let users keep their desktop "
 "alive longer."
-msgstr "用户可续期会话的次数。设为 0 表示不可续期（硬性时间限制）。较高的值允许用户让桌面保持更长时间。"
+msgstr "用户可续期的次数。设为 0 表示不可续期（硬性时间限制）。较高的值允许用户让桌面保持更长时间。"
 
 #: src/templates/remote_desktop_config.html:94
 msgid "Timeouts"
@@ -877,7 +877,7 @@ msgstr "导入 Docker Contexts"
 
 #: src/templates/remote_desktop_config.html:163
 msgid "Docker contexts detected from"
-msgstr "从此处检测到 Docker contexts"
+msgstr "检测到 Docker contexts，来源："
 
 #: src/templates/remote_desktop_config.html:163
 msgid ""
@@ -900,7 +900,7 @@ msgstr "请确保"
 
 #: src/templates/remote_desktop_config.html:170
 msgid "is mounted and contexts are created with"
-msgstr "已挂载，且 contexts 已使用以下命令创建"
+msgstr "已挂载，且 contexts 通过以下命令创建："
 
 #: src/templates/remote_desktop_config.html:174
 #: src/templates/remote_desktop_dashboard.html:392
@@ -1335,7 +1335,7 @@ msgstr "暂无报告"
 
 #: src/templates/remote_desktop_dashboard.html:381
 msgid "Report from"
-msgstr "来自以下用户的报告"
+msgstr "报告来自"
 
 #: src/templates/remote_desktop_dashboard.html:402
 msgid "Usage Heatmap"
@@ -1388,7 +1388,7 @@ msgstr "用户排行"
 msgid ""
 "Ranked by total desktop time. Identify power users or accounts consuming "
 "disproportionate resources."
-msgstr "按总桌面时长排序。可识别核心用户或消耗资源异常的账户。"
+msgstr "按总桌面时长排序。可识别重度用户或消耗不成比例资源的账户。"
 
 #: src/templates/remote_desktop_dashboard.html:439
 msgid "Session Duration Distribution"
@@ -1451,7 +1451,7 @@ msgstr "所有会话中最近的 shell 命令。可抽查参赛者正在运行�
 #: src/templates/remote_desktop_dashboard.html:535
 #: src/templates/remote_desktop_dashboard.html:628
 msgid "Exit"
-msgstr "退出"
+msgstr "退出码"
 
 #: src/templates/remote_desktop_dashboard.html:540
 msgid "No commands yet"
@@ -1639,7 +1639,7 @@ msgstr "无效的退出参数"
 
 #: src/templates/remote_desktop_dashboard.html:718
 msgid "hangup"
-msgstr "挂起"
+msgstr "挂断"
 
 #: src/templates/remote_desktop_dashboard.html:719
 msgid "ctrl-c"
@@ -1818,7 +1818,7 @@ msgstr "%(ctx)s：可访问"
 #: src/templates/remote_desktop_dashboard.html:849
 #, python-format
 msgid "%(parts)s (age %(age)s, leftover with no db row)"
-msgstr "%(parts)s（存在 %(age)s，无数据库记录的遗留项）"
+msgstr "%(parts)s（存活 %(age)s，无数据库记录的遗留项）"
 
 #: src/templates/remote_desktop_dashboard.html:909
 #: src/templates/remote_desktop_dashboard.html:1048
