@@ -102,12 +102,12 @@ msgstr "计时器未启动"
 
 #: src/container_manager.py:747
 msgid "Maximum extensions reached"
-msgstr "已达到最大续期次数"
+msgstr "已达到最大延迟次数"
 
 #: src/container_manager.py:763
 #, python-format
 msgid "session extended (%(extensions_used)s/%(max_extensions)s extensions used)"
-msgstr "会话已续期（已使用 %(extensions_used)s/%(max_extensions)s 次续期）"
+msgstr "会话已延迟（已使用 %(extensions_used)s/%(max_extensions)s 次延迟）"
 
 #: src/container_manager.py:872
 #, python-format
@@ -196,7 +196,7 @@ msgstr "销毁失败"
 
 #: src/routes.py:385
 msgid "Extension failed"
-msgstr "续期失败"
+msgstr "延迟失败"
 
 #: src/routes.py:406
 msgid "Report cannot be empty"
@@ -239,11 +239,11 @@ msgstr "该用户没有活跃会话"
 #: src/routes.py:536
 #, python-format
 msgid "admin %(admin)s extended session for %(target)s"
-msgstr "管理员 %(admin)s 为 %(target)s 续期了会话"
+msgstr "管理员 %(admin)s 为 %(target)s 延迟了会话"
 
 #: src/routes.py:548
 msgid "Failed to extend session"
-msgstr "续期会话失败"
+msgstr "延迟会话失败"
 
 #: src/routes.py:575 src/templates/remote_desktop_dashboard.html:835
 #, python-format
@@ -301,7 +301,7 @@ msgstr "使用了大部分基础会话时间"
 
 #: src/routes.py:895
 msgid "used all extensions, consider increasing time or extensions"
-msgstr "已用完所有续期，建议增加时长或续期次数"
+msgstr "已用完所有延迟，建议增加时长或延迟次数"
 
 #: src/routes.py:897
 msgid "needed a bit more time than the base session"
@@ -310,7 +310,7 @@ msgstr "需要比基础会话略长的时间"
 #: src/routes.py:899
 #, python-format
 msgid "used %(i)s of %(max_ext)s extensions, may need a longer base time"
-msgstr "已使用 %(i)s/%(max_ext)s 次续期，可能需要更长的基础时长"
+msgstr "已使用 %(i)s/%(max_ext)s 次延迟，可能需要更长的基础时长"
 
 #: src/routes.py:1181 src/routes.py:1225 src/routes.py:1311
 msgid "invalid request"
@@ -408,13 +408,13 @@ msgstr "会话剩余时间"
 
 #: src/templates/remote_desktop.html:415 src/templates/remote_desktop.html:541
 msgid "Add more time to your session"
-msgstr "延长会话时间"
+msgstr "延迟会话时间"
 
 #: src/templates/remote_desktop.html:416 src/templates/remote_desktop.html:545
 #: src/templates/remote_desktop.html:548
 #: src/templates/remote_desktop_dashboard.html:1038
 msgid "Extend"
-msgstr "续期"
+msgstr "延迟"
 
 #: src/templates/remote_desktop.html:418
 msgid "End session, all work will be lost"
@@ -515,7 +515,7 @@ msgstr "于"
 #: src/templates/remote_desktop.html:541
 #, python-format
 msgid "All %(n)s extensions used"
-msgstr "已用完所有 %(n)s 次续期"
+msgstr "已用完所有 %(n)s 次延迟"
 
 #: src/templates/remote_desktop.html:543
 msgid "used"
@@ -558,7 +558,7 @@ msgstr "正在添加..."
 msgid ""
 "Your session will expire in less than 5 minutes. Consider extending your "
 "session."
-msgstr "您的会话将在不到 5 分钟后过期，建议续期。"
+msgstr "您的会话将在不到 5 分钟后过期，建议延迟。"
 
 #: src/templates/remote_desktop.html:918
 msgid ""
@@ -739,25 +739,25 @@ msgstr "桌面会话在过期前的持续时间。用户将看到倒计时。较
 
 #: src/templates/remote_desktop_config.html:80
 msgid "Extension Duration"
-msgstr "续期时长"
+msgstr "延迟时长"
 
 #: src/templates/remote_desktop_config.html:80
 msgid ""
 "How much extra time is added each time a user clicks Extend. Shorter "
 "values give users more control over how long they stay, longer values "
 "mean fewer clicks."
-msgstr "每次用户点击续期时增加的额外时间。较短的值让用户对停留时长有更多控制，较长的值意味着更少的点击次数。"
+msgstr "每次用户点击延迟时增加的额外时间。较短的值让用户对停留时长有更多控制，较长的值意味着更少的点击次数。"
 
 #: src/templates/remote_desktop_config.html:89
 msgid "Max Extensions"
-msgstr "最大续期次数"
+msgstr "最大延迟次数"
 
 #: src/templates/remote_desktop_config.html:89
 msgid ""
 "How many times a user can extend their session. Set to 0 for no "
 "extensions (hard time limit). Higher values let users keep their desktop "
 "alive longer."
-msgstr "用户可续期的次数。设为 0 表示不可续期（硬性时间限制）。较高的值允许用户让桌面保持更长时间。"
+msgstr "用户可延迟的次数。设为 0 表示不可延迟（硬性时间限制）。较高的值允许用户让桌面保持更长时间。"
 
 #: src/templates/remote_desktop_config.html:94
 msgid "Timeouts"
@@ -1253,7 +1253,7 @@ msgstr "活跃会话"
 msgid ""
 "Currently running desktop containers. Kill or extend individual sessions,"
 " or purge all at once during incidents."
-msgstr "当前正在运行的桌面容器。可终止或延长单个会话，或在事故期间一次性清除全部。"
+msgstr "当前正在运行的桌面容器。可终止或延迟单个会话，或在事故期间一次性清除全部。"
 
 #: src/templates/remote_desktop_dashboard.html:291
 msgid "Purge All"
@@ -1277,7 +1277,7 @@ msgstr "剩余时间"
 
 #: src/templates/remote_desktop_dashboard.html:303
 msgid "Extends"
-msgstr "续期次数"
+msgstr "延迟次数"
 
 #: src/templates/remote_desktop_dashboard.html:321
 msgid "Activity"
@@ -1409,7 +1409,7 @@ msgstr "会话结束原因"
 msgid ""
 "Why sessions ended: expired, user-closed, or admin-killed. A high expired"
 " count means users may need longer timers or more extensions."
-msgstr "会话结束的原因：过期、用户主动关闭或管理员终止。较高的过期数意味着用户可能需要更长的计时器或更多续期次数。"
+msgstr "会话结束的原因：过期、用户主动关闭或管理员终止。较高的过期数意味着用户可能需要更长的计时器或更多延迟次数。"
 
 #: src/templates/remote_desktop_dashboard.html:472
 msgid "Per-Host Breakdown"
@@ -1534,7 +1534,7 @@ msgstr "已过期"
 
 #: src/templates/remote_desktop_dashboard.html:688
 msgid "Extended"
-msgstr "已续期"
+msgstr "已延迟"
 
 #: src/templates/remote_desktop_dashboard.html:690
 #: src/templates/remote_desktop_dashboard.html:748
@@ -1773,7 +1773,7 @@ msgstr "不健康"
 #: src/templates/remote_desktop_dashboard.html:812
 #, python-format
 msgid "%(n)s ext"
-msgstr "%(n)s 次续期"
+msgstr "%(n)s 次延迟"
 
 #: src/templates/remote_desktop_dashboard.html:813
 #, python-format
@@ -1783,7 +1783,7 @@ msgstr "%(n)s 条命令"
 #: src/templates/remote_desktop_dashboard.html:819
 #, python-format
 msgid "%(used)s/%(max)s extensions"
-msgstr "%(used)s/%(max)s 次续期"
+msgstr "%(used)s/%(max)s 次延迟"
 
 #: src/templates/remote_desktop_dashboard.html:831
 #, python-format
@@ -1798,7 +1798,7 @@ msgstr "已终止 %(target)s 的会话"
 #: src/templates/remote_desktop_dashboard.html:833
 #, python-format
 msgid "extended %(target)s's session"
-msgstr "已延长 %(target)s 的会话"
+msgstr "已延迟 %(target)s 的会话"
 
 #: src/templates/remote_desktop_dashboard.html:834
 #, python-format
@@ -1876,7 +1876,7 @@ msgstr "终止失败"
 
 #: src/templates/remote_desktop_dashboard.html:1138
 msgid "Extend failed"
-msgstr "续期失败"
+msgstr "延迟失败"
 
 #: src/templates/remote_desktop_dashboard.html:1161
 msgid "Purge ALL active sessions? This cannot be undone."
