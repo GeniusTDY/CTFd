@@ -239,6 +239,13 @@ def init_request_processors(app):
                 "views.files",
                 "views.healthcheck",
                 "views.robots",
+                "views.translations_js",
+            ):
+                return
+            if request.endpoint and (
+                request.endpoint.startswith("plugins.")
+                or request.path.startswith("/plugins/")
+                or request.path == "/translations.js"
             ):
                 return
             else:
