@@ -1818,7 +1818,7 @@ msgstr "%(ctx)s：可访问"
 #: src/templates/remote_desktop_dashboard.html:849
 #, python-format
 msgid "%(parts)s (age %(age)s, leftover with no db row)"
-msgstr "%(parts)s（存在时间 %(age)s，无数据库记录的遗留项）"
+msgstr "%(parts)s（存活 %(age)s，无数据库记录的遗留项）"
 
 #: src/templates/remote_desktop_dashboard.html:909
 #: src/templates/remote_desktop_dashboard.html:1048
