@@ -117,6 +117,25 @@
 					{% endif %}
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
+					<li class="nav-item dropdown">
+						<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+							<i class="fas fa-language d-none d-md-inline"></i>
+							<span class="d-sm-inline d-md-none">
+								<i class="fas fa-language pe-1"></i>
+								{% trans %}Change language{% endtrans %}
+							</span>
+						</a>
+						<form x-data="LanguageForm">
+							<div class="dropdown-menu dropdown-menu-right">
+								{% set curr_lang = get_locale() %}
+								{%- for lang in Languages.names.items() %}
+								<span class="dropdown-item {{ 'bg-primary text-white' if (curr_lang == lang[0]) }}" @click="set" value="{{ lang[0] }}">
+									{{ lang[1] }}
+								</span>
+								{%- endfor %}
+							</div>
+						</form>
+					</li>
 					<li class="nav-item">
 						<a class="nav-link" href="https://docs.ctfd.io/" target="_blank">
 							<i class="far fa-question-circle"></i>
@@ -159,6 +178,27 @@
 	{% block entrypoint %}
 		{{ Assets.js("assets/js/pages/main.js", theme="admin") }}
 	{% endblock %}
+
+	<script>
+		document.addEventListener('alpine:init', () => {
+			Alpine.data('LanguageForm', () => ({
+				async set(event) {
+					let language = event.target.getAttribute('value');
+					document.cookie = 'language=' + language + ';SameSite=Lax';
+					localStorage.setItem('language', language.replace('_', '-'));
+
+					if (CTFd.user.id) {
+						await CTFd.fetch('/api/v1/users/me', {
+							method: 'PATCH',
+							body: JSON.stringify({ language }),
+						});
+					}
+
+					window.location.reload();
+				},
+			}));
+		});
+	</script>
 
 	{% block scripts %} {% endblock %}
 
