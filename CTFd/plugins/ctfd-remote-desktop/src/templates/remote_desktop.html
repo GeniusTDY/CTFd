@@ -1,0 +1,1109 @@
+{% extends "base.html" %}
+
+{% block stylesheets %}
+{{ super() }}
+<style>
+    .workspace-container {
+        position: fixed;
+        top: var(--navbar-height, 56px);
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 1050;
+        background: #000;
+        display: flex;
+        flex-direction: column;
+        transition: top 0.15s;
+    }
+
+    .workspace-container.fullscreen {
+        top: 0;
+    }
+
+    {% if container_info %}
+    .workspace-container {
+        top: 0;
+    }
+
+    /* hide the navbar above the viewport, ::before is the hover hit zone
+       and ::after is the visible drawer-handle indicator. the dedicated
+       fullscreen button hides everything via inline display:none */
+    .navbar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 2000;
+        transform: translateY(-100%);
+        transition: transform 0.2s ease;
+    }
+    .navbar::before {
+        content: '';
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 42px;
+        height: 9px;
+    }
+    .navbar::after {
+        content: '';
+        position: absolute;
+        top: calc(100% + 3px);
+        left: 50%;
+        transform: translateX(-50%);
+        width: 36px;
+        height: 3px;
+        background: rgba(0,0,0,0.5);
+        box-shadow: 0 0 0 1px rgba(255,255,255,0.6);
+        border-radius: 2px;
+        pointer-events: none;
+        transition: opacity 0.2s ease;
+    }
+    .navbar:hover {
+        transform: translateY(0);
+    }
+    .navbar:hover::after {
+        opacity: 0;
+    }
+    {% endif %}
+
+
+    .workspace-bar {
+        background: #2b3035;
+        color: white;
+        padding: 0 12px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-top: 1px solid #495057;
+        height: 36px;
+        flex-shrink: 0;
+    }
+
+    .bar-left, .bar-right {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+    }
+
+    .bar-btn {
+        background: none;
+        color: #adb5bd;
+        border: none;
+        padding: 4px 10px;
+        border-radius: 3px;
+        cursor: pointer;
+        font-size: 12px;
+        display: inline-flex;
+        align-items: center;
+        gap: 5px;
+        transition: background 0.15s, color 0.15s;
+        height: 28px;
+    }
+
+    .bar-btn:hover {
+        background: #495057;
+        color: white;
+    }
+
+    .bar-btn.stop:hover {
+        background: #dc3545;
+        color: white;
+    }
+
+    .bar-btn.report:hover {
+        background: #fd7e14;
+        color: white;
+    }
+
+    .bar-btn:disabled {
+        opacity: 0.4;
+        cursor: not-allowed;
+    }
+
+    .bar-btn:disabled:hover {
+        background: none;
+        color: #adb5bd;
+    }
+
+    .bar-timer {
+        font-family: monospace;
+        font-size: 13px;
+        font-weight: 600;
+        color: #e9ecef;
+        min-width: 48px;
+        text-align: center;
+        padding: 0 6px;
+        user-select: none;
+    }
+
+    .bar-timer.expired {
+        color: #dc3545;
+    }
+
+    #bar-tooltip {
+        position: fixed;
+        background: #1a1e21;
+        color: #e9ecef;
+        padding: 4px 8px;
+        border-radius: 3px;
+        font-size: 11px;
+        white-space: nowrap;
+        z-index: 1100;
+        pointer-events: none;
+        display: none;
+    }
+
+    .bar-divider {
+        width: 1px;
+        height: 18px;
+        background: #495057;
+        margin: 0 4px;
+    }
+
+    .mode-tabs {
+        display: flex;
+        align-items: center;
+        gap: 2px;
+        background: #1a1e21;
+        border-radius: 4px;
+        padding: 2px;
+    }
+
+    .mode-tab {
+        background: none;
+        color: #6c757d;
+        border: none;
+        padding: 3px 12px;
+        border-radius: 3px;
+        cursor: pointer;
+        font-size: 12px;
+        display: inline-flex;
+        align-items: center;
+        gap: 5px;
+        transition: all 0.15s;
+        height: 24px;
+    }
+
+    .mode-tab:hover {
+        color: #adb5bd;
+    }
+
+    .mode-tab.active {
+        background: #495057;
+        color: white;
+    }
+
+    .workspace-content {
+        flex: 1;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .no-session-screen {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+        color: white;
+        text-align: center;
+    }
+
+    .start-session-btn {
+        padding: 12px 28px;
+        font-size: 16px;
+        background: var(--theme-color, var(--bs-primary, #007bff));
+        color: white;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        margin-top: 20px;
+        transition: filter 0.2s;
+    }
+
+    .start-session-btn:hover {
+        filter: brightness(0.85);
+    }
+
+    .start-session-btn:disabled {
+        background: #6c757d;
+        cursor: not-allowed;
+    }
+
+    .loading-spinner {
+        width: 14px;
+        height: 14px;
+        border: 2px solid #ffffff;
+        border-top: 2px solid transparent;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+        display: inline-block;
+        margin-right: 6px;
+    }
+
+    @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+    }
+
+
+    .vnc-frame {
+        width: 100%;
+        height: 100%;
+        border: none;
+        background: #000;
+    }
+
+    .status-message {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: rgba(0, 0, 0, 0.8);
+        color: white;
+        padding: 10px 20px;
+        border-radius: 4px;
+        z-index: 10;
+    }
+
+    .hidden {
+        display: none !important;
+    }
+
+    /* ssh connection panel */
+    .ssh-panel {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+        overflow-y: auto;
+    }
+
+    .report-popover {
+        position: absolute;
+        bottom: calc(100% + 6px);
+        right: 0;
+        background: #2b3035;
+        border: 1px solid #495057;
+        border-radius: 6px;
+        padding: 6px;
+        width: 320px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+        z-index: 200;
+        display: none;
+    }
+
+    .report-popover.open {
+        display: block;
+    }
+
+    .report-popover textarea {
+        width: 100%;
+        min-height: 150px;
+        background: #1a1e21;
+        color: #e9ecef;
+        border: 1px solid #495057;
+        border-radius: 4px;
+        padding: 8px;
+        font-size: 13px;
+        font-family: inherit;
+        resize: vertical;
+        outline: none;
+    }
+
+    .report-popover textarea:focus {
+        border-color: #fd7e14;
+    }
+
+    .report-popover textarea::placeholder {
+        color: #6c757d;
+    }
+
+    .report-send {
+        margin-top: 8px;
+        width: 100%;
+        background: #fd7e14;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        padding: 6px 10px;
+        font-size: 13px;
+        font-weight: 500;
+        cursor: pointer;
+        transition: filter 0.15s;
+    }
+
+    .report-send:hover {
+        filter: brightness(0.9);
+    }
+
+    .report-send:disabled {
+        background: #495057;
+        cursor: not-allowed;
+    }
+
+    .report-wrap {
+        position: relative;
+    }
+
+</style>
+{% endblock %}
+
+{% block content %}
+{% if page_blocked is defined and page_blocked %}
+<div class="container" style="margin-top: 100px;">
+    <div class="row justify-content-center">
+        <div class="col-md-6 text-center">
+            {% if page_blocked == "disabled" %}
+            <i class="fas fa-power-off" style="font-size: 72px; color: #6c757d; margin-bottom: 24px;"></i>
+            <h2>{{ _("Remote Desktop Unavailable") }}</h2>
+            <p class="text-muted mt-3" style="font-size: 16px;">
+                {{ _("This feature has been disabled by an administrator. Check back later.") }}
+            </p>
+            {% elif page_blocked == "unverified" %}
+            <i class="fas fa-envelope" style="font-size: 72px; color: #6c757d; margin-bottom: 24px;"></i>
+            <h2>{{ _("Verify Your Email") }}</h2>
+            <p class="text-muted mt-3" style="font-size: 16px;">
+                {{ _("You need to verify your email address before you can access Remote Desktop.") }}
+            </p>
+            <a href="/confirm" class="btn btn-primary btn-lg mt-3">{{ _("Verify Email") }}</a>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% elif container_info %}
+<div class="workspace-container" id="workspace-container">
+    <div class="workspace-content" id="workspace-content">
+        <iframe id="vnc-frame" class="vnc-frame" src="{{ vnc_url }}" allow="fullscreen"></iframe>
+        {% if terminal_url %}
+        <iframe id="terminal-frame" class="vnc-frame hidden" src="" allow="fullscreen"></iframe>
+        {% endif %}
+        {% if ssh_info %}
+        <div id="ssh-panel" class="ssh-panel hidden">
+            <div class="container" style="max-width: 540px;">
+                <div class="card">
+                    <div class="card-body py-4 px-4">
+                        <h5 class="card-title mb-1"><i class="fas fa-terminal me-2"></i>{{ _("SSH Connection") }}</h5>
+                        <p class="text-muted small mb-4">{{ _("Run this in a terminal on your machine (not inside the desktop)") }}</p>
+                        <div class="mb-3">
+                            <label class="form-label small">{{ _("Command") }}</label>
+                            <div class="input-group">
+                                <input type="text" class="form-control font-monospace" id="ssh-cmd" value="ssh {{ ssh_info.username }}@{{ ssh_info.host }} -p {{ ssh_info.port }}" readonly>
+                                <button class="btn btn-outline-secondary" onclick="copyField('ssh-cmd', this)" title="{{ _('Copy') }}"><i class="fas fa-copy"></i></button>
+                            </div>
+                        </div>
+                        <div class="mb-0">
+                            <label class="form-label small">{{ _("Password") }}</label>
+                            <div class="input-group">
+                                <input type="text" class="form-control font-monospace" id="ssh-pass" value="{{ ssh_info.password }}" readonly>
+                                <button class="btn btn-outline-secondary" onclick="copyField('ssh-pass', this)" title="{{ _('Copy') }}"><i class="fas fa-copy"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+        <div id="status-message" class="status-message hidden"></div>
+    </div>
+    <div class="workspace-bar">
+        <div class="bar-left">
+            <div class="bar-timer" id="timer-display" data-tip="{{ _('Time remaining in session') }}">--:--</div>
+            <div class="bar-divider"></div>
+            <button class="bar-btn" onclick="addTime()" id="add-time-btn" data-tip="{{ _('Add more time to your session') }}">
+                <i class="fas fa-plus"></i> {{ _("Extend") }}
+            </button>
+            <button class="bar-btn stop" onclick="stopSession()" id="stop-btn" data-tip="{{ _('End session, all work will be lost') }}">
+                <i class="fas fa-stop"></i> {{ _("Stop") }}
+            </button>
+        </div>
+        <div class="bar-right">
+            <div class="mode-tabs" id="mode-tabs">
+                <button class="mode-tab active" data-mode="desktop" data-tip="{{ _('Full graphical desktop for GUI tools') }}" onclick="switchMode('desktop', this)">
+                    <i class="fas fa-desktop"></i> {{ _("Desktop") }}
+                </button>
+                {% if terminal_url %}
+                <button class="mode-tab" data-mode="terminal" data-tip="{{ _('Browser-based shell, lighter than full desktop') }}" onclick="switchMode('terminal', this)">
+                    <i class="fas fa-terminal"></i> {{ _("Terminal") }}
+                </button>
+                {% endif %}
+                {% if ssh_info %}
+                <button class="mode-tab" data-mode="ssh" data-tip="{{ _('Connect from your own terminal') }}" onclick="switchMode('ssh', this)">
+                    <i class="fas fa-plug"></i> {{ _("SSH") }}
+                </button>
+                {% endif %}
+            </div>
+            <div class="bar-divider"></div>
+            <div class="report-wrap">
+                <button class="bar-btn report" onclick="toggleReportPopover(event)" id="report-btn" data-tip="{{ _('Report a bug or feature request') }}">
+                    <i class="fas fa-exclamation-triangle"></i>
+                </button>
+                <div class="report-popover" id="report-popover">
+                    <textarea id="report-textarea" maxlength="5000" oninput="onReportInput()"></textarea>
+                    <button class="report-send" id="report-send-btn" onclick="sendReport()" disabled>{{ _("Send") }}</button>
+                </div>
+            </div>
+            <button class="bar-btn" onclick="toggleFullscreen()" id="fullscreen-btn" data-tip="{{ _('Fullscreen') }}">
+                <i class="fas fa-expand"></i>
+            </button>
+        </div>
+    </div>
+</div>
+{% else %}
+<div class="workspace-container" id="workspace-container">
+    <div class="workspace-content">
+        <div class="no-session-screen" id="no-session-screen">
+            <i class="fas fa-desktop" style="font-size: 64px; margin-bottom: 20px; color: #6c757d;"></i>
+            <h3>{{ _("No Active Session") }}</h3>
+            <p id="session-prompt" style="color: #6c757d;">{{ _("Launch an on-demand environment with preloaded tools") }}</p>
+            <div style="margin-top: 24px; max-width: 720px; text-align: left; color: #adb5bd; line-height: 1.6;">
+                <p style="margin: 0 0 8px 0;"><i class="fas fa-info-circle" style="color: #6c757d; margin-right: 6px;"></i>{{ _("This is an ephemeral environment, nothing is saved between sessions.") }}</p>
+                <p style="margin: 0 0 8px 0;"><i class="fas fa-shield-alt" style="color: #6c757d; margin-right: 6px;"></i>{{ _("Avoid logging into anything sensitive.") }}</p>
+                <p style="margin: 0 0 8px 0;"><i class="fas fa-redo" style="color: #6c757d; margin-right: 6px;"></i>{{ _("If something breaks, just stop and start a new session.") }}</p>
+                <p style="margin: 0 0 8px 0;"><i class="fas fa-desktop" style="color: #6c757d; margin-right: 6px;"></i>{{ _("Desktop, Terminal, and SSH modes available from the bottom bar once your session starts.") }}</p>
+                <p style="margin: 0; color: #e06070;"><i class="fas fa-clock" style="color: #e06070; margin-right: 6px;"></i>{{ _("Sessions expire after a set time to save resources and keep your environment fresh.") }}</p>
+            </div>
+            <button class="start-session-btn" onclick="startSession()" id="start-btn" style="background: #28a745;">
+                <i class="fas fa-play"></i> {{ _("Start Remote Desktop") }}
+            </button>
+            <div id="session-error" style="display:none; margin-top: 16px; padding: 12px 20px; background: #f8d7da; border: 1px solid #f5c6cb; border-radius: 4px; text-align: center;">
+                <p id="session-error-msg" style="color: #721c24; margin: 0;"></p>
+                <p id="session-error-meta" style="color: #856404; font-size: 12px; margin: 6px 0 0 0;"></p>
+                <p id="session-error-detail" style="color: #721c24; font-size: 13px; margin: 4px 0 0 0;"></p>
+            </div>
+        </div>
+        <div id="status-message" class="status-message hidden"></div>
+    </div>
+</div>
+{% endif %}
+
+<script>
+let sessionTimer = null;
+let timeRemaining = 0;
+let continuationsUsed = 0;
+let maxContinuations = {{ max_extensions | default(3) }};
+let expirationWarningShown = false;
+const terminalUrl = {{ (terminal_url if terminal_url else '') | tojson }};
+let terminalLoaded = false;
+
+function showStatusMessage(message, timeout = 3000) {
+    const statusDiv = document.getElementById('status-message');
+    if (!statusDiv) return;
+    statusDiv.textContent = message;
+    statusDiv.classList.remove('hidden');
+    if (timeout > 0) {
+        setTimeout(() => { statusDiv.classList.add('hidden'); }, timeout);
+    }
+}
+
+function showSessionError(detail) {
+    const el = document.getElementById('session-error');
+    const msgEl = document.getElementById('session-error-msg');
+    const metaEl = document.getElementById('session-error-meta');
+    const detailEl = document.getElementById('session-error-detail');
+    if (!el) return;
+    msgEl.textContent = {{ _("Something went wrong on our end, please try again later or contact an administrator.")|tojson }};
+    const d = new Date();
+    const ts = d.toLocaleString('en-US', {month:'short', day:'numeric', year:'numeric', hour:'numeric', minute:'2-digit', second:'2-digit', hour12:true});
+    const user = window.init.userName || {{ _("unknown")|tojson }};
+    metaEl.textContent = user + ' ' + {{ _("at")|tojson }} + ' ' + ts;
+    detailEl.textContent = detail || {{ _("unknown error")|tojson }};
+    el.style.display = '';
+}
+
+function hideSessionError() {
+    const el = document.getElementById('session-error');
+    if (el) el.style.display = 'none';
+}
+
+function formatTime(seconds) {
+    const mins = Math.floor(seconds / 60);
+    const secs = seconds % 60;
+    return `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+}
+
+function updateTimerDisplay() {
+    const display = document.getElementById('timer-display');
+    if (display) {
+        display.textContent = formatTime(timeRemaining);
+        display.classList.toggle('expired', timeRemaining <= 0);
+    }
+}
+
+function updateAddTimeButton(showCount) {
+    const addTimeBtn = document.getElementById('add-time-btn');
+    if (!addTimeBtn) return;
+    const hasActiveSession = document.getElementById('vnc-frame') !== null;
+    const maxed = continuationsUsed >= maxContinuations;
+    addTimeBtn.disabled = !hasActiveSession || maxed;
+    addTimeBtn.setAttribute('data-tip', maxed ? {{ _("All %(n)s extensions used", n="%(n)s")|tojson }}.replace('%(n)s', maxContinuations) : {{ _("Add more time to your session")|tojson }});
+    if (showCount) {
+        addTimeBtn.innerHTML = `<i class="fas fa-check"></i> ${continuationsUsed}/${maxContinuations} ` + {{ _("used")|tojson }};
+        setTimeout(() => {
+            addTimeBtn.innerHTML = '<i class="fas fa-plus"></i> ' + {{ _("Extend")|tojson }};
+        }, 1500);
+    } else {
+        addTimeBtn.innerHTML = '<i class="fas fa-plus"></i> ' + {{ _("Extend")|tojson }};
+    }
+}
+
+let pollInterval = null;
+let pollStartTime = null;
+const POLL_TIMEOUT = 120000;
+
+function checkStatus() {
+    const startBtn = document.getElementById('start-btn');
+    const elapsed = Date.now() - pollStartTime;
+
+    if (elapsed > POLL_TIMEOUT) {
+        clearInterval(pollInterval);
+        pollInterval = null;
+        if (startBtn) {
+            startBtn.disabled = false;
+            startBtn.innerHTML = '<i class="fas fa-play"></i> ' + {{ _("Start Remote Desktop")|tojson }};
+        }
+        showSessionError({{ _("session timed out")|tojson }});
+        return;
+    }
+
+    fetch('/remote-desktop/api/creation-status', {
+        method: 'GET',
+        headers: { 'X-Requested-With': 'XMLHttpRequest' },
+        credentials: 'same-origin'
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.status === 'ready' && data.session) {
+            clearInterval(pollInterval);
+            pollInterval = null;
+
+            if (startBtn) {
+                startBtn.innerHTML = '<span class="loading-spinner"></span> ' + {{ _("Loading...")|tojson }};
+            }
+            setTimeout(() => { reloadPage(); }, 1000);
+        } else if (data.status === 'failed') {
+            clearInterval(pollInterval);
+            pollInterval = null;
+            if (startBtn) {
+                startBtn.disabled = false;
+                startBtn.innerHTML = '<i class="fas fa-play"></i> ' + {{ _("Start Remote Desktop")|tojson }};
+            }
+
+            showSessionError(data.error || data.message);
+        } else {
+            const message = data.message || {{ _("Creating container...")|tojson }};
+
+            if (startBtn) {
+                startBtn.innerHTML = `<span class="loading-spinner"></span> ${message}`;
+            }
+        }
+    })
+    .catch(error => { console.error('Poll error:', error); });
+}
+
+function pollCreationStatus() {
+    pollStartTime = Date.now();
+    checkStatus();
+    pollInterval = setInterval(checkStatus, 2000);
+}
+
+function startSession() {
+
+    const startBtn = document.getElementById('start-btn');
+    if (startBtn) {
+        startBtn.disabled = true;
+        startBtn.innerHTML = '<span class="loading-spinner"></span> ' + {{ _("Starting...")|tojson }};
+    }
+
+    const formData = new FormData();
+    formData.append('nonce', window.init.csrfNonce);
+
+    fetch('/remote-desktop/api/create', {
+        method: 'POST',
+        headers: { 'X-Requested-With': 'XMLHttpRequest' },
+        credentials: 'same-origin',
+        body: formData
+    })
+    .then(response => response.json().then(data => ({ok: response.ok, data})))
+    .then(({ok, data}) => {
+        if (ok && data.status === 'creating') {
+            hideSessionError();
+            pollCreationStatus();
+        } else if (data.error === 'Session creation already in progress') {
+            // session is being created already, latch onto the existing creation
+            hideSessionError();
+            pollCreationStatus();
+        } else if (data.error === 'Session already exists') {
+            // page state is stale, reload to show the active session
+            reloadPage();
+        } else {
+            if (startBtn) {
+                startBtn.disabled = false;
+                startBtn.innerHTML = '<i class="fas fa-play"></i> ' + {{ _("Start Remote Desktop")|tojson }};
+            }
+            showSessionError(data.error || data.message);
+        }
+    })
+    .catch(error => {
+        if (startBtn) {
+            startBtn.disabled = false;
+            startBtn.innerHTML = '<i class="fas fa-play"></i> ' + {{ _("Start Remote Desktop")|tojson }};
+        }
+        console.error('Create session error:', error);
+        showSessionError({{ _("request failed")|tojson }});
+    });
+}
+
+function stopSession() {
+    if (!confirm({{ _("Are you sure you want to stop your session?")|tojson }})) return;
+
+    const stopBtn = document.getElementById('stop-btn');
+    if (stopBtn) {
+        stopBtn.disabled = true;
+        stopBtn.innerHTML = '<span class="loading-spinner"></span> ' + {{ _("Stopping...")|tojson }};
+    }
+
+    const formData = new FormData();
+    formData.append('nonce', window.init.csrfNonce);
+
+    fetch('/remote-desktop/api/destroy', {
+        method: 'POST',
+        headers: { 'X-Requested-With': 'XMLHttpRequest' },
+        credentials: 'same-origin',
+        body: formData
+    })
+    .then(response => response.json())
+    .then(() => { reloadPage(); })
+    .catch(() => { reloadPage(); });
+}
+
+function addTime() {
+    const addTimeBtn = document.getElementById('add-time-btn');
+    if (addTimeBtn) {
+        addTimeBtn.disabled = true;
+        addTimeBtn.innerHTML = '<span class="loading-spinner"></span> ' + {{ _("Adding...")|tojson }};
+    }
+
+    const formData = new FormData();
+    formData.append('nonce', window.init.csrfNonce);
+
+    fetch('/remote-desktop/api/extend', {
+        method: 'POST',
+        headers: { 'X-Requested-With': 'XMLHttpRequest' },
+        credentials: 'same-origin',
+        body: formData
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.timer) {
+            timeRemaining = data.timer.time_remaining;
+            continuationsUsed = data.timer.extensions_used;
+            expirationWarningShown = false;
+        }
+        updateTimerDisplay();
+        updateAddTimeButton(true);
+    })
+    .catch(() => { updateAddTimeButton(); });
+}
+
+function updateCountdown() {
+    timeRemaining--;
+    updateTimerDisplay();
+
+    if (timeRemaining <= 300 && timeRemaining > 0 && !expirationWarningShown) {
+        expirationWarningShown = true;
+        alert({{ _("Your session will expire in less than 5 minutes. Consider extending your session.")|tojson }});
+    }
+
+    if (timeRemaining <= 0) {
+        clearInterval(sessionTimer);
+        sessionTimer = null;
+    }
+}
+
+
+function syncWithServer() {
+    fetch('/remote-desktop/api/status', {
+        method: 'GET',
+        headers: { 'X-Requested-With': 'XMLHttpRequest' },
+        credentials: 'same-origin'
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.session && data.session.timer) {
+            timeRemaining = data.session.timer.time_remaining;
+            continuationsUsed = data.session.timer.extensions_used;
+            maxContinuations = data.session.timer.max_extensions;
+
+            if (timeRemaining > 300) expirationWarningShown = false;
+
+            updateTimerDisplay();
+            updateAddTimeButton();
+
+            if (!sessionTimer && data.session.timer.active && timeRemaining > 0) {
+                sessionTimer = setInterval(updateCountdown, 1000);
+            }
+
+            const stopBtn = document.getElementById('stop-btn');
+            const addTimeBtn = document.getElementById('add-time-btn');
+            if (stopBtn) stopBtn.disabled = false;
+            if (addTimeBtn) {
+                addTimeBtn.disabled = continuationsUsed >= data.session.timer.max_extensions;
+            }
+
+            if (!document.getElementById('vnc-frame')) {
+                reloadPage();
+            }
+        } else if (!data.session) {
+            if (document.getElementById('vnc-frame')) {
+                if (sessionTimer) {
+                    clearInterval(sessionTimer);
+                    sessionTimer = null;
+                }
+                reloadPage();
+            }
+        }
+    })
+    .catch(error => { console.error('Sync error:', error); });
+}
+
+function switchMode(mode, tabEl) {
+    document.querySelectorAll('.mode-tab').forEach(t => t.classList.remove('active'));
+    tabEl.classList.add('active');
+
+    const url = new URL(window.location);
+    url.searchParams.set('mode', mode);
+    history.replaceState(null, '', url);
+
+    const vncFrame = document.getElementById('vnc-frame');
+    const terminalFrame = document.getElementById('terminal-frame');
+    const sshPanel = document.getElementById('ssh-panel');
+
+    // hide all panels
+    if (vncFrame) vncFrame.classList.add('hidden');
+    if (terminalFrame) terminalFrame.classList.add('hidden');
+    if (sshPanel) sshPanel.classList.add('hidden');
+
+    if (mode === 'desktop') {
+        if (vncFrame) vncFrame.classList.remove('hidden');
+    } else if (mode === 'terminal') {
+        if (terminalFrame) {
+            // lazy-load the terminal iframe on first switch
+            if (!terminalLoaded && terminalUrl) {
+                terminalFrame.src = terminalUrl;
+                terminalLoaded = true;
+            }
+            terminalFrame.classList.remove('hidden');
+        }
+    } else if (mode === 'ssh') {
+        if (sshPanel) sshPanel.classList.remove('hidden');
+    }
+}
+
+let isFullscreen = false;
+
+function setFullscreen(on) {
+    isFullscreen = on;
+    const btn = document.getElementById('fullscreen-btn');
+    const container = document.getElementById('workspace-container');
+    const navbar = document.querySelector('.navbar');
+    if (container) container.classList.toggle('fullscreen', on);
+    if (navbar) navbar.style.display = on ? 'none' : '';
+    if (btn) btn.innerHTML = on
+        ? '<i class="fas fa-compress"></i>'
+        : '<i class="fas fa-expand"></i>';
+}
+
+function toggleFullscreen() {
+    if (!document.fullscreenElement) {
+        document.documentElement.requestFullscreen().then(() => setFullscreen(true)).catch(() => {});
+    } else {
+        document.exitFullscreen().then(() => setFullscreen(false)).catch(() => {});
+    }
+}
+
+document.addEventListener('fullscreenchange', () => {
+    if (!document.fullscreenElement) setFullscreen(false);
+});
+
+// shared tooltip, positions above the hovered [data-tip] element and clamps to viewport
+const _tooltipEl = document.createElement('div');
+_tooltipEl.id = 'bar-tooltip';
+document.body.appendChild(_tooltipEl);
+
+let _tooltipTarget = null;
+let _tooltipSticky = false;
+let _tooltipStickyTimer = null;
+
+function _positionTooltip() {
+    if (!_tooltipTarget) return;
+    const rect = _tooltipTarget.getBoundingClientRect();
+    const tipRect = _tooltipEl.getBoundingClientRect();
+    const margin = 8;
+
+    let left = rect.left + (rect.width / 2) - (tipRect.width / 2);
+    left = Math.max(margin, Math.min(left, window.innerWidth - tipRect.width - margin));
+
+    let top = rect.top - tipRect.height - 6;
+    if (top < margin) top = rect.bottom + 6;
+
+    _tooltipEl.style.left = `${Math.round(left)}px`;
+    _tooltipEl.style.top = `${Math.round(top)}px`;
+}
+
+function _showTooltip(target) {
+    const text = target.getAttribute('data-tip');
+    if (!text) return;
+    _tooltipTarget = target;
+    _tooltipEl.textContent = text;
+    _tooltipEl.style.display = 'block';
+    _positionTooltip();
+}
+
+function _hideTooltip() {
+    if (_tooltipSticky) return;
+    _tooltipTarget = null;
+    _tooltipEl.style.display = 'none';
+}
+
+function showStickyTooltip(target, text, duration) {
+    if (!target) return;
+    if (_tooltipStickyTimer) clearTimeout(_tooltipStickyTimer);
+    _tooltipSticky = true;
+    _tooltipTarget = target;
+    _tooltipEl.textContent = text;
+    _tooltipEl.style.display = 'block';
+    _positionTooltip();
+    _tooltipStickyTimer = setTimeout(() => {
+        _tooltipSticky = false;
+        _tooltipStickyTimer = null;
+        _tooltipTarget = null;
+        _tooltipEl.style.display = 'none';
+    }, duration || 3000);
+}
+
+document.addEventListener('mouseover', function(e) {
+    if (_tooltipSticky) return;
+    const target = e.target.closest('[data-tip]');
+    if (target && target !== _tooltipTarget) _showTooltip(target);
+});
+
+document.addEventListener('mouseout', function(e) {
+    if (_tooltipSticky) return;
+    if (!_tooltipTarget) return;
+    const related = e.relatedTarget;
+    if (related && _tooltipTarget.contains(related)) return;
+    _hideTooltip();
+});
+
+function _onViewportChange() {
+    if (_tooltipSticky) {
+        _positionTooltip();
+    } else {
+        _hideTooltip();
+    }
+}
+
+window.addEventListener('scroll', _onViewportChange, true);
+window.addEventListener('resize', _onViewportChange);
+
+// report popover, content survives open/close in memory, lost on page reload
+let reportText = '';
+let reportSending = false;
+let reportShowingThanks = false;
+
+const REPORT_PLACEHOLDER =
+    {{ _("Describe the bug or feature.\n\nFor bugs: what were you doing, what happened, what did you expect? If visual, paste an image link (imgur, 0x0.st).")|tojson }};
+
+function syncSendButton() {
+    const textarea = document.getElementById('report-textarea');
+    const sendBtn = document.getElementById('report-send-btn');
+    if (!textarea || !sendBtn) return;
+    const empty = textarea.value.trim().length === 0;
+    sendBtn.disabled = reportSending || empty || reportShowingThanks;
+
+    // sendReport manages its own button state during the request
+    if (reportSending) return;
+
+    if (reportShowingThanks) {
+        sendBtn.textContent = {{ _("Thanks for your feedback!")|tojson }};
+        sendBtn.removeAttribute('data-tip');
+        return;
+    }
+
+    sendBtn.textContent = {{ _("Send")|tojson }};
+    if (empty) {
+        sendBtn.setAttribute('data-tip', {{ _("Type something to send")|tojson }});
+    } else {
+        sendBtn.removeAttribute('data-tip');
+    }
+}
+
+function isReportOpen() {
+    const popover = document.getElementById('report-popover');
+    return popover && popover.classList.contains('open');
+}
+
+function openReportPopover() {
+    const popover = document.getElementById('report-popover');
+    const textarea = document.getElementById('report-textarea');
+    if (!popover || !textarea) return;
+    popover.classList.add('open');
+    textarea.value = reportText;
+    syncSendButton();
+    textarea.focus();
+}
+
+function closeReportPopover() {
+    const popover = document.getElementById('report-popover');
+    if (!popover) return;
+    popover.classList.remove('open');
+}
+
+function toggleReportPopover(e) {
+    if (e) e.stopPropagation();
+    if (isReportOpen()) {
+        closeReportPopover();
+    } else {
+        openReportPopover();
+    }
+}
+
+function onReportInput() {
+    const textarea = document.getElementById('report-textarea');
+    if (!textarea) return;
+    reportText = textarea.value;
+    if (reportShowingThanks) reportShowingThanks = false;
+    syncSendButton();
+}
+
+function sendReport() {
+    const textarea = document.getElementById('report-textarea');
+    const sendBtn = document.getElementById('report-send-btn');
+    const reportBtn = document.getElementById('report-btn');
+    if (!textarea || !sendBtn) return;
+    const content = textarea.value.trim();
+    if (!content) return;
+
+    reportSending = true;
+    sendBtn.disabled = true;
+    sendBtn.removeAttribute('data-tip');
+    sendBtn.innerHTML = '<span class="loading-spinner"></span> ' + {{ _("Sending...")|tojson }};
+
+    const formData = new FormData();
+    formData.append('nonce', window.init.csrfNonce);
+    formData.append('content', content);
+
+    fetch('/remote-desktop/api/report', {
+        method: 'POST',
+        headers: { 'X-Requested-With': 'XMLHttpRequest' },
+        credentials: 'same-origin',
+        body: formData
+    })
+    .then(response => response.json().then(data => ({ok: response.ok, data})))
+    .then(({ok, data}) => {
+        reportSending = false;
+        if (ok && data.success) {
+            reportText = '';
+            textarea.value = '';
+            reportShowingThanks = true;
+            setTimeout(() => {
+                reportShowingThanks = false;
+                syncSendButton();
+            }, 3500);
+        } else {
+            showStickyTooltip(reportBtn, data.error || {{ _("Failed to send")|tojson }}, 4000);
+        }
+        syncSendButton();
+    })
+    .catch(() => {
+        reportSending = false;
+        showStickyTooltip(reportBtn, {{ _("Network error")|tojson }}, 4000);
+        syncSendButton();
+    });
+}
+
+document.addEventListener('click', function(e) {
+    if (!isReportOpen()) return;
+    const wrap = document.querySelector('.report-wrap');
+    if (wrap && !wrap.contains(e.target)) closeReportPopover();
+});
+
+document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && isReportOpen()) closeReportPopover();
+});
+
+function copyField(elementId, btn) {
+    const el = document.getElementById(elementId);
+    if (!el) return;
+    const text = el.value || el.textContent;
+    navigator.clipboard.writeText(text.trim()).then(() => {
+        btn.innerHTML = '<i class="fas fa-check"></i>';
+        setTimeout(() => { btn.innerHTML = '<i class="fas fa-copy"></i>'; }, 1500);
+    });
+}
+
+
+function onBeforeUnload(e) {
+    e.preventDefault();
+}
+
+{% if container_info %}
+window.addEventListener('beforeunload', onBeforeUnload);
+{% endif %}
+
+function allowNavigation() {
+    window.removeEventListener('beforeunload', onBeforeUnload);
+}
+
+function reloadPage() {
+    allowNavigation();
+    // detach iframes directly - setting f.src=about:blank first queues a frame
+    // navigation whose beforeunload re-pops the leave dialog
+    document.querySelectorAll('iframe').forEach(f => {
+        try { f.contentWindow.onbeforeunload = null; } catch (_) {}
+        f.remove();
+    });
+    window.location.href = window.location.pathname + window.location.search;
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    const navbar = document.querySelector('.navbar');
+    if (navbar) {
+        document.documentElement.style.setProperty('--navbar-height', navbar.offsetHeight + 'px');
+    }
+
+    // multi-line placeholder via JS, the attribute encoding for newlines is browser-inconsistent
+    const reportTextarea = document.getElementById('report-textarea');
+    if (reportTextarea) {
+        reportTextarea.placeholder = REPORT_PLACEHOLDER;
+        syncSendButton();
+    }
+
+    const modeParam = new URLSearchParams(window.location.search).get('mode');
+    if (modeParam && ['desktop', 'terminal', 'ssh'].includes(modeParam)) {
+        const tab = document.querySelector(`.mode-tab[data-mode="${modeParam}"]`);
+        if (tab) switchMode(modeParam, tab);
+    }
+
+    {% if creation_status and creation_status.get('status') not in ['failed', 'ready', 'none', None] %}
+    const creationStatus = {{ creation_status | tojson }};
+
+    const startBtn = document.getElementById('start-btn');
+    if (startBtn) {
+        startBtn.disabled = true;
+        const message = creationStatus.message || {{ _("Creating container...")|tojson }};
+        startBtn.innerHTML = `<span class="loading-spinner"></span>${message}`;
+    }
+
+    showStatusMessage(creationStatus.message || {{ _("Creating container...")|tojson }}, 0);
+    pollCreationStatus();
+    {% elif container_info %}
+    setTimeout(syncWithServer, 500);
+    setInterval(syncWithServer, 5000);
+    {% endif %}
+});
+</script>
+{% endblock %}

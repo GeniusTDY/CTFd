@@ -1,0 +1,1723 @@
+{% extends "admin/base.html" %}
+
+{% block content %}
+
+<style>
+	.card {
+		margin-bottom: 20px;
+		border-radius: 8px;
+		box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+	}
+
+	.card:hover {
+		cursor: default;
+	}
+
+	.card-header {
+		background-color: #f8f9fa;
+		border-bottom: 1px solid #dee2e6;
+		padding: 15px;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+	}
+
+	.card-title {
+		margin: 0;
+		font-size: 18px;
+		font-weight: 600;
+	}
+
+	.card-body {
+		padding: 0;
+	}
+
+	.table-responsive {
+		margin: 0;
+	}
+
+	.table {
+		margin-bottom: 0;
+	}
+
+	.table-sm td, .table-sm th {
+		padding: .4rem .5rem;
+	}
+
+	.table tbody tr,
+	.table tbody tr:hover {
+		cursor: default;
+	}
+
+	.log-wrap {
+		max-height: 400px;
+		overflow-y: auto;
+	}
+
+	.log-wrap thead th {
+		position: sticky;
+		top: 0;
+		background: white;
+		z-index: 1;
+	}
+
+	.log-time {
+		white-space: nowrap;
+		color: #6c757d;
+	}
+
+	.log-user a {
+		color: #337ab7;
+		font-weight: 600;
+		text-decoration: none;
+	}
+
+	.log-user a:hover { text-decoration: underline; }
+
+	.log-detail {
+		color: #6c757d;
+	}
+
+	.cell-clip {
+		max-width: 400px;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+	}
+
+	.cell-clip-sm {
+		max-width: 200px;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+	}
+
+	.badge-evt-requested { background-color: #cce5ff; color: #004085; }
+	.badge-evt-created { background-color: #d4edda; color: #155724; }
+	.badge-evt-destroyed { background-color: #e2e3e5; color: #383d41; }
+	.badge-evt-expired { background-color: #fff3cd; color: #856404; }
+	.badge-evt-extended { background-color: #d1ecf1; color: #0c5460; }
+	.badge-evt-error { background-color: #f8d7da; color: #721c24; }
+	.badge-evt-admin { background-color: #fff3cd; color: #856404; }
+	.badge-evt-host-up { background-color: #d4edda; color: #155724; }
+	.badge-evt-host-down { background-color: #f8d7da; color: #721c24; }
+	.badge-evt-orphan { background-color: #ffd9a8; color: #7a3d00; }
+
+	.report-content-full {
+		white-space: pre-wrap;
+		word-break: break-word;
+		background: #f8f9fa;
+		border: 1px solid #dee2e6;
+		border-radius: 4px;
+		padding: 12px;
+		font-family: inherit;
+		font-size: 14px;
+	}
+
+	.time-remaining {
+		font-family: monospace;
+		font-weight: 500;
+	}
+
+	.status-active { color: #28a745; font-weight: bold; }
+	.status-expired { color: #dc3545; font-weight: bold; }
+	.status-warning { color: #ffc107; font-weight: bold; }
+
+	.action-buttons {
+		white-space: nowrap;
+		display: flex;
+		gap: 4px;
+	}
+
+	.action-buttons .btn {
+		width: 32px;
+		height: 32px;
+		padding: 0;
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		border: none;
+		background: transparent;
+	}
+
+	.action-buttons .btn:hover {
+		background-color: rgba(0,0,0,0.05);
+		border-radius: 3px;
+	}
+
+	.icon-monitor { color: #6c757d; }
+	.icon-kill { color: #dc3545; }
+	.icon-extend { color: #ffc107; }
+
+	.chart-container {
+		width: 100%;
+		height: 400px;
+	}
+
+	.stat-card .card-body {
+		padding: 12px;
+		text-align: center;
+	}
+
+	.cfg-help {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		width: 14px;
+		height: 14px;
+		border-radius: 50%;
+		border: 1px solid #adb5bd;
+		color: #adb5bd;
+		background: none;
+		font-size: 10px;
+		font-weight: 600;
+		cursor: help;
+		position: relative;
+		vertical-align: middle;
+		margin-left: 3px;
+		margin-bottom: 2px;
+		line-height: 1;
+	}
+
+	.cfg-help:hover {
+		border-color: #6c757d;
+		color: #6c757d;
+	}
+
+	.cfg-help:hover::after {
+		content: attr(data-tip);
+		position: absolute;
+		bottom: calc(100% + 8px);
+		left: 50%;
+		transform: translateX(-50%);
+		background: #343a40;
+		color: #f8f9fa;
+		padding: 8px 10px;
+		border-radius: 4px;
+		font-size: 12px;
+		font-weight: 400;
+		line-height: 1.4;
+		width: 240px;
+		white-space: normal;
+		z-index: 1000;
+		pointer-events: none;
+	}
+
+	.cfg-help:hover::before {
+		content: '';
+		position: absolute;
+		bottom: calc(100% + 2px);
+		left: 50%;
+		transform: translateX(-50%);
+		border: 5px solid transparent;
+		border-top-color: #343a40;
+		z-index: 1000;
+		pointer-events: none;
+	}
+</style>
+
+<div class="jumbotron">
+	<div class="container">
+		<h1>{{ _("Remote Desktop Dashboard") }}</h1>
+	</div>
+</div>
+
+<div class="container">
+	<div class="row mb-3">
+		<div class="col">
+			<div class="card bg-light">
+				<div class="card-body text-center py-2 px-2">
+					<h4 id="stat-active" class="mb-0">-</h4>
+					<small class="text-muted">{{ _("Active Now") }}</small>
+				</div>
+			</div>
+		</div>
+		<div class="col">
+			<div class="card bg-light">
+				<div class="card-body text-center py-2 px-2">
+					<h4 id="stat-total-sessions" class="mb-0">-</h4>
+					<small class="text-muted">{{ _("Total Sessions") }}</small>
+				</div>
+			</div>
+		</div>
+		<div class="col">
+			<div class="card bg-light">
+				<div class="card-body text-center py-2 px-2">
+					<h4 id="stat-total-hours" class="mb-0">-</h4>
+					<small class="text-muted">{{ _("Total Hours") }}</small>
+				</div>
+			</div>
+		</div>
+		<div class="col">
+			<div class="card bg-light">
+				<div class="card-body text-center py-2 px-2">
+					<h4 id="stat-avg-duration" class="mb-0">-</h4>
+					<small class="text-muted">{{ _("Avg Duration") }}</small>
+				</div>
+			</div>
+		</div>
+		<div class="col">
+			<div class="card bg-light">
+				<div class="card-body text-center py-2 px-2">
+					<h4 id="stat-peak-concurrent" class="mb-0">-</h4>
+					<small class="text-muted">{{ _("Peak Concurrent") }}</small>
+				</div>
+			</div>
+		</div>
+		<div class="col">
+			<div class="card bg-light">
+				<div class="card-body text-center py-2 px-2">
+					<h4 id="stat-unique-users" class="mb-0">-</h4>
+					<small class="text-muted">{{ _("Unique Users") }}</small>
+				</div>
+			</div>
+		</div>
+		<div class="col">
+			<div class="card bg-light">
+				<div class="card-body text-center py-2 px-2">
+					<h4 id="stat-contexts" class="mb-0">-</h4>
+					<small class="text-muted">{{ _("Contexts") }}</small>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-md-12">
+			<div class="card">
+				<div class="card-header">
+					<h3 class="card-title">{{ _("Active Sessions") }} <span class="cfg-help" data-tip="{{ _('Currently running desktop containers. Kill or extend individual sessions, or purge all at once during incidents.') }}">?</span></h3>
+					<button class="btn btn-danger btn-sm" id="purge-all-btn" onclick="killAllSessions()">
+						<i class="fas fa-trash"></i> {{ _("Purge All") }}
+					</button>
+				</div>
+				<div class="card-body">
+					<div class="table-responsive log-wrap">
+						<table class="table table-striped table-sm border">
+							<thead>
+								<tr>
+									<th><b>{{ _("User") }}</b></th>
+									<th><b>{{ _("Container") }}</b></th>
+									<th><b>{{ _("Context") }}</b></th>
+									<th><b>{{ _("Time Remaining") }}</b></th>
+									<th><b>{{ _("Extends") }}</b></th>
+									<th><b>{{ _("Status") }}</b></th>
+									<th><b>{{ _("Actions") }}</b></th>
+								</tr>
+							</thead>
+							<tbody id="containers-table">
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-md-12">
+			<div class="card">
+				<div class="card-header">
+					<h3 class="card-title">{{ _("Activity") }} <span class="cfg-help" data-tip="{{ _('Real-time event stream. Session lifecycle, admin actions, and host health changes as they happen. Useful for catching errors during a live competition.') }}">?</span></h3>
+				</div>
+				<div class="card-body">
+					<div class="table-responsive log-wrap">
+						<table class="table table-striped table-sm border">
+							<thead>
+								<tr>
+									<th><b>{{ _("Time") }}</b></th>
+									<th><b>{{ _("User") }}</b></th>
+									<th><b>{{ _("Event") }}</b></th>
+									<th><b>{{ _("Details") }}</b></th>
+								</tr>
+							</thead>
+							<tbody id="event-feed">
+								<tr id="event-feed-empty">
+									<td colspan="4" class="text-center text-muted">{{ _("No activity yet") }}</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-md-12">
+			<div class="card">
+				<div class="card-header">
+					<h3 class="card-title">{{ _("Reports") }} <span class="cfg-help" data-tip="{{ _('Bug reports and feature requests submitted by users from the remote desktop bottom bar. Click a row to view the full message.') }}">?</span></h3>
+					<button class="btn btn-outline-danger btn-sm" id="reports-clear-btn" onclick="clearAllReports()">
+						<i class="fas fa-trash"></i> {{ _("Clear All") }}
+					</button>
+				</div>
+				<div class="card-body">
+					<div class="table-responsive log-wrap">
+						<table class="table table-striped table-sm border">
+							<thead>
+								<tr>
+									<th><b>{{ _("Time") }}</b></th>
+									<th><b>{{ _("User") }}</b></th>
+									<th><b>{{ _("Message") }}</b></th>
+								</tr>
+							</thead>
+							<tbody id="reports-tbody">
+								<tr id="reports-empty">
+									<td colspan="3" class="text-center text-muted">{{ _("No reports yet") }}</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="modal fade" id="reportModal" tabindex="-1">
+		<div class="modal-dialog modal-lg">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title">{{ _("Report from") }} <span id="report-modal-user"></span></h5>
+					<button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
+				</div>
+				<div class="modal-body">
+					<div class="text-muted small mb-2" id="report-modal-time"></div>
+					<div class="report-content-full" id="report-modal-content"></div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-outline-danger mr-auto" id="report-modal-delete" onclick="deleteCurrentReport()">
+						<i class="fas fa-trash"></i> {{ _("Delete") }}
+					</button>
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">{{ _("Close") }}</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-md-12">
+			<div class="card">
+				<div class="card-header">
+					<h3 class="card-title">{{ _("Usage Heatmap") }} <span class="cfg-help" data-tip="{{ _('Session starts by hour and day of week. Spot peak usage windows for capacity planning.') }}">?</span></h3>
+					<select class="form-control form-control-sm" style="width: auto;" onchange="refreshHeatmap(this.value)" id="heatmap-period">
+						<option value="week" selected>{{ _("Past Week") }}</option>
+						<option value="month">{{ _("Past Month") }}</option>
+						<option value="all">{{ _("All Time") }}</option>
+					</select>
+				</div>
+				<div class="card-body">
+					<div class="chart-container" id="chart-heatmap"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-md-12">
+			<div class="card">
+				<div class="card-header">
+					<h3 class="card-title">{{ _("Top Users") }} <span class="cfg-help" data-tip="{{ _('Ranked by total desktop time. Identify power users or accounts consuming disproportionate resources.') }}">?</span></h3>
+					<select id="period-top-users" class="form-control form-control-sm" style="width: auto;" onchange="refreshTopUsers()">
+						<option value="week">{{ _("Past Week") }}</option>
+						<option value="month">{{ _("Past Month") }}</option>
+						<option value="all">{{ _("All Time") }}</option>
+					</select>
+				</div>
+				<div class="card-body">
+					<div class="chart-container" id="chart-top-users"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<div class="row">
+		<div class="col-md-6">
+			<div class="card">
+				<div class="card-header">
+					<h3 class="card-title">{{ _("Session Duration Distribution") }} <span class="cfg-help" data-tip="{{ _('How long sessions typically last. If most are very short, your timeout may be too aggressive. If most hit the max, users probably need more time.') }}">?</span></h3>
+					<select id="period-duration-dist" class="form-control form-control-sm" style="width: auto;" onchange="refreshDurationDist()">
+						<option value="week">{{ _("Past Week") }}</option>
+						<option value="month">{{ _("Past Month") }}</option>
+						<option value="all">{{ _("All Time") }}</option>
+					</select>
+				</div>
+				<div class="card-body">
+					<div class="chart-container" id="chart-duration-dist"></div>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-6">
+			<div class="card">
+				<div class="card-header">
+					<h3 class="card-title">{{ _("Session End Reasons") }} <span class="cfg-help" data-tip="{{ _('Why sessions ended: expired, user-closed, or admin-killed. A high expired count means users may need longer timers or more extensions.') }}">?</span></h3>
+					<select id="period-end-reasons" class="form-control form-control-sm" style="width: auto;" onchange="refreshEndReasons()">
+						<option value="week">{{ _("Past Week") }}</option>
+						<option value="month">{{ _("Past Month") }}</option>
+						<option value="all">{{ _("All Time") }}</option>
+					</select>
+				</div>
+				<div class="card-body">
+					<div class="chart-container" id="chart-end-reasons"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-md-12">
+			<div class="card">
+				<div class="card-header">
+					<h3 class="card-title">{{ _("Per-Host Breakdown") }} <span class="cfg-help" data-tip="{{ _('Session distribution across Docker hosts. Check if load balancing weights are working or if one host is taking all the traffic.') }}">?</span></h3>
+					<select id="period-per-host" class="form-control form-control-sm" style="width: auto;" onchange="refreshPerHost()">
+						<option value="week">{{ _("Past Week") }}</option>
+						<option value="month">{{ _("Past Month") }}</option>
+						<option value="all">{{ _("All Time") }}</option>
+					</select>
+				</div>
+				<div class="card-body">
+					<div class="chart-container" id="chart-per-host"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div id="cmd-log-section" style="display:none;">
+		<hr>
+		<div class="row mb-3">
+			<div class="col-md-12">
+				<h2>{{ _("Command Logs") }}</h2>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-md-4">
+				<div class="card stat-card bg-light">
+					<div class="card-body">
+						<h4 id="stat-total-commands" class="mb-0">0</h4>
+						<small class="text-muted">{{ _("Total Commands") }}</small>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="card stat-card bg-light">
+					<div class="card-body">
+						<h4 id="stat-unique-tools" class="mb-0">0</h4>
+						<small class="text-muted">{{ _("Unique Tools") }}</small>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="card stat-card bg-light">
+					<div class="card-body">
+						<h4 id="stat-unique-commands" class="mb-0">0</h4>
+						<small class="text-muted">{{ _("Unique Commands") }}</small>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-md-12">
+				<div class="card">
+					<div class="card-header">
+						<h3 class="card-title">{{ _("Command Feed") }} <span class="cfg-help" data-tip="{{ _('Recent shell commands from all sessions. Spot-check what participants are running or investigate suspicious activity.') }}">?</span></h3>
+					</div>
+					<div class="card-body">
+						<div class="table-responsive log-wrap">
+							<table class="table table-striped table-sm border">
+								<thead>
+									<tr>
+										<th><b>{{ _("Time") }}</b></th>
+										<th><b>{{ _("User") }}</b></th>
+										<th><b>{{ _("Command") }}</b></th>
+										<th><b>{{ _("Exit") }}</b></th>
+									</tr>
+								</thead>
+								<tbody id="cmd-feed">
+									<tr id="cmd-feed-empty">
+										<td colspan="4" class="text-center text-muted">{{ _("No commands yet") }}</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-md-12">
+				<div class="card">
+					<div class="card-header">
+						<h3 class="card-title">{{ _("Per-User Commands") }} <span class="cfg-help" data-tip="{{ _('Command counts and activity by user. Click the total to see their full history.') }}">?</span></h3>
+						<select id="period-cmd-users" class="form-control form-control-sm" style="width: auto;" onchange="refreshCmdPerUser()">
+							<option value="week">{{ _("Past Week") }}</option>
+							<option value="month">{{ _("Past Month") }}</option>
+							<option value="all">{{ _("All Time") }}</option>
+						</select>
+					</div>
+					<div class="card-body">
+						<div class="table-responsive log-wrap">
+							<table class="table table-striped table-sm border">
+								<thead>
+									<tr>
+										<th><b>{{ _("User") }}</b></th>
+										<th><b>{{ _("Total") }}</b></th>
+										<th><b>{{ _("Avg/Session") }}</b></th>
+										<th><b>{{ _("Unique Tools") }}</b></th>
+									</tr>
+								</thead>
+								<tbody id="cmd-users-table"></tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-md-6">
+				<div class="card">
+					<div class="card-header">
+						<h3 class="card-title">{{ _("Top Tools") }} <span class="cfg-help" data-tip="{{ _('Most-used command line tools across all sessions. See what software participants actually reach for and whether your image has the right tooling.') }}">?</span></h3>
+						<select id="period-cmd-tools" class="form-control form-control-sm" style="width: auto;" onchange="refreshCmdTools()">
+							<option value="week">{{ _("Past Week") }}</option>
+							<option value="month">{{ _("Past Month") }}</option>
+							<option value="all">{{ _("All Time") }}</option>
+						</select>
+					</div>
+					<div class="card-body">
+						<div class="chart-container" id="chart-top-tools"></div>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-6">
+				<div class="card">
+					<div class="card-header">
+						<h3 class="card-title">{{ _("Command Activity") }} <span class="cfg-help" data-tip="{{ _('Command volume by hour and day of week. Spot peak shell-usage windows or correlate clusters with competition events.') }}">?</span></h3>
+						<select id="period-cmd-heatmap" class="form-control form-control-sm" style="width: auto;" onchange="refreshCmdHeatmap()">
+							<option value="week">{{ _("Past Week") }}</option>
+							<option value="month">{{ _("Past Month") }}</option>
+							<option value="all">{{ _("All Time") }}</option>
+						</select>
+					</div>
+					<div class="card-body">
+						<div class="chart-container" id="chart-cmd-heatmap"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="modal fade" id="cmdHistoryModal" tabindex="-1">
+		<div class="modal-dialog modal-xl">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title">{{ _("Command History:") }} <span id="cmd-history-username"></span></h5>
+					<button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
+				</div>
+				<div class="modal-body p-0">
+					<div class="table-responsive" style="max-height: 500px; overflow-y: auto;">
+						<table class="table table-striped table-sm mb-0">
+							<thead style="position: sticky; top: 0; background: white;">
+								<tr>
+									<th>{{ _("Time") }}</th>
+									<th>{{ _("Command") }}</th>
+									<th>{{ _("Exit") }}</th>
+									<th>{{ _("Duration") }}</th>
+									<th>{{ _("CWD") }}</th>
+								</tr>
+							</thead>
+							<tbody id="cmd-history-table"></tbody>
+						</table>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<span class="text-muted mr-auto" id="cmd-history-info"></span>
+					<button type="button" class="btn btn-outline-secondary" id="cmd-history-prev" onclick="cmdHistoryPage(-1)">{{ _("Prev") }}</button>
+					<button type="button" class="btn btn-outline-secondary" id="cmd-history-next" onclick="cmdHistoryPage(1)">{{ _("Next") }}</button>
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">{{ _("Close") }}</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+{% endblock %}
+
+{% block scripts %}
+<script src="https://cdn.jsdelivr.net/npm/echarts@6.0.0/dist/echarts.min.js"
+	integrity="sha384-F07Cpw5v8spSU0H113F33m2NQQ/o6GqPTnTjf45ssG4Q6q58ZwhxBiQtIaqvnSpR"
+	crossorigin="anonymous"></script>
+<script>
+	// values returned by the dashboard API (username, command, target, context names,
+	// content, host, tool, container_name, docker_context) are pre-escaped server-side
+	// via markupsafe, so they go straight into innerHTML without escapeHtml here
+
+	let autoRefreshInterval = null;
+	let eventSource = null;
+	let maxEvents = 500;
+	let activeContainers = {};
+
+	function escapeHtml(text) {
+		const div = document.createElement('div');
+		div.textContent = text;
+		return div.innerHTML;
+	}
+
+	function formatTimestamp(timestamp) {
+		const date = new Date(timestamp * 1000);
+		return date.toLocaleString('en-US', {
+			month: 'short',
+			day: 'numeric',
+			year: 'numeric',
+			hour: 'numeric',
+			minute: '2-digit',
+			second: '2-digit',
+			hour12: true
+		});
+	}
+
+	const EVENT_LABELS = {
+		'session_requested': {{ _("Requested")|tojson }},
+		'session_created': {{ _("Created")|tojson }},
+		'session_destroyed': {{ _("Destroyed")|tojson }},
+		'session_expired': {{ _("Expired")|tojson }},
+		'session_extended': {{ _("Extended")|tojson }},
+		'session_error': {{ _("Error")|tojson }},
+		'admin_action': {{ _("Admin")|tojson }},
+		'host_unhealthy': {{ _("Host Down")|tojson }},
+		'host_healthy': {{ _("Host Up")|tojson }},
+		'orphan_reaped': {{ _("Orphan Reaped")|tojson }},
+	};
+
+	const EXIT_CODE_LABELS = {
+		0: {{ _("success")|tojson }},
+		1: {{ _("error")|tojson }},
+		2: {{ _("builtin misuse")|tojson }},
+		64: {{ _("usage error")|tojson }},
+		65: {{ _("data error")|tojson }},
+		66: {{ _("input not found")|tojson }},
+		67: {{ _("user not found")|tojson }},
+		68: {{ _("host not found")|tojson }},
+		69: {{ _("unavailable")|tojson }},
+		70: {{ _("internal error")|tojson }},
+		71: {{ _("os error")|tojson }},
+		73: {{ _("can't create output")|tojson }},
+		74: {{ _("i/o error")|tojson }},
+		75: {{ _("temp failure")|tojson }},
+		77: {{ _("permission denied")|tojson }},
+		78: {{ _("config error")|tojson }},
+		100: {{ _("apt error")|tojson }},
+		102: {{ _("apt broken packages")|tojson }},
+		126: {{ _("not executable")|tojson }},
+		127: {{ _("command not found")|tojson }},
+		128: {{ _("invalid exit arg")|tojson }},
+		129: {{ _("hangup")|tojson }},
+		130: {{ _("ctrl-c")|tojson }},
+		131: {{ _("quit (core dump)")|tojson }},
+		132: {{ _("illegal instruction")|tojson }},
+		133: {{ _("breakpoint trap")|tojson }},
+		134: {{ _("aborted")|tojson }},
+		135: {{ _("bus error")|tojson }},
+		136: {{ _("floating point error")|tojson }},
+		137: {{ _("killed (OOM?)")|tojson }},
+		138: {{ _("user signal 1")|tojson }},
+		139: {{ _("segfault")|tojson }},
+		140: {{ _("user signal 2")|tojson }},
+		141: {{ _("broken pipe")|tojson }},
+		142: {{ _("alarm timeout")|tojson }},
+		143: {{ _("terminated")|tojson }},
+		144: {{ _("stack fault")|tojson }},
+		145: {{ _("child exited")|tojson }},
+		146: {{ _("continued")|tojson }},
+		147: {{ _("stopped")|tojson }},
+		148: {{ _("ctrl-z")|tojson }},
+		149: {{ _("bg read from tty")|tojson }},
+		150: {{ _("bg write to tty")|tojson }},
+		152: {{ _("cpu time exceeded")|tojson }},
+		153: {{ _("file size exceeded")|tojson }},
+		159: {{ _("bad syscall")|tojson }},
+		255: {{ _("exit out of range")|tojson }},
+	};
+
+	function userBadges(obj) {
+		let b = '';
+		if (obj.is_admin) b += ' <i class="fas fa-shield-alt" style="color:#adb5bd" title="' + {{ _("Admin")|tojson }} + '"></i>';
+		if (obj.is_hidden) b += ' <i class="fas fa-eye-slash" style="color:#adb5bd" title="' + {{ _("Hidden")|tojson }} + '"></i>';
+		if (obj.is_banned) b += ' <i class="fas fa-ban" style="color:#adb5bd" title="' + {{ _("Banned")|tojson }} + '"></i>';
+		return b;
+	}
+
+	const _userFlags = {};
+
+	function userLink(obj, fallbackId) {
+		const uid = obj.user_id || fallbackId;
+		if (uid && (obj.is_admin || obj.is_hidden || obj.is_banned)) {
+			_userFlags[uid] = {is_admin: obj.is_admin, is_hidden: obj.is_hidden, is_banned: obj.is_banned};
+		}
+		const flags = _userFlags[uid] || obj;
+		const name = obj.username || {{ _("User %(id)s", id="%(id)s")|tojson }}.replace('%(id)s', parseInt(uid));
+		return `<a href="/admin/users/${parseInt(uid)}">${name}</a>${userBadges(flags)}`;
+	}
+
+	function exitCodeTitle(code) {
+		if (code === null || code === undefined) return '';
+		if (EXIT_CODE_LABELS[code]) return EXIT_CODE_LABELS[code];
+		if (code > 128 && code < 165) return {{ _("signal %(n)s", n="%(n)s")|tojson }}.replace('%(n)s', code - 128);
+		return '';
+	}
+
+	const EVENT_BADGE_CLASS = {
+		'session_requested': 'badge-evt-requested',
+		'session_created': 'badge-evt-created',
+		'session_destroyed': 'badge-evt-destroyed',
+		'session_expired': 'badge-evt-expired',
+		'session_extended': 'badge-evt-extended',
+		'session_error': 'badge-evt-error',
+		'admin_action': 'badge-evt-admin',
+		'host_unhealthy': 'badge-evt-host-down',
+		'host_healthy': 'badge-evt-host-up',
+		'orphan_reaped': 'badge-evt-orphan',
+	};
+
+	function formatDuration(secs) {
+		if (!secs && secs !== 0) return '';
+		const m = Math.floor(secs / 60), s = secs % 60;
+		if (m >= 60) return `${Math.floor(m / 60)}h ${m % 60}m`;
+		return m > 0 ? `${m}m ${s}s` : `${s}s`;
+	}
+
+	function formatEventDetails(event) {
+		const m = event.metadata || {};
+		switch (event.type) {
+			case 'session_requested': {
+				if (!m.hosts) return '';
+				const parts = [];
+				for (const [name, h] of Object.entries(m.hosts)) {
+					const status = h.healthy ? {{ _("%(n)s active, score %(s)s", n="%(n)s", s="%(s)s")|tojson }}.replace('%(n)s', h.containers).replace('%(s)s', h.score) : {{ _("unhealthy")|tojson }};
+					parts.push(`${name}: ${status}`);
+				}
+				return parts.join(' | ');
+			}
+			case 'session_created':
+				return [m.context, m.container_name].filter(Boolean).join(' / ');
+			case 'session_destroyed': {
+				const parts = [m.context, m.container_name].filter(Boolean).join(' / ');
+				const extra = [];
+				if (m.reason) extra.push(m.reason);
+				if (m.duration) extra.push(formatDuration(m.duration));
+				if (m.extensions_used) extra.push({{ _("%(n)s ext", n="%(n)s")|tojson }}.replace('%(n)s', m.extensions_used));
+				if (m.commands !== null && m.commands !== undefined) extra.push({{ _("%(n)s cmds", n="%(n)s")|tojson }}.replace('%(n)s', m.commands));
+				return extra.length ? `${parts} (${extra.join(', ')})` : parts;
+			}
+			case 'session_expired':
+				return '';
+			case 'session_extended':
+			return m.extensions_used !== undefined ? {{ _("%(used)s/%(max)s extensions", used="%(used)s", max="%(max)s")|tojson }}.replace('%(used)s', m.extensions_used).replace('%(max)s', m.max_extensions) : '';
+			case 'session_error':
+				// inv: event.message for session_error is _esc'd in event_logger.log_event();
+				// all call sites pass static text or str(e). new call sites must preserve this.
+				return event.message;
+			case 'admin_action': {
+					if (m.target_id && (m.target_is_admin || m.target_is_hidden || m.target_is_banned)) {
+						_userFlags[m.target_id] = {is_admin: m.target_is_admin, is_hidden: m.target_is_hidden, is_banned: m.target_is_banned};
+					}
+					const target = m.target_id
+						? '<a href="/admin/users/' + parseInt(m.target_id) + '">' + (m.target || '') + '</a>' + userBadges(_userFlags[m.target_id] || {})
+						: (m.target || '');
+				if (m.killed_count !== undefined) return {{ _("purged %(n)s sessions", n="%(n)s")|tojson }}.replace('%(n)s', m.killed_count);
+			if (m.action === 'kill') return {{ _("killed %(target)s's session", target="%(target)s")|tojson }}.replace('%(target)s', target);
+			if (m.action === 'extend') return {{ _("extended %(target)s's session", target="%(target)s")|tojson }}.replace('%(target)s', target);
+			if (m.action === 'peek') return {{ _("monitoring %(target)s's session", target="%(target)s")|tojson }}.replace('%(target)s', target);
+			if (m.action === 'clear_history') return {{ _("cleared %(sessions)s sessions, %(commands)s command logs", sessions="%(sessions)s", commands="%(commands)s")|tojson }}.replace('%(sessions)s', m.sessions || 0).replace('%(commands)s', m.commands || 0);
+			return '';
+			}
+			case 'host_unhealthy':
+				return [m.context_name, m.reason].filter(Boolean).join(': ');
+			case 'host_healthy': {
+			if (!m.context_name) return '';
+			const img = m.image;
+			if (img) return {{ _("%(ctx)s: image %(id)s (%(size)sMB, built %(created)s)", ctx="%(ctx)s", id="%(id)s", size="%(size)s", created="%(created)s")|tojson }}.replace('%(ctx)s', m.context_name).replace('%(id)s', img.id).replace('%(size)s', img.size_mb).replace('%(created)s', img.created);
+			return {{ _("%(ctx)s: reachable", ctx="%(ctx)s")|tojson }}.replace('%(ctx)s', m.context_name);
+		}
+			case 'orphan_reaped': {
+			const parts = [m.context, m.container_name].filter(Boolean).join(' / ');
+			const age = formatDuration(m.age_seconds);
+			return age ? {{ _("%(parts)s (age %(age)s, leftover with no db row)", parts="%(parts)s", age="%(age)s")|tojson }}.replace('%(parts)s', parts).replace('%(age)s', age) : parts;
+		}
+			default:
+				return event.message || '';
+		}
+	}
+
+	const seenEventIds = new Set();
+
+	function addEventToFeed(event) {
+		if (event.id && seenEventIds.has(event.id)) return;
+		if (event.id) seenEventIds.add(event.id);
+
+		const feed = document.getElementById('event-feed');
+		const empty = document.getElementById('event-feed-empty');
+		if (empty) empty.remove();
+
+		const row = document.createElement('tr');
+		const badgeClass = EVENT_BADGE_CLASS[event.type] || 'badge-secondary';
+		const label = EVENT_LABELS[event.type] || event.type;
+		const details = formatEventDetails(event);
+		const detailsText = details.replace(/<[^>]*>/g, '');
+
+		row.innerHTML = `
+			<td class="log-time">${escapeHtml(formatTimestamp(event.timestamp))}</td>
+			<td class="log-user">${event.username ? userLink({user_id: event.user_id, username: event.username}, event.user_id) : ''}</td>
+			<td><span class="badge ${badgeClass}">${escapeHtml(label)}</span></td>
+			<td class="log-detail cell-clip" title="${detailsText}">${details}</td>
+		`;
+
+		feed.insertBefore(row, feed.firstChild);
+
+		while (feed.children.length > maxEvents) {
+			feed.removeChild(feed.lastChild);
+		}
+
+		const wrapper = feed.closest('.log-wrap');
+		if (wrapper) wrapper.scrollTop = 0;
+	}
+
+	function connectEventStream() {
+		if (eventSource) eventSource.close();
+
+		eventSource = new EventSource('/remote-desktop/dashboard/api/events/stream');
+
+		eventSource.onmessage = function(e) {
+			try {
+				const event = JSON.parse(e.data);
+				addEventToFeed(event);
+			} catch (err) {
+				console.error('Error parsing event:', err);
+			}
+		};
+
+		eventSource.onerror = function() {
+			setTimeout(connectEventStream, 5000);
+		};
+	}
+
+	function formatTime(seconds) {
+		if (seconds <= 0) return {{ _("EXPIRED")|tojson }};
+		const hours = Math.floor(seconds / 3600);
+		const minutes = Math.floor((seconds % 3600) / 60);
+		const secs = seconds % 60;
+		if (hours > 0) return `${hours}h ${minutes}m ${secs}s`;
+		return `${minutes}m ${secs}s`;
+	}
+
+	function refreshContainers() {
+		fetch('/remote-desktop/dashboard/api/containers', {
+			headers: { 'X-Requested-With': 'XMLHttpRequest' },
+			credentials: 'same-origin'
+		})
+		.then(response => response.json())
+		.then(data => updateContainersTable(data.containers))
+		.catch(error => console.error('Error fetching containers:', error));
+	}
+
+	function refreshAll() {
+		refreshContainers();
+		refreshSummaryStats();
+		refreshReports();
+	}
+
+	let reportsById = {};
+	let currentReportId = null;
+
+	function refreshReports() {
+		fetch('/remote-desktop/dashboard/api/reports', {
+			headers: { 'X-Requested-With': 'XMLHttpRequest' },
+			credentials: 'same-origin'
+		})
+		.then(response => response.json())
+		.then(data => updateReportsTable(data.reports || []))
+		.catch(error => console.error('Error fetching reports:', error));
+	}
+
+	function updateReportsTable(reports) {
+		const tbody = document.getElementById('reports-tbody');
+		if (!tbody) return;
+
+		reportsById = {};
+
+		if (!reports.length) {
+			tbody.innerHTML = '<tr id="reports-empty"><td colspan="3" class="text-center text-muted">' + {{ _("No reports yet")|tojson }} + '</td></tr>';
+			return;
+		}
+
+		tbody.innerHTML = '';
+		reports.forEach(r => {
+			reportsById[r.id] = r;
+			const row = document.createElement('tr');
+			row.dataset.reportId = r.id;
+			const titleText = r.content.replace(/<[^>]*>/g, '');
+			row.innerHTML = `
+				<td class="log-time">${escapeHtml(formatTimestamp(r.timestamp))}</td>
+				<td class="log-user">${userLink(r)}</td>
+				<td class="log-detail cell-clip" title="${titleText}">${r.content}</td>
+			`;
+			tbody.appendChild(row);
+		});
+	}
+
+	function openReportModal(id) {
+		const r = reportsById[id];
+		if (!r) return;
+		currentReportId = id;
+		document.getElementById('report-modal-user').innerHTML = userLink(r);
+		document.getElementById('report-modal-time').textContent = formatTimestamp(r.timestamp);
+		document.getElementById('report-modal-content').innerHTML = r.content;
+		$('#reportModal').modal('show');
+	}
+
+	function deleteCurrentReport() {
+		if (!currentReportId) return;
+		const id = currentReportId;
+		const formData = new FormData();
+		formData.append('nonce', window.init.csrfNonce);
+		fetch(`/remote-desktop/dashboard/api/reports/${id}/delete`, {
+			method: 'POST',
+			headers: { 'X-Requested-With': 'XMLHttpRequest' },
+			credentials: 'same-origin',
+			body: formData
+		})
+		.then(response => response.json())
+		.then(data => {
+			if (data.success) {
+				$('#reportModal').modal('hide');
+				currentReportId = null;
+				refreshReports();
+			}
+		})
+		.catch(error => console.error('Error deleting report:', error));
+	}
+
+	function clearAllReports() {
+		CTFd.ui.ezq.ezQuery({
+			title: {{ _("Clear All Reports")|tojson }},
+			body: {{ _("Delete every submitted report? This cannot be undone.")|tojson }},
+			success: () => {
+				const formData = new FormData();
+				formData.append('nonce', window.init.csrfNonce);
+				fetch('/remote-desktop/dashboard/api/reports/clear', {
+					method: 'POST',
+					headers: { 'X-Requested-With': 'XMLHttpRequest' },
+					credentials: 'same-origin',
+					body: formData
+				})
+				.then(response => response.json())
+				.then(data => {
+					if (data.success) refreshReports();
+				})
+				.catch(error => console.error('Error clearing reports:', error));
+			}
+		});
+	}
+
+	function updateContainersTable(containers) {
+		const tbody = document.getElementById('containers-table');
+
+		if (!containers || containers.length === 0) {
+			tbody.innerHTML = '<tr><td colspan="7" class="text-center text-muted">' + {{ _("No active sessions")|tojson }} + '</td></tr>';
+			return;
+		}
+
+		activeContainers = {};
+		tbody.innerHTML = '';
+		const monitorTitle = {{ _("Monitor")|tojson }};
+		const killTitle = {{ _("Kill")|tojson }};
+		const extendTitle = {{ _("Extend")|tojson }};
+		containers.forEach(container => {
+			activeContainers[container.user_id] = container;
+
+			const timerActive = container.timer && container.timer.active;
+			const timeRemaining = container.timer ? container.timer.time_remaining : 0;
+			const statusClass = !timerActive ? 'status-warning' :
+							   timeRemaining <= 0 ? 'status-expired' :
+							   timeRemaining < 300 ? 'status-warning' : 'status-active';
+			const status = !timerActive ? {{ _("STARTING")|tojson }} :
+						  timeRemaining <= 0 ? {{ _("EXPIRED")|tojson }} :
+						  timeRemaining < 300 ? {{ _("EXPIRING")|tojson }} : {{ _("ACTIVE")|tojson }};
+
+			const row = `
+				<tr>
+					<td class="log-user">${userLink(container)}</td>
+					<td class="cell-clip-sm" title="${container.container_name}"><code>${container.container_name}</code></td>
+					<td>${container.docker_context || ''}</td>
+					<td class="time-remaining ${statusClass}">${formatTime(timeRemaining)}</td>
+					<td>${container.timer ? `${container.timer.extensions_used}/${container.timer.max_extensions}` : '-'}</td>
+					<td><span class="${statusClass}">${status}</span></td>
+					<td class="action-buttons">
+						<button class="btn btn-sm" onclick="peekVNC(${container.user_id})" title="${monitorTitle}">
+							<i class="fas fa-eye icon-monitor"></i>
+						</button>
+						<button class="btn btn-sm" onclick="killContainer(${container.user_id})" title="${killTitle}">
+							<i class="fas fa-times icon-kill"></i>
+						</button>
+						${container.timer && container.timer.extensions_used < container.timer.max_extensions ? `
+							<button class="btn btn-sm" onclick="extendContainer(${container.user_id})" title="${extendTitle}">
+								<i class="fas fa-clock icon-extend"></i>
+							</button>
+						` : ''}
+					</td>
+				</tr>
+			`;
+			tbody.innerHTML += row;
+		});
+	}
+
+	function peekVNC(userId) {
+		const container = activeContainers[userId];
+		if (!container || !container.vnc_url) {
+			CTFd.ui.ezq.ezAlert({ title: {{ _("Error")|tojson }}, body: {{ _("VNC unavailable")|tojson }}, button: {{ _("OK")|tojson }} });
+			return;
+		}
+
+		const username = container.username || {{ _("User %(id)s", id="%(id)s")|tojson }}.replace('%(id)s', userId);
+		const windowName = `vnc_peek_${userId}`;
+		// password may be in fragment (#), use URL API so view_only goes in query string
+		const peekUrl = new URL(container.vnc_url, window.location.origin);
+		peekUrl.searchParams.set('view_only', 'true');
+		const vncWindow = window.open(peekUrl.toString(), windowName, 'width=1200,height=800,scrollbars=yes,resizable=yes');
+
+		if (!vncWindow) {
+			CTFd.ui.ezq.ezAlert({ title: {{ _("Error")|tojson }}, body: {{ _("Failed to open VNC (check popup blocker)")|tojson }}, button: {{ _("OK")|tojson }} });
+		} else {
+			const fd = new FormData();
+			fd.append('nonce', CTFd.config.csrfNonce);
+			fd.append('user_id', userId);
+			fetch('/remote-desktop/dashboard/api/peek', {method: 'POST', credentials: 'same-origin', body: fd});
+		}
+	}
+
+	function killContainer(userId) {
+		const container = activeContainers[userId];
+		const username = container ? container.username : {{ _("User %(id)s", id="%(id)s")|tojson }}.replace('%(id)s', userId);
+		if (!confirm({{ _("Kill %(user)s's session?", user="%(user)s")|tojson }}.replace('%(user)s', username))) return;
+
+		const formData = new FormData();
+		formData.append('nonce', window.init.csrfNonce);
+		formData.append('user_id', userId);
+
+		fetch('/remote-desktop/dashboard/api/kill', {
+			method: 'POST',
+			headers: { 'X-Requested-With': 'XMLHttpRequest' },
+			credentials: 'same-origin',
+			body: formData
+		})
+		.then(response => response.json())
+		.then(data => {
+			if (data.success) refreshAll();
+			else CTFd.ui.ezq.ezAlert({ title: {{ _("Error")|tojson }}, body: data.error || {{ _("Kill failed")|tojson }}, button: {{ _("OK")|tojson }} });
+		});
+	}
+
+	function extendContainer(userId) {
+		const formData = new FormData();
+		formData.append('nonce', window.init.csrfNonce);
+		formData.append('user_id', userId);
+
+		fetch('/remote-desktop/dashboard/api/extend', {
+			method: 'POST',
+			headers: { 'X-Requested-With': 'XMLHttpRequest' },
+			credentials: 'same-origin',
+			body: formData
+		})
+		.then(response => response.json())
+		.then(data => {
+			if (data.success) refreshAll();
+			else CTFd.ui.ezq.ezAlert({ title: {{ _("Error")|tojson }}, body: data.error || {{ _("Extend failed")|tojson }}, button: {{ _("OK")|tojson }} });
+		});
+	}
+
+	function clearHistory() {
+		if (!confirm({{ _("Clear all session history? This resets stats and charts.")|tojson }})) return;
+		const fd = new FormData();
+		fd.append('nonce', window.init.csrfNonce);
+		fetch('/remote-desktop/dashboard/api/clear_history', {
+			method: 'POST',
+			headers: { 'X-Requested-With': 'XMLHttpRequest' },
+			credentials: 'same-origin',
+			body: fd
+		})
+		.then(r => r.json())
+		.then(data => {
+			if (data.success) {
+				refreshStats();
+			}
+		});
+	}
+
+	function killAllSessions() {
+		if (!confirm({{ _("Purge ALL active sessions? This cannot be undone.")|tojson }})) return;
+
+		const btn = document.getElementById('purge-all-btn');
+		btn.disabled = true;
+
+		const formData = new FormData();
+		formData.append('nonce', window.init.csrfNonce);
+		fetch('/remote-desktop/dashboard/api/kill-all', {
+			method: 'POST',
+			headers: { 'X-Requested-With': 'XMLHttpRequest' },
+			credentials: 'same-origin',
+			body: formData
+		})
+		.then(response => response.json())
+		.then(data => {
+			if (data.success) {
+				CTFd.ui.ezq.ezAlert({ title: {{ _("Success")|tojson }}, body: {{ _("Killed %(n)s session(s)", n="%(n)s")|tojson }}.replace('%(n)s', data.killed), button: {{ _("OK")|tojson }} });
+				refreshAll();
+			} else {
+				CTFd.ui.ezq.ezAlert({ title: {{ _("Error")|tojson }}, body: data.error || {{ _("Purge failed")|tojson }}, button: {{ _("OK")|tojson }} });
+			}
+			btn.disabled = false;
+		})
+		.catch(() => { btn.disabled = false; });
+	}
+
+	let topUsersChart = null;
+	let durationDistChart = null;
+	let endReasonsChart = null;
+	let perHostChart = null;
+	let topToolsChart = null;
+	let cmdHeatmapChart = null;
+	let heatmapChart = null;
+
+	function initCharts() {
+		['chart-top-users', 'chart-duration-dist', 'chart-end-reasons', 'chart-per-host', 'chart-top-tools'].forEach(id => {
+			const el = document.getElementById(id);
+			if (!el) return;
+			const chart = echarts.init(el);
+			if (id === 'chart-top-users') topUsersChart = chart;
+			else if (id === 'chart-duration-dist') durationDistChart = chart;
+			else if (id === 'chart-end-reasons') endReasonsChart = chart;
+			else if (id === 'chart-per-host') perHostChart = chart;
+			else if (id === 'chart-top-tools') topToolsChart = chart;
+		});
+	}
+
+	function formatDurationShort(seconds) {
+		if (!seconds || seconds <= 0) return '-';
+		if (seconds < 60) return Math.round(seconds) + 's';
+		if (seconds < 3600) return Math.round(seconds / 60) + 'm';
+		const h = Math.floor(seconds / 3600);
+		const m = Math.round((seconds % 3600) / 60);
+		return h + 'h ' + m + 'm';
+	}
+
+	function getPeriod(id) {
+		const el = document.getElementById(id);
+		return el ? el.value : 'week';
+	}
+
+	function refreshSummaryStats() {
+		fetch('/remote-desktop/dashboard/api/stats/summary', {
+			headers: { 'X-Requested-With': 'XMLHttpRequest' },
+			credentials: 'same-origin'
+		})
+		.then(r => r.json())
+		.then(data => {
+			document.getElementById('stat-active').textContent = data.active || 0;
+			document.getElementById('stat-total-sessions').textContent = (data.total_sessions || 0).toLocaleString();
+			document.getElementById('stat-avg-duration').textContent = formatDurationShort(data.avg_duration);
+			document.getElementById('stat-peak-concurrent').textContent = data.peak_concurrent || 0;
+			document.getElementById('stat-unique-users').textContent = data.unique_users || 0;
+			document.getElementById('stat-total-hours').textContent = (data.total_hours || 0).toLocaleString();
+			document.getElementById('stat-contexts').textContent = (data.healthy_contexts || 0) + '/' + (data.total_contexts || 0);
+		});
+	}
+
+	function refreshTopUsers() {
+		const period = getPeriod('period-top-users');
+		fetch(`/remote-desktop/dashboard/api/stats/top-users?period=${period}`, {
+			headers: { 'X-Requested-With': 'XMLHttpRequest' },
+			credentials: 'same-origin'
+		})
+		.then(r => r.json())
+		.then(data => {
+			if (!topUsersChart) return;
+			const users = (data.users || []).reverse();
+			topUsersChart.setOption({
+				tooltip: {
+					trigger: 'axis',
+					axisPointer: { type: 'shadow' },
+					formatter: function(params) {
+						const p = params[0];
+						const user = data.users.find(u => u.username === p.name) || {};
+						const uid = user.user_id;
+						const nameHtml = uid
+							? '<a href="/admin/users/' + parseInt(uid) + '" style="color:inherit;text-decoration:underline">' + p.name + '</a>' + userBadges(user)
+							: p.name;
+						return nameHtml + '<br/>' + formatDurationShort(p.value) + {{ _(" (%(n)s sessions)", n="%(n)s")|tojson }}.replace('%(n)s', user.session_count || 0);
+					}
+				},
+				toolbox: { feature: { saveAsImage: {} } },
+				grid: { left: 100, right: 20, top: 30, bottom: 40 },
+				xAxis: { type: 'value', name: {{ _("Time")|tojson }}, nameLocation: 'middle', nameGap: 25, axisLabel: { formatter: v => formatDurationShort(v) } },
+				yAxis: { type: 'category', data: users.map(u => u.username) },
+				series: [{
+					type: 'bar',
+					data: users.map(u => u.total_duration),
+					itemStyle: { color: '#1f76b4' }
+				}]
+			});
+		});
+	}
+
+	function refreshDurationDist() {
+		const period = getPeriod('period-duration-dist');
+		fetch(`/remote-desktop/dashboard/api/stats/duration-distribution?period=${period}`, {
+			headers: { 'X-Requested-With': 'XMLHttpRequest' },
+			credentials: 'same-origin'
+		})
+		.then(r => r.json())
+		.then(data => {
+			if (!durationDistChart) return;
+			const buckets = data.buckets || [];
+			durationDistChart.setOption({
+				tooltip: {
+					trigger: 'axis',
+					axisPointer: { type: 'shadow' },
+					formatter: function(params) {
+						const p = params[0];
+						const b = buckets[p.dataIndex] || {};
+						let html = '<b>' + escapeHtml(p.name) + '</b><br/>' + p.value + {{ _(" sessions")|tojson }};
+						if (b.hint) html += '<br/><span style="color:#999;font-size:11px">' + escapeHtml(b.hint) + '</span>';
+						return html;
+					}
+				},
+				toolbox: { feature: { saveAsImage: {} } },
+				grid: { left: 60, right: 20, top: 30, bottom: 30 },
+				xAxis: { type: 'category', data: buckets.map(b => b.range) },
+				yAxis: { type: 'value', name: {{ _("Sessions")|tojson }}, minInterval: 1 },
+				series: [{
+					type: 'bar',
+					data: buckets.map(b => b.count),
+					itemStyle: { color: '#fd7e14' }
+				}]
+			});
+		});
+	}
+
+	function refreshEndReasons() {
+		const period = getPeriod('period-end-reasons');
+		fetch(`/remote-desktop/dashboard/api/stats/extensions?period=${period}`, {
+			headers: { 'X-Requested-With': 'XMLHttpRequest' },
+			credentials: 'same-origin'
+		})
+		.then(r => r.json())
+		.then(data => {
+			if (!endReasonsChart) return;
+			const reasons = data.end_reasons || [];
+			endReasonsChart.setOption({
+				tooltip: { trigger: 'item', formatter: '{b}: {c} ({d}%)' },
+				toolbox: { feature: { saveAsImage: {} } },
+				series: [{
+					type: 'pie',
+					radius: ['30%', '70%'],
+					data: reasons.map(r => ({ name: r.reason, value: r.count })),
+					label: { formatter: '{b}\n{c}' }
+				}]
+			});
+		});
+	}
+
+	function refreshPerHost() {
+		const period = getPeriod('period-per-host');
+		fetch(`/remote-desktop/dashboard/api/stats/per-host?period=${period}`, {
+			headers: { 'X-Requested-With': 'XMLHttpRequest' },
+			credentials: 'same-origin'
+		})
+		.then(r => r.json())
+		.then(data => {
+			if (!perHostChart) return;
+			const hosts = data.hosts || [];
+			perHostChart.setOption({
+				tooltip: {
+					trigger: 'axis',
+					axisPointer: { type: 'shadow' },
+					formatter: function(params) {
+						const host = params[0].name;
+						const sessions = params[0].value;
+						const h = hosts.find(h => h.host === host) || {};
+						return host + '<br/>' +
+							{{ _("%(n)s sessions", n="%(n)s")|tojson }}.replace('%(n)s', sessions) + '<br/>' +
+							formatDurationShort(h.total_duration || 0) + {{ _(" total")|tojson }};
+					}
+				},
+				toolbox: { feature: { saveAsImage: {} } },
+				grid: { left: 100, right: 20, top: 30, bottom: 40 },
+				xAxis: { type: 'value', name: {{ _("Sessions")|tojson }}, nameLocation: 'middle', nameGap: 25, minInterval: 1 },
+				yAxis: { type: 'category', data: hosts.map(h => h.host) },
+				series: [{
+					type: 'bar',
+					data: hosts.map(h => h.sessions),
+					itemStyle: { color: '#20c997' }
+				}]
+			});
+		});
+	}
+
+	function refreshHeatmap(period) {
+		if (!period) period = document.getElementById('heatmap-period').value;
+		const tz = Intl.DateTimeFormat().resolvedOptions().timeZone || 'UTC';
+		fetch(`/remote-desktop/dashboard/api/stats/heatmap?period=${period}&tz=${encodeURIComponent(tz)}`, {
+			headers: { 'CSRF-Token': init.csrfNonce }
+		})
+		.then(r => r.json())
+		.then(data => {
+			const el = document.getElementById('chart-heatmap');
+			if (heatmapChart) heatmapChart.dispose();
+			heatmapChart = echarts.init(el);
+			const chart = heatmapChart;
+
+			if (!data.data || data.data.length === 0) {
+				chart.setOption({
+					title: { text: {{ _("No data yet")|tojson }}, left: 'center', top: 'center', textStyle: { color: '#999', fontSize: 14 } }
+				});
+				return;
+			}
+
+			const hours = Array.from({length: 24}, (_, h) => (h % 12 || 12) + (h < 12 ? ' AM' : ' PM'));
+			const dayLabels = data.days;
+			const maxVal = Math.max(...data.data.map(d => d[2]));
+			chart.setOption({
+				tooltip: {
+					position: 'top',
+					formatter: function(p) {
+						const dur = p.data[3] != null ? p.data[3] : 0;
+						return '<b>' + dayLabels[p.data[0]] + ' ' + hours[p.data[1]] + '</b><br/>' +
+							{{ _("%(n)s sessions, %(d)sh total", n="%(n)s", d="%(d)s")|tojson }}.replace('%(n)s', p.data[2]).replace('%(d)s', dur);
+					}
+				},
+				grid: { left: 50, right: 30, top: 10, bottom: 40 },
+				xAxis: { type: 'category', data: dayLabels, splitArea: { show: true } },
+				yAxis: { type: 'category', data: hours, splitArea: { show: true }, inverse: true },
+				visualMap: {
+					min: 0,
+					max: maxVal || 1,
+					dimension: 2,
+					calculable: true,
+					orient: 'horizontal',
+					left: 'center',
+					bottom: 0,
+					itemWidth: 10,
+					itemHeight: 80,
+					inRange: { color: ['#ebedf0', '#9be9a8', '#40c463', '#30a14e', '#216e39'] }
+				},
+				series: [{
+					type: 'heatmap',
+					data: data.data,
+					label: { show: false },
+					emphasis: { itemStyle: { shadowBlur: 5, shadowColor: 'rgba(0, 0, 0, 0.3)' } }
+				}]
+			});
+		});
+	}
+
+	function refreshStats() {
+		refreshCommandLogStats();
+		refreshSummaryStats();
+		refreshTopUsers();
+		refreshDurationDist();
+		refreshEndReasons();
+		refreshPerHost();
+		refreshHeatmap();
+	}
+
+	function refreshCommandFeed() {
+		fetch('/remote-desktop/dashboard/api/command-logs?limit=50', {
+			headers: { 'X-Requested-With': 'XMLHttpRequest' },
+			credentials: 'same-origin'
+		})
+		.then(r => r.json())
+		.then(data => {
+			const feed = document.getElementById('cmd-feed');
+			const empty = document.getElementById('cmd-feed-empty');
+			const logs = data.logs || [];
+
+			if (!logs.length) return;
+			if (empty) empty.remove();
+
+			feed.innerHTML = logs.map(log => {
+				const exitBadge = log.exit_code === 0 ? 'badge-success' :
+								  log.exit_code !== null ? 'badge-danger' : 'badge-secondary';
+				const exitText = log.exit_code !== null ? log.exit_code : '-';
+				const exitTip = exitCodeTitle(log.exit_code);
+				return `<tr>
+					<td class="log-time">${escapeHtml(formatTimestamp(log.timestamp))}</td>
+					<td class="log-user">${userLink(log, log.user_id)}</td>
+					<td class="cell-clip" title="${log.command}"><code>${log.command}</code></td>
+					<td><span class="badge ${exitBadge}" ${exitTip ? `title="${exitTip}"` : ''}>${exitText}</span></td>
+				</tr>`;
+			}).join('');
+		});
+	}
+
+	let cmdHistoryUserId = null;
+	let cmdHistoryOffset = 0;
+	const cmdHistoryLimit = 100;
+
+	function refreshCmdSummary() {
+		fetch('/remote-desktop/dashboard/api/command-logs/stats/summary', {
+			headers: { 'X-Requested-With': 'XMLHttpRequest' },
+			credentials: 'same-origin'
+		})
+		.then(r => r.json())
+		.then(data => {
+			const section = document.getElementById('cmd-log-section');
+			if (!data.enabled && data.total_commands === 0) {
+				section.style.display = 'none';
+				return;
+			}
+			const wasHidden = section.style.display === 'none';
+			section.style.display = '';
+			document.getElementById('stat-total-commands').textContent = data.total_commands.toLocaleString();
+			document.getElementById('stat-unique-tools').textContent = data.unique_tools.toLocaleString();
+			document.getElementById('stat-unique-commands').textContent = data.unique_commands.toLocaleString();
+
+			if (wasHidden) {
+				setTimeout(function() {
+					if (topToolsChart) topToolsChart.resize();
+					if (cmdHeatmapChart) cmdHeatmapChart.resize();
+				}, 50);
+			}
+		});
+	}
+
+	function refreshCmdPerUser() {
+		const period = getPeriod('period-cmd-users');
+		fetch(`/remote-desktop/dashboard/api/command-logs/stats/per-user?period=${period}`, {
+			headers: { 'X-Requested-With': 'XMLHttpRequest' },
+			credentials: 'same-origin'
+		})
+		.then(r => r.json())
+		.then(data => {
+			const tbody = document.getElementById('cmd-users-table');
+			const users = data.users || [];
+		if (!users.length) {
+			tbody.innerHTML = '<tr><td colspan="4" class="text-center text-muted">' + {{ _("No command data")|tojson }} + '</td></tr>';
+			return;
+		}
+			tbody.innerHTML = users.map(u => `
+				<tr>
+					<td class="log-user">${userLink(u)}</td>
+					<td><a href="#" class="cmd-history-link" data-userid="${parseInt(u.user_id)}" data-username="${u.username}">${u.total_commands.toLocaleString()}</a></td>
+					<td>${u.avg_per_session}</td>
+					<td>${u.unique_tools}</td>
+				</tr>
+			`).join('');
+		});
+	}
+
+	function refreshCmdTools() {
+		const period = getPeriod('period-cmd-tools');
+		fetch(`/remote-desktop/dashboard/api/command-logs/stats/tools?period=${period}`, {
+			headers: { 'X-Requested-With': 'XMLHttpRequest' },
+			credentials: 'same-origin'
+		})
+		.then(r => r.json())
+		.then(data => {
+			if (!topToolsChart) return;
+			const tools = (data.tools || []).slice(0, 20).reverse();
+			topToolsChart.setOption({
+				tooltip: {
+					trigger: 'axis',
+					axisPointer: { type: 'shadow' },
+					formatter: function(params) {
+						const p = params[0];
+						const t = tools.find(t => t.tool === p.name) || {};
+						return p.name + '<br/>' +
+							{{ _("%(n)s uses", n="%(n)s")|tojson }}.replace('%(n)s', p.value) + (t.errors ? '<br/>' + {{ _("%(n)s errors", n="%(n)s")|tojson }}.replace('%(n)s', t.errors) : '');
+					}
+				},
+				toolbox: { feature: { saveAsImage: {} } },
+				grid: { left: 120, right: 20, top: 30, bottom: 40 },
+				xAxis: { type: 'value', name: {{ _("Uses")|tojson }}, nameLocation: 'middle', nameGap: 25 },
+				yAxis: { type: 'category', data: tools.map(t => t.tool) },
+				series: [{
+					type: 'bar',
+					data: tools.map(t => t.count),
+					itemStyle: { color: '#e83e8c' }
+				}]
+			});
+		});
+	}
+
+	function refreshCmdHeatmap() {
+		const period = getPeriod('period-cmd-heatmap');
+		const tz = Intl.DateTimeFormat().resolvedOptions().timeZone || 'UTC';
+		fetch(`/remote-desktop/dashboard/api/command-logs/stats/heatmap?period=${period}&tz=${encodeURIComponent(tz)}`, {
+			headers: { 'X-Requested-With': 'XMLHttpRequest' },
+			credentials: 'same-origin'
+		})
+		.then(r => r.json())
+		.then(data => {
+			const el = document.getElementById('chart-cmd-heatmap');
+			if (!el) return;
+			if (cmdHeatmapChart) cmdHeatmapChart.dispose();
+			cmdHeatmapChart = echarts.init(el);
+			const chart = cmdHeatmapChart;
+
+			if (!data.data || data.data.length === 0) {
+				chart.setOption({
+					title: { text: {{ _("No data yet")|tojson }}, left: 'center', top: 'center', textStyle: { color: '#999', fontSize: 14 } }
+				});
+				return;
+			}
+
+			const hours = Array.from({length: 24}, (_, h) => (h % 12 || 12) + (h < 12 ? ' AM' : ' PM'));
+			const dayLabels = data.days;
+			const maxVal = Math.max(...data.data.map(d => d[2]));
+			chart.setOption({
+				tooltip: {
+					position: 'top',
+					formatter: function(p) {
+						return '<b>' + dayLabels[p.data[0]] + ' ' + hours[p.data[1]] + '</b><br/>' +
+							{{ _("%(n)s commands", n="%(n)s")|tojson }}.replace('%(n)s', p.data[2].toLocaleString());
+					}
+				},
+				grid: { left: 50, right: 30, top: 10, bottom: 40 },
+				xAxis: { type: 'category', data: dayLabels, splitArea: { show: true } },
+				yAxis: { type: 'category', data: hours, splitArea: { show: true }, inverse: true },
+				visualMap: {
+					min: 0,
+					max: maxVal || 1,
+					dimension: 2,
+					calculable: true,
+					orient: 'horizontal',
+					left: 'center',
+					bottom: 0,
+					itemWidth: 10,
+					itemHeight: 80,
+					inRange: { color: ['#ebedf0', '#9be9a8', '#40c463', '#30a14e', '#216e39'] }
+				},
+				series: [{
+					type: 'heatmap',
+					data: data.data,
+					label: { show: false },
+					emphasis: { itemStyle: { shadowBlur: 5, shadowColor: 'rgba(0, 0, 0, 0.3)' } }
+				}]
+			});
+		});
+	}
+
+	function refreshCommandLogStats() {
+		refreshCmdSummary();
+		refreshCommandFeed();
+		refreshCmdPerUser();
+		refreshCmdTools();
+		refreshCmdHeatmap();
+	}
+
+	function showCmdHistory(userId, username) {
+		cmdHistoryUserId = userId;
+		cmdHistoryOffset = 0;
+		const flags = _userFlags[userId] || {};
+		document.getElementById('cmd-history-username').innerHTML =
+			'<a href="/admin/users/' + parseInt(userId) + '">' + username + '</a>' + userBadges(flags);
+		loadCmdHistory();
+		$('#cmdHistoryModal').modal('show');
+	}
+
+	function loadCmdHistory() {
+		fetch(`/remote-desktop/dashboard/api/command-logs?user_id=${cmdHistoryUserId}&limit=${cmdHistoryLimit}&offset=${cmdHistoryOffset}`, {
+			headers: { 'X-Requested-With': 'XMLHttpRequest' },
+			credentials: 'same-origin'
+		})
+		.then(r => r.json())
+		.then(data => {
+			const tbody = document.getElementById('cmd-history-table');
+			const logs = data.logs || [];
+			const total = data.total || 0;
+
+			if (!logs.length) {
+				tbody.innerHTML = '<tr><td colspan="5" class="text-center text-muted">' + {{ _("No commands")|tojson }} + '</td></tr>';
+			} else {
+				tbody.innerHTML = logs.map(log => {
+					const exitClass = log.exit_code === 0 ? 'text-success' : (log.exit_code !== null ? 'text-danger' : '');
+					const exitTip = exitCodeTitle(log.exit_code);
+					const exitDisplay = log.exit_code !== null ? log.exit_code : '-';
+					return `<tr>
+						<td class="text-nowrap">${escapeHtml(formatTimestamp(log.timestamp))}</td>
+						<td class="cell-clip" title="${log.command}"><code>${log.command}</code></td>
+						<td class="${exitClass}" ${exitTip ? `title="${exitTip}"` : ''}>${exitDisplay}${exitTip ? ` <small class="text-muted">(${exitTip})</small>` : ''}</td>
+						<td>${log.duration !== null ? log.duration + 's' : '-'}</td>
+						<td class="cell-clip-sm" title="${log.cwd || ''}"><small class="text-muted">${log.cwd || ''}</small></td>
+					</tr>`;
+				}).join('');
+			}
+
+			document.getElementById('cmd-history-info').textContent =
+				{{ _("Showing %(from)s-%(to)s of %(total)s", from="%(from)s", to="%(to)s", total="%(total)s")|tojson }}
+					.replace('%(from)s', cmdHistoryOffset + 1)
+					.replace('%(to)s', Math.min(cmdHistoryOffset + logs.length, total))
+					.replace('%(total)s', total);
+			document.getElementById('cmd-history-prev').disabled = cmdHistoryOffset === 0;
+			document.getElementById('cmd-history-next').disabled = cmdHistoryOffset + cmdHistoryLimit >= total;
+		});
+	}
+
+	function cmdHistoryPage(dir) {
+		cmdHistoryOffset = Math.max(0, cmdHistoryOffset + dir * cmdHistoryLimit);
+		loadCmdHistory();
+	}
+
+	function startAutoRefresh() {
+		if (autoRefreshInterval) clearInterval(autoRefreshInterval);
+		autoRefreshInterval = setInterval(refreshAll, 10000);
+	}
+
+	window.addEventListener('resize', function() {
+		[topUsersChart, dailyUsageChart, concurrentChart, durationDistChart, endReasonsChart, perHostChart, topToolsChart, cmdHeatmapChart, heatmapChart].forEach(c => {
+			if (c) c.resize();
+		});
+	});
+
+	document.addEventListener('DOMContentLoaded', function() {
+		fetch('/remote-desktop/dashboard/api/user-flags', {
+			headers: { 'X-Requested-With': 'XMLHttpRequest' },
+			credentials: 'same-origin'
+		})
+		.then(r => r.json())
+		.then(flags => {
+			for (const [id, f] of Object.entries(flags)) {
+				_userFlags[id] = f;
+			}
+			connectEventStream();
+			refreshAll();
+			initCharts();
+			refreshStats();
+			startAutoRefresh();
+		});
+
+		document.getElementById('cmd-users-table').addEventListener('click', function(e) {
+			const link = e.target.closest('.cmd-history-link');
+			if (!link) return;
+			e.preventDefault();
+			showCmdHistory(parseInt(link.dataset.userid), link.dataset.username);
+		});
+
+		document.getElementById('reports-tbody').addEventListener('click', function(e) {
+			if (e.target.closest('a')) return;
+			const row = e.target.closest('tr[data-report-id]');
+			if (!row) return;
+			openReportModal(parseInt(row.dataset.reportId));
+		});
+	});
+
+	window.addEventListener('beforeunload', function() {
+		if (eventSource) eventSource.close();
+		if (autoRefreshInterval) clearInterval(autoRefreshInterval);
+	});
+</script>
+{% endblock %}
