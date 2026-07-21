@@ -11,6 +11,15 @@
 	{{ Assets.css("assets/css/fonts.scss", theme="admin") }}
 	{{ Assets.css("assets/css/admin.scss", theme="admin") }}
 	{{ Assets.css("assets/css/codemirror.scss", theme="admin") }}
+	<style>
+		@media (max-width: 767.98px) {
+			.navbar-collapse .dropdown-menu {
+				max-height: 50vh;
+				overflow-y: auto;
+				-webkit-overflow-scrolling: touch;
+			}
+		}
+	</style>
 	<script type="text/javascript" src="{{ url_for('views.translations_js') }}"></script>
 	<script type="text/javascript">
 		var init = {
