@@ -198,6 +198,7 @@
 		font-weight: 400;
 		line-height: 1.4;
 		width: 240px;
+		max-width: calc(100vw - 20px);
 		white-space: normal;
 		z-index: 1000;
 		pointer-events: none;
@@ -213,6 +214,20 @@
 		border-top-color: #343a40;
 		z-index: 1000;
 		pointer-events: none;
+	}
+
+	@media (max-width: 768px) {
+		.cfg-help:hover::after {
+			left: 10px;
+			transform: none;
+			width: auto;
+			max-width: calc(100vw - 20px);
+		}
+
+		.cfg-help:hover::before {
+			left: 20px;
+			transform: none;
+		}
 	}
 </style>
 
