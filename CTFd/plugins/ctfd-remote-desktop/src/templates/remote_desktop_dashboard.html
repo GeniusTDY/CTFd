@@ -214,6 +214,21 @@
 		z-index: 1000;
 		pointer-events: none;
 	}
+
+	@media (max-width: 768px) {
+		.cfg-help:hover::after {
+			left: var(--tip-left, 0px);
+			right: auto;
+			transform: none;
+			width: 240px;
+			max-width: calc(100vw - 16px);
+		}
+
+		.cfg-help:hover::before {
+			left: 7px;
+			transform: none;
+		}
+	}
 </style>
 
 <div class="jumbotron">
@@ -1683,6 +1698,12 @@
 		});
 	});
 
+	function adjustCfgHelpTip(el) {
+		if (window.innerWidth > 768) return;
+		const rect = el.getBoundingClientRect();
+		el.style.setProperty('--tip-left', (-rect.left) + 'px');
+	}
+
 	document.addEventListener('DOMContentLoaded', function() {
 		fetch('/remote-desktop/dashboard/api/user-flags', {
 			headers: { 'X-Requested-With': 'XMLHttpRequest' },
@@ -1698,6 +1719,11 @@
 			initCharts();
 			refreshStats();
 			startAutoRefresh();
+		});
+
+		document.querySelectorAll('.cfg-help').forEach(function(el) {
+			el.addEventListener('mouseenter', function() { adjustCfgHelpTip(el); });
+			el.addEventListener('touchstart', function() { adjustCfgHelpTip(el); }, { passive: true });
 		});
 
 		document.getElementById('cmd-users-table').addEventListener('click', function(e) {
