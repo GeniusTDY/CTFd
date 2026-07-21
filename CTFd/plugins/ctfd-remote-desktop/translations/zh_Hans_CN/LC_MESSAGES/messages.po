@@ -43,7 +43,7 @@ msgstr "%(host)s:%(port)s 上的 VNC 服务器未能在规定时间内就绪"
 
 #: src/container_manager.py:328
 msgid "creation cancelled by user"
-msgstr "创建已被用户取消"
+msgstr "用户已取消创建"
 
 #: src/container_manager.py:361 src/routes.py:334 src/routes.py:351
 msgid "Desktop ready!"
@@ -122,7 +122,7 @@ msgstr "管理员 %(admin)s 终止了所有会话（共 %(killed)s 个）"
 #: src/docker_host_manager.py:184
 #, python-format
 msgid "no client for context '%(context_name)s'"
-msgstr "没有 context '%(context_name)s' 的客户端"
+msgstr "未找到 context '%(context_name)s' 的客户端"
 
 #: src/docker_host_manager.py:230
 msgid "server busy, please try again shortly"
@@ -140,7 +140,7 @@ msgstr "用户 %(user_id)s"
 #: src/orchestrator.py:56
 #, python-format
 msgid "context %(name)s is healthy"
-msgstr "context %(name)s 健康"
+msgstr "context %(name)s 状态正常"
 
 #: src/orchestrator.py:62
 #, python-format
@@ -314,7 +314,7 @@ msgstr "已使用 %(i)s/%(max_ext)s 次延迟，可能需要更长的基础时�
 
 #: src/routes.py:1181 src/routes.py:1225 src/routes.py:1311
 msgid "invalid request"
-msgstr "无效的请求"
+msgstr "无效请求"
 
 #: src/routes.py:1190
 msgid "context_name is required"
@@ -364,7 +364,7 @@ msgstr "远程桌面不可用"
 
 #: src/templates/remote_desktop.html:363
 msgid "This feature has been disabled by an administrator. Check back later."
-msgstr "此功能已被管理员禁用，请稍后重试。"
+msgstr "此功能已被管理员禁用，请稍后查看。"
 
 #: src/templates/remote_desktop.html:367
 msgid "Verify Your Email"
@@ -474,7 +474,7 @@ msgstr "这是一个临时环境，会话之间不会保存任何内容。"
 
 #: src/templates/remote_desktop.html:463
 msgid "Avoid logging into anything sensitive."
-msgstr "避免登录任何敏感内容。"
+msgstr "避免登录任何敏感服务。"
 
 #: src/templates/remote_desktop.html:464
 msgid "If something breaks, just stop and start a new session."
@@ -707,7 +707,7 @@ msgid ""
 "Linux capabilities to drop from containers, comma-separated. Use ALL to "
 "drop everything then selectively add back with Cap Add. Changes only "
 "affect new sessions."
-msgstr "要从容器中丢弃的 Linux capabilities，以逗号分隔。使用 ALL 可丢弃全部，然后通过 Cap Add 选择性地加回。修改仅影响新会话。"
+msgstr "要从容器中移除的 Linux capabilities，以逗号分隔。使用 ALL 可移除全部，然后通过 Cap Add 选择性地加回。修改仅影响新会话。"
 
 #: src/templates/remote_desktop_config.html:64
 msgid "Cap Add"
@@ -746,7 +746,7 @@ msgid ""
 "How much extra time is added each time a user clicks Extend. Shorter "
 "values give users more control over how long they stay, longer values "
 "mean fewer clicks."
-msgstr "每次用户点击延迟时增加的额外时间。较短的值让用户对停留时长有更多控制，较长的值意味着更少的点击次数。"
+msgstr "每次用户点击「延迟」按钮时增加的额外时间。较短的值让用户对停留时长有更多控制，较长的值意味着更少的点击次数。"
 
 #: src/templates/remote_desktop_config.html:89
 msgid "Max Extensions"
@@ -1011,7 +1011,7 @@ msgstr "已挂载且容器具有正确的组权限"
 
 #: src/templates/remote_desktop_config.html:424
 msgid "See the Docker access section in the README."
-msgstr "请参阅 README 中的 Docker access 章节。"
+msgstr "请参阅 README 中的 Docker 访问章节。"
 
 #: src/templates/remote_desktop_config.html:429
 msgid "Local Docker socket is reachable."
@@ -1064,7 +1064,7 @@ msgstr "测试通过"
 
 #: src/templates/remote_desktop_config.html:492
 msgid "is reachable and the configured image was found"
-msgstr "可访问，且找到了已配置的镜像"
+msgstr "可访问，且已找到已配置的镜像"
 
 #: src/templates/remote_desktop_config.html:494
 #: src/templates/remote_desktop_config.html:498
@@ -1253,7 +1253,7 @@ msgstr "活跃会话"
 msgid ""
 "Currently running desktop containers. Kill or extend individual sessions,"
 " or purge all at once during incidents."
-msgstr "当前正在运行的桌面容器。可终止或延迟单个会话，或在事故期间一次性清除全部。"
+msgstr "当前正在运行的桌面容器。可终止或延迟单个会话，或在紧急情况期间一次性清除全部。"
 
 #: src/templates/remote_desktop_dashboard.html:291
 msgid "Purge All"
@@ -1378,7 +1378,7 @@ msgstr "过去一个月"
 #: src/templates/remote_desktop_dashboard.html:588
 #: src/templates/remote_desktop_dashboard.html:603
 msgid "All Time"
-msgstr "全部时间"
+msgstr "所有时间"
 
 #: src/templates/remote_desktop_dashboard.html:420
 msgid "Top Users"
@@ -1484,7 +1484,7 @@ msgid ""
 "Most-used command line tools across all sessions. See what software "
 "participants actually reach for and whether your image has the right "
 "tooling."
-msgstr "所有会话中最常用的命令行工具。可了解参赛者实际使用什么软件，以及您的镜像是否包含正确的工具集。"
+msgstr "所有会话中最常用的命令行工具。可了解参赛者实际使用什么软件，以及您的镜像是否包含合适的工具集。"
 
 #: src/templates/remote_desktop_dashboard.html:599
 msgid "Command Activity"
@@ -1667,7 +1667,7 @@ msgstr "总线错误"
 
 #: src/templates/remote_desktop_dashboard.html:725
 msgid "floating point error"
-msgstr "浮点错误"
+msgstr "浮点异常"
 
 #: src/templates/remote_desktop_dashboard.html:726
 msgid "killed (OOM?)"
@@ -1813,7 +1813,7 @@ msgstr "%(ctx)s：镜像 %(id)s（%(size)sMB，构建于 %(created)s）"
 #: src/templates/remote_desktop_dashboard.html:844
 #, python-format
 msgid "%(ctx)s: reachable"
-msgstr "%(ctx)s：可访问"
+msgstr "%(ctx)s：可达"
 
 #: src/templates/remote_desktop_dashboard.html:849
 #, python-format
