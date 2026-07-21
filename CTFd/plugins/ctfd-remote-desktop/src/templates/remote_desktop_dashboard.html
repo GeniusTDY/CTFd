@@ -184,8 +184,7 @@
 		color: #6c757d;
 	}
 
-	.cfg-help:hover::after,
-	.cfg-help.show::after {
+	.cfg-help:hover::after {
 		content: attr(data-tip);
 		position: absolute;
 		bottom: calc(100% + 8px);
@@ -204,8 +203,7 @@
 		pointer-events: none;
 	}
 
-	.cfg-help:hover::before,
-	.cfg-help.show::before {
+	.cfg-help:hover::before {
 		content: '';
 		position: absolute;
 		bottom: calc(100% + 2px);
@@ -215,27 +213,6 @@
 		border-top-color: #343a40;
 		z-index: 1000;
 		pointer-events: none;
-	}
-
-	/* 移动端：提示框居中显示，防止边缘溢出截断 */
-	@media (max-width: 768px) {
-		.cfg-help:hover::after,
-		.cfg-help.show::after {
-			position: fixed;
-			top: 50%;
-			left: 50%;
-			bottom: auto;
-			transform: translate(-50%, -50%);
-			width: auto;
-			max-width: calc(100vw - 32px);
-			padding: 12px 14px;
-			font-size: 13px;
-		}
-
-		.cfg-help:hover::before,
-		.cfg-help.show::before {
-			display: none;
-		}
 	}
 </style>
 
@@ -1736,27 +1713,6 @@
 			if (!row) return;
 			openReportModal(parseInt(row.dataset.reportId));
 		});
-
-		// 移动端：点击问号切换提示框，点击其他位置关闭
-		if (window.matchMedia('(max-width: 768px)').matches) {
-			document.querySelectorAll('.cfg-help').forEach(function(el) {
-				el.addEventListener('click', function(e) {
-					e.preventDefault();
-					e.stopPropagation();
-					document.querySelectorAll('.cfg-help.show').forEach(function(other) {
-						if (other !== el) other.classList.remove('show');
-					});
-					el.classList.toggle('show');
-				});
-			});
-			document.addEventListener('click', function(e) {
-				if (!e.target.closest('.cfg-help')) {
-					document.querySelectorAll('.cfg-help.show').forEach(function(el) {
-						el.classList.remove('show');
-					});
-				}
-			});
-		}
 	});
 
 	window.addEventListener('beforeunload', function() {
