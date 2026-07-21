@@ -1064,7 +1064,7 @@ msgstr "测试通过"
 
 #: src/templates/remote_desktop_config.html:492
 msgid "is reachable and the configured image was found"
-msgstr "可访问，且已找到已配置的镜像"
+msgstr "可达，且已找到已配置的镜像"
 
 #: src/templates/remote_desktop_config.html:494
 #: src/templates/remote_desktop_config.html:498
@@ -1073,7 +1073,7 @@ msgstr "测试失败"
 
 #: src/templates/remote_desktop_config.html:494
 msgid "could not reach context"
-msgstr "无法访问 context"
+msgstr "无法连接 context"
 
 #: src/templates/remote_desktop_config.html:498
 msgid "request failed, check the logs for details"
