@@ -95,8 +95,8 @@
 								<div role="tabpanel" class="tab-pane active" id="content-write" style="height:600px">
 									<br>
 
-									<div class="form-inline">
-										<div class="btn-group btn-group-sm">
+									<div class="d-flex flex-wrap align-items-center">
+										<div class="btn-group btn-group-sm me-3 mb-2">
 											<div class="btn-group">
 												<button type="button" class="btn btn-primary" id="media-button">
 													<i class="fas fa-camera-retro"></i>
@@ -105,21 +105,21 @@
 											</div>
 										</div>
 
-										<span class="nav-link d-none d-md-block d-lg-block">|</span>
+										<span class="nav-link d-none d-md-block d-lg-block me-2">|</span>
 
-										<div class="form-group pr-3">
+										<div class="form-group me-3 mb-2">
 											{% set draft = page is defined and page.draft == True %}
 											{{ form.draft(class="form-check-input", checked=draft) }}
 											{{ form.draft.label(class="form-check-label") }}
 										</div>
 
-										<div class="form-group pr-3">
+										<div class="form-group me-3 mb-2">
 											{% set hidden = page is defined and page.hidden == True %}
 											{{ form.hidden(class="form-check-input", checked=hidden) }}
 											{{ form.hidden.label(class="form-check-label") }}
 										</div>
 
-										<div class="form-group pr-3">
+										<div class="form-group me-3 mb-2">
 											{% set auth_required = page is defined and page.auth_required == True %}
 											{{ form.auth_required(class="form-check-input", checked=auth_required) }}
 											{{ form.auth_required.label(class="form-check-label") }}
