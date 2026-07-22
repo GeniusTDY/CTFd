@@ -393,6 +393,7 @@ textarea {
     border-radius: var(--radius-sm) !important;
     padding: 0.5rem 1rem !important;
     font-weight: 500 !important;
+    white-space: nowrap !important;
   }
   
   // 确保导航栏在移动设备上正确显示
