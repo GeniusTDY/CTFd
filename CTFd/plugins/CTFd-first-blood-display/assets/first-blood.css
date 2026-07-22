@@ -1,0 +1,58 @@
+.fb-badge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  margin: 0.75rem auto;
+  max-width: 420px;
+  border-radius: 6px;
+  background: linear-gradient(135deg, #1a1a2e, #16213e);
+  border: 1px solid #e94560;
+  color: #eee;
+  font-size: 0.875rem;
+  font-weight: 500;
+  line-height: 1.4;
+  text-align: center;
+  flex-wrap: wrap;
+  animation: fbSlideIn 0.3s ease-out;
+}
+
+@media (prefers-color-scheme: light) {
+  .fb-badge {
+    background: linear-gradient(135deg, #fff5f5, #ffe0e0);
+    border-color: #c0392b;
+    color: #333;
+  }
+  .fb-solver { color: #222; }
+}
+
+.fb-icon { font-size: 1.25rem; flex-shrink: 0; }
+
+.fb-label {
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #e94560;
+  font-size: 0.75rem;
+}
+
+.fb-solver { font-weight: 600; color: #f0f0f0; }
+.fb-team { font-weight: 400; opacity: 0.8; font-size: 0.8em; }
+.fb-time { font-size: 0.75rem; opacity: 0.6; font-style: italic; }
+
+@keyframes fbSlideIn {
+  from { opacity: 0; transform: translateY(-8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.fb-list-icon { font-size: 0.85em; cursor: default; vertical-align: middle; }
+
+@media (max-width: 480px) {
+  .fb-badge {
+    flex-direction: column;
+    gap: 0.25rem;
+    padding: 0.5rem;
+    font-size: 0.8rem;
+  }
+}
