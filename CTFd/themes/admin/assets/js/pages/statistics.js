@@ -642,20 +642,6 @@ const graph_configs = {
   },
 };
 
-// 移动端动态调整 solve-percentages 图表的 grid，使标签右边界紧贴容器右边界，不溢出
-function applySolvePercentagesGrid(chart) {
-  const isMobile = window.innerWidth <= 767.98;
-  chart.setOption({
-    grid: {
-      containLabel: true,
-      left: "3%",
-      right: isMobile ? "5%" : "3%",
-      top: 60,
-      bottom: isMobile ? 100 : 50,
-    },
-  });
-}
-
 const createGraphs = () => {
   for (let key in graph_configs) {
     const cfg = graph_configs[key];
@@ -669,16 +655,43 @@ const createGraphs = () => {
       .data()
       .then(cfg.format)
       .then((option) => {
-        chart.setOption(option);
         if (key === "#solve-percentages-graph") {
-          applySolvePercentagesGrid(chart);
+          const isMobile = window.innerWidth <= 767.98;
+          option.grid = {
+            containLabel: true,
+            left: "3%",
+            right: isMobile ? "4%" : "3%",
+            top: 60,
+            bottom: isMobile ? 90 : 50,
+          };
+          if (isMobile && option.dataZoom) {
+            // 移动端隐藏右侧Y轴缩放滑块和顶部滑块，释放空间给标签
+            option.dataZoom[2].show = false;
+            option.dataZoom[3].show = false;
+          }
         }
+        chart.setOption(option);
         $(window).on("resize", function () {
           if (chart != null && chart != undefined) {
-            chart.resize();
             if (key === "#solve-percentages-graph") {
-              applySolvePercentagesGrid(chart);
+              const isMobile = window.innerWidth <= 767.98;
+              chart.setOption({
+                grid: {
+                  containLabel: true,
+                  left: "3%",
+                  right: isMobile ? "4%" : "3%",
+                  top: 60,
+                  bottom: isMobile ? 90 : 50,
+                },
+                dataZoom: isMobile ? [
+                  { show: false, start: 0, end: 100 },
+                  { type: "inside", show: true, start: 0, end: 100 },
+                  { show: false },
+                  { show: false },
+                ] : undefined,
+              });
             }
+            chart.resize();
           }
         });
       });
@@ -693,10 +706,21 @@ function updateGraphs() {
       .data()
       .then(cfg.format)
       .then((option) => {
-        chart.setOption(option);
         if (key === "#solve-percentages-graph") {
-          applySolvePercentagesGrid(chart);
+          const isMobile = window.innerWidth <= 767.98;
+          option.grid = {
+            containLabel: true,
+            left: "3%",
+            right: isMobile ? "4%" : "3%",
+            top: 60,
+            bottom: isMobile ? 90 : 50,
+          };
+          if (isMobile && option.dataZoom) {
+            option.dataZoom[2].show = false;
+            option.dataZoom[3].show = false;
+          }
         }
+        chart.setOption(option);
       });
   }
 }
