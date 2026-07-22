@@ -308,6 +308,13 @@ textarea {
     display: flex !important;
     align-items: center !important;
     justify-content: space-between !important;
+    // 桌面端导航栏选项过多时允许横向滚动，避免右侧选项被截断
+    overflow-x: auto;
+    overflow-y: visible;
+    -webkit-overflow-scrolling: touch;
+    // 隐藏滚动条保持美观
+    scrollbar-width: none;
+    &::-webkit-scrollbar { display: none; }
   }
   
   .navbar-brand {
@@ -389,6 +396,8 @@ textarea {
   .navbar-collapse {
     &.show,
     &.collapsing {
+      overflow-x: visible !important;
+      overflow-y: visible !important;
       background: rgba(255, 255, 255, 0.98) !important;
       margin-top: 1rem !important;
       border-radius: var(--radius-md) !important;
