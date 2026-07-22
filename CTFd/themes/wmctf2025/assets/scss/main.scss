@@ -305,10 +305,12 @@ textarea {
   
   .navbar-collapse {
     flex-grow: 1 !important;
+    flex-shrink: 1 !important;
+    min-width: 0 !important;
     display: flex !important;
     align-items: center !important;
     justify-content: space-between !important;
-    // 桌面端导航栏选项过多时允许横向滚动，避免右侧选项被截断
+    // 导航栏选项过多时允许横向滚动，避免右侧选项被截断
     overflow-x: auto;
     overflow-y: visible;
     -webkit-overflow-scrolling: touch;
