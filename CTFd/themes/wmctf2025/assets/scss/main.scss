@@ -120,6 +120,12 @@ body {
   // 同步预留对应空间避免遮挡内容底部（如 setup 页面的 Next 按钮）。
   padding-bottom: calc(60px + 1.5rem);
 
+  // 配合 box-sizing: border-box（Bootstrap 默认），min-height: 100vh
+  // 确保短页面（如默认首页）不会因为 padding-bottom 产生多余滚动空间，
+  // 长页面则自然延展不受影响。
+  box-sizing: border-box;
+  min-height: 100vh;
+
   @media (max-width: 768px) {
     padding-bottom: calc(80px + 1.5rem);
   }
