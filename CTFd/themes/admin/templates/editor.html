@@ -7,9 +7,28 @@
 }
 
 @media (max-width: 767.98px) {
-	#content-write .form-inline .form-group {
+	#content-write .form-inline {
+		flex-wrap: nowrap !important;
+		overflow-x: auto;
+		-webkit-overflow-scrolling: touch;
+		scrollbar-width: none;
+	}
+	#content-write .form-inline::-webkit-scrollbar {
+		display: none;
+	}
+	#content-write .form-inline .btn-group {
 		flex-shrink: 0;
 		margin-right: 0.75rem;
+	}
+	#content-write .form-inline .form-group {
+		flex-shrink: 0;
+		white-space: nowrap;
+		margin-right: 0.75rem;
+		margin-bottom: 0;
+	}
+	#content-write .form-inline .form-check-label {
+		white-space: nowrap;
+		margin-left: 0.25rem;
 	}
 }
 </style>
