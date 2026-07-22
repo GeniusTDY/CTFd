@@ -468,11 +468,7 @@ const graph_configs = {
           data: names,
           axisLabel: {
             interval: 0,
-            rotate: window.innerWidth <= 768 ? 30 : 50,
-            width: window.innerWidth <= 768 ? 60 : 120,
-            overflow: "truncate",
-            align: "right",
-            margin: 10,
+            rotate: 50,
           },
         },
         yAxis: {
