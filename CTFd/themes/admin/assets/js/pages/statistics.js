@@ -460,13 +460,6 @@ const graph_configs = {
             saveAsImage: { show: true },
           },
         },
-        grid: {
-          containLabel: true,
-          left: "3%",
-          right: "3%",
-          top: 60,
-          bottom: 50,
-        },
         xAxis: {
           name: _("Challenge Name"),
           nameGap: 40,
@@ -662,34 +655,9 @@ const createGraphs = () => {
       .data()
       .then(cfg.format)
       .then((option) => {
-        if (key === "#solve-percentages-graph") {
-          const isMobile = window.innerWidth <= 767.98;
-          option.grid = Object.assign({}, option.grid, {
-            bottom: isMobile ? 120 : 50,
-          });
-          if (isMobile && option.dataZoom) {
-            option.dataZoom[2].show = false;
-            option.dataZoom[3].show = false;
-          }
-        }
         chart.setOption(option);
         $(window).on("resize", function () {
           if (chart != null && chart != undefined) {
-            if (key === "#solve-percentages-graph") {
-              const isMobile = window.innerWidth <= 767.98;
-              chart.setOption({
-                grid: {
-                  containLabel: true,
-                  bottom: isMobile ? 120 : 50,
-                },
-                dataZoom: isMobile ? [
-                  { show: false, start: 0, end: 100 },
-                  { type: "inside", show: true, start: 0, end: 100 },
-                  { show: false },
-                  { show: false },
-                ] : undefined,
-              });
-            }
             chart.resize();
           }
         });
@@ -705,16 +673,6 @@ function updateGraphs() {
       .data()
       .then(cfg.format)
       .then((option) => {
-        if (key === "#solve-percentages-graph") {
-          const isMobile = window.innerWidth <= 767.98;
-          option.grid = Object.assign({}, option.grid, {
-            bottom: isMobile ? 120 : 50,
-          });
-          if (isMobile && option.dataZoom) {
-            option.dataZoom[2].show = false;
-            option.dataZoom[3].show = false;
-          }
-        }
         chart.setOption(option);
       });
   }

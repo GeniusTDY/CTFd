@@ -56,13 +56,6 @@ input[type="color"].custom-color-picker {
 #solve-percentages-graph {
   min-height: 400px;
   display: block;
-  overflow: hidden;
-}
-
-@media (max-width: 767.98px) {
-  #solve-percentages-graph {
-    min-height: 350px;
-  }
 }
 
 #score-distribution-graph {
