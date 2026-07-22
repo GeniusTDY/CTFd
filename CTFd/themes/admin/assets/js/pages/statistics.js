@@ -442,6 +442,12 @@ const graph_configs = {
           left: "center",
           text: _("Solve Percentages per Challenge"),
         },
+        grid: {
+          left: "10%",
+          right: "10%",
+          bottom: "25%",
+          containLabel: true,
+        },
         tooltip: {
           trigger: "item",
           formatter: function (data) {
@@ -469,6 +475,9 @@ const graph_configs = {
           axisLabel: {
             interval: 0,
             rotate: 50,
+            width: 80,
+            overflow: "truncate",
+            ellipsis: "...",
           },
         },
         yAxis: {
