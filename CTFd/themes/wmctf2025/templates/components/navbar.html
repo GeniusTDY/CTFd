@@ -180,17 +180,11 @@
 </nav>
 
 <script>
-// 检测Firefox浏览器并修改navbar-collapse的CSS类
+// 所有浏览器统一不添加 collapse 类，导航栏始终展开，通过 overflow-x: auto 实现横向滚动
 (function() {
-  const isFirefox = navigator.userAgent.toLowerCase().indexOf('firefox') > -1;
   const navbarCollapse = document.getElementById('base-navbars');
-  
-  if (isFirefox) {
-    // 如果是Firefox浏览器，移除collapse类，只保留navbar-collapse
+  if (navbarCollapse) {
     navbarCollapse.classList.remove('collapse');
-  } else {
-    // 如果不是Firefox浏览器，添加collapse类
-    navbarCollapse.classList.add('collapse');
   }
 })();
 </script>

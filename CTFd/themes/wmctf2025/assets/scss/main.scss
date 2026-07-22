@@ -340,6 +340,7 @@ textarea {
   .navbar-toggler {
     border: none !important;
     padding: 0.25rem 0.5rem !important;
+    display: none !important;
     
     &:focus {
       box-shadow: none !important;
