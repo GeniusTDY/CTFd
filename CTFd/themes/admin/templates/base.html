@@ -18,18 +18,6 @@
 				overflow-y: auto;
 				-webkit-overflow-scrolling: touch;
 			}
-			/* 语言下拉菜单使用 fixed 定位，避免在折叠侧边栏中超出视口底部 */
-			.navbar-collapse .navbar-right .dropdown-menu {
-				position: fixed !important;
-				top: auto;
-				bottom: 1rem;
-				left: 1rem !important;
-				right: 1rem !important;
-				max-height: calc(100vh - 120px);
-				overflow-y: auto;
-				-webkit-overflow-scrolling: touch;
-				z-index: 1080;
-			}
 		}
 	</style>
 	<script type="text/javascript" src="{{ url_for('views.translations_js') }}"></script>
