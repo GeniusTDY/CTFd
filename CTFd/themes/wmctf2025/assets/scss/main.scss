@@ -1261,11 +1261,3 @@ main .row > .col-md-6.offset-md-3 {
     }
   }
 }
-
-// 首页内容极少，移动端 body padding-bottom 仅保留 footer 高度，
-// 去掉多余的 1.5rem 间距，避免不必要的页面滚动
-body:has(main .row > .col-md-6.offset-md-3) {
-  @media (max-width: 767.98px) {
-    padding-bottom: 70px !important;
-  }
-}
