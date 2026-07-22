@@ -439,8 +439,12 @@ const graph_configs = {
 
       const option = {
         title: {
-          left: "center",
+          left: "left",
           text: _("Solve Percentages per Challenge"),
+          textStyle: {
+            overflow: "truncate",
+            ellipsis: "...",
+          },
         },
         tooltip: {
           trigger: "item",
