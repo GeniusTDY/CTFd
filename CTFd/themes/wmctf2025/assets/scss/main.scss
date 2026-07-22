@@ -789,6 +789,11 @@ blockquote {
     z-index: 1020 !important;
     height: 80px;
     
+    // 键盘弹出时隐藏 footer，避免浮在键盘上方
+    body.keyboard-open & {
+      display: none !important;
+    }
+    
     .footer-content {
       flex-direction: column;
       gap: 0.5rem;
@@ -823,6 +828,11 @@ blockquote {
     width: 100% !important;
     z-index: 1020 !important;
     height: 70px;
+    
+    // 键盘弹出时隐藏 footer，避免浮在键盘上方
+    body.keyboard-open & {
+      display: none !important;
+    }
     
     .footer-text,
     .attribution-text,

@@ -142,5 +142,27 @@ window.wmcTr = function(text) {
 {{ Plugins.scripts }}
 
 {{ Configs.theme_footer }}
+
+<script>
+// 移动端弹出键盘时隐藏 fixed footer，避免浮在键盘上方
+(function() {
+  if (window.innerWidth > 768) return;
+  document.addEventListener('focusin', function(e) {
+    if (e.target.matches('input, textarea, select')) {
+      document.body.classList.add('keyboard-open');
+    }
+  });
+  document.addEventListener('focusout', function(e) {
+    if (e.target.matches('input, textarea, select')) {
+      // 延迟检测，避免连续切换输入框时闪烁
+      setTimeout(function() {
+        if (!document.querySelector('input:focus, textarea:focus, select:focus')) {
+          document.body.classList.remove('keyboard-open');
+        }
+      }, 100);
+    }
+  });
+})();
+</script>
 </body>
 </html>
