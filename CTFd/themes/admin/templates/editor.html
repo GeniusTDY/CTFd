@@ -5,6 +5,17 @@
 .CodeMirror {
 	height: 100%;
 }
+
+/* 移动端：表单内联容器内的复选框组换行并增加间距 */
+@media (max-width: 767.98px) {
+	.form-inline {
+		flex-wrap: wrap;
+		gap: 0.75rem;
+	}
+	.form-inline .form-group {
+		margin-bottom: 0.5rem;
+	}
+}
 </style>
 {% endblock %}
 
