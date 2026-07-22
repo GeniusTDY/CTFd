@@ -882,33 +882,6 @@ blockquote {
   }
 }
 
-// 页面容器（setup/index 等静态页面）移动端适配
-.ctfd-page-container {
-  @media (max-width: 768px) {
-    .row > .col-md-6 {
-      padding-left: 1rem;
-      padding-right: 1rem;
-    }
-
-    img.w-100.mx-auto {
-      padding: 1.5rem !important;
-      padding-top: 6vh !important;
-    }
-
-    h3.text-center {
-      font-size: 1.125rem;
-      
-      .fab {
-        font-size: 1.5rem;
-      }
-    }
-
-    h4.text-center {
-      font-size: 1rem;
-    }
-  }
-}
-
 // Enhanced modals
 .modal-content {
   border-radius: var(--radius-xl);
