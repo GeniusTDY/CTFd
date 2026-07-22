@@ -469,6 +469,16 @@ const graph_configs = {
           axisLabel: {
             interval: 0,
             rotate: 50,
+            overflow: "truncate",
+            formatter: function (value) {
+              if (window.innerWidth <= 768) {
+                var maxLen = Math.max(5, Math.floor(window.innerWidth / 70));
+                if (value.length > maxLen) {
+                  return value.substring(0, maxLen) + "\u2026";
+                }
+              }
+              return value;
+            },
           },
         },
         yAxis: {
