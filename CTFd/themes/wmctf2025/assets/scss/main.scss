@@ -295,7 +295,15 @@ textarea {
   border-bottom: 1px solid var(--light-border);
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1) !important;
   transition: all 0.3s ease;
-  
+
+  // 下拉菜单使用 position: fixed 避免被 navbar-collapse 的 overflow-x: auto 裁剪
+  // .navbar 的 backdrop-filter 会成为 fixed 元素的 containing block
+  // 这样下拉菜单不会被 navbar-collapse 的 overflow 裁剪
+  .dropdown-menu.show {
+    position: fixed !important;
+    z-index: 1080 !important;
+  }
+
   .container {
     display: flex !important;
     align-items: center !important;
@@ -397,46 +405,7 @@ textarea {
   }
   
   // 确保导航栏在移动设备上正确显示
-  .navbar-collapse {
-    &.show,
-    &.collapsing {
-      background: rgba(255, 255, 255, 0.98) !important;
-      margin-top: 1rem !important;
-      border-radius: var(--radius-md) !important;
-      padding: 1rem !important;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1) !important;
-      
-      .navbar-nav {
-        flex-direction: column !important;
-        
-        .nav-item {
-          width: 100% !important;
-          margin: 0.25rem 0 !important;
-        }
-        
-        .nav-link {
-          padding: 0.75rem 1rem !important;
-          border-radius: var(--radius-sm) !important;
-        }
-      }
-
-      // 移动端侧边栏内的下拉菜单：使用 absolute 定位浮动显示，避免平铺撑长侧边栏
-      .dropdown-menu {
-        position: absolute !important;
-        z-index: 1050 !important;
-        top: 100% !important;
-        left: 0 !important;
-        right: auto !important;
-        min-width: 200px !important;
-        margin-top: 0.25rem !important;
-      }
-
-      .dropdown-menu-end {
-        left: auto !important;
-        right: 0 !important;
-      }
-    }
-  }
+  // 注意：导航栏不再使用折叠机制（collapse），始终展开并支持横向滚动
 }
 
 [data-bs-theme="dark"] .navbar {
