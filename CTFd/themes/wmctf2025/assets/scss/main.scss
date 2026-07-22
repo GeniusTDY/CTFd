@@ -408,6 +408,22 @@ textarea {
           border-radius: var(--radius-sm) !important;
         }
       }
+
+      // 移动端侧边栏内的下拉菜单：使用 absolute 定位浮动显示，避免平铺撑长侧边栏
+      .dropdown-menu {
+        position: absolute !important;
+        z-index: 1050 !important;
+        top: 100% !important;
+        left: 0 !important;
+        right: auto !important;
+        min-width: 200px !important;
+        margin-top: 0.25rem !important;
+      }
+
+      .dropdown-menu-end {
+        left: auto !important;
+        right: 0 !important;
+      }
     }
   }
 }
