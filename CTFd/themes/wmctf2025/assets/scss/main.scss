@@ -1237,3 +1237,27 @@ blockquote {
     clear: both;
   }
 }
+
+// Setup 后的默认首页移动端适配
+// 该页面内容由 views.py 内联生成，仅在此通过 CSS 做响应式调整
+main .row > .col-md-6.offset-md-3 {
+  @media (max-width: 767.98px) {
+    img[style*="padding"] {
+      max-width: 300px !important;
+      padding: 20px !important;
+      padding-top: 8vh !important;
+    }
+
+    h3.text-center {
+      font-size: 1.25rem;
+
+      .fab {
+        font-size: 1.5em;
+      }
+    }
+
+    h4.text-center {
+      font-size: 1rem;
+    }
+  }
+}
