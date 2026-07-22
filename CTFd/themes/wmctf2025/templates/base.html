@@ -142,5 +142,23 @@ window.wmcTr = function(text) {
 {{ Plugins.scripts }}
 
 {{ Configs.theme_footer }}
+<script>
+// 移动端输入法键盘弹出时，将 fixed footer 临时改为 static，避免浮在键盘上方
+(function() {
+  if (window.innerWidth > 768) return;
+  var footer = document.querySelector('.footer');
+  if (!footer) return;
+  document.addEventListener('focusin', function(e) {
+    if (e.target.matches('input, textarea, select')) {
+      footer.style.position = 'static';
+    }
+  });
+  document.addEventListener('focusout', function(e) {
+    if (e.target.matches('input, textarea, select')) {
+      footer.style.position = '';
+    }
+  });
+})();
+</script>
 </body>
 </html>
