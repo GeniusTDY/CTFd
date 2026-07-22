@@ -1,11 +1,11 @@
 {
-  "node_modules/@fontsource/lato/files/lato-latin-400-normal.woff2": {
-    "file": "assets/lato-latin-400-normal.918b7dc3.woff2",
-    "src": "node_modules/@fontsource/lato/files/lato-latin-400-normal.woff2"
-  },
   "node_modules/@fontsource/lato/files/lato-latin-ext-400-normal.woff2": {
     "file": "assets/lato-latin-ext-400-normal.1c2fc265.woff2",
     "src": "node_modules/@fontsource/lato/files/lato-latin-ext-400-normal.woff2"
+  },
+  "node_modules/@fontsource/lato/files/lato-latin-400-normal.woff2": {
+    "file": "assets/lato-latin-400-normal.918b7dc3.woff2",
+    "src": "node_modules/@fontsource/lato/files/lato-latin-400-normal.woff2"
   },
   "node_modules/@fontsource/lato/files/lato-latin-ext-700-normal.woff2": {
     "file": "assets/lato-latin-ext-700-normal.4ef7cd3d.woff2",
@@ -200,7 +200,7 @@
     ]
   },
   "assets/scss/main.scss": {
-    "file": "assets/main.d0bc8957.css",
+    "file": "assets/main.d0b49cc1.css",
     "src": "assets/scss/main.scss",
     "isEntry": true
   }

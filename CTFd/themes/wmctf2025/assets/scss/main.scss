@@ -121,10 +121,12 @@ body {
   padding-bottom: calc(30px + 0.75rem);
 
   @media (max-width: 768px) {
+    padding-top: 60px;
     padding-bottom: calc(40px + 0.75rem);
   }
 
   @media (max-width: 480px) {
+    padding-top: 50px;
     padding-bottom: calc(35px + 0.75rem);
   }
 }
@@ -1245,7 +1247,7 @@ main .row > .col-md-6.offset-md-3 {
     img[style*="padding"] {
       max-width: 300px !important;
       padding: 20px !important;
-      padding-top: 8vh !important;
+      padding-top: 5vh !important;
     }
 
     h3.text-center {
