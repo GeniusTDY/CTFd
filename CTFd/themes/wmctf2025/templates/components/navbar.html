@@ -187,4 +187,30 @@
     navbarCollapse.classList.remove('collapse');
   }
 })();
+
+// 移动端动态调整下拉菜单高度，使其紧贴视口底部，不超出页面
+document.addEventListener('DOMContentLoaded', function() {
+  function adjustDropdownHeight() {
+    if (window.innerWidth > 767.98) return;
+    document.querySelectorAll('.navbar-collapse .dropdown-menu').forEach(function(menu) {
+      if (menu.classList.contains('show')) {
+        var rect = menu.getBoundingClientRect();
+        if (rect.top > 0) {
+          var availableHeight = window.innerHeight - rect.top - 10;
+          menu.style.maxHeight = Math.max(100, availableHeight) + 'px';
+        }
+      } else {
+        menu.style.maxHeight = '';
+      }
+    });
+  }
+
+  var navbar = document.getElementById('base-navbars');
+  if (navbar) {
+    navbar.addEventListener('click', function() {
+      setTimeout(adjustDropdownHeight, 50);
+    });
+  }
+  window.addEventListener('resize', adjustDropdownHeight);
+});
 </script>
