@@ -460,6 +460,13 @@ const graph_configs = {
             saveAsImage: { show: true },
           },
         },
+        grid: {
+          containLabel: true,
+          left: "3%",
+          right: "3%",
+          top: 60,
+          bottom: 50,
+        },
         xAxis: {
           name: _("Challenge Name"),
           nameGap: 40,
@@ -657,15 +664,10 @@ const createGraphs = () => {
       .then((option) => {
         if (key === "#solve-percentages-graph") {
           const isMobile = window.innerWidth <= 767.98;
-          option.grid = {
-            containLabel: true,
-            left: "3%",
-            right: isMobile ? "4%" : "3%",
-            top: 60,
-            bottom: isMobile ? 90 : 50,
-          };
+          option.grid = Object.assign({}, option.grid, {
+            bottom: isMobile ? 120 : 50,
+          });
           if (isMobile && option.dataZoom) {
-            // 移动端隐藏右侧Y轴缩放滑块和顶部滑块，释放空间给标签
             option.dataZoom[2].show = false;
             option.dataZoom[3].show = false;
           }
@@ -678,10 +680,7 @@ const createGraphs = () => {
               chart.setOption({
                 grid: {
                   containLabel: true,
-                  left: "3%",
-                  right: isMobile ? "4%" : "3%",
-                  top: 60,
-                  bottom: isMobile ? 90 : 50,
+                  bottom: isMobile ? 120 : 50,
                 },
                 dataZoom: isMobile ? [
                   { show: false, start: 0, end: 100 },
@@ -708,13 +707,9 @@ function updateGraphs() {
       .then((option) => {
         if (key === "#solve-percentages-graph") {
           const isMobile = window.innerWidth <= 767.98;
-          option.grid = {
-            containLabel: true,
-            left: "3%",
-            right: isMobile ? "4%" : "3%",
-            top: 60,
-            bottom: isMobile ? 90 : 50,
-          };
+          option.grid = Object.assign({}, option.grid, {
+            bottom: isMobile ? 120 : 50,
+          });
           if (isMobile && option.dataZoom) {
             option.dataZoom[2].show = false;
             option.dataZoom[3].show = false;
