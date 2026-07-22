@@ -239,10 +239,13 @@ def init_request_processors(app):
                 "views.files",
                 "views.healthcheck",
                 "views.robots",
+                "views.translations_js",
             ):
                 return
-            else:
-                return redirect(url_for("views.setup"))
+            # Allow plugin static assets (URL paths starting with /plugins/)
+            if request.path.startswith("/plugins/"):
+                return
+            return redirect(url_for("views.setup"))
 
     @app.before_request
     def tracker():
