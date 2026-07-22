@@ -13,10 +13,15 @@
 	{{ Assets.css("assets/css/codemirror.scss", theme="admin") }}
 	<style>
 		@media (max-width: 767.98px) {
-			.navbar-collapse .dropdown-menu {
-				max-height: 50vh;
+			.navbar-collapse {
+				max-height: calc(100vh - 60px);
 				overflow-y: auto;
 				-webkit-overflow-scrolling: touch;
+			}
+			.navbar-collapse .dropdown-menu {
+				position: static !important;
+				max-height: none;
+				overflow-y: visible;
 			}
 		}
 	</style>
