@@ -302,6 +302,8 @@ textarea {
   .dropdown-menu.show {
     position: fixed !important;
     z-index: 1080 !important;
+    max-height: calc(100vh - 80px) !important;
+    overflow-y: auto !important;
   }
 
   .container {

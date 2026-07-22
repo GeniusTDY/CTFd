@@ -151,7 +151,7 @@
             <span class="d-none d-lg-inline ms-1">{{ (get_locale() or 'en').upper() }}</span>
           </button>
           <form x-data="LanguageForm">
-            <ul class="dropdown-menu dropdown-menu-end shadow-lg border-0 rounded-3 mt-2" style="overflow: hidden;">
+            <ul class="dropdown-menu dropdown-menu-end shadow-lg border-0 rounded-3 mt-2">
               {% set curr_lang = get_locale() %}
               {%- for lang in Languages.names.items() %}
               <li>
