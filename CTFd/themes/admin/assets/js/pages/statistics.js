@@ -642,6 +642,20 @@ const graph_configs = {
   },
 };
 
+// 移动端动态调整 solve-percentages 图表的 grid，使标签右边界紧贴容器右边界，不溢出
+function applySolvePercentagesGrid(chart) {
+  const isMobile = window.innerWidth <= 767.98;
+  chart.setOption({
+    grid: {
+      containLabel: true,
+      left: "3%",
+      right: isMobile ? "5%" : "3%",
+      top: 60,
+      bottom: isMobile ? 100 : 50,
+    },
+  });
+}
+
 const createGraphs = () => {
   for (let key in graph_configs) {
     const cfg = graph_configs[key];
@@ -656,9 +670,15 @@ const createGraphs = () => {
       .then(cfg.format)
       .then((option) => {
         chart.setOption(option);
+        if (key === "#solve-percentages-graph") {
+          applySolvePercentagesGrid(chart);
+        }
         $(window).on("resize", function () {
           if (chart != null && chart != undefined) {
             chart.resize();
+            if (key === "#solve-percentages-graph") {
+              applySolvePercentagesGrid(chart);
+            }
           }
         });
       });
@@ -674,6 +694,9 @@ function updateGraphs() {
       .then(cfg.format)
       .then((option) => {
         chart.setOption(option);
+        if (key === "#solve-percentages-graph") {
+          applySolvePercentagesGrid(chart);
+        }
       });
   }
 }
