@@ -114,19 +114,19 @@ body {
   background: var(--light-bg);
   color: var(--light-text);
   transition: background-color 0.3s ease, color 0.3s ease;
-  padding-top: 70px; // 减少导航栏间隙
+  padding-top: 35px; // 减少导航栏间隙
   // 为 fixed footer 预留空间：footer 高度 + 与内容的间距。
   // footer 在所有断点高度不同（桌面 60px / 平板 80px / 手机 70px），
   // 同步预留对应空间避免遮挡内容底部（如 setup 页面的 Next 按钮）。
   padding-bottom: calc(30px + 0.75rem);
 
   @media (max-width: 768px) {
-    padding-top: 60px;
+    padding-top: 30px;
     padding-bottom: calc(40px + 0.75rem);
   }
 
   @media (max-width: 480px) {
-    padding-top: 50px;
+    padding-top: 25px;
     padding-bottom: calc(35px + 0.75rem);
   }
 }
@@ -1247,7 +1247,7 @@ main .row > .col-md-6.offset-md-3 {
     img[style*="padding"] {
       max-width: 300px !important;
       padding: 20px !important;
-      padding-top: 5vh !important;
+      padding-top: 2.5vh !important;
     }
 
     h3.text-center {
