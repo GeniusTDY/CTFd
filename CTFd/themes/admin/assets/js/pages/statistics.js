@@ -518,6 +518,30 @@ const graph_configs = {
             type: "bar",
           },
         ],
+        media: [
+          {
+            // Narrow (mobile) containers only; desktop keeps the base option
+            query: { maxWidth: 768 },
+            option: {
+              grid: {
+                // Reserve room for the vertical dataZoom slider on the right
+                right: 45,
+                // Keep rotated labels fully inside the canvas
+                containLabel: true,
+              },
+              xAxis: {
+                nameGap: 75,
+                axisLabel: {
+                  // Truncate long challenge names so they can't spill over
+                  // the elements to the right of the chart. The tooltip
+                  // still shows the full name.
+                  width: 90,
+                  overflow: "truncate",
+                },
+              },
+            },
+          },
+        ],
       };
 
       return option;
