@@ -491,7 +491,6 @@ const graph_configs = {
           },
           {
             type: "inside",
-            xAxisIndex: 0,
             show: true,
             start: 0,
             end: 100,
@@ -499,8 +498,18 @@ const graph_configs = {
           {
             fillerColor: "rgba(233, 236, 241, 0.4)",
             show: true,
-            xAxisIndex: 0,
+            right: 60,
+            yAxisIndex: 0,
             width: 20,
+          },
+          {
+            type: "slider",
+            fillerColor: "rgba(233, 236, 241, 0.4)",
+            top: 35,
+            height: 20,
+            show: true,
+            start: 0,
+            end: 100,
           },
         ],
         series: [
@@ -598,7 +607,6 @@ const graph_configs = {
           },
           {
             type: "inside",
-            xAxisIndex: 0,
             show: true,
             start: 0,
             end: 100,
@@ -606,8 +614,18 @@ const graph_configs = {
           {
             fillerColor: "rgba(233, 236, 241, 0.4)",
             show: true,
-            xAxisIndex: 0,
+            right: 60,
+            yAxisIndex: 0,
             width: 20,
+          },
+          {
+            type: "slider",
+            fillerColor: "rgba(233, 236, 241, 0.4)",
+            top: 35,
+            height: 20,
+            show: true,
+            start: 0,
+            end: 100,
           },
         ],
         series: [
