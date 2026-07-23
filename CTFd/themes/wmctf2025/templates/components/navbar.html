@@ -1,3 +1,12 @@
+<style>
+@media (max-width: 767.98px) {
+  .navbar-collapse .dropdown-menu {
+    max-height: calc(100vh - 350px);
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+}
+</style>
 <nav class="navbar navbar-expand-md fixed-top glass-effect">
   <div class="container">
     <a href="{{ url_for('views.static_html', route='/') }}" class="navbar-brand d-flex align-items-center">
