@@ -9,6 +9,14 @@
   color: #636c76;
 }
 
+// On mobile, the config sidebar (ending with Reset button) and the tab content
+// stack vertically with no spacing. Add margin to separate them.
+@media (max-width: 767.98px) {
+  #config-sidebar {
+    margin-bottom: 1.5rem;
+  }
+}
+
 // Intended for the Bootstrap navbar icons
 .action-icon {
   margin-right: 8px;
