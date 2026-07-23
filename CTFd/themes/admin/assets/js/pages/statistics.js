@@ -79,6 +79,7 @@ const graph_configs = {
           {
             fillerColor: "rgba(233, 236, 241, 0.4)",
             show: true,
+            right: 50,
             yAxisIndex: 0,
             width: 20,
           },
@@ -498,6 +499,7 @@ const graph_configs = {
           {
             fillerColor: "rgba(233, 236, 241, 0.4)",
             show: true,
+            right: 50,
             yAxisIndex: 0,
             width: 20,
           },
@@ -613,6 +615,7 @@ const graph_configs = {
           {
             fillerColor: "rgba(233, 236, 241, 0.4)",
             show: true,
+            right: 50,
             yAxisIndex: 0,
             width: 20,
           },
