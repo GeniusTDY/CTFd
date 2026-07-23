@@ -221,11 +221,3 @@ th.sticky-col-score {
   border: 1px solid #dee2e6;
   background: white;
 }
-
-// 移动端下让 h3 中的 <sup> 与标题文字水平对齐，不影响桌面端
-@media (max-width: 767.98px) {
-  h3 sup.text-muted {
-    vertical-align: baseline;
-    font-size: 65%;
-  }
-}
