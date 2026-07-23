@@ -12,6 +12,16 @@
     {{ Assets.css("assets/scss/main.scss") }}
   {% endblock %}
 
+  <style>
+    @media (max-width: 767.98px) {
+      .navbar-collapse .dropdown-menu {
+        max-height: calc(100vh - 350px);
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+      }
+    }
+  </style>
+
   {{ Plugins.styles }}
 
   {{ Assets.js("assets/js/color_mode_switcher.js", type=None) }}
@@ -70,5 +80,33 @@
 {{ Plugins.scripts }}
 
 {{ Configs.theme_footer }}
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // 移动端动态调整下拉菜单高度，使其紧贴视口底部
+    function adjustDropdownHeight() {
+      if (window.innerWidth > 767.98) return;
+      document.querySelectorAll('.navbar-collapse .dropdown-menu').forEach(function(menu) {
+        if (menu.classList.contains('show')) {
+          var rect = menu.getBoundingClientRect();
+          if (rect.top > 0) {
+            var availableHeight = window.innerHeight - rect.top - 10;
+            menu.style.maxHeight = Math.max(100, availableHeight) + 'px';
+          }
+        } else {
+          menu.style.maxHeight = '';
+        }
+      });
+    }
+
+    var navbar = document.getElementById('base-navbars');
+    if (navbar) {
+      navbar.addEventListener('click', function() {
+        setTimeout(adjustDropdownHeight, 50);
+      });
+    }
+    window.addEventListener('resize', adjustDropdownHeight);
+  });
+</script>
 </body>
 </html>
