@@ -21,17 +21,19 @@
 {% endblock %}
 
 {% block content %}
-{% if page is not defined %}
 <div class="jumbotron">
 	<div class="container">
 		<h1>
-			{% trans %}New Page{% endtrans %}
+			{% if page is defined %}
+				{% trans %}Edit Page{% endtrans %}
+			{% else %}
+				{% trans %}New Page{% endtrans %}
+			{% endif %}
 		</h1>
 	</div>
 </div>
-{% endif %}
 <div class="container">
-	<div class="row {{ 'pt-5' if page is defined }}">
+	<div class="row">
 		<div class="col-md-12">
 			<div class="row">
 				{% for error in errors %}
