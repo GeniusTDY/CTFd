@@ -36,10 +36,19 @@
         if (typeof window.CTFd === 'undefined') window.CTFd = {};
         if (typeof CTFd.translations === 'undefined') CTFd.translations = {};
 
-        // Detect language from cookie
+        // Detect language from cookie, falling back to browser language
         var lang = 'en';
         var m = document.cookie.match(/(?:^|;\s*)language=([^;]*)/);
-        if (m) lang = m[1];
+        if (m) {
+            lang = m[1];
+        } else if (navigator.language) {
+            var browserLang = navigator.language.toLowerCase();
+            if (browserLang.includes('zh-tw') || browserLang.includes('zh-hant')) {
+                lang = 'zh_Hant_TW';
+            } else if (browserLang.includes('zh-cn') || browserLang.includes('zh-hans') || browserLang === 'zh') {
+                lang = 'zh_CN';
+            }
+        }
 
         var url = '/plugins/subquestionchallenge/assets/translations/' + lang + '/translations.json';
         fetch(url)

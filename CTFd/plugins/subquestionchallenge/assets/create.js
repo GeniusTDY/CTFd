@@ -59,10 +59,14 @@ CTFd.plugin.run((_CTFd) => {
         const cookieMatch = document.cookie.match(/(?:^|;\s*)language=([^;]*)/);
         if (cookieMatch) {
             lang = cookieMatch[1];
-        }
-        // Also check HTML lang
-        if (!cookieMatch && document.documentElement.lang) {
-            lang = document.documentElement.lang;
+        } else if (navigator.language) {
+            // Fall back to browser language when cookie is not set
+            const browserLang = navigator.language.toLowerCase();
+            if (browserLang.includes('zh-tw') || browserLang.includes('zh-hant')) {
+                lang = 'zh_Hant_TW';
+            } else if (browserLang.includes('zh-cn') || browserLang.includes('zh-hans') || browserLang === 'zh') {
+                lang = 'zh_CN';
+            }
         }
 
         const translationUrl = '/plugins/subquestionchallenge/assets/translations/' + lang + '/translations.json';

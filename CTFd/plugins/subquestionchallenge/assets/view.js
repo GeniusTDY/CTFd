@@ -69,12 +69,20 @@ const __ = (str) => CTFd.translations[str] || str;
 
 CTFd._internal.challenge.data = undefined;
 
+// Stores the translation-loading Promise from preRender so that
+// postRender can wait for translations before building the UI.
+// Without this, CTFd core calls postRender immediately after
+// preRender without awaiting the returned Promise, causing a race
+// condition where the UI is built before translations finish loading.
+var translationLoadPromise = null;
+
 // TODO: Remove in CTFd v4.0
 CTFd._internal.challenge.renderer = null;
 
 CTFd._internal.challenge.preRender = function() {
     console.log("Multi Question Challenge preRender called");
-    return loadTranslations(CTFd._internal.challenge.data);
+    translationLoadPromise = loadTranslations(CTFd._internal.challenge.data);
+    return translationLoadPromise;
 };
 
 // TODO: Remove in CTFd v4.0
@@ -83,11 +91,24 @@ CTFd._internal.challenge.render = null;
 CTFd._internal.challenge.postRender = function() {
     // This runs after the challenge modal is rendered
     console.log("Multi Question Challenge postRender called");
-    
-    // Add a small delay to ensure DOM is ready
-    setTimeout(function() {
-        initMultiQuestionInterface();
-    }, 200);
+
+    var initFn = function() {
+        // Add a small delay to ensure DOM is ready
+        setTimeout(function() {
+            initMultiQuestionInterface();
+        }, 200);
+    };
+
+    // Wait for translations to finish loading before building the UI,
+    // so that __() returns correct translations during rendering.
+    if (translationLoadPromise) {
+        translationLoadPromise.then(initFn).catch(function(err) {
+            console.error("Translation loading failed, falling back:", err);
+            initFn();
+        });
+    } else {
+        initFn();
+    }
 };
 
 // Store original submit function
