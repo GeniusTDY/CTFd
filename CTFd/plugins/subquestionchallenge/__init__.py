@@ -1,7 +1,8 @@
 import datetime
+import json
 import os
-from flask import Blueprint
-from flask_babel import gettext, lazy_gettext
+from flask import Blueprint, Response
+from flask_babel import gettext
 
 from CTFd.models import Challenges, db, Flags, Solves
 from CTFd.plugins import (
@@ -12,7 +13,49 @@ from CTFd.plugins import (
 from CTFd.plugins.challenges import CHALLENGE_CLASSES, BaseChallenge
 from CTFd.plugins.flags import get_flag_class
 from CTFd.plugins.migrations import upgrade
-from CTFd.utils.user import get_locale
+
+
+# Server-side translated strings exposed to JavaScript.
+# Keys are the English source strings used throughout the plugin's JS code;
+# values are gettext-translated at request time (resolved per-locale).
+_PLUGIN_TRANSLATION_KEYS = [
+    "Multi Question Challenge",
+    "Score Acquired",
+    "Questions Completed",
+    "Questions Remaining",
+    "Question",
+    "points",
+    "Completed",
+    "Unsolved",
+    "Select a question to answer:",
+    "Enter the flag for the selected question",
+    "Congratulations on completing all questions!",
+    "You have successfully solved all questions in this multi-question challenge.",
+    "Challenge Completed",
+    "All Completed",
+    "Hint",
+    "All questions have been completed! Congratulations on finishing this challenge.",
+    "Please select a question",
+    "Error",
+    "Please use the multi-question interface to submit",
+    "Wait",
+    "Question %(num)s",
+    "Flag %(num)s",
+    "Enter question text",
+    "Enter flag",
+    "Points",
+    "Add Question",
+    "Remove Last Question",
+    "Please fill out the challenge name and category",
+    "Please fill out at least one question and its corresponding flag",
+    "Failed to create challenge. Please check all fields are filled correctly.",
+    "An error occurred while creating the challenge",
+]
+
+
+def _get_plugin_translations():
+    """Return a dict of {english_key: translated_value} for the current locale."""
+    return {key: gettext(key) for key in _PLUGIN_TRANSLATION_KEYS}
 
 
 class SubQuestionChallengeModel(Challenges):
@@ -217,8 +260,8 @@ class SubQuestionChallengeType(BaseChallenge):
             "state": challenge.state,
             "max_attempts": challenge.max_attempts,
             "type": challenge.type,
-            "questions": questions,  # Add questions data
-            "user_locale": {"zh_TW": "zh_Hant_TW"}.get(get_locale(), get_locale()), # Pass user's current locale to the frontend
+            "questions": questions,
+            "translations": _get_plugin_translations(),
             "type_data": {
                 "id": cls.id,
                 "name": cls.name,
@@ -252,37 +295,30 @@ class SubQuestionChallengeType(BaseChallenge):
         data = request.form or request.get_json()
         provided = data.get("submission", "").strip()
         question_num = data.get("question_num")
-        
-        #Debug: Print all received data (remove in production)
-        print(f"DEBUG: Received data: {data}")
-        print(f"DEBUG: question_num: {question_num}")
-        print(f"DEBUG: submission: {provided}")
-        
+
         # Immediately reject requests without question_num to prevent duplicate submissions
         if not question_num:
-            print("DEBUG: Rejecting request without question_num")
-            # Return a response that CTFd can handle instead of raising exception
-            return False, "Multi-question challenges must be submitted via the question selection interface"
-        
+            return False, gettext("Multi-question challenges must be submitted via the question selection interface")
+
         try:
             question_num = int(question_num)
         except (ValueError, TypeError):
-            return False, "Invalid question number"
-        
+            return False, gettext("Invalid question number")
+
         # Get the specific question item
         question_item = SubQuestionItem.query.filter_by(
-            challenge_id=challenge.id, 
+            challenge_id=challenge.id,
             question_num=question_num
         ).first()
-        
+
         if not question_item:
-            return False, "Question {num} does not exist".format(num=question_num)
-        
+            return False, gettext("Question %(num)s does not exist") % {"num": question_num}
+
         # Get the flag for this specific question
         flag = Flags.query.filter_by(id=question_item.flag_id).first()
-        
+
         if not flag:
-            return False, "This question has no flag set"
+            return False, gettext("This question has no flag set")
         
         # Check if the provided answer matches this question's flag
         flag_class = get_flag_class(flag.type)
@@ -323,19 +359,19 @@ class SubQuestionChallengeType(BaseChallenge):
             ).count()
             
             if solved_questions >= total_questions:
-                return True, "Congratulations! You have completed all {total} questions!".format(
-                    total=total_questions
-                )
+                return True, gettext(
+                    "Congratulations! You have completed all %(total)s questions!"
+                ) % {"total": total_questions}
             else:
-                return "partial", (
-                    "Question {num} correct! {solved}/{total} questions completed"
-                ).format(
-                    num=question_num,
-                    solved=solved_questions,
-                    total=total_questions,
-                )
-        
-        return False, "Question {num} is incorrect".format(num=question_num)
+                return "partial", gettext(
+                    "Question %(num)s correct! %(solved)s/%(total)s questions completed"
+                ) % {
+                    "num": question_num,
+                    "solved": solved_questions,
+                    "total": total_questions,
+                }
+
+        return False, gettext("Question %(num)s is incorrect") % {"num": question_num}
 
     @classmethod
     def solve(cls, user, team, challenge, request):
@@ -354,9 +390,6 @@ class SubQuestionChallengeType(BaseChallenge):
         if solved_questions >= total_questions:
             # All questions solved, proceed with normal solve
             super().solve(user, team, challenge, request)
-        else:
-            # Not all questions solved, this shouldn't happen but let's be safe
-            print(f"WARNING: solve() called for challenge {challenge.id} but only {solved_questions}/{total_questions} questions completed")
 
     @classmethod
     def delete(cls, challenge):
@@ -385,6 +418,56 @@ class SubQuestionChallengeType(BaseChallenge):
         pass
 
 
+@SubQuestionChallengeType.blueprint.route("/plugins/subquestionchallenge/i18n.js")
+def plugin_i18n_js():
+    """
+    Server-rendered JavaScript that injects Flask-Babel translated strings
+    into CTFd.translations. This avoids client-side async translation loading
+    (which caused UI flicker) and makes translations available immediately
+    on page load for both admin and user-facing pages.
+
+    Also patches the admin challenge-type card label on /admin/challenges/new,
+    where CTFd core renders the raw type id ("subquestionchallenge") instead
+    of a human-readable name.
+    """
+    translations = _get_plugin_translations()
+    translations_json = json.dumps(translations, ensure_ascii=False)
+    js = f"""(function() {{
+    if (typeof window.CTFd === 'undefined') window.CTFd = {{}};
+    if (typeof CTFd.translations === 'undefined') CTFd.translations = {{}};
+    Object.assign(CTFd.translations, {translations_json});
+
+    function patchTypeLabel() {{
+        if (!window.location.pathname.endsWith('/admin/challenges/new')) return;
+        var labels = document.querySelectorAll('#create-chals-select .form-check-label');
+        labels.forEach(function(el) {{
+            var text = (el.textContent || '').trim();
+            if (text === 'subquestionchallenge') {{
+                var translated = CTFd.translations['Multi Question Challenge'];
+                if (translated && typeof translated === 'string') {{
+                    el.textContent = translated;
+                }}
+            }}
+        }});
+    }}
+
+    if (document.readyState === 'loading') {{
+        document.addEventListener('DOMContentLoaded', patchTypeLabel);
+    }} else {{
+        patchTypeLabel();
+    }}
+
+    // CTFd core renders the type list asynchronously, so observe DOM mutations
+    var observer = new MutationObserver(function() {{ patchTypeLabel(); }});
+    if (document.body) {{
+        observer.observe(document.body, {{ childList: true, subtree: true }});
+        setTimeout(function() {{ observer.disconnect(); }}, 10000);
+    }}
+}})();
+"""
+    return Response(js, mimetype="application/javascript")
+
+
 def load(app):
     # Register plugin translations directory for Flask-Babel
     plugin_translations = os.path.join(os.path.dirname(__file__), "translations")
@@ -392,18 +475,17 @@ def load(app):
     if plugin_translations not in current:
         app.config["BABEL_TRANSLATION_DIRECTORIES"] = f"{current};{plugin_translations}"
 
-    print("<<<<< SubQuestionChallenge: Attempting to run upgrade() >>>>>", flush=True)
     upgrade(plugin_name="subquestionchallenge")
-    print("<<<<< SubQuestionChallenge: Finished running upgrade() >>>>>", flush=True)
     app.register_blueprint(SubQuestionChallengeType.blueprint)
     CHALLENGE_CLASSES["subquestionchallenge"] = SubQuestionChallengeType
     register_plugin_assets_directory(
         app, base_path="/plugins/subquestionchallenge/assets/"
     )
-    # Page-level i18n patch for the admin theme: translates the
-    # "subquestionchallenge" label in the admin challenge-type card list
-    # (rendered by CTFd core) and preloads translations so create.js can use
-    # them immediately. Must use register_admin_plugin_script so the script
-    # is injected via get_registered_admin_scripts() in admin base.html.
-    register_admin_plugin_script("/plugins/subquestionchallenge/assets/i18n.js")
-    print("<<<<< SubQuestionChallenge: Plugin loaded successfully >>>>>", flush=True) 
+    # Server-rendered i18n script: injects Flask-Babel translated strings
+    # into CTFd.translations and patches the admin challenge-type card label.
+    # Loaded on every admin page so translations are available immediately
+    # (no async fetch, no UI flicker).
+    register_admin_plugin_script("/plugins/subquestionchallenge/i18n.js")
+    # Also register for user-facing pages so CTFd.translations is populated
+    # for any plugin scripts that run on the challenge view.
+    register_plugin_script("/plugins/subquestionchallenge/i18n.js")
