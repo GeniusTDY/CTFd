@@ -35,6 +35,25 @@ input[type="color"].custom-color-picker {
   vertical-align: middle;
 }
 
+// On mobile, the Email notifications config tab list (Mail Server, Registration,
+// Verification, Account Details, Password Reset) is too wide for the viewport
+// and the 5th tab ("Password Reset") wraps onto a new line. Keep all tabs on a
+// single row and allow horizontal swipe scrolling to reveal the overflowing
+// tabs. Touch devices natively support swipe-to-scroll on overflow-x containers,
+// so no JavaScript is required.
+@media (max-width: 767.98px) {
+  #email .nav-tabs {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  #email .nav-tabs .nav-item {
+    flex: 0 0 auto;
+  }
+}
+
 // On mobile, the 50x50 color picker is taller than the "Build CSS" button and
 // pushes the button onto a new line. Lay the picker and button out as a flex
 // row, keep the "Build CSS" label on a single line, and keep both elements the
