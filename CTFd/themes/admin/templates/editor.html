@@ -31,7 +31,7 @@
 </div>
 {% endif %}
 <div class="container">
-	<div class="row pt-5">
+	<div class="row {{ 'pt-5' if page is defined }}">
 		<div class="col-md-12">
 			<div class="row">
 				{% for error in errors %}
