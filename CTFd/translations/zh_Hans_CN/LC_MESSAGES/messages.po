@@ -3513,10 +3513,6 @@ msgstr "所有页面"
 msgid "New Page"
 msgstr "新建页面"
 
-#: CTFd/themes/admin/templates/editor.html:28
-msgid "Edit Page"
-msgstr "编辑页面"
-
 #: CTFd/themes/admin/templates/base.html:76
 #: CTFd/themes/admin/templates/scoreboard.html:6
 #: CTFd/themes/core-deprecated/templates/components/navbar.html:35
@@ -3541,7 +3537,7 @@ msgstr "所有用户"
 
 #: CTFd/themes/admin/templates/base.html:79
 msgid "New User"
-msgstr "创建用户"
+msgstr "新建用户"
 
 #: CTFd/themes/admin/templates/base.html:85
 msgid "All Teams"
@@ -3549,7 +3545,7 @@ msgstr "所有队伍"
 
 #: CTFd/themes/admin/templates/base.html:86
 msgid "New Team"
-msgstr "创建队伍"
+msgstr "新建队伍"
 
 #: CTFd/themes/admin/templates/base.html:94
 msgid "All Challenges"
@@ -3557,7 +3553,7 @@ msgstr "所有题目"
 
 #: CTFd/themes/admin/templates/base.html:95
 msgid "New Challenge"
-msgstr "创建题目"
+msgstr "新建题目"
 
 #: CTFd/themes/admin/templates/base.html:101
 msgid "All Modules"
