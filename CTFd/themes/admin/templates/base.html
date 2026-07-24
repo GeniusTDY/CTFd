@@ -74,14 +74,44 @@
 							<a class="dropdown-item" href="{{ url_for('admin.pages_new') }}">{% trans %}New Page{% endtrans %}</a>
 						</div>
 					</li>
-					<li class="nav-item"><a class="nav-link" href="{{ url_for('admin.users_listing') }}">{% trans %}Users{% endtrans %}</a></li>
-					{% if get_config('user_mode') == 'teams' %}
-					<li class="nav-item"><a class="nav-link" href="{{ url_for('admin.teams_listing') }}">{% trans %}Teams{% endtrans %}</a></li>
-					{% endif %}
-					<li class="nav-item"><a class="nav-link" href="{{ url_for('admin.scoreboard_listing') }}">{% trans %}Scoreboard{% endtrans %}</a></li>
-					<li class="nav-item"><a class="nav-link" href="{{ url_for('admin.challenges_listing') }}">{% trans %}Challenges{% endtrans %}</a></li>
-					<li class="nav-item"><a class="nav-link" href="{{ url_for('admin.modules_listing') }}">{% trans %}Modules{% endtrans %}</a></li>
-					<li class="nav-item"><a class="nav-link" href="{{ url_for('admin.audiences_listing') }}">{% trans %}Audiences{% endtrans %}</a></li>
+					<li class="nav-item dropdown">
+					<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">{% trans %}Users{% endtrans %}</a>
+					<div class="dropdown-menu">
+						<a class="dropdown-item" href="{{ url_for('admin.users_listing') }}">{% trans %}All Users{% endtrans %}</a>
+						<a class="dropdown-item" href="{{ url_for('admin.users_new') }}">{% trans %}New User{% endtrans %}</a>
+					</div>
+				</li>
+				{% if get_config('user_mode') == 'teams' %}
+				<li class="nav-item dropdown">
+					<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">{% trans %}Teams{% endtrans %}</a>
+					<div class="dropdown-menu">
+						<a class="dropdown-item" href="{{ url_for('admin.teams_listing') }}">{% trans %}All Teams{% endtrans %}</a>
+						<a class="dropdown-item" href="{{ url_for('admin.teams_new') }}">{% trans %}New Team{% endtrans %}</a>
+					</div>
+				</li>
+				{% endif %}
+				<li class="nav-item"><a class="nav-link" href="{{ url_for('admin.scoreboard_listing') }}">{% trans %}Scoreboard{% endtrans %}</a></li>
+				<li class="nav-item dropdown">
+					<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">{% trans %}Challenges{% endtrans %}</a>
+					<div class="dropdown-menu">
+						<a class="dropdown-item" href="{{ url_for('admin.challenges_listing') }}">{% trans %}All Challenges{% endtrans %}</a>
+						<a class="dropdown-item" href="{{ url_for('admin.challenges_new') }}">{% trans %}New Challenge{% endtrans %}</a>
+					</div>
+				</li>
+				<li class="nav-item dropdown">
+					<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">{% trans %}Modules{% endtrans %}</a>
+					<div class="dropdown-menu">
+						<a class="dropdown-item" href="{{ url_for('admin.modules_listing') }}">{% trans %}All Modules{% endtrans %}</a>
+						<a class="dropdown-item" href="{{ url_for('admin.modules_new') }}">{% trans %}New Module{% endtrans %}</a>
+					</div>
+				</li>
+				<li class="nav-item dropdown">
+					<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">{% trans %}Audiences{% endtrans %}</a>
+					<div class="dropdown-menu">
+						<a class="dropdown-item" href="{{ url_for('admin.audiences_listing') }}">{% trans %}All Audiences{% endtrans %}</a>
+						<a class="dropdown-item" href="{{ url_for('admin.audiences_new') }}">{% trans %}New Audience{% endtrans %}</a>
+					</div>
+				</li>
 					<li class="nav-item dropdown">
 						<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button"
 						   aria-haspopup="true" aria-expanded="true">{% trans %}Submissions{% endtrans %}</a>
