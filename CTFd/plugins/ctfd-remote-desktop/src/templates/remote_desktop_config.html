@@ -286,6 +286,21 @@
     z-index: 1000;
     pointer-events: none;
 }
+
+@media (max-width: 768px) {
+    .cfg-help:hover::after {
+        left: var(--tip-left, 0px);
+        right: auto;
+        transform: none;
+        width: 240px;
+        max-width: calc(100vw - 16px);
+    }
+
+    .cfg-help:hover::before {
+        left: 7px;
+        transform: none;
+    }
+}
 .no-spin::-webkit-outer-spin-button,
 .no-spin::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
 .no-spin { -moz-appearance: textfield; }
@@ -770,6 +785,17 @@
     }
 
     document.getElementById('rd-scan-btn').addEventListener('click', function() { scanImages(); });
+
+    function adjustCfgHelpTip(el) {
+        if (window.innerWidth > 768) return;
+        var rect = el.getBoundingClientRect();
+        el.style.setProperty('--tip-left', (-rect.left) + 'px');
+    }
+
+    document.querySelectorAll('.cfg-help').forEach(function(el) {
+        el.addEventListener('mouseenter', function() { adjustCfgHelpTip(el); });
+        el.addEventListener('touchstart', function() { adjustCfgHelpTip(el); }, { passive: true });
+    });
 
     loadRdSettings();
     loadHosts();
