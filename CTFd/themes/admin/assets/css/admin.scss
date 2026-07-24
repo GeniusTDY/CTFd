@@ -35,6 +35,18 @@ input[type="color"].custom-color-picker {
   vertical-align: middle;
 }
 
+// On mobile, shrink the color picker so it no longer pushes the
+// "Build CSS" button onto a new line. Desktop layout is unaffected.
+@media (max-width: 767.98px) {
+  input[type="color"].custom-color-picker {
+    padding: 2px;
+    margin-right: 6px;
+    height: 31px;
+    width: 34px;
+    vertical-align: middle;
+  }
+}
+
 #score-graph {
   min-height: 400px;
   display: block;
