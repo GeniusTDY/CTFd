@@ -35,6 +35,22 @@ input[type="color"].custom-color-picker {
   vertical-align: middle;
 }
 
+// On mobile, the 50x50 color picker is taller than the "Build CSS" button and
+// pushes the button onto a new line. Lay the picker and button out as a flex
+// row and stretch the picker to the button's height so they stay aligned on a
+// single line. Desktop (>=768px) keeps the original 50x50 square picker.
+@media (max-width: 767.98px) {
+  .color-picker-actions {
+    display: flex;
+    align-items: center;
+  }
+
+  input[type="color"].custom-color-picker {
+    height: auto;
+    align-self: stretch;
+  }
+}
+
 #score-graph {
   min-height: 400px;
   display: block;
