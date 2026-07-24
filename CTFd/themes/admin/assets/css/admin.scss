@@ -35,6 +35,36 @@ input[type="color"].custom-color-picker {
   vertical-align: middle;
 }
 
+// On mobile, the 50x50 color picker is taller than the "Build CSS" button and
+// pushes the button onto a new line. Lay the picker and button out as a flex
+// row, keep the "Build CSS" label on a single line, and keep both elements the
+// same height with the picker rendered as a square.
+//
+// Why not aspect-ratio + align-self: stretch? In a flex row the stretched
+// cross-size (height) is not treated as a *definite* size by `aspect-ratio` in
+// several browsers, so `aspect-ratio: 1/1` derives the height from the
+// content-based width (near-zero for <input type="color">) instead of deriving
+// the width from the stretched height. `align-self: stretch` then overrides the
+// height back to the button's height, leaving a tall-but-extremely-narrow
+// picker. Using an explicit height+width sidesteps the issue entirely.
+//
+// Desktop (>=768px) keeps the original 50x50 square picker.
+@media (max-width: 767.98px) {
+  .color-picker-actions {
+    display: flex;
+    align-items: stretch;
+  }
+
+  input[type="color"].custom-color-picker {
+    height: 2rem;
+    width: 2rem;
+  }
+
+  #config-color-update {
+    white-space: nowrap;
+  }
+}
+
 #score-graph {
   min-height: 400px;
   display: block;
