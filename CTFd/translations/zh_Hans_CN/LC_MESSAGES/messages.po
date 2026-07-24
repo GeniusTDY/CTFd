@@ -3513,6 +3513,10 @@ msgstr "所有页面"
 msgid "New Page"
 msgstr "新建页面"
 
+#: CTFd/themes/admin/templates/editor.html:28
+msgid "Edit Page"
+msgstr "编辑页面"
+
 #: CTFd/themes/admin/templates/base.html:76
 #: CTFd/themes/admin/templates/scoreboard.html:6
 #: CTFd/themes/core-deprecated/templates/components/navbar.html:35
