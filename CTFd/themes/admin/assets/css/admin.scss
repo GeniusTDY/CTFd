@@ -259,3 +259,113 @@ th.sticky-col-score {
   border: 1px solid #dee2e6;
   background: white;
 }
+
+// =========================================================================
+// Statistics page — mobile responsiveness
+//
+// The admin statistics page was designed for wide desktop screens: the top
+// stat counters use mx-4 (1.5rem) gaps, the pie/bar charts have a 400px
+// min-height, and the scoreboard matrix has four 400px-tall filter columns
+// and 280px of sticky columns. On a ~375px mobile viewport these cause ragged
+// wrapping, wasted horizontal space, and excessive vertical scrolling. The
+// rules below tighten the layout on small screens (≤767.98px, Bootstrap's
+// `md` breakpoint) while leaving the desktop appearance untouched.
+// =========================================================================
+
+// Page header: Bootstrap's .jumbotron defaults to 2rem 1rem padding which
+// pushes the stat counters below the fold on mobile. Tighten it.
+@media (max-width: 767.98px) {
+  .jumbotron {
+    padding-top: 1.25rem;
+    padding-bottom: 1.25rem;
+    margin-bottom: 1rem;
+  }
+  .jumbotron h1 {
+    font-size: 1.5rem;
+    letter-spacing: 1px;
+  }
+}
+
+// Top stat counters (users / teams / IPs / points / challenges).
+// Desktop: centered flex-wrap with mx-4 gaps — looks balanced on one line.
+// Mobile: mx-4 (48px between items) causes ragged, unpredictable wrapping and
+// wastes horizontal space. Replace per-item margins with flex `gap` so items
+// pack tightly and wrap at consistent points, and shrink the h5 so more
+// counters fit per line. `white-space: nowrap` keeps each number+label pair
+// on one line instead of breaking awkwardly between the number and the unit.
+@media (max-width: 767.98px) {
+  .stats-counters {
+    row-gap: 0.5rem;
+    column-gap: 0.75rem;
+  }
+  // !important is required because Bootstrap 4 spacing utilities (mx-4) are
+  // emitted with !important.
+  .stats-counters > div {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+  .stats-counters h5 {
+    font-size: 1.05rem;
+    margin-bottom: 0;
+    white-space: nowrap;
+  }
+}
+
+// "Most Solved" / "Least Solved" subline — same mx-4 wrapping problem.
+@media (max-width: 767.98px) {
+  .stats-highlights {
+    row-gap: 0.25rem;
+    column-gap: 1rem;
+  }
+  .stats-highlights > div {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+}
+
+// Charts: pie charts and several bar charts use min-height: 400px which is
+// excessive on mobile (three stacked pies alone = 1200px of scrolling). Use a
+// more compact height on small screens while keeping charts legible.
+@media (max-width: 767.98px) {
+  #solves-graph {
+    height: 300px;
+  }
+  #keys-pie-graph,
+  #categories-pie-graph,
+  #points-pie-graph,
+  #solve-percentages-graph,
+  #score-distribution-graph {
+    min-height: 300px;
+  }
+}
+
+// Scoreboard matrix on mobile:
+// 1. The four filter columns stack vertically, each with a fixed 400px height
+//    (1600px of scrolling through filter lists). Reduce to a compact height.
+// 2. The sticky place+name+score columns total 280px (50+150+80), leaving
+//    almost no room for the scrollable challenge columns on a narrow viewport.
+//    Shrink them (40+110+60 = 210px) so challenge columns are usable.
+@media (max-width: 767.98px) {
+  .filter-col {
+    height: 220px;
+  }
+
+  .sticky-col-place {
+    left: 0;
+    min-width: 40px;
+    max-width: 40px;
+  }
+  .sticky-col-name {
+    left: 40px;
+    min-width: 110px;
+    max-width: 110px;
+  }
+  .sticky-col-score {
+    left: 150px;
+    min-width: 60px;
+    max-width: 60px;
+  }
+  #matrix-scoreboard {
+    font-size: 10px;
+  }
+}

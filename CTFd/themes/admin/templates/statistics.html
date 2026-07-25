@@ -9,7 +9,7 @@
     <div class="container-fluid">
         <div class="row mb-4">
             <div class="col-md-12 text-center">
-                <div class="d-flex justify-content-center align-items-center flex-wrap">
+                <div class="d-flex justify-content-center align-items-center flex-wrap stats-counters">
                     <div class="mx-4 my-2">
                         <h5><b>{{ user_count }}</b> <small class="text-muted">{% trans %}users{% endtrans %}</small></h5>
                     </div>
@@ -28,7 +28,7 @@
                         <h5><b>{{ challenge_count }}</b> <small class="text-muted">{% trans %}challenges{% endtrans %}</small></h5>
                     </div>
                 </div>
-                <div class="d-flex justify-content-center align-items-center flex-wrap">
+                <div class="d-flex justify-content-center align-items-center flex-wrap stats-highlights">
                     {% if most_solved %}
                         <div class="mx-4 my-2">
                             <small>{% trans %}Most Solved:{% endtrans %} <b>{{ most_solved }}</b> ({{ solve_data[most_solved] }})</small>
