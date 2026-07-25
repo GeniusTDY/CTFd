@@ -1,4 +1,27 @@
 <div role="tabpanel" class="tab-pane config-section" id="email">
+<style>
+/* 移动端让"邮件通知"表单的5个子标签（邮件服务器/注册/验证/账户详情/密码重置）
+   单行排列，通过左右滑动手势查看，避免"密码重置"被挤到下一行 */
+@media (max-width: 767.98px) {
+	#email .email-tabs-nav {
+		display: flex;
+		flex-wrap: nowrap;
+		overflow-x: auto;
+		-webkit-overflow-scrolling: touch;
+		-ms-overflow-style: none;
+		scrollbar-width: none;
+	}
+	#email .email-tabs-nav::-webkit-scrollbar {
+		display: none;
+	}
+	#email .email-tabs-nav .nav-item {
+		flex-shrink: 0;
+	}
+	#email .email-tabs-nav .nav-link {
+		white-space: nowrap;
+	}
+}
+</style>
 	{% set mailfrom_addr = mailfrom_addr if mailfrom_addr is defined and mailfrom_addr != None else "" %}
 	{% set mail_server = mail_server if mail_server is defined and mail_server != None else "" %}
 	{% set mail_port = mail_port if mail_port is defined and mail_port != None else "" %}
@@ -52,7 +75,7 @@
 		<small class="form-text text-muted">
 			{% trans %}Customize the emails that CTFd sends your users with custom content using <a href="https://docs.ctfd.io/docs/settings/emails/#email-content" target="_blank">predefined variables</a>, mail servers, and addresses.{% endtrans %}
 		</small>
-		<ul class="nav nav-tabs mt-3" role="tablist">
+		<ul class="nav nav-tabs mt-3 email-tabs-nav" role="tablist">
 			<li class="nav-item active">
 				<a class="nav-link active" href="#email-server-tab" role="tab" data-toggle="tab">
 					{% trans %}Mail Server{% endtrans %}
