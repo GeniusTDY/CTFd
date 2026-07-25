@@ -132,12 +132,12 @@ class SubQuestionChallengeType(BaseChallenge):
     challenge_model = SubQuestionChallengeModel
 
     @staticmethod
-    @blueprint.route("/plugins/subquestionchallenge/i18n.js", endpoint="i18n_js")
-    def i18n_js():
+    @blueprint.route("/plugins/subquestionchallenge/translations.js", endpoint="translations_js")
+    def translations_js():
         """Serve all Flask-Babel translations for this plugin as a JS file.
 
         The output populates ``window.CTFd.translations`` so that the
-        plugin's frontend JavaScript (create.js / view.js / i18n.js) can
+        plugin's frontend JavaScript (create.js / view.js / patch-labels.js) can
         look up translated strings via ``CTFd.translations[key]`` without
         fetching any client-side JSON dictionaries.
         """
@@ -448,12 +448,12 @@ def load(app):
     # Register the Flask-Babel-sourced translations script so that
     # ``window.CTFd.translations`` is populated on every page (both admin
     # and user-facing) before the plugin's own JS (create.js / view.js /
-    # i18n.js) runs. This replaces the old client-side JSON fetch approach.
-    register_plugin_script("/plugins/subquestionchallenge/i18n.js")
-    register_admin_plugin_script("/plugins/subquestionchallenge/i18n.js")
+    # patch-labels.js) runs. This replaces the old client-side JSON fetch approach.
+    register_plugin_script("/plugins/subquestionchallenge/translations.js")
+    register_admin_plugin_script("/plugins/subquestionchallenge/translations.js")
     # Page-level i18n patch for the admin theme: translates the
     # "subquestionchallenge" label in the admin challenge-type card list
     # (rendered by CTFd core). Translations are already loaded by the
-    # i18n.js route above, so this script only needs to patch the DOM.
-    register_admin_plugin_script("/plugins/subquestionchallenge/assets/i18n.js")
+    # translations.js route above, so this script only needs to patch the DOM.
+    register_admin_plugin_script("/plugins/subquestionchallenge/assets/patch-labels.js")
     print("<<<<< SubQuestionChallenge: Plugin loaded successfully >>>>>", flush=True)

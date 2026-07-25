@@ -158,7 +158,7 @@ CTFd.plugin.run((_CTFd) => {
     }
 
     // Translations are already loaded by the Flask-Babel-sourced script
-    // at /plugins/subquestionchallenge/i18n.js (registered before this file).
+    // at /plugins/subquestionchallenge/translations.js (registered before this file).
     // Initialize directly without any JSON fetch.
     initCreateForm();
 });

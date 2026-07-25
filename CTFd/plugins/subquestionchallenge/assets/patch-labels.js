@@ -7,7 +7,7 @@
 // client-side.
 //
 // Translations are already populated in ``window.CTFd.translations`` by the
-// Flask-Babel-sourced script served at /plugins/subquestionchallenge/i18n.js
+// Flask-Babel-sourced script served at /plugins/subquestionchallenge/translations.js
 // (registered before this file in load()). No client-side JSON fetch needed.
 (function () {
     function patchTypeLabels() {
