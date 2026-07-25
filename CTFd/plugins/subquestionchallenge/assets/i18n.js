@@ -5,6 +5,10 @@
 // card list is rendered by CTFd core. CTFd core renders "{{ type }}" (the
 // id) for unknown challenge types, so we translate the card label
 // client-side.
+//
+// Translations are already populated in ``window.CTFd.translations`` by the
+// Flask-Babel-sourced script served at /plugins/subquestionchallenge/i18n.js
+// (registered before this file in load()). No client-side JSON fetch needed.
 (function () {
     function patchTypeLabels() {
         // Only run on the admin challenge creation page
@@ -32,24 +36,6 @@
     }
 
     function init() {
-        // Ensure CTFd.translations exists
-        if (typeof window.CTFd === 'undefined') window.CTFd = {};
-        if (typeof CTFd.translations === 'undefined') CTFd.translations = {};
-
-        // Detect language from cookie
-        var lang = 'en';
-        var m = document.cookie.match(/(?:^|;\s*)language=([^;]*)/);
-        if (m) lang = m[1];
-
-        var url = '/plugins/subquestionchallenge/assets/translations/' + lang + '/translations.json';
-        fetch(url)
-            .then(function (r) { return r.ok ? r.json() : {}; })
-            .then(function (t) {
-                Object.assign(CTFd.translations, t);
-                patchTypeLabels();
-            })
-            .catch(function () { patchTypeLabels(); });
-
         // Core renders the type list asynchronously via /api/v1/challenges/types,
         // so observe DOM mutations until the labels appear.
         var observer = new MutationObserver(function () {

@@ -52,39 +52,12 @@ CTFd.plugin.run((_CTFd) => {
         return translated;
     }
 
-    // Load translations, then initialize
-    function loadAndInit() {
-        let lang = 'en';
-        // Detect language from cookie
-        const cookieMatch = document.cookie.match(/(?:^|;\s*)language=([^;]*)/);
-        if (cookieMatch) {
-            lang = cookieMatch[1];
-        }
-        // Also check HTML lang
-        if (!cookieMatch && document.documentElement.lang) {
-            lang = document.documentElement.lang;
-        }
-
-        const translationUrl = '/plugins/subquestionchallenge/assets/translations/' + lang + '/translations.json';
-        return fetch(translationUrl)
-            .then(response => {
-                if (response.ok) return response.json();
-                // Fallback to English
-                return fetch('/plugins/subquestionchallenge/assets/translations/en/translations.json').then(r => r.json());
-            })
-            .then(translations => {
-                Object.assign(CTFd.translations, translations);
-                applyTranslations();
-                initCreateForm();
-            })
-            .catch(() => {
-                initCreateForm();
-            });
-    }
-
     let questionCount = 1;
 
     function initCreateForm() {
+        // Apply translations to the initial template
+        applyTranslations();
+
         // Add question button
         $('#add-question').click(function () {
             questionCount++;
@@ -222,6 +195,8 @@ CTFd.plugin.run((_CTFd) => {
         console.log("Multi Question Challenge create script loaded and form submission overridden.");
     }
 
-    // Start: load translations then init
-    loadAndInit();
+    // Translations are already loaded by the Flask-Babel-sourced script
+    // at /plugins/subquestionchallenge/i18n.js (registered before this file).
+    // Initialize directly without any JSON fetch.
+    initCreateForm();
 });

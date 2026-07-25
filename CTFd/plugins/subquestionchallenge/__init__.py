@@ -1,6 +1,7 @@
 import datetime
+import json
 import os
-from flask import Blueprint
+from flask import Blueprint, Response
 from flask_babel import gettext, lazy_gettext
 
 from CTFd.models import Challenges, db, Flags, Solves
@@ -13,6 +14,62 @@ from CTFd.plugins.challenges import CHALLENGE_CLASSES, BaseChallenge
 from CTFd.plugins.flags import get_flag_class
 from CTFd.plugins.migrations import upgrade
 from CTFd.utils.user import get_locale
+
+# All translatable strings used by the JavaScript frontend.
+# Served as a JS file via the blueprint route so that the JS code
+# can use CTFd.translations["..."] to look up Flask-Babel translations
+# at runtime, without any client-side JSON fetch.
+_I18N_KEYS = [
+    "0 for unlimited",
+    "Add Question",
+    "All Completed",
+    "All questions have been completed! Congratulations on finishing this challenge.",
+    "An error occurred while creating the challenge",
+    "Awesome!",
+    "By HITCON ReCTF Team.",
+    "Challenge Completed",
+    "Challenge Completed!",
+    "Completed",
+    "Congratulations on completing all questions!",
+    "Congratulations, you have completed all questions! This multi-question challenge is now solved.",
+    "Connection Info",
+    "Connection information (optional)",
+    "Each question is worth a certain number of points, and the challenge is considered solved when all questions are answered correctly.",
+    "Enter flag",
+    "Enter question text",
+    "Enter the flag for the selected question",
+    "Error",
+    "Failed to create challenge. Please check all fields are filled correctly.",
+    "Flag %(num)s",
+    "Hidden",
+    "Hint",
+    "Max Attempts",
+    "Multi Question Challenge",
+    "Multi-question challenges must be submitted via the question selection interface",
+    "OK",
+    "Please fill out at least one question and its corresponding flag",
+    "Please fill out the challenge name and category",
+    "Please select a question",
+    "Please use the multi-question interface to submit",
+    "Points",
+    "Question",
+    "Question %(num)s",
+    "Questions & Flags",
+    "Questions Completed",
+    "Questions Remaining",
+    "Remove Last Question",
+    "Score Acquired",
+    "Select a question to answer:",
+    "State",
+    "Sub Question Challenge",
+    "Sub Question Challenges are a type of challenge that allows you to create a challenge with multiple questions and flags.",
+    "Unsolved",
+    "Visible",
+    "Wait",
+    "You can also set a maximum number of attempts for each question.",
+    "You have successfully solved all questions in this multi-question challenge.",
+    "points",
+]
 
 
 class SubQuestionChallengeModel(Challenges):
@@ -91,6 +148,26 @@ class SubQuestionChallengeType(BaseChallenge):
         static_folder="assets",
     )
     challenge_model = SubQuestionChallengeModel
+
+    @staticmethod
+    @blueprint.route("/plugins/subquestionchallenge/i18n.js", endpoint="i18n_js")
+    def i18n_js():
+        """Serve all Flask-Babel translations for this plugin as a JS file.
+
+        The output populates ``window.CTFd.translations`` so that the
+        plugin's frontend JavaScript (create.js / view.js / i18n.js) can
+        look up translated strings via ``CTFd.translations[key]`` without
+        fetching any client-side JSON dictionaries.
+        """
+        translations = {key: gettext(key) for key in _I18N_KEYS}
+        payload = json.dumps(translations, ensure_ascii=False)
+        js = (
+            "window.CTFd = window.CTFd || {};\n"
+            "CTFd.translations = Object.assign(CTFd.translations || {}, "
+            + payload
+            + ");\n"
+        )
+        return Response(js, mimetype="application/javascript")
 
     @classmethod
     def create(cls, request):
@@ -400,10 +477,15 @@ def load(app):
     register_plugin_assets_directory(
         app, base_path="/plugins/subquestionchallenge/assets/"
     )
+    # Register the Flask-Babel-sourced translations script so that
+    # ``window.CTFd.translations`` is populated on every page (both admin
+    # and user-facing) before the plugin's own JS (create.js / view.js /
+    # i18n.js) runs. This replaces the old client-side JSON fetch approach.
+    register_plugin_script("/plugins/subquestionchallenge/i18n.js")
+    register_admin_plugin_script("/plugins/subquestionchallenge/i18n.js")
     # Page-level i18n patch for the admin theme: translates the
     # "subquestionchallenge" label in the admin challenge-type card list
-    # (rendered by CTFd core) and preloads translations so create.js can use
-    # them immediately. Must use register_admin_plugin_script so the script
-    # is injected via get_registered_admin_scripts() in admin base.html.
+    # (rendered by CTFd core). Translations are already loaded by the
+    # i18n.js route above, so this script only needs to patch the DOM.
     register_admin_plugin_script("/plugins/subquestionchallenge/assets/i18n.js")
-    print("<<<<< SubQuestionChallenge: Plugin loaded successfully >>>>>", flush=True) 
+    print("<<<<< SubQuestionChallenge: Plugin loaded successfully >>>>>", flush=True)
