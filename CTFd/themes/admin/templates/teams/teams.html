@@ -127,16 +127,12 @@
 						<td class="team-hidden d-md-table-cell d-lg-table-cell text-center" value="{{ team.hidden }}">
 							{% if team.hidden %}
 								<span class="badge badge-danger">{% trans %}hidden{% endtrans %}</span>
-							{% else %}
-								<span class="text-muted">-</span>
 							{% endif %}
 						</td>
 
 						<td class="team-banned d-md-table-cell d-lg-table-cell text-center" value="{{ team.banned }}">
 							{% if team.banned %}
 								<span class="badge badge-danger">{% trans %}banned{% endtrans %}</span>
-							{% else %}
-								<span class="text-muted">-</span>
 							{% endif %}
 						</td>
 					</tr>

@@ -130,29 +130,21 @@
 						<td class="team-admin d-md-table-cell d-lg-table-cell text-center" value="{{ user.type }}">
 							{% if user.type == 'admin' %}
 								<span class="badge badge-primary">{% trans %}admin{% endtrans %}</span>
-							{% else %}
-								<span class="text-muted">-</span>
 							{% endif %}
 						</td>
 						<td class="team-verified d-md-table-cell d-lg-table-cell text-center" value="{{ user.verified }}">
 							{% if user.verified %}
 								<span class="badge badge-success">{% trans %}verified{% endtrans %}</span>
-							{% else %}
-								<span class="text-muted">-</span>
 							{% endif %}
 						</td>
 						<td class="team-hidden d-md-table-cell d-lg-table-cell text-center" value="{{ user.hidden }}">
 							{% if user.hidden %}
 								<span class="badge badge-danger">{% trans %}hidden{% endtrans %}</span>
-							{% else %}
-								<span class="text-muted">-</span>
 							{% endif %}
 						</td>
 						<td class="team-banned d-md-table-cell d-lg-table-cell text-center" value="{{ user.banned }}">
 							{% if user.banned %}
 								<span class="badge badge-danger">{% trans %}banned{% endtrans %}</span>
-							{% else %}
-								<span class="text-muted">-</span>
 							{% endif %}
 						</td>
 					</tr>
