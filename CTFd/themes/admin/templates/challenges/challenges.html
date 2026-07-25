@@ -2,6 +2,14 @@
 
 {% block stylesheets %}
 	{{ Assets.css("assets/css/challenge-board.scss", theme="admin") }}
+	<style>
+		/* Type 列需容纳三个中文字符（如"多单元"），移动端窄屏下避免末字换行 */
+		#challenges th:nth-child(7),
+		#challenges td:nth-child(7) {
+			white-space: nowrap;
+			min-width: 4.5rem;
+		}
+	</style>
 {% endblock %}
 
 
