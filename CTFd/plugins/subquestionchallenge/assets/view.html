@@ -1,1 +1,31 @@
-{% extends "challenge.html" %} 
+{% extends "challenge.html" %}
+
+{% block input %}
+{{ super() }}
+{# Inject Flask-Babel translations into CTFd.translations so view.js __() can use them #}
+<script>
+window.CTFd = window.CTFd || {};
+CTFd.translations = Object.assign(CTFd.translations || {}, {
+	"Multi Question Challenge": {{ _("Multi Question Challenge")|tojson }},
+	"Score Acquired": {{ _("Score Acquired")|tojson }},
+	"Questions Completed": {{ _("Questions Completed")|tojson }},
+	"Questions Remaining": {{ _("Questions Remaining")|tojson }},
+	"Question": {{ _("Question")|tojson }},
+	"points": {{ _("points")|tojson }},
+	"Completed": {{ _("Completed")|tojson }},
+	"Unsolved": {{ _("Unsolved")|tojson }},
+	"Select a question to answer:": {{ _("Select a question to answer:")|tojson }},
+	"Enter the flag for the selected question": {{ _("Enter the flag for the selected question")|tojson }},
+	"All Completed": {{ _("All Completed")|tojson }},
+	"Congratulations on completing all questions!": {{ _("Congratulations on completing all questions!")|tojson }},
+	"You have successfully solved all questions in this multi-question challenge.": {{ _("You have successfully solved all questions in this multi-question challenge.")|tojson }},
+	"Challenge Completed": {{ _("Challenge Completed")|tojson }},
+	"Hint": {{ _("Hint")|tojson }},
+	"All questions have been completed! Congratulations on finishing this challenge.": {{ _("All questions have been completed! Congratulations on finishing this challenge.")|tojson }},
+	"Error": {{ _("Error")|tojson }},
+	"Please select a question": {{ _("Please select a question")|tojson }},
+	"Please use the multi-question interface to submit": {{ _("Please use the multi-question interface to submit")|tojson }},
+	"Wait": {{ _("Wait")|tojson }}
+});
+</script>
+{% endblock %}
