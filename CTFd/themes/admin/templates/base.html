@@ -12,6 +12,14 @@
 	{{ Assets.css("assets/css/admin.scss", theme="admin") }}
 	{{ Assets.css("assets/css/codemirror.scss", theme="admin") }}
 	<style>
+		/* 管理列表表格列标题居中显示（移动端 + 桌面端通用） */
+		#pages th,
+		#teamsboard th,
+		#challenges th,
+		#modules th,
+		#audiences th {
+			text-align: center !important;
+		}
 		@media (max-width: 767.98px) {
 			.navbar-collapse .dropdown-menu {
 				max-height: calc(100vh - 350px);
@@ -36,14 +44,6 @@
 				white-space: nowrap !important;
 				min-width: 0 !important;
 				max-width: none !important;
-			}
-			/* 移动端：列标题居中显示 */
-			#pages th,
-			#teamsboard th,
-			#challenges th,
-			#modules th,
-			#audiences th {
-				text-align: center !important;
 			}
 		}
 	</style>
