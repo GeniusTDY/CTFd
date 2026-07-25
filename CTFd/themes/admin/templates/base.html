@@ -19,6 +19,21 @@
 				-webkit-overflow-scrolling: touch;
 			}
 		}
+		/* Email notifications tabs: keep all 5 tabs on one row with horizontal scroll */
+		.email-tabs-scroll {
+			display: flex;
+			flex-wrap: nowrap;
+			overflow-x: auto;
+			-webkit-overflow-scrolling: touch;
+			scrollbar-width: thin;
+		}
+		.email-tabs-scroll .nav-item {
+			flex: 0 0 auto;
+			white-space: nowrap;
+		}
+		.email-tabs-scroll .nav-link {
+			white-space: nowrap;
+		}
 	</style>
 	<script type="text/javascript" src="{{ url_for('views.translations_js') }}"></script>
 	<script type="text/javascript">

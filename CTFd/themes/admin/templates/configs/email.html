@@ -52,29 +52,29 @@
 		<small class="form-text text-muted">
 			{% trans %}Customize the emails that CTFd sends your users with custom content using <a href="https://docs.ctfd.io/docs/settings/emails/#email-content" target="_blank">predefined variables</a>, mail servers, and addresses.{% endtrans %}
 		</small>
-		<ul class="nav nav-tabs mt-3" role="tablist">
-			<li class="nav-item active">
-				<a class="nav-link active" href="#email-server-tab" role="tab" data-toggle="tab">
-					{% trans %}Mail Server{% endtrans %}
-				</a>
-			</li>
-			<li class="nav-item">
-				<a class="nav-link" href="#registration-email-tab" role="tab" data-toggle="tab">
-					{% trans %}Registration{% endtrans %}
-				</a>
-			</li>
-			<li class="nav-item">
-				<a class="nav-link" href="#verification-email-tab" role="tab" data-toggle="tab">
-					{% trans %}Verification{% endtrans %}
-				</a>
-			</li>
-			<li class="nav-item">
-				<a class="nav-link" href="#account-details-email-tab" role="tab" data-toggle="tab">{% trans %}Account Details{% endtrans %}</a>
-			</li>
-			<li class="nav-item">
-				<a class="nav-link" href="#password-reset-email-tab" role="tab" data-toggle="tab">{% trans %}Password Reset{% endtrans %}</a>
-			</li>
-		</ul>
+		<ul class="nav nav-tabs mt-3 email-tabs-scroll" role="tablist">
+		<li class="nav-item active">
+			<a class="nav-link active" href="#email-server-tab" role="tab" data-toggle="tab">
+				{% trans %}Mail Server{% endtrans %}
+			</a>
+		</li>
+		<li class="nav-item">
+			<a class="nav-link" href="#registration-email-tab" role="tab" data-toggle="tab">
+				{% trans %}Registration{% endtrans %}
+			</a>
+		</li>
+		<li class="nav-item">
+			<a class="nav-link" href="#verification-email-tab" role="tab" data-toggle="tab">
+				{% trans %}Verification{% endtrans %}
+			</a>
+		</li>
+		<li class="nav-item">
+			<a class="nav-link" href="#account-details-email-tab" role="tab" data-toggle="tab">{% trans %}Account Details{% endtrans %}</a>
+		</li>
+		<li class="nav-item">
+			<a class="nav-link" href="#password-reset-email-tab" role="tab" data-toggle="tab">{% trans %}Password Reset{% endtrans %}</a>
+		</li>
+	</ul>
 
 		<div class="tab-content">
 			<div role="tabpanel" class="tab-pane active" id="email-server-tab">
