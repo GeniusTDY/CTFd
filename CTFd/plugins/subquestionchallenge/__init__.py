@@ -1,18 +1,13 @@
 import datetime
 import os
 from flask import Blueprint
-from flask_babel import gettext, lazy_gettext
+from flask_babel import gettext
 
 from CTFd.models import Challenges, db, Flags, Solves
-from CTFd.plugins import (
-    register_plugin_assets_directory,
-    register_plugin_script,
-    register_admin_plugin_script,
-)
+from CTFd.plugins import register_plugin_assets_directory
 from CTFd.plugins.challenges import CHALLENGE_CLASSES, BaseChallenge
 from CTFd.plugins.flags import get_flag_class
 from CTFd.plugins.migrations import upgrade
-from CTFd.utils.user import get_locale
 
 
 class SubQuestionChallengeModel(Challenges):
@@ -218,10 +213,9 @@ class SubQuestionChallengeType(BaseChallenge):
             "max_attempts": challenge.max_attempts,
             "type": challenge.type,
             "questions": questions,  # Add questions data
-            "user_locale": {"zh_TW": "zh_Hant_TW"}.get(get_locale(), get_locale()), # Pass user's current locale to the frontend
             "type_data": {
                 "id": cls.id,
-                "name": cls.name,
+                "name": gettext("Sub Question Challenge"),
                 "templates": cls.templates,
                 "scripts": cls.scripts,
             },
@@ -400,10 +394,4 @@ def load(app):
     register_plugin_assets_directory(
         app, base_path="/plugins/subquestionchallenge/assets/"
     )
-    # Page-level i18n patch for the admin theme: translates the
-    # "subquestionchallenge" label in the admin challenge-type card list
-    # (rendered by CTFd core) and preloads translations so create.js can use
-    # them immediately. Must use register_admin_plugin_script so the script
-    # is injected via get_registered_admin_scripts() in admin base.html.
-    register_admin_plugin_script("/plugins/subquestionchallenge/assets/i18n.js")
-    print("<<<<< SubQuestionChallenge: Plugin loaded successfully >>>>>", flush=True) 
+    print("<<<<< SubQuestionChallenge: Plugin loaded successfully >>>>>", flush=True)

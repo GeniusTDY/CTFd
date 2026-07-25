@@ -1,47 +1,11 @@
 CTFd.plugin.run((_CTFd) => {
     const $ = _CTFd.lib.$;
 
-    if (typeof CTFd.translations === 'undefined') {
-        CTFd.translations = {};
-    }
-    const __ = (str) => CTFd.translations[str] || str;
+    // Translations are injected server-side via Flask-Babel in create.html
+    // as window.SubQuestionI18n. Fallback to the original English string.
+    const __ = (str) => (window.SubQuestionI18n && window.SubQuestionI18n[str]) || str;
 
-    // Helper: apply translations to all elements with data-i18n attributes
-    function applyTranslations() {
-        // Text content
-        $('[data-i18n]').each(function () {
-            const key = $(this).data('i18n');
-            const translated = __(key);
-            if (translated !== key) {
-                // Handle parameterized keys like "Question %(num)s"
-                const num = $(this).data('i18n-num');
-                if (num) {
-                    $(this).text(translated.replace('%(num)s', num));
-                } else {
-                    $(this).text(translated);
-                }
-            }
-        });
-        // Placeholders
-        $('[data-i18n-placeholder]').each(function () {
-            const key = $(this).data('i18n-placeholder');
-            const translated = __(key);
-            if (translated !== key) {
-                $(this).attr('placeholder', translated);
-            }
-        });
-        // Translate the challenge type card label on the left sidebar.
-        // CTFd core renders "{{ type }}" (the challenge id) for non-standard/
-        // non-dynamic types, so we patch the label text client-side.
-        $('#create-chals-select .form-check-label').each(function () {
-            const text = $(this).text().trim();
-            if (text === 'subquestionchallenge') {
-                $(this).text(__('Multi Question Challenge'));
-            }
-        });
-    }
-
-    // Helper: translate a key with optional parameters
+    // Translate a key with optional parameters (e.g. "Question %(num)s")
     function _t(key, params) {
         let translated = __(key);
         if (params) {
@@ -50,36 +14,6 @@ CTFd.plugin.run((_CTFd) => {
             });
         }
         return translated;
-    }
-
-    // Load translations, then initialize
-    function loadAndInit() {
-        let lang = 'en';
-        // Detect language from cookie
-        const cookieMatch = document.cookie.match(/(?:^|;\s*)language=([^;]*)/);
-        if (cookieMatch) {
-            lang = cookieMatch[1];
-        }
-        // Also check HTML lang
-        if (!cookieMatch && document.documentElement.lang) {
-            lang = document.documentElement.lang;
-        }
-
-        const translationUrl = '/plugins/subquestionchallenge/assets/translations/' + lang + '/translations.json';
-        return fetch(translationUrl)
-            .then(response => {
-                if (response.ok) return response.json();
-                // Fallback to English
-                return fetch('/plugins/subquestionchallenge/assets/translations/en/translations.json').then(r => r.json());
-            })
-            .then(translations => {
-                Object.assign(CTFd.translations, translations);
-                applyTranslations();
-                initCreateForm();
-            })
-            .catch(() => {
-                initCreateForm();
-            });
     }
 
     let questionCount = 1;
@@ -222,6 +156,6 @@ CTFd.plugin.run((_CTFd) => {
         console.log("Multi Question Challenge create script loaded and form submission overridden.");
     }
 
-    // Start: load translations then init
-    loadAndInit();
+    // Translations are already available in window.SubQuestionI18n (rendered by Flask-Babel in create.html)
+    initCreateForm();
 });
