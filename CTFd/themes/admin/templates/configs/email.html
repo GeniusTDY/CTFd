@@ -1,4 +1,28 @@
 <div role="tabpanel" class="tab-pane config-section" id="email">
+	<style>
+		/* 移动端：邮件通知 5 个标签同排显示，左右滑动查看 */
+		@media (max-width: 767.98px) {
+			#email .email-tabs-scroll {
+				display: -webkit-box;
+				display: -ms-flexbox;
+				display: flex;
+				-ms-flex-wrap: nowrap;
+				flex-wrap: nowrap;
+				overflow-x: auto;
+				overflow-y: hidden;
+				-webkit-overflow-scrolling: touch;
+				scrollbar-width: thin;
+			}
+			#email .email-tabs-scroll > .nav-item {
+				-ms-flex: 0 0 auto;
+				flex: 0 0 auto;
+				white-space: nowrap;
+			}
+			#email .email-tabs-scroll > .nav-item .nav-link {
+				white-space: nowrap;
+			}
+		}
+	</style>
 	{% set mailfrom_addr = mailfrom_addr if mailfrom_addr is defined and mailfrom_addr != None else "" %}
 	{% set mail_server = mail_server if mail_server is defined and mail_server != None else "" %}
 	{% set mail_port = mail_port if mail_port is defined and mail_port != None else "" %}
@@ -52,7 +76,7 @@
 		<small class="form-text text-muted">
 			{% trans %}Customize the emails that CTFd sends your users with custom content using <a href="https://docs.ctfd.io/docs/settings/emails/#email-content" target="_blank">predefined variables</a>, mail servers, and addresses.{% endtrans %}
 		</small>
-		<ul class="nav nav-tabs mt-3" role="tablist">
+		<ul class="nav nav-tabs mt-3 email-tabs-scroll" role="tablist">
 			<li class="nav-item active">
 				<a class="nav-link active" href="#email-server-tab" role="tab" data-toggle="tab">
 					{% trans %}Mail Server{% endtrans %}
