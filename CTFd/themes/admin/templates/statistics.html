@@ -126,6 +126,98 @@
     </div>
 {% endblock %}
 
+{% block stylesheets %}
+<style>
+/* 移动端：名次/队伍/得分三列自适应列宽（刚好容纳最长内容） */
+@media (max-width: 767.98px) {
+    #matrix-scoreboard .sticky-col-place,
+    #matrix-scoreboard .sticky-col-name,
+    #matrix-scoreboard .sticky-col-score {
+        min-width: 0 !important;
+        max-width: none !important;
+    }
+    #matrix-scoreboard .sticky-col-name {
+        overflow: visible !important;
+        text-overflow: clip !important;
+    }
+}
+</style>
+{% endblock %}
+
 {% block entrypoint %}
     {{ Assets.js("assets/js/pages/statistics.js", theme="admin") }}
+{% endblock %}
+
+{% block scripts %}
+<script>
+/* 移动端：sticky 列的 left 偏移需要匹配实际列宽，用 JS 动态计算 */
+(function () {
+    var MOBILE_BP = 767.98;
+    var timer = null;
+
+    function isMobile() {
+        return window.innerWidth <= MOBILE_BP;
+    }
+
+    function adjustMatrixOffsets() {
+        var table = document.getElementById('matrix-scoreboard');
+        if (!table) return;
+
+        if (!isMobile()) {
+            // 桌面端：清除内联样式，恢复 CSS 默认值
+            table.querySelectorAll('.sticky-col-name').forEach(function (el) {
+                el.style.left = '';
+            });
+            table.querySelectorAll('.sticky-col-score').forEach(function (el) {
+                el.style.left = '';
+            });
+            return;
+        }
+
+        // 移动端：测量实际列宽，设置 sticky left 偏移
+        var placeCell = table.querySelector('.sticky-col-place');
+        var nameCell = table.querySelector('.sticky-col-name');
+        if (!placeCell || !nameCell) return;
+
+        var placeWidth = placeCell.offsetWidth;
+        var nameWidth = nameCell.offsetWidth;
+
+        table.querySelectorAll('.sticky-col-name').forEach(function (el) {
+            el.style.left = placeWidth + 'px';
+        });
+        table.querySelectorAll('.sticky-col-score').forEach(function (el) {
+            el.style.left = (placeWidth + nameWidth) + 'px';
+        });
+    }
+
+    function scheduleAdjust() {
+        if (timer) clearTimeout(timer);
+        timer = setTimeout(adjustMatrixOffsets, 50);
+    }
+
+    function setup() {
+        var container = document.getElementById('scoreboard-matrix');
+        if (!container) return;
+
+        // 监听 Vue 渲染/筛选导致的 DOM 变化（仅 childList，避免 style 修改触发循环）
+        var observer = new MutationObserver(scheduleAdjust);
+        observer.observe(container, { childList: true, subtree: true });
+
+        // 窗口尺寸变化时重新调整
+        var resizeTimer;
+        window.addEventListener('resize', function () {
+            clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(adjustMatrixOffsets, 100);
+        });
+
+        scheduleAdjust();
+    }
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', setup);
+    } else {
+        setup();
+    }
+})();
+</script>
 {% endblock %}
