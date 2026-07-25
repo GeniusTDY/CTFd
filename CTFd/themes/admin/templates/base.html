@@ -18,6 +18,25 @@
 				overflow-y: auto;
 				-webkit-overflow-scrolling: touch;
 			}
+			/* 移动端：管理列表表格自适应列宽（刚好容纳最长内容） */
+			#pages,
+			#teamsboard,
+			#challenges,
+			#modules,
+			#audiences {
+				width: auto !important;
+				max-width: none !important;
+				table-layout: auto !important;
+			}
+			#pages th, #pages td,
+			#teamsboard th, #teamsboard td,
+			#challenges th, #challenges td,
+			#modules th, #modules td,
+			#audiences th, #audiences td {
+				white-space: nowrap !important;
+				min-width: 0 !important;
+				max-width: none !important;
+			}
 		}
 	</style>
 	<script type="text/javascript" src="{{ url_for('views.translations_js') }}"></script>
