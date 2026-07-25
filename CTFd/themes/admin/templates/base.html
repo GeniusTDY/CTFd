@@ -27,11 +27,10 @@
 				-webkit-overflow-scrolling: touch;
 			}
 			/* 移动端：管理列表表格自适应列宽（刚好容纳最长内容） */
+			/* 注：#modules、#audiences 列数少，保持 width:100% 填充容器，避免空表过窄扁平 */
 			#pages,
 			#teamsboard,
-			#challenges,
-			#modules,
-			#audiences {
+			#challenges {
 				width: auto !important;
 				max-width: none !important;
 				table-layout: auto !important;
