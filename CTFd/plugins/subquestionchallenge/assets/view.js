@@ -1,64 +1,23 @@
 // Ensure we don't redeclare variables if script loads multiple times
 if (typeof CTFd._internal.challenge.multiQuestionInit === 'undefined') {
 
-// Custom translation loader for this plugin
-function loadTranslations(challengeData) {
-    return new Promise((resolve, reject) => {
-        // Use multiple fallback methods to detect language
-        let lang = 'en'; // Default fallback
-        
-        // Method 1: Check for locale in challenge data
-        if (challengeData && challengeData.user_locale) {
-            lang = challengeData.user_locale;
+// Load server-rendered translations injected by view.html (Flask-Babel).
+// Falls back to the original English string if a key is missing.
+function loadTranslations() {
+    return new Promise((resolve) => {
+        if (typeof CTFd.translations === 'undefined') {
+            CTFd.translations = {};
         }
-        // Method 2: Check HTML lang attribute
-        else if (document.documentElement.lang) {
-            lang = document.documentElement.lang;
-        }
-        // Method 3: Use browser language preference
-        else if (navigator.language) {
-            const browserLang = navigator.language.toLowerCase();
-            // Map browser language codes to our supported languages
-            if (browserLang.includes('zh-tw') || browserLang.includes('zh-hant')) {
-                lang = 'zh_Hant_TW';
-            } else if (browserLang.includes('zh-cn') || browserLang.includes('zh-hans')) {
-                lang = 'zh_CN';
-            } else if (browserLang.includes('zh')) {
-                lang = 'zh_Hant_TW'; // Default Chinese to Traditional
-            } else {
-                lang = 'en'; // Default to English for other languages
+        const node = document.getElementById('subquestion-i18n');
+        if (node) {
+            try {
+                const data = JSON.parse(node.textContent || '{}');
+                Object.assign(CTFd.translations, data);
+            } catch (e) {
+                console.warn('SubQuestionChallenge: failed to parse i18n JSON', e);
             }
         }
-        
-        console.log("Loading translations for language:", lang);
-        console.log("Detection method - CTFd.config.user:", CTFd.config?.user);
-        console.log("Detection method - HTML lang:", document.documentElement.lang);
-        console.log("Detection method - Browser lang:", navigator.language);
-        
-        const translationUrl = `/plugins/subquestionchallenge/assets/translations/${lang}/translations.json`;
-
-        fetch(translationUrl)
-            .then(response => {
-                if (response.ok) {
-                    return response.json();
-                } else {
-                    // Fallback to English if the language file is not found
-                    console.warn(`Translation file for ${lang} not found, falling back to English.`);
-                    const fallbackUrl = `/plugins/subquestionchallenge/assets/translations/en/translations.json`;
-                    return fetch(fallbackUrl).then(res => res.json());
-                }
-            })
-            .then(translations => {
-                if (typeof CTFd.translations === 'undefined') {
-                    CTFd.translations = {};
-                }
-                Object.assign(CTFd.translations, translations);
-                resolve();
-            })
-            .catch(error => {
-                console.error('Error loading translation file:', error);
-                reject(error);
-            });
+        resolve();
     });
 }
 
@@ -74,7 +33,7 @@ CTFd._internal.challenge.renderer = null;
 
 CTFd._internal.challenge.preRender = function() {
     console.log("Multi Question Challenge preRender called");
-    return loadTranslations(CTFd._internal.challenge.data);
+    return loadTranslations();
 };
 
 // TODO: Remove in CTFd v4.0

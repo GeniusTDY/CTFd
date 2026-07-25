@@ -1,6 +1,6 @@
 import datetime
 import os
-from flask import Blueprint
+from flask import Blueprint, Response, render_template_string
 from flask_babel import gettext, lazy_gettext
 
 from CTFd.models import Challenges, db, Flags, Solves
@@ -402,8 +402,53 @@ def load(app):
     )
     # Page-level i18n patch for the admin theme: translates the
     # "subquestionchallenge" label in the admin challenge-type card list
-    # (rendered by CTFd core) and preloads translations so create.js can use
-    # them immediately. Must use register_admin_plugin_script so the script
-    # is injected via get_registered_admin_scripts() in admin base.html.
-    register_admin_plugin_script("/plugins/subquestionchallenge/assets/i18n.js")
-    print("<<<<< SubQuestionChallenge: Plugin loaded successfully >>>>>", flush=True) 
+    # (rendered by CTFd core). Served via a Jinja2-rendered route so the
+    # translation comes from Flask-Babel (no client-side JSON fetching).
+    register_admin_plugin_script("/plugins/subquestionchallenge/i18n.js")
+    print("<<<<< SubQuestionChallenge: Plugin loaded successfully >>>>>", flush=True)
+
+
+# Jinja2-rendered JS endpoint that exposes Flask-Babel translations to the
+# admin theme. Used to patch the challenge-type card label which CTFd core
+# renders as the raw type id ("subquestionchallenge") for non-standard types.
+@SubQuestionChallengeType.blueprint.route("/plugins/subquestionchallenge/i18n.js")
+def serve_plugin_i18n_js():
+    js_content = render_template_string(
+        """// Server-rendered i18n for SubQuestionChallenge plugin (Flask-Babel).
+// Patches the admin challenge-type card label, which CTFd core renders as
+// the raw type id ("subquestionchallenge") for non-standard types.
+(function () {
+    var TRANSLATED = {{ _("Multi Question Challenge")|tojson }};
+
+    function patchTypeLabels() {
+        if (!window.location.pathname.endsWith('/admin/challenges/new')) return;
+        var labels = document.querySelectorAll('#create-chals-select .form-check-label');
+        if (!labels.length) return;
+        labels.forEach(function (el) {
+            var text = (el.textContent || '').trim();
+            if (text === 'subquestionchallenge') {
+                // Only patch when a non-empty translation differs from the
+                // English source so untranslated locales keep the raw id.
+                if (TRANSLATED && typeof TRANSLATED === 'string'
+                        && TRANSLATED !== 'Multi Question Challenge') {
+                    el.textContent = TRANSLATED;
+                }
+            }
+        });
+    }
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', patchTypeLabels);
+    } else {
+        patchTypeLabels();
+    }
+    // Core renders the type list asynchronously via /api/v1/challenges/types,
+    // so observe DOM mutations until the labels appear (stop after 10s).
+    var observer = new MutationObserver(function () { patchTypeLabels(); });
+    observer.observe(document.body, { childList: true, subtree: true });
+    setTimeout(function () { observer.disconnect(); }, 10000);
+})();
+""",
+        _=gettext,
+    )
+    return Response(js_content, mimetype="application/javascript")
