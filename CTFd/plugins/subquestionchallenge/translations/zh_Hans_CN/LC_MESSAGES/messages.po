@@ -15,16 +15,16 @@ msgstr ""
 
 # Admin create template - description block
 msgid "Sub Question Challenges are a type of challenge that allows you to create a challenge with multiple questions and flags."
-msgstr "多单元题目是一种题目类型，允许您创建包含多个分题和多个 flag 的题目。"
+msgstr "多问题挑战是一种允许创建包含多个问题和 flag 的挑战类型。"
 
 msgid "Each question is worth a certain number of points, and the challenge is considered solved when all questions are answered correctly."
-msgstr "每个分题都有对应的分值，当所有分题均回答正确时，该题目即视为已完成。"
+msgstr "每个问题都有对应的分值，当所有问题都回答正确后，该挑战才算完成。"
 
 msgid "You can also set a maximum number of attempts for each question."
-msgstr "您还可以为每个分题设置最大尝试次数。"
+msgstr "您还可以为每个问题设置最大尝试次数。"
 
 msgid "By HITCON ReCTF Team."
-msgstr "由 HITCON ReCTF 团队提供。"
+msgstr "由 HITCON ReCTF 团队开发。"
 
 # Admin create template - form fields
 msgid "Connection Info"
@@ -40,13 +40,13 @@ msgid "0 for unlimited"
 msgstr "0 表示无限制"
 
 msgid "Questions & Flags"
-msgstr "分题与 Flag"
+msgstr "问题与 Flag"
 
 msgid "Question %(num)s"
-msgstr "分题 %(num)s"
+msgstr "问题 %(num)s"
 
 msgid "Enter question text"
-msgstr "输入分题描述"
+msgstr "输入问题文本"
 
 msgid "Flag %(num)s"
 msgstr "Flag %(num)s"
@@ -58,10 +58,10 @@ msgid "Points"
 msgstr "分值"
 
 msgid "Add Question"
-msgstr "添加分题"
+msgstr "添加问题"
 
 msgid "Remove Last Question"
-msgstr "移除最后一个分题"
+msgstr "移除最后一个问题"
 
 msgid "State"
 msgstr "状态"
@@ -72,79 +72,6 @@ msgstr "可见"
 msgid "Hidden"
 msgstr "隐藏"
 
-# Challenge type name (shown in challenge view)
+# Challenge type name (shown in admin dropdown)
 msgid "Sub Question Challenge"
-msgstr "多单元题目"
-
-# Strings used in JavaScript (exposed via Flask-Babel in templates)
-msgid "Multi Question Challenge"
-msgstr "多单元题目"
-
-msgid "Score Acquired"
-msgstr "已获得分数"
-
-msgid "Questions Completed"
-msgstr "已完成分题"
-
-msgid "Questions Remaining"
-msgstr "剩余分题"
-
-msgid "Question"
-msgstr "分题"
-
-msgid "points"
-msgstr "分"
-
-msgid "Completed"
-msgstr "已完成"
-
-msgid "Unsolved"
-msgstr "未完成"
-
-msgid "Select a question to answer:"
-msgstr "选择要回答的分题："
-
-msgid "Congratulations on completing all questions!"
-msgstr "恭喜完成所有分题！"
-
-msgid "You have successfully solved all questions in this multi-question challenge."
-msgstr "您已成功解决了这个多单元题目的所有分题。"
-
-msgid "Challenge Completed"
-msgstr "题目完成"
-
-msgid "Hint"
-msgstr "提示"
-
-msgid "All questions have been completed! Congratulations on finishing this challenge."
-msgstr "所有分题已完成！恭喜您完成了这个题目。"
-
-msgid "All Completed"
-msgstr "全部完成"
-
-msgid "Wait"
-msgstr "等待"
-
-msgid "Please use the multi-question interface to submit"
-msgstr "请使用多分题界面提交"
-
-msgid "Error"
-msgstr "错误"
-
-msgid "Please select a question"
-msgstr "请选择一个分题"
-
-msgid "Enter the flag for the selected question"
-msgstr "输入选定分题的 Flag"
-
-msgid "Please fill out the challenge name and category"
-msgstr "请填写题目名称和类别"
-
-msgid "Please fill out at least one question and its corresponding flag"
-msgstr "请至少填写一个分题和对应的 flag"
-
-msgid "Failed to create challenge. Please check all fields are filled correctly."
-msgstr "创建题目失败，请检查所有字段是否正确填写。"
-
-msgid "An error occurred while creating the challenge"
-msgstr "创建题目时发生错误"
+msgstr "多问题挑战"
