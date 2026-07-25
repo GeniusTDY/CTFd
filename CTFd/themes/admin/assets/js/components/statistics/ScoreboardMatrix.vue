@@ -405,6 +405,24 @@ export default {
   created() {
     this.fetchMatrixData();
   },
+  mounted() {
+    this._onResize = () => this.updateStickyOffsets();
+    window.addEventListener("resize", this._onResize);
+    // 监听表格尺寸变化（数据加载、筛选切换导致行数/列宽变化时触发）
+    this._resizeObserver = new ResizeObserver(() => this.updateStickyOffsets());
+    this.$nextTick(() => {
+      const table = this.$el.querySelector("#matrix-scoreboard");
+      if (table) this._resizeObserver.observe(table);
+    });
+  },
+  beforeDestroy() {
+    if (this._onResize) window.removeEventListener("resize", this._onResize);
+    if (this._resizeObserver) this._resizeObserver.disconnect();
+  },
+  updated() {
+    // displayUsers / displayChallenges 变化后重新计算列宽偏移
+    this.updateStickyOffsets();
+  },
   watch: {
     userSearch() {
       this.persistSettings();
@@ -515,6 +533,29 @@ export default {
     },
   },
   methods: {
+    // 移动端：测量 place/name 两列的实际渲染宽度，并写入 CSS 变量
+    // 作为后续 sticky 列的 left 偏移，避免宽度变化后列之间重叠或错位。
+    // 仅在窄屏（< 768px，对应 Bootstrap md 断点）下生效，桌面端仍用 CSS 硬编码偏移。
+    updateStickyOffsets() {
+      if (typeof window === "undefined") return;
+      if (window.matchMedia("(min-width: 768px)").matches) return;
+
+      const root = this.$el;
+      if (!root) return;
+      const table = root.querySelector("#matrix-scoreboard");
+      if (!table) return;
+
+      const headerCells = table.querySelectorAll("thead th");
+      if (headerCells.length < 3) return;
+
+      const placeWidth = headerCells[0].getBoundingClientRect().width;
+      const nameWidth = headerCells[1].getBoundingClientRect().width;
+
+      const scoreLeft = placeWidth + nameWidth;
+      table.style.setProperty("--matrix-col-place-left", "0px");
+      table.style.setProperty("--matrix-col-name-left", `${placeWidth}px`);
+      table.style.setProperty("--matrix-col-score-left", `${scoreLeft}px`);
+    },
     fetchMatrixData() {
       this.loading = true;
       this.error = null;
@@ -551,6 +592,7 @@ export default {
         })
         .finally(() => {
           this.loading = false;
+          this.$nextTick(() => this.updateStickyOffsets());
         });
     },
     resetFilters() {

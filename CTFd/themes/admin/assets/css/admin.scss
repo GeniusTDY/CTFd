@@ -259,3 +259,41 @@ th.sticky-col-score {
   border: 1px solid #dee2e6;
   background: white;
 }
+
+/* 移动端：名次/队伍/得分三列自适应列宽（刚好容纳最长单元格内容）。
+   sticky 列的 left 偏移通过 JS 测量实际列宽后写入 CSS 变量动态更新，
+   否则宽度变化会导致后续 sticky 列与前一列重叠或错位。 */
+@media (max-width: 767.98px) {
+  #matrix-scoreboard {
+    table-layout: auto;
+  }
+
+  #matrix-scoreboard th.sticky-col-place,
+  #matrix-scoreboard td.sticky-col-place,
+  #matrix-scoreboard th.sticky-col-name,
+  #matrix-scoreboard td.sticky-col-name,
+  #matrix-scoreboard th.sticky-col-score,
+  #matrix-scoreboard td.sticky-col-score {
+    min-width: auto;
+    max-width: none;
+    width: auto;
+  }
+
+  #matrix-scoreboard th.sticky-col-name,
+  #matrix-scoreboard td.sticky-col-name {
+    overflow: visible;
+    text-overflow: clip;
+  }
+
+  .sticky-col-place {
+    left: var(--matrix-col-place-left, 0px);
+  }
+
+  .sticky-col-name {
+    left: var(--matrix-col-name-left, 0px);
+  }
+
+  .sticky-col-score {
+    left: var(--matrix-col-score-left, 0px);
+  }
+}
