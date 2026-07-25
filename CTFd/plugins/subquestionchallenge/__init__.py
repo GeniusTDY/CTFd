@@ -2,7 +2,7 @@ import datetime
 import json
 import os
 from flask import Blueprint, Response
-from flask_babel import gettext, lazy_gettext
+from flask_babel import gettext
 
 from CTFd.models import Challenges, db, Flags, Solves
 from CTFd.plugins import (
@@ -13,40 +13,29 @@ from CTFd.plugins import (
 from CTFd.plugins.challenges import CHALLENGE_CLASSES, BaseChallenge
 from CTFd.plugins.flags import get_flag_class
 from CTFd.plugins.migrations import upgrade
-from CTFd.utils.user import get_locale
 
 # All translatable strings used by the JavaScript frontend.
 # Served as a JS file via the blueprint route so that the JS code
 # can use CTFd.translations["..."] to look up Flask-Babel translations
 # at runtime, without any client-side JSON fetch.
+# Only strings used via __() / _t() in JS files need to be listed here.
+# Strings used in Jinja templates ({{ _("...") }}) are translated
+# server-side and do not need to be in this list.
 _I18N_KEYS = [
-    "0 for unlimited",
-    "Add Question",
     "All Completed",
     "All questions have been completed! Congratulations on finishing this challenge.",
     "An error occurred while creating the challenge",
-    "Awesome!",
-    "By HITCON ReCTF Team.",
     "Challenge Completed",
-    "Challenge Completed!",
     "Completed",
     "Congratulations on completing all questions!",
-    "Congratulations, you have completed all questions! This multi-question challenge is now solved.",
-    "Connection Info",
-    "Connection information (optional)",
-    "Each question is worth a certain number of points, and the challenge is considered solved when all questions are answered correctly.",
     "Enter flag",
     "Enter question text",
     "Enter the flag for the selected question",
     "Error",
     "Failed to create challenge. Please check all fields are filled correctly.",
     "Flag %(num)s",
-    "Hidden",
     "Hint",
-    "Max Attempts",
     "Multi Question Challenge",
-    "Multi-question challenges must be submitted via the question selection interface",
-    "OK",
     "Please fill out at least one question and its corresponding flag",
     "Please fill out the challenge name and category",
     "Please select a question",
@@ -54,19 +43,12 @@ _I18N_KEYS = [
     "Points",
     "Question",
     "Question %(num)s",
-    "Questions & Flags",
     "Questions Completed",
     "Questions Remaining",
-    "Remove Last Question",
     "Score Acquired",
     "Select a question to answer:",
-    "State",
-    "Sub Question Challenge",
-    "Sub Question Challenges are a type of challenge that allows you to create a challenge with multiple questions and flags.",
     "Unsolved",
-    "Visible",
     "Wait",
-    "You can also set a maximum number of attempts for each question.",
     "You have successfully solved all questions in this multi-question challenge.",
     "points",
 ]
@@ -295,7 +277,6 @@ class SubQuestionChallengeType(BaseChallenge):
             "max_attempts": challenge.max_attempts,
             "type": challenge.type,
             "questions": questions,  # Add questions data
-            "user_locale": {"zh_TW": "zh_Hant_TW"}.get(get_locale(), get_locale()), # Pass user's current locale to the frontend
             "type_data": {
                 "id": cls.id,
                 "name": cls.name,
@@ -329,38 +310,31 @@ class SubQuestionChallengeType(BaseChallenge):
         data = request.form or request.get_json()
         provided = data.get("submission", "").strip()
         question_num = data.get("question_num")
-        
-        #Debug: Print all received data (remove in production)
-        print(f"DEBUG: Received data: {data}")
-        print(f"DEBUG: question_num: {question_num}")
-        print(f"DEBUG: submission: {provided}")
-        
+
         # Immediately reject requests without question_num to prevent duplicate submissions
         if not question_num:
-            print("DEBUG: Rejecting request without question_num")
-            # Return a response that CTFd can handle instead of raising exception
-            return False, "Multi-question challenges must be submitted via the question selection interface"
-        
+            return False, gettext("Multi-question challenges must be submitted via the question selection interface")
+
         try:
             question_num = int(question_num)
         except (ValueError, TypeError):
-            return False, "Invalid question number"
-        
+            return False, gettext("Invalid question number")
+
         # Get the specific question item
         question_item = SubQuestionItem.query.filter_by(
-            challenge_id=challenge.id, 
+            challenge_id=challenge.id,
             question_num=question_num
         ).first()
-        
+
         if not question_item:
-            return False, "Question {num} does not exist".format(num=question_num)
-        
+            return False, gettext("Question %(num)s does not exist") % {"num": question_num}
+
         # Get the flag for this specific question
         flag = Flags.query.filter_by(id=question_item.flag_id).first()
-        
+
         if not flag:
-            return False, "This question has no flag set"
-        
+            return False, gettext("This question has no flag set")
+
         # Check if the provided answer matches this question's flag
         flag_class = get_flag_class(flag.type)
         if flag_class.compare(flag, provided):
@@ -368,7 +342,7 @@ class SubQuestionChallengeType(BaseChallenge):
             from CTFd.utils.user import get_current_user, get_current_team
             user = get_current_user()
             team = get_current_team()
-            
+
             # Check if this question was already solved
             existing_partial = SubQuestionPartialSolve.query.filter_by(
                 challenge_id=challenge.id,
@@ -376,7 +350,7 @@ class SubQuestionChallengeType(BaseChallenge):
                 user_id=user.id,
                 question_num=question_num
             ).first()
-            
+
             if not existing_partial:
                 # Record this partial solve
                 from CTFd.utils.user import get_ip
@@ -390,7 +364,7 @@ class SubQuestionChallengeType(BaseChallenge):
                 )
                 db.session.add(partial_solve)
                 db.session.commit()
-            
+
             # Check if all questions are now solved
             total_questions = SubQuestionItem.query.filter_by(challenge_id=challenge.id).count()
             solved_questions = SubQuestionPartialSolve.query.filter_by(
@@ -398,21 +372,17 @@ class SubQuestionChallengeType(BaseChallenge):
                 team_id=team.id if team else None,
                 user_id=user.id
             ).count()
-            
+
             if solved_questions >= total_questions:
-                return True, "Congratulations! You have completed all {total} questions!".format(
-                    total=total_questions
-                )
+                return True, gettext("Congratulations! You have completed all %(total)s questions!") % {"total": total_questions}
             else:
-                return "partial", (
-                    "Question {num} correct! {solved}/{total} questions completed"
-                ).format(
-                    num=question_num,
-                    solved=solved_questions,
-                    total=total_questions,
-                )
-        
-        return False, "Question {num} is incorrect".format(num=question_num)
+                return "partial", gettext("Question %(num)s correct! %(solved)s/%(total)s questions completed") % {
+                    "num": question_num,
+                    "solved": solved_questions,
+                    "total": total_questions,
+                }
+
+        return False, gettext("Question %(num)s is incorrect") % {"num": question_num}
 
     @classmethod
     def solve(cls, user, team, challenge, request):
@@ -431,9 +401,7 @@ class SubQuestionChallengeType(BaseChallenge):
         if solved_questions >= total_questions:
             # All questions solved, proceed with normal solve
             super().solve(user, team, challenge, request)
-        else:
-            # Not all questions solved, this shouldn't happen but let's be safe
-            print(f"WARNING: solve() called for challenge {challenge.id} but only {solved_questions}/{total_questions} questions completed")
+        # If not all questions solved, do nothing (shouldn't happen)
 
     @classmethod
     def delete(cls, challenge):

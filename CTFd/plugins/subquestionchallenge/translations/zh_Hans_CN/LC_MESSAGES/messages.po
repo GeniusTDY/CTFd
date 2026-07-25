@@ -5,8 +5,8 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-07-19 00:00+0800\n"
 "PO-Revision-Date: 2026-07-19 00:00+0800\n"
-"Last-Translator: \n"
-"Language-Team: Chinese (Simplified)\n"
+"Last-Translator: CTFd-Sub-Question Plugin Maintainer\n"
+"Language-Team: Chinese (Simplified) <i18n@example.com>\n"
 "Language: zh_Hans_CN\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -28,17 +28,11 @@ msgstr "所有分题已完成！恭喜您完成了这个题目。"
 msgid "An error occurred while creating the challenge"
 msgstr "创建题目时发生错误"
 
-msgid "Awesome!"
-msgstr "太棒了！"
-
 msgid "By HITCON ReCTF Team."
 msgstr "由 HITCON ReCTF 团队提供。"
 
 msgid "Challenge Completed"
 msgstr "题目完成"
-
-msgid "Challenge Completed!"
-msgstr "题目完成！"
 
 msgid "Completed"
 msgstr "已完成"
@@ -46,8 +40,8 @@ msgstr "已完成"
 msgid "Congratulations on completing all questions!"
 msgstr "恭喜完成所有分题！"
 
-msgid "Congratulations, you have completed all questions! This multi-question challenge is now solved."
-msgstr "恭喜您完成了所有分题！这个多单元题目已成功解决。"
+msgid "Congratulations! You have completed all %(total)s questions!"
+msgstr "恭喜！您已完成全部 %(total)s 个分题！"
 
 msgid "Connection Info"
 msgstr "连接信息"
@@ -82,6 +76,9 @@ msgstr "隐藏"
 msgid "Hint"
 msgstr "提示"
 
+msgid "Invalid question number"
+msgstr "无效的题目编号"
+
 msgid "Max Attempts"
 msgstr "最大尝试次数"
 
@@ -90,9 +87,6 @@ msgstr "多单元"
 
 msgid "Multi-question challenges must be submitted via the question selection interface"
 msgstr "多单元题目必须使用分题选择界面提交"
-
-msgid "OK"
-msgstr "确定"
 
 msgid "Please fill out at least one question and its corresponding flag"
 msgstr "请至少填写一个分题和对应的 flag"
@@ -115,6 +109,15 @@ msgstr "分题"
 msgid "Question %(num)s"
 msgstr "分题 %(num)s"
 
+msgid "Question %(num)s correct! %(solved)s/%(total)s questions completed"
+msgstr "分题 %(num)s 正确！%(solved)s/%(total)s 个分题已完成"
+
+msgid "Question %(num)s does not exist"
+msgstr "分题 %(num)s 不存在"
+
+msgid "Question %(num)s is incorrect"
+msgstr "分题 %(num)s 不正确"
+
 msgid "Questions & Flags"
 msgstr "分题与 Flag"
 
@@ -136,11 +139,11 @@ msgstr "选择要回答的分题："
 msgid "State"
 msgstr "状态"
 
-msgid "Sub Question Challenge"
-msgstr "多单元"
-
 msgid "Sub Question Challenges are a type of challenge that allows you to create a challenge with multiple questions and flags."
 msgstr "多单元题目是一种题目类型，允许您创建包含多个分题和多个 flag 的题目。"
+
+msgid "This question has no flag set"
+msgstr "此分题未设置 flag"
 
 msgid "Unsolved"
 msgstr "未完成"

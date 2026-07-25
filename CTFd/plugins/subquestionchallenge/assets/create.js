@@ -6,41 +6,6 @@ CTFd.plugin.run((_CTFd) => {
     }
     const __ = (str) => CTFd.translations[str] || str;
 
-    // Helper: apply translations to all elements with data-i18n attributes
-    function applyTranslations() {
-        // Text content
-        $('[data-i18n]').each(function () {
-            const key = $(this).data('i18n');
-            const translated = __(key);
-            if (translated !== key) {
-                // Handle parameterized keys like "Question %(num)s"
-                const num = $(this).data('i18n-num');
-                if (num) {
-                    $(this).text(translated.replace('%(num)s', num));
-                } else {
-                    $(this).text(translated);
-                }
-            }
-        });
-        // Placeholders
-        $('[data-i18n-placeholder]').each(function () {
-            const key = $(this).data('i18n-placeholder');
-            const translated = __(key);
-            if (translated !== key) {
-                $(this).attr('placeholder', translated);
-            }
-        });
-        // Translate the challenge type card label on the left sidebar.
-        // CTFd core renders "{{ type }}" (the challenge id) for non-standard/
-        // non-dynamic types, so we patch the label text client-side.
-        $('#create-chals-select .form-check-label').each(function () {
-            const text = $(this).text().trim();
-            if (text === 'subquestionchallenge') {
-                $(this).text(__('Multi Question Challenge'));
-            }
-        });
-    }
-
     // Helper: translate a key with optional parameters
     function _t(key, params) {
         let translated = __(key);
@@ -55,9 +20,6 @@ CTFd.plugin.run((_CTFd) => {
     let questionCount = 1;
 
     function initCreateForm() {
-        // Apply translations to the initial template
-        applyTranslations();
-
         // Add question button
         $('#add-question').click(function () {
             questionCount++;
