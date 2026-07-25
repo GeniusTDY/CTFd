@@ -1,71 +1,7 @@
 // Ensure we don't redeclare variables if script loads multiple times
 if (typeof CTFd._internal.challenge.multiQuestionInit === 'undefined') {
 
-// Custom translation loader for this plugin
-function loadTranslations(challengeData) {
-    return new Promise((resolve, reject) => {
-        // Use multiple fallback methods to detect language
-        let lang = 'en'; // Default fallback
-        
-        // Method 1: Check for locale in challenge data
-        if (challengeData && challengeData.user_locale) {
-            lang = challengeData.user_locale;
-        }
-        // Method 2: Check HTML lang attribute
-        else if (document.documentElement.lang) {
-            lang = document.documentElement.lang;
-        }
-        // Method 3: Use browser language preference
-        else if (navigator.language) {
-            const browserLang = navigator.language.toLowerCase();
-            // Map browser language codes to our supported languages
-            if (browserLang.includes('zh-tw') || browserLang.includes('zh-hant')) {
-                lang = 'zh_Hant_TW';
-            } else if (browserLang.includes('zh-cn') || browserLang.includes('zh-hans')) {
-                lang = 'zh_CN';
-            } else if (browserLang.includes('zh')) {
-                lang = 'zh_Hant_TW'; // Default Chinese to Traditional
-            } else {
-                lang = 'en'; // Default to English for other languages
-            }
-        }
-        
-        console.log("Loading translations for language:", lang);
-        console.log("Detection method - CTFd.config.user:", CTFd.config?.user);
-        console.log("Detection method - HTML lang:", document.documentElement.lang);
-        console.log("Detection method - Browser lang:", navigator.language);
-        
-        const translationUrl = `/plugins/subquestionchallenge/assets/translations/${lang}/translations.json`;
-
-        fetch(translationUrl)
-            .then(response => {
-                if (response.ok) {
-                    return response.json();
-                } else {
-                    // Fallback to English if the language file is not found
-                    console.warn(`Translation file for ${lang} not found, falling back to English.`);
-                    const fallbackUrl = `/plugins/subquestionchallenge/assets/translations/en/translations.json`;
-                    return fetch(fallbackUrl).then(res => res.json());
-                }
-            })
-            .then(translations => {
-                if (typeof CTFd.translations === 'undefined') {
-                    CTFd.translations = {};
-                }
-                Object.assign(CTFd.translations, translations);
-                resolve();
-            })
-            .catch(error => {
-                console.error('Error loading translation file:', error);
-                reject(error);
-            });
-    });
-}
-
-if (typeof CTFd.translations === 'undefined') {
-    CTFd.translations = {};
-}
-const __ = (str) => CTFd.translations[str] || str;
+// Use CTFd core's global _() function (powered by Flask-Babel translations)
 
 CTFd._internal.challenge.data = undefined;
 
@@ -74,7 +10,6 @@ CTFd._internal.challenge.renderer = null;
 
 CTFd._internal.challenge.preRender = function() {
     console.log("Multi Question Challenge preRender called");
-    return loadTranslations(CTFd._internal.challenge.data);
 };
 
 // TODO: Remove in CTFd v4.0
@@ -83,7 +18,7 @@ CTFd._internal.challenge.render = null;
 CTFd._internal.challenge.postRender = function() {
     // This runs after the challenge modal is rendered
     console.log("Multi Question Challenge postRender called");
-    
+
     // Add a small delay to ensure DOM is ready
     setTimeout(function() {
         initMultiQuestionInterface();
@@ -100,7 +35,7 @@ CTFd._internal.challenge.submit = function(preview) {
         success: false,
         data: {
             status: "blocked",
-            message: __("Please use the multi-question interface to submit")
+            message: _("Please use the multi-question interface to submit")
         }
     });
 };
@@ -179,12 +114,12 @@ function overrideSubmitBehavior() {
         var allCompleted = multiQuestionData.questions.every(q => q.solved);
         if (allCompleted) {
             showSimpleNotification(
-                __("Hint"),
-                __("All questions have been completed! Congratulations on finishing this challenge.")
+                _("Hint"),
+                _("All questions have been completed! Congratulations on finishing this challenge.")
             );
             return;
         }
-        
+
         var challenge_id = parseInt(CTFd.lib.$("#challenge-id").val());
         var submission = CTFd.lib.$("#challenge-input").val();
         var question_num = CTFd.lib.$("#question-selector").val();
@@ -193,8 +128,8 @@ function overrideSubmitBehavior() {
 
         if (!question_num) {
             showSimpleNotification(
-                __("Error"),
-                __("Please select a question")
+                _("Error"),
+                _("Please select a question")
             );
             return;
         }
@@ -390,7 +325,7 @@ function createMultiQuestionInterface() {
         <div class="multi-question-container mb-3">
             <div class="card">
                 <div class="card-header">
-                    <h5 class="mb-0">${__('Multi Question Challenge')}</h5>
+                    <h5 class="mb-0">${_('Multi Question Challenge')}</h5>
                 </div>
                 <div class="card-body">
                     <!-- Score statistics overview -->
@@ -406,7 +341,7 @@ function createMultiQuestionInterface() {
                                                     <div class="font-weight-bold text-info" id="score-display">
                                                         ${multiQuestionData.questions.filter(q => q.solved).reduce((sum, q) => sum + q.points, 0)} / ${multiQuestionData.questions.reduce((sum, q) => sum + q.points, 0)}
                                                     </div>
-                                                    <small class="text-muted">${__('Score Acquired')}</small>
+                                                    <small class="text-muted">${_('Score Acquired')}</small>
                                                 </div>
                                             </div>
                                         </div>
@@ -417,7 +352,7 @@ function createMultiQuestionInterface() {
                                                     <div class="font-weight-bold text-success" id="progress-display">
                                                         ${multiQuestionData.questions.filter(q => q.solved).length} / ${multiQuestionData.questions.length}
                                                     </div>
-                                                    <small class="text-muted">${__('Questions Completed')}</small>
+                                                    <small class="text-muted">${_('Questions Completed')}</small>
                                                 </div>
                                             </div>
                                         </div>
@@ -428,7 +363,7 @@ function createMultiQuestionInterface() {
                                                     <div class="font-weight-bold text-warning" id="remaining-display">
                                                         ${multiQuestionData.questions.filter(q => !q.solved).length}
                                                     </div>
-                                                    <small class="text-muted">${__('Questions Remaining')}</small>
+                                                    <small class="text-muted">${_('Questions Remaining')}</small>
                                                 </div>
                                             </div>
                                         </div>
@@ -449,11 +384,11 @@ function createMultiQuestionInterface() {
                                                 <span class="question-status-icon" style="width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 14px; margin-right: 8px; ${q.solved ? 'background-color: #28a745; color: white;' : 'background-color: #6c757d; color: white;'}">
                                                     ${q.solved ? '✓' : q.num}
                                                 </span>
-                                                ${__('Question')} ${q.num} (${q.points} ${__('points')})
+                                                ${_('Question')} ${q.num} (${q.points} ${_('points')})
                                             </h6>
                                             <p class="card-text"></p>
                                         </div>
-                                        <span class="badge ${q.solved ? 'badge-success' : 'badge-secondary'}" style="margin-left: 8px; ${q.solved ? 'color: #ffffff; background-color: #28a745;' : ''}">${q.solved ? __('Completed') : __('Unsolved')}</span>
+                                        <span class="badge ${q.solved ? 'badge-success' : 'badge-secondary'}" style="margin-left: 8px; ${q.solved ? 'color: #ffffff; background-color: #28a745;' : ''}">${q.solved ? _('Completed') : _('Unsolved')}</span>
                                     </div>
                                 </div>
                             </div>
@@ -462,10 +397,10 @@ function createMultiQuestionInterface() {
                     
                     <div id="question-selector-section" class="form-group">
                         <div id="question-selection-area" ${multiQuestionData.questions.every(q => q.solved) ? 'style="display: none;"' : ''}>
-                            <label for="question-selector" class="font-weight-bold text-primary">${__('Select a question to answer:')}</label>
+                            <label for="question-selector" class="font-weight-bold text-primary">${_('Select a question to answer:')}</label>
                             <select id="question-selector" class="form-control form-control-lg" style="border: 2px solid #007bff; background-color: #f8f9fa;">
                                 ${multiQuestionData.questions.filter(q => !q.solved).map(q => `
-                                    <option value="${q.num}">${__('Question')} ${q.num} (${q.points} ${__('points')})</option>
+                                    <option value="${q.num}">${_('Question')} ${q.num} (${q.points} ${_('points')})</option>
                                 `).join('')}
                             </select>
                         </div>
@@ -474,11 +409,11 @@ function createMultiQuestionInterface() {
                             <div class="mb-3">
                                 <div style="font-size: 3em; animation: bounce 1s infinite;">🏆</div>
                             </div>
-                            <h4 class="mb-2" style="color: #28a745; font-weight: bold;">🎉 ${__('Congratulations on completing all questions!')} 🎉</h4>
-                            <p class="mb-2">${__('You have successfully solved all questions in this multi-question challenge.')}</p>
+                            <h4 class="mb-2" style="color: #28a745; font-weight: bold;">🎉 ${_('Congratulations on completing all questions!')} 🎉</h4>
+                            <p class="mb-2">${_('You have successfully solved all questions in this multi-question challenge.')}</p>
                             <div class="mt-3">
                                 <span class="badge badge-success badge-lg p-2" style="font-size: 1.1em; color: #ffffff; background-color: #28a745;">
-                                    ✓ ${__('Challenge Completed')} ✓
+                                    ✓ ${_('Challenge Completed')} ✓
                                 </span>
                             </div>
                             <style>
@@ -508,7 +443,7 @@ function createMultiQuestionInterface() {
     });
 
     // Update the input placeholder
-    CTFd.lib.$("#challenge-input").attr('placeholder', __('Enter the flag for the selected question'));
+    CTFd.lib.$("#challenge-input").attr('placeholder', _('Enter the flag for the selected question'));
     
     // Override the submit button behavior
     setTimeout(function() {
@@ -529,7 +464,7 @@ function markQuestionAsSolved(questionNum) {
             'color': '#ffffff',
             'background-color': '#28a745'
         });
-        badge.text(__('Completed'));
+        badge.text(_('Completed'));
         
         // Update card border
         questionCard.addClass('border-success');
@@ -556,8 +491,8 @@ function markQuestionAsSolved(questionNum) {
         // Add a short delay before showing completion to let the UI update
         setTimeout(function() {
             showSimpleNotification(
-                __("Hint"),
-                __("All questions have been completed! Congratulations on finishing this challenge.")
+                _("Hint"),
+                _("All questions have been completed! Congratulations on finishing this challenge.")
             );
         }, 500);
     }
@@ -577,9 +512,9 @@ function updateProgress() {
     var cardHeader = CTFd.lib.$('.multi-question-container .card-header h5');
     if (cardHeader.length > 0) {
         if (allCompleted) {
-            cardHeader.html(`${__('Multi Question Challenge')} <span class="badge badge-success" style="margin-left: 8px; color: #ffffff; background-color: #28a745;">${__('All Completed')}</span>`);
+            cardHeader.html(`${_('Multi Question Challenge')} <span class="badge badge-success" style="margin-left: 8px; color: #ffffff; background-color: #28a745;">${_('All Completed')}</span>`);
         } else {
-            cardHeader.html(`${__('Multi Question Challenge')} <span class="badge badge-info" style="margin-left: 8px; color: #ffffff; background-color: #17a2b8;">${solved}/${total} ${__('Completed')}</span>`);
+            cardHeader.html(`${_('Multi Question Challenge')} <span class="badge badge-info" style="margin-left: 8px; color: #ffffff; background-color: #17a2b8;">${solved}/${total} ${_('Completed')}</span>`);
         }
     }
     
@@ -631,7 +566,7 @@ function updateProgress() {
         // Rebuild selector options
         questionSelector.empty();
         unsolvedQuestions.forEach(q => {
-            questionSelector.append(`<option value="${q.num}">${__('Question')} ${q.num} (${q.points} ${__('points')})</option>`);
+            questionSelector.append(`<option value="${q.num}">${_('Question')} ${q.num} (${q.points} ${_('points')})</option>`);
         });
         
         // Try to keep current selection if it's still valid
@@ -710,7 +645,7 @@ function applySubmitCooldown(seconds) {
     let remaining = seconds;
     
     // Set initial text
-    submitButton.html(`<i class="fas fa-stopwatch"></i> ${__('Wait')} ${remaining}s`);
+    submitButton.html(`<i class="fas fa-stopwatch"></i> ${_('Wait')} ${remaining}s`);
 
     const interval = setInterval(function() {
         remaining--;
@@ -721,7 +656,7 @@ function applySubmitCooldown(seconds) {
             submitButton.removeClass('disabled-button');
             submitButton.data('submitting', false);
         } else {
-            submitButton.html(`<i class="fas fa-stopwatch"></i> ${__('Wait')} ${remaining}s`);
+            submitButton.html(`<i class="fas fa-stopwatch"></i> ${_('Wait')} ${remaining}s`);
         }
     }, 1000);
 }

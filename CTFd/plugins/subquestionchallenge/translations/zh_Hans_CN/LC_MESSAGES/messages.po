@@ -75,3 +75,77 @@ msgstr "隐藏"
 # Challenge type name (shown in admin dropdown)
 msgid "Sub Question Challenge"
 msgstr "多问题挑战"
+
+# create.js - validation messages
+msgid "Please fill out the challenge name and category"
+msgstr "请填写挑战名称和类别"
+
+msgid "Please fill out at least one question and its corresponding flag"
+msgstr "请至少填写一个问题和对应的 flag"
+
+msgid "Failed to create challenge. Please check all fields are filled correctly."
+msgstr "创建挑战失败，请检查所有字段是否正确填写。"
+
+msgid "An error occurred while creating the challenge"
+msgstr "创建挑战时发生错误"
+
+# view.js - challenge interface
+msgid "Multi Question Challenge"
+msgstr "多问题挑战"
+
+msgid "Please use the multi-question interface to submit"
+msgstr "请使用多问题界面提交"
+
+msgid "Hint"
+msgstr "提示"
+
+msgid "All questions have been completed! Congratulations on finishing this challenge."
+msgstr "所有问题已完成！恭喜您完成了这个挑战。"
+
+msgid "Error"
+msgstr "错误"
+
+msgid "Please select a question"
+msgstr "请选择一个问题"
+
+msgid "Score Acquired"
+msgstr "已获得分数"
+
+msgid "Questions Completed"
+msgstr "已完成问题"
+
+msgid "Questions Remaining"
+msgstr "剩余问题"
+
+msgid "Question"
+msgstr "问题"
+
+msgid "points"
+msgstr "分"
+
+msgid "Completed"
+msgstr "已完成"
+
+msgid "Unsolved"
+msgstr "未完成"
+
+msgid "Select a question to answer:"
+msgstr "选择要回答的问题："
+
+msgid "Congratulations on completing all questions!"
+msgstr "恭喜完成所有问题！"
+
+msgid "You have successfully solved all questions in this multi-question challenge."
+msgstr "您已成功解决了这个多问题挑战的所有问题。"
+
+msgid "Challenge Completed"
+msgstr "挑战完成"
+
+msgid "All Completed"
+msgstr "全部完成"
+
+msgid "Wait"
+msgstr "等待"
+
+msgid "Enter the flag for the selected question"
+msgstr "输入选定问题的 Flag"

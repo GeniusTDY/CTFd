@@ -4,7 +4,7 @@
 // base.html. Only acts on /admin/challenges/new where the challenge-type
 // card list is rendered by CTFd core. CTFd core renders "{{ type }}" (the
 // id) for unknown challenge types, so we translate the card label
-// client-side.
+// client-side using the global _() function (powered by Flask-Babel).
 (function () {
     function patchTypeLabels() {
         // Only run on the admin challenge creation page
@@ -16,15 +16,11 @@
         labels.forEach(function (el) {
             var text = (el.textContent || '').trim();
             if (text === 'subquestionchallenge') {
-                // Only translate when a non-empty translation is available
-                // for the current language. Otherwise leave the original
-                // "subquestionchallenge" label untouched so English (and
-                // any other language without a translation) is unaffected.
-                var translated = window.CTFd
-                    && CTFd.translations
-                    && CTFd.translations['Multi Question Challenge'];
-                if (translated && typeof translated === 'string') {
-                    el.textContent = translated;
+                // Use CTFd core's _() function (Flask-Babel translations).
+                // Returns the translated string, or the original English
+                // key if no translation exists for the current locale.
+                if (typeof window._ === 'function') {
+                    el.textContent = window._('Sub Question Challenge');
                 }
             }
         });
@@ -32,33 +28,17 @@
     }
 
     function init() {
-        // Ensure CTFd.translations exists
-        if (typeof window.CTFd === 'undefined') window.CTFd = {};
-        if (typeof CTFd.translations === 'undefined') CTFd.translations = {};
-
-        // Detect language from cookie
-        var lang = 'en';
-        var m = document.cookie.match(/(?:^|;\s*)language=([^;]*)/);
-        if (m) lang = m[1];
-
-        var url = '/plugins/subquestionchallenge/assets/translations/' + lang + '/translations.json';
-        fetch(url)
-            .then(function (r) { return r.ok ? r.json() : {}; })
-            .then(function (t) {
-                Object.assign(CTFd.translations, t);
-                patchTypeLabels();
-            })
-            .catch(function () { patchTypeLabels(); });
-
         // Core renders the type list asynchronously via /api/v1/challenges/types,
         // so observe DOM mutations until the labels appear.
         var observer = new MutationObserver(function () {
-            if (!patchTypeLabels()) return;
-            // Keep observing: user may switch types and re-render
+            patchTypeLabels();
         });
         observer.observe(document.body, { childList: true, subtree: true });
         // Stop observing after 10s to avoid leaks
         setTimeout(function () { observer.disconnect(); }, 10000);
+
+        // Also try once immediately
+        patchTypeLabels();
     }
 
     if (document.readyState === 'loading') {
