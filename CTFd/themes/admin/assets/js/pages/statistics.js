@@ -104,6 +104,25 @@ const graph_configs = {
       const solves = data["correct"];
       const fails = data["incorrect"];
 
+      // 当没有任何提交时，使用空数据让 ECharts 渲染灰色占位环形图，
+      // 与「分类细分」(#categories-pie-graph)、「积分细分」(#points-pie-graph) 行为保持一致。
+      const hasSubmissions = solves > 0 || fails > 0;
+      const seriesData = hasSubmissions
+        ? [
+            {
+              value: fails,
+              name: _("Fails"),
+              itemStyle: { color: "rgb(207, 38, 0)" },
+            },
+            {
+              value: solves,
+              name: _("Solves"),
+              itemStyle: { color: "rgb(0, 209, 64)" },
+            },
+          ]
+        : [];
+      const legendData = hasSubmissions ? [_("Fails"), _("Solves")] : [];
+
       let option = {
         title: {
           left: "center",
@@ -123,7 +142,7 @@ const graph_configs = {
           orient: "vertical",
           top: "middle",
           right: 0,
-          data: [_("Fails"), _("Solves")],
+          data: legendData,
         },
         series: [
           {
@@ -168,18 +187,7 @@ const graph_configs = {
             labelLine: {
               show: false,
             },
-            data: [
-              {
-                value: fails,
-                name: _("Fails"),
-                itemStyle: { color: "rgb(207, 38, 0)" },
-              },
-              {
-                value: solves,
-                name: _("Solves"),
-                itemStyle: { color: "rgb(0, 209, 64)" },
-              },
-            ],
+            data: seriesData,
           },
         ],
       };
