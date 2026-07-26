@@ -260,7 +260,7 @@
       </div>
     </div>
 
-    <div class="d-flex justify-content-end mb-2">
+    <div class="d-flex justify-content-end mb-2 matrix-legend">
       <div class="d-flex align-items-center mr-3">
         <div
           style="width: 15px; height: 15px; background-color: #28a745"
