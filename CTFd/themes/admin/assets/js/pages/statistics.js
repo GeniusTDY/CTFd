@@ -49,10 +49,11 @@ const graph_configs = {
           },
         },
         xAxis: {
-          name: _("Solve Count"),
-          nameLocation: "middle",
-          type: "value",
-        },
+        name: _("Solve Count"),
+        nameGap: 40,
+        nameLocation: "middle",
+        type: "value",
+      },
         yAxis: {
           name: _("Challenge Name"),
           nameLocation: "middle",
