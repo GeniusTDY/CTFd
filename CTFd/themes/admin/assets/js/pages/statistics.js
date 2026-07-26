@@ -169,16 +169,24 @@ const graph_configs = {
               show: false,
             },
             data: [
-              {
-                value: fails,
-                name: _("Fails"),
-                itemStyle: { color: "rgb(207, 38, 0)" },
-              },
-              {
-                value: solves,
-                name: _("Solves"),
-                itemStyle: { color: "rgb(0, 209, 64)" },
-              },
+              ...(fails
+                ? [
+                    {
+                      value: fails,
+                      name: _("Fails"),
+                      itemStyle: { color: "rgb(207, 38, 0)" },
+                    },
+                  ]
+                : []),
+              ...(solves
+                ? [
+                    {
+                      value: solves,
+                      name: _("Solves"),
+                      itemStyle: { color: "rgb(0, 209, 64)" },
+                    },
+                  ]
+                : []),
             ],
           },
         ],
