@@ -101,8 +101,28 @@ const graph_configs = {
     data: () => CTFd.api.get_submission_property_counts({ column: "type" }),
     format: (response) => {
       const data = response.data;
-      const solves = data["correct"];
-      const fails = data["incorrect"];
+      const solves = data["correct"] || 0;
+      const fails = data["incorrect"] || 0;
+
+      // 没有任何提交时使用空数据数组，让 ECharts 显示灰色占位环形
+      // （与"分类细分"和"积分细分"图表行为一致）
+      const total = solves + fails;
+      const pieData =
+        total > 0
+          ? [
+              {
+                value: fails,
+                name: _("Fails"),
+                itemStyle: { color: "rgb(207, 38, 0)" },
+              },
+              {
+                value: solves,
+                name: _("Solves"),
+                itemStyle: { color: "rgb(0, 209, 64)" },
+              },
+            ]
+          : [];
+      const legendData = total > 0 ? [_("Fails"), _("Solves")] : [];
 
       let option = {
         title: {
@@ -123,7 +143,7 @@ const graph_configs = {
           orient: "vertical",
           top: "middle",
           right: 0,
-          data: [_("Fails"), _("Solves")],
+          data: legendData,
         },
         series: [
           {
@@ -168,18 +188,7 @@ const graph_configs = {
             labelLine: {
               show: false,
             },
-            data: [
-              {
-                value: fails,
-                name: _("Fails"),
-                itemStyle: { color: "rgb(207, 38, 0)" },
-              },
-              {
-                value: solves,
-                name: _("Solves"),
-                itemStyle: { color: "rgb(0, 209, 64)" },
-              },
-            ],
+            data: pieData,
           },
         ],
       };
