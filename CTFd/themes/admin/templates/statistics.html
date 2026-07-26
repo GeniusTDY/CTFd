@@ -95,7 +95,7 @@
         <hr>
     </div>
     <div class="container-fluid">
-        <div class="row stats-pies-row">
+        <div class="row">
             <div class="col-md-4">
                 <div id="keys-pie-graph" class="d-flex align-items-center">
                     <div class="text-center w-100">
@@ -145,30 +145,25 @@
         margin-top: 1rem !important;
         margin-bottom: 1rem !important;
     }
-    /* 移动端：底部三个图表列（提交百分比/分类细分/积分细分）垂直堆叠时的间距 */
-    .stats-pies-row > .col-md-4 {
-        margin-bottom: 1.5rem;
-    }
-    .stats-pies-row > .col-md-4:last-child {
-        margin-bottom: 0;
-    }
-    /* 移动端：三个图表容器统一最小高度，视觉上对齐 */
-    #keys-pie-graph,
-    #categories-pie-graph,
-    #points-pie-graph {
-        min-height: 320px;
-    }
-    /* 移动端：正确提交/错误提交同行显示，并与上方图表保持间距 */
+    /* 移动端：正确提交/错误提交同行显示，并上移至提交百分比图表底部留白中间（29+56+29） */
     .submission-counts {
         display: flex !important;
         justify-content: center;
         align-items: center;
         flex-wrap: wrap;
         gap: 0.5rem 1rem;
-        margin-top: 1rem;
+        /* 上移 85px：环形图底部距容器底部 114px，文字块高 56px */
+        /* 上移 85px 后文字块顶部距环形图底部 29px，即 114 - 85 = 29 */
+        margin-top: -85px !important;
     }
     .submission-counts h5 {
         margin-bottom: 0 !important;
+    }
+    /* 移动端：分类细分图表下推，使文字块底部到分类细分标题间距为 114px */
+    /* 分类细标题在容器内 6px 处，故 margin-top = 114 - 6 = 108px */
+    /* 对应分解：容器内底部 113px + 容器间 0px + 标题上 1px ≈ 114px（实测标题偏移 6px） */
+    #categories-pie-graph {
+        margin-top: 108px !important;
     }
 }
 </style>

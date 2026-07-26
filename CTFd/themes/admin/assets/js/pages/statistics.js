@@ -101,30 +101,31 @@ const graph_configs = {
     data: () => CTFd.api.get_submission_property_counts({ column: "type" }),
     format: (response) => {
       const data = response.data;
-      const solves = data["correct"];
-      const fails = data["incorrect"];
+      const solves = data["correct"] || 0;
+      const fails = data["incorrect"] || 0;
 
-      // 与"分类细分""积分细分"图表保持一致的写法：
-      // legend.data 与 series.data 初始均为空数组，
-      // 仅当对应提交数存在时才 push 进去；
-      // 没有任何提交时 data 为 []，由 ECharts 自然渲染灰色占位环形
-      const legendData = [];
-      const pieData = [];
-      if (fails) {
-        legendData.push(_("Fails"));
-        pieData.push({
-          value: fails,
-          name: _("Fails"),
-          itemStyle: { color: "rgb(207, 38, 0)" },
-        });
-      }
-      if (solves) {
-        legendData.push(_("Solves"));
-        pieData.push({
-          value: solves,
-          name: _("Solves"),
-          itemStyle: { color: "rgb(0, 209, 64)" },
-        });
+      // 没有任何提交时使用空数据，显示灰色占位环形图（参考分类细分/积分细分图表）
+      const hasSubmissions = solves > 0 || fails > 0;
+
+      let pieData;
+      let legendData;
+      if (hasSubmissions) {
+        pieData = [
+          {
+            value: fails,
+            name: _("Fails"),
+            itemStyle: { color: "rgb(207, 38, 0)" },
+          },
+          {
+            value: solves,
+            name: _("Solves"),
+            itemStyle: { color: "rgb(0, 209, 64)" },
+          },
+        ];
+        legendData = [_("Fails"), _("Solves")];
+      } else {
+        pieData = [];
+        legendData = [];
       }
 
       let option = {
@@ -653,6 +654,25 @@ const graph_configs = {
   },
 };
 
+// 移动端下三个环形图的标题与环形图留白从 91px 改为 60px
+// 通过设置 series.center 实现，仅在小屏幕（<=767.98px）生效，不影响桌面端
+const mobilePieKeys = [
+  "#keys-pie-graph",
+  "#categories-pie-graph",
+  "#points-pie-graph",
+];
+const applyMobilePieCenter = (key, option) => {
+  if (
+    window.matchMedia("(max-width: 767.98px)").matches &&
+    mobilePieKeys.indexOf(key) !== -1 &&
+    option.series &&
+    option.series[0]
+  ) {
+    option.series[0].center = ["50%", "42.06%"];
+  }
+  return option;
+};
+
 const createGraphs = () => {
   for (let key in graph_configs) {
     const cfg = graph_configs[key];
@@ -665,6 +685,7 @@ const createGraphs = () => {
     cfg
       .data()
       .then(cfg.format)
+      .then(applyMobilePieCenter.bind(null, key))
       .then((option) => {
         chart.setOption(option);
         $(window).on("resize", function () {
@@ -683,6 +704,7 @@ function updateGraphs() {
     cfg
       .data()
       .then(cfg.format)
+      .then(applyMobilePieCenter.bind(null, key))
       .then((option) => {
         chart.setOption(option);
       });
