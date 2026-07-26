@@ -104,6 +104,29 @@ const graph_configs = {
       const solves = data["correct"];
       const fails = data["incorrect"];
 
+      // 与"分类细分""积分细分"图表保持一致的写法：
+      // legend.data 与 series.data 初始均为空数组，
+      // 仅当对应提交数存在时才 push 进去；
+      // 没有任何提交时 data 为 []，由 ECharts 自然渲染灰色占位环形
+      const legendData = [];
+      const pieData = [];
+      if (fails) {
+        legendData.push(_("Fails"));
+        pieData.push({
+          value: fails,
+          name: _("Fails"),
+          itemStyle: { color: "rgb(207, 38, 0)" },
+        });
+      }
+      if (solves) {
+        legendData.push(_("Solves"));
+        pieData.push({
+          value: solves,
+          name: _("Solves"),
+          itemStyle: { color: "rgb(0, 209, 64)" },
+        });
+      }
+
       let option = {
         title: {
           left: "center",
@@ -123,7 +146,7 @@ const graph_configs = {
           orient: "vertical",
           top: "middle",
           right: 0,
-          data: [_("Fails"), _("Solves")],
+          data: legendData,
         },
         series: [
           {
@@ -168,18 +191,7 @@ const graph_configs = {
             labelLine: {
               show: false,
             },
-            data: [
-              {
-                value: fails,
-                name: _("Fails"),
-                itemStyle: { color: "rgb(207, 38, 0)" },
-              },
-              {
-                value: solves,
-                name: _("Solves"),
-                itemStyle: { color: "rgb(0, 209, 64)" },
-              },
-            ],
+            data: pieData,
           },
         ],
       };
