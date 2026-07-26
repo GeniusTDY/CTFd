@@ -104,6 +104,34 @@ const graph_configs = {
       const solves = data["correct"];
       const fails = data["incorrect"];
 
+      // 没有任何提交时，追加一个灰色占位扇区，使环形结构保持可见
+      // 与"分类细分""积分细分"图表无数据时的视觉表现一致
+      const noSubmissions = !solves && !fails;
+      const pieData = noSubmissions
+        ? [
+            {
+              value: 1,
+              name: _("No Submissions"),
+              itemStyle: { color: "#cccccc" },
+              tooltip: { show: false },
+              label: { show: false },
+              labelLine: { show: false },
+              emphasis: { disabled: true },
+            },
+          ]
+        : [
+            {
+              value: fails,
+              name: _("Fails"),
+              itemStyle: { color: "rgb(207, 38, 0)" },
+            },
+            {
+              value: solves,
+              name: _("Solves"),
+              itemStyle: { color: "rgb(0, 209, 64)" },
+            },
+          ];
+
       let option = {
         title: {
           left: "center",
@@ -123,7 +151,7 @@ const graph_configs = {
           orient: "vertical",
           top: "middle",
           right: 0,
-          data: [_("Fails"), _("Solves")],
+          data: noSubmissions ? [_("No Submissions")] : [_("Fails"), _("Solves")],
         },
         series: [
           {
@@ -168,18 +196,7 @@ const graph_configs = {
             labelLine: {
               show: false,
             },
-            data: [
-              {
-                value: fails,
-                name: _("Fails"),
-                itemStyle: { color: "rgb(207, 38, 0)" },
-              },
-              {
-                value: solves,
-                name: _("Solves"),
-                itemStyle: { color: "rgb(0, 209, 64)" },
-              },
-            ],
+            data: pieData,
           },
         ],
       };
