@@ -145,6 +145,13 @@
         margin-top: 1rem !important;
         margin-bottom: 1rem !important;
     }
+    /* 移动端：提交百分比图表标题头距离上方相邻元素留白 80px（hr margin-bottom 16px + 64px） */
+    #keys-pie-graph {
+        margin-top: 64px !important;
+        /* 建立 stacking context，使 ECharts 数据视图弹窗在 .submission-counts 上方，避免按钮被遮挡 */
+        position: relative !important;
+        z-index: 1 !important;
+    }
     /* 移动端：正确提交/错误提交同行显示，并上移至提交百分比图表底部留白中间（29+56+29） */
     .submission-counts {
         display: flex !important;
@@ -162,6 +169,17 @@
     /* 移动端：分类细分图表下推，文字块底部到分类细分标题留白再减少6px（103px→97px） */
     #categories-pie-graph {
         margin-top: 92px !important;
+    }
+    /* 移动端：数据视图按钮容器上移增加底部留白，同时缩减文本区高度与按钮明显隔开 */
+    #keys-pie-graph div[style*="bottom: 5px"],
+    #categories-pie-graph div[style*="bottom: 5px"],
+    #points-pie-graph div[style*="bottom: 5px"] {
+        bottom: 15px !important;
+    }
+    #keys-pie-graph div[style*="overflow: auto"],
+    #categories-pie-graph div[style*="overflow: auto"],
+    #points-pie-graph div[style*="overflow: auto"] {
+        height: calc(100% - 90px) !important;
     }
 }
 </style>
