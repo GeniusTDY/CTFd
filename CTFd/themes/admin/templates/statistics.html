@@ -159,11 +159,9 @@
     .submission-counts h5 {
         margin-bottom: 0 !important;
     }
-    /* 移动端：分类细分图表下推，使文字块底部到分类细分标题间距为 114px */
-    /* 分类细标题在容器内 6px 处，故 margin-top = 114 - 6 = 108px */
-    /* 对应分解：容器内底部 113px + 容器间 0px + 标题上 1px ≈ 114px（实测标题偏移 6px） */
+    /* 移动端：分类细分图表下推，文字块底部到分类细分标题留白减少10px（原114px→104px） */
     #categories-pie-graph {
-        margin-top: 108px !important;
+        margin-top: 98px !important;
     }
 }
 </style>
