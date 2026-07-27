@@ -656,6 +656,7 @@ const graph_configs = {
 
 // 移动端下三个环形图的标题与环形图留白从 91px 改为 60px
 // 通过设置 series.center 实现，仅在小屏幕（<=767.98px）生效，不影响桌面端
+// 移动端下统一分类细分和积分细分的 Legend 上留白为 60px
 const mobilePieKeys = [
   "#keys-pie-graph",
   "#categories-pie-graph",
@@ -669,6 +670,13 @@ const applyMobilePieCenter = (key, option) => {
     option.series[0]
   ) {
     option.series[0].center = ["50%", "42.06%"];
+    if (option.legend) {
+      if (key === "#categories-pie-graph") {
+        option.legend.top = 309;
+      } else if (key === "#points-pie-graph") {
+        option.legend.top = 312;
+      }
+    }
   }
   return option;
 };
