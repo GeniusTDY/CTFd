@@ -672,9 +672,9 @@ const applyMobilePieCenter = (key, option) => {
     option.series[0].center = ["50%", "42.06%"];
     if (option.legend) {
       if (key === "#categories-pie-graph") {
-        option.legend.top = 309;
+        option.legend.top = 305;
       } else if (key === "#points-pie-graph") {
-        option.legend.top = 312;
+        option.legend.top = 308;
       }
     }
   }
