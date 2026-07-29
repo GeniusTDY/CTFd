@@ -98,7 +98,7 @@ class Orchestrator:
             candidates.append((score, name))
 
         if not candidates:
-            raise Exception("no healthy contexts available")
+            raise Exception(_("no healthy docker contexts available"))
 
         candidates.sort(key=lambda x: (-x[0], x[1]))
         return candidates[0][1]

@@ -408,7 +408,7 @@ class ContainerManager:
                 # by default. pre-escaping causes &lt;...&gt; to render as literal entity text
                 self.creation_status[user_id] = {
                     "status": "failed",
-                    "error": str(e),
+                    "error": _("Creation failed"),
                     "hostname": context_name or "",
                 }
 
@@ -486,7 +486,7 @@ class ContainerManager:
                     "status": "failed",
                     "error": _("Failed to start background task: %(error)s", error=str(e)),
                 }
-            return {"success": False, "error": str(e)}
+            return {"success": False, "error": _("Creation failed")}
 
         return {"success": True, "status": "creating"}
 
