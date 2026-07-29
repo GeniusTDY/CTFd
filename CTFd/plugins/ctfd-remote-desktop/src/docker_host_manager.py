@@ -429,7 +429,7 @@ class DockerHostManager:
             except Exception:
                 # see is_container_running for context on the broad catch
                 self._clear_client(context_name)
-                raise HostsUnavailableException(f"transient client failure on {context_name}")
+                raise HostsUnavailableException(_("transient client failure on %(context_name)s", context_name=context_name))
 
         return self._call(context_name, _do)
 
@@ -450,7 +450,7 @@ class DockerHostManager:
             except Exception:
                 # see is_container_running for context on the broad catch
                 self._clear_client(context_name)
-                raise HostsUnavailableException(f"transient client failure on {context_name}")
+                raise HostsUnavailableException(_("transient client failure on %(context_name)s", context_name=context_name))
 
         return self._call(context_name, _do)
 
@@ -580,6 +580,6 @@ class DockerHostManager:
                 # client is reused from a different gevent hub. drop the client and surface as a typed
                 # transient so _verify_or_reap treats it optimistically instead of 500'ing the route
                 self._clear_client(context_name)
-                raise HostsUnavailableException(f"transient client failure on {context_name}")
+                raise HostsUnavailableException(_("transient client failure on %(context_name)s", context_name=context_name))
 
         return self._call(context_name, _do)

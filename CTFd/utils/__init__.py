@@ -45,41 +45,115 @@ def safe_lazy_gettext(string, **variables):
     return SafeLazyString(gettext, string, **variables)
 
 
+class _LazyFormatString(str):
+    """A ``str`` subclass that translates its template on ``.format()``.
+
+    marshmallow's ``Field.fail`` only calls ``msg.format(**kwargs)`` when
+    ``isinstance(msg, basestring)`` is true. ``SafeLazyString`` (a
+    ``LazyString`` subclass) fails this check, so messages wrapped in it
+    never get placeholder substitution.
+
+    This subclass stores the English template as its ``str`` content (so
+    ``isinstance`` checks pass and truthiness is based on the template, not
+    on a translated value — safe at import time without a request context).
+    When ``.format()`` is called (during request handling), it first passes
+    the template through ``gettext`` (translating the static portion while
+    preserving ``{placeholder}`` syntax), then calls ``str.format`` to
+    substitute the dynamic values.
+
+    English output is unaffected: ``gettext`` returns the original template
+    when no translation exists.
+    """
+
+    def format(self, *args, **kwargs):
+        return gettext(str(self)).format(*args, **kwargs)
+
+
+def _wrap_marshmallow_message(value):
+    """Wrap a marshmallow default message string for lazy translation.
+
+    Messages without ``{`` placeholders use ``SafeLazyString`` (translated
+    lazily on ``str()``). Messages with ``{`` placeholders use
+    ``_LazyFormatString`` so that ``Field.fail`` / validator
+    ``_format_error`` can still call ``.format()`` while getting translation.
+    """
+    if not isinstance(value, str):
+        return value
+    if "{" in value:
+        return _LazyFormatString(value)
+    return safe_lazy_gettext(value)
+
+
 def _patch_marshmallow_error_messages():
-    """Wrap marshmallow's built-in field error messages in SafeLazyString.
+    """Wrap marshmallow's built-in field and validator error messages.
 
-    marshmallow ships plain-English default error messages (e.g.
-    ``'Missing data for required field.'``) as class attributes on
-    ``marshmallow.fields.Field`` and its subclasses. Because these strings
-    never pass through Flask-Babel's ``gettext``, they are never translated
-    regardless of the request locale.
+    marshmallow ships plain-English default error messages as class
+    attributes on ``marshmallow.fields.Field`` subclasses (in
+    ``default_error_messages`` dicts) and on ``marshmallow.validate.Validator``
+    subclasses (as ``default_message`` / ``message_min`` / ``message_max`` /
+    ``message_all`` / ``message_equal`` attributes). These strings never pass
+    through Flask-Babel's ``gettext``, so they are always English regardless
+    of the request locale.
 
-    This one-time patch replaces every ``str`` value inside each field class's
-    ``default_error_messages`` with a ``SafeLazyString`` wrapper. The messages
-    are then translated lazily at render time according to the request locale.
-    English output is unaffected: when no translation exists for a message
-    ``gettext`` returns the original string unchanged.
+    This patch replaces every such string with a lazy wrapper:
 
-    Messages that contain ``{`` placeholders (e.g.
-    ``'"{input}" cannot be formatted as a date.'``) are skipped because
-    ``marshmallow.Field.fail`` only calls ``str.format`` when the message is a
-    plain string — wrapping them in ``SafeLazyString`` would prevent
-    placeholder substitution.
+    * Plain strings → ``SafeLazyString`` (translated on ``str()``).
+    * Strings with ``{placeholder}`` → ``_LazyFormatString`` (a ``str``
+      subclass that translates the template in ``.format()`` before
+      substituting placeholders, so ``Field.fail`` and validator
+      ``_format_error`` both work).
+
+    English output is unaffected: ``gettext`` returns the original string
+    when no translation exists.
     """
     import marshmallow.fields as _mf
+    import marshmallow.validate as _mv
 
+    # --- Field default_error_messages ---
     for _attr in vars(_mf).values():
         if isinstance(_attr, type) and hasattr(_attr, "default_error_messages"):
             _dem = _attr.default_error_messages
             if isinstance(_dem, dict):
                 _attr.default_error_messages = {
-                    _k: (
-                        safe_lazy_gettext(_v)
-                        if isinstance(_v, str) and "{" not in _v
-                        else _v
-                    )
+                    _k: _wrap_marshmallow_message(_v)
                     for _k, _v in _dem.items()
                 }
+
+    # --- Validator default messages ---
+    # marshmallow-sqlalchemy's ModelConverter auto-generates validators
+    # (e.g. Length(max=N) for String columns) WITHOUT passing error=, so
+    # these default messages are used and shown to users.
+    _validator_msg_attrs = (
+        "default_message",
+        "message_min",
+        "message_max",
+        "message_all",
+        "message_equal",
+    )
+    for _attr in vars(_mv).values():
+        if isinstance(_attr, type) and issubclass(_attr, _mv.Validator):
+            for _name in _validator_msg_attrs:
+                _v = getattr(_attr, _name, None)
+                if isinstance(_v, str):
+                    setattr(_attr, _name, _wrap_marshmallow_message(_v))
+
+    # --- marshmallow-sqlalchemy Related field ---
+    try:
+        import marshmallow_sqlalchemy.fields as _msa_fields
+    except ImportError:
+        _msa_fields = None
+    if _msa_fields is not None:
+        for _attr in vars(_msa_fields).values():
+            if (
+                isinstance(_attr, type)
+                and hasattr(_attr, "default_error_messages")
+            ):
+                _dem = _attr.default_error_messages
+                if isinstance(_dem, dict):
+                    _attr.default_error_messages = {
+                        _k: _wrap_marshmallow_message(_v)
+                        for _k, _v in _dem.items()
+                    }
 
 
 _patch_marshmallow_error_messages()
@@ -240,7 +314,7 @@ def _patch_flask_restx_error_messages():
             )
             message = "".join(
                 (
-                    (message.rstrip(".。") + ". ") if message else "",
+                    (message + " ") if message else "",
                     suffix,
                 )
             )

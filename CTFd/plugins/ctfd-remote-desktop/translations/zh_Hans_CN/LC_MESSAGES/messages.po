@@ -74,6 +74,10 @@ msgstr "排队中..."
 msgid "no healthy docker contexts available"
 msgstr "没有可用的健康 Docker context"
 
+#: src/docker_host_manager.py
+msgid "transient client failure on %(context_name)s"
+msgstr "%(context_name)s 上的瞬时客户端故障"
+
 #: src/container_manager.py:458
 msgid "requested remote desktop session"
 msgstr "请求了远程桌面会话"

@@ -6118,6 +6118,56 @@ msgstr "不是有效的 utf-8 字符串。"
 msgid "Cannot format string with given data."
 msgstr "无法使用给定数据格式化字符串。"
 
+# marshmallow validate.py default messages (auto-generated validators)
+# These are used when marshmallow-sqlalchemy auto-generates validators
+# (e.g. Length(max=N) for String columns) without explicit error= message.
+msgid "Must be at least {min}."
+msgstr "必须至少为 {min}。"
+
+msgid "Must be at most {max}."
+msgstr "最多为 {max}。"
+
+msgid "Must be between {min} and {max}."
+msgstr "必须在 {min} 和 {max} 之间。"
+
+msgid "Shorter than minimum length {min}."
+msgstr "短于最小长度 {min}。"
+
+msgid "Longer than maximum length {max}."
+msgstr "长于最大长度 {max}。"
+
+msgid "Length must be between {min} and {max}."
+msgstr "长度必须在 {min} 和 {max} 之间。"
+
+msgid "Length must be {equal}."
+msgstr "长度必须为 {equal}。"
+
+msgid "Must be equal to {other}."
+msgstr "必须等于 {other}。"
+
+msgid "Not a valid choice."
+msgstr "不是有效的选择。"
+
+msgid "String does not match expected pattern."
+msgstr "字符串与预期模式不匹配。"
+
+# marshmallow fields.py format messages (contain {input} placeholder)
+msgid "\"{input}\" cannot be formatted as a datetime."
+msgstr "\"{input}\" 无法格式化为日期时间。"
+
+msgid "\"{input}\" cannot be formatted as a time."
+msgstr "\"{input}\" 无法格式化为时间。"
+
+msgid "\"{input}\" cannot be formatted as a date."
+msgstr "\"{input}\" 无法格式化为日期。"
+
+msgid "{input!r} cannot be formatted as a timedelta."
+msgstr "{input!r} 无法格式化为时间差。"
+
+# marshmallow-sqlalchemy Related field default message
+msgid "Could not deserialize related value {value!r}; expected a dictionary with keys {keys!r}"
+msgstr "无法反序列化相关值 {value!r}；期望一个包含键 {keys!r} 的字典"
+
 # pydantic 1.x default validation error messages (msg_template)
 msgid "field required"
 msgstr "该字段为必填项。"
