@@ -84,6 +84,47 @@ def _wrap_marshmallow_message(value):
     return safe_lazy_gettext(value)
 
 
+def _translate_marshmallow_error_dict(errors):
+    """Recursively translate string messages in a marshmallow errors dict.
+
+    marshmallow 2.x hardcodes ``"Invalid input type."`` as a plain string
+    literal inside ``marshmallow.marshalling`` (set on ``errors['_schema']``
+    when ``schema.load()`` receives a non-mapping value such as a JSON
+    array or string). This string never passes through ``gettext`` and is
+    not covered by ``_wrap_marshmallow_message`` (which only wraps the
+    ``default_error_messages`` dicts and validator default messages).
+
+    This helper walks the collected errors dict and translates every
+    string message via ``gettext(str(msg))``. It is safe to call on
+    already-translated values:
+
+    * ``SafeLazyString`` / ``LazyString`` — ``str()`` evaluates them with
+      the current locale (yielding the Chinese translation); ``gettext``
+      then returns that Chinese string unchanged (no catalog match).
+    * ``_LazyFormatString`` after ``.format()`` — already a plain
+      translated ``str``; ``gettext`` returns it unchanged.
+    * Hardcoded plain strings (e.g. ``"Invalid input type."``) —
+      ``gettext`` looks up the catalog and returns the translation.
+
+    Handles both the simple case ``{field: [msg, ...]}`` and the
+    ``many=True`` nested case ``{index: {field: [msg, ...]}}``.
+    """
+    if not isinstance(errors, dict):
+        return errors
+    _translated = {}
+    for _key, _value in errors.items():
+        if isinstance(_value, list):
+            _translated[_key] = [
+                gettext(str(_m)) if isinstance(_m, (str, LazyString)) else _m
+                for _m in _value
+            ]
+        elif isinstance(_value, dict):
+            _translated[_key] = _translate_marshmallow_error_dict(_value)
+        else:
+            _translated[_key] = _value
+    return _translated
+
+
 def _patch_marshmallow_error_messages():
     """Wrap marshmallow's built-in field and validator error messages.
 
@@ -154,6 +195,43 @@ def _patch_marshmallow_error_messages():
                         _k: _wrap_marshmallow_message(_v)
                         for _k, _v in _dem.items()
                     }
+
+    # --- Schema._do_load wrapper (hardcoded schema-level errors) ---
+    # marshmallow 2.x hardcodes "Invalid input type." as a plain string
+    # literal inside marshmallow.marshalling (set on errors['_schema']
+    # when schema.load() receives a non-mapping value). The string is
+    # not read from any default_error_messages dict, so the wrapping
+    # above cannot reach it. Wrapping Schema._do_load lets us translate
+    # the collected errors dict (including this hardcoded string) before
+    # it is returned to callers / raised in strict mode.
+    from marshmallow.exceptions import ValidationError as _MVError
+    from marshmallow.schema import Schema as _Schema
+
+    if not getattr(_Schema._do_load, "_ctfd_translated", False):
+        _original_do_load = _Schema._do_load
+
+        def _translated_do_load(self, data, many=None, partial=None, postprocess=True):
+            try:
+                result_data, errors = _original_do_load(
+                    self,
+                    data,
+                    many=many,
+                    partial=partial,
+                    postprocess=postprocess,
+                )
+            except _MVError as exc:
+                # Strict mode (rare in CTFd): translate the messages in
+                # the raised exception before re-raising so callers that
+                # catch ValidationError also see translated text.
+                if exc.messages:
+                    exc.messages = _translate_marshmallow_error_dict(exc.messages)
+                raise
+            if errors:
+                errors = _translate_marshmallow_error_dict(errors)
+            return result_data, errors
+
+        _translated_do_load._ctfd_translated = True
+        _Schema._do_load = _translated_do_load
 
 
 _patch_marshmallow_error_messages()

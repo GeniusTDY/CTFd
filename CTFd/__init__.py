@@ -345,7 +345,7 @@ def create_app(config="CTFd.config.Config"):
 
         app.register_blueprint(admin)
 
-        for code in {400, 401, 403, 404, 405, 406, 415, 500, 502}:
+        for code in {400, 401, 403, 404, 405, 406, 413, 415, 429, 500, 502}:
             app.register_error_handler(code, render_error)
 
         init_logs(app)

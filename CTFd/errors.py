@@ -8,6 +8,8 @@ from werkzeug.exceptions import (
     MethodNotAllowed,
     NotAcceptable,
     NotFound,
+    RequestEntityTooLarge,
+    TooManyRequests,
     Unauthorized,
     UnsupportedMediaType,
 )
@@ -27,6 +29,8 @@ def render_error(error):
         MethodNotAllowed: _l("The method is not allowed for the requested URL."),
         UnsupportedMediaType: _l("The server does not support the media type transmitted in the request."),
         NotAcceptable: _l("The resource identified by the request is only capable of generating response entities which have content characteristics not acceptable according to the accept headers sent in the request."),
+        RequestEntityTooLarge: _l("The data value transmitted exceeds the capacity limit."),
+        TooManyRequests: _l("This user has exceeded an allotted request count. Try again later."),
         InternalServerError: _l("An Internal Server Error has occurred"),
     }
     for _exc_cls, _msg in _default_overrides.items():

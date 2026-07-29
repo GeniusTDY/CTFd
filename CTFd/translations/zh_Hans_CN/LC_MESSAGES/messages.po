@@ -6058,6 +6058,11 @@ msgstr "无效的查询：%s"
 msgid "Missing data for required field."
 msgstr "缺少必填字段的数据。"
 
+# marshmallow schema-level error (hardcoded in marshmallow.marshalling,
+# raised when schema.load() receives a non-mapping value e.g. a JSON array)
+msgid "Invalid input type."
+msgstr "无效的输入类型。"
+
 msgid "Invalid type."
 msgstr "无效的类型。"
 
@@ -6147,6 +6152,14 @@ msgstr "必须等于 {other}。"
 
 msgid "Not a valid choice."
 msgstr "不是有效的选择。"
+
+# marshmallow validate.Predicate / validate.NoneOf default message
+msgid "Invalid input."
+msgstr "无效的输入。"
+
+# marshmallow validate.ContainsOnly default message (multi-choice validator)
+msgid "One or more of the choices you made was not acceptable."
+msgstr "您所做的一个或多个选择不可接受。"
 
 msgid "String does not match expected pattern."
 msgstr "字符串与预期模式不匹配。"
@@ -6426,6 +6439,13 @@ msgstr "服务器不支持请求中传输的媒体类型。"
 
 msgid "The resource identified by the request is only capable of generating response entities which have content characteristics not acceptable according to the accept headers sent in the request."
 msgstr "请求所标识的资源只能生成具有根据请求中发送的 accept 头不可接受的内容特征的响应实体。"
+
+# werkzeug HTTPException descriptions for 413 and 429
+msgid "The data value transmitted exceeds the capacity limit."
+msgstr "传输的数据值超过了容量限制。"
+
+msgid "This user has exceeded an allotted request count. Try again later."
+msgstr "该用户已超出分配的请求次数。请稍后再试。"
 
 # Flask-RESTX _help_on_404 suffix (appended to 404 API responses when a close
 # URL match exists). The template is translated as a whole; {path} and
