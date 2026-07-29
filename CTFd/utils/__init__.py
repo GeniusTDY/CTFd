@@ -45,6 +45,46 @@ def safe_lazy_gettext(string, **variables):
     return SafeLazyString(gettext, string, **variables)
 
 
+def _patch_marshmallow_error_messages():
+    """Wrap marshmallow's built-in field error messages in SafeLazyString.
+
+    marshmallow ships plain-English default error messages (e.g.
+    ``'Missing data for required field.'``) as class attributes on
+    ``marshmallow.fields.Field`` and its subclasses. Because these strings
+    never pass through Flask-Babel's ``gettext``, they are never translated
+    regardless of the request locale.
+
+    This one-time patch replaces every ``str`` value inside each field class's
+    ``default_error_messages`` with a ``SafeLazyString`` wrapper. The messages
+    are then translated lazily at render time according to the request locale.
+    English output is unaffected: when no translation exists for a message
+    ``gettext`` returns the original string unchanged.
+
+    Messages that contain ``{`` placeholders (e.g.
+    ``'"{input}" cannot be formatted as a date.'``) are skipped because
+    ``marshmallow.Field.fail`` only calls ``str.format`` when the message is a
+    plain string — wrapping them in ``SafeLazyString`` would prevent
+    placeholder substitution.
+    """
+    import marshmallow.fields as _mf
+
+    for _attr in vars(_mf).values():
+        if isinstance(_attr, type) and hasattr(_attr, "default_error_messages"):
+            _dem = _attr.default_error_messages
+            if isinstance(_dem, dict):
+                _attr.default_error_messages = {
+                    _k: (
+                        safe_lazy_gettext(_v)
+                        if isinstance(_v, str) and "{" not in _v
+                        else _v
+                    )
+                    for _k, _v in _dem.items()
+                }
+
+
+_patch_marshmallow_error_messages()
+
+
 def markdown(md):
     return cmarkgfm.markdown_to_html_with_extensions(
         md,

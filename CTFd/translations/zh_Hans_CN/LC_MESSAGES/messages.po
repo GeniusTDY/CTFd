@@ -6054,3 +6054,67 @@ msgstr "无效的主题设置"
 msgid "Invalid query: %s"
 msgstr "无效的查询：%s"
 
+# marshmallow default field error messages
+msgid "Missing data for required field."
+msgstr "缺少必填字段的数据。"
+
+msgid "Invalid type."
+msgstr "无效的类型。"
+
+msgid "Field may not be null."
+msgstr "字段不能为空值。"
+
+msgid "Invalid value."
+msgstr "无效的值。"
+
+msgid "Not a valid integer."
+msgstr "不是有效的整数。"
+
+msgid "Not a valid number."
+msgstr "不是有效的数字。"
+
+msgid "Not a valid boolean."
+msgstr "不是有效的布尔值。"
+
+msgid "Not a valid string."
+msgstr "不是有效的字符串。"
+
+msgid "Not a valid date."
+msgstr "不是有效的日期。"
+
+msgid "Not a valid datetime."
+msgstr "不是有效的日期时间。"
+
+msgid "Not a valid time."
+msgstr "不是有效的时间。"
+
+msgid "Not a valid list."
+msgstr "不是有效的列表。"
+
+msgid "Not a valid mapping type."
+msgstr "不是有效的映射类型。"
+
+msgid "Not a valid UUID."
+msgstr "不是有效的 UUID。"
+
+msgid "Not a valid URL."
+msgstr "不是有效的 URL。"
+
+msgid "Not a valid email address."
+msgstr "不是有效的电子邮件地址。"
+
+msgid "Not a valid period of time."
+msgstr "不是有效的时间段。"
+
+msgid "Special numeric values are not permitted."
+msgstr "不允许使用特殊数值。"
+
+msgid "Number too large."
+msgstr "数字过大。"
+
+msgid "Not a valid utf-8 string."
+msgstr "不是有效的 utf-8 字符串。"
+
+msgid "Cannot format string with given data."
+msgstr "无法使用给定数据格式化字符串。"
+
