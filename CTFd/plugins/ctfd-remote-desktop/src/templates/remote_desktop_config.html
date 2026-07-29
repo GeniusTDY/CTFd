@@ -115,9 +115,9 @@
 
 <div id="rd-docker-alert" style="display:none;"></div>
 
-<div class="d-flex justify-content-between align-items-center mb-3">
+<div class="d-flex justify-content-between align-items-center mb-3 rd-contexts-header">
     <h5 class="mb-0">{{ _("Docker Contexts") }} <span class="cfg-help" data-tip="{{ _('Each context is a Docker host that can run desktop sessions. Import contexts from your Docker configuration to spread load across servers. Sessions are distributed by weight.') }}">?</span></h5>
-    <div>
+    <div class="rd-contexts-actions">
         <button type="button" class="btn btn-sm btn-outline-secondary" id="rd-reload-contexts-btn">{{ _("Reload") }}</button>
         <button type="button" class="btn btn-sm btn-outline-primary" id="rd-import-contexts-btn">{{ _("Import Contexts") }}</button>
     </div>
@@ -299,6 +299,22 @@
     .cfg-help:hover::before {
         left: 7px;
         transform: none;
+    }
+}
+
+/* Mobile only: stack the "Docker Contexts" header vertically so the Reload and
+   Import Contexts buttons sit together on the line below the heading text.
+   Desktop layout (heading left, buttons right, same row) is unchanged. */
+@media (max-width: 768px) {
+    .rd-contexts-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .rd-contexts-actions {
+        display: flex;
+        flex-wrap: nowrap;
+        gap: 8px;
+        width: 100%;
     }
 }
 .no-spin::-webkit-outer-spin-button,
