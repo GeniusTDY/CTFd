@@ -1,5 +1,22 @@
 {% extends "base.html" %}
 
+{% block stylesheets %}
+  {{ super() }}
+  <style>
+    /* 移动端：固定"网站"列宽度，防止队伍名列内容过长时压缩该列，
+       导致中文"网站"表头被挤压成竖排。桌面端不受影响。 */
+    @media (max-width: 767.98px) {
+      .table.table-striped.align-middle {
+        table-layout: fixed;
+      }
+      .table.table-striped.align-middle th.th-website {
+        width: 64px;
+        white-space: nowrap;
+      }
+    }
+  </style>
+{% endblock %}
+
 {% block content %}
   <div class="jumbotron">
     <div class="container">
@@ -47,7 +64,7 @@
           <thead>
           <tr>
             <th class="text-md-start">{% trans %}Team{% endtrans %}</th>
-            <th>{% trans %}Website{% endtrans %}</th>
+            <th class="th-website text-center">{% trans %}Website{% endtrans %}</th>
             <th class="d-none d-md-table-cell">{% trans %}Affiliation{% endtrans %}</th>
             <th class="d-none d-md-table-cell">{% trans %}Country{% endtrans %}</th>
           </tr>
