@@ -5564,6 +5564,45 @@ msgstr "429 请求次数过多"
 msgid "502 Bad Gateway"
 msgstr "502 网关错误"
 
+#: CTFd/themes/core/templates/errors/400.html:12
+msgid "400 Bad Request"
+msgstr "400 错误请求"
+
+#: CTFd/themes/core/templates/errors/405.html:12
+msgid "405 Method Not Allowed"
+msgstr "405 方法不允许"
+
+#: CTFd/themes/core/templates/errors/406.html:12
+msgid "406 Not Acceptable"
+msgstr "406 无法接受"
+
+#: CTFd/themes/core/templates/errors/413.html:12
+msgid "413 Request Entity Too Large"
+msgstr "413 请求实体过大"
+
+#: CTFd/themes/core/templates/errors/415.html:12
+msgid "415 Unsupported Media Type"
+msgstr "415 不支持的媒体类型"
+
+# HTTPStatus.INTERNAL_SERVER_ERROR.phrase - used by flask-restx as fallback
+# for non-HTTPException 500 errors in API endpoints
+msgid "Internal Server Error"
+msgstr "内部服务器错误"
+
+# CTFd-first-blood-display plugin (uses core window._() i18n)
+msgid "First Blood"
+msgstr "一血"
+
+msgid "First Blood: "
+msgstr "一血："
+
+# @ctfdio/ctfd-js confirm() dialogs (overridden via challenges.html script patch)
+msgid "Are you sure you'd like to unlock this hint?"
+msgstr "您确定要解锁此提示吗？"
+
+msgid "Are you sure you'd like to unlock this solution?"
+msgstr "您确定要解锁此解答吗？"
+
 #: CTFd/themes/core-deprecated/templates/teams/invite.html:9
 #: CTFd/themes/core-deprecated/templates/teams/join_team.html:9
 #: CTFd/themes/core-deprecated/templates/teams/team_enrollment.html:38

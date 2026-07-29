@@ -45,12 +45,12 @@
 
     var icon = document.createElement("span");
     icon.className = "fb-icon";
-    icon.title = "First Blood";
+    icon.title = _("First Blood");
     icon.textContent = "\uD83E\uDE78";
 
     var label = document.createElement("span");
     label.className = "fb-label";
-    label.textContent = "First Blood";
+    label.textContent = _("First Blood");
 
     var solver = document.createElement("span");
     solver.className = "fb-solver";
@@ -123,7 +123,7 @@
         var icon = document.createElement("span");
         icon.className = "fb-list-icon";
         icon.textContent = " \uD83E\uDE78";
-        icon.title = "First Blood: " + (allFb[cid].user_name || "???");
+        icon.title = _("First Blood: ") + (allFb[cid].user_name || "???");
         el.appendChild(icon);
       }
     });

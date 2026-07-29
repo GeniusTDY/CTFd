@@ -362,7 +362,27 @@ def _patch_flask_restx_error_messages():
                 e.msg = gettext(str(e.msg))
             except Exception:
                 pass
-        return _original_handle_error(self, e)
+        resp = _original_handle_error(self, e)
+        # Post-process: translate the ``message`` field in the JSON body.
+        # This catches ``code.phrase`` (e.g. "Internal Server Error") used
+        # as a fallback for non-HTTPException 500 errors, which never passes
+        # through ``e.description`` and thus isn't covered by the
+        # pre-translation above. ``gettext`` is idempotent on already-
+        # translated strings (no catalog match → returns input unchanged),
+        # so this is safe for messages that were already translated.
+        try:
+            import json as _json
+
+            if resp is not None and resp.is_json:
+                _body = resp.get_json()
+                if isinstance(_body, dict) and "message" in _body:
+                    _msg = _body["message"]
+                    if isinstance(_msg, str):
+                        _body["message"] = gettext(_msg)
+                        resp.data = _json.dumps(_body)
+        except Exception:
+            pass
+        return resp
 
     _Api.handle_error = _translated_handle_error
 
@@ -429,13 +449,13 @@ def _update_flask_restx_mask_handlers(api_instance):
 
     def _mask_parse_error_handler(error):
         return (
-            {"message": gettext("Mask parse error: {0}").format(error)},
+            {"message": gettext("Mask parse error: {0}").format(gettext(str(error)))},
             _HTTPStatus.BAD_REQUEST,
         )
 
     def _mask_error_handler(error):
         return (
-            {"message": gettext("Mask error: {0}").format(error)},
+            {"message": gettext("Mask error: {0}").format(gettext(str(error)))},
             _HTTPStatus.BAD_REQUEST,
         )
 

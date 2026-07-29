@@ -72,4 +72,39 @@
 
 {% block scripts %}
   {{ Assets.js("assets/js/challenges.js") }}
+  <script>
+    // Override @ctfdio/ctfd-js hardcoded English confirm() dialogs with
+    // translated versions using the core window._() i18n function.
+    // The library bundles these strings without _() wrapping, so we patch
+    // them at runtime after the library has initialized.
+    (function () {
+      function patchChallengeDialogs() {
+        if (window.CTFd && CTFd._functions && CTFd._functions.challenge) {
+          var c = CTFd._functions.challenge;
+          if (c.displayUnlock && !c.displayUnlock._i18n_patched) {
+            var orig = c.displayUnlock;
+            c.displayUnlock = function (e) {
+              return confirm(_("Are you sure you'd like to unlock this hint?"));
+            };
+            c.displayUnlock._i18n_patched = true;
+          }
+          if (c.displayHintUnlock && !c.displayHintUnlock._i18n_patched) {
+            c.displayHintUnlock = function (e) {
+              return confirm(_("Are you sure you'd like to unlock this hint?"));
+            };
+            c.displayHintUnlock._i18n_patched = true;
+          }
+          if (c.displaySolutionUnlock && !c.displaySolutionUnlock._i18n_patched) {
+            c.displaySolutionUnlock = function (e) {
+              return confirm(_("Are you sure you'd like to unlock this solution?"));
+            };
+            c.displaySolutionUnlock._i18n_patched = true;
+          }
+        }
+      }
+      // Try immediately (in case CTFd is already loaded) and again on DOMContentLoaded.
+      patchChallengeDialogs();
+      document.addEventListener("DOMContentLoaded", patchChallengeDialogs);
+    })();
+  </script>
 {% endblock %}
