@@ -1,6 +1,12 @@
 (function () {
   "use strict";
 
+  // Translation lookup: prefer CTFd core window._ (loaded via /translations.js
+  // in the core theme), fall back to wmctf2025's window.wmcTr, then identity.
+  // Without this, badges silently disappear in themes that don't load
+  // /translations.js (e.g. wmctf2025), because "_ is not defined" aborts the IIFE.
+  var _ = window._ || window.wmcTr || function (text) { return text; };
+
   var fbCache = null;
   var fbCacheTime = 0;
   var CACHE_TTL = 30000;

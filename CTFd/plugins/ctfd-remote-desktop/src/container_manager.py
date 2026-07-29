@@ -418,7 +418,6 @@ class ContainerManager:
                 user_id=user_id,
                 username=username,
                 level="error",
-                metadata={"traceback": traceback.format_exc()},
             )
 
     def create_container(

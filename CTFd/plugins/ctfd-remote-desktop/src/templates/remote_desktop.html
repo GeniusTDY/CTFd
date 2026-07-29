@@ -510,7 +510,8 @@ function showSessionError(detail) {
     if (!el) return;
     msgEl.textContent = {{ _("Something went wrong on our end, please try again later or contact an administrator.")|tojson }};
     const d = new Date();
-    const ts = d.toLocaleString('en-US', {month:'short', day:'numeric', year:'numeric', hour:'numeric', minute:'2-digit', second:'2-digit', hour12:true});
+    const _lang = document.documentElement.lang || navigator.language || 'en';
+    const ts = d.toLocaleString(_lang, {month:'short', day:'numeric', year:'numeric', hour:'numeric', minute:'2-digit', second:'2-digit', hour12:true});
     const user = window.init.userName || {{ _("unknown")|tojson }};
     metaEl.textContent = user + ' ' + {{ _("at")|tojson }} + ' ' + ts;
     detailEl.textContent = detail || {{ _("unknown error")|tojson }};

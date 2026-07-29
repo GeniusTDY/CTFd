@@ -685,7 +685,8 @@
 
 	function formatTimestamp(timestamp) {
 		const date = new Date(timestamp * 1000);
-		return date.toLocaleString('en-US', {
+		const _lang = document.documentElement.lang || navigator.language || 'en';
+		return date.toLocaleString(_lang, {
 			month: 'short',
 			day: 'numeric',
 			year: 'numeric',
@@ -1403,7 +1404,9 @@
 				return;
 			}
 
-			const hours = Array.from({length: 24}, (_, h) => (h % 12 || 12) + (h < 12 ? ' AM' : ' PM'));
+			const _am = {{ _("AM")|tojson }};
+			const _pm = {{ _("PM")|tojson }};
+			const hours = Array.from({length: 24}, (_, h) => (h % 12 || 12) + (h < 12 ? ' ' + _am : ' ' + _pm));
 			const dayLabels = data.days;
 			const maxVal = Math.max(...data.data.map(d => d[2]));
 			chart.setOption({
@@ -1591,7 +1594,9 @@
 				return;
 			}
 
-			const hours = Array.from({length: 24}, (_, h) => (h % 12 || 12) + (h < 12 ? ' AM' : ' PM'));
+			const _am = {{ _("AM")|tojson }};
+			const _pm = {{ _("PM")|tojson }};
+			const hours = Array.from({length: 24}, (_, h) => (h % 12 || 12) + (h < 12 ? ' ' + _am : ' ' + _pm));
 			const dayLabels = data.days;
 			const maxVal = Math.max(...data.data.map(d => d[2]));
 			chart.setOption({

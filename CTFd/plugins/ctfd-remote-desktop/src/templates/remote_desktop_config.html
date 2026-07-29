@@ -704,7 +704,8 @@
                     box.innerHTML = '<p class="text-muted text-center small">' + {{ _("No scan data yet. Click Scan to check image availability.")|tojson }} + '</p>';
                     return;
                 }
-                st.textContent = {{ _("Last scanned:")|tojson }} + ' ' + new Date(data.scanned_at * 1000).toLocaleString('en-US', {month:'short',day:'numeric',year:'numeric',hour:'numeric',minute:'2-digit',hour12:true});
+                var _lang = document.documentElement.lang || navigator.language || 'en';
+                st.textContent = {{ _("Last scanned:")|tojson }} + ' ' + new Date(data.scanned_at * 1000).toLocaleString(_lang, {month:'short',day:'numeric',year:'numeric',hour:'numeric',minute:'2-digit',hour12:true});
                 renderMatrix(data.images || [], data.contexts || [], data.matrix || {}, box);
             })
             .catch(function() {
@@ -719,7 +720,8 @@
         rdFetch('/remote-desktop/dashboard/api/images/matrix')
             .then(function(r) { return r.json(); })
             .then(function(data) {
-                st.textContent = {{ _("Last scanned:")|tojson }} + ' ' + new Date().toLocaleString('en-US', {month:'short',day:'numeric',year:'numeric',hour:'numeric',minute:'2-digit',hour12:true});
+                var _lang = document.documentElement.lang || navigator.language || 'en';
+                st.textContent = {{ _("Last scanned:")|tojson }} + ' ' + new Date().toLocaleString(_lang, {month:'short',day:'numeric',year:'numeric',hour:'numeric',minute:'2-digit',hour12:true});
                 renderMatrix(data.images || [], data.contexts || [], data.matrix || {}, box);
             })
             .catch(function(e) { st.textContent = {{ _("Error:")|tojson }} + ' ' + e.message; });

@@ -408,6 +408,16 @@ msgstr "密码"
 msgid "Time remaining in session"
 msgstr "会话剩余时间"
 
+#: src/templates/remote_desktop_dashboard.html:1407
+#: src/templates/remote_desktop_dashboard.html:1595
+msgid "AM"
+msgstr "上午"
+
+#: src/templates/remote_desktop_dashboard.html:1407
+#: src/templates/remote_desktop_dashboard.html:1595
+msgid "PM"
+msgstr "下午"
+
 #: src/templates/remote_desktop.html:415 src/templates/remote_desktop.html:541
 msgid "Add more time to your session"
 msgstr "延迟会话时间"
@@ -1094,7 +1104,7 @@ msgstr "删除失败"
 msgid "connected"
 msgstr "已连接"
 
-#: src/templates/remote_desktop_config.html:556
+#: src/templates/remote_desktop_config.html:556 src/orchestrator.py:124
 msgid "unreachable"
 msgstr "不可达"
 
@@ -1981,7 +1991,3 @@ msgstr "连接失败"
 #: src/orchestrator.py:58
 msgid "image not found"
 msgstr "镜像未找到"
-
-#: src/orchestrator.py:124
-msgid "unreachable"
-msgstr "不可达"
