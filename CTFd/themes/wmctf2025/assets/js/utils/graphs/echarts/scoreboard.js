@@ -26,8 +26,14 @@ export function getOption(mode, places, optionMerge) {
       feature: {
         dataZoom: {
           yAxisIndex: "none",
+          title: {
+            zoom: window.wmcTr ? window.wmcTr("Zoom") : "Zoom",
+            back: window.wmcTr ? window.wmcTr("Zoom Reset") : "Zoom Reset",
+          },
         },
-        saveAsImage: {},
+        saveAsImage: {
+          title: window.wmcTr ? window.wmcTr("Save as Image") : "Save as Image",
+        },
       },
     },
     grid: {

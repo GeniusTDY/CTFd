@@ -12,7 +12,9 @@ export function getOption(solves, fails, optionMerge) {
     toolbox: {
       show: true,
       feature: {
-        saveAsImage: {},
+        saveAsImage: {
+          title: window.wmcTr ? window.wmcTr("Save as Image") : "Save as Image",
+        },
       },
     },
     legend: {

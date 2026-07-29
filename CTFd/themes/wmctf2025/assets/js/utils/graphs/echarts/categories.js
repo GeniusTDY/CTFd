@@ -13,7 +13,9 @@ export function getOption(solves, optionMerge) {
     toolbox: {
       show: true,
       feature: {
-        saveAsImage: {},
+        saveAsImage: {
+          title: window.wmcTr ? window.wmcTr("Save as Image") : "Save as Image",
+        },
       },
     },
     legend: {

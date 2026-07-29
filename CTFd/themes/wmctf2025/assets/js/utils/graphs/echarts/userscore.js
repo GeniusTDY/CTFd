@@ -24,7 +24,9 @@ export function getOption(id, name, solves, awards, optionMerge) {
     },
     toolbox: {
       feature: {
-        saveAsImage: {},
+        saveAsImage: {
+          title: window.wmcTr ? window.wmcTr("Save as Image") : "Save as Image",
+        },
       },
     },
     grid: {
