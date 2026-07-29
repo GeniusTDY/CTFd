@@ -53,14 +53,20 @@
 		#user-info-edit-form .form-check-inline {
 			margin-right: 0.4rem !important;
 		}
-		/* 移动端：IP 地址弹窗中"IP Geolocation by DB-IP"署名固定在表格右下角，
-		   不随表格左右滚动而移动；桌面端保持 Bootstrap 默认 float-right 行为。 */
-		.ip-dbip-credit {
-			position: sticky;
-			right: 0;
-			background: var(--card-bg, #fff);
-			padding: 4px 8px;
-			z-index: 2;
+		/* 移动端：IP 地址弹窗修复 ——
+		   1. .col-md-12 作为 flexbox 子元素默认 min-width:auto，会随表格内容扩展，
+		      导致 .table-responsive 无法形成内部滚动，致谢文本随表格一起水平滚动。
+		      设置 min-width:0 让列宽收缩，使 .table-responsive 内部滚动生效。
+		   2. .modal-body 有 overflow-y:auto，CSS 规范会将 overflow-x 计算为 auto，
+		      导致整个弹窗主体水平滚动。设置 overflow-x:hidden 阻止弹窗主体水平滚动，
+		      仅允许 .table-responsive 内部滚动，致谢文本保持固定。 */
+		#user-addresses-modal .col-md-12,
+		#team-addresses-modal .col-md-12 {
+			min-width: 0 !important;
+		}
+		#user-addresses-modal .modal-body,
+		#team-addresses-modal .modal-body {
+			overflow-x: hidden !important;
 		}
 	}
 	</style>
