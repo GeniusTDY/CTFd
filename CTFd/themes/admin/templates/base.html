@@ -53,6 +53,15 @@
 		#user-info-edit-form .form-check-inline {
 			margin-right: 0.4rem !important;
 		}
+		/* 移动端：IP 地址弹窗中"IP Geolocation by DB-IP"署名固定在表格右下角，
+		   不随表格左右滚动而移动；桌面端保持 Bootstrap 默认 float-right 行为。 */
+		.ip-dbip-credit {
+			position: sticky;
+			right: 0;
+			background: var(--card-bg, #fff);
+			padding: 4px 8px;
+			z-index: 2;
+		}
 	}
 	</style>
 	<script type="text/javascript" src="{{ url_for('views.translations_js') }}"></script>
