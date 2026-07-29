@@ -1,6 +1,7 @@
 import json
 
 from flask import url_for
+from flask_babel import gettext as _gettext
 
 # TODO: CTFd 4.0. These imports previously specified in this file but have moved. We could consider removing these imports
 from CTFd.constants.options import (  # noqa: F401
@@ -46,7 +47,7 @@ class _ConfigsWrapper:
         try:
             return json.loads(get_config("theme_settings", default="null"))
         except json.JSONDecodeError:
-            return {"error": "invalid theme_settings"}
+            return {"error": _gettext("invalid theme_settings")}
 
     @property
     def tos_or_privacy(self):

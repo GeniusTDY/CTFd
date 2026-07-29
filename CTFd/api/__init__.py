@@ -77,3 +77,10 @@ CTFd_API_v1.add_namespace(audiences_namespace, "/audiences")
 CTFd_API_v1.add_namespace(modules_namespace, "/modules")
 CTFd_API_v1.add_namespace(exports_namespace, "/exports")
 CTFd_API_v1.add_namespace(solutions_namespace, "/solutions")
+
+# Replace Flask-RESTX's default mask error handlers with translated versions.
+# The handlers are captured at Api.__init__ time, so we must update the instance
+# dict after creation. See CTFd.utils._update_flask_restx_mask_handlers.
+from CTFd.utils import _update_flask_restx_mask_handlers
+
+_update_flask_restx_mask_handlers(CTFd_API_v1)

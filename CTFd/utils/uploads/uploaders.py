@@ -83,7 +83,7 @@ class FilesystemUploader(BaseUploader):
 
     def upload(self, file_obj, filename, path=None):
         if len(filename) == 0:
-            raise Exception(gettext("Empty filenames cannot be used"))
+            raise ValueError(gettext("Empty filenames cannot be used"))
 
         # Sanitize directory name
         if path:

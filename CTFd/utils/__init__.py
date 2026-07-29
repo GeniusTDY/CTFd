@@ -85,6 +85,212 @@ def _patch_marshmallow_error_messages():
 _patch_marshmallow_error_messages()
 
 
+def _patch_pydantic_error_messages():
+    """Translate pydantic's built-in validation error messages.
+
+    pydantic (1.x) builds the ``msg`` field of each validation error in
+    :func:`pydantic.error_wrappers.error_dict` by formatting
+    ``exc.msg_template`` (a plain English string) with the error context.
+    These messages are returned to the frontend as JSON
+    (``{"success": False, "errors": {field: msg}}``) and shown to users, but
+    they never pass through Flask-Babel so they are always English.
+
+    This patch wraps ``error_dict`` so that the *template* (before formatting)
+    is passed through ``gettext`` first, then formatted with the dynamic
+    context. This keeps ``{placeholder}`` substitutions working while allowing
+    the static portion to be translated. When no translation exists ``gettext``
+    returns the original template, so English output is unaffected.
+
+    A few pydantic errors (``EnumError``, ``WrongConstantError``) build their
+    message in ``__str__`` rather than via ``msg_template``; for those the
+    already-formatted string is passed through ``gettext`` (which will return it
+    unchanged when no catalog entry matches the interpolated form).
+    """
+    import pydantic.error_wrappers as _pew
+
+    _original_error_dict = _pew.error_dict
+
+    def _translated_error_dict(exc, config, loc):
+        type_ = _pew.get_exc_type(exc.__class__)
+        msg_template = config.error_msg_templates.get(type_) or getattr(
+            exc, "msg_template", None
+        )
+        ctx = exc.__dict__
+        if msg_template:
+            try:
+                msg = gettext(msg_template).format(**ctx)
+            except Exception:
+                msg = msg_template.format(**ctx)
+        else:
+            # Handle errors that build messages via __str__ instead of
+            # msg_template (EnumError, WrongConstantError). These interpolate
+            # the permitted values into the string at format time, so
+            # gettext(str(exc)) can't match the catalog entry. We
+            # reconstruct the template, translate it, then format with the
+            # dynamic values.
+            _enum_values = ctx.get("enum_values")
+            _permitted = ctx.get("permitted")
+            if _enum_values is not None:
+                _perm_str = ", ".join(repr(v.value) for v in _enum_values)
+                _template = (
+                    "value is not a valid enumeration member; permitted: {permitted}"
+                )
+                try:
+                    msg = gettext(_template).format(permitted=_perm_str)
+                except Exception:
+                    msg = str(exc)
+            elif _permitted is not None:
+                _perm_str = ", ".join(repr(v) for v in _permitted)
+                _template = "unexpected value; permitted: {permitted}"
+                try:
+                    msg = gettext(_template).format(permitted=_perm_str)
+                except Exception:
+                    msg = str(exc)
+            else:
+                try:
+                    msg = gettext(str(exc))
+                except Exception:
+                    msg = str(exc)
+
+        d = {"loc": loc, "msg": msg, "type": type_}
+        if ctx:
+            d["ctx"] = ctx
+        return d
+
+    _pew.error_dict = _translated_error_dict
+
+
+_patch_pydantic_error_messages()
+
+
+def _patch_flask_restx_error_messages():
+    """Translate Flask-RESTX's default JSON error responses.
+
+    Flask-RESTX's ``Api.handle_error`` builds JSON error payloads using
+    ``e.description`` (werkzeug ``HTTPException`` description) or
+    ``code.phrase`` (``HTTPStatus`` short phrase) directly, without going
+    through ``gettext``. These English strings are returned to the frontend
+    as JSON ``{"message": ...}`` and displayed to users in toasts/alerts.
+
+    This patch:
+
+    1. Wraps ``Api.handle_error`` so that ``e.description`` is converted to
+       ``str`` (evaluating any ``LazyString`` from ``_l()``) and then passed
+       through ``gettext``. This fixes both the translation gap and a
+       pre-existing JSON-serialization issue with ``LazyString`` values in
+       ``abort()`` descriptions.
+    2. Wraps ``Api._help_on_404`` to translate the "did you mean" suffix
+       template that is appended to 404 API responses.
+    3. Patches ``RestError.__str__`` so mask sub-messages are translated.
+
+    English output is unaffected: ``gettext`` returns the original string
+    when no translation catalog entry exists.
+    """
+    from werkzeug.exceptions import HTTPException as _HTTPException
+
+    try:
+        from flask_restx import Api as _Api
+        from flask_restx.errors import RestError as _RestError
+    except ImportError:  # pragma: no cover
+        return
+
+    # --- 1. Translate HTTPException descriptions in handle_error ---
+    _original_handle_error = _Api.handle_error
+
+    def _translated_handle_error(self, e):
+        if isinstance(e, _HTTPException) and e.description is not None:
+            try:
+                # str() evaluates LazyString (_l) with the current locale;
+                # gettext() then translates plain-English werkzeug defaults.
+                e.description = gettext(str(e.description))
+            except Exception:
+                pass
+        if isinstance(e, _RestError) and getattr(e, "msg", None) is not None:
+            try:
+                e.msg = gettext(str(e.msg))
+            except Exception:
+                pass
+        return _original_handle_error(self, e)
+
+    _Api.handle_error = _translated_handle_error
+
+    # --- 2. Translate the _help_on_404 "did you mean" suffix ---
+    _original_help_on_404 = _Api._help_on_404
+
+    def _translated_help_on_404(self, message=None):
+        import difflib
+        import re
+
+        from flask import current_app, request
+
+        _RE_RULES = re.compile(r"<(?:[^:<>]+:)?[^<>]+>")
+        rules = dict(
+            [
+                (_RE_RULES.sub("", rule.rule), rule.rule)
+                for rule in current_app.url_map.iter_rules()
+            ]
+        )
+        close_matches = difflib.get_close_matches(request.path, rules.keys())
+        if close_matches:
+            suffix = gettext(
+                "You have requested this URI [{path}] but did you mean {suggestions} ?"
+            ).format(
+                path=request.path,
+                suggestions=" or ".join(rules[match] for match in close_matches),
+            )
+            message = "".join(
+                (
+                    (message.rstrip(".。") + ". ") if message else "",
+                    suffix,
+                )
+            )
+        return message
+
+    _Api._help_on_404 = _translated_help_on_404
+
+    # --- 3. Translate RestError.__str__ (mask sub-messages) ---
+    _original_rest_str = _RestError.__str__
+
+    def _translated_rest_str(self):
+        return gettext(_original_rest_str(self))
+
+    _RestError.__str__ = _translated_rest_str
+
+
+_patch_flask_restx_error_messages()
+
+
+def _update_flask_restx_mask_handlers(api_instance):
+    """Replace mask error handlers on an ``Api`` instance with translated versions.
+
+    ``flask_restx.Api.__init__`` captures the module-level
+    ``mask_parse_error_handler`` / ``mask_error_handler`` function references
+    into ``self.error_handlers`` at creation time. Patching the module-level
+    functions after the instance is created has no effect, so we must also
+    update the instance's dict. Call this after creating each ``Api`` instance.
+    """
+    try:
+        from flask_restx._http import HTTPStatus as _HTTPStatus
+        from flask_restx.mask import MaskError as _MaskError, ParseError as _ParseError
+    except ImportError:  # pragma: no cover
+        return
+
+    def _mask_parse_error_handler(error):
+        return (
+            {"message": gettext("Mask parse error: {0}").format(error)},
+            _HTTPStatus.BAD_REQUEST,
+        )
+
+    def _mask_error_handler(error):
+        return (
+            {"message": gettext("Mask error: {0}").format(error)},
+            _HTTPStatus.BAD_REQUEST,
+        )
+
+    api_instance.error_handlers[_ParseError] = _mask_parse_error_handler
+    api_instance.error_handlers[_MaskError] = _mask_error_handler
+
+
 def markdown(md):
     return cmarkgfm.markdown_to_html_with_extensions(
         md,

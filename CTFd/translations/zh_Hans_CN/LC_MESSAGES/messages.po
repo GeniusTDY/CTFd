@@ -6118,3 +6118,295 @@ msgstr "不是有效的 utf-8 字符串。"
 msgid "Cannot format string with given data."
 msgstr "无法使用给定数据格式化字符串。"
 
+# pydantic 1.x default validation error messages (msg_template)
+msgid "field required"
+msgstr "该字段为必填项。"
+
+msgid "extra fields not permitted"
+msgstr "不允许额外的字段。"
+
+msgid "none is not an allowed value"
+msgstr "不允许使用 none 值。"
+
+msgid "value is not none"
+msgstr "值不是 none。"
+
+msgid "value could not be parsed to a boolean"
+msgstr "无法将该值解析为布尔值。"
+
+msgid "byte type expected"
+msgstr "应为字节类型。"
+
+msgid "value is not a valid dict"
+msgstr "不是有效的字典。"
+
+msgid "value is not a valid email address"
+msgstr "不是有效的电子邮件地址。"
+
+msgid "invalid or missing URL scheme"
+msgstr "URL 协议无效或缺失。"
+
+msgid "URL scheme not permitted"
+msgstr "不允许的 URL 协议。"
+
+msgid "userinfo required in URL but missing"
+msgstr "URL 中需要用户信息但缺失。"
+
+msgid "URL host invalid"
+msgstr "URL 主机无效。"
+
+msgid "URL host invalid, top level domain required"
+msgstr "URL 主机无效，需要顶级域名。"
+
+msgid "URL port invalid, port cannot exceed 65535"
+msgstr "URL 端口无效，端口不能超过 65535。"
+
+msgid "URL invalid, extra characters found after valid URL: {extra!r}"
+msgstr "URL 无效，在有效 URL 之后发现额外字符：{extra!r}"
+
+msgid "value is not a valid integer"
+msgstr "不是有效的整数。"
+
+msgid "value is not a valid float"
+msgstr "不是有效的浮点数。"
+
+msgid "value is not a valid path"
+msgstr "不是有效的路径。"
+
+msgid "file or directory at path \"{path}\" does not exist"
+msgstr "路径 \"{path}\" 处的文件或目录不存在。"
+
+msgid "path \"{path}\" does not point to a file"
+msgstr "路径 \"{path}\" 未指向文件。"
+
+msgid "path \"{path}\" does not point to a directory"
+msgstr "路径 \"{path}\" 未指向目录。"
+
+msgid "ensure this value contains valid import path or valid callable: {error_message}"
+msgstr "请确保此值包含有效的导入路径或可调用对象：{error_message}"
+
+msgid "value is not a valid sequence"
+msgstr "不是有效的序列。"
+
+msgid "value is not a valid iterable"
+msgstr "不是有效的可迭代对象。"
+
+msgid "value is not a valid list"
+msgstr "不是有效的列表。"
+
+msgid "value is not a valid set"
+msgstr "不是有效的集合。"
+
+msgid "value is not a valid frozenset"
+msgstr "不是有效的不可变集合。"
+
+msgid "value is not a valid tuple"
+msgstr "不是有效的元组。"
+
+msgid "wrong tuple length {actual_length}, expected {expected_length}"
+msgstr "元组长度 {actual_length} 错误，应为 {expected_length}。"
+
+msgid "ensure this value has at least {limit_value} items"
+msgstr "请确保此值至少有 {limit_value} 个项。"
+
+msgid "ensure this value has at most {limit_value} items"
+msgstr "请确保此值最多有 {limit_value} 个项。"
+
+msgid "ensure this value has at least {limit_value} characters"
+msgstr "请确保此值至少有 {limit_value} 个字符。"
+
+msgid "ensure this value has at most {limit_value} characters"
+msgstr "请确保此值最多有 {limit_value} 个字符。"
+
+msgid "str type expected"
+msgstr "应为字符串类型。"
+
+msgid "string does not match regex \"{pattern}\""
+msgstr "字符串不匹配正则表达式 \"{pattern}\"。"
+
+msgid "ensure this value is greater than {limit_value}"
+msgstr "请确保此值大于 {limit_value}。"
+
+msgid "ensure this value is greater than or equal to {limit_value}"
+msgstr "请确保此值大于或等于 {limit_value}。"
+
+msgid "ensure this value is less than {limit_value}"
+msgstr "请确保此值小于 {limit_value}。"
+
+msgid "ensure this value is less than or equal to {limit_value}"
+msgstr "请确保此值小于或等于 {limit_value}。"
+
+msgid "ensure this value is a multiple of {multiple_of}"
+msgstr "请确保此值是 {multiple_of} 的倍数。"
+
+msgid "value is not a valid decimal"
+msgstr "不是有效的十进制数。"
+
+msgid "ensure that there are no more than {max_digits} digits in total"
+msgstr "请确保总位数不超过 {max_digits} 位。"
+
+msgid "ensure that there are no more than {decimal_places} decimal places"
+msgstr "请确保小数位数不超过 {decimal_places} 位。"
+
+msgid "ensure that there are no more than {whole_digits} digits before the decimal point"
+msgstr "请确保小数点前的位数不超过 {whole_digits} 位。"
+
+msgid "invalid datetime format"
+msgstr "无效的日期时间格式。"
+
+msgid "invalid date format"
+msgstr "无效的日期格式。"
+
+msgid "invalid time format"
+msgstr "无效的时间格式。"
+
+msgid "invalid duration format"
+msgstr "无效的持续时间格式。"
+
+msgid "value is not a valid hashable"
+msgstr "不是有效的可哈希值。"
+
+msgid "value is not a valid uuid"
+msgstr "不是有效的 UUID。"
+
+msgid "uuid version {required_version} expected"
+msgstr "应为 UUID 版本 {required_version}。"
+
+msgid "instance of {expected_arbitrary_type} expected"
+msgstr "应为 {expected_arbitrary_type} 的实例。"
+
+msgid "a class is expected"
+msgstr "应为类。"
+
+msgid "subclass of {expected_class} expected"
+msgstr "应为 {expected_class} 的子类。"
+
+msgid "Invalid JSON"
+msgstr "无效的 JSON。"
+
+msgid "JSON object must be str, bytes or bytearray"
+msgstr "JSON 对象必须为 str、bytes 或 bytearray 类型。"
+
+msgid "Invalid regular expression"
+msgstr "无效的正则表达式。"
+
+msgid "instance of {class_name}, tuple or dict expected"
+msgstr "应为 {class_name} 的实例、tuple 或 dict。"
+
+msgid "{value} is not callable"
+msgstr "{value} 不可调用。"
+
+msgid "value is not a valid IPv4 or IPv6 address"
+msgstr "不是有效的 IPv4 或 IPv6 地址。"
+
+msgid "value is not a valid IPv4 or IPv6 interface"
+msgstr "不是有效的 IPv4 或 IPv6 接口。"
+
+msgid "value is not a valid IPv4 or IPv6 network"
+msgstr "不是有效的 IPv4 或 IPv6 网络。"
+
+msgid "value is not a valid IPv4 address"
+msgstr "不是有效的 IPv4 地址。"
+
+msgid "value is not a valid IPv6 address"
+msgstr "不是有效的 IPv6 地址。"
+
+msgid "value is not a valid IPv4 network"
+msgstr "不是有效的 IPv4 网络。"
+
+msgid "value is not a valid IPv6 network"
+msgstr "不是有效的 IPv6 网络。"
+
+msgid "value is not a valid IPv4 interface"
+msgstr "不是有效的 IPv4 接口。"
+
+msgid "value is not a valid IPv6 interface"
+msgstr "不是有效的 IPv6 接口。"
+
+msgid "value is not a valid color: {reason}"
+msgstr "不是有效的颜色：{reason}"
+
+msgid "value is not a valid boolean"
+msgstr "不是有效的布尔值。"
+
+msgid "card number is not all digits"
+msgstr "卡号不全是数字。"
+
+msgid "card number is not luhn valid"
+msgstr "卡号未通过 Luhn 校验。"
+
+msgid "Length for a {brand} card must be {required_length}"
+msgstr "{brand} 卡的长度必须为 {required_length}。"
+
+msgid "could not parse value and unit from byte string"
+msgstr "无法从字节字符串中解析值和单位。"
+
+msgid "could not interpret byte unit: {unit}"
+msgstr "无法解释字节单位：{unit}。"
+
+# pydantic errors built via __str__ (not msg_template); translated on the
+# already-formatted string. These only match when the interpolated form exactly
+# equals the catalog entry, so they are best-effort and primarily cover the
+# static prefix.
+msgid "value is not a valid enumeration member; permitted: {permitted}"
+msgstr "不是有效的枚举成员；允许的值：{permitted}"
+
+msgid "unexpected value; permitted: {permitted}"
+msgstr "非预期的值；允许的值：{permitted}"
+
+# werkzeug HTTPException default descriptions (shown via {{ error }} in
+# errors/401.html, errors/403.html and the TemplateNotFound fallback page)
+msgid "The browser (or proxy) sent a request that this server could not understand."
+msgstr "浏览器（或代理）发送了此服务器无法理解的请求。"
+
+msgid "The server could not verify that you are authorized to access the URL requested. You either supplied the wrong credentials (e.g. a bad password), or your browser doesn't understand how to supply the credentials required."
+msgstr "服务器无法验证您是否有权访问所请求的 URL。您可能提供了错误的凭据（例如密码错误），或者您的浏览器不知道如何提供所需的凭据。"
+
+msgid "You don't have the permission to access the requested resource. It is either read-protected or not readable by the server."
+msgstr "您没有权限访问所请求的资源。该资源可能受读取保护或服务器无法读取。"
+
+msgid "The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again."
+msgstr "服务器上未找到所请求的 URL。如果您是手动输入的 URL，请检查拼写后重试。"
+
+msgid "The method is not allowed for the requested URL."
+msgstr "该请求方法不被所请求的 URL 允许。"
+
+msgid "The server does not support the media type transmitted in the request."
+msgstr "服务器不支持请求中传输的媒体类型。"
+
+msgid "The resource identified by the request is only capable of generating response entities which have content characteristics not acceptable according to the accept headers sent in the request."
+msgstr "请求所标识的资源只能生成具有根据请求中发送的 accept 头不可接受的内容特征的响应实体。"
+
+# Flask-RESTX _help_on_404 suffix (appended to 404 API responses when a close
+# URL match exists). The template is translated as a whole; {path} and
+# {suggestions} are filled in at runtime.
+msgid "You have requested this URI [{path}] but did you mean {suggestions} ?"
+msgstr "您请求了此 URI [{path}]，您的意思是 {suggestions} 吗？"
+
+# Flask-RESTX mask error prefixes (X-Fields header parse errors)
+msgid "Mask parse error: {0}"
+msgstr "掩码解析错误：{0}"
+
+msgid "Mask error: {0}"
+msgstr "掩码错误：{0}"
+
+# Flask-RESTX mask sub-messages (flask_restx.mask.ParseError / MaskError)
+msgid "Unexpected opening bracket"
+msgstr "意外的左括号"
+
+msgid "Unexpected closing bracket"
+msgstr "意外的右括号"
+
+msgid "Unexpected comma"
+msgstr "意外的逗号"
+
+msgid "Missing closing bracket"
+msgstr "缺少右括号"
+
+msgid "Mask is inconsistent with model"
+msgstr "掩码与模型不一致"
+
+# Flask-RESTX HTTPStatus.phrase fallback for non-HTTPException 500 errors
+msgid "Internal Server Error"
+msgstr "内部服务器错误"
+
