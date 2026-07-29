@@ -6111,6 +6111,11 @@ msgstr "字段不能为空值。"
 msgid "Invalid value."
 msgstr "无效的值。"
 
+# marshmallow Unmarshaller.default_schema_validation_error
+# (raised when a @validates_schema method returns False)
+msgid "Invalid data."
+msgstr "无效的数据。"
+
 msgid "Not a valid integer."
 msgstr "不是有效的整数。"
 
@@ -6518,4 +6523,26 @@ msgstr "掩码与模型不一致"
 # Flask-RESTX HTTPStatus.phrase fallback for non-HTTPException 500 errors
 msgid "Internal Server Error"
 msgstr "内部服务器错误"
+
+# Flask-RESTX schema rendering error (shown when SWAGGER_UI is enabled
+# and the Swagger schema fails to render)
+msgid "Unable to render schema"
+msgstr "无法渲染架构"
+
+# Pydantic native TypeError messages (datetime_parse.py)
+# Raised when a non-string/bytes/int/float value is passed to a
+# date/time/datetime/timedelta field. These bypass pydantic's msg_template
+# mechanism and are caught by the else branch of error_dict, which calls
+# gettext(str(exc)).
+msgid "invalid type; expected date, string, bytes, int or float"
+msgstr "无效的类型；应为 date、string、bytes、int 或 float"
+
+msgid "invalid type; expected time, string, bytes, int or float"
+msgstr "无效的类型；应为 time、string、bytes、int 或 float"
+
+msgid "invalid type; expected datetime, string, bytes, int or float"
+msgstr "无效的类型；应为 datetime、string、bytes、int 或 float"
+
+msgid "invalid type; expected timedelta, string, bytes, int or float"
+msgstr "无效的类型；应为 timedelta、string、bytes、int 或 float"
 

@@ -428,6 +428,23 @@ def _patch_flask_restx_error_messages():
 
     _RestError.__str__ = _translated_rest_str
 
+    # --- 4. Translate "Unable to render schema" in __schema__ property ---
+    # When SWAGGER_UI is enabled and schema generation fails, flask_restx
+    # returns {"error": "Unable to render schema"} as a 200 response. This
+    # doesn't go through handle_error, so we patch __schema__ to translate
+    # the error message.
+    _original_schema = _Api.__schema__.fget
+
+    def _translated_schema(self):
+        result = _original_schema(self)
+        if isinstance(result, dict) and "error" in result:
+            _err = result["error"]
+            if isinstance(_err, str):
+                result["error"] = gettext(_err)
+        return result
+
+    _Api.__schema__ = property(_translated_schema)
+
 
 _patch_flask_restx_error_messages()
 
