@@ -54,9 +54,8 @@ msgid "remote desktop session created successfully"
 msgstr "远程桌面会话创建成功"
 
 #: src/container_manager.py:417
-#, python-format
-msgid "failed to create session: %(error)s"
-msgstr "创建会话失败：%(error)s"
+msgid "failed to create session"
+msgstr "创建会话失败"
 
 #: src/container_manager.py:442
 msgid "Creation already in progress"
@@ -83,9 +82,8 @@ msgid "requested remote desktop session"
 msgstr "请求了远程桌面会话"
 
 #: src/container_manager.py:487
-#, python-format
-msgid "Failed to start background task: %(error)s"
-msgstr "启动后台任务失败：%(error)s"
+msgid "Failed to start background task"
+msgstr "启动后台任务失败"
 
 #: src/container_manager.py:521
 msgid "No active container found"
@@ -1968,9 +1966,8 @@ msgid "confirmation required: post body must contain {\"confirm\": \"DELETE\"}"
 msgstr "需要确认：POST 请求体必须包含 {\"confirm\": \"DELETE\"}"
 
 #: src/docker_host_manager.py:386
-#, python-format
-msgid "failed to find available ports after retries: %(error)s"
-msgstr "重试后未能找到可用端口：%(error)s"
+msgid "failed to find available ports after retries"
+msgstr "重试后未能找到可用端口"
 
 #: src/docker_host_manager.py:408
 #, python-format

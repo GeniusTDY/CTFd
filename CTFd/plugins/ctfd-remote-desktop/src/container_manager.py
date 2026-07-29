@@ -414,11 +414,11 @@ class ContainerManager:
 
             event_logger.log_event(
                 "session_error",
-                _("failed to create session: %(error)s", error=str(e)),
+                _("failed to create session"),
                 user_id=user_id,
                 username=username,
                 level="error",
-                metadata={"error": str(e), "traceback": traceback.format_exc()},
+                metadata={"traceback": traceback.format_exc()},
             )
 
     def create_container(
@@ -484,7 +484,7 @@ class ContainerManager:
             with self.lock:
                 self.creation_status[user_id] = {
                     "status": "failed",
-                    "error": _("Failed to start background task: %(error)s", error=str(e)),
+                    "error": _("Failed to start background task"),
                 }
             return {"success": False, "error": _("Creation failed")}
 
@@ -553,9 +553,9 @@ class ContainerManager:
 
         try:
             self.host_manager.stop_container(context_name, container_name)
-        except HostsUnavailableException:
-            # host is gone; row is already removed, best-effort cleanup
-            logger.info(f"stop_container skipped for {container_name}: context unavailable")
+        except (HostsUnavailableException, docker.errors.DockerException, paramiko.ssh_exception.SSHException) as e:
+            # host is gone or docker/ssh failed; row is already removed, best-effort cleanup
+            logger.info(f"stop_container skipped for {container_name}: {e}")
         self.orchestrator.release_slot(context_name)
 
         if log_destruction:
