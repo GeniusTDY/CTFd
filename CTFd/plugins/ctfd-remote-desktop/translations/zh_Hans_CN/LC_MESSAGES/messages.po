@@ -958,6 +958,14 @@ msgstr "取消"
 msgid "Save"
 msgstr "保存"
 
+#: src/templates/remote_desktop_dashboard.html:1280
+#: src/templates/remote_desktop_dashboard.html:1315
+#: src/templates/remote_desktop_dashboard.html:1340
+#: src/templates/remote_desktop_dashboard.html:1374
+#: src/templates/remote_desktop_dashboard.html:1562
+msgid "Save as Image"
+msgstr "保存为图片"
+
 #: src/templates/remote_desktop_config.html:375
 #: src/templates/remote_desktop_config.html:652
 #: src/templates/remote_desktop_config.html:665

@@ -1277,10 +1277,10 @@
 						return nameHtml + '<br/>' + formatDurationShort(p.value) + {{ _(" (%(n)s sessions)", n="%(n)s")|tojson }}.replace('%(n)s', user.session_count || 0);
 					}
 				},
-				toolbox: { feature: { saveAsImage: {} } },
-				grid: { left: 100, right: 20, top: 30, bottom: 40 },
-				xAxis: { type: 'value', name: {{ _("Time")|tojson }}, nameLocation: 'middle', nameGap: 25, axisLabel: { formatter: v => formatDurationShort(v) } },
-				yAxis: { type: 'category', data: users.map(u => u.username) },
+				toolbox: { feature: { saveAsImage: { title: {{ _("Save as Image")|tojson }} } } },
+			grid: { left: 100, right: 20, top: 30, bottom: 40 },
+			xAxis: { type: 'value', name: {{ _("Time")|tojson }}, nameLocation: 'middle', nameGap: 25, axisLabel: { formatter: v => formatDurationShort(v) } },
+			yAxis: { type: 'category', data: users.map(u => u.username) },
 				series: [{
 					type: 'bar',
 					data: users.map(u => u.total_duration),
@@ -1312,10 +1312,10 @@
 						return html;
 					}
 				},
-				toolbox: { feature: { saveAsImage: {} } },
-				grid: { left: 60, right: 20, top: 30, bottom: 30 },
-				xAxis: { type: 'category', data: buckets.map(b => b.range) },
-				yAxis: { type: 'value', name: {{ _("Sessions")|tojson }}, minInterval: 1 },
+				toolbox: { feature: { saveAsImage: { title: {{ _("Save as Image")|tojson }} } } },
+			grid: { left: 60, right: 20, top: 30, bottom: 30 },
+			xAxis: { type: 'category', data: buckets.map(b => b.range) },
+			yAxis: { type: 'value', name: {{ _("Sessions")|tojson }}, minInterval: 1 },
 				series: [{
 					type: 'bar',
 					data: buckets.map(b => b.count),
@@ -1337,7 +1337,7 @@
 			const reasons = data.end_reasons || [];
 			endReasonsChart.setOption({
 				tooltip: { trigger: 'item', formatter: '{b}: {c} ({d}%)' },
-				toolbox: { feature: { saveAsImage: {} } },
+			toolbox: { feature: { saveAsImage: { title: {{ _("Save as Image")|tojson }} } } },
 				series: [{
 					type: 'pie',
 					radius: ['30%', '70%'],
@@ -1371,10 +1371,10 @@
 							formatDurationShort(h.total_duration || 0) + {{ _(" total")|tojson }};
 					}
 				},
-				toolbox: { feature: { saveAsImage: {} } },
-				grid: { left: 100, right: 20, top: 30, bottom: 40 },
-				xAxis: { type: 'value', name: {{ _("Sessions")|tojson }}, nameLocation: 'middle', nameGap: 25, minInterval: 1 },
-				yAxis: { type: 'category', data: hosts.map(h => h.host) },
+				toolbox: { feature: { saveAsImage: { title: {{ _("Save as Image")|tojson }} } } },
+			grid: { left: 100, right: 20, top: 30, bottom: 40 },
+			xAxis: { type: 'value', name: {{ _("Sessions")|tojson }}, nameLocation: 'middle', nameGap: 25, minInterval: 1 },
+			yAxis: { type: 'category', data: hosts.map(h => h.host) },
 				series: [{
 					type: 'bar',
 					data: hosts.map(h => h.sessions),
@@ -1559,10 +1559,10 @@
 							{{ _("%(n)s uses", n="%(n)s")|tojson }}.replace('%(n)s', p.value) + (t.errors ? '<br/>' + {{ _("%(n)s errors", n="%(n)s")|tojson }}.replace('%(n)s', t.errors) : '');
 					}
 				},
-				toolbox: { feature: { saveAsImage: {} } },
-				grid: { left: 120, right: 20, top: 30, bottom: 40 },
-				xAxis: { type: 'value', name: {{ _("Uses")|tojson }}, nameLocation: 'middle', nameGap: 25 },
-				yAxis: { type: 'category', data: tools.map(t => t.tool) },
+				toolbox: { feature: { saveAsImage: { title: {{ _("Save as Image")|tojson }} } } },
+			grid: { left: 120, right: 20, top: 30, bottom: 40 },
+			xAxis: { type: 'value', name: {{ _("Uses")|tojson }}, nameLocation: 'middle', nameGap: 25 },
+			yAxis: { type: 'category', data: tools.map(t => t.tool) },
 				series: [{
 					type: 'bar',
 					data: tools.map(t => t.count),

@@ -125,11 +125,12 @@ class Orchestrator:
         with self.lock:
             self.health[context_name] = False
             logger.warning(f"context {context_name} marked unhealthy: {reason}")
+            translated_reason = _(reason)
             event_logger.log_event(
                 "host_unhealthy",
-                _("context %(context_name)s marked unhealthy: %(reason)s", context_name=context_name, reason=_(reason)),
+                _("context %(context_name)s marked unhealthy: %(reason)s", context_name=context_name, reason=translated_reason),
                 level="warning",
-                metadata={"context_name": context_name, "reason": reason},
+                metadata={"context_name": context_name, "reason": translated_reason},
             )
 
     def mark_healthy(self, context_name: str) -> None:
