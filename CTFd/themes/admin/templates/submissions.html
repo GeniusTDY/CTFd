@@ -15,7 +15,9 @@
 
 	<div class="row">
 		<div class="col-md-12">
+			{% with form = Forms.submissions.SubmissionSearchForm(field=field, q=q) %}
 			{% if q and field %}
+			{% set field = dict(form.field.choices).get(field, field) %}
 			<h5 class="text-muted text-center">
 				{% trans %}Searching for submissions with <strong>{{ field }}</strong> matching <strong>{{ q }}</strong>{% endtrans %}
 			</h5>
@@ -23,8 +25,6 @@
 				{% trans page=submissions.page, total=submissions.total %}Page {{ page }} of {{ total }} results{% endtrans %}
 			</h6>
 			{% endif %}
-
-			{% with form = Forms.submissions.SubmissionSearchForm(field=field, q=q) %}
 			<form method="GET" class="form-inline">
 				<div class="form-group col-md-2 pr-md-0">
 					{{ form.field(class="form-control custom-select w-100") }}

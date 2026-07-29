@@ -10,7 +10,9 @@
   <div class="container">
     <div class="row">
       <div class="col-md-12">
+        {% with form = Forms.teams.PublicTeamSearchForm(field=field, q=q) %}
         {% if q and field %}
+          {% set field = dict(form.field.choices).get(field, field) %}
           <h5 class="text-muted text-center">
             {% trans %}Searching for teams with <strong>{{ field }}</strong> matching <strong>{{ q }}</strong>{% endtrans %}
           </h5>
@@ -18,8 +20,6 @@
             {% trans page=teams.page, total=teams.total %}Page {{ page }} of {{ total }} results{% endtrans %}
           </h6>
         {% endif %}
-
-        {% with form = Forms.teams.PublicTeamSearchForm(field=field, q=q) %}
           <form method="GET" class="row justify-content-around align-items-center">
             <div class="mb-3 col-md-2">
               {{ form.field(class="form-select w-100") }}

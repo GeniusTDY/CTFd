@@ -3856,7 +3856,7 @@ msgstr "错误提交"
 msgid ""
 "Searching for submissions with <strong>%(field)s</strong> matching "
 "<strong>%(q)s</strong>"
-msgstr "正在搜索 <strong>%(field)s</strong> 匹配 <strong>%(q)s</strong> 的提交"
+msgstr "搜索%(field)s为 <strong>%(q)s</strong> 的提交"
 
 #: CTFd/themes/admin/templates/submissions.html:23
 #: CTFd/themes/admin/templates/teams/teams.html:27
@@ -3867,7 +3867,7 @@ msgstr "正在搜索 <strong>%(field)s</strong> 匹配 <strong>%(q)s</strong> �
 #: CTFd/themes/core/templates/users/users.html:17
 #, python-format
 msgid "Page %(page)s of %(total)s results"
-msgstr "共 %(total)s 条结果中的第 %(page)s 页"
+msgstr "第 %(page)s 页，共 %(total)s 条结果"
 
 #: CTFd/themes/admin/templates/submissions.html:33
 msgid "Search for matching submission"
@@ -4077,7 +4077,7 @@ msgstr "创建题目"
 msgid ""
 "Searching for challenges with <strong>%(field)s</strong> matching "
 "<strong>%(q)s</strong>"
-msgstr "正在搜索 <strong>%(field)s</strong> 匹配 <strong>%(q)s</strong> 的题目"
+msgstr "搜索%(field)s为 <strong>%(q)s</strong> 的题目"
 
 #: CTFd/themes/admin/templates/challenges/challenges.html:28
 msgid "results"
@@ -5096,7 +5096,7 @@ msgstr "时间"
 msgid ""
 "Searching for teams with <strong>%(field)s</strong> matching "
 "<strong>%(q)s</strong>"
-msgstr "正在搜索 <strong>%(field)s</strong> 匹配 <strong>%(q)s</strong> 的队伍"
+msgstr "搜索%(field)s为 <strong>%(q)s</strong> 的队伍"
 
 #: CTFd/themes/admin/templates/teams/teams.html:37
 #: CTFd/themes/core-deprecated/templates/teams/teams.html:30
@@ -5141,7 +5141,7 @@ msgstr "管理员"
 msgid ""
 "Searching for users with <strong>%(field)s</strong> matching "
 "<strong>%(q)s</strong>"
-msgstr "正在搜索 <strong>%(field)s</strong> 匹配 <strong>%(q)s</strong> 的用户"
+msgstr "搜索%(field)s为 <strong>%(q)s</strong> 的用户"
 
 #: CTFd/themes/core/assets/js/challenges.js:268
 msgid "Error submitting rating"
