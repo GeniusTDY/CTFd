@@ -21,30 +21,35 @@
 			text-align: center !important;
 		}
 		@media (max-width: 767.98px) {
-			.navbar-collapse .dropdown-menu {
-				max-height: calc(100vh - 350px);
-				overflow-y: auto;
-				-webkit-overflow-scrolling: touch;
-			}
-			/* 移动端：管理列表表格自适应列宽（刚好容纳最长内容） */
-			/* 注：#modules、#audiences 列数少，保持 width:100% 填充容器，避免空表过窄扁平 */
-			#pages,
-			#teamsboard,
-			#challenges {
-				width: auto !important;
-				max-width: none !important;
-				table-layout: auto !important;
-			}
-			#pages th, #pages td,
-			#teamsboard th, #teamsboard td,
-			#challenges th, #challenges td,
-			#modules th, #modules td,
-			#audiences th, #audiences td {
-				white-space: nowrap !important;
-				min-width: 0 !important;
-				max-width: none !important;
-			}
+		.navbar-collapse .dropdown-menu {
+			max-height: calc(100vh - 350px);
+			overflow-y: auto;
+			-webkit-overflow-scrolling: touch;
 		}
+		/* 移动端：管理列表表格自适应列宽（刚好容纳最长内容） */
+		/* 注：#modules、#audiences 列数少，保持 width:100% 填充容器，避免空表过窄扁平 */
+		#pages,
+		#teamsboard,
+		#challenges {
+			width: auto !important;
+			max-width: none !important;
+			table-layout: auto !important;
+		}
+		#pages th, #pages td,
+		#teamsboard th, #teamsboard td,
+		#challenges th, #challenges td,
+		#modules th, #modules td,
+		#audiences th, #audiences td {
+			white-space: nowrap !important;
+			min-width: 0 !important;
+			max-width: none !important;
+		}
+		/* 移动端：编辑用户表单中"已验证/隐藏/已封禁"三个 inline 复选框略微收紧间隔，
+		   避免第三个元素被挤到下一行；桌面端保持 Bootstrap 默认 1rem 间距不变。 */
+		#user-info-edit-form .form-check-inline {
+			margin-right: 0.4rem !important;
+		}
+	}
 	</style>
 	<script type="text/javascript" src="{{ url_for('views.translations_js') }}"></script>
 	<script type="text/javascript">
