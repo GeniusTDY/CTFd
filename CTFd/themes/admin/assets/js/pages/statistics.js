@@ -681,12 +681,17 @@ const applyMobilePieCenter = (key, option) => {
   return option;
 };
 
-// 移动端下「各题目解题百分比」图表标题过长会与右上角工具箱图标重叠
+// 移动端下图表标题过长会与右上角工具箱图标重叠
 // 仅在小屏幕（<=767.98px）生效：测量标题文本宽度与工具箱占据宽度，
 // 计算居中标题右边沿与工具箱左边沿的重叠量，若重叠则将标题左移该重叠量（参考 translateX(-overlap) 方案）
 // 桌面端宽度充足，不做任何改动
 const MOBILE_BP = "(max-width: 767.98px)";
-const solvePercentagesKey = "#solve-percentages-graph";
+// 需要应用移动端标题避让的图表（解题数 / 得分分布 / 各题目解题百分比）
+const mobileTitleShiftKeys = [
+  "#solves-graph",
+  "#score-distribution-graph",
+  "#solve-percentages-graph",
+];
 
 const countToolboxIcons = (feature) => {
   if (!feature) return 0;
@@ -724,9 +729,9 @@ const estimateToolboxWidth = (toolbox) => {
 };
 
 // 在 setOption 之后调用：若移动端标题与工具箱重叠，则左移标题（与参考代码 translateX(-overlap) 一致）
-// 仅作用于「各题目解题百分比」图表，不影响其它图表与桌面端
-const fixSolvePercentagesTitleOverlap = (key, chart, option) => {
-  if (key !== solvePercentagesKey) return;
+// 仅作用于 mobileTitleShiftKeys 中的图表，不影响其它图表与桌面端
+const fixMobileTitleOverlap = (key, chart, option) => {
+  if (mobileTitleShiftKeys.indexOf(key) === -1) return;
   if (!window.matchMedia(MOBILE_BP).matches) return;
   if (option.title == null || !option.title.text) return;
   const chartWidth = chart.getWidth();
@@ -765,12 +770,12 @@ const createGraphs = () => {
       .then(applyMobilePieCenter.bind(null, key))
       .then((option) => {
         chart.setOption(option);
-        fixSolvePercentagesTitleOverlap(key, chart, option);
+        fixMobileTitleOverlap(key, chart, option);
         $(window).on("resize", function () {
           if (chart != null && chart != undefined) {
             chart.resize();
             // 移动端宽度变化后重新计算标题与工具箱是否重叠
-            fixSolvePercentagesTitleOverlap(key, chart, option);
+            fixMobileTitleOverlap(key, chart, option);
           }
         });
       });
@@ -787,11 +792,11 @@ function updateGraphs() {
       .then(applyMobilePieCenter.bind(null, key))
       .then((option) => {
         chart.setOption(option);
-        fixSolvePercentagesTitleOverlap(key, chart, option);
+        fixMobileTitleOverlap(key, chart, option);
         $(window).on("resize", function () {
           if (chart != null && chart != undefined) {
             chart.resize();
-            fixSolvePercentagesTitleOverlap(key, chart, option);
+            fixMobileTitleOverlap(key, chart, option);
           }
         });
       });
