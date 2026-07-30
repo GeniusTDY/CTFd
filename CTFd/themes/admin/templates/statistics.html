@@ -208,6 +208,20 @@
     #solve-percentages-graph div[style*="overflow: auto"] {
         height: calc(100% - 90px) !important;
     }
+    /* 移动端：6 个数据视图表格的标题行（thead）及其下方分割线（th border-bottom）固定在顶部，仅数据行（tbody）上下滚动 */
+    /* 作用于环形图（提交百分比/分类细分/积分细分）与柱状图（解题数/得分分布/各题目解题百分比） */
+    #keys-pie-graph div[style*="overflow: auto"] thead th,
+    #categories-pie-graph div[style*="overflow: auto"] thead th,
+    #points-pie-graph div[style*="overflow: auto"] thead th,
+    #solves-graph div[style*="overflow: auto"] thead th,
+    #score-distribution-graph div[style*="overflow: auto"] thead th,
+    #solve-percentages-graph div[style*="overflow: auto"] thead th {
+        position: sticky !important;
+        top: 0 !important;
+        z-index: 2 !important;
+        background-color: #ffffff !important;
+        border-bottom: 1px solid #ddd !important;
+    }
 }
 </style>
 {% endblock %}
