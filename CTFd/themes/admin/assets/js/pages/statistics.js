@@ -68,17 +68,32 @@ const barDataViewOptionToContent = (opt) => {
     return text + " ".repeat(pad);
   };
 
+  // 居中 pad：两侧补空格，左侧少补一个（奇数宽度时偏向右侧，视觉居中）
+  const padBoth = (text, width) => {
+    const total = Math.max(0, width - displayWidth(text));
+    const left = Math.floor(total / 2);
+    const right = total - left;
+    return " ".repeat(left) + text + " ".repeat(right);
+  };
+
   // 列间用 4 个空格分隔（比 Tab 更稳定，Tab 制表位固定会被不同长度名称打乱）
   const SEP = "    ";
   const lines = [];
-  // 表头
-  lines.push(headers.map((h, i) => padEnd(h, colWidths[i])).join(SEP));
-  // 数据行
+  // 表头：第一列左对齐，其余列（数值列表头）居中
+  lines.push(
+    headers
+      .map((h, i) => (i === 0 ? padEnd(h, colWidths[i]) : padBoth(h, colWidths[i])))
+      .join(SEP)
+  );
+  // 数据行：第一列左对齐，其余列（数值）居中
   const rowCount = cols[0].length;
   for (let r = 0; r < rowCount; r++) {
     lines.push(
       cols
-        .map((col, ci) => padEnd(col[r] == null ? "" : String(col[r]), colWidths[ci]))
+        .map((col, ci) => {
+          const cell = col[r] == null ? "" : String(col[r]);
+          return ci === 0 ? padEnd(cell, colWidths[ci]) : padBoth(cell, colWidths[ci]);
+        })
         .join(SEP)
     );
   }
