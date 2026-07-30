@@ -1,5 +1,5 @@
 from flask import abort, render_template, request, url_for
-from flask_babel import lazy_gettext as _l
+from flask_babel import gettext as _, lazy_gettext as _l
 
 from CTFd.admin import admin
 from CTFd.models import Challenges, Flags, Solves
@@ -8,6 +8,16 @@ from CTFd.schemas.tags import TagSchema
 from CTFd.utils.decorators import admins_only
 from CTFd.utils.security.signing import serialize
 from CTFd.utils.user import get_current_team, get_current_user
+
+
+def _get_type_names():
+    """Return a mapping of challenge type id -> translated display name.
+
+    This allows templates to render translated type names server-side,
+    avoiding a flash of untranslated text (the raw type id) before
+    client-side i18n patching runs.
+    """
+    return {type_id: _(cls.name) for type_id, cls in CHALLENGE_CLASSES.items()}
 
 
 @admin.route("/admin/challenges")
@@ -32,6 +42,7 @@ def challenges_listing():
         total=total,
         q=q,
         field=field,
+        type_names=_get_type_names(),
     )
 
 
@@ -75,6 +86,7 @@ def challenges_detail(challenge_id):
         challenges=challenges,
         solves=solves,
         flags=flags,
+        type_names=_get_type_names(),
     )
 
 
@@ -121,4 +133,6 @@ def challenges_preview(challenge_id):
 @admins_only
 def challenges_new():
     types = CHALLENGE_CLASSES.keys()
-    return render_template("admin/challenges/new.html", types=types)
+    return render_template(
+        "admin/challenges/new.html", types=types, type_names=_get_type_names()
+    )

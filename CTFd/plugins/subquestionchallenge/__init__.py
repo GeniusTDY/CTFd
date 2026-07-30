@@ -109,7 +109,7 @@ class SubQuestionPartialSolve(db.Model):
 
 class SubQuestionChallengeType(BaseChallenge):
     id = "subquestionchallenge"  # Unique identifier used to register challenges
-    name = "Sub Question Challenge"  # Name of a challenge type
+    name = "Multi Question Challenge"  # Name of a challenge type (matches gettext msgid)
     templates = {  # Templates used for each aspect of challenge editing & viewing
         "create": "/plugins/subquestionchallenge/assets/create.html",
         "update": "/plugins/subquestionchallenge/assets/update.html",

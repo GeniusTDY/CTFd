@@ -72,14 +72,14 @@
 			<h1 class="text-center">{{ challenge.name }}</h1>
 			<h2 class="text-center">{{ challenge.category }}</h2>
 			<h2 class="text-center">
-				{% if challenge.type == "standard" %}
-					{% trans %}Standard{% endtrans %}
-				{% elif challenge.type == "dynamic" %}
-					{% trans %}Dynamic{% endtrans %}
-				{% else %}
-					{{ challenge.type }}
-				{% endif %}
-			</h2>
+			{% if challenge.type == "standard" %}
+				{% trans %}Standard{% endtrans %}
+			{% elif challenge.type == "dynamic" %}
+				{% trans %}Dynamic{% endtrans %}
+			{% else %}
+				{{ type_names[challenge.type] }}
+			{% endif %}
+		</h2>
 			{% set badge_state = 'badge-danger' if challenge.state == 'hidden' else 'badge-success' %}
 			<h5>
 				<span class="badge {{ badge_state }} challenge-state">

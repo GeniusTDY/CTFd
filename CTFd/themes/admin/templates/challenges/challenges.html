@@ -118,7 +118,7 @@
 							{% elif challenge.type == "dynamic" %}
 								{% trans %}Dynamic{% endtrans %}
 							{% else %}
-								{{ challenge.type }}
+								{{ type_names[challenge.type] }}
 							{% endif %}
 						</td>
 							<td class="text-center">
