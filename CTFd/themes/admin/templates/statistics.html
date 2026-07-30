@@ -128,32 +128,6 @@
 
 {% block stylesheets %}
 <style>
-/* 数据视图（dataView）内容居中显示（水平 + 垂直）
-   viewMain(overflow:auto) 改为 flex 列布局；textarea 用 margin:auto 居中
-   （margin:auto 比 justify-content:center 安全：内容超出容器时不裁剪顶部）
-   height:auto + max-height:100%：内容少时垂直居中，多时撑满并出现滚动条 */
-#solves-graph div[style*="overflow: auto"],
-#score-distribution-graph div[style*="overflow: auto"],
-#solve-percentages-graph div[style*="overflow: auto"],
-#keys-pie-graph div[style*="overflow: auto"],
-#categories-pie-graph div[style*="overflow: auto"],
-#points-pie-graph div[style*="overflow: auto"] {
-    display: flex !important;
-    flex-direction: column !important;
-}
-#solves-graph div[style*="overflow: auto"] > textarea,
-#score-distribution-graph div[style*="overflow: auto"] > textarea,
-#solve-percentages-graph div[style*="overflow: auto"] > textarea,
-#keys-pie-graph div[style*="overflow: auto"] > textarea,
-#categories-pie-graph div[style*="overflow: auto"] > textarea,
-#points-pie-graph div[style*="overflow: auto"] > textarea {
-    margin: auto !important;
-    width: 90% !important;
-    height: auto !important;
-    max-height: 100% !important;
-    text-align: center !important;
-}
-
 /* 移动端：名次/队伍/得分三列自适应列宽（刚好容纳最长内容） */
 @media (max-width: 767.98px) {
     #matrix-scoreboard .sticky-col-place,
