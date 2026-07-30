@@ -52,20 +52,22 @@ const barDataViewOptionToContent = (opt) => {
     cols.push(arr);
   });
 
-  // 计算每列最大宽度（字符数），用于 pad 对齐
+  // 计算等宽显示宽度（中文等占 2 个字符位，ASCII 占 1）
+  const displayWidth = (text) =>
+    [...text].reduce((acc, ch) => acc + (ch.charCodeAt(0) > 0x7f ? 2 : 1), 0);
+
+  // 计算每列最大宽度（表头 + 数据共同最大值），表头也按等宽位计算
   const colWidths = cols.map((col, ci) => {
-    let w = headers[ci].length;
+    let w = displayWidth(headers[ci]);
     col.forEach((v) => {
-      // 中文等宽占 2 个字符位
-      const len = [...v].reduce((acc, ch) => acc + (ch.charCodeAt(0) > 0x7f ? 2 : 1), 0);
+      const len = displayWidth(v);
       if (len > w) w = len;
     });
     return w;
   });
 
   const padEnd = (text, width) => {
-    const len = [...text].reduce((acc, ch) => acc + (ch.charCodeAt(0) > 0x7f ? 2 : 1), 0);
-    const pad = Math.max(0, width - len);
+    const pad = Math.max(0, width - displayWidth(text));
     return text + " ".repeat(pad);
   };
 
