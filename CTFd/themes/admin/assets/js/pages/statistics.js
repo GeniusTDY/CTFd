@@ -6,9 +6,49 @@ import { colorHash } from "../compat/styles";
 import Vue from "vue";
 import ScoreboardMatrix from "../components/statistics/ScoreboardMatrix.vue";
 
-// 柱状图数据视图：生成对齐的只读 HTML 表格
-// 第一列（题目/分段名）左对齐，第二列（数值）居中，表格整体水平居中
+// 通用对齐表格构建：第一列左对齐，其余列居中，表格整体水平居中
 // 用 HTML 表格而非文本 pad，避免等宽字体宽度计算误差导致的列错位
+const buildAlignedTable = (headers, cols) => {
+  const table = document.createElement("table");
+  table.style.cssText =
+    "margin:0 auto;border-collapse:collapse;font-family:Menlo,Consolas,monospace;font-size:13px;";
+
+  const thead = document.createElement("thead");
+  const trHead = document.createElement("tr");
+  headers.forEach((h, i) => {
+    const th = document.createElement("th");
+    th.textContent = h;
+    th.style.cssText =
+      "padding:6px 24px;border-bottom:1px solid #ddd;" +
+      (i === 0 ? "text-align:left;" : "text-align:center;");
+    trHead.appendChild(th);
+  });
+  thead.appendChild(trHead);
+  table.appendChild(thead);
+
+  const tbody = document.createElement("tbody");
+  const rowCount = cols[0].length;
+  for (let r = 0; r < rowCount; r++) {
+    const tr = document.createElement("tr");
+    cols.forEach((col, ci) => {
+      const td = document.createElement("td");
+      td.textContent = col[r] == null ? "" : String(col[r]);
+      td.style.cssText =
+        "padding:6px 24px;" + (ci === 0 ? "text-align:left;" : "text-align:center;");
+      tr.appendChild(td);
+    });
+    tbody.appendChild(tr);
+  }
+  table.appendChild(tbody);
+
+  // 外层容器水平居中表格，并保留一定内边距
+  const wrapper = document.createElement("div");
+  wrapper.style.cssText = "padding:10px 20px;text-align:center;";
+  wrapper.appendChild(table);
+  return wrapper;
+};
+
+// 柱状图数据视图：生成对齐的只读 HTML 表格
 // 兼容 xAxis.category（纵向柱）与 yAxis.category（横向柱）两种轴向
 const barDataViewOptionToContent = (opt) => {
   const xAxis = opt.xAxis || [];
@@ -50,45 +90,33 @@ const barDataViewOptionToContent = (opt) => {
     cols.push(arr);
   });
 
-  // 用 HTML 表格渲染，浏览器原生列对齐，避免等宽字体宽度计算误差导致的错位
-  // 表格整体水平居中（margin:auto），第一列左对齐，其余列居中
-  const table = document.createElement("table");
-  table.style.cssText =
-    "margin:0 auto;border-collapse:collapse;font-family:Menlo,Consolas,monospace;font-size:13px;";
+  return buildAlignedTable(headers, cols);
+};
 
-  const thead = document.createElement("thead");
-  const trHead = document.createElement("tr");
-  headers.forEach((h, i) => {
-    const th = document.createElement("th");
-    th.textContent = h;
-    th.style.cssText =
-      "padding:6px 24px;border-bottom:1px solid #ddd;" +
-      (i === 0 ? "text-align:left;" : "text-align:center;");
-    trHead.appendChild(th);
+// 环形图（pie）数据视图：生成对齐的只读 HTML 表格
+// pie 的 series.data 是 [{name, value, ...}] 数组，取 name 作为第一列，value 作为第二列
+const pieDataViewOptionToContent = (opt) => {
+  const series = opt.series || [];
+  // 取第一个 pie series 的数据（statistics 页环形图均只有一个 series）
+  const s = series[0] || {};
+  const data = Array.isArray(s.data) ? s.data : [];
+
+  // 第一列“名称”，第二列用 series.name 作为表头（如“提交百分比”/“分类细分”/“积分细分”）
+  const headers = ["名称", s.name || "数值"];
+  const names = [];
+  const values = [];
+  data.forEach((d) => {
+    if (d == null) return;
+    if (typeof d === "object") {
+      names.push(d.name == null ? "" : String(d.name));
+      values.push(d.value == null ? "" : String(d.value));
+    } else {
+      names.push("");
+      values.push(String(d));
+    }
   });
-  thead.appendChild(trHead);
-  table.appendChild(thead);
 
-  const tbody = document.createElement("tbody");
-  const rowCount = cols[0].length;
-  for (let r = 0; r < rowCount; r++) {
-    const tr = document.createElement("tr");
-    cols.forEach((col, ci) => {
-      const td = document.createElement("td");
-      td.textContent = col[r] == null ? "" : String(col[r]);
-      td.style.cssText =
-        "padding:6px 24px;" + (ci === 0 ? "text-align:left;" : "text-align:center;");
-      tr.appendChild(td);
-    });
-    tbody.appendChild(tr);
-  }
-  table.appendChild(tbody);
-
-  // 外层容器水平居中表格，并保留一定内边距
-  const wrapper = document.createElement("div");
-  wrapper.style.cssText = "padding:10px 20px;text-align:center;";
-  wrapper.appendChild(table);
-  return wrapper;
+  return buildAlignedTable(headers, [names, values]);
 };
 
 const graph_configs = {
@@ -229,7 +257,11 @@ const graph_configs = {
         toolbox: {
           show: true,
           feature: {
-            dataView: { show: true, readOnly: false },
+            dataView: {
+              show: true,
+              readOnly: true,
+              optionToContent: pieDataViewOptionToContent,
+            },
             saveAsImage: {},
           },
         },
@@ -322,7 +354,11 @@ const graph_configs = {
         toolbox: {
           show: true,
           feature: {
-            dataView: { show: true, readOnly: false },
+            dataView: {
+              show: true,
+              readOnly: true,
+              optionToContent: pieDataViewOptionToContent,
+            },
             saveAsImage: {},
           },
         },
@@ -434,7 +470,11 @@ const graph_configs = {
         toolbox: {
           show: true,
           feature: {
-            dataView: { show: true, readOnly: false },
+            dataView: {
+              show: true,
+              readOnly: true,
+              optionToContent: pieDataViewOptionToContent,
+            },
             saveAsImage: {},
           },
         },
