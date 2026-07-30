@@ -335,16 +335,11 @@
 })();
 </script>
 <script>
-/* 移动端：6 个数据视图覆盖层的 h4 大标题由通用的"Data View / 数据视图"替换为对应图表的大标题 */
+/* 6 个数据视图覆盖层的 h4 大标题由通用的"Data View / 数据视图"替换为对应图表的大标题 */
 /* 标题取自图表 option 的 title.text（即柱形图/环形图的大标题），按当前语言映射，不影响英文等其他语言 */
 /* ECharts 实例无法在运行时通过 API 获取（ES module），故使用与源码一致的静态映射 */
+/* 适用于所有环境（桌面端 + 移动端） */
 (function () {
-    var MOBILE_BP = 767.98;
-
-    function isMobile() {
-        return window.innerWidth <= MOBILE_BP;
-    }
-
     // 图表 ID -> 该图表 title.text 的 i18n 键值（en 源串）
     // 对应 translations/zh_Hans_CN/LC_MESSAGES/messages.po 中的 msgstr
     var TITLE_KEYS = {
@@ -385,7 +380,6 @@
     }
 
     function syncAll() {
-        if (!isMobile()) return;
         Object.keys(TITLE_KEYS).forEach(syncOverlayTitle);
     }
 
@@ -395,7 +389,7 @@
             var dom = document.querySelector(chartId);
             if (!dom) return;
             var obs = new MutationObserver(function () {
-                if (isMobile()) syncOverlayTitle(chartId);
+                syncOverlayTitle(chartId);
             });
             obs.observe(dom, { childList: true, subtree: true });
         });
