@@ -128,7 +128,8 @@
 
 {% block stylesheets %}
 <style>
-/* 数据视图 textarea 文本水平居中，顶部空出一行（黑框大小不变，textarea 高度 100% + box-sizing:border-box） */
+/* 数据视图 textarea：顶部空出一行（黑框大小不变，textarea 高度 100% + box-sizing:border-box） */
+/* 文本保持默认左对齐，使 Tab 分隔的 TSV 列对齐不被破坏 */
 #keys-pie-graph textarea,
 #categories-pie-graph textarea,
 #points-pie-graph textarea,
@@ -137,7 +138,6 @@
 #solve-percentages-graph textarea {
     box-sizing: border-box !important;
     padding-top: 1.6rem !important;
-    text-align: center !important;
 }
 /* 移动端：名次/队伍/得分三列自适应列宽（刚好容纳最长内容） */
 @media (max-width: 767.98px) {
