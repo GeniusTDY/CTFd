@@ -171,14 +171,21 @@
         margin-top: 92px !important;
     }
     /* 移动端：数据视图按钮容器上移增加底部留白，同时缩减文本区高度与按钮明显隔开 */
+    /* 作用于环形图（提交百分比/分类细分/积分细分）与柱状图（解题数/得分分布/各题目解题百分比） */
     #keys-pie-graph div[style*="bottom: 5px"],
     #categories-pie-graph div[style*="bottom: 5px"],
-    #points-pie-graph div[style*="bottom: 5px"] {
+    #points-pie-graph div[style*="bottom: 5px"],
+    #solves-graph div[style*="bottom: 5px"],
+    #score-distribution-graph div[style*="bottom: 5px"],
+    #solve-percentages-graph div[style*="bottom: 5px"] {
         bottom: 15px !important;
     }
     #keys-pie-graph div[style*="overflow: auto"],
     #categories-pie-graph div[style*="overflow: auto"],
-    #points-pie-graph div[style*="overflow: auto"] {
+    #points-pie-graph div[style*="overflow: auto"],
+    #solves-graph div[style*="overflow: auto"],
+    #score-distribution-graph div[style*="overflow: auto"],
+    #solve-percentages-graph div[style*="overflow: auto"] {
         height: calc(100% - 90px) !important;
     }
 }
