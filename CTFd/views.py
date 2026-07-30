@@ -612,4 +612,8 @@ def translations_js():
     )
     r = make_response(js, 200)
     r.mimetype = "application/javascript"
+    # 禁止浏览器缓存 translations.js，确保切换语言时立即生效
+    r.headers["Cache-Control"] = "no-cache, no-store, must-revalidate"
+    r.headers["Pragma"] = "no-cache"
+    r.headers["Expires"] = "0"
     return r

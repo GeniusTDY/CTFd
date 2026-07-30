@@ -15,6 +15,7 @@ const toolboxFeatureTitles = {
   },
   restore: { title: _("Restore") },
   saveAsImage: { title: _("Save as Image") },
+  dataView: { title: _("Data View") },
 };
 
 // 通用对齐表格构建：第一列左对齐，其余列居中，表格整体水平居中
@@ -113,7 +114,7 @@ const pieDataViewOptionToContent = (opt) => {
   const data = Array.isArray(s.data) ? s.data : [];
 
   // 第一列用 _("Name") 走 i18n（中文→“名称”，英文→“Name”），第二列用 series.name 作为表头
-  const headers = [_("Name"), s.name || "数值"];
+  const headers = [_("Name"), s.name || _("Value")];
   const names = [];
   const values = [];
   data.forEach((d) => {
@@ -169,6 +170,7 @@ const graph_configs = {
             dataView: {
               show: true,
               readOnly: true,
+              ...toolboxFeatureTitles.dataView,
               optionToContent: barDataViewOptionToContent,
               lang: [_("Data View"), _("Close"), _("Refresh")],
             },
@@ -276,6 +278,7 @@ const graph_configs = {
             dataView: {
               show: true,
               readOnly: true,
+              ...toolboxFeatureTitles.dataView,
               optionToContent: pieDataViewOptionToContent,
               lang: [_("Data View"), _("Close"), _("Refresh")],
             },
@@ -374,6 +377,7 @@ const graph_configs = {
             dataView: {
               show: true,
               readOnly: true,
+              ...toolboxFeatureTitles.dataView,
               optionToContent: pieDataViewOptionToContent,
               lang: [_("Data View"), _("Close"), _("Refresh")],
             },
@@ -491,6 +495,7 @@ const graph_configs = {
             dataView: {
               show: true,
               readOnly: true,
+              ...toolboxFeatureTitles.dataView,
               optionToContent: pieDataViewOptionToContent,
               lang: [_("Data View"), _("Close"), _("Refresh")],
             },
@@ -620,6 +625,7 @@ const graph_configs = {
             dataView: {
               show: true,
               readOnly: true,
+              ...toolboxFeatureTitles.dataView,
               optionToContent: barDataViewOptionToContent,
               lang: [_("Data View"), _("Close"), _("Refresh")],
             },
@@ -752,6 +758,7 @@ const graph_configs = {
             dataView: {
               show: true,
               readOnly: true,
+              ...toolboxFeatureTitles.dataView,
               optionToContent: barDataViewOptionToContent,
               lang: [_("Data View"), _("Close"), _("Refresh")],
             },
