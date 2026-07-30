@@ -2,24 +2,50 @@
  * Anti-flicker CSS for the Sub Question Challenge plugin (admin side).
  *
  * CTFd core renders the raw challenge id ("subquestionchallenge") verbatim
- * in the challenge-type card list on /admin/challenges/new. The plugin's
- * patch-labels.js replaces it with the translated label ("多单元" in
- * Simplified Chinese) client-side. Because that script is loaded with
- * `defer`, the browser can paint the raw id before the script runs,
- * causing a visible flash of untranslated text.
+ * for unknown challenge types in three admin locations:
+ *   1. /admin/challenges/new  - challenge-type card list (server-rendered)
+ *   2. /admin/challenges      - challenges table "Type" column (server-rendered)
+ *   3. /admin/challenges/<id> - challenge detail "Type" heading (server-rendered)
  *
- * This stylesheet is registered via register_admin_stylesheet() and loaded
- * in <head> (render-blocking), so it takes effect before the first paint.
- * It hides the raw label until patch-labels.js adds the
- * `sqc-labels-patched` class to <body>, at which point the label is
+ * The plugin's patch-labels.js replaces the raw id with the translated
+ * label ("多单元" in Simplified Chinese) client-side. Because that script
+ * is loaded with `defer`, the browser can paint the raw id before the
+ * script runs, causing a visible flash of untranslated text (FOUC).
+ *
+ * This stylesheet is registered via register_admin_plugin_stylesheet()
+ * and loaded in <head> (render-blocking), so it takes effect before the
+ * first paint. It hides the raw id until patch-labels.js adds the
+ * `sqc-labels-patched` class to <body>, at which point the elements are
  * revealed with the translated text already in place.
  *
- * Only the card whose radio input has value="subquestionchallenge" is
- * affected; "Standard" and "Dynamic" cards are untouched.
+ * Scoping:
+ *  - Location 1 (card list) is precisely scoped via the radio input value.
+ *  - Locations 2 & 3 (table cell, detail h2) cannot be precisely scoped
+ *    in pure CSS without a distinguishing attribute on the Sub Question
+ *    rows/headings, so they are tagged by patch-labels.js with the
+ *    `sqc-type-cell` / `sqc-type-heading` class as soon as the DOM is
+ *    available. Because the script runs on DOMContentLoaded (deferred),
+ *    there is a small theoretical window for a flash on those two
+ *    locations, but the MutationObserver in patch-labels.js patches them
+ *    on the very first mutation tick, before the user can perceive the
+ *    raw id. Only Sub Question elements are tagged, so Standard/Dynamic
+ *    rows and headings are never hidden.
  */
+
+/* 1. Card list on /admin/challenges/new — precisely scoped. */
 body:not(.sqc-labels-patched)
   #create-chals-select
   label:has(input[value="subquestionchallenge"])
   .form-check-label {
+  visibility: hidden;
+}
+
+/* 2. Challenges table "Type" cells tagged by patch-labels.js. */
+body:not(.sqc-labels-patched) #challenges tbody td.sqc-type-cell {
+  visibility: hidden;
+}
+
+/* 3. Challenge detail "Type" heading tagged by patch-labels.js. */
+body:not(.sqc-labels-patched) h2.sqc-type-heading {
   visibility: hidden;
 }
