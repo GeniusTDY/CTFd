@@ -462,6 +462,8 @@ def register():
 @ratelimit(method="POST", limit=10, interval=5)
 def login():
     errors = get_errors()
+    if current_user.authed():
+        return redirect(url_for("challenges.listing"))
     if request.method == "POST":
         name = request.form["name"]
 
