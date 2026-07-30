@@ -128,18 +128,7 @@
 
 {% block stylesheets %}
 <style>
-/* 数据视图内容居中（水平 + 垂直），作用于全部 6 个图表的数据视图弹窗 */
-/* viewMain（overflow:auto 的 div）设为 flex 容器，textarea 高度收为 auto 以便垂直居中 */
-#keys-pie-graph div[style*="overflow: auto"],
-#categories-pie-graph div[style*="overflow: auto"],
-#points-pie-graph div[style*="overflow: auto"],
-#solves-graph div[style*="overflow: auto"],
-#score-distribution-graph div[style*="overflow: auto"],
-#solve-percentages-graph div[style*="overflow: auto"] {
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-}
+/* 数据视图 textarea 文本水平居中（黑框大小保持原样 width:100% height:100% 不变） */
 #keys-pie-graph textarea,
 #categories-pie-graph textarea,
 #points-pie-graph textarea,
@@ -285,51 +274,6 @@
         document.addEventListener('DOMContentLoaded', setup);
     } else {
         setup();
-    }
-})();
-
-/* 数据视图 textarea 自动撑高至内容高度，配合 CSS flex 实现内容垂直居中 */
-(function () {
-    var selectors = [
-        "#keys-pie-graph",
-        "#categories-pie-graph",
-        "#points-pie-graph",
-        "#solves-graph",
-        "#score-distribution-graph",
-        "#solve-percentages-graph",
-    ];
-
-    function sizeTextarea(ta) {
-        ta.style.height = "auto";
-        ta.style.height = ta.scrollHeight + "px";
-    }
-
-    function setupDataViewCentering() {
-        selectors.forEach(function (sel) {
-            var container = document.querySelector(sel);
-            if (!container) return;
-            // 容器内已存在的 textarea（防御性处理）
-            container.querySelectorAll("textarea").forEach(sizeTextarea);
-            var obs = new MutationObserver(function (mutations) {
-                mutations.forEach(function (m) {
-                    m.addedNodes.forEach(function (node) {
-                        if (node.nodeType !== 1) return;
-                        var ta =
-                            node.tagName === "TEXTAREA"
-                                ? node
-                                : node.querySelector && node.querySelector("textarea");
-                        if (ta) sizeTextarea(ta);
-                    });
-                });
-            });
-            obs.observe(container, { childList: true, subtree: true });
-        });
-    }
-
-    if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', setupDataViewCentering);
-    } else {
-        setupDataViewCentering();
     }
 })();
 </script>
