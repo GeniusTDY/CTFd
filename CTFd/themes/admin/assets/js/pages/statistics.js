@@ -86,6 +86,7 @@ const graph_configs = {
         ],
         series: [
           {
+            name: _("Solve Counts"),
             itemStyle: { normal: { color: "#1f76b4" } },
             data: counts,
             type: "bar",
@@ -527,6 +528,7 @@ const graph_configs = {
         ],
         series: [
           {
+            name: _("Solve Percentages per Challenge"),
             itemStyle: { normal: { color: "#1f76b4" } },
             data: percents,
             type: "bar",
@@ -642,6 +644,7 @@ const graph_configs = {
         ],
         series: [
           {
+            name: _("Score Distribution"),
             itemStyle: { normal: { color: "#1f76b4" } },
             data: sizes,
             type: "bar",
