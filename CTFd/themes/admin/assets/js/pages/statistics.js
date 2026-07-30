@@ -7,16 +7,15 @@ import Vue from "vue";
 import ScoreboardMatrix from "../components/statistics/ScoreboardMatrix.vue";
 
 // 柱状图数据视图：生成对齐的只读 <pre> 文本
-// 解决 ECharts 默认 TSV 表头单空格占位符与数据行题目名长度不匹配导致的 Tab 列错位问题
-// 同时兼容 xAxis.category（纵向柱）与 yAxis.category（横向柱）两种轴向
+// 第一列（题目/分段名）左对齐，第二列（数值）左对齐，列间用空格 pad 到统一宽度保证不错位
+// 兼容 xAxis.category（纵向柱）与 yAxis.category（横向柱）两种轴向
 const barDataViewOptionToContent = (opt) => {
   const xAxis = opt.xAxis || [];
   const yAxis = opt.yAxis || [];
   const series = opt.series || [];
 
-  // 找到 category 轴的数据（题目名/分段名），其 name 作为第一列表头
+  // 找到 category 轴的数据（题目名/分段名）
   let categories = [];
-  let categoryAxisName = "";
   const xIsCategory =
     Array.isArray(xAxis) &&
     xAxis.length > 0 &&
@@ -31,14 +30,12 @@ const barDataViewOptionToContent = (opt) => {
 
   if (xIsCategory) {
     categories = xAxis[0].data.slice();
-    categoryAxisName = (xAxis[0] && xAxis[0].name) || "";
   } else if (yIsCategory) {
     categories = yAxis[0].data.slice();
-    categoryAxisName = (yAxis[0] && yAxis[0].name) || "";
   }
 
-  // 第一列表头用 category 轴名（如 Challenge Name / Score Bracket），避免空格占位导致标题偏移
-  const headers = [categoryAxisName || " "].concat(series.map((s) => s.name || " "));
+  // 第一列表头统一用“题目名称”（直观，避免英文 axis name 过长）
+  const headers = ["题目名称"].concat(series.map((s) => s.name || " "));
   // 每个 series 的数据：横向柱时 data 顺序与 categories 一致；纵向柱时也一致
   const cols = [categories];
   series.forEach((s) => {
@@ -52,11 +49,11 @@ const barDataViewOptionToContent = (opt) => {
     cols.push(arr);
   });
 
-  // 计算等宽显示宽度（中文等占 2 个字符位，ASCII 占 1）
+  // 等宽显示宽度（中文等占 2 字符位，ASCII 占 1）
   const displayWidth = (text) =>
     [...text].reduce((acc, ch) => acc + (ch.charCodeAt(0) > 0x7f ? 2 : 1), 0);
 
-  // 计算每列最大宽度（表头 + 数据共同最大值），表头也按等宽位计算
+  // 每列宽度取表头 + 数据共同最大值，列内左对齐（padEnd 补空格）
   const colWidths = cols.map((col, ci) => {
     let w = displayWidth(headers[ci]);
     col.forEach((v) => {
@@ -71,14 +68,18 @@ const barDataViewOptionToContent = (opt) => {
     return text + " ".repeat(pad);
   };
 
+  // 列间用 4 个空格分隔（比 Tab 更稳定，Tab 制表位固定会被不同长度名称打乱）
+  const SEP = "    ";
   const lines = [];
   // 表头
-  lines.push(headers.map((h, i) => padEnd(h, colWidths[i])).join("  "));
+  lines.push(headers.map((h, i) => padEnd(h, colWidths[i])).join(SEP));
   // 数据行
   const rowCount = cols[0].length;
   for (let r = 0; r < rowCount; r++) {
     lines.push(
-      cols.map((col, ci) => padEnd(col[r] == null ? "" : String(col[r]), colWidths[ci])).join("  ")
+      cols
+        .map((col, ci) => padEnd(col[r] == null ? "" : String(col[r]), colWidths[ci]))
+        .join(SEP)
     );
   }
 
