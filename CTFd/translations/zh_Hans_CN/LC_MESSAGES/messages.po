@@ -3944,6 +3944,30 @@ msgstr "题目"
 msgid "Data View"
 msgstr "数据视图"
 
+#: CTFd/themes/admin/assets/js/pages/statistics.js
+msgid "Mark"
+msgstr "辅助线"
+
+#: CTFd/themes/admin/assets/js/pages/statistics.js
+msgid "Undo"
+msgstr "取消辅助线"
+
+#: CTFd/themes/admin/assets/js/pages/statistics.js
+msgid "Switch to Line Chart"
+msgstr "切换为折线图"
+
+#: CTFd/themes/admin/assets/js/pages/statistics.js
+msgid "Switch to Bar Chart"
+msgstr "切换为柱状图"
+
+#: CTFd/themes/admin/assets/js/pages/statistics.js
+msgid "Restore"
+msgstr "还原"
+
+#: CTFd/themes/admin/assets/js/pages/statistics.js
+msgid "Save as Image"
+msgstr "保存为图片"
+
 #: CTFd/themes/core/templates/setup.html:305
 #: CTFd/themes/core/templates/setup.html:326
 msgid "Date"

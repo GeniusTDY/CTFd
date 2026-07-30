@@ -6,6 +6,17 @@ import { colorHash } from "../compat/styles";
 import Vue from "vue";
 import ScoreboardMatrix from "../components/statistics/ScoreboardMatrix.vue";
 
+// toolbox 工具栏各 feature 的 title 配置（走 i18n）
+// 中文环境显示中文 tooltip，英文环境 _() fallback 返回原英文，不影响英文页面
+const toolboxFeatureTitles = {
+  mark: { title: { mark: _("Mark"), undo: _("Undo") } },
+  magicType: {
+    title: { line: _("Switch to Line Chart"), bar: _("Switch to Bar Chart") },
+  },
+  restore: { title: _("Restore") },
+  saveAsImage: { title: _("Save as Image") },
+};
+
 // 通用对齐表格构建：第一列左对齐，其余列居中，表格整体水平居中
 // 用 HTML 表格而非文本 pad，避免等宽字体宽度计算误差导致的列错位
 const buildAlignedTable = (headers, cols) => {
@@ -154,16 +165,20 @@ const graph_configs = {
         toolbox: {
           show: true,
           feature: {
-            mark: { show: true },
+            mark: { show: true, ...toolboxFeatureTitles.mark },
             dataView: {
               show: true,
               readOnly: true,
               optionToContent: barDataViewOptionToContent,
               lang: [_("Data View"), _("Close"), _("Refresh")],
             },
-            magicType: { show: true, type: ["line", "bar"] },
-            restore: { show: true },
-            saveAsImage: { show: true },
+            magicType: {
+              show: true,
+              type: ["line", "bar"],
+              ...toolboxFeatureTitles.magicType,
+            },
+            restore: { show: true, ...toolboxFeatureTitles.restore },
+            saveAsImage: { show: true, ...toolboxFeatureTitles.saveAsImage },
           },
         },
         xAxis: {
@@ -264,7 +279,7 @@ const graph_configs = {
               optionToContent: pieDataViewOptionToContent,
               lang: [_("Data View"), _("Close"), _("Refresh")],
             },
-            saveAsImage: {},
+            saveAsImage: { ...toolboxFeatureTitles.saveAsImage },
           },
         },
         legend: {
@@ -362,7 +377,7 @@ const graph_configs = {
               optionToContent: pieDataViewOptionToContent,
               lang: [_("Data View"), _("Close"), _("Refresh")],
             },
-            saveAsImage: {},
+            saveAsImage: { ...toolboxFeatureTitles.saveAsImage },
           },
         },
         legend: {
@@ -479,7 +494,7 @@ const graph_configs = {
               optionToContent: pieDataViewOptionToContent,
               lang: [_("Data View"), _("Close"), _("Refresh")],
             },
-            saveAsImage: {},
+            saveAsImage: { ...toolboxFeatureTitles.saveAsImage },
           },
         },
         legend: {
@@ -601,16 +616,20 @@ const graph_configs = {
         toolbox: {
           show: true,
           feature: {
-            mark: { show: true },
+            mark: { show: true, ...toolboxFeatureTitles.mark },
             dataView: {
               show: true,
               readOnly: true,
               optionToContent: barDataViewOptionToContent,
               lang: [_("Data View"), _("Close"), _("Refresh")],
             },
-            magicType: { show: true, type: ["line", "bar"] },
-            restore: { show: true },
-            saveAsImage: { show: true },
+            magicType: {
+              show: true,
+              type: ["line", "bar"],
+              ...toolboxFeatureTitles.magicType,
+            },
+            restore: { show: true, ...toolboxFeatureTitles.restore },
+            saveAsImage: { show: true, ...toolboxFeatureTitles.saveAsImage },
           },
         },
         xAxis: {
@@ -729,16 +748,20 @@ const graph_configs = {
         toolbox: {
           show: true,
           feature: {
-            mark: { show: true },
+            mark: { show: true, ...toolboxFeatureTitles.mark },
             dataView: {
               show: true,
               readOnly: true,
               optionToContent: barDataViewOptionToContent,
               lang: [_("Data View"), _("Close"), _("Refresh")],
             },
-            magicType: { show: true, type: ["line", "bar"] },
-            restore: { show: true },
-            saveAsImage: { show: true },
+            magicType: {
+              show: true,
+              type: ["line", "bar"],
+              ...toolboxFeatureTitles.magicType,
+            },
+            restore: { show: true, ...toolboxFeatureTitles.restore },
+            saveAsImage: { show: true, ...toolboxFeatureTitles.saveAsImage },
           },
         },
         xAxis: {
