@@ -208,41 +208,43 @@
     #solve-percentages-graph div[style*="overflow: auto"] {
         height: calc(100% - 90px) !important;
     }
-    /* 移动端：消除滚动容器内层包裹 div 的 padding-top（ECharts 内联 padding:10px 20px），使标题行触顶即固定 */
-    /* 否则标题行会先随内容上移 10px 才到达 sticky 阈值 top:0，造成"略微浮动"，分割线随之一起浮动 */
-    #keys-pie-graph div[style*="overflow: auto"] > div,
-    #categories-pie-graph div[style*="overflow: auto"] > div,
-    #points-pie-graph div[style*="overflow: auto"] > div,
-    #solves-graph div[style*="overflow: auto"] > div,
-    #score-distribution-graph div[style*="overflow: auto"] > div,
-    #solve-percentages-graph div[style*="overflow: auto"] > div {
-        padding-top: 0 !important;
-    }
-    /* 移动端：6 个数据视图表格的标题行（thead）及其下方分割线（th border-bottom）固定在顶部，仅数据行（tbody）上下滚动 */
-    /* 作用于环形图（提交百分比/分类细分/积分细分）与柱状图（解题数/得分分布/各题目解题百分比） */
-    /* border-collapse 改为 separate，使 th 的 border-bottom 不再与下方 td 共享，sticky 时分割线可靠地随标题行固定 */
-    #keys-pie-graph div[style*="overflow: auto"] table,
-    #categories-pie-graph div[style*="overflow: auto"] table,
-    #points-pie-graph div[style*="overflow: auto"] table,
-    #solves-graph div[style*="overflow: auto"] table,
-    #score-distribution-graph div[style*="overflow: auto"] table,
-    #solve-percentages-graph div[style*="overflow: auto"] table {
-        border-collapse: separate !important;
-        border-spacing: 0 !important;
-    }
-    #keys-pie-graph div[style*="overflow: auto"] thead th,
-    #categories-pie-graph div[style*="overflow: auto"] thead th,
-    #points-pie-graph div[style*="overflow: auto"] thead th,
-    #solves-graph div[style*="overflow: auto"] thead th,
-    #score-distribution-graph div[style*="overflow: auto"] thead th,
-    #solve-percentages-graph div[style*="overflow: auto"] thead th {
-        position: sticky !important;
-        top: 0 !important;
-        z-index: 2 !important;
-        background-color: #ffffff !important;
-        border-bottom: 1px solid #ddd !important;
-    }
 }
+/* 数据视图（6 个图表）：标题行触顶即固定，分割线随标题行可靠固定 —— 适用于所有环境（桌面端 + 移动端） */
+/* 作用于环形图（提交百分比/分类细分/积分细分）与柱状图（解题数/得分分布/各题目解题百分比） */
+/* 消除滚动容器内层包裹 div 的 padding-top（ECharts 内联 padding:10px 20px） */
+/* 否则标题行会先随内容上移 10px 才到达 sticky 阈值 top:0，造成"略微浮动"，分割线随之一起浮动 */
+#keys-pie-graph div[style*="overflow: auto"] > div,
+#categories-pie-graph div[style*="overflow: auto"] > div,
+#points-pie-graph div[style*="overflow: auto"] > div,
+#solves-graph div[style*="overflow: auto"] > div,
+#score-distribution-graph div[style*="overflow: auto"] > div,
+#solve-percentages-graph div[style*="overflow: auto"] > div {
+    padding-top: 0 !important;
+}
+/* border-collapse 改为 separate，使 th 的 border-bottom 不再与下方 td 共享，sticky 时分割线可靠地随标题行固定 */
+#keys-pie-graph div[style*="overflow: auto"] table,
+#categories-pie-graph div[style*="overflow: auto"] table,
+#points-pie-graph div[style*="overflow: auto"] table,
+#solves-graph div[style*="overflow: auto"] table,
+#score-distribution-graph div[style*="overflow: auto"] table,
+#solve-percentages-graph div[style*="overflow: auto"] table {
+    border-collapse: separate !important;
+    border-spacing: 0 !important;
+}
+/* 标题行（thead）固定在滚动容器顶部，仅数据行（tbody）上下滚动 */
+#keys-pie-graph div[style*="overflow: auto"] thead th,
+#categories-pie-graph div[style*="overflow: auto"] thead th,
+#points-pie-graph div[style*="overflow: auto"] thead th,
+#solves-graph div[style*="overflow: auto"] thead th,
+#score-distribution-graph div[style*="overflow: auto"] thead th,
+#solve-percentages-graph div[style*="overflow: auto"] thead th {
+    position: sticky !important;
+    top: 0 !important;
+    z-index: 2 !important;
+    background-color: #ffffff !important;
+    border-bottom: 1px solid #ddd !important;
+}
+
 </style>
 {% endblock %}
 
