@@ -871,6 +871,15 @@ const createGraphs = () => {
       .then((option) => {
         chart.setOption(option);
         fixMobileTitleOverlap(key, chart, option);
+        // 只读柱状图数据视图（含 optionToContent）无刷新按钮，手动注入一个
+        const toolbox = option.toolbox;
+        const dv =
+          toolbox &&
+          toolbox.feature &&
+          toolbox.feature.dataView;
+        if (dv && dv.optionToContent && dv.readOnly) {
+          attachDataViewRefreshButton(key, chart, cfg);
+        }
         $(window).on("resize", function () {
           if (chart != null && chart != undefined) {
             chart.resize();
@@ -880,6 +889,72 @@ const createGraphs = () => {
         });
       });
   }
+};
+
+// 为只读数据视图（readOnly:true 的柱状图）手动注入“刷新”按钮
+// ECharts 在只读模式下不渲染刷新按钮，这里监听数据视图弹窗的按钮容器插入，
+// 在“关闭”按钮前加一个“刷新”按钮，点击后重新拉取数据并 setOption 刷新图表，然后关闭弹窗
+const attachDataViewRefreshButton = (key, chart, cfg) => {
+  const container = document.querySelector(key);
+  if (!container) return;
+
+  const refresh = () => {
+    // 移除数据视图弹窗 DOM（ECharts 在只读模式下未保存 _dom 引用，直接移除根节点）
+    container
+      .querySelectorAll('div[style*="position: absolute"][style*="top: 0"][style*="bottom: 0"]')
+      .forEach((el) => el.remove());
+    // 重新拉取数据并刷新图表
+    cfg
+      .data()
+      .then(cfg.format)
+      .then(applyMobilePieCenter.bind(null, key))
+      .then((option) => {
+        chart.setOption(option);
+        fixMobileTitleOverlap(key, chart, option);
+      });
+  };
+
+  const inject = (buttonContainer) => {
+    if (buttonContainer.dataset.refreshInjected === "1") return;
+    buttonContainer.dataset.refreshInjected = "1";
+    const closeBtn = buttonContainer.querySelector("div");
+    const refreshBtn = document.createElement("div");
+    refreshBtn.innerHTML = _("Refresh");
+    // 复用 ECharts 关闭按钮的样式（float:right 等）
+    if (closeBtn) {
+      refreshBtn.style.cssText = closeBtn.style.cssText;
+      refreshBtn.style.marginRight = "20px";
+      refreshBtn.style.cursor = "pointer";
+    } else {
+      refreshBtn.style.cssText =
+        "float:right;margin-right:20px;border:none;cursor:pointer;padding:2px 5px;font-size:12px;border-radius:3px;background-color:#5bc0de;color:#fff;";
+    }
+    refreshBtn.addEventListener("click", refresh);
+    // 插入到关闭按钮前
+    if (closeBtn) {
+      buttonContainer.insertBefore(refreshBtn, closeBtn);
+    } else {
+      buttonContainer.appendChild(refreshBtn);
+    }
+  };
+
+  const obs = new MutationObserver((mutations) => {
+    mutations.forEach((m) => {
+      m.addedNodes.forEach((node) => {
+        if (node.nodeType !== 1) return;
+        // 数据视图的按钮容器：position:absolute;bottom:5px（移动端被 CSS 改为 15px）
+        const target =
+          node.style && node.style.cssText &&
+          (node.style.cssText.indexOf("bottom: 5px") >= 0 ||
+            node.style.cssText.indexOf("bottom:15px") >= 0)
+            ? node
+            : node.querySelector &&
+              node.querySelector('div[style*="bottom: 5px"], div[style*="bottom:15px"]');
+        if (target) inject(target);
+      });
+    });
+  });
+  obs.observe(container, { childList: true, subtree: true });
 };
 
 function updateGraphs() {
