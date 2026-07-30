@@ -75,8 +75,8 @@ const barDataViewOptionToContent = (opt) => {
     categories = yAxis[0].data.slice();
   }
 
-  // 第一列表头统一用“题目名称”（直观，避免英文 axis name 过长）
-  const headers = ["题目名称"].concat(series.map((s) => s.name || " "));
+  // 第一列表头用 _("Challenge Name") 走 i18n（中文→“题目名称”，英文→“Challenge Name”）
+  const headers = [_("Challenge Name")].concat(series.map((s) => s.name || " "));
   // 每个 series 的数据：横向柱时 data 顺序与 categories 一致；纵向柱时也一致
   const cols = [categories];
   series.forEach((s) => {
@@ -101,8 +101,8 @@ const pieDataViewOptionToContent = (opt) => {
   const s = series[0] || {};
   const data = Array.isArray(s.data) ? s.data : [];
 
-  // 第一列“名称”，第二列用 series.name 作为表头（如“提交百分比”/“分类细分”/“积分细分”）
-  const headers = ["名称", s.name || "数值"];
+  // 第一列用 _("Name") 走 i18n（中文→“名称”，英文→“Name”），第二列用 series.name 作为表头
+  const headers = [_("Name"), s.name || "数值"];
   const names = [];
   const values = [];
   data.forEach((d) => {
@@ -159,6 +159,7 @@ const graph_configs = {
               show: true,
               readOnly: true,
               optionToContent: barDataViewOptionToContent,
+              lang: [_("Data View"), _("Close"), _("Refresh")],
             },
             magicType: { show: true, type: ["line", "bar"] },
             restore: { show: true },
@@ -261,6 +262,7 @@ const graph_configs = {
               show: true,
               readOnly: true,
               optionToContent: pieDataViewOptionToContent,
+              lang: [_("Data View"), _("Close"), _("Refresh")],
             },
             saveAsImage: {},
           },
@@ -358,6 +360,7 @@ const graph_configs = {
               show: true,
               readOnly: true,
               optionToContent: pieDataViewOptionToContent,
+              lang: [_("Data View"), _("Close"), _("Refresh")],
             },
             saveAsImage: {},
           },
@@ -474,6 +477,7 @@ const graph_configs = {
               show: true,
               readOnly: true,
               optionToContent: pieDataViewOptionToContent,
+              lang: [_("Data View"), _("Close"), _("Refresh")],
             },
             saveAsImage: {},
           },
@@ -602,6 +606,7 @@ const graph_configs = {
               show: true,
               readOnly: true,
               optionToContent: barDataViewOptionToContent,
+              lang: [_("Data View"), _("Close"), _("Refresh")],
             },
             magicType: { show: true, type: ["line", "bar"] },
             restore: { show: true },
@@ -729,6 +734,7 @@ const graph_configs = {
               show: true,
               readOnly: true,
               optionToContent: barDataViewOptionToContent,
+              lang: [_("Data View"), _("Close"), _("Refresh")],
             },
             magicType: { show: true, type: ["line", "bar"] },
             restore: { show: true },

@@ -3940,6 +3940,10 @@ msgstr "题目"
 #: CTFd/themes/core-deprecated/templates/setup.html:241
 #: CTFd/themes/core/templates/challenge.html:295
 #: CTFd/themes/core/templates/challenge.html:324
+#: CTFd/themes/admin/assets/js/pages/statistics.js
+msgid "Data View"
+msgstr "数据视图"
+
 #: CTFd/themes/core/templates/setup.html:305
 #: CTFd/themes/core/templates/setup.html:326
 msgid "Date"
