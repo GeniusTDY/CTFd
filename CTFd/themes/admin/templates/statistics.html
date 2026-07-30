@@ -208,6 +208,16 @@
     #solve-percentages-graph div[style*="overflow: auto"] {
         height: calc(100% - 90px) !important;
     }
+    /* 移动端：6 个数据视图表头强制单行显示（如"各题目解题百分比"在窄屏换行） */
+    /* 不换行后若表格超出容器宽度，由外层 overflow:auto 容器提供横向滚动 */
+    #keys-pie-graph div[style*="overflow: auto"] thead th,
+    #categories-pie-graph div[style*="overflow: auto"] thead th,
+    #points-pie-graph div[style*="overflow: auto"] thead th,
+    #solves-graph div[style*="overflow: auto"] thead th,
+    #score-distribution-graph div[style*="overflow: auto"] thead th,
+    #solve-percentages-graph div[style*="overflow: auto"] thead th {
+        white-space: nowrap !important;
+    }
 }
 /* 数据视图（6 个图表）：标题行触顶即固定，分割线随标题行可靠固定 —— 适用于所有环境（桌面端 + 移动端） */
 /* 作用于环形图（提交百分比/分类细分/积分细分）与柱状图（解题数/得分分布/各题目解题百分比） */
@@ -232,8 +242,6 @@
     border-spacing: 0 !important;
 }
 /* 标题行（thead）固定在滚动容器顶部，仅数据行（tbody）上下滚动 */
-/* white-space: nowrap 防止标题文字换行（如"各题目解题百分比"在移动端第二列换行） */
-/* 不换行后若表格超出容器宽度，由外层 overflow:auto 容器提供横向滚动 */
 #keys-pie-graph div[style*="overflow: auto"] thead th,
 #categories-pie-graph div[style*="overflow: auto"] thead th,
 #points-pie-graph div[style*="overflow: auto"] thead th,
@@ -245,7 +253,6 @@
     z-index: 2 !important;
     background-color: #ffffff !important;
     border-bottom: 1px solid #ddd !important;
-    white-space: nowrap !important;
 }
 
 </style>
