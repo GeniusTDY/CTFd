@@ -6,6 +6,87 @@ import { colorHash } from "../compat/styles";
 import Vue from "vue";
 import ScoreboardMatrix from "../components/statistics/ScoreboardMatrix.vue";
 
+// 柱状图数据视图：生成对齐的只读 <pre> 文本
+// 解决 ECharts 默认 TSV 表头单空格占位符与数据行题目名长度不匹配导致的 Tab 列错位问题
+// 同时兼容 xAxis.category（纵向柱）与 yAxis.category（横向柱）两种轴向
+const barDataViewOptionToContent = (opt) => {
+  const xAxis = opt.xAxis || [];
+  const yAxis = opt.yAxis || [];
+  const series = opt.series || [];
+
+  // 找到 category 轴的数据（题目名/分段名）和对应的值轴
+  let categories = [];
+  let valueAxisName = "";
+  const xIsCategory =
+    Array.isArray(xAxis) &&
+    xAxis.length > 0 &&
+    xAxis[0].type === "category" &&
+    Array.isArray(xAxis[0].data);
+  const yIsCategory =
+    !xIsCategory &&
+    Array.isArray(yAxis) &&
+    yAxis.length > 0 &&
+    yAxis[0].type === "category" &&
+    Array.isArray(yAxis[0].data);
+
+  if (xIsCategory) {
+    categories = xAxis[0].data.slice();
+    valueAxisName = (yAxis[0] && yAxis[0].name) || "";
+  } else if (yIsCategory) {
+    categories = yAxis[0].data.slice();
+    valueAxisName = (xAxis[0] && xAxis[0].name) || "";
+  }
+
+  // series 的 name 作为数值列表头
+  const headers = [" "].concat(series.map((s) => s.name || " "));
+  // 每个 series 的数据：横向柱时 data 顺序与 categories 一致；纵向柱时也一致
+  const cols = [categories];
+  series.forEach((s) => {
+    const arr = (s.data || []).map((d) => {
+      if (d == null) return "";
+      if (typeof d === "object") {
+        return d.value == null ? "" : String(d.value);
+      }
+      return String(d);
+    });
+    cols.push(arr);
+  });
+
+  // 计算每列最大宽度（字符数），用于 pad 对齐
+  const colWidths = cols.map((col, ci) => {
+    let w = headers[ci].length;
+    col.forEach((v) => {
+      // 中文等宽占 2 个字符位
+      const len = [...v].reduce((acc, ch) => acc + (ch.charCodeAt(0) > 0x7f ? 2 : 1), 0);
+      if (len > w) w = len;
+    });
+    return w;
+  });
+
+  const padEnd = (text, width) => {
+    const len = [...text].reduce((acc, ch) => acc + (ch.charCodeAt(0) > 0x7f ? 2 : 1), 0);
+    const pad = Math.max(0, width - len);
+    return text + " ".repeat(pad);
+  };
+
+  const lines = [];
+  // 表头
+  lines.push(headers.map((h, i) => padEnd(h, colWidths[i])).join("  "));
+  // 数据行
+  const rowCount = cols[0].length;
+  for (let r = 0; r < rowCount; r++) {
+    lines.push(
+      cols.map((col, ci) => padEnd(col[r] == null ? "" : String(col[r]), colWidths[ci])).join("  ")
+    );
+  }
+
+  const pre = document.createElement("pre");
+  pre.style.cssText =
+    "margin:0;padding:10px 20px;font-family:Menlo,Consolas,monospace;font-size:13px;line-height:1.6rem;white-space:pre;overflow:auto;text-align:center;";
+  pre.textContent = lines.join("\n");
+  return pre;
+};
+
 const graph_configs = {
   "#solves-graph": {
     data: () => CTFd.api.get_challenge_solve_statistics(),
@@ -42,7 +123,11 @@ const graph_configs = {
           show: true,
           feature: {
             mark: { show: true },
-            dataView: { show: true, readOnly: false },
+            dataView: {
+              show: true,
+              readOnly: true,
+              optionToContent: barDataViewOptionToContent,
+            },
             magicType: { show: true, type: ["line", "bar"] },
             restore: { show: true },
             saveAsImage: { show: true },
@@ -469,7 +554,11 @@ const graph_configs = {
           show: true,
           feature: {
             mark: { show: true },
-            dataView: { show: true, readOnly: false },
+            dataView: {
+              show: true,
+              readOnly: true,
+              optionToContent: barDataViewOptionToContent,
+            },
             magicType: { show: true, type: ["line", "bar"] },
             restore: { show: true },
             saveAsImage: { show: true },
@@ -592,7 +681,11 @@ const graph_configs = {
           show: true,
           feature: {
             mark: { show: true },
-            dataView: { show: true, readOnly: false },
+            dataView: {
+              show: true,
+              readOnly: true,
+              optionToContent: barDataViewOptionToContent,
+            },
             magicType: { show: true, type: ["line", "bar"] },
             restore: { show: true },
             saveAsImage: { show: true },
