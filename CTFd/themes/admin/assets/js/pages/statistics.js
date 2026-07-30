@@ -681,6 +681,75 @@ const applyMobilePieCenter = (key, option) => {
   return option;
 };
 
+// 移动端下「各题目解题百分比」图表标题过长会与右上角工具箱图标重叠
+// 仅在小屏幕（<=767.98px）生效：测量标题文本宽度与工具箱占据宽度，
+// 计算居中标题右边沿与工具箱左边沿的重叠量，若重叠则将标题左移该重叠量（参考 translateX(-overlap) 方案）
+// 桌面端宽度充足，不做任何改动
+const MOBILE_BP = "(max-width: 767.98px)";
+const solvePercentagesKey = "#solve-percentages-graph";
+
+const countToolboxIcons = (feature) => {
+  if (!feature) return 0;
+  let n = 0;
+  if (feature.mark && feature.mark.show) n++;
+  if (feature.dataView && feature.dataView.show) n++;
+  if (feature.magicType && feature.magicType.show) {
+    n += (feature.magicType.type || []).length || 1;
+  }
+  if (feature.restore && feature.restore.show) n++;
+  if (feature.saveAsImage && feature.saveAsImage.show) n++;
+  return n;
+};
+
+const measureTitleTextWidth = (title) => {
+  const canvas = document.createElement("canvas");
+  const ctx = canvas.getContext("2d");
+  const ts = title.textStyle || {};
+  const fontSize = ts.fontSize || 18;
+  const fontWeight = ts.fontWeight || "normal";
+  const fontFamily = ts.fontFamily || "sans-serif";
+  ctx.font = fontWeight + " " + fontSize + "px " + fontFamily;
+  return ctx.measureText(title.text).width;
+};
+
+// 计算 ECharts 工具箱在容器右侧占据的宽度（图标数 * itemSize + 间隙 + 右侧留白）
+const estimateToolboxWidth = (toolbox) => {
+  if (!toolbox || toolbox.show === false) return 0;
+  const icons = countToolboxIcons(toolbox.feature);
+  if (icons === 0) return 0;
+  const itemSize = toolbox.itemSize || 15;
+  const itemGap = toolbox.itemGap || 8;
+  // 16px 覆盖工具箱自身右侧内边距，避免标题与图标贴得太近
+  return icons * itemSize + (icons - 1) * itemGap + 16;
+};
+
+// 在 setOption 之后调用：若移动端标题与工具箱重叠，则左移标题（与参考代码 translateX(-overlap) 一致）
+// 仅作用于「各题目解题百分比」图表，不影响其它图表与桌面端
+const fixSolvePercentagesTitleOverlap = (key, chart, option) => {
+  if (key !== solvePercentagesKey) return;
+  if (!window.matchMedia(MOBILE_BP).matches) return;
+  if (option.title == null || !option.title.text) return;
+  const chartWidth = chart.getWidth();
+  if (!chartWidth) return;
+
+  const titleWidth = measureTitleTextWidth(option.title);
+  const toolboxWidth = estimateToolboxWidth(option.toolbox);
+
+  // 居中标题的右边沿 vs 工具箱左边沿
+  const titleRightEdge = chartWidth / 2 + titleWidth / 2;
+  const toolboxLeftEdge = chartWidth - toolboxWidth;
+  const overlap = titleRightEdge - toolboxLeftEdge;
+
+  if (overlap > 0) {
+    // 将标题左移 overlap（再加 8px 间隙），等价于参考方案中的 translateX(-overlap)
+    const gap = 8;
+    const centeredLeftEdge = chartWidth / 2 - titleWidth / 2;
+    option.title.left = centeredLeftEdge - overlap - gap;
+    // left 由 "center" 改为像素值后，标题文本默认左对齐，正好实现整体左移
+    chart.setOption({ title: option.title });
+  }
+};
+
 const createGraphs = () => {
   for (let key in graph_configs) {
     const cfg = graph_configs[key];
@@ -696,9 +765,12 @@ const createGraphs = () => {
       .then(applyMobilePieCenter.bind(null, key))
       .then((option) => {
         chart.setOption(option);
+        fixSolvePercentagesTitleOverlap(key, chart, option);
         $(window).on("resize", function () {
           if (chart != null && chart != undefined) {
             chart.resize();
+            // 移动端宽度变化后重新计算标题与工具箱是否重叠
+            fixSolvePercentagesTitleOverlap(key, chart, option);
           }
         });
       });
@@ -715,6 +787,13 @@ function updateGraphs() {
       .then(applyMobilePieCenter.bind(null, key))
       .then((option) => {
         chart.setOption(option);
+        fixSolvePercentagesTitleOverlap(key, chart, option);
+        $(window).on("resize", function () {
+          if (chart != null && chart != undefined) {
+            chart.resize();
+            fixSolvePercentagesTitleOverlap(key, chart, option);
+          }
+        });
       });
   }
 }
