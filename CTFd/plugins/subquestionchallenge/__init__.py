@@ -9,6 +9,7 @@ from CTFd.plugins import (
     register_plugin_assets_directory,
     register_plugin_script,
     register_admin_plugin_script,
+    register_admin_plugin_stylesheet,
 )
 from CTFd.plugins.challenges import CHALLENGE_CLASSES, BaseChallenge
 from CTFd.plugins.flags import get_flag_class
@@ -456,4 +457,12 @@ def load(app):
     # (rendered by CTFd core). Translations are already loaded by the
     # translations.js route above, so this script only needs to patch the DOM.
     register_admin_plugin_script("/plugins/subquestionchallenge/assets/patch-labels.js")
+    # Anti-flicker stylesheet: hides the raw "subquestionchallenge" label
+    # (rendered server-side by CTFd core) until patch-labels.js has replaced
+    # it with the translated text. Loaded in <head> (render-blocking) so it
+    # takes effect before the first paint, preventing the flash of
+    # untranslated text on the admin new-challenge page.
+    register_admin_plugin_stylesheet(
+        "/plugins/subquestionchallenge/assets/patch-labels.css"
+    )
     print("<<<<< SubQuestionChallenge: Plugin loaded successfully >>>>>", flush=True)

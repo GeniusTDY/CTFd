@@ -1,0 +1,25 @@
+/*
+ * Anti-flicker CSS for the Sub Question Challenge plugin (admin side).
+ *
+ * CTFd core renders the raw challenge id ("subquestionchallenge") verbatim
+ * in the challenge-type card list on /admin/challenges/new. The plugin's
+ * patch-labels.js replaces it with the translated label ("多单元" in
+ * Simplified Chinese) client-side. Because that script is loaded with
+ * `defer`, the browser can paint the raw id before the script runs,
+ * causing a visible flash of untranslated text.
+ *
+ * This stylesheet is registered via register_admin_stylesheet() and loaded
+ * in <head> (render-blocking), so it takes effect before the first paint.
+ * It hides the raw label until patch-labels.js adds the
+ * `sqc-labels-patched` class to <body>, at which point the label is
+ * revealed with the translated text already in place.
+ *
+ * Only the card whose radio input has value="subquestionchallenge" is
+ * affected; "Standard" and "Dynamic" cards are untouched.
+ */
+body:not(.sqc-labels-patched)
+  #create-chals-select
+  label:has(input[value="subquestionchallenge"])
+  .form-check-label {
+  visibility: hidden;
+}

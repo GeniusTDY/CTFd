@@ -42,6 +42,13 @@
         // Patch once immediately for server-rendered content.
         patchTypeLabels();
 
+        // Reveal any labels hidden by patch-labels.css. This must run even
+        // when TRANSLATED_LABEL is unavailable, otherwise the label would
+        // stay invisible forever. Adding the class disables the
+        // `body:not(.sqc-labels-patched)` CSS rule, making the label visible
+        // again (now with the translated text already set above).
+        document.body.classList.add('sqc-labels-patched');
+
         // Continue observing: the new-challenge page renders the card list
         // asynchronously via /api/v1/challenges/types, and users may re-render
         // parts of the page.
