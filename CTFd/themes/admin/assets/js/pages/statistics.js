@@ -14,9 +14,9 @@ const barDataViewOptionToContent = (opt) => {
   const yAxis = opt.yAxis || [];
   const series = opt.series || [];
 
-  // 找到 category 轴的数据（题目名/分段名）和对应的值轴
+  // 找到 category 轴的数据（题目名/分段名），其 name 作为第一列表头
   let categories = [];
-  let valueAxisName = "";
+  let categoryAxisName = "";
   const xIsCategory =
     Array.isArray(xAxis) &&
     xAxis.length > 0 &&
@@ -31,14 +31,14 @@ const barDataViewOptionToContent = (opt) => {
 
   if (xIsCategory) {
     categories = xAxis[0].data.slice();
-    valueAxisName = (yAxis[0] && yAxis[0].name) || "";
+    categoryAxisName = (xAxis[0] && xAxis[0].name) || "";
   } else if (yIsCategory) {
     categories = yAxis[0].data.slice();
-    valueAxisName = (xAxis[0] && xAxis[0].name) || "";
+    categoryAxisName = (yAxis[0] && yAxis[0].name) || "";
   }
 
-  // series 的 name 作为数值列表头
-  const headers = [" "].concat(series.map((s) => s.name || " "));
+  // 第一列表头用 category 轴名（如 Challenge Name / Score Bracket），避免空格占位导致标题偏移
+  const headers = [categoryAxisName || " "].concat(series.map((s) => s.name || " "));
   // 每个 series 的数据：横向柱时 data 顺序与 categories 一致；纵向柱时也一致
   const cols = [categories];
   series.forEach((s) => {
