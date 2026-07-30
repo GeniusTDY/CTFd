@@ -6,8 +6,9 @@ import { colorHash } from "../compat/styles";
 import Vue from "vue";
 import ScoreboardMatrix from "../components/statistics/ScoreboardMatrix.vue";
 
-// 柱状图数据视图：生成对齐的只读 <pre> 文本
-// 第一列（题目/分段名）左对齐，第二列（数值）左对齐，列间用空格 pad 到统一宽度保证不错位
+// 柱状图数据视图：生成对齐的只读 HTML 表格
+// 第一列（题目/分段名）左对齐，第二列（数值）居中，表格整体水平居中
+// 用 HTML 表格而非文本 pad，避免等宽字体宽度计算误差导致的列错位
 // 兼容 xAxis.category（纵向柱）与 yAxis.category（横向柱）两种轴向
 const barDataViewOptionToContent = (opt) => {
   const xAxis = opt.xAxis || [];
@@ -49,60 +50,45 @@ const barDataViewOptionToContent = (opt) => {
     cols.push(arr);
   });
 
-  // 等宽显示宽度（中文等占 2 字符位，ASCII 占 1）
-  const displayWidth = (text) =>
-    [...text].reduce((acc, ch) => acc + (ch.charCodeAt(0) > 0x7f ? 2 : 1), 0);
+  // 用 HTML 表格渲染，浏览器原生列对齐，避免等宽字体宽度计算误差导致的错位
+  // 表格整体水平居中（margin:auto），第一列左对齐，其余列居中
+  const table = document.createElement("table");
+  table.style.cssText =
+    "margin:0 auto;border-collapse:collapse;font-family:Menlo,Consolas,monospace;font-size:13px;";
 
-  // 每列宽度取表头 + 数据共同最大值，列内左对齐（padEnd 补空格）
-  const colWidths = cols.map((col, ci) => {
-    let w = displayWidth(headers[ci]);
-    col.forEach((v) => {
-      const len = displayWidth(v);
-      if (len > w) w = len;
-    });
-    return w;
+  const thead = document.createElement("thead");
+  const trHead = document.createElement("tr");
+  headers.forEach((h, i) => {
+    const th = document.createElement("th");
+    th.textContent = h;
+    th.style.cssText =
+      "padding:6px 24px;border-bottom:1px solid #ddd;" +
+      (i === 0 ? "text-align:left;" : "text-align:center;");
+    trHead.appendChild(th);
   });
+  thead.appendChild(trHead);
+  table.appendChild(thead);
 
-  const padEnd = (text, width) => {
-    const pad = Math.max(0, width - displayWidth(text));
-    return text + " ".repeat(pad);
-  };
-
-  // 居中 pad：两侧补空格，左侧少补一个（奇数宽度时偏向右侧，视觉居中）
-  const padBoth = (text, width) => {
-    const total = Math.max(0, width - displayWidth(text));
-    const left = Math.floor(total / 2);
-    const right = total - left;
-    return " ".repeat(left) + text + " ".repeat(right);
-  };
-
-  // 列间用 4 个空格分隔（比 Tab 更稳定，Tab 制表位固定会被不同长度名称打乱）
-  const SEP = "    ";
-  const lines = [];
-  // 表头：第一列左对齐，其余列（数值列表头）居中
-  lines.push(
-    headers
-      .map((h, i) => (i === 0 ? padEnd(h, colWidths[i]) : padBoth(h, colWidths[i])))
-      .join(SEP)
-  );
-  // 数据行：第一列左对齐，其余列（数值）居中
+  const tbody = document.createElement("tbody");
   const rowCount = cols[0].length;
   for (let r = 0; r < rowCount; r++) {
-    lines.push(
-      cols
-        .map((col, ci) => {
-          const cell = col[r] == null ? "" : String(col[r]);
-          return ci === 0 ? padEnd(cell, colWidths[ci]) : padBoth(cell, colWidths[ci]);
-        })
-        .join(SEP)
-    );
+    const tr = document.createElement("tr");
+    cols.forEach((col, ci) => {
+      const td = document.createElement("td");
+      td.textContent = col[r] == null ? "" : String(col[r]);
+      td.style.cssText =
+        "padding:6px 24px;" + (ci === 0 ? "text-align:left;" : "text-align:center;");
+      tr.appendChild(td);
+    });
+    tbody.appendChild(tr);
   }
+  table.appendChild(tbody);
 
-  const pre = document.createElement("pre");
-  pre.style.cssText =
-    "margin:0;padding:10px 20px;font-family:Menlo,Consolas,monospace;font-size:13px;line-height:1.6rem;white-space:pre;overflow:auto;text-align:center;";
-  pre.textContent = lines.join("\n");
-  return pre;
+  // 外层容器水平居中表格，并保留一定内边距
+  const wrapper = document.createElement("div");
+  wrapper.style.cssText = "padding:10px 20px;text-align:center;";
+  wrapper.appendChild(table);
+  return wrapper;
 };
 
 const graph_configs = {
