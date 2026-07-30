@@ -334,4 +334,78 @@
     }
 })();
 </script>
+<script>
+/* 移动端：6 个数据视图覆盖层的 h4 大标题由通用的"Data View / 数据视图"替换为对应图表的大标题 */
+/* 标题取自图表 option 的 title.text（即柱形图/环形图的大标题），按当前语言映射，不影响英文等其他语言 */
+/* ECharts 实例无法在运行时通过 API 获取（ES module），故使用与源码一致的静态映射 */
+(function () {
+    var MOBILE_BP = 767.98;
+
+    function isMobile() {
+        return window.innerWidth <= MOBILE_BP;
+    }
+
+    // 图表 ID -> 该图表 title.text 的 i18n 键值（en 源串）
+    // 对应 translations/zh_Hans_CN/LC_MESSAGES/messages.po 中的 msgstr
+    var TITLE_KEYS = {
+        '#solves-graph': 'Solve Counts',
+        '#score-distribution-graph': 'Score Distribution',
+        '#solve-percentages-graph': 'Solve Percentages per Challenge',
+        '#keys-pie-graph': 'Submission Percentages',
+        '#categories-pie-graph': 'Category Breakdown',
+        '#points-pie-graph': 'Point Breakdown'
+    };
+
+    // 读取 CTFd 当前语言下该 i18n 键的翻译；失败则回退到英文源串
+    function t(key) {
+        try {
+            // CTFd 前端 i18n 函数（挂载在 window 上的 _）
+            if (typeof window._ === 'function') {
+                var v = window._(key);
+                if (v && v !== key) return v;
+            }
+        } catch (e) {}
+        return key;
+    }
+
+    // 为某个图表容器内的 dataView 覆盖层 h4 设置标题
+    function syncOverlayTitle(chartId) {
+        var dom = document.querySelector(chartId);
+        if (!dom) return;
+        // dataView 覆盖层：position:absolute 的 div，内含 h4 + 滚动容器 + 按钮
+        var overlays = dom.querySelectorAll('div[style*="position: absolute"]');
+        overlays.forEach(function (overlay) {
+            var h4 = overlay.querySelector('h4');
+            if (!h4) return;
+            // 已标注则跳过，避免重复处理
+            if (h4.getAttribute('data-title-synced')) return;
+            h4.setAttribute('data-title-synced', '1');
+            h4.textContent = t(TITLE_KEYS[chartId]);
+        });
+    }
+
+    function syncAll() {
+        if (!isMobile()) return;
+        Object.keys(TITLE_KEYS).forEach(syncOverlayTitle);
+    }
+
+    function setup() {
+        // 监听 6 个图表容器内 DOM 变化（dataView 覆盖层打开/刷新时会被重建）
+        Object.keys(TITLE_KEYS).forEach(function (chartId) {
+            var dom = document.querySelector(chartId);
+            if (!dom) return;
+            var obs = new MutationObserver(function () {
+                if (isMobile()) syncOverlayTitle(chartId);
+            });
+            obs.observe(dom, { childList: true, subtree: true });
+        });
+    }
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', setup);
+    } else {
+        setup();
+    }
+})();
+</script>
 {% endblock %}
