@@ -5,13 +5,22 @@
   <style>
     /* 移动端：固定"网站"列宽度，防止队伍名列内容过长时压缩该列，
        导致中文"网站"表头被挤压成竖排。桌面端不受影响。 */
+    /* table-layout:fixed 下，表格需显式 width:100% 撑满容器，
+       否则隐藏列（Affiliation/Country，d-none）虽 display:none，
+       但仍可能占列宽，导致表格未填满容器、右侧出现大片空白，
+       左右留白不对称。同时覆盖 Website td 的内联 width:10px，
+       改由 th.th-website 的 width:64px 统一控制列宽。 */
     @media (max-width: 767.98px) {
       .table.table-striped.align-middle {
         table-layout: fixed;
+        width: 100% !important;
       }
       .table.table-striped.align-middle th.th-website {
         width: 64px;
         white-space: nowrap;
+      }
+      .table.table-striped.align-middle td[style*="width: 10px"] {
+        width: auto !important;
       }
     }
   </style>
