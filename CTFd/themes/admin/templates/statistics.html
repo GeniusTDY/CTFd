@@ -226,23 +226,24 @@
         white-space: nowrap !important;
     }
 }
-/* 数据视图（6 个图表）：表格水平居中、左右对称留白、不触发横向滚动 —— 适用于所有环境（桌面端 + 移动端） */
+/* 数据视图（6 个图表）：可滚动区域居中、左右对称留白、横向滚动正常可用 —— 适用于所有环境（桌面端 + 移动端） */
 /* 作用于环形图（提交百分比/分类细分/积分细分）与柱状图（解题数/得分分布/各题目解题百分比） */
-/* 思路：让表格（可纵向滚动的区域）水平居中于数据视图容器，左右两侧同时留白；
-   长内容（如题目名）通过换行适应宽度，而不是触发横向滚动条。 */
-/* 1) 滚动容器：禁用横向滚动（保留纵向滚动）；scrollbar-gutter 双侧预留滚动条占位，
-      使纵向滚动条占据的右侧空间在左侧也对称预留，从而表格左右留白完全对称 */
+/* 思路：让滚动容器 u 本身变窄并居中，左右两侧的外部留白始终可见（不随横向滚动消失）；
+   表格在 u 内部正常横向滚动（内容溢出时出现横向滚动条）。 */
+/* 1) 滚动容器 u：ECharts 内联 width:100%，用 max-width + !important 压窄，
+      margin:auto 居中。calc(100% - 32px) → 左右各留 16px 外部留白（始终可见） */
 #keys-pie-graph div[style*="overflow: auto"],
 #categories-pie-graph div[style*="overflow: auto"],
 #points-pie-graph div[style*="overflow: auto"],
 #solves-graph div[style*="overflow: auto"],
 #score-distribution-graph div[style*="overflow: auto"],
 #solve-percentages-graph div[style*="overflow: auto"] {
-    overflow-x: hidden !important;
-    scrollbar-gutter: stable both-edges !important;
+    max-width: calc(100% - 32px) !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    box-sizing: border-box !important;
 }
-/* 2) wrapper（滚动容器直接子元素）：block + max-width:100% + box-sizing:border-box，
-      约束表格不超出容器；padding-top:0 消除 ECharts 内联 padding:10px 20px 上边距，
+/* 2) wrapper（u 直接子元素）：padding-top:0 消除 ECharts 内联 padding:10px 20px 上边距，
       避免标题行先随内容上移 10px 才到达 sticky 阈值 top:0 造成“略微浮动” */
 #keys-pie-graph div[style*="overflow: auto"] > div,
 #categories-pie-graph div[style*="overflow: auto"] > div,
@@ -251,13 +252,8 @@
 #score-distribution-graph div[style*="overflow: auto"] > div,
 #solve-percentages-graph div[style*="overflow: auto"] > div {
     padding-top: 0 !important;
-    display: block !important;
-    max-width: 100% !important;
-    box-sizing: border-box !important;
-    margin-left: auto !important;
-    margin-right: auto !important;
 }
-/* 3) 表格：max-width:100% 防止超出容器；border-collapse 改为 separate，
+/* 3) 表格：不设 max-width，允许超出 u 触发横向滚动；border-collapse 改为 separate，
       使 th 的 border-bottom 不再与下方 td 共享，sticky 时分割线可靠地随标题行固定 */
 #keys-pie-graph div[style*="overflow: auto"] table,
 #categories-pie-graph div[style*="overflow: auto"] table,
@@ -265,19 +261,8 @@
 #solves-graph div[style*="overflow: auto"] table,
 #score-distribution-graph div[style*="overflow: auto"] table,
 #solve-percentages-graph div[style*="overflow: auto"] table {
-    max-width: 100% !important;
     border-collapse: separate !important;
     border-spacing: 0 !important;
-}
-/* 4) 数据单元格：允许长内容（如题目名）换行，避免撑宽表格触发横向滚动 */
-#keys-pie-graph div[style*="overflow: auto"] td,
-#categories-pie-graph div[style*="overflow: auto"] td,
-#points-pie-graph div[style*="overflow: auto"] td,
-#solves-graph div[style*="overflow: auto"] td,
-#score-distribution-graph div[style*="overflow: auto"] td,
-#solve-percentages-graph div[style*="overflow: auto"] td {
-    word-break: break-word !important;
-    white-space: normal !important;
 }
 /* 标题行（thead）固定在滚动容器顶部，仅数据行（tbody）上下滚动 */
 #keys-pie-graph div[style*="overflow: auto"] thead th,
