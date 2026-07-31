@@ -2,10 +2,11 @@
 
 {% block stylesheets %}
 <style>
-/* 移动端：当 verified/hidden/banned 三个复选框与 type 同行会溢出页面时，
-   由 JS 给 .user-flags-group 加 .flags-wrap class 触发整组换行到 type 下一行。
-   未溢出时（如简中，三个标签较短）保持与 type 同行，不触发换行。
-   桌面端宽度充足，不会触发，保持默认 inline-flex 同行布局。 */
+/* 移动端：当 verified/hidden/banned 三个复选框整组换到 type 下一行时
+   （父容器宽度不足，inline-flex 自然换行），由 JS 给 .user-flags-group
+   加 .flags-wrap class，显式标记换行状态并保留 1.2rem 上留白。
+   未换行时（如简中，整组与 type 同行）不加 class，保持默认布局。
+   桌面端宽度充足，整组与 type 同行，不会触发。 */
 @media (max-width: 767.98px) {
     .user-flags-group.flags-wrap {
         display: flex !important;
