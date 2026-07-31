@@ -25,6 +25,10 @@
         width: 64px;
         white-space: nowrap;
         text-align: right !important;
+        /* th 默认 padding-right 为 8px，而首列 th padding-left 为 16px，
+           右对齐后表头文字右留白(20px)小于左留白(28px)，视觉不对称。
+           统一为 16px，使表头文字右留白 = 28px = 左留白。 */
+        padding-right: 16px !important;
       }
       .table.table-striped.align-middle td[style*="width: 10px"] {
         width: auto !important;
