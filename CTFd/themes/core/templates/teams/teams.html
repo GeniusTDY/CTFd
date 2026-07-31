@@ -22,7 +22,11 @@
         width: 100% !important;
       }
       .table.table-striped.align-middle th.th-website {
-        width: 64px;
+        /* 列宽需容纳英文 "Website" 文字(约60px) + 左右 padding(16px×2) = 92px。
+           原 64px 下 nowrap 文字溢出 content-box，右对齐时文字右边缘突破
+           padding-right，导致右留白仅 8px（左留白 28px）。92px 下文字单行
+           不溢出，右留白 = 28px = 左留白。简中"网站"32px 更宽松。 */
+        width: 92px;
         white-space: nowrap;
         text-align: right !important;
         /* th 默认 padding-right 为 8px，而首列 th padding-left 为 16px，
