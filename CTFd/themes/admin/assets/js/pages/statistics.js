@@ -62,7 +62,8 @@ const buildAlignedTable = (headers, cols) => {
 
 // 柱状图数据视图：生成对齐的只读 HTML 表格
 // 兼容 xAxis.category（纵向柱）与 yAxis.category（横向柱）两种轴向
-const barDataViewOptionToContent = (opt) => {
+// suffix：数值后缀（如 "%"），用于百分比类图表
+const barDataViewOptionToContent = (opt, suffix = "") => {
   const xAxis = opt.xAxis || [];
   const yAxis = opt.yAxis || [];
   const series = opt.series || [];
@@ -95,9 +96,9 @@ const barDataViewOptionToContent = (opt) => {
     const arr = (s.data || []).map((d) => {
       if (d == null) return "";
       if (typeof d === "object") {
-        return d.value == null ? "" : formatNumber(d.value);
+        return d.value == null ? "" : formatNumber(d.value) + suffix;
       }
-      return formatNumber(d);
+      return formatNumber(d) + suffix;
     });
     cols.push(arr);
   });
@@ -107,11 +108,21 @@ const barDataViewOptionToContent = (opt) => {
 
 // 环形图（pie）数据视图：生成对齐的只读 HTML 表格
 // pie 的 series.data 是 [{name, value, ...}] 数组，取 name 作为第一列，value 作为第二列
-const pieDataViewOptionToContent = (opt) => {
+// asPercent：将 value 视为计数，按 total 占比转成百分比并加 "%"（用于提交百分比图表）
+const pieDataViewOptionToContent = (opt, asPercent = false) => {
   const series = opt.series || [];
   // 取第一个 pie series 的数据（statistics 页环形图均只有一个 series）
   const s = series[0] || {};
   const data = Array.isArray(s.data) ? s.data : [];
+
+  // asPercent 模式下先求总数，用于把计数换算成百分比
+  let total = 0;
+  if (asPercent) {
+    data.forEach((d) => {
+      if (d == null) return;
+      total += typeof d === "object" ? d.value || 0 : d || 0;
+    });
+  }
 
   // 第一列用 _("Name") 走 i18n（中文→“名称”，英文→“Name”），第二列用 series.name 作为表头
   const headers = [_("Name"), s.name || _("Value")];
@@ -121,10 +132,21 @@ const pieDataViewOptionToContent = (opt) => {
     if (d == null) return;
     if (typeof d === "object") {
       names.push(d.name == null ? "" : String(d.name));
-      values.push(d.value == null ? "" : formatNumber(d.value));
+      if (d.value == null) {
+        values.push("");
+      } else if (asPercent) {
+        // 计数转百分比：value/total*100，保留 2 位小数并加 %
+        values.push(total > 0 ? formatNumber((d.value / total) * 100) + "%" : "0%");
+      } else {
+        values.push(formatNumber(d.value));
+      }
     } else {
       names.push("");
-      values.push(formatNumber(d));
+      if (asPercent) {
+        values.push(total > 0 ? formatNumber((d / total) * 100) + "%" : "0%");
+      } else {
+        values.push(formatNumber(d));
+      }
     }
   });
 
@@ -287,7 +309,7 @@ const graph_configs = {
               show: true,
               readOnly: true,
               ...toolboxFeatureTitles.dataView,
-              optionToContent: pieDataViewOptionToContent,
+              optionToContent: (opt) => pieDataViewOptionToContent(opt, true),
               lang: [_("Data View"), _("Close"), _("Refresh")],
             },
             saveAsImage: { ...toolboxFeatureTitles.saveAsImage },
@@ -634,7 +656,7 @@ const graph_configs = {
               show: true,
               readOnly: true,
               ...toolboxFeatureTitles.dataView,
-              optionToContent: barDataViewOptionToContent,
+              optionToContent: (opt) => barDataViewOptionToContent(opt, "%"),
               lang: [_("Data View"), _("Close"), _("Refresh")],
             },
             magicType: {
