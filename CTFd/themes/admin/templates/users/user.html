@@ -474,14 +474,13 @@ var stats_data = {{ {
 } | tojson }};
 </script>
 <script>
-/* 移动端：检测 verified/hidden/banned 三个复选框整组是否换到 type 下拉下一行。
+/* 移动端：检测 verified/hidden/banned 三个复选框整组与 type 同行时是否会溢出页面。
    .user-flags-group 是 inline-flex + nowrap，三个复选框强制同行；
-   当父容器宽度不足以让整组与 type 同行时，整组会自然换到 type 下一行
-   （inline-flex 的换行特性）。此时自然换行没有上留白，视觉上紧贴 type。
+   若 type 右边缘 + 整组宽度 超过容器（页面）右边缘，说明同行会溢出页面，
    给 .user-flags-group 加 .flags-wrap class（display:flex; width:100%），
-   显式标记换行状态并保留 1.2rem 上留白。
-   未换行时（如简中，整组与 type 同行）不加 class，保持默认布局。
-   桌面端宽度充足，整组与 type 同行，不会触发。 */
+   让整组换到 type 下一行并保留 1.2rem 上留白。
+   未溢出时（如简中，整组与 type 同行不超出页面）不加 class，保持默认布局。
+   桌面端宽度充足，不会触发。 */
 (function () {
     function adjustFlagsWrap() {
         var groups = document.querySelectorAll(".user-flags-group");
@@ -490,9 +489,16 @@ var stats_data = {{ {
             void group.offsetWidth;
             var prev = group.previousElementSibling;
             if (!prev) return;
-            var groupTop = Math.round(group.getBoundingClientRect().top);
-            var prevBottom = Math.round(prev.getBoundingClientRect().bottom);
-            if (groupTop >= prevBottom - 1) {
+            var prevRect = prev.getBoundingClientRect();
+            var groupWidth = group.offsetWidth;
+            var gap = 12;
+            var hypotheticalRight = prevRect.right + gap + groupWidth;
+            var formGroup = group.parentElement;
+            var containerRight = Math.min(
+                window.innerWidth,
+                formGroup.getBoundingClientRect().right
+            );
+            if (hypotheticalRight > containerRight - 1) {
                 group.classList.add("flags-wrap");
             }
         });
@@ -506,7 +512,6 @@ var stats_data = {{ {
     var modal = document.getElementById("user-info-modal");
     if (modal) {
         modal.addEventListener("shown.bs.modal", function () {
-            // 立即检测一次 + rAF 检测 + 短延迟检测，覆盖布局稳定的各个时机
             adjustFlagsWrap();
             requestAnimationFrame(function () {
                 adjustFlagsWrap();
