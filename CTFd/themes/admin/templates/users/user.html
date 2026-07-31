@@ -498,10 +498,22 @@ var stats_data = {{ {
         });
     }
 
-    // edit 页是 modal，打开后才可见，需重新测量
+    // edit 页是 modal，打开后才可见，需重新测量。
+    // shown.bs.modal 触发时 modal 布局可能尚未完全稳定（过渡动画、响应式 max-width、
+    // 字体渲染），用多次 requestAnimationFrame + 延迟轮询，确保测量基于稳定布局。
+    // 注意：用原生 addEventListener 而非 $(modal).on()，因为本内联 script 在
+    // entrypoint（jQuery bundle）之前执行，此时 $ 可能未定义。
     var modal = document.getElementById("user-info-modal");
     if (modal) {
-        $(modal).on("shown.bs.modal", adjustFlagsWrap);
+        modal.addEventListener("shown.bs.modal", function () {
+            // 立即检测一次 + rAF 检测 + 短延迟检测，覆盖布局稳定的各个时机
+            adjustFlagsWrap();
+            requestAnimationFrame(function () {
+                adjustFlagsWrap();
+                setTimeout(adjustFlagsWrap, 50);
+                setTimeout(adjustFlagsWrap, 150);
+            });
+        });
     }
     // 窗口尺寸变化时重新检测
     var resizeTimer;
