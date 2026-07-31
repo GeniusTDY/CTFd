@@ -215,28 +215,6 @@
     #solve-percentages-graph div[style*="overflow: auto"] {
         height: calc(100% - 90px) !important;
     }
-    /* 移动端：隐藏滚动容器纵向滚动条，消除右侧约 15px 滚动条占位。
-       不隐藏时，u 内部可用宽度 = clientWidth（已扣滚动条），wrapper 用 margin:auto 居中后
-       视觉上右侧会少 15px，导致左右留白不对称（实测：左 41 / 右 56）。
-       隐藏后用触摸/滚轮滚动，左右留白对称（左 41 / 右 41）。横向滚动条仍保留可用。 */
-    #keys-pie-graph div[style*="overflow: auto"],
-    #categories-pie-graph div[style*="overflow: auto"],
-    #points-pie-graph div[style*="overflow: auto"],
-    #solves-graph div[style*="overflow: auto"],
-    #score-distribution-graph div[style*="overflow: auto"],
-    #solve-percentages-graph div[style*="overflow: auto"] {
-        scrollbar-width: none !important;
-    }
-    #keys-pie-graph div[style*="overflow: auto"]::-webkit-scrollbar,
-    #categories-pie-graph div[style*="overflow: auto"]::-webkit-scrollbar,
-    #points-pie-graph div[style*="overflow: auto"]::-webkit-scrollbar,
-    #solves-graph div[style*="overflow: auto"]::-webkit-scrollbar,
-    #score-distribution-graph div[style*="overflow: auto"]::-webkit-scrollbar,
-    #solve-percentages-graph div[style*="overflow: auto"]::-webkit-scrollbar {
-        width: 0 !important;
-        height: 0 !important;
-        display: none !important;
-    }
     /* 移动端：6 个数据视图表头强制单行显示（如"各题目解题百分比"在窄屏换行） */
     /* 不换行后若表格超出容器宽度，由外层 overflow:auto 容器提供横向滚动 */
     #keys-pie-graph div[style*="overflow: auto"] thead th,
@@ -253,7 +231,11 @@
 /* 思路：让滚动容器 u 本身变窄并居中，左右两侧的外部留白始终可见（不随横向滚动消失）；
    表格在 u 内部正常横向滚动（内容溢出时出现横向滚动条）。 */
 /* 1) 滚动容器 u：ECharts 内联 width:100%，用 max-width + !important 压窄，
-      margin:auto 居中。calc(100% - 32px) → 左右各留 16px 外部留白（始终可见） */
+      margin:auto 居中。calc(100% - 32px) → 左右各留 16px 外部留白（始终可见）。
+      同时隐藏纵向滚动条（scrollbar-width:none + ::-webkit-scrollbar width:0），
+      消除右侧约 15px 滚动条占位 —— 不隐藏时 u 内部可用宽度 = clientWidth（已扣滚动条），
+      表格居中后视觉右侧少 15px，导致左右留白不对称（桌面端实测左 295 / 右 310）。
+      隐藏后用滚轮/触摸滚动，u 内部无占位，左右留白完全对称。横向滚动条仍保留可用。 */
 #keys-pie-graph div[style*="overflow: auto"],
 #categories-pie-graph div[style*="overflow: auto"],
 #points-pie-graph div[style*="overflow: auto"],
@@ -264,22 +246,31 @@
     margin-left: auto !important;
     margin-right: auto !important;
     box-sizing: border-box !important;
+    scrollbar-width: none !important;
 }
-/* 2) wrapper（u 直接子元素）：padding-top:0 消除 ECharts 内联 padding:10px 20px 上边距，
-      避免标题行先随内容上移 10px 才到达 sticky 阈值 top:0 造成“略微浮动”。
-      display:table 让 wrapper 收缩到内部表格实际宽度，配合 margin:auto 整体居中 ——
-      这样 wrapper 的 padding 左右两侧都生效，避免 block 模式下当表格溢出 u 时
-      padding-right 被 overflow 裁剪、padding-left 仍占位导致的左右留白不对称。 */
+#keys-pie-graph div[style*="overflow: auto"]::-webkit-scrollbar,
+#categories-pie-graph div[style*="overflow: auto"]::-webkit-scrollbar,
+#points-pie-graph div[style*="overflow: auto"]::-webkit-scrollbar,
+#solves-graph div[style*="overflow: auto"]::-webkit-scrollbar,
+#score-distribution-graph div[style*="overflow: auto"]::-webkit-scrollbar,
+#solve-percentages-graph div[style*="overflow: auto"]::-webkit-scrollbar {
+    width: 0 !important;
+    height: 0 !important;
+    display: none !important;
+}
+/* 2) wrapper（u 直接子元素）：清除 ECharts 内联 padding:10px 20px 的左右内边距。
+      关键：不能保留 wrapper 的左右 padding —— 当表格溢出 u 时，padding-left 在
+      scrollLeft=0 时可见、padding-right 被溢出表格推出可视区（只在 scrollLeft=max
+      时露出），导致加载时左留白明显多于右留白。去掉后，左右留白仅由 u 容器的外部
+      留白（max-width + margin:auto）提供，始终对称且不随滚动消失。
+      padding-top:0 同时消除上边距，避免标题行先随内容上移 10px 才到达 sticky 阈值。 */
 #keys-pie-graph div[style*="overflow: auto"] > div,
 #categories-pie-graph div[style*="overflow: auto"] > div,
 #points-pie-graph div[style*="overflow: auto"] > div,
 #solves-graph div[style*="overflow: auto"] > div,
 #score-distribution-graph div[style*="overflow: auto"] > div,
 #solve-percentages-graph div[style*="overflow: auto"] > div {
-    padding-top: 0 !important;
-    display: table !important;
-    margin-left: auto !important;
-    margin-right: auto !important;
+    padding: 0 !important;
 }
 /* 3) 表格：不设 max-width，允许超出 u 触发横向滚动；border-collapse 改为 separate，
       使 th 的 border-bottom 不再与下方 td 共享，sticky 时分割线可靠地随标题行固定 */
