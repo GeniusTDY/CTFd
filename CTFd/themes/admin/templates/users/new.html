@@ -38,31 +38,23 @@
 
 {% block scripts %}
 <script>
-/* 移动端：检测 verified/hidden/banned 三个复选框是否因空间不足产生错位（非同行）。
-   当父容器宽度不足以容纳三个复选框横排时，inline-flex 内部会发生垂直错位
-   （表现为 banned 被挤到下一行）。此时给 .user-flags-group 加 .flags-wrap class，
-   让整组占满父容器宽度（display:flex; width:100%），为组内横排提供足够空间，
-   并换到 type 下一行。未错位时（如简中，三个标签较短）保持默认 inline-flex 同行布局。
-   桌面端宽度充足，组内不会错位，不会触发。 */
+/* 移动端：检测 verified/hidden/banned 三个复选框整组是否会溢出页面右边缘。
+   .user-flags-group 是 inline-flex + nowrap，三个复选框强制同行；
+   当整组宽度超出页面可视宽度时（英文标签较长易发生），给 .user-flags-group
+   加 .flags-wrap class，让整组占满父容器宽度（display:flex; width:100%），
+   换到 type 下一行，并保留 1.2rem 上留白。
+   未溢出时（如简中，三个标签较短）保持与 type 同行，不触发换行。
+   桌面端宽度充足，不会触发，保持默认 inline-flex 同行布局。 */
 (function () {
     function adjustFlagsWrap() {
         var groups = document.querySelectorAll(".user-flags-group");
         groups.forEach(function (group) {
-            // 先移除 class，测量默认状态（inline-flex）下组内是否错位
+            // 先移除 class，测量默认状态（inline-flex 同行）下整组是否溢出
             group.classList.remove("flags-wrap");
             void group.offsetWidth;
-            var checks = group.querySelectorAll(".form-check");
-            if (checks.length < 2) return;
-            var top0 = Math.round(checks[0].getBoundingClientRect().top);
-            // 任一复选框与首个不在同一行 → 组内错位，触发换行
-            var misaligned = false;
-            for (var i = 1; i < checks.length; i++) {
-                if (Math.round(checks[i].getBoundingClientRect().top) !== top0) {
-                    misaligned = true;
-                    break;
-                }
-            }
-            if (misaligned) {
+            var rect = group.getBoundingClientRect();
+            // 整组右边缘超出页面可视宽度 → 溢出，触发整组换行
+            if (rect.right > window.innerWidth - 1) {
                 group.classList.add("flags-wrap");
             }
         });
