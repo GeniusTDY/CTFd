@@ -10,6 +10,12 @@
        但仍可能占列宽，导致表格未填满容器、右侧出现大片空白，
        左右留白不对称。同时覆盖 Website td 的内联 width:10px，
        改由 th.th-website 的 width:64px 统一控制列宽。 */
+    /* Website 列图标默认 text-center 居中，导致图标右视觉留白
+       (container 12px + td padding 16px + 居中偏移) 大于 User 列
+       文字左留白 (container 12px + td padding 16px = 28px)。
+       改为右对齐，让图标右边贴 td padding-right 内侧，右留白 = 28px，
+       与 User 列左留白对称。th 同步右对齐，保持表头与内容方向一致。
+       桌面端不受影响。 */
     @media (max-width: 767.98px) {
       .table.table-striped.align-middle {
         table-layout: fixed;
@@ -18,9 +24,11 @@
       .table.table-striped.align-middle th.th-website {
         width: 64px;
         white-space: nowrap;
+        text-align: right !important;
       }
       .table.table-striped.align-middle td[style*="width: 10px"] {
         width: auto !important;
+        text-align: right !important;
       }
     }
   </style>
