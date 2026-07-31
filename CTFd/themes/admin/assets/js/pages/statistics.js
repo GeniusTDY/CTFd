@@ -969,6 +969,10 @@ const createGraphs = () => {
     $elem.empty();
 
     let chart = echarts.init(document.querySelector(key));
+    // [DIAG] 临时暴露 echarts 与实例到 window，便于程序化打开数据视图测量留白（测完移除）
+    if (!window.echarts) window.echarts = echarts;
+    window.__charts = window.__charts || {};
+    window.__charts[key] = chart;
 
     cfg
       .data()
@@ -977,6 +981,12 @@ const createGraphs = () => {
       .then((option) => {
         chart.setOption(option);
         fixMobileTitleOverlap(key, chart, option);
+        // [DIAG] ?autodv=1 时自动打开 #solve-percentages-graph 数据视图以便测量（测完移除）
+        if (key === "#solve-percentages-graph" && new URLSearchParams(location.search).get("autodv") === "1") {
+          setTimeout(function () {
+            try { chart.dispatchAction({ type: "takeGlobalCursor", key: "dataView", dataViewControl: "show" }); } catch (e) {}
+          }, 1500);
+        }
         // 只读柱状图数据视图（含 optionToContent）无刷新按钮，手动注入一个
         const toolbox = option.toolbox;
         const dv =

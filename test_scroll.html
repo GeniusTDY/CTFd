@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>scroll center test</title>
+<style>
+  body { margin: 0; font-family: sans-serif; }
+  /* 模仿 ECharts 数据视图真实结构：
+     chart (position:relative, 375px)
+       └─ root (position:absolute;inset:0;padding:5px;background:#fff)
+           └─ u (overflow:auto; height:320px)  ← ECharts 内联只有 overflow:auto + height
+               └─ wrapper (padding:10px 20px;text-align:center)  ← buildAlignedTable 设的
+                   └─ table (margin:0 auto, nowrap, 504px)  ← 溢出 u */
+  .chart { width: 375px; height: 400px; position: relative; overflow: hidden; background:#eee; margin-bottom: 8px; }
+  .root { position:absolute; top:0; bottom:0; left:0; right:0; padding:5px; background:#fff; }
+  .u { overflow:auto; height:320px; background:#f0f8ff; }
+  .wrapper { padding:10px 20px; text-align:center; }
+  table { margin:0 auto; border-collapse:separate; border-spacing:0; font-family:Menlo,Consolas,monospace; font-size:13px; }
+  th, td { padding:6px 24px; border-bottom:1px solid #ddd; white-space:nowrap; }
+  thead th { background:#fff; }
+  label { display:block; background:#dfd; padding:4px 8px; font:12px monospace; }
+
+  /* 所有变体共有的修复：u 变窄居中（外部留白对称） */
+  .chart .u { max-width: calc(100% - 32px) !important; margin-left:auto !important; margin-right:auto !important; box-sizing:border-box !important; }
+  .chart .u > div { padding-top:0 !important; }
+
+  /* 变体 L: 基线（当前 CTFd 状态）：wrapper 保持 block —— 预期左多右少 */
+  /* (无额外规则) */
+
+  /* 变体 M: + wrapper display:table + margin:auto（padding 左右都生效） */
+  .chartM .u > div { display:table !important; margin-left:auto !important; margin-right:auto !important; }
+
+  /* 变体 N: M + scrollbar-gutter:stable both-edges（滚动条占位左右对称） */
+  .chartN .u { scrollbar-gutter: stable both-edges !important; }
+  .chartN .u > div { display:table !important; margin-left:auto !important; margin-right:auto !important; }
+
+  /* 变体 O: M + 隐藏纵向滚动条（移动端触摸滚动，无 15px 占位） */
+  .chartO .u { scrollbar-width: none !important; }
+  .chartO .u::-webkit-scrollbar { width: 0; height: 0; display: none; }
+  .chartO .u > div { display:table !important; margin-left:auto !important; margin-right:auto !important; }
+</style>
+</head>
+<body>
+
+<label>L) 基线：u 居中 + wrapper block —— 预期左(41) > 右(36)</label>
+<div class="chart chartL"><div class="root"><div class="u"><div class="wrapper">
+  <table>
+    <thead><tr><th style="text-align:left">题目名称</th><th>各题目解题百分比</th></tr></thead>
+    <tbody id="rowsL"></tbody>
+  </table>
+</div></div></div></div>
+
+<label>M) + wrapper display:table —— 预期左==右（但滚动条仍偏 15）</label>
+<div class="chart chartM"><div class="root"><div class="u"><div class="wrapper">
+  <table>
+    <thead><tr><th style="text-align:left">题目名称</th><th>各题目解题百分比</th></tr></thead>
+    <tbody id="rowsM"></tbody>
+  </table>
+</div></div></div></div>
+
+<label>N) M + scrollbar-gutter:stable both-edges —— 预期左==右（左侧有滚动条占位空隙）</label>
+<div class="chart chartN"><div class="root"><div class="u"><div class="wrapper">
+  <table>
+    <thead><tr><th style="text-align:left">题目名称</th><th>各题目解题百分比</th></tr></thead>
+    <tbody id="rowsN"></tbody>
+  </table>
+</div></div></div></div>
+
+<label>O) M + 隐藏纵向滚动条 —— 预期左==右（无滚动条占位，触摸滚动）</label>
+<div class="chart chartO"><div class="root"><div class="u"><div class="wrapper">
+  <table>
+    <thead><tr><th style="text-align:left">题目名称</th><th>各题目解题百分比</th></tr></thead>
+    <tbody id="rowsO"></tbody>
+  </table>
+</div></div></div></div>
+
+<script>
+// 填充 12 行长题目名（与真实数据视图一致）
+['L','M','N','O'].forEach(function(id){
+  var tb = document.getElementById('rows'+id);
+  var html = '';
+  for(var i=0;i<12;i++){
+    html += '<tr><td style="text-align:left">Web-100-Very-Long-Challenge-Name-Row-'+i+'</td><td style="text-align:center">83.33%</td></tr>';
+  }
+  tb.innerHTML = html;
+});
+
+function measure(sel){
+  var chart = document.querySelector(sel);
+  if(!chart) return 'not found';
+  var u = chart.querySelector('.u');
+  var table = chart.querySelector('table');
+  var chartRect = chart.getBoundingClientRect();
+  u.scrollLeft = 0;
+  var t0 = table.getBoundingClientRect();
+  u.scrollLeft = u.scrollWidth - u.clientWidth;
+  var tm = table.getBoundingClientRect();
+  return {
+    leftAtScroll0: Math.round(t0.left - chartRect.left),
+    rightAtScrollMax: Math.round(chartRect.right - tm.right),
+    symmetric: Math.round(t0.left - chartRect.left) === Math.round(chartRect.right - tm.right),
+    u_scrollWidth: u.scrollWidth, u_clientWidth: u.clientWidth,
+    u_vScrollW: u.offsetWidth - u.clientWidth,
+    u_hScrollH: u.offsetHeight - u.clientHeight
+  };
+}
+var res = { L:measure('.chartL'), M:measure('.chartM'), N:measure('.chartN'), O:measure('.chartO') };
+console.log('[SCROLL-TEST]', JSON.stringify(res,null,2));
+document.body.appendChild((function(){
+  var pre=document.createElement('pre'); pre.id='out';
+  pre.style.cssText='background:#fffbe6;padding:8px;font:11px monospace;white-space:pre-wrap;';
+  pre.textContent=JSON.stringify(res,null,2); return pre;
+})());
+</script>
+</body>
+</html>

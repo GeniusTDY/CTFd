@@ -215,6 +215,28 @@
     #solve-percentages-graph div[style*="overflow: auto"] {
         height: calc(100% - 90px) !important;
     }
+    /* 移动端：隐藏滚动容器纵向滚动条，消除右侧约 15px 滚动条占位。
+       不隐藏时，u 内部可用宽度 = clientWidth（已扣滚动条），wrapper 用 margin:auto 居中后
+       视觉上右侧会少 15px，导致左右留白不对称（实测：左 41 / 右 56）。
+       隐藏后用触摸/滚轮滚动，左右留白对称（左 41 / 右 41）。横向滚动条仍保留可用。 */
+    #keys-pie-graph div[style*="overflow: auto"],
+    #categories-pie-graph div[style*="overflow: auto"],
+    #points-pie-graph div[style*="overflow: auto"],
+    #solves-graph div[style*="overflow: auto"],
+    #score-distribution-graph div[style*="overflow: auto"],
+    #solve-percentages-graph div[style*="overflow: auto"] {
+        scrollbar-width: none !important;
+    }
+    #keys-pie-graph div[style*="overflow: auto"]::-webkit-scrollbar,
+    #categories-pie-graph div[style*="overflow: auto"]::-webkit-scrollbar,
+    #points-pie-graph div[style*="overflow: auto"]::-webkit-scrollbar,
+    #solves-graph div[style*="overflow: auto"]::-webkit-scrollbar,
+    #score-distribution-graph div[style*="overflow: auto"]::-webkit-scrollbar,
+    #solve-percentages-graph div[style*="overflow: auto"]::-webkit-scrollbar {
+        width: 0 !important;
+        height: 0 !important;
+        display: none !important;
+    }
     /* 移动端：6 个数据视图表头强制单行显示（如"各题目解题百分比"在窄屏换行） */
     /* 不换行后若表格超出容器宽度，由外层 overflow:auto 容器提供横向滚动 */
     #keys-pie-graph div[style*="overflow: auto"] thead th,
@@ -244,7 +266,10 @@
     box-sizing: border-box !important;
 }
 /* 2) wrapper（u 直接子元素）：padding-top:0 消除 ECharts 内联 padding:10px 20px 上边距，
-      避免标题行先随内容上移 10px 才到达 sticky 阈值 top:0 造成“略微浮动” */
+      避免标题行先随内容上移 10px 才到达 sticky 阈值 top:0 造成“略微浮动”。
+      display:table 让 wrapper 收缩到内部表格实际宽度，配合 margin:auto 整体居中 ——
+      这样 wrapper 的 padding 左右两侧都生效，避免 block 模式下当表格溢出 u 时
+      padding-right 被 overflow 裁剪、padding-left 仍占位导致的左右留白不对称。 */
 #keys-pie-graph div[style*="overflow: auto"] > div,
 #categories-pie-graph div[style*="overflow: auto"] > div,
 #points-pie-graph div[style*="overflow: auto"] > div,
@@ -252,6 +277,9 @@
 #score-distribution-graph div[style*="overflow: auto"] > div,
 #solve-percentages-graph div[style*="overflow: auto"] > div {
     padding-top: 0 !important;
+    display: table !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
 }
 /* 3) 表格：不设 max-width，允许超出 u 触发横向滚动；border-collapse 改为 separate，
       使 th 的 border-bottom 不再与下方 td 共享，sticky 时分割线可靠地随标题行固定 */
