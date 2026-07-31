@@ -1,6 +1,21 @@
 {% extends "admin/base.html" %}
 
 {% block stylesheets %}
+<style>
+/* 移动端：verified/hidden/banned 三个复选框作为整体换到 type 下拉下一行。
+   桌面端保持 inline-flex 与 type 同行（默认行为，不受此规则影响）。
+   英文下 "Verified/Hidden/Banned" 较长，窄屏若与 type 同行会溢出页面，
+   故在移动端强制 flags 组占满整行，避免 banned 被单独挤到下一行。 */
+@media (max-width: 767.98px) {
+    .user-flags-group {
+        display: flex !important;
+        flex-wrap: wrap !important;
+        width: 100% !important;
+        margin-right: 0 !important;
+        margin-top: 0.5rem !important;
+    }
+}
+</style>
 {% endblock %}
 
 {% block content %}

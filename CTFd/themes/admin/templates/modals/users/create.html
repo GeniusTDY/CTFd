@@ -35,17 +35,19 @@
 		<div class="form-check form-check-inline">
 			{{ form.type(class="form-control form-inline custom-select", id="type-select") }}
 		</div>
-		<div class="form-check form-check-inline">
-			{{ form.verified(class="form-check-input", autocomplete="off") }}
-			{{ form.verified.label(class="form-check-label") }}
-		</div>
-		<div class="form-check form-check-inline">
-			{{ form.hidden(class="form-check-input", autocomplete="off") }}
-			{{ form.hidden.label(class="form-check-label") }}
-		</div>
-		<div class="form-check form-check-inline">
-			{{ form.banned(class="form-check-input", autocomplete="off") }}
-			{{ form.banned.label(class="form-check-label") }}
+		<div class="user-flags-group form-check form-check-inline">
+			<div class="form-check form-check-inline">
+				{{ form.verified(class="form-check-input", autocomplete="off") }}
+				{{ form.verified.label(class="form-check-label") }}
+			</div>
+			<div class="form-check form-check-inline">
+				{{ form.hidden(class="form-check-input", autocomplete="off") }}
+				{{ form.hidden.label(class="form-check-label") }}
+			</div>
+			<div class="form-check form-check-inline">
+				{{ form.banned(class="form-check-input", autocomplete="off") }}
+				{{ form.banned.label(class="form-check-label") }}
+			</div>
 		</div>
 	</div>
 
