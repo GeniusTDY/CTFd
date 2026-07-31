@@ -473,21 +473,25 @@ var stats_data = {{ {
 } | tojson }};
 </script>
 <script>
-/* 移动端：检测 verified/hidden/banned 三个复选框整组是否会溢出页面右边缘。
+/* 移动端：检测 verified/hidden/banned 三个复选框整组是否换到 type 下拉下一行。
    .user-flags-group 是 inline-flex + nowrap，三个复选框强制同行；
-   当整组宽度超出页面可视宽度时（英文标签较长易发生），给 .user-flags-group
-   加 .flags-wrap class，让整组占满父容器宽度（display:flex; width:100%），
-   换到 type 下一行，并保留 1.2rem 上留白。
-   未溢出时（如简中，三个标签较短）保持与 type 同行，不触发换行。
-   桌面端宽度充足，不会触发，保持默认 inline-flex 同行布局。 */
+   当父容器宽度不足以让整组与 type 同行时，整组会自然换到 type 下一行
+   （inline-flex 的换行特性）。此时自然换行没有上留白，视觉上紧贴 type。
+   给 .user-flags-group 加 .flags-wrap class（display:flex; width:100%），
+   显式标记换行状态并保留 1.2rem 上留白。
+   未换行时（如简中，整组与 type 同行）不加 class，保持默认布局。
+   桌面端宽度充足，整组与 type 同行，不会触发。 */
 (function () {
     function adjustFlagsWrap() {
         var groups = document.querySelectorAll(".user-flags-group");
         groups.forEach(function (group) {
             group.classList.remove("flags-wrap");
             void group.offsetWidth;
-            var rect = group.getBoundingClientRect();
-            if (rect.right > window.innerWidth - 1) {
+            var prev = group.previousElementSibling;
+            if (!prev) return;
+            var groupTop = Math.round(group.getBoundingClientRect().top);
+            var prevBottom = Math.round(prev.getBoundingClientRect().bottom);
+            if (groupTop >= prevBottom - 1) {
                 group.classList.add("flags-wrap");
             }
         });
