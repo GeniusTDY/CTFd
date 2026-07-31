@@ -139,7 +139,10 @@
     box-sizing: border-box !important;
     padding-top: 1.6rem !important;
 }
-/* 数据视图大标题（h4）居中显示，移动端强制不换行 */
+/* 数据视图大标题（h4）：强制单行 + 居中 */
+/* 用 display:table + margin-left/right:auto 让 h4 收缩到文本宽度后整体居中，
+   避免 nowrap 文本宽度超过 h4 内容盒时 text-align:center 失效（实测：溢出时
+   文本会从左边缘起排、向右溢出，表现为未居中）。短标题同样居中，无副作用。 */
 #keys-pie-graph h4,
 #categories-pie-graph h4,
 #points-pie-graph h4,
@@ -148,6 +151,9 @@
 #solve-percentages-graph h4 {
     text-align: center !important;
     white-space: nowrap !important;
+    display: table !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
 }
 /* 移动端：名次/队伍/得分三列自适应列宽（刚好容纳最长内容） */
 @media (max-width: 767.98px) {
