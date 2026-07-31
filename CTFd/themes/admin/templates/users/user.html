@@ -2,12 +2,12 @@
 
 {% block stylesheets %}
 <style>
-/* 移动端：verified/hidden/banned 三个复选框作为整体换到 type 下拉下一行。
-   桌面端保持 inline-flex 与 type 同行（默认行为，不受此规则影响）。
-   英文下 "Verified/Hidden/Banned" 较长，窄屏若与 type 同行会溢出页面，
-   故在移动端强制 flags 组占满整行，避免 banned 被单独挤到下一行。 */
+/* 移动端：当 verified/hidden/banned 三个复选框与 type 同行会溢出页面时，
+   由 JS 给 .user-flags-group 加 .flags-wrap class 触发整组换行到 type 下一行。
+   未溢出时（如简中，三个标签较短）保持与 type 同行，不触发换行。
+   桌面端宽度充足，不会触发，保持默认 inline-flex 同行布局。 */
 @media (max-width: 767.98px) {
-    .user-flags-group {
+    .user-flags-group.flags-wrap {
         display: flex !important;
         flex-wrap: wrap !important;
         width: 100% !important;
@@ -471,6 +471,48 @@ var stats_data = {{ {
 	'name': user.name,
 	'account_id': user.id,
 } | tojson }};
+</script>
+<script>
+/* 移动端：检测 verified/hidden/banned 三个复选框是否因空间不足产生错位（非同行）。
+   当父容器宽度不足以容纳三个复选框横排时，inline-flex 内部会发生垂直错位
+   （表现为 banned 被挤到下一行）。此时给 .user-flags-group 加 .flags-wrap class，
+   让整组占满父容器宽度（display:flex; width:100%），为组内横排提供足够空间，
+   并换到 type 下一行。未错位时（如简中，三个标签较短）保持默认 inline-flex 同行布局。
+   桌面端宽度充足，组内不会错位，不会触发。 */
+(function () {
+    function adjustFlagsWrap() {
+        var groups = document.querySelectorAll(".user-flags-group");
+        groups.forEach(function (group) {
+            group.classList.remove("flags-wrap");
+            void group.offsetWidth;
+            var checks = group.querySelectorAll(".form-check");
+            if (checks.length < 2) return;
+            var top0 = Math.round(checks[0].getBoundingClientRect().top);
+            var misaligned = false;
+            for (var i = 1; i < checks.length; i++) {
+                if (Math.round(checks[i].getBoundingClientRect().top) !== top0) {
+                    misaligned = true;
+                    break;
+                }
+            }
+            if (misaligned) {
+                group.classList.add("flags-wrap");
+            }
+        });
+    }
+
+    // edit 页是 modal，打开后才可见，需重新测量
+    var modal = document.getElementById("user-info-modal");
+    if (modal) {
+        $(modal).on("shown.bs.modal", adjustFlagsWrap);
+    }
+    // 窗口尺寸变化时重新检测
+    var resizeTimer;
+    window.addEventListener("resize", function () {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(adjustFlagsWrap, 100);
+    });
+})();
 </script>
 {% endblock %}
 
