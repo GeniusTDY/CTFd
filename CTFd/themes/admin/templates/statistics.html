@@ -139,7 +139,7 @@
     box-sizing: border-box !important;
     padding-top: 1.6rem !important;
 }
-/* 数据视图大标题（h4）居中显示 */
+/* 数据视图大标题（h4）居中显示，移动端强制不换行 */
 #keys-pie-graph h4,
 #categories-pie-graph h4,
 #points-pie-graph h4,
@@ -147,6 +147,7 @@
 #score-distribution-graph h4,
 #solve-percentages-graph h4 {
     text-align: center !important;
+    white-space: nowrap !important;
 }
 /* 移动端：名次/队伍/得分三列自适应列宽（刚好容纳最长内容） */
 @media (max-width: 767.98px) {
