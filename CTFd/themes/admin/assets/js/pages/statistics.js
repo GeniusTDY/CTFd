@@ -95,9 +95,9 @@ const barDataViewOptionToContent = (opt) => {
     const arr = (s.data || []).map((d) => {
       if (d == null) return "";
       if (typeof d === "object") {
-        return d.value == null ? "" : String(d.value);
+        return d.value == null ? "" : formatNumber(d.value);
       }
-      return String(d);
+      return formatNumber(d);
     });
     cols.push(arr);
   });
@@ -121,14 +121,22 @@ const pieDataViewOptionToContent = (opt) => {
     if (d == null) return;
     if (typeof d === "object") {
       names.push(d.name == null ? "" : String(d.name));
-      values.push(d.value == null ? "" : String(d.value));
+      values.push(d.value == null ? "" : formatNumber(d.value));
     } else {
       names.push("");
-      values.push(String(d));
+      values.push(formatNumber(d));
     }
   });
 
   return buildAlignedTable(headers, [names, values]);
+};
+
+// 数字格式化：浮点数最多保留 2 位小数（66.66666666 -> 66.67），整数与字符串原样返回
+const formatNumber = (d) => {
+  if (typeof d === "number" && !Number.isInteger(d)) {
+    return String(Math.round(d * 100) / 100);
+  }
+  return String(d);
 };
 
 const graph_configs = {
