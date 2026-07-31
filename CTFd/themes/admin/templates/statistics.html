@@ -225,6 +225,12 @@
     #solve-percentages-graph div[style*="overflow: auto"] thead th {
         white-space: nowrap !important;
     }
+    /* 移动端：第三个数据视图（各题目解题百分比）第二列表头 "Solve Percentages per Challenge"
+       取消强制不换行 —— 溢出时换行显示，不再触发横向滚动。
+       仅覆盖该图表的第二列（series 名），第一列"题目名称"仍保持单行。 */
+    #solve-percentages-graph div[style*="overflow: auto"] thead th:nth-child(2) {
+        white-space: normal !important;
+    }
 }
 /* 数据视图（6 个图表）：可滚动区域居中、左右对称留白、横向滚动正常可用 —— 适用于所有环境（桌面端 + 移动端） */
 /* 作用于环形图（提交百分比/分类细分/积分细分）与柱状图（解题数/得分分布/各题目解题百分比） */
