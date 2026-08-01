@@ -328,31 +328,14 @@ const graph_configs = {
             radius: ["30%", "50%"],
             avoidLabelOverlap: false,
             label: {
-              show: false,
-              position: "center",
+              show: true,
+              position: "outside",
+              formatter: function (data) {
+                return `${data.name} (${data.value})\n${data.percent.toFixed(1)}%`;
+              },
             },
-            itemStyle: {
-              normal: {
-                label: {
-                  show: true,
-                  formatter: function (data) {
-                    return `${data.name} (${data.value})\n${data.percent.toFixed(1)}%`;
-                  },
-                },
-                labelLine: {
-                  show: true,
-                },
-              },
-              emphasis: {
-                label: {
-                  show: true,
-                  position: "center",
-                  textStyle: {
-                    fontSize: "14",
-                    fontWeight: "normal",
-                  },
-                },
-              },
+            labelLine: {
+              show: true,
             },
             emphasis: {
               label: {
@@ -360,9 +343,6 @@ const graph_configs = {
                 fontSize: "30",
                 fontWeight: "bold",
               },
-            },
-            labelLine: {
-              show: false,
             },
             data: pieData,
           },
@@ -426,31 +406,14 @@ const graph_configs = {
             type: "pie",
             radius: ["30%", "50%"],
             label: {
-              show: false,
-              position: "center",
+              show: true,
+              position: "outside",
+              formatter: function (data) {
+                return `${data.name} (${data.value})\n${data.percent.toFixed(1)}%`;
+              },
             },
-            itemStyle: {
-              normal: {
-                label: {
-                  show: true,
-                  formatter: function (data) {
-                    return `${data.name} (${data.value})\n${data.percent.toFixed(1)}%`;
-                  },
-                },
-                labelLine: {
-                  show: true,
-                },
-              },
-              emphasis: {
-                label: {
-                  show: true,
-                  position: "center",
-                  textStyle: {
-                    fontSize: "14",
-                    fontWeight: "normal",
-                  },
-                },
-              },
+            labelLine: {
+              show: true,
             },
             emphasis: {
               label: {
@@ -544,31 +507,14 @@ const graph_configs = {
             type: "pie",
             radius: ["30%", "50%"],
             label: {
-              show: false,
-              position: "center",
+              show: true,
+              position: "outside",
+              formatter: function (data) {
+                return `${data.name} (${data.value})\n${data.percent.toFixed(1)}%`;
+              },
             },
-            itemStyle: {
-              normal: {
-                label: {
-                  show: true,
-                  formatter: function (data) {
-                    return `${data.name} (${data.value})\n${data.percent.toFixed(1)}%`;
-                  },
-                },
-                labelLine: {
-                  show: true,
-                },
-              },
-              emphasis: {
-                label: {
-                  show: true,
-                  position: "center",
-                  textStyle: {
-                    fontSize: "14",
-                    fontWeight: "normal",
-                  },
-                },
-              },
+            labelLine: {
+              show: true,
             },
             emphasis: {
               label: {
