@@ -340,8 +340,8 @@ const graph_configs = {
             emphasis: {
               label: {
                 show: true,
-                fontSize: "30",
-                fontWeight: "bold",
+                fontSize: "14",
+                fontWeight: "normal",
               },
             },
             data: pieData,
@@ -418,8 +418,8 @@ const graph_configs = {
             emphasis: {
               label: {
                 show: true,
-                fontSize: "30",
-                fontWeight: "bold",
+                fontSize: "14",
+                fontWeight: "normal",
               },
             },
             data: [],
@@ -519,8 +519,8 @@ const graph_configs = {
             emphasis: {
               label: {
                 show: true,
-                fontSize: "30",
-                fontWeight: "bold",
+                fontSize: "14",
+                fontWeight: "normal",
               },
             },
             data: [],
