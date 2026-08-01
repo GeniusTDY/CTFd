@@ -576,14 +576,24 @@ export default {
           this.challengeSearch = settings.challengeSearch || "";
           this.categorySearch = settings.categorySearch || "";
           this.challengeSort = settings.challengeSort || "position";
+          // 空数组 [] 在 JS 中是 truthy，直接 || 会导致空数组覆盖默认全选。
+          // 这里改为校验 length，只有非空时才使用保存值，否则回退到全选。
           this.selectedUserIds =
-            settings.selectedUserIds || this.users.map((u) => u.id);
+            settings.selectedUserIds && settings.selectedUserIds.length
+              ? settings.selectedUserIds
+              : this.users.map((u) => u.id);
           this.selectedChallengeIds =
-            settings.selectedChallengeIds || this.challenges.map((c) => c.id);
+            settings.selectedChallengeIds && settings.selectedChallengeIds.length
+              ? settings.selectedChallengeIds
+              : this.challenges.map((c) => c.id);
           this.selectedCategories =
-            settings.selectedCategories || this.uniqueCategories;
+            settings.selectedCategories && settings.selectedCategories.length
+              ? settings.selectedCategories
+              : this.uniqueCategories;
           this.selectedBracketIds =
-            settings.selectedBracketIds || this.brackets.map((b) => b.id);
+            settings.selectedBracketIds && settings.selectedBracketIds.length
+              ? settings.selectedBracketIds
+              : this.brackets.map((b) => b.id);
         } catch (e) {
           console.error("Failed to load scoreboard matrix settings", e);
           this.resetFilters();
