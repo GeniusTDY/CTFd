@@ -19,6 +19,12 @@
         overflow-y: auto;
         -webkit-overflow-scrolling: touch;
       }
+      /* 移动端：用户/队伍详情页"解题"表格单元格禁止换行，
+         内容溢出时由 .table-responsive 容器水平滚动查看，不影响桌面端正常显示 */
+      .solves-table th,
+      .solves-table td {
+        white-space: nowrap;
+      }
     }
   </style>
 
