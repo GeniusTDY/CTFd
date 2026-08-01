@@ -327,32 +327,18 @@ const graph_configs = {
             type: "pie",
             radius: ["30%", "50%"],
             avoidLabelOverlap: false,
+            // 标签默认显示在扇区外侧（position:"outer"）；emphasis 不再覆盖位置，
+            // 因此聚焦（hover/点击扇形）时"名：值（百分比%）"元素停留在其原位置，
+            // 仅放大加粗 + 扇形放大，其余逻辑不变
             label: {
-              show: false,
-              position: "center",
+              show: true,
+              position: "outer",
+              formatter: function (data) {
+                return `${data.name} (${data.value})\n${data.percent.toFixed(1)}%`;
+              },
             },
-            itemStyle: {
-              normal: {
-                label: {
-                  show: true,
-                  formatter: function (data) {
-                    return `${data.name} (${data.value})\n${data.percent.toFixed(1)}%`;
-                  },
-                },
-                labelLine: {
-                  show: true,
-                },
-              },
-              emphasis: {
-                label: {
-                  show: true,
-                  position: "center",
-                  textStyle: {
-                    fontSize: "14",
-                    fontWeight: "normal",
-                  },
-                },
-              },
+            labelLine: {
+              show: true,
             },
             emphasis: {
               label: {
@@ -360,9 +346,6 @@ const graph_configs = {
                 fontSize: "30",
                 fontWeight: "bold",
               },
-            },
-            labelLine: {
-              show: false,
             },
             data: pieData,
           },
@@ -425,32 +408,16 @@ const graph_configs = {
             name: _("Category Breakdown"),
             type: "pie",
             radius: ["30%", "50%"],
+            // 标签默认显示在扇区外侧；emphasis 不覆盖位置，聚焦时停留在原位置
             label: {
-              show: false,
-              position: "center",
+              show: true,
+              position: "outer",
+              formatter: function (data) {
+                return `${data.name} (${data.value})\n${data.percent.toFixed(1)}%`;
+              },
             },
-            itemStyle: {
-              normal: {
-                label: {
-                  show: true,
-                  formatter: function (data) {
-                    return `${data.name} (${data.value})\n${data.percent.toFixed(1)}%`;
-                  },
-                },
-                labelLine: {
-                  show: true,
-                },
-              },
-              emphasis: {
-                label: {
-                  show: true,
-                  position: "center",
-                  textStyle: {
-                    fontSize: "14",
-                    fontWeight: "normal",
-                  },
-                },
-              },
+            labelLine: {
+              show: true,
             },
             emphasis: {
               label: {
@@ -543,32 +510,16 @@ const graph_configs = {
             name: _("Point Breakdown"),
             type: "pie",
             radius: ["30%", "50%"],
+            // 标签默认显示在扇区外侧；emphasis 不覆盖位置，聚焦时停留在原位置
             label: {
-              show: false,
-              position: "center",
+              show: true,
+              position: "outer",
+              formatter: function (data) {
+                return `${data.name} (${data.value})\n${data.percent.toFixed(1)}%`;
+              },
             },
-            itemStyle: {
-              normal: {
-                label: {
-                  show: true,
-                  formatter: function (data) {
-                    return `${data.name} (${data.value})\n${data.percent.toFixed(1)}%`;
-                  },
-                },
-                labelLine: {
-                  show: true,
-                },
-              },
-              emphasis: {
-                label: {
-                  show: true,
-                  position: "center",
-                  textStyle: {
-                    fontSize: "14",
-                    fontWeight: "normal",
-                  },
-                },
-              },
+            labelLine: {
+              show: true,
             },
             emphasis: {
               label: {
