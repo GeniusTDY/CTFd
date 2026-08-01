@@ -9,6 +9,18 @@
 	#team-members td {
 		white-space: nowrap !important;
 	}
+	/* 解题/失败/奖励/缺失 4 个表格单元格禁止换行，
+	   溢出时由外层 .table-responsive 提供水平滚动。
+	   桌面端宽度充足，内容本就不会换行，不触发此规则。 */
+	#nav-tabContent th,
+	#nav-tabContent td {
+		white-space: nowrap !important;
+	}
+	/* admin.scss 中 pre { white-space: pre-wrap } 会导致 flag 提交内容换行，
+	   此处覆盖为 pre，保持原始格式且不换行，交由表格水平滚动查看。 */
+	#nav-tabContent td pre {
+		white-space: pre !important;
+	}
 }
 </style>
 {% endblock %}
