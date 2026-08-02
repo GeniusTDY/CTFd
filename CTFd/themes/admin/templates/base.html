@@ -86,6 +86,27 @@
 		}
 	</script>
 	{% block stylesheets %} {% endblock %}
+	<style>
+	/* 移动端：列表页表格中未居中的列（名称/分类/分数等文本列）统一居中显示，
+	   与 ID/状态/徽章等已居中的列保持视觉一致。仅作用于列表页表格
+	   （#teamsboard 用于 用户/队伍/提交，#challenges/#modules/#audiences/#scoreboard），
+	   不影响详情页表格。桌面端宽度充足，不触发此规则，保持原有左对齐不变。
+	   提交页 .flag 列含 flag 提交内容(<pre>)，保持左对齐以保证可读性。 */
+	@media (max-width: 767.98px) {
+		#teamsboard > tbody > tr > td:not(.flag),
+		#teamsboard > thead > tr > th,
+		#challenges > tbody > tr > td:not([data-checkbox]),
+		#challenges > thead > tr > th,
+		#modules > tbody > tr > td,
+		#modules > thead > tr > th,
+		#audiences > tbody > tr > td,
+		#audiences > thead > tr > th,
+		#scoreboard > tbody > tr > td,
+		#scoreboard > thead > tr > th {
+			text-align: center !important;
+		}
+	}
+	</style>
 	{% if get_locale() == 'zh_CN' %}
 	<style>
 		.editor-statusbar .lines:before{content:"行数: "}
