@@ -4,7 +4,7 @@ import os
 import sys
 
 from flask import abort, redirect, render_template, request, session, url_for
-from flask_babel import gettext, lazy_gettext as _l
+from flask_babel import format_datetime, gettext, lazy_gettext as _l
 from sqlalchemy.exc import IntegrityError, InvalidRequestError
 from werkzeug.middleware.dispatcher import DispatcherMiddleware
 
@@ -124,6 +124,9 @@ def init_template_globals(app):
     app.jinja_env.globals.update(get_current_team_attrs=get_current_team_attrs)
     app.jinja_env.globals.update(get_ip=get_ip)
     app.jinja_env.globals.update(get_locale=get_locale)
+    # format_datetime 使用 Babel 的 CLDR 区域数据按当前 locale 本地化日期时间，
+    # 用于在模板中服务端渲染时间（如通知创建时间），避免依赖 JS(dayjs) 的英文默认格式。
+    app.jinja_env.globals.update(format_datetime=format_datetime)
     app.jinja_env.globals.update(Assets=Assets)
     app.jinja_env.globals.update(Configs=Configs)
     app.jinja_env.globals.update(Plugins=Plugins)
