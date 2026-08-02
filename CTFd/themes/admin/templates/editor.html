@@ -21,6 +21,33 @@
 		margin-bottom: 0;
 	}
 }
+
+/*
+ * 移动端“草稿 / 隐藏 / 需要认证”三个开关换行处理：
+ * - 默认 display:contents：三个开关仍是 form-inline 的直接 flex 子项，
+ *   桌面端与原有布局完全一致，不受影响。
+ * - JS 检测到溢出（任意一个开关被挤到下一行）时，给 .page-toggles 加上
+ *   is-wrapped，使其变成 width:100% 的 flex 容器，把三个开关作为整组
+ *   一起移到下一行，避免英文下“需要认证”单独溢出换行。
+ * - 换行后用较小的 gap 取代 pr-3 内边距与 margin-right，使整组能在
+ *   按钮下方的一行内排下（含 375px 窄屏）。若极端窄屏仍排不下，JS 会回退。
+ */
+.page-toggles {
+	display: contents;
+}
+.page-toggles.is-wrapped {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	width: 100%;
+	gap: 0.5rem;
+	padding-top: 0.5rem;
+}
+#content-write .form-inline .page-toggles.is-wrapped .form-group {
+	margin-right: 0 !important;
+	margin-bottom: 0 !important;
+	padding-right: 0 !important;
+}
 </style>
 {% endblock %}
 
@@ -134,6 +161,7 @@
 
 										<span class="nav-link d-none d-md-block d-lg-block">|</span>
 
+									<div class="page-toggles">
 										<div class="form-group pr-3">
 											{% set draft = page is defined and page.draft == True %}
 											{{ form.draft(class="form-check-input", checked=draft) }}
@@ -152,6 +180,7 @@
 											{{ form.auth_required.label(class="form-check-label") }}
 										</div>
 									</div>
+								</div>
 
 									<br>
 
@@ -199,6 +228,62 @@
 {% block scripts %}
 <script>
 var PAGE_ID = {{ page.id if page is defined else "null"}};
+
+// 移动端检测“草稿 / 隐藏 / 需要认证”三个开关是否溢出，溢出则整组换行
+(function () {
+  function adjustPageToggles() {
+    var formInline = document.querySelector("#content-write .form-inline");
+    if (!formInline) return;
+    var toggles = formInline.querySelector(".page-toggles");
+    if (!toggles) return;
+    // 先还原为自然状态（display:contents）以便准确测量
+    toggles.classList.remove("is-wrapped");
+    // 仅在移动端处理（Bootstrap md 断点为 768px），桌面端保持原样
+    if (window.innerWidth >= 768) return;
+    var children = toggles.querySelectorAll(".form-group");
+    if (children.length < 2) return;
+    // display:contents 下，三个开关是 form-inline 的直接 flex 子项；
+    // 若发生溢出，最后一个会被挤到下一行，导致首尾元素的 top 不一致。
+    var firstTop = children[0].getBoundingClientRect().top;
+    var lastTop = children[children.length - 1].getBoundingClientRect().top;
+    if (Math.abs(lastTop - firstTop) <= 1) return; // 未溢出，保持自然布局
+    // 溢出：尝试把三个开关作为整组移到下一行（按钮下方）。
+    toggles.classList.add("is-wrapped");
+    // 仅当整组能在按钮下方的一行内排下时才保留换行；
+    // 若整组本身仍放不下（会再次折行，反而比自然布局多占行数），则回退。
+    var btn = formInline.querySelector(".btn-group");
+    var btnTop = btn ? btn.getBoundingClientRect().top : -1;
+    var gFirst = children[0].getBoundingClientRect().top;
+    var gLast = children[children.length - 1].getBoundingClientRect().top;
+    var allOnOneLine = Math.abs(gLast - gFirst) <= 1;
+    var belowButton = gFirst > btnTop;
+    if (!(allOnOneLine && belowButton)) {
+      toggles.classList.remove("is-wrapped");
+    }
+  }
+
+  function run() {
+    // 双 RAF 确保布局与字体渲染完成后再测量
+    requestAnimationFrame(function () {
+      requestAnimationFrame(adjustPageToggles);
+    });
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", run);
+  } else {
+    run();
+  }
+  window.addEventListener("load", run);
+  if (document.fonts && document.fonts.ready) {
+    document.fonts.ready.then(run);
+  }
+  var resizeTimer;
+  window.addEventListener("resize", function () {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(adjustPageToggles, 100);
+  });
+})();
 </script>
 {% endblock %}
 
