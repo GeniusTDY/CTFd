@@ -6632,3 +6632,19 @@ msgstr "无效的类型；应为 datetime、string、bytes、int 或 float"
 
 msgid "invalid type; expected timedelta, string, bytes, int or float"
 msgstr "无效的类型；应为 timedelta、string、bytes、int 或 float"
+
+# 奖励模块字段翻译（用户/队伍详情页奖励名称与分类）
+msgid "first_blood_bonus"
+msgstr "一血奖励"
+
+msgid "hint_penalty"
+msgstr "提示扣分"
+
+msgid "participation"
+msgstr "参与奖"
+
+msgid "bonus"
+msgstr "奖励"
+
+msgid "penalty"
+msgstr "扣分"
