@@ -6,6 +6,20 @@
 	height: 100%;
 }
 
+/* draft/hidden/auth_required 三个复选框分组：默认 inline-flex + nowrap，
+   三个复选框作为一个整体与 Media Library 按钮同行。
+   移动端若同行会溢出页面（英文下 Authentication Required 较长），
+   由 JS 检测后给 .page-flags-group 加 .flags-wrap，整组换到下一行并保留 1.2rem 上留白。
+   未溢出时（如简中）不加 class，保持默认布局。桌面端宽度充足，不会触发。
+   另：移动端收紧三个复选框的间距（移除 pr-3 多余右内边距、缩小右外边距），
+   使英文下三个复选框换行后能在同一行排开，避免"Authentication Required"再次独占一行。
+   仅作用于移动端，不影响桌面端。 */
+.page-flags-group {
+	display: inline-flex;
+	align-items: center;
+	flex-wrap: nowrap;
+}
+
 @media (max-width: 767.98px) {
 	/* 缩短移动端代码编辑框高度，参考主题设置页面的代码框长度（textarea rows=7），不影响桌面端 */
 	#content-write {
@@ -15,10 +29,20 @@
 		flex-shrink: 0;
 		margin-right: 1rem;
 	}
+	/* 收紧复选框间距：移除 pr-3 的 1rem 右内边距，右外边距由 0.75rem 减为 0.5rem，
+	   让 draft/hidden/auth_required 三个复选框在移动端换行后可同行排开 */
 	#content-write .form-inline .form-group {
 		flex-shrink: 0;
-		margin-right: 0.75rem;
+		padding-right: 0;
+		margin-right: 0.5rem;
 		margin-bottom: 0;
+	}
+	.page-flags-group.flags-wrap {
+		display: flex !important;
+		flex-wrap: wrap !important;
+		width: 100% !important;
+		margin-right: 0 !important;
+		margin-top: 1.2rem !important;
 	}
 }
 </style>
@@ -134,6 +158,7 @@
 
 										<span class="nav-link d-none d-md-block d-lg-block">|</span>
 
+										<div class="page-flags-group">
 										<div class="form-group pr-3">
 											{% set draft = page is defined and page.draft == True %}
 											{{ form.draft(class="form-check-input", checked=draft) }}
@@ -151,6 +176,7 @@
 											{{ form.auth_required(class="form-check-input", checked=auth_required) }}
 											{{ form.auth_required.label(class="form-check-label") }}
 										</div>
+									</div>
 									</div>
 
 									<br>
@@ -199,6 +225,63 @@
 {% block scripts %}
 <script>
 var PAGE_ID = {{ page.id if page is defined else "null"}};
+
+/* 移动端：检测 draft/hidden/auth_required 三个复选框整组与 Media Library 按钮同行时是否会溢出页面。
+   .page-flags-group 默认 inline-flex + nowrap，三个复选框强制同行；
+   若前一个可见兄弟（移动端为 Media Library 按钮组，分隔符 span 在移动端 d-none 隐藏）右边缘 + 整组宽度
+   超过容器右边缘，说明同行会溢出页面，给 .page-flags-group 加 .flags-wrap（display:flex; width:100%），
+   让整组换到下一行并保留 1.2rem 上留白。
+   未溢出时（如简中）不加 class，保持默认布局。桌面端宽度充足，不会触发。 */
+(function () {
+    function prevVisibleSibling(el) {
+        var s = el.previousElementSibling;
+        while (s) {
+            if (s.offsetParent !== null || s.offsetWidth > 0) return s;
+            s = s.previousElementSibling;
+        }
+        return null;
+    }
+    function adjustFlagsWrap() {
+        var groups = document.querySelectorAll(".page-flags-group");
+        groups.forEach(function (group) {
+            // 先移除 class，测量默认状态
+            group.classList.remove("flags-wrap");
+            void group.offsetWidth;
+            // 找到前一个可见兄弟元素（移动端为 Media Library 按钮组，分隔符 span 已 d-none 隐藏）
+            var prev = prevVisibleSibling(group);
+            if (!prev) return;
+            // 计算"假设整组与前一个兄弟同行"时的右边缘
+            var prevRect = prev.getBoundingClientRect();
+            var groupWidth = group.offsetWidth;
+            // 前一个兄弟与整组之间的 inline 间距（前者的 margin-right），取实际值兜底 12px
+            var gap = parseInt(getComputedStyle(prev).marginRight) || 12;
+            var hypotheticalRight = prevRect.right + gap + groupWidth;
+            // 容器右边缘：取页面可视宽度与父级 .form-inline 右边缘的较小值
+            var formInline = group.parentElement;
+            var containerRight = Math.min(
+                window.innerWidth,
+                formInline.getBoundingClientRect().right
+            );
+            // 同行时整组右边缘超出容器 → 溢出，触发换行
+            if (hypotheticalRight > containerRight - 1) {
+                group.classList.add("flags-wrap");
+            }
+        });
+    }
+
+    // editor 页直接渲染，立即检测
+    if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", adjustFlagsWrap);
+    } else {
+        adjustFlagsWrap();
+    }
+    // 窗口尺寸变化时重新检测
+    var resizeTimer;
+    window.addEventListener("resize", function () {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(adjustFlagsWrap, 100);
+    });
+})();
 </script>
 {% endblock %}
 
