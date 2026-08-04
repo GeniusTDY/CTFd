@@ -21,6 +21,27 @@
 		margin-bottom: 0;
 	}
 }
+
+/* 移动端：当 draft/hidden/auth_required 三个复选框整组换到 Media Library 下一行时
+   （父容器宽度不足，inline-flex 自然换行），由 JS 给 .page-flags-group
+   加 .flags-wrap class，显式标记换行状态并保留 1.2rem 上留白。
+   未换行时（如简中，整组与按钮同行）不加 class，保持默认布局。
+   桌面端宽度充足，整组与按钮同行，不会触发。
+   .page-flags-group 默认 inline-flex nowrap，保持与原 form-inline 直接子元素一致的水平排列。 */
+.page-flags-group {
+	display: inline-flex;
+	flex-wrap: nowrap;
+	align-items: center;
+}
+@media (max-width: 767.98px) {
+	.page-flags-group.flags-wrap {
+		display: flex !important;
+		flex-wrap: wrap !important;
+		width: 100% !important;
+		margin-right: 0 !important;
+		margin-top: 1.2rem !important;
+	}
+}
 </style>
 {% endblock %}
 
@@ -134,6 +155,7 @@
 
 										<span class="nav-link d-none d-md-block d-lg-block">|</span>
 
+									<div class="page-flags-group">
 										<div class="form-group pr-3">
 											{% set draft = page is defined and page.draft == True %}
 											{{ form.draft(class="form-check-input", checked=draft) }}
@@ -151,6 +173,7 @@
 											{{ form.auth_required(class="form-check-input", checked=auth_required) }}
 											{{ form.auth_required.label(class="form-check-label") }}
 										</div>
+									</div>
 									</div>
 
 									<br>
@@ -199,6 +222,62 @@
 {% block scripts %}
 <script>
 var PAGE_ID = {{ page.id if page is defined else "null"}};
+</script>
+
+<script>
+/* 移动端：检测 draft/hidden/auth_required 三个复选框整组与前一个元素（Media Library 按钮，
+   移动端分隔符 d-none 隐藏会跳过）同行时是否会溢出页面。
+   .page-flags-group 是 inline-flex + nowrap，三个复选框强制同行；
+   若前一个元素右边缘 + 整组宽度 超过容器（页面）右边缘，说明同行会溢出页面，
+   给 .page-flags-group 加 .flags-wrap class（display:flex; width:100%），
+   让整组换到下一行并保留 1.2rem 上留白。
+   未溢出时（如简中，整组同行不超出页面）不加 class，保持默认布局。
+   桌面端宽度充足，不会触发。 */
+(function () {
+    function adjustFlagsWrap() {
+        var groups = document.querySelectorAll(".page-flags-group");
+        groups.forEach(function (group) {
+            // 先移除 class，测量默认状态
+            group.classList.remove("flags-wrap");
+            void group.offsetWidth;
+            // 找到前一个可见的兄弟元素（跳过 d-none 隐藏的分隔符等）
+            var prev = group.previousElementSibling;
+            while (prev && prev.getClientRects().length === 0) {
+                prev = prev.previousElementSibling;
+            }
+            if (!prev) return;
+            // 计算"假设整组与前一个元素同行"时的右边缘
+            var prevRect = prev.getBoundingClientRect();
+            var groupWidth = group.offsetWidth;
+            // 元素之间的 inline 间距（margin-right 等），取 0.75rem≈12px 兜底
+            var gap = 12;
+            var hypotheticalRight = prevRect.right + gap + groupWidth;
+            // 容器右边缘：取页面可视宽度与父级 .form-inline 右边缘的较小值
+            var formGroup = group.parentElement;
+            var containerRight = Math.min(
+                window.innerWidth,
+                formGroup.getBoundingClientRect().right
+            );
+            // 同行时整组右边缘超出容器 → 溢出，触发换行
+            if (hypotheticalRight > containerRight - 1) {
+                group.classList.add("flags-wrap");
+            }
+        });
+    }
+
+    // editor 页直接渲染，立即检测
+    if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", adjustFlagsWrap);
+    } else {
+        adjustFlagsWrap();
+    }
+    // 窗口尺寸变化时重新检测
+    var resizeTimer;
+    window.addEventListener("resize", function () {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(adjustFlagsWrap, 100);
+    });
+})();
 </script>
 {% endblock %}
 
