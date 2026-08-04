@@ -20,6 +20,24 @@
 		margin-right: 0.75rem;
 		margin-bottom: 0;
 	}
+	/* 移动端：.page-flags-group 默认 display:contents，使三个复选框作为 .form-inline
+	   的直接 flex 子元素参与布局（与原始无包裹时行为一致）。
+	   当 JS 检测到第三个复选框（auth_required）换行（top 不同于一）时，
+	   给 .page-flags-group 加 .flags-wrap（display:flex; width:100%），
+	   让整组换到 Media Library 按钮下一行。
+	   简中标签短，三个复选框与按钮同行不溢出 → 不加 class，保持原始布局。
+	   英文标签长，第三个复选框会溢出换行 → 加 class，整组下移。
+	   桌面端宽度充足，整组与按钮同行，不会触发。 */
+	#content-write .form-inline .page-flags-group {
+		display: contents;
+	}
+	#content-write .form-inline .page-flags-group.flags-wrap {
+		display: flex !important;
+		flex-wrap: wrap !important;
+		width: 100% !important;
+		margin-right: 0 !important;
+		margin-top: 1.2rem !important;
+	}
 }
 </style>
 {% endblock %}
@@ -134,24 +152,24 @@
 
 										<span class="nav-link d-none d-md-block d-lg-block">|</span>
 
+									<div class="page-flags-group form-check form-check-inline">
 										<div class="form-group pr-3">
 											{% set draft = page is defined and page.draft == True %}
 											{{ form.draft(class="form-check-input", checked=draft) }}
 											{{ form.draft.label(class="form-check-label") }}
 										</div>
-
 										<div class="form-group pr-3">
 											{% set hidden = page is defined and page.hidden == True %}
 											{{ form.hidden(class="form-check-input", checked=hidden) }}
 											{{ form.hidden.label(class="form-check-label") }}
 										</div>
-
 										<div class="form-group pr-3">
 											{% set auth_required = page is defined and page.auth_required == True %}
 											{{ form.auth_required(class="form-check-input", checked=auth_required) }}
 											{{ form.auth_required.label(class="form-check-label") }}
 										</div>
 									</div>
+								</div>
 
 									<br>
 
@@ -199,6 +217,42 @@
 {% block scripts %}
 <script>
 var PAGE_ID = {{ page.id if page is defined else "null"}};
+
+/* 移动端：.page-flags-group 默认 display:contents，三个复选框作为 .form-inline 直接
+   flex 子元素布局（与原始无包裹行为一致）。当第三个复选框（auth_required）因宽度不足
+   被 flex-wrap 换到下一行时（top 与第一个不同），说明发生溢出，
+   给 .page-flags-group 加 .flags-wrap（display:flex; width:100%）让整组下移。
+   简中标签短不溢出 → 不加 class；英文标签长溢出 → 加 class。桌面端不触发。 */
+(function () {
+    function adjustFlagsWrap() {
+        var groups = document.querySelectorAll("#content-write .form-inline .page-flags-group");
+        groups.forEach(function (group) {
+            // 先移除 class，恢复 display:contents 状态
+            group.classList.remove("flags-wrap");
+            // display:contents 时 group 无 box，用子元素强制 reflow
+            var checkboxes = group.querySelectorAll("input[type='checkbox']");
+            if (checkboxes.length < 2) return;
+            void checkboxes[0].offsetWidth;
+            // 比较第一个和最后一个复选框的 top：不同行说明溢出
+            var firstRect = checkboxes[0].getBoundingClientRect();
+            var lastRect = checkboxes[checkboxes.length - 1].getBoundingClientRect();
+            if (lastRect.top - firstRect.top > 2) {
+                group.classList.add("flags-wrap");
+            }
+        });
+    }
+
+    if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", adjustFlagsWrap);
+    } else {
+        adjustFlagsWrap();
+    }
+    var resizeTimer;
+    window.addEventListener("resize", function () {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(adjustFlagsWrap, 100);
+    });
+})();
 </script>
 {% endblock %}
 
