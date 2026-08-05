@@ -35,18 +35,6 @@
 		margin-right: 0 !important;
 		margin-top: 0.75rem !important;
 	}
-	/* 移动端（<576px）下 Bootstrap 的 .form-inline .form-check-input 覆盖规则不生效，
-	   .form-check-input 回退到默认 position:absolute; margin-left:-1.25rem，
-	   该负 margin 是为 .form-check 容器（有 padding-left:1.25rem 补偿）设计的，
-	   但此处父容器是 .form-group（无 padding-left），导致复选框向左溢出约 20px。
-	   此处显式覆盖为 position:relative; margin-left:0，与桌面端 .form-inline 行为一致。
-	   仅在移动端媒体查询内生效，不影响桌面端。 */
-	.page-flags-group .form-check-input {
-		position: relative !important;
-		margin-top: 0 !important;
-		margin-right: 0.25rem !important;
-		margin-left: 0 !important;
-	}
 }
 </style>
 {% endblock %}
