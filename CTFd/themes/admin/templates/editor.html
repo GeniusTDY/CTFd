@@ -33,7 +33,7 @@
 	}
 	/* 移动端：当三个复选框整组与 Media Library 按钮同行会溢出当前行时，
 	   由 JS 给 .page-flags-group 加 .flags-wrap class，
-	   让整组换到下一行并保留 0.5rem 上留白，三者仍同行（nowrap）。
+	   让整组换到下一行并保留 1.2rem 上留白，三者仍同行（nowrap）。
 	   未溢出时不加 class，保持与按钮同行。桌面端宽度充足，不会触发。 */
 	.page-flags-group.flags-wrap {
 		display: flex !important;
@@ -231,8 +231,8 @@ var PAGE_ID = {{ page.id if page is defined else "null"}};
 /* 移动端：检测 Draft/Hidden/Authentication Required 三个复选框
    与 Media Library 按钮同行时是否会溢出当前行。
    测量思路（不依赖任何兜底常量）：
-   1. 临时给 .page-flags-group 设置 flex-shrink:0，让父级 .form-inline 的
-      flex 布局无法压缩它，此时内部三个复选框元素以真实宽度渲染。
+   1. .form-group 的 flex-shrink 由 CSS 规则设定为 0，不受父级影响，
+      三个复选框元素始终以真实宽度渲染，直接逐个测量。
    2. 逐个测量三个复选框元素的真实占用宽度
       = getBoundingClientRect().width + margin-left + margin-right
       （rect.width 已含 padding/border，再加 margin 才是 flex 子元素占用的完整空间）。
@@ -251,18 +251,12 @@ var PAGE_ID = {{ page.id if page is defined else "null"}};
             group.classList.remove("flags-wrap");
             void group.offsetWidth;
 
-            // 临时设置 flex-shrink:0，让 group 不被父级 flex 压缩，
-            // 内部三个复选框元素以真实宽度渲染
-            var originalFlexShrink = group.style.flexShrink;
-            group.style.flexShrink = "0";
-            void group.offsetWidth;
-
             // 逐个测量三个复选框元素的真实占用宽度（含外边距）
+            // .form-group 的 flex-shrink 由 CSS 规则设定为 0，
+            // 不受父级 .page-flags-group 的 flex-shrink 影响，
+            // 始终以真实宽度渲染，无需临时设置 flex-shrink:0
             var checkboxes = group.querySelectorAll(".form-group");
-            if (checkboxes.length === 0) {
-                group.style.flexShrink = originalFlexShrink;
-                return;
-            }
+            if (checkboxes.length === 0) return;
             var totalCheckboxesWidth = 0;
             Array.prototype.forEach.call(checkboxes, function (cb) {
                 var rect = cb.getBoundingClientRect();
@@ -273,9 +267,6 @@ var PAGE_ID = {{ page.id if page is defined else "null"}};
                 // 加上 margin 才是元素在 flex 布局中占用的完整空间
                 totalCheckboxesWidth += rect.width + marginLeft + marginRight;
             });
-
-            // 恢复 flex-shrink
-            group.style.flexShrink = originalFlexShrink;
 
             // 找到上一个可见的兄弟元素（跳过 d-none 的 | 分隔符）
             var prev = group.previousElementSibling;
