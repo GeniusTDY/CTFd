@@ -39,6 +39,11 @@
 		display: flex !important;
 		width: 100% !important;
 		margin-top: 0.5rem !important;
+		/* Bootstrap .form-check-input 自带 margin-left: -1.25rem，
+		   换行后整组 width:100% 且无 padding，第一个复选框的 input 方框
+		   会通过负 margin 向左溢出容器 1.25rem。
+		   加 padding-left: 1.25rem 恰好抵消，消除左溢出。 */
+		padding-left: 1.25rem !important;
 	}
 }
 </style>
