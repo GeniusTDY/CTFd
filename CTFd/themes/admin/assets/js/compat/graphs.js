@@ -131,6 +131,10 @@ const graph_configs = {
           right: 0,
           data: [],
         },
+        // 参照 statistics.js 详细信息页环形图写法：
+        // label 默认显示在 outside，emphasis.label 不指定 position 继承 outside，
+        // 聚焦时 label 仍在原位置（外圈），仅字号/字重变化，避免位置错位。
+        // 移除 ECharts 3 旧写法 itemStyle.normal / itemStyle.emphasis（与新写法冲突导致渲染错位）。
         series: [
           {
             name: _("Category Breakdown"),
@@ -138,41 +142,21 @@ const graph_configs = {
             radius: ["30%", "50%"],
             avoidLabelOverlap: false,
             label: {
-              show: false,
-              position: "center",
+              show: true,
+              position: "outside",
+              formatter: function (data) {
+                return `${data.percent}% (${data.value})`;
+              },
             },
-            itemStyle: {
-              normal: {
-                label: {
-                  show: true,
-                  formatter: function (data) {
-                    return `${data.percent}% (${data.value})`;
-                  },
-                },
-                labelLine: {
-                  show: true,
-                },
-              },
-              emphasis: {
-                label: {
-                  show: true,
-                  position: "center",
-                  textStyle: {
-                    fontSize: "14",
-                    fontWeight: "normal",
-                  },
-                },
-              },
+            labelLine: {
+              show: true,
             },
             emphasis: {
               label: {
                 show: true,
-                fontSize: "30",
-                fontWeight: "bold",
+                fontSize: "14",
+                fontWeight: "normal",
               },
-            },
-            labelLine: {
-              show: false,
             },
             data: [],
           },
@@ -244,41 +228,21 @@ const graph_configs = {
             radius: ["30%", "50%"],
             avoidLabelOverlap: false,
             label: {
-              show: false,
-              position: "center",
+              show: true,
+              position: "outside",
+              formatter: function (data) {
+                return `${data.name} - ${data.value} (${data.percent}%)`;
+              },
             },
-            itemStyle: {
-              normal: {
-                label: {
-                  show: true,
-                  formatter: function (data) {
-                    return `${data.name} - ${data.value} (${data.percent}%)`;
-                  },
-                },
-                labelLine: {
-                  show: true,
-                },
-              },
-              emphasis: {
-                label: {
-                  show: true,
-                  position: "center",
-                  textStyle: {
-                    fontSize: "14",
-                    fontWeight: "normal",
-                  },
-                },
-              },
+            labelLine: {
+              show: true,
             },
             emphasis: {
               label: {
                 show: true,
-                fontSize: "30",
-                fontWeight: "bold",
+                fontSize: "14",
+                fontWeight: "normal",
               },
-            },
-            labelLine: {
-              show: false,
             },
             data: [
               {
