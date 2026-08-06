@@ -215,13 +215,20 @@
 var PAGE_ID = {{ page.id if page is defined else "null"}};
 </script>
 <script>
-/* 移动端：检测 Draft/Hidden/Authentication Required 三个复选框整组
-   与 Media Library 按钮同行时是否会溢出页面。
-   .page-flags-group 是 inline-flex + nowrap，三个复选框强制同行；
-   若按钮右边缘 + 整组宽度 超过容器（页面）右边缘，说明同行会溢出，
-   给 .page-flags-group 加 .flags-wrap class（display:flex; width:100%），
-   让整组换到下一行并保留 0.5rem 上留白。
-   未溢出时（如简中，整组与按钮同行不超出页面）不加 class，保持默认布局。
+/* 移动端：检测 Draft/Hidden/Authentication Required 三个复选框
+   与 Media Library 按钮同行时是否会溢出当前行。
+   测量思路（不依赖任何兜底常量）：
+   1. 临时给 .page-flags-group 设置 flex-shrink:0，让父级 .form-inline 的
+      flex 布局无法压缩它，此时内部三个复选框元素以真实宽度渲染。
+   2. 逐个测量三个复选框元素的真实占用宽度
+      = getBoundingClientRect().width + margin-left + margin-right
+      （rect.width 已含 padding/border，再加 margin 才是 flex 子元素占用的完整空间）。
+   3. 真实测量"前一个可见元素"与 group 之间的间距
+      = prev.margin-right + group.margin-left（不再用兜底 gap）。
+   4. 当前行剩余空间 = 容器右边缘 - 前一个元素右边缘 - 上述真实间距。
+   5. 若三个复选框真实总宽度 > 当前行剩余空间，则同行会溢出，
+      给 .page-flags-group 加 .flags-wrap class，让整组换到下一行。
+   简中下三个复选框真实总宽度较小，不超过剩余空间，不加 class，保持同行。
    桌面端宽度充足，不会触发。 */
 (function () {
     function adjustPageFlagsWrap() {
@@ -230,25 +237,61 @@ var PAGE_ID = {{ page.id if page is defined else "null"}};
             // 先移除 class，测量默认状态
             group.classList.remove("flags-wrap");
             void group.offsetWidth;
+
+            // 临时设置 flex-shrink:0，让 group 不被父级 flex 压缩，
+            // 内部三个复选框元素以真实宽度渲染
+            var originalFlexShrink = group.style.flexShrink;
+            group.style.flexShrink = "0";
+            void group.offsetWidth;
+
+            // 逐个测量三个复选框元素的真实占用宽度（含外边距）
+            var checkboxes = group.querySelectorAll(".form-group");
+            if (checkboxes.length === 0) {
+                group.style.flexShrink = originalFlexShrink;
+                return;
+            }
+            var totalCheckboxesWidth = 0;
+            Array.prototype.forEach.call(checkboxes, function (cb) {
+                var rect = cb.getBoundingClientRect();
+                var style = window.getComputedStyle(cb);
+                var marginLeft = parseFloat(style.marginLeft) || 0;
+                var marginRight = parseFloat(style.marginRight) || 0;
+                // rect.width 已含 padding 和 border，
+                // 加上 margin 才是元素在 flex 布局中占用的完整空间
+                totalCheckboxesWidth += rect.width + marginLeft + marginRight;
+            });
+
+            // 恢复 flex-shrink
+            group.style.flexShrink = originalFlexShrink;
+
             // 找到上一个可见的兄弟元素（跳过 d-none 的 | 分隔符）
             var prev = group.previousElementSibling;
             while (prev && prev.offsetWidth === 0 && prev.previousElementSibling) {
                 prev = prev.previousElementSibling;
             }
             if (!prev || prev.offsetWidth === 0) return;
-            // 计算"假设整组与按钮同行"时的右边缘
+
+            // 真实测量前一个元素与 group 之间的间距
             var prevRect = prev.getBoundingClientRect();
-            var groupWidth = group.offsetWidth;
-            var gap = 12;
-            var hypotheticalRight = prevRect.right + gap + groupWidth;
+            var prevStyle = window.getComputedStyle(prev);
+            var prevMarginRight = parseFloat(prevStyle.marginRight) || 0;
+            var groupStyle = window.getComputedStyle(group);
+            var groupMarginLeft = parseFloat(groupStyle.marginLeft) || 0;
+            var gapBetween = prevMarginRight + groupMarginLeft;
+
             // 容器右边缘：取页面可视宽度与父级 .form-inline 右边缘的较小值
             var formInline = group.parentElement;
             var containerRight = Math.min(
                 window.innerWidth,
                 formInline.getBoundingClientRect().right
             );
-            // 同行时整组右边缘超出容器 → 溢出，触发换行
-            if (hypotheticalRight > containerRight - 1) {
+
+            // 当前行剩余空间 = 容器右边缘 - 前一个元素右边缘 - 真实间距
+            var remainingSpace =
+                containerRight - prevRect.right - gapBetween;
+
+            // 三个复选框真实总宽度 > 当前行剩余空间 → 溢出，整组换行
+            if (totalCheckboxesWidth > remainingSpace) {
                 group.classList.add("flags-wrap");
             }
         });
