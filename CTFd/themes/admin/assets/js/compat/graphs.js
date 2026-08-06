@@ -124,14 +124,15 @@ const graph_configs = {
             saveAsImage: {},
           },
         },
+        // 参照 statistics.js 详细信息页 #categories-pie-graph 写法：
+        // 图例项放置于环形图下方（horizontal + top: bottom），
+        // 与详细信息页保持一致，避免在弹窗狭窄空间内挤压环形图。
         legend: {
-          type: "scroll",
-          orient: "vertical",
-          top: "middle",
-          right: 0,
+          type: "plain",
+          orient: "horizontal",
+          top: "bottom",
           data: [],
         },
-        // 参照 statistics.js 详细信息页环形图写法：
         // label 默认显示在 outside，emphasis.label 不指定 position 继承 outside，
         // 聚焦时 label 仍在原位置（外圈），仅字号/字重变化，避免位置错位。
         // 移除 ECharts 3 旧写法 itemStyle.normal / itemStyle.emphasis（与新写法冲突导致渲染错位）。
