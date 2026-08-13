@@ -302,6 +302,13 @@
 
 <div class="layout">
 
+  <!-- 间距标注: 柱状图底 → hr -->
+  <div class="gap-marker" style="margin: 8px 0;">
+    <div class="line"></div>
+    <div class="label">上方柱状图底部到 hr 分隔线之间 = 16px</div>
+    <div class="line"></div>
+  </div>
+
   <!-- 最后一条 hr 分隔线 -->
   <div class="hr-block" style="margin-top:16px; margin-bottom:16px;">
     <span class="hr-label">— hr 分隔线 —</span>
@@ -310,7 +317,7 @@
   <!-- 间距标注: hr margin-bottom -->
   <div class="gap-marker" style="margin: 8px 0;">
     <div class="line"></div>
-    <div class="label">hr margin-bottom = 16px</div>
+    <div class="label">hr 下方到三个环形图区域之间 = 16px</div>
     <div class="line"></div>
   </div>
 
@@ -335,7 +342,7 @@
   <!-- 间距标注: 环形图底 → 文字块 (负 margin) -->
   <div class="gap-marker negative" style="margin: 4px 0;">
     <div class="line"></div>
-    <div class="label">submission-counts margin-top = -85px</div>
+    <div class="label">正确/错误提交文字块上移 85px（与环形图重叠）</div>
     <div class="line"></div>
   </div>
 
@@ -356,7 +363,7 @@
   <!-- 间距标注: 文字块底 → 分类细分 -->
   <div class="gap-marker" style="margin: 12px 0;">
     <div class="line"></div>
-    <div class="label">categories margin-top = 92px</div>
+    <div class="label">正确/错误提交文字块下方到分类细分图表之间 = 92px</div>
     <div class="line"></div>
   </div>
 
@@ -385,7 +392,7 @@
   <!-- 间距标注: 分类细分底 → 积分细分 (0px) -->
   <div class="gap-marker zero" style="margin: 8px 0;">
     <div class="line"></div>
-    <div class="label">margin-top = 0px (紧接)</div>
+    <div class="label">分类细分图表下方紧挨着积分细分图表（无间距）</div>
     <div class="line"></div>
   </div>
 
@@ -418,28 +425,28 @@
   <h2>上下相邻元素留白汇总</h2>
   <table>
     <tr>
-      <td>上方柱状图底 → hr 分隔线</td>
+      <td>上方柱状图底部 → hr 分隔线</td>
       <td class="gap-val">16px</td>
     </tr>
     <tr>
-      <td>hr → container-fluid (三个环形图区域)</td>
+      <td>hr 分隔线 → 下方三个环形图区域</td>
       <td class="gap-val">16px</td>
     </tr>
     <tr>
-      <td>container-fluid 顶 → 提交百分比图表顶</td>
+      <td>三个环形图区域顶部 → 提交百分比图表顶部</td>
       <td class="gap-val">64px</td>
     </tr>
     <tr>
-      <td>提交百分比环形图底 → 正确/错误提交文字块顶</td>
-      <td class="neg-val">-85px (上移)</td>
+      <td>提交百分比环形图底部 → 正确/错误提交文字块</td>
+      <td class="neg-val">-85px（文字块上移，与环形图重叠）</td>
     </tr>
     <tr>
-      <td>正确/错误提交文字块底 → 分类细分图表顶</td>
+      <td>正确/错误提交文字块下方 → 分类细分图表</td>
       <td class="gap-val">92px</td>
     </tr>
     <tr>
-      <td>分类细分图表底 → 积分细分图表顶</td>
-      <td class="gap-val">0px (紧接)</td>
+      <td>分类细分图表下方 → 积分细分图表</td>
+      <td class="gap-val">0px（紧挨着，无间距）</td>
     </tr>
   </table>
   <div style="margin-top:14px; padding:10px; background:rgba(255,255,255,0.03); border-radius:6px; font-size:11px;">
