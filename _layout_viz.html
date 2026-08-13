@@ -294,145 +294,139 @@
 
 <!-- 汇总 -->
 <div class="summary">
-  <h2>完整留白汇总</h2>
+  <h2>页面布局与留白</h2>
 
   <div class="sum-row">
     <span class="sum-key">上方柱状图</span>
-    <span class="sum-val" style="color:var(--dim);font-weight:400;">（上方元素）</span>
+    <span class="sum-val" style="color:var(--dim);font-weight:400;">—</span>
   </div>
   <div class="sum-row" style="font-size:11px; padding-left:16px;">
-    <span class="sum-key" style="color:var(--dim);">↓ 留白（hr 的 margin-top）</span>
+    <span class="sum-key" style="color:var(--dim);">↓ 间隙</span>
     <span class="sum-val red">16px</span>
   </div>
   <div class="sum-row">
-    <span class="sum-key">hr 分隔线</span>
+    <span class="sum-key">分隔线</span>
     <span class="sum-val" style="color:var(--dim);font-weight:400;">1px</span>
   </div>
   <div class="sum-row" style="font-size:11px; padding-left:16px;">
-    <span class="sum-key" style="color:var(--dim);">↓ 留白（hr 的 margin-bottom）</span>
+    <span class="sum-key" style="color:var(--dim);">↓ 间隙</span>
     <span class="sum-val red">16px</span>
   </div>
   <div class="sum-row" style="font-size:11px; padding-left:16px;">
-    <span class="sum-key" style="color:var(--dim);">↓ 留白（keys-pie margin-top：hr 底线 → 环形图顶部）</span>
+    <span class="sum-key" style="color:var(--dim);">↓ 间隙（分隔线到第一个环形图）</span>
     <span class="sum-val red">64px</span>
   </div>
   <div class="sum-row">
-    <span class="sum-key">三个环形图区域</span>
-    <span class="sum-val" style="color:var(--dim);font-weight:400;">（提交百分比 → 分类细分 → 积分细分）</span>
+    <span class="sum-key">三个环形图</span>
+    <span class="sum-val" style="color:var(--dim);font-weight:400;">提交百分比 → 分类细分 → 积分细分</span>
   </div>
 
   <!-- 提交百分比 内部拆解 -->
   <div class="sum-row" style="margin-top: 4px; padding-top: 8px; border-top: 2px solid rgba(255,255,255,0.1);">
-    <span class="sum-key" style="color:#fff;font-weight:700;">提交百分比图表内部 (400px)</span>
-    <span class="sum-val" style="color:var(--dim);font-weight:400;">（以 375px 视口为例）</span>
+    <span class="sum-key" style="color:#fff;font-weight:700;">提交百分比 内部 (400px)</span>
+    <span class="sum-val" style="color:var(--dim);font-weight:400;">以 iPhone SE 屏宽为例</span>
   </div>
   <div class="sum-row" style="font-size:11px; padding-left:16px;">
-    <span class="sum-key" style="color:var(--dim);">├ 标题文字（canvas 顶部，含 padding 5px，18px 字号）</span>
+    <span class="sum-key" style="color:var(--dim);">├ 图表标题</span>
     <span class="sum-val" style="color:var(--dim);font-weight:400;">28px</span>
   </div>
   <div class="sum-row" style="font-size:11px; padding-left:16px;">
-    <span class="sum-key" style="color:var(--dim);">├ 留白（标题底部 → 环形图内环顶部，视觉间隙）</span>
+    <span class="sum-key" style="color:var(--dim);">├ 标题到环形图的间距</span>
     <span class="sum-val red">37px</span>
   </div>
   <div class="sum-row" style="font-size:11px; padding-left:16px;">
-    <span class="sum-key" style="color:var(--dim);">├ 环形图（内环 65px 处 → 外环 341px 处，center 42.06%）</span>
+    <span class="sum-key" style="color:var(--dim);">├ 环形图</span>
     <span class="sum-val" style="color:var(--dim);font-weight:400;">276px</span>
   </div>
   <div class="sum-row" style="font-size:11px; padding-left:16px;">
-    <span class="sum-key" style="color:var(--dim);">├ 环形图底部空白（外环底 → canvas 底）</span>
+    <span class="sum-key" style="color:var(--dim);">├ 环形图下方空白</span>
     <span class="sum-val" style="color:var(--dim);font-weight:400;">59px</span>
   </div>
   <div class="sum-row" style="font-size:11px; padding-left:16px;">
-    <span class="sum-key" style="color:var(--dim);">└ 图例 (vertical, 右侧, top=middle，不占垂直高度)</span>
+    <span class="sum-key" style="color:var(--dim);">└ 图例（右侧竖排，不占高度）</span>
     <span class="sum-val" style="color:var(--dim);font-weight:400;">—</span>
   </div>
 
   <div class="sum-row">
-    <span class="sum-key" style="color:var(--dim);">留白</span>
-    <span class="sum-val yellow">-85px（上移重叠）</span>
+    <span class="sum-key" style="color:var(--dim);">↓ 间距（上移覆盖到环形图底部）</span>
+    <span class="sum-val yellow">-85px</span>
   </div>
 
   <div class="sum-row">
-    <span class="sum-key">正确/错误提交文字块</span>
-    <span class="sum-val" style="color:var(--dim);font-weight:400;">高度 32px</span>
+    <span class="sum-key">正确/错误提交文字</span>
+    <span class="sum-val" style="color:var(--dim);font-weight:400;">32px</span>
   </div>
 
   <div class="sum-row">
-    <span class="sum-key" style="color:var(--dim);">留白</span>
+    <span class="sum-key" style="color:var(--dim);">↓ 间距（到下一个环形图）</span>
     <span class="sum-val red">92px</span>
   </div>
 
   <!-- 分类细分 内部拆解 -->
   <div class="sum-row" style="margin-top: 4px; padding-top: 8px; border-top: 2px solid rgba(255,255,255,0.1);">
-    <span class="sum-key" style="color:#fff;font-weight:700;">分类细分图表内部 (400px)</span>
+    <span class="sum-key" style="color:#fff;font-weight:700;">分类细分 内部 (400px)</span>
     <span class="sum-val" style="color:var(--dim);font-weight:400;"></span>
   </div>
   <div class="sum-row" style="font-size:11px; padding-left:16px;">
-    <span class="sum-key" style="color:var(--dim);">├ 标题文字（canvas 顶部，含 padding 5px，18px 字号）</span>
+    <span class="sum-key" style="color:var(--dim);">├ 图表标题</span>
     <span class="sum-val" style="color:var(--dim);font-weight:400;">28px</span>
   </div>
   <div class="sum-row" style="font-size:11px; padding-left:16px;">
-    <span class="sum-key" style="color:var(--dim);">├ 留白（标题底部 → 环形图内环顶部，视觉间隙）</span>
+    <span class="sum-key" style="color:var(--dim);">├ 标题到环形图的间距</span>
     <span class="sum-val red">37px</span>
   </div>
   <div class="sum-row" style="font-size:11px; padding-left:16px;">
-    <span class="sum-key" style="color:var(--dim);">├ 环形图（内环 65px 处 → 外环 341px 处，center 42.06%）</span>
+    <span class="sum-key" style="color:var(--dim);">├ 环形图</span>
     <span class="sum-val" style="color:var(--dim);font-weight:400;">276px</span>
   </div>
   <div class="sum-row" style="font-size:11px; padding-left:16px;">
-    <span class="sum-key" style="color:var(--dim);">├ 环形图底部空白（外环底 → canvas 底）</span>
+    <span class="sum-key" style="color:var(--dim);">├ 环形图下方空白</span>
     <span class="sum-val" style="color:var(--dim);font-weight:400;">59px</span>
   </div>
   <div class="sum-row" style="font-size:11px; padding-left:16px;">
-    <span class="sum-key" style="color:var(--dim);">└ 图例 (horizontal, top=305) + 底部留白</span>
+    <span class="sum-key" style="color:var(--dim);">└ 图例（底部横排，含底部空白）</span>
     <span class="sum-val" style="color:var(--dim);font-weight:400;">95px</span>
   </div>
 
   <div class="sum-row">
-    <span class="sum-key" style="color:var(--dim);">留白</span>
+    <span class="sum-key" style="color:var(--dim);">↓ 间距</span>
     <span class="sum-val" style="color:var(--dim);">0px（紧挨着）</span>
   </div>
 
   <!-- 积分细分 内部拆解 -->
   <div class="sum-row" style="margin-top: 4px; padding-top: 8px; border-top: 2px solid rgba(255,255,255,0.1);">
-    <span class="sum-key" style="color:#fff;font-weight:700;">积分细分图表内部 (400px)</span>
+    <span class="sum-key" style="color:#fff;font-weight:700;">积分细分 内部 (400px)</span>
     <span class="sum-val" style="color:var(--dim);font-weight:400;"></span>
   </div>
   <div class="sum-row" style="font-size:11px; padding-left:16px;">
-    <span class="sum-key" style="color:var(--dim);">├ 标题文字（canvas 顶部，含 padding 5px，18px 字号）</span>
+    <span class="sum-key" style="color:var(--dim);">├ 图表标题</span>
     <span class="sum-val" style="color:var(--dim);font-weight:400;">28px</span>
   </div>
   <div class="sum-row" style="font-size:11px; padding-left:16px;">
-    <span class="sum-key" style="color:var(--dim);">├ 留白（标题底部 → 环形图内环顶部，视觉间隙）</span>
+    <span class="sum-key" style="color:var(--dim);">├ 标题到环形图的间距</span>
     <span class="sum-val red">37px</span>
   </div>
   <div class="sum-row" style="font-size:11px; padding-left:16px;">
-    <span class="sum-key" style="color:var(--dim);">├ 环形图（内环 65px 处 → 外环 341px 处，center 42.06%）</span>
+    <span class="sum-key" style="color:var(--dim);">├ 环形图</span>
     <span class="sum-val" style="color:var(--dim);font-weight:400;">276px</span>
   </div>
   <div class="sum-row" style="font-size:11px; padding-left:16px;">
-    <span class="sum-key" style="color:var(--dim);">├ 环形图底部空白（外环底 → canvas 底）</span>
+    <span class="sum-key" style="color:var(--dim);">├ 环形图下方空白</span>
     <span class="sum-val" style="color:var(--dim);font-weight:400;">59px</span>
   </div>
   <div class="sum-row" style="font-size:11px; padding-left:16px;">
-    <span class="sum-key" style="color:var(--dim);">└ 图例 (horizontal, top=308) + 底部留白</span>
+    <span class="sum-key" style="color:var(--dim);">└ 图例（底部横排，含底部空白）</span>
     <span class="sum-val" style="color:var(--dim);font-weight:400;">92px</span>
   </div>
 
   <div class="note">
     <b>说明：</b><br>
-    · 以上数值以 <b>375px 视口宽度</b>（iPhone SE）为参考，具体值随视口宽度变化<br>
-    · 标题渲染在 canvas 顶部（含 5px padding），文字高 18px，标题区域约占 28px<br>
-    · 环形图外环（radius 50%）超出 canvas 顶部（被裁剪），视觉上从内环（radius 30%）开始可见<br>
-    · 标题文字底部到环形图内环顶部的视觉留白 ≈ <b>37px</b>（代码注释中"标题与环形图留白 60px"是从 canvas 顶部算到内环）<br>
-    · 移动端三个环形图 <b>center: ["50%", "42.06%"]</b>，<b>radius: ["30%", "50%"]</b><br>
-    · 环形图内环半径 = min(容器宽,400) × 30%，外环半径 = min(容器宽,400) × 50%<br>
-    · 环形图高度 = 内环半径 + 外环半径 = min(容器宽,400) × 80%（375px 视口下 = 276px）<br>
-    · 提交百分比图例为 <b>vertical</b>（垂直排列在右侧），top=middle，不占垂直高度<br>
-    · 分类细分图例 <b>top=305px</b>，距 canvas 底 95px<br>
-    · 积分细分图例 <b>top=308px</b>，距 canvas 底 92px（与分类细分差 3px）<br>
-    · 正确/错误提交文字块通过 <b>margin-top: -85px</b> 上移进提交百分比环形图底部<br>
-    · 验证：28 + 37 + 276 + 59 = 400px ✓（三个环形图内部均为 400px 画布）
+    · 以上数值以 <b>iPhone SE 屏幕宽度（375px）</b>为参考，实际数值会随屏幕宽度略有变化<br>
+    · 每个环形图容器高度固定为 <b>400px</b>，标题固定 28px<br>
+    · 环形图由内圈和外圈组成，外圈顶部超出画面被裁切，视觉上从内圈开始可见<br>
+    · 提交百分比的图例在右侧竖排，分类细分和积分细分的图例在底部横排<br>
+    · 正确/错误提交文字通过 <b>-85px</b> 上移，重叠到环形图底部区域<br>
+    · 验证：28 + 37 + 276 + 59 = 400px ✓
   </div>
 </div>
 
