@@ -826,7 +826,7 @@ const applyMobilePieCenter = (key, option) => {
       if (key === "#categories-pie-graph") {
         option.legend.top = 305;
       } else if (key === "#points-pie-graph") {
-        option.legend.top = 308;
+        option.legend.top = 305;
       }
     }
   }
