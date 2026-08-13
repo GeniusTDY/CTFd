@@ -324,7 +324,7 @@
   <!-- 提交百分比 内部拆解 -->
   <div class="sum-row" style="margin-top: 4px; padding-top: 8px; border-top: 2px solid rgba(255,255,255,0.1);">
     <span class="sum-key" style="color:#fff;font-weight:700;">提交百分比图表内部 (400px)</span>
-    <span class="sum-val" style="color:var(--dim);font-weight:400;"></span>
+    <span class="sum-val" style="color:var(--dim);font-weight:400;">（以 375px 视口为例）</span>
   </div>
   <div class="sum-row" style="font-size:11px; padding-left:16px;">
     <span class="sum-key" style="color:var(--dim);">├ 标题文字（canvas 顶部，含 padding 5px，18px 字号）</span>
@@ -335,16 +335,16 @@
     <span class="sum-val red">37px</span>
   </div>
   <div class="sum-row" style="font-size:11px; padding-left:16px;">
-    <span class="sum-key" style="color:var(--dim);">├ 环形图（内环 60px 处 → 外环 336px 处，center 42.06%）</span>
-    <span class="sum-val" style="color:var(--dim);font-weight:400;">170px</span>
+    <span class="sum-key" style="color:var(--dim);">├ 环形图（内环 65px 处 → 外环 341px 处，center 42.06%）</span>
+    <span class="sum-val" style="color:var(--dim);font-weight:400;">276px</span>
   </div>
   <div class="sum-row" style="font-size:11px; padding-left:16px;">
     <span class="sum-key" style="color:var(--dim);">├ 环形图底部空白（外环底 → canvas 底）</span>
-    <span class="sum-val" style="color:var(--dim);font-weight:400;">64px</span>
+    <span class="sum-val" style="color:var(--dim);font-weight:400;">59px</span>
   </div>
   <div class="sum-row" style="font-size:11px; padding-left:16px;">
-    <span class="sum-key" style="color:var(--dim);">└ 图例 (vertical, 右侧, top=middle)</span>
-    <span class="sum-val" style="color:var(--dim);font-weight:400;">88px</span>
+    <span class="sum-key" style="color:var(--dim);">└ 图例 (vertical, 右侧, top=middle，不占垂直高度)</span>
+    <span class="sum-val" style="color:var(--dim);font-weight:400;">—</span>
   </div>
 
   <div class="sum-row">
@@ -376,12 +376,12 @@
     <span class="sum-val red">37px</span>
   </div>
   <div class="sum-row" style="font-size:11px; padding-left:16px;">
-    <span class="sum-key" style="color:var(--dim);">├ 环形图（内环 60px 处 → 外环 336px 处，center 42.06%）</span>
-    <span class="sum-val" style="color:var(--dim);font-weight:400;">170px</span>
+    <span class="sum-key" style="color:var(--dim);">├ 环形图（内环 65px 处 → 外环 341px 处，center 42.06%）</span>
+    <span class="sum-val" style="color:var(--dim);font-weight:400;">276px</span>
   </div>
   <div class="sum-row" style="font-size:11px; padding-left:16px;">
     <span class="sum-key" style="color:var(--dim);">├ 环形图底部空白（外环底 → canvas 底）</span>
-    <span class="sum-val" style="color:var(--dim);font-weight:400;">64px</span>
+    <span class="sum-val" style="color:var(--dim);font-weight:400;">59px</span>
   </div>
   <div class="sum-row" style="font-size:11px; padding-left:16px;">
     <span class="sum-key" style="color:var(--dim);">└ 图例 (horizontal, top=305) + 底部留白</span>
@@ -407,12 +407,12 @@
     <span class="sum-val red">37px</span>
   </div>
   <div class="sum-row" style="font-size:11px; padding-left:16px;">
-    <span class="sum-key" style="color:var(--dim);">├ 环形图（内环 60px 处 → 外环 336px 处，center 42.06%）</span>
-    <span class="sum-val" style="color:var(--dim);font-weight:400;">170px</span>
+    <span class="sum-key" style="color:var(--dim);">├ 环形图（内环 65px 处 → 外环 341px 处，center 42.06%）</span>
+    <span class="sum-val" style="color:var(--dim);font-weight:400;">276px</span>
   </div>
   <div class="sum-row" style="font-size:11px; padding-left:16px;">
     <span class="sum-key" style="color:var(--dim);">├ 环形图底部空白（外环底 → canvas 底）</span>
-    <span class="sum-val" style="color:var(--dim);font-weight:400;">64px</span>
+    <span class="sum-val" style="color:var(--dim);font-weight:400;">59px</span>
   </div>
   <div class="sum-row" style="font-size:11px; padding-left:16px;">
     <span class="sum-key" style="color:var(--dim);">└ 图例 (horizontal, top=308) + 底部留白</span>
@@ -421,14 +421,18 @@
 
   <div class="note">
     <b>说明：</b><br>
+    · 以上数值以 <b>375px 视口宽度</b>（iPhone SE）为参考，具体值随视口宽度变化<br>
     · 标题渲染在 canvas 顶部（含 5px padding），文字高 18px，标题区域约占 28px<br>
-    · 环形图外环（radius 50%）超出 canvas 顶部（被裁剪），视觉上从内环（radius 30%，距 canvas 顶约 60px）开始可见<br>
+    · 环形图外环（radius 50%）超出 canvas 顶部（被裁剪），视觉上从内环（radius 30%）开始可见<br>
     · 标题文字底部到环形图内环顶部的视觉留白 ≈ <b>37px</b>（代码注释中"标题与环形图留白 60px"是从 canvas 顶部算到内环）<br>
     · 移动端三个环形图 <b>center: ["50%", "42.06%"]</b>，<b>radius: ["30%", "50%"]</b><br>
-    · 提交百分比图例为 <b>vertical</b>（垂直排列在右侧），top=middle<br>
+    · 环形图内环半径 = min(容器宽,400) × 30%，外环半径 = min(容器宽,400) × 50%<br>
+    · 环形图高度 = 内环半径 + 外环半径 = min(容器宽,400) × 80%（375px 视口下 = 276px）<br>
+    · 提交百分比图例为 <b>vertical</b>（垂直排列在右侧），top=middle，不占垂直高度<br>
     · 分类细分图例 <b>top=305px</b>，距 canvas 底 95px<br>
     · 积分细分图例 <b>top=308px</b>，距 canvas 底 92px（与分类细分差 3px）<br>
-    · 正确/错误提交文字块通过 <b>margin-top: -85px</b> 上移进提交百分比环形图底部
+    · 正确/错误提交文字块通过 <b>margin-top: -85px</b> 上移进提交百分比环形图底部<br>
+    · 验证：28 + 37 + 276 + 59 = 400px ✓（三个环形图内部均为 400px 画布）
   </div>
 </div>
 

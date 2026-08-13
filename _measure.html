@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+  body { margin: 0; padding: 10px; font-family: sans-serif; }
+  .chart-container {
+    width: 400px;
+    height: 400px;
+    border: 1px solid #ccc;
+    margin: 10px 0;
+    position: relative;
+  }
+  #output { 
+    white-space: pre; 
+    font-family: monospace; 
+    font-size: 12px;
+    background: #f5f5f5;
+    padding: 10px;
+    margin: 10px 0;
+  }
+</style>
+</head>
+<body>
+<div class="chart-container" id="chart1"></div>
+<div id="output"></div>
+
+<script src="file:///workspace/CTFd/themes/core-deprecated/static/js/echarts.bundle.min.js"></script>
+<script>
+const chart = echarts.init(document.getElementById('chart1'));
+
+const option = {
+  title: {
+    left: "center",
+    text: "Submission Percentages",
+  },
+  legend: {
+    orient: "vertical",
+    top: "middle",
+    right: 0,
+    data: ["Fails", "Solves"],
+  },
+  series: [{
+    name: "Submission Percentages",
+    type: "pie",
+    radius: ["30%", "50%"],
+    center: ["50%", "42.06%"],
+    label: { show: false },
+    data: [
+      { value: 30, name: "Fails" },
+      { value: 70, name: "Solves" },
+    ],
+  }],
+};
+
+chart.setOption(option);
+
+// Wait for render and measure
+setTimeout(() => {
+  const container = document.getElementById('chart1');
+  const canvas = container.querySelector('canvas');
+  const cw = canvas.width;
+  const ch = canvas.height;
+  
+  let output = `Canvas: ${cw}x${ch}\n`;
+  output += `Container offsetHeight: ${container.offsetHeight}\n`;
+  output += `Container clientHeight: ${container.clientHeight}\n`;
+  output += `\n`;
+  
+  // ECharts internal model
+  const model = chart.getModel();
+  const seriesModel = model.getSeries()[0];
+  if (seriesModel) {
+    const layout = seriesModel.getData()._itemLayouts;
+    if (layout) {
+      output += `Series layout info:\n`;
+      output += JSON.stringify(layout, null, 2) + '\n';
+    }
+    
+    const cx = seriesModel.get('center')[0];
+    const cy = seriesModel.get('center')[1];
+    const r0 = seriesModel.get('radius')[0];
+    const r1 = seriesModel.get('radius')[1];
+    output += `\ncenter: [${cx}, ${cy}]\n`;
+    output += `radius: [${r0}, ${r1}]\n`;
+    
+    // Parse percentages
+    const cxPx = parseFloat(cx) / 100 * cw;
+    const cyPx = parseFloat(cy) / 100 * ch;
+    const r0Px = parseFloat(r0) / 100 * Math.min(cw, ch);
+    const r1Px = parseFloat(r1) / 100 * Math.min(cw, ch);
+    
+    output += `\n--- Computed pixel values ---\n`;
+    output += `Reference (min dimension): ${Math.min(cw, ch)}px\n`;
+    output += `center (px): [${cxPx.toFixed(1)}, ${cyPx.toFixed(1)}]\n`;
+    output += `inner radius: ${r0Px.toFixed(1)}px\n`;
+    output += `outer radius: ${r1Px.toFixed(1)}px\n`;
+    
+    output += `\n--- Ring geometry ---\n`;
+    output += `inner ring top: ${(cyPx - r0Px).toFixed(1)}px\n`;
+    output += `inner ring bottom: ${(cyPx + r0Px).toFixed(1)}px\n`;
+    output += `outer ring top: ${(cyPx - r1Px).toFixed(1)}px (clipped if <0)\n`;
+    output += `outer ring bottom: ${(cyPx + r1Px).toFixed(1)}px\n`;
+    
+    // Title info
+    const titleModel = model.get('title')[0];
+    if (titleModel) {
+      const titleTop = titleModel.get('top') || 0;
+      const titlePadding = titleModel.get('padding') || [5,5,5,5];
+      const titleFontSize = (titleModel.get('textStyle') || {}).fontSize || 18;
+      output += `\n--- Title ---\n`;
+      output += `top: ${titleTop}\n`;
+      output += `padding: ${JSON.stringify(titlePadding)}\n`;
+      output += `fontSize: ${titleFontSize}\n`;
+      output += `title area height: ${titleFontSize + titlePadding[0] + titlePadding[2]}px\n`;
+      output += `title bottom: ${titleTop + titleFontSize + titlePadding[0] + titlePadding[2]}px\n`;
+      
+      const titleBottom = titleTop + titleFontSize + titlePadding[0] + titlePadding[2];
+      output += `\nGap (title bottom → inner ring top): ${(cyPx - r0Px - titleBottom).toFixed(1)}px\n`;
+    }
+    
+    output += `\nBottom gap (outer ring bottom → canvas bottom): ${(ch - cyPx - r1Px).toFixed(1)}px\n`;
+    
+    // Legend
+    const legendModel = model.get('legend')[0];
+    if (legendModel) {
+      output += `\n--- Legend ---\n`;
+      output += `orient: ${legendModel.get('orient')}\n`;
+      output += `top: ${legendModel.get('top')}\n`;
+      output += `right: ${legendModel.get('right')}\n`;
+    }
+  }
+  
+  document.getElementById('output').textContent = output;
+}, 500);
+</script>
+</body>
+</html>
