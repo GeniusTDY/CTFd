@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>移动端统计页面 - 三个环形图容器内部拆解</title>
+<style>
+  :root {
+    --bg: #1a1a2e;
+    --hr: #e94560;
+    --keys: #0f3460;
+    --sub: #f0a500;
+    --cat: #16c79a;
+    --pts: #7c3aed;
+    --text: #c9d1d9;
+    --dim: #8b949e;
+    --label-red: #ff6b6b;
+    --label-yellow: #f9a825;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif;
+    padding: 24px 16px 60px;
+    line-height: 1.5;
+    font-size: 13px;
+  }
+  h1 { font-size: 20px; text-align: center; color: #fff; margin-bottom: 28px; }
+
+  /* 主容器 */
+  .container-main {
+    width: 400px;
+    margin: 0 auto;
+  }
+
+  /* 间距标签条 */
+  .gap-strip {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 6px 0;
+    padding: 0 4px;
+  }
+  .gap-strip .line {
+    flex: 1;
+    border-top: 1px dashed rgba(255,107,107,0.45);
+  }
+  .gap-strip .tag {
+    background: rgba(255,107,107,0.12);
+    color: var(--label-red);
+    padding: 4px 12px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: 700;
+    white-space: nowrap;
+    border: 1px solid rgba(255,107,107,0.25);
+  }
+  .gap-strip.neg .tag {
+    background: rgba(249,168,37,0.12);
+    color: var(--label-yellow);
+    border-color: rgba(249,168,37,0.25);
+  }
+  .gap-strip.neg .line { border-color: rgba(249,168,37,0.45); }
+  .gap-strip.zero .tag {
+    background: rgba(139,148,158,0.1);
+    color: var(--dim);
+    border-color: rgba(139,148,158,0.18);
+  }
+
+  /* 分隔线 */
+  .hr-bar {
+    height: 1px;
+    background: var(--hr);
+    margin: 12px 0;
+    position: relative;
+    text-align: center;
+  }
+  .hr-bar span {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: -18px;
+    background: var(--bg);
+    padding: 0 8px;
+    color: var(--hr);
+    font-weight: 700;
+    font-size: 12px;
+  }
+
+  /* 每个环形图容器 */
+  .chart-box {
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid rgba(255,255,255,0.1);
+    margin: 0;
+  }
+  .chart-box.keys-box { border-top: 3px solid #2272c7; }
+  .chart-box.cat-box { border-top: 3px solid #1eb88a; }
+  .chart-box.pts-box { border-top: 3px solid #8b5cf6; }
+
+  .chart-box .header {
+    background: rgba(255,255,255,0.04);
+    padding: 8px 12px;
+    font-weight: 700;
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+  .chart-box .header .dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+  .chart-box.keys-box .header .dot { background: #2272c7; }
+  .chart-box.cat-box .header .dot { background: #1eb88a; }
+  .chart-box.pts-box .header .dot { background: #8b5cf6; }
+
+  /* 环形图内部层次 */
+  .chart-body {
+    position: relative;
+    background: rgba(255,255,255,0.02);
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+  }
+
+  /* 标题层 */
+  .layer {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 12px;
+  }
+  .layer .lbl {
+    position: absolute;
+    left: 0;
+    font-size: 10px;
+    color: var(--dim);
+    white-space: nowrap;
+  }
+  .layer .lbl.right {
+    left: auto;
+    right: 0;
+    color: var(--dim);
+    font-size: 10px;
+  }
+  .layer .content {
+    text-align: center;
+    padding: 4px 0;
+    font-size: 11px;
+  }
+
+  /* 图层背景 */
+  .layer-title {
+    background: rgba(255,255,255,0.03);
+    border-bottom: 1px dashed rgba(255,255,255,0.06);
+    height: 30px;
+    line-height: 30px;
+    margin: 0;
+  }
+  .layer-title .content {
+    font-weight: 600;
+    font-size: 12px;
+    padding: 0;
+  }
+
+  .layer-pie {
+    background: rgba(100,149,237,0.06);
+    border-bottom: 1px dashed rgba(255,255,255,0.06);
+  }
+  .layer-pie .content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 8px 0;
+  }
+
+  .layer-legend {
+    background: rgba(255,255,255,0.02);
+  }
+  .layer-legend .content {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 4px 10px;
+    padding: 6px 0;
+  }
+  .layer-legend .legend-item {
+    background: rgba(255,255,255,0.08);
+    padding: 2px 7px;
+    border-radius: 3px;
+    font-size: 10px;
+  }
+
+  .layer-bottom-gap {
+    background: rgba(0,0,0,0.15);
+    border-bottom: 1px dashed rgba(255,255,255,0.04);
+  }
+  .layer-bottom-gap .content {
+    font-size: 10px;
+    color: var(--dim);
+    padding: 4px 0;
+  }
+
+  /* 文字块层（提交百分比内嵌） */
+  .layer-sub {
+    background: rgba(240,165,0,0.1);
+    border: 1px solid rgba(240,165,0,0.3);
+    border-radius: 4px;
+    margin: 0 12px;
+  }
+  .layer-sub .content {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 12px;
+    justify-content: center;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 4px 0;
+  }
+
+  /* 高度标注条 */
+  .height-mark {
+    position: absolute;
+    right: -56px;
+    font-size: 10px;
+    font-weight: 700;
+    color: var(--dim);
+    white-space: nowrap;
+    background: var(--bg);
+    padding: 0 3px;
+    line-height: 1;
+  }
+
+  /* 容器底部标注 */
+  .chart-footer {
+    font-size: 10px;
+    color: var(--dim);
+    padding: 4px 12px;
+    background: rgba(255,255,255,0.02);
+    display: flex;
+    justify-content: space-between;
+  }
+
+  /* 总数总结 */
+  .summary {
+    width: 400px;
+    margin: 32px auto 0;
+    background: #16213e;
+    border-radius: 10px;
+    padding: 18px;
+    border: 1px solid rgba(255,255,255,0.1);
+  }
+  .summary h2 {
+    font-size: 15px;
+    margin-bottom: 14px;
+    color: #fff;
+    text-align: center;
+  }
+  .summary .sum-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 6px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    font-size: 12px;
+  }
+  .summary .sum-row:last-child { border-bottom: none; }
+  .summary .sum-key { color: var(--dim); }
+  .summary .sum-val { font-weight: 700; }
+  .summary .sum-val.red { color: var(--label-red); }
+  .summary .sum-val.yellow { color: var(--label-yellow); }
+
+  .note {
+    font-size: 10px;
+    color: var(--dim);
+    margin-top: 14px;
+    padding: 10px;
+    background: rgba(255,255,255,0.03);
+    border-radius: 6px;
+    line-height: 1.6;
+  }
+  .note b { color: #fff; }
+</style>
+</head>
+<body>
+
+<h1>移动端 (max-width: 767.98px)</h1>
+
+<!-- 汇总 -->
+<div class="summary">
+  <h2>完整留白汇总</h2>
+
+  <div class="sum-row">
+    <span class="sum-key">上方柱状图</span>
+    <span class="sum-val" style="color:var(--dim);font-weight:400;">（上方元素）</span>
+  </div>
+  <div class="sum-row" style="font-size:11px; padding-left:16px;">
+    <span class="sum-key" style="color:var(--dim);">留白</span>
+    <span class="sum-val red">16px</span>
+  </div>
+  <div class="sum-row">
+    <span class="sum-key">hr 分隔线</span>
+    <span class="sum-val" style="color:var(--dim);font-weight:400;">1px</span>
+  </div>
+  <div class="sum-row" style="font-size:11px; padding-left:16px;">
+    <span class="sum-key" style="color:var(--dim);">留白</span>
+    <span class="sum-val red">16px</span>
+  </div>
+  <div class="sum-row">
+    <span class="sum-key">三个环形图区域</span>
+    <span class="sum-val" style="color:var(--dim);font-weight:400;">（容器）</span>
+  </div>
+  <div class="sum-row" style="font-size:11px; padding-left:16px;">
+    <span class="sum-key" style="color:var(--dim);">留白</span>
+    <span class="sum-val red">64px</span>
+  </div>
+
+  <!-- 提交百分比 内部拆解 -->
+  <div class="sum-row" style="margin-top: 4px; padding-top: 8px; border-top: 2px solid rgba(255,255,255,0.1);">
+    <span class="sum-key" style="color:#fff;font-weight:700;">提交百分比图表内部 (400px)</span>
+    <span class="sum-val" style="color:var(--dim);font-weight:400;"></span>
+  </div>
+  <div class="sum-row" style="font-size:11px; padding-left:16px;">
+    <span class="sum-key" style="color:var(--dim);">├ 标题 + 环形图（标题在 canvas 顶部，环形图外环从 0px 起，无间距）</span>
+    <span class="sum-val" style="color:var(--dim);font-weight:400;">198px</span>
+  </div>
+  <div class="sum-row" style="font-size:11px; padding-left:16px;">
+    <span class="sum-key" style="color:var(--dim);">├ 环形图底部空白</span>
+    <span class="sum-val" style="color:var(--dim);font-weight:400;">114px</span>
+  </div>
+  <div class="sum-row" style="font-size:11px; padding-left:16px;">
+    <span class="sum-key" style="color:var(--dim);">└ 图例 (vertical, 右侧)</span>
+    <span class="sum-val" style="color:var(--dim);font-weight:400;">88px</span>
+  </div>
+
+  <div class="sum-row">
+    <span class="sum-key" style="color:var(--dim);">留白</span>
+    <span class="sum-val yellow">-85px（上移重叠）</span>
+  </div>
+
+  <div class="sum-row">
+    <span class="sum-key">正确/错误提交文字块</span>
+    <span class="sum-val" style="color:var(--dim);font-weight:400;">高度 32px</span>
+  </div>
+
+  <div class="sum-row">
+    <span class="sum-key" style="color:var(--dim);">留白</span>
+    <span class="sum-val red">92px</span>
+  </div>
+
+  <!-- 分类细分 内部拆解 -->
+  <div class="sum-row" style="margin-top: 4px; padding-top: 8px; border-top: 2px solid rgba(255,255,255,0.1);">
+    <span class="sum-key" style="color:#fff;font-weight:700;">分类细分图表内部 (400px)</span>
+    <span class="sum-val" style="color:var(--dim);font-weight:400;"></span>
+  </div>
+  <div class="sum-row" style="font-size:11px; padding-left:16px;">
+    <span class="sum-key" style="color:var(--dim);">├ 标题 + 环形图（标题在 canvas 顶部，环形图外环从 0px 起，无间距）</span>
+    <span class="sum-val" style="color:var(--dim);font-weight:400;">198px</span>
+  </div>
+  <div class="sum-row" style="font-size:11px; padding-left:16px;">
+    <span class="sum-key" style="color:var(--dim);">├ 环形图底部空白</span>
+    <span class="sum-val" style="color:var(--dim);font-weight:400;">107px</span>
+  </div>
+  <div class="sum-row" style="font-size:11px; padding-left:16px;">
+    <span class="sum-key" style="color:var(--dim);">└ 图例 (horizontal, top=305) + 底部留白</span>
+    <span class="sum-val" style="color:var(--dim);font-weight:400;">95px</span>
+  </div>
+
+  <div class="sum-row">
+    <span class="sum-key" style="color:var(--dim);">留白</span>
+    <span class="sum-val" style="color:var(--dim);">0px（紧挨着）</span>
+  </div>
+
+  <!-- 积分细分 内部拆解 -->
+  <div class="sum-row" style="margin-top: 4px; padding-top: 8px; border-top: 2px solid rgba(255,255,255,0.1);">
+    <span class="sum-key" style="color:#fff;font-weight:700;">积分细分图表内部 (400px)</span>
+    <span class="sum-val" style="color:var(--dim);font-weight:400;"></span>
+  </div>
+  <div class="sum-row" style="font-size:11px; padding-left:16px;">
+    <span class="sum-key" style="color:var(--dim);">├ 标题 + 环形图（标题在 canvas 顶部，环形图外环从 0px 起，无间距）</span>
+    <span class="sum-val" style="color:var(--dim);font-weight:400;">198px</span>
+  </div>
+  <div class="sum-row" style="font-size:11px; padding-left:16px;">
+    <span class="sum-key" style="color:var(--dim);">├ 环形图底部空白</span>
+    <span class="sum-val" style="color:var(--dim);font-weight:400;">104px</span>
+  </div>
+  <div class="sum-row" style="font-size:11px; padding-left:16px;">
+    <span class="sum-key" style="color:var(--dim);">└ 图例 (horizontal, top=308) + 底部留白</span>
+    <span class="sum-val" style="color:var(--dim);font-weight:400;">92px</span>
+  </div>
+
+  <div class="note">
+    <b>说明：</b><br>
+    · 标题和环形图共享同一 canvas，标题在顶部，环形图外环从 canvas 顶部(0px)开始，两者之间无显式留白<br>
+    · 提交百分比图例为 <b>vertical</b>（垂直排列在右侧），无固定 top 值<br>
+    · 分类细分图例 <b>top=305px</b>，距 canvas 底 95px<br>
+    · 积分细分图例 <b>top=308px</b>，距 canvas 底 92px（与分类细分差 3px）<br>
+    · 三个环形图 <b>radius: ["30%", "50%"]</b>，center 默认 ["50%", "50%"]<br>
+    · 正确/错误提交文字块通过 <b>margin-top: -85px</b> 上移进提交百分比环形图底部
+  </div>
+</div>
+
+</body>
+</html>
