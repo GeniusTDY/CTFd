@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>移动端统计信息 — 三个环形图预览</title>
+<script src="https://cdn.jsdelivr.net/npm/echarts@5.5.0/dist/echarts.min.js"></script>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+  background: #1a1a2e; color: #e0e0e0;
+  max-width: 375px; margin: 0 auto; padding: 0;
+}
+/* 模拟 hr 分隔线 */
+hr { border: none; border-top: 1px solid rgba(255,255,255,0.15); margin: 16px 0; }
+/* 环形图容器 */
+.pie-chart { width: 100%; height: 400px; }
+/* keys-pie margin-top */
+#keys-pie-graph { margin-top: 64px; }
+/* categories-pie margin-top */
+#categories-pie-graph { margin-top: 92px; }
+/* 正确/错误提交文字块 */
+.submission-counts { display: flex; justify-content: center; gap: 1rem; margin-top: -85px; font-size: 14px; }
+.submission-counts span { font-weight: bold; }
+</style>
+</head>
+<body>
+
+<hr>
+
+<div id="keys-pie-graph" class="pie-chart"></div>
+<div class="submission-counts">
+  <span>正确提交 <b>24</b></span>
+  <span>错误提交 <b>18</b></span>
+</div>
+
+<div id="categories-pie-graph" class="pie-chart"></div>
+
+<div id="points-pie-graph" class="pie-chart"></div>
+
+<script>
+// 所有环形图共享的容器尺寸
+const chartHeight = 400;
+
+// 移动端 center 和 radius
+const mobileCenter = ["50%", "42.06%"];
+const mobileRadius = ["30%", "50%"];
+
+// ========== 1. 提交百分比 ==========
+(function() {
+  const chart = echarts.init(document.getElementById("keys-pie-graph"));
+  chart.setOption({
+    title: { left: "center", text: "提交百分比", textStyle: { fontSize: 18, color: "#e0e0e0" } },
+    tooltip: { trigger: "item" },
+    legend: { orient: "vertical", top: "middle", right: 0, textStyle: { color: "#e0e0e0" }, data: ["错误", "正确"] },
+    series: [{
+      name: "提交百分比", type: "pie",
+      center: mobileCenter, radius: mobileRadius,
+      avoidLabelOverlap: false,
+      label: { show: true, position: "outside", color: "#e0e0e0", formatter: "{b}\n{d}%" },
+      labelLine: { show: true },
+      emphasis: { label: { fontSize: 14, fontWeight: "normal" } },
+      data: [
+        { value: 18, name: "错误", itemStyle: { color: "rgb(207, 38, 0)" } },
+        { value: 24, name: "正确", itemStyle: { color: "rgb(0, 209, 64)" } }
+      ]
+    }]
+  });
+})();
+
+// ========== 2. 分类细分 ==========
+(function() {
+  const chart = echarts.init(document.getElementById("categories-pie-graph"));
+  chart.setOption({
+    title: { left: "center", text: "分类细分", textStyle: { fontSize: 18, color: "#e0e0e0" } },
+    tooltip: { trigger: "item" },
+    legend: { type: "plain", orient: "horizontal", top: 305, textStyle: { color: "#e0e0e0" }, data: ["Web", "Pwn", "Crypto", "Reverse", "Misc"] },
+    series: [{
+      name: "分类细分", type: "pie",
+      center: mobileCenter, radius: mobileRadius,
+      label: { show: true, position: "outside", color: "#e0e0e0", formatter: "{b}\n{d}%" },
+      labelLine: { show: true },
+      emphasis: { label: { fontSize: 14, fontWeight: "normal" } },
+      data: [
+        { value: 8, name: "Web", itemStyle: { color: "#5470c6" } },
+        { value: 6, name: "Pwn", itemStyle: { color: "#91cc75" } },
+        { value: 5, name: "Crypto", itemStyle: { color: "#fac858" } },
+        { value: 4, name: "Reverse", itemStyle: { color: "#ee6666" } },
+        { value: 3, name: "Misc", itemStyle: { color: "#73c0de" } }
+      ]
+    }]
+  });
+})();
+
+// ========== 3. 积分细分 ==========
+(function() {
+  const chart = echarts.init(document.getElementById("points-pie-graph"));
+  chart.setOption({
+    title: { left: "center", text: "积分细分", textStyle: { fontSize: 18, color: "#e0e0e0" } },
+    tooltip: { trigger: "item" },
+    legend: { type: "plain", orient: "horizontal", top: 305, textStyle: { color: "#e0e0e0" }, data: ["Web", "Pwn", "Crypto", "Reverse", "Misc"] },
+    series: [{
+      name: "积分细分", type: "pie",
+      center: mobileCenter, radius: mobileRadius,
+      label: { show: true, position: "outside", color: "#e0e0e0", formatter: "{b}\n{d}%" },
+      labelLine: { show: true },
+      emphasis: { label: { fontSize: 14, fontWeight: "normal" } },
+      data: [
+        { value: 2400, name: "Web", itemStyle: { color: "#5470c6" } },
+        { value: 1800, name: "Pwn", itemStyle: { color: "#91cc75" } },
+        { value: 1500, name: "Crypto", itemStyle: { color: "#fac858" } },
+        { value: 1200, name: "Reverse", itemStyle: { color: "#ee6666" } },
+        { value: 900, name: "Misc", itemStyle: { color: "#73c0de" } }
+      ]
+    }]
+  });
+})();
+</script>
+</body>
+</html>
