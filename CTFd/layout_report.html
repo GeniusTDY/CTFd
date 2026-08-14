@@ -129,7 +129,7 @@
 
     <tr><td>标题与环形图重叠</td><td class="val-hl">−32px</td><td>statistics.js</td><td>L824</td><td class="skip"><code>option.series[0].center = ["50%", "42.06%"];</code> → 圆心 Y=168px，外圈顶 −4px</td></tr>
 
-    <tr><td>环形图外圈直径</td><td class="val">345px</td><td>statistics.js</td><td>L328</td><td class="skip"><code>radius: ["30%", "50%"]</code> → 50% × 345 = 172.5px 半径</td></tr>
+    <tr><td>环形图外圈直径</td><td class="val">345px</td><td>statistics.js</td><td>L328</td><td class="skip"><code>radius: ["30%", "50%"]</code> — ECharts 的 radius 百分比取容器宽高中较小的一边；容器 400×345，较小边 345px，50% × 345 = 172.5px 半径，直径 345px</td></tr>
 
     <tr><td>环形图下方空白</td><td class="val">59px</td><td>—</td><td>—</td><td class="skip">400 − (168 + 172.5) = 59.5px（容器高 − 圆心 − 半径）</td></tr>
 
