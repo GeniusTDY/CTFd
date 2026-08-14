@@ -17,128 +17,120 @@
     background: #fff; border-radius: 10px; padding: 14px; margin-bottom: 12px;
     box-shadow: 0 1px 3px rgba(0,0,0,0.08);
   }
-  .card p { margin-bottom: 6px; }
-  .card p:last-child { margin-bottom: 0; }
-  .gap {
-    display: inline-block; background: #ffe0e0; color: #c00; padding: 2px 8px;
-    border-radius: 4px; font-weight: bold; font-size: 14px;
+  pre {
+    background: #1e1e1e; color: #d4d4d4; padding: 12px; border-radius: 8px;
+    font-size: 12px; overflow-x: auto; line-height: 1.55;
+    white-space: pre-wrap; word-break: break-all;
   }
-  .gap-up {
-    display: inline-block; background: #ffe0b2; color: #e65100; padding: 2px 8px;
-    border-radius: 4px; font-weight: bold; font-size: 14px;
-  }
-  .gap-zero {
-    display: inline-block; background: #e0e0e0; color: #666; padding: 2px 8px;
-    border-radius: 4px; font-weight: bold; font-size: 14px;
-  }
+  .highlight { color: #f0a030; font-weight: bold; }
+  .num { color: #4ec9b0; }
+  .comment { color: #6a9955; }
   table { width: 100%; border-collapse: collapse; margin: 8px 0; font-size: 13px; }
   th, td { border: 1px solid #e0e0e0; padding: 8px 10px; text-align: left; }
   th { background: #f0f0f0; font-weight: 600; }
   td:last-child { text-align: center; font-weight: bold; }
   .note { font-size: 13px; color: #888; margin-top: 8px; }
-  .divider { text-align: center; color: #aaa; margin: 10px 0; font-size: 20px; letter-spacing: 4px; }
+  .desc { font-size: 13px; color: #666; margin-bottom: 10px; }
   ul { padding-left: 20px; margin: 4px 0; }
   li { margin-bottom: 3px; }
+  .tag { display: inline-block; background: #e8e8e8; padding: 2px 6px; border-radius: 4px; font-size: 12px; }
 </style>
 </head>
 <body>
 
 <h1>手机端统计页面 — 三个环形图的间距</h1>
 
-<p style="color:#888;font-size:14px;margin-bottom:16px">以 iPhone（375px 宽）为例，从上到下排列</p>
+<p class="note">以 iPhone（375px 宽）为例，在浏览器里实际测量得到。</p>
 
-<!-- 第一块：提交百分比 -->
+<!-- 布局图 -->
+<h2>从上到下的完整布局</h2>
 <div class="card">
-  <p><strong>① 提交百分比图表</strong>（圆环图，高 400px）</p>
-  <p>最上面是标题"Submission Percentages"，占 28px。</p>
-  <p>标题下面是圆环，圆环圆心在标题下方 140px 的位置。</p>
-  <p>圆环外圈半径 173px，内圈半径 104px（所以是空心圆环）。</p>
-  <p>圆环顶部超出卡片 5px，被裁掉了（看不见）。</p>
-  <p>圆环底部到卡片底部还有 59px 空白。</p>
-  <p>右侧竖着排了两个标签：Fails 和 Solves，约 48px 高。</p>
-</div>
-
-<div class="divider">↓ 间距 <span class="gap-up">重叠 85px</span></div>
-
-<!-- 第二块：正确/错误提交 -->
-<div class="card">
-  <p><strong>② 正确/错误提交 文字</strong>（两行，共 56px）</p>
-  <p>第一行："139 right submissions"（24px）</p>
-  <p>两行之间：8px</p>
-  <p>第二行："78 wrong submissions"（24px）</p>
-  <p style="color:#e65100;font-size:13px">⚠ 这块文字向上移动了 85px，和上面圆环的底部重叠了 26px。简单说，文字"压"在了圆环下半部分上面。</p>
-</div>
-
-<div class="divider">↓ 间距 <span class="gap">92px</span></div>
-
-<!-- 第三块：分类细分 -->
-<div class="card">
-  <p><strong>③ 分类细分图表</strong>（圆环图，高 400px）</p>
-  <p>标题"Category Breakdown"，28px。</p>
-  <p>圆环大小和位置跟上面一样：圆心在标题下方 140px，外圈 173px。</p>
-  <p>跟上面不同的是，它的图例在<b>底部横着排</b>，6 个分类（Crypto、Forensics 等）分两行，总共约 48px。</p>
-  <p>图例从卡片内 305px 的位置开始，图例底部到卡片底部还有 47px。</p>
-</div>
-
-<div class="divider">↓ 间距 <span class="gap-zero">0px（紧挨着）</span></div>
-
-<!-- 第四块：积分细分 -->
-<div class="card">
-  <p><strong>④ 积分细分图表</strong>（圆环图，高 400px）</p>
-  <p>标题"Point Breakdown"，28px。</p>
-  <p>圆环大小位置同上，图例也是底部横排，6 项两行。</p>
-  <p>图例从 308px 开始（比分类细分往下多挪了 3px），图例底部到卡片底部还有 44px。</p>
+<pre><span class="comment">━━</span> &lt;hr&gt; 分隔线
+  <span class="comment">↓</span> <span class="num">80px</span> 空白
+<span class="comment">━━ 提交百分比</span>（整个卡片高 <span class="num">400px</span>）
+  ├ 标题 <span class="num">28px</span>
+  ├ 标题到圆环中心 <span class="num">140px</span>
+  ├ 圆环外圈半径 <span class="num">173px</span>，圆心在卡片 <span class="num">168px</span> 处（从上往下 <span class="num">42%</span> 的位置）
+  ├ 圆环顶部超出卡片 <span class="num">5px</span>（被裁掉，看不到）
+  ├ 圆环底部到卡片底部 <span class="num">59px</span> 空白
+  └ 图例：右侧竖排，<span class="num">2</span> 项，高 <span class="num">48px</span>
+  <span class="comment">↓</span> <span class="highlight">-85px</span>（向上移动，和圆环重叠）
+<span class="comment">━━ 正确/错误提交</span>（两行文字，共 <span class="num">56px</span>）
+  "139 right submissions"  <span class="num">24px</span>
+  两行之间 <span class="num">8px</span>
+  "78 wrong submissions"   <span class="num">24px</span>
+  （文字压在了圆环底部上面 <span class="num">26px</span>）
+  <span class="comment">↓</span> <span class="num">92px</span> 空白
+<span class="comment">━━ 分类细分</span>（卡片高 <span class="num">400px</span>）
+  ├ 标题 <span class="num">28px</span> → 圆环中心 <span class="num">140px</span>
+  ├ 圆环外圈 <span class="num">173px</span>，底部到卡片底 <span class="num">59px</span>
+  └ 图例：底部横排，<span class="num">6</span> 项分 <span class="num">2</span> 行，从 <span class="num">305px</span> 开始，高 <span class="num">48px</span>，到底 <span class="num">47px</span>
+  <span class="comment">↓</span> <span class="num">0px</span>（紧挨着）
+<span class="comment">━━ 积分细分</span>（卡片高 <span class="num">400px</span>）
+  ├ 标题 <span class="num">28px</span> → 圆环中心 <span class="num">140px</span>
+  ├ 圆环外圈 <span class="num">173px</span>，底部到卡片底 <span class="num">59px</span>
+  └ 图例：底部横排，<span class="num">6</span> 项分 <span class="num">2</span> 行，从 <span class="num">308px</span> 开始，高 <span class="num">48px</span>，到底 <span class="num">44px</span></pre>
 </div>
 
 <!-- 间距速查 -->
-<h2>间距一览</h2>
+<h2>间距速查</h2>
 <table>
   <tr><th>从哪</th><th>到哪</th><th>间距</th></tr>
-  <tr><td>上方分隔线</td><td>提交百分比图表</td><td>80px</td></tr>
-  <tr><td>提交百分比图表</td><td>正确/错误文字</td><td><span style="color:#e65100">上移 85px（重叠了）</span></td></tr>
-  <tr><td>正确/错误文字</td><td>分类细分图表</td><td>92px</td></tr>
-  <tr><td>分类细分图表</td><td>积分细分图表</td><td>0px（紧挨着）</td></tr>
+  <tr><td>上方分隔线</td><td>提交百分比</td><td>80px</td></tr>
+  <tr><td>提交百分比</td><td>正确/错误文字</td><td><span style="color:#e65100">上移 85px（重叠了）</span></td></tr>
+  <tr><td>正确/错误文字</td><td>分类细分</td><td>92px</td></tr>
+  <tr><td>分类细分</td><td>积分细分</td><td>0px（紧挨着）</td></tr>
 </table>
 
-<!-- 三个图表相同点 -->
+<!-- 三个相同点 -->
 <h2>三个圆环图表的共同点</h2>
 <div class="card">
   <ul>
-    <li>每个图表卡片高度都一样：400px</li>
-    <li>标题高度都一样：28px（字号 18px）</li>
-    <li>圆环内圈 30%，外圈 50%，圆心在卡片 42% 的位置</li>
-    <li>圆环顶部都会超出卡片一点点（5px），被裁掉</li>
-    <li>圆环底部到卡片底部都有 59px 空白</li>
+    <li>每个卡片高度一样：400px</li>
+    <li>标题高度一样：28px（字号 18px）</li>
+    <li>圆环内圈 30%，外圈 50%，圆心在卡片 42% 位置</li>
+    <li>圆环顶部都会超出卡片 5px</li>
+    <li>圆环底部到卡片底部都是 59px</li>
   </ul>
 </div>
 
-<!-- 三个图表不同点 -->
+<!-- 三个不同点 -->
 <h2>三个圆环图表的不同点</h2>
 <div class="card">
   <ul>
-    <li><strong>提交百分比</strong>：图例在右侧竖排（2 项），不占底部空间</li>
-    <li><strong>分类细分</strong>：图例在底部横排（6 项两行），图例从 305px 处开始</li>
-    <li><strong>积分细分</strong>：图例在底部横排（6 项两行），图例从 308px 处开始</li>
+    <li><strong>提交百分比</strong>：图例在右侧竖排，2 项，不占底部空间</li>
+    <li><strong>分类细分</strong>：图例在底部横排，6 项分两行，从 305px 处开始</li>
+    <li><strong>积分细分</strong>：图例在底部横排，6 项分两行，从 308px 处开始</li>
   </ul>
 </div>
 
-<!-- 怎么做到 -->
-<h2>这些间距是怎么做到的</h2>
+<!-- CSS -->
+<h2>负责间距的 CSS</h2>
 <div class="card">
-  <p>三处 CSS 决定了间距：</p>
-  <ul>
-    <li>提交百分比图表向上推 64px（拉开和分隔线的距离）</li>
-    <li>正确/错误文字向上移 85px（让它和圆环重叠）</li>
-    <li>分类细分图表向下推 92px（拉开和文字的距离）</li>
-  </ul>
-  <p style="margin-top:8px">一处 JS 决定了圆环位置：</p>
-  <ul>
-    <li>把三个圆环的圆心从卡片正中间（50%）上移到 42.06% 的位置</li>
-    <li>同时把分类细分和积分细分的图例下移到卡片底部附近</li>
-  </ul>
+  <div class="desc">在手机屏幕上（宽度 ≤ 768px），这三条规则控制间距：</div>
+  <span class="tag">statistics.html</span>
+  <pre><span class="comment">/* 手机屏幕下生效 */</span>
+<span class="highlight">#keys-pie-graph</span>       { <span class="highlight">margin-top: 64px</span>; }   <span class="comment">/* 提交百分比和上方分隔线之间 */</span>
+<span class="highlight">.submission-counts</span>     { <span class="highlight">margin-top: -85px</span>; }  <span class="comment">/* 正确/错误文字向上移动 */</span>
+<span class="highlight">#categories-pie-graph</span>  { <span class="highlight">margin-top: 92px</span>; }   <span class="comment">/* 文字和分类细分之间 */</span></pre>
 </div>
 
-<p class="note">数据来源：在 375×812 手机上实际打开页面测量得到。</p>
+<!-- JS -->
+<h2>负责圆环位置的 JS</h2>
+<div class="card">
+  <div class="desc">在手机屏幕上，把圆环的圆心往上挪，给底部图例腾空间：</div>
+  <span class="tag">statistics.js</span>
+  <pre><span class="comment">// 把圆心从正中间（50%）上移到 42% 的位置</span>
+series[<span class="num">0</span>].center = [<span class="highlight">"50%"</span>, <span class="highlight">"42.06%"</span>];
+
+<span class="comment">// 分类细分的图例往下挪到 305px</span>
+legend.top = <span class="num">305</span>;
+
+<span class="comment">// 积分细分的图例往下挪到 308px</span>
+legend.top = <span class="num">308</span>;</pre>
+</div>
+
+<p class="note">数据来源：375×812 手机视口实测。</p>
 
 </body>
 </html>
