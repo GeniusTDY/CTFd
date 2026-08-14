@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>统计页面环形图布局说明</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, "Helvetica Neue", sans-serif;
+    background: #f5f5f5; color: #333; padding: 16px;
+    font-size: 14px; line-height: 1.7;
+  }
+  h1 { font-size: 17px; margin-bottom: 12px; }
+  .card {
+    background: #fff; border-radius: 10px; padding: 14px; margin-bottom: 12px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+  }
+  .card h2 { font-size: 15px; margin-bottom: 10px; color: #555; }
+  table {
+    width: 100%; border-collapse: collapse; margin: 8px 0; font-size: 13px;
+  }
+  th, td { border: 1px solid #e0e0e0; padding: 6px 10px; text-align: left; }
+  th { background: #f0f0f0; font-weight: 600; }
+  td.val { text-align: right; font-weight: bold; color: #4ec9b0; white-space: nowrap; }
+  td.val-hl { text-align: right; font-weight: bold; color: #f0a030; white-space: nowrap; }
+  .section { background: #fafafa; font-weight: 600; }
+  .arrow { color: #888; text-align: center; }
+  .skip { color: #999; font-size: 13px; }
+  pre {
+    background: #1e1e1e; color: #d4d4d4; padding: 14px; border-radius: 8px;
+    font-size: 12px; overflow-x: auto; line-height: 1.55;
+  }
+  .hl { color: #f0a030; font-weight: bold; }
+  .num { color: #4ec9b0; }
+  .cmt { color: #6a9955; }
+  .note { font-size: 12px; color: #888; margin-top: 10px; }
+  .tag { display: inline-block; background: #e8e8e8; padding: 1px 6px; border-radius: 4px; font-size: 11px; }
+</style>
+</head>
+<body>
+
+<h1>移动端（max-width: 767.98px）页面布局与留白</h1>
+
+<div class="card">
+  <p class="skip">以 375px 屏幕宽度为参考</p>
+
+  <table>
+    <tr><td class="section" colspan="2">上方柱状图</td></tr>
+    <tr><td class="arrow">↓ 间隙</td><td class="val">16px</td></tr>
+    <tr><td>分隔线</td><td class="val">1px</td></tr>
+    <tr><td>↓ 间隙（分隔线 → 第一个环形图）</td><td class="val-hl">80px</td></tr>
+
+    <tr><td class="section" colspan="2">━━ 提交百分比 内部（容器 400×345px）</td></tr>
+    <tr><td>├ 图表标题（fontSize 18 + padding 5×2）</td><td class="val">28px</td></tr>
+    <tr><td>├ 标题底部到环形图顶部（重叠）</td><td class="val-hl">-32px</td></tr>
+    <tr><td>├ 环形图（外圈直径，50% × 345）</td><td class="val">345px</td></tr>
+    <tr><td>├ 环形图下方空白（400 − 168 − 172.5）</td><td class="val">59px</td></tr>
+    <tr><td>└ 图例（右侧竖排，不占高度）</td><td class="skip">—</td></tr>
+
+    <tr><td class="arrow">↓ 间距（环形图底→文字块顶，重叠）</td><td class="val-hl">-26px</td></tr>
+
+    <tr><td>正确/错误提交文字</td><td class="val">24px</td></tr>
+
+    <tr><td class="arrow">↓ 间距（文字块底→下一个环形图顶）</td><td class="val-hl">92px</td></tr>
+
+    <tr><td class="section" colspan="2">━━ 分类细分 内部（容器 400×345px）</td></tr>
+    <tr><td>├ 图表标题</td><td class="val">28px</td></tr>
+    <tr><td>├ 标题底部到环形图顶部（重叠）</td><td class="val-hl">-32px</td></tr>
+    <tr><td>├ 环形图</td><td class="val">345px</td></tr>
+    <tr><td>├ 环形图下方空白</td><td class="val">59px</td></tr>
+    <tr><td>└ 图例（底部横排，含底部空白）</td><td class="val">47px</td></tr>
+
+    <tr><td class="arrow">↓ 间距（紧挨着）</td><td class="val">0px</td></tr>
+
+    <tr><td class="section" colspan="2">━━ 积分细分 内部（容器 400×345px）</td></tr>
+    <tr><td>├ 图表标题</td><td class="val">28px</td></tr>
+    <tr><td>├ 标题底部到环形图顶部（重叠）</td><td class="val-hl">-32px</td></tr>
+    <tr><td>├ 环形图</td><td class="val">345px</td></tr>
+    <tr><td>├ 环形图下方空白</td><td class="val">59px</td></tr>
+    <tr><td>└ 图例（底部横排，含底部空白）</td><td class="val">44px</td></tr>
+  </table>
+</div>
+
+<div class="card">
+  <h2>说明</h2>
+  <p class="skip">· 每个环形图容器：400×345px（ECharts 默认高 400px，宽 = 375 − 15×2 padding）</p>
+  <p class="skip">· 标题 fontSize=18、padding=5（实测），总高 28px；top=0 贴容器顶部</p>
+  <p class="skip">· 环形图圆心 Y=168px（42.06%），外圈半径=172.5px（50%×345）</p>
+  <p class="skip">· 外圈顶超出容器 4px 被裁切；标题底部(28px)到外圈顶(−4px)重叠 32px</p>
+  <p class="skip">· 文字块 h5 单行 24px（中文 "145 正确提交" ≈ 120px + "90 错误提交" ≈ 110px + gap 16px = 246px < 345px，同行）</p>
+  <p class="skip">· 环形图底距容器底 59px，文字块上移 85px → 实际重叠 = 85 − 59 = 26px</p>
+  <p class="skip">· 三个环形图容器间：提交百分比→分类细分 31px（400 + 24 − 85 + 92 − 400），分类细分→积分细分 0px</p>
+  <p class="skip">· 图例底部留白为近似值（legend 渲染高度约 46−48px）</p>
+  <p class="skip">· 桌面端实测确认：容器 400px、hr 1px/16px、标题 fontSize=18+padding=5</p>
+</div>
+
+<div class="card">
+  <span class="tag">statistics.html#L174-L199</span>
+  <pre><span class="cmt">@media (max-width: 767.98px)</span> {
+  <span class="hl">#keys-pie-graph</span>       { <span class="hl">margin-top: 64px</span>; }
+  <span class="hl">.submission-counts</span>     { <span class="hl">margin-top: -85px</span>; }
+  <span class="hl">#categories-pie-graph</span>  { <span class="hl">margin-top: 92px</span>; }
+}</pre>
+</div>
+
+<div class="card">
+  <span class="tag">statistics.js#L824-L831</span>
+  <pre>series[<span class="num">0</span>].center = [<span class="hl">"50%"</span>, <span class="hl">"42.06%"</span>];
+<span class="cmt">// 分类细分 legend</span>
+legend.top = <span class="num">305</span>;
+<span class="cmt">// 积分细分 legend</span>
+legend.top = <span class="num">308</span>;</pre>
+</div>
+
+<p class="note">数据来源：testall.py 填充后，375×812 视口实测。</p>
+
+</body>
+</html>
