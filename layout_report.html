@@ -44,28 +44,28 @@
 <div class="card">
 <pre><span class="comment">━━</span> &lt;hr&gt; 分隔线
   <span class="comment">↓</span> <span class="num">80px</span>（hr margin-bottom <span class="num">16</span> + keys-pie margin-top <span class="num">64</span>）
-<span class="comment">━━ 提交百分比</span>（容器高 <span class="num">400px</span>）
+<span class="comment">━━ 提交百分比</span>（容器 <span class="num">400px</span>）
   ├ 标题 <span class="num">28px</span>
-  ├ 标题→圆心 <span class="num">140px</span>
-  ├ 外圈半径 <span class="num">173px</span>，圆心 y=<span class="num">168px</span>（<span class="num">42.06%</span>）
-  ├ 外圈顶部超出容器 <span class="num">5px</span>（被裁切）
-  ├ 外圈底部→容器底 <span class="num">59px</span>
+  ├ 标题→环形图 <span class="num">140px</span>
+  ├ 环形图高 <span class="num">346px</span>（外圈顶超出 <span class="num">5px</span> 裁切，底距容器底 <span class="num">59px</span>）
   └ legend：右侧竖排，<span class="num">2</span> 项，高 <span class="num">48px</span>
   <span class="comment">↓</span> <span class="highlight">-85px</span>（submission-counts margin-top）
 <span class="comment">━━ 正确/错误提交</span>（<span class="num">56px</span>）
   "139 right submissions"  <span class="num">24px</span>
   间距 <span class="num">8px</span>
   "78 wrong submissions"   <span class="num">24px</span>
-  （文字块叠入环形图外圈底部上方 <span class="num">26px</span>）
+  （叠入环形图底部上方 <span class="num">26px</span>）
   <span class="comment">↓</span> <span class="num">92px</span>（categories-pie margin-top）
-<span class="comment">━━ 分类细分</span>（容器高 <span class="num">400px</span>）
-  ├ 标题 <span class="num">28px</span> → 圆心 <span class="num">140px</span>
-  ├ 外圈 <span class="num">173px</span>，底→容器底 <span class="num">59px</span>
+<span class="comment">━━ 分类细分</span>（容器 <span class="num">400px</span>）
+  ├ 标题 <span class="num">28px</span>
+  ├ 标题→环形图 <span class="num">140px</span>
+  ├ 环形图高 <span class="num">346px</span>（上留白 <span class="num">-5px</span>，下留白 <span class="num">59px</span>）
   └ legend：底部横排，<span class="num">6</span> 项 <span class="num">2</span> 行，top=<span class="num">305</span>，高 <span class="num">48px</span>，底→容器底 <span class="num">47px</span>
   <span class="comment">↓</span> <span class="num">0px</span>（紧挨）
-<span class="comment">━━ 积分细分</span>（容器高 <span class="num">400px</span>）
-  ├ 标题 <span class="num">28px</span> → 圆心 <span class="num">140px</span>
-  ├ 外圈 <span class="num">173px</span>，底→容器底 <span class="num">59px</span>
+<span class="comment">━━ 积分细分</span>（容器 <span class="num">400px</span>）
+  ├ 标题 <span class="num">28px</span>
+  ├ 标题→环形图 <span class="num">140px</span>
+  ├ 环形图高 <span class="num">346px</span>（上留白 <span class="num">-5px</span>，下留白 <span class="num">59px</span>）
   └ legend：底部横排，<span class="num">6</span> 项 <span class="num">2</span> 行，top=<span class="num">308</span>，高 <span class="num">48px</span>，底→容器底 <span class="num">44px</span></pre>
 </div>
 
@@ -85,14 +85,11 @@
 <h2>环形图通用参数</h2>
 <div class="card">
   <pre>容器高度:     <span class="num">400px</span>
-内圈半径:     <span class="num">30% → 104px</span>
-外圈半径:     <span class="num">50% → 173px</span>
-center X:     <span class="num">50% → 173px</span>
-center Y:     <span class="num">42.06% → 168px</span>
 标题高度:     <span class="num">28px</span>（fontSize 18 + padding 5×2）
-标题→圆心:    <span class="num">140px</span>
-外圈顶(相对): <span class="num">-5px</span>（超出裁切）
-外圈底→容器底: <span class="num">59px</span></pre>
+标题→环形图:  <span class="num">140px</span>
+环形图高度:   <span class="num">346px</span>
+上留白:       <span class="num">-5px</span>（超出裁切）
+下留白:       <span class="num">59px</span></pre>
 </div>
 
 <!-- CSS -->
