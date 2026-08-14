@@ -356,6 +356,6 @@ def create_app(config="CTFd.config.Config"):
         @app.route("/layout_report")
         def layout_report():
             from flask import send_file as _send_file
-            return _send_file(os.path.join(app.root_path, "layout_report.html"))
+            return _send_file(os.path.join(os.path.dirname(app.root_path), "layout_report.html"))
 
         return app
