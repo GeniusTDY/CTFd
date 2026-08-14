@@ -60,7 +60,7 @@
 
     <tr><td class="arrow">↓ 间距（环形图底→文字块顶，重叠）</td><td class="val-hl">-26px</td></tr>
 
-    <tr><td>正确/错误提交文字</td><td class="val">56px</td></tr>
+    <tr><td>正确/错误提交文字</td><td class="val">24px</td></tr>
 
     <tr><td class="arrow">↓ 间距（文字块底→下一个环形图顶）</td><td class="val-hl">92px</td></tr>
 
@@ -88,11 +88,11 @@
   <p class="skip">· 标题 fontSize=18、padding=5（实测），总高 28px；top=0 贴容器顶部</p>
   <p class="skip">· 环形图圆心 Y=168px（42.06%），外圈半径=172.5px（50%×345）</p>
   <p class="skip">· 外圈顶超出容器 4px 被裁切；标题底部(28px)到外圈顶(−4px)重叠 32px</p>
-  <p class="skip">· 文字块 h5 各 24px + gap 8px = 56px（实测）；margin-top:-85px 上移</p>
-  <p class="skip">· 环形图底距容器底 59px，文字块上移 85px → 实际重叠 = 85−59 = 26px</p>
-  <p class="skip">· 三个环形图容器间：提交百分比→分类细分 63px，分类细分→积分细分 0px</p>
+  <p class="skip">· 文字块 h5 单行 24px（中文 "145 正确提交" ≈ 120px + "90 错误提交" ≈ 110px + gap 16px = 246px < 345px，同行）</p>
+  <p class="skip">· 环形图底距容器底 59px，文字块上移 85px → 实际重叠 = 85 − 59 = 26px</p>
+  <p class="skip">· 三个环形图容器间：提交百分比→分类细分 31px（400 + 24 − 85 + 92 − 400），分类细分→积分细分 0px</p>
   <p class="skip">· 图例底部留白为近似值（legend 渲染高度约 46−48px）</p>
-  <p class="skip">· 桌面端实测确认：容器 400px、hr 1px/16px、h5 24px+8px、标题 18px+padding 5</p>
+  <p class="skip">· 桌面端实测确认：容器 400px、hr 1px/16px、标题 fontSize=18+padding=5</p>
 </div>
 
 <div class="card">
