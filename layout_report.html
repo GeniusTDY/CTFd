@@ -19,7 +19,7 @@
   pre {
     background: #1e1e1e; color: #d4d4d4; padding: 14px; border-radius: 8px;
     font-size: 12px; overflow-x: auto; line-height: 1.55;
-    white-space: pre; word-break: normal;
+    white-space: pre-wrap; word-break: normal;
   }
   .hl { color: #f0a030; font-weight: bold; }
   .num { color: #4ec9b0; }
@@ -33,35 +33,34 @@
 <h1>移动端（max-width: 767.98px）页面布局与留白</h1>
 
 <div class="card">
-<pre><span class="cmt">─────────────────────</span>
+<pre><span class="cmt">─────────────────────────────────────</span>
 <span class="cmt">上方柱状图</span>
-  <span class="cmt">↓</span>                       <span class="cmt">间隙</span> <span class="num">16px</span>
-<span class="cmt">分隔线</span>                                                         <span class="num">1px</span>
-  <span class="cmt">↓</span>       <span class="cmt">间隙（分隔线到第一个环形图）</span> <span class="hl">80px</span>
-<span class="cmt">三个环形图</span>
-<span class="cmt">━━ 提交百分比 内部（400px）         以 375px 屏宽为例</span>
-  ├ <span class="cmt">图表标题</span>                                                <span class="num">28px</span>
-  ├ <span class="cmt">标题到环形图的间距</span>                               <span class="num">140px</span>
-  ├ <span class="cmt">环形图</span>                                                   <span class="num">346px</span>
-  ├ <span class="cmt">环形图下方空白</span>                                      <span class="num">59px</span>
-  └ <span class="cmt">图例（右侧竖排，不占高度）</span>
-  <span class="cmt">↓</span> <span class="cmt">间距（上移覆盖到环形图底部）</span>              <span class="hl">-85px</span>
-<span class="cmt">正确/错误提交文字</span>                                       <span class="num">56px</span>
-  <span class="cmt">↓</span>           <span class="cmt">间距（到下一个环形图）</span> <span class="hl">92px</span>
+  <span class="cmt">↓</span> 间隙 <span class="num">16px</span>
+<span class="cmt">分隔线</span> <span class="num">1px</span>
+  <span class="cmt">↓</span> 间隙（分隔线 → 第一个环形图） <span class="hl">80px</span>
+<span class="cmt">━━ 提交百分比 内部（400px）——— 以 375px 屏宽为例</span>
+  ├ 图表标题                          <span class="num">28px</span>
+  ├ 标题到环形图的间距                <span class="num">140px</span>
+  ├ 环形图                            <span class="num">346px</span>
+  ├ 环形图下方空白                    <span class="num">59px</span>
+  └ 图例（右侧竖排，不占高度）
+  <span class="cmt">↓</span> 间距（上移覆盖环形图底部）      <span class="hl">-85px</span>
+<span class="cmt">正确/错误提交文字</span> <span class="num">56px</span>
+  <span class="cmt">↓</span> 间距（到下一个环形图）          <span class="hl">92px</span>
 <span class="cmt">━━ 分类细分 内部（400px）</span>
-  ├ <span class="cmt">图表标题</span>                                                <span class="num">28px</span>
-  ├ <span class="cmt">标题到环形图的间距</span>                               <span class="num">140px</span>
-  ├ <span class="cmt">环形图</span>                                                   <span class="num">346px</span>
-  ├ <span class="cmt">环形图下方空白</span>                                      <span class="num">59px</span>
-  └ <span class="cmt">图例（底部横排，含底部空白）</span>              <span class="num">47px</span>
-  <span class="cmt">↓</span>                    <span class="cmt">间距</span> <span class="num">0px</span>（紧挨着）
+  ├ 图表标题                          <span class="num">28px</span>
+  ├ 标题到环形图的间距                <span class="num">140px</span>
+  ├ 环形图                            <span class="num">346px</span>
+  ├ 环形图下方空白                    <span class="num">59px</span>
+  └ 图例（底部横排，含底部空白）      <span class="num">47px</span>
+  <span class="cmt">↓</span> 间距 <span class="num">0px</span>（紧挨着）
 <span class="cmt">━━ 积分细分 内部（400px）</span>
-  ├ <span class="cmt">图表标题</span>                                                <span class="num">28px</span>
-  ├ <span class="cmt">标题到环形图的间距</span>                               <span class="num">140px</span>
-  ├ <span class="cmt">环形图</span>                                                   <span class="num">346px</span>
-  ├ <span class="cmt">环形图下方空白</span>                                      <span class="num">59px</span>
-  └ <span class="cmt">图例（底部横排，含底部空白）</span>              <span class="num">44px</span>
-<span class="cmt">─────────────────────</span></pre>
+  ├ 图表标题                          <span class="num">28px</span>
+  ├ 标题到环形图的间距                <span class="num">140px</span>
+  ├ 环形图                            <span class="num">346px</span>
+  ├ 环形图下方空白                    <span class="num">59px</span>
+  └ 图例（底部横排，含底部空白）      <span class="num">44px</span>
+<span class="cmt">─────────────────────────────────────</span></pre>
 </div>
 
 <div class="card">
