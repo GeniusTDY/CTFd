@@ -71,9 +71,9 @@
 
     <tr><td class="section" colspan="2">━━ 提交百分比 内部（容器 400×345px）</td></tr>
     <tr><td>├ 图表标题（fontSize 18 + padding 5×2）</td><td class="val">28px</td></tr>
-    <tr><td>├ 标题底部到环形图顶部（重叠）</td><td class="val-hl">-32px</td></tr>
+    <tr><td>├ 标题与环形图重叠区（标题叠在环上）</td><td class="val-hl">28px</td></tr>
     <tr><td>├ 环形图（外圈直径，50% × 345）</td><td class="val">345px</td></tr>
-    <tr><td>├ 环形图下方空白（400 − 168 − 172.5）</td><td class="val">59px</td></tr>
+    <tr><td>├ 环形图下方空白（400 − 中心点 − 外圈半径）</td><td class="val">59px</td></tr>
     <tr><td>└ 图例（右侧竖排，不占高度）</td><td class="skip">—</td></tr>
 
     <tr><td class="arrow">↓ 间距（环形图底→文字块顶，重叠）</td><td class="val-hl">-26px</td></tr>
@@ -84,7 +84,7 @@
 
     <tr><td class="section" colspan="2">━━ 分类细分 内部（容器 400×345px）</td></tr>
     <tr><td>├ 图表标题</td><td class="val">28px</td></tr>
-    <tr><td>├ 标题底部到环形图顶部（重叠）</td><td class="val-hl">-32px</td></tr>
+    <tr><td>├ 标题与环形图重叠区（标题叠在环上）</td><td class="val-hl">28px</td></tr>
     <tr><td>├ 环形图</td><td class="val">345px</td></tr>
     <tr><td>├ 环形图下方空白</td><td class="val">59px</td></tr>
     <tr><td>└ 图例（底部横排，含底部空白）</td><td class="val">47px</td></tr>
@@ -93,7 +93,7 @@
 
     <tr><td class="section" colspan="2">━━ 积分细分 内部（容器 400×345px）</td></tr>
     <tr><td>├ 图表标题</td><td class="val">28px</td></tr>
-    <tr><td>├ 标题底部到环形图顶部（重叠）</td><td class="val-hl">-32px</td></tr>
+    <tr><td>├ 标题与环形图重叠区（标题叠在环上）</td><td class="val-hl">28px</td></tr>
     <tr><td>├ 环形图</td><td class="val">345px</td></tr>
     <tr><td>├ 环形图下方空白</td><td class="val">59px</td></tr>
     <tr><td>└ 图例（底部横排，含底部空白）</td><td class="val">44px</td></tr>
@@ -103,12 +103,12 @@
 
 <div class="card">
   <h2>说明</h2>
-  <p class="skip">· 每个环形图容器：400×345px（ECharts 默认高 400px，宽 = 375 − 15×2 padding）</p>
+  <p class="skip">· 每个环形图容器：400×345px（ECharts 默认高 400px，宽 = 375 − 左右各 padding 15px）</p>
   <p class="skip">· 标题 fontSize=18、padding=5（实测），总高 28px；top=0 贴容器顶部</p>
-  <p class="skip">· 环形图圆心 Y=168px（42.06%），外圈半径=172.5px（50%×345）</p>
-  <p class="skip">· 外圈顶超出容器 4px 被裁切；标题底部(28px)到外圈顶(−4px)重叠 32px</p>
-  <p class="skip">· 文字块 h5 单行 24px（中文 "145 正确提交" ≈ 120px + "90 错误提交" ≈ 110px + gap 16px = 246px < 345px，同行）</p>
-  <p class="skip">· 环形图底距容器底 59px，文字块上移 85px → 实际重叠 = 85 − 59 = 26px</p>
+  <p class="skip">· 环形图中心点距容器顶 168px（42.06%×400），内圈半径 103.5px（30%×345），外圈半径 172.5px（50%×345）</p>
+  <p class="skip">· 标题区域(0−28px)处环形图为彩色：距中心点 140px → 在内圈 103.5 和外圈 172.5 之间 → 标题叠在环形图上，重叠 28px</p>
+  <p class="skip">· 文字块 h5 单行 24px（中文 "145 正确提交" + "90 错误提交" + gap 16px ≈ 246px < 345px，同行）</p>
+  <p class="skip">· 环形图外圈底距容器底 59px，文字块上移 85px → 文字块与环形图重叠 = 85 − 59 = 26px</p>
   <p class="skip">· 三个环形图容器间：提交百分比→分类细分 31px（400 + 24 − 85 + 92 − 400），分类细分→积分细分 0px</p>
   <p class="skip">· 图例底部留白为近似值（legend 渲染高度约 46−48px）</p>
   <p class="skip">· 桌面端实测确认：容器 400px、hr 1px/16px、标题 fontSize=18+padding=5</p>
@@ -129,11 +129,11 @@
 
     <tr><td>图表标题高度</td><td class="val">28px</td><td>statistics.js</td><td>L866</td><td class="skip"><code>const fontSize = ts.fontSize || 18;</code> + ECharts title 默认 padding: 5</td></tr>
 
-    <tr><td>标题与环形图重叠</td><td class="val-hl">−32px</td><td>statistics.js</td><td>L824</td><td class="skip"><code>option.series[0].center = ["50%", "42.06%"];</code> 环形图中心点距容器顶 42.06%×400=168px。<code>radius: ["30%", "50%"]</code> → 内圈 30%×345=103.5px，有颜色的环从 168−103.5=64.5px 开始。标题占 0−28px，标题底 28px 距环顶 64.5px 还差 36.5px，不重叠。−32px 是标题底到外圈边界(−4.5px)的值，外圈是空心边界不是环，无意义</td></tr>
+    <tr><td>标题与环形图重叠</td><td class="val-hl">28px</td><td>statistics.js</td><td>L824</td><td class="skip"><code>option.series[0].center = ["50%", "42.06%"];</code> 环形图中心点距容器顶 42.06%×400=168px。<code>radius: ["30%", "50%"]</code> → 内圈 30%×345=103.5px，外圈 50%×345=172.5px。标题占 0−28px，标题底部距中心点 168−28=140px，140 在 103.5 和 172.5 之间 → 环形图在此区域为彩色 → 标题叠在环形图上，重叠 28px</td></tr>
 
     <tr><td>环形图外圈直径</td><td class="val">345px</td><td>statistics.js</td><td>L328</td><td class="skip"><code>radius: ["30%", "50%"]</code> — ECharts 的 radius 百分比取容器宽高中较小的一边；容器 400×345，较小边 345px，50% × 345 = 172.5px 半径，直径 345px</td></tr>
 
-    <tr><td>环形图下方空白</td><td class="val">59px</td><td>—</td><td>—</td><td class="skip">400 − (168 + 172.5) = 59.5px（容器高 − 圆心 − 半径）</td></tr>
+    <tr><td>环形图下方空白</td><td class="val">59px</td><td>—</td><td>—</td><td class="skip">400 − (168 + 172.5) = 59.5px（容器高 − 中心点 − 外圈半径）</td></tr>
 
     <tr><td>正确/错误提交文字</td><td class="val">24px</td><td>statistics.html</td><td>L106-107</td><td class="skip"><code>&lt;h5&gt;...right/wrong submissions&lt;/h5&gt;</code> 单行实测</td></tr>
 
