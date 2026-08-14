@@ -84,10 +84,12 @@
 
 <div class="card">
   <h2>说明</h2>
-  <p class="skip">· 每个环形图容器高度固定为 400px，标题固定 28px</p>
-  <p class="skip">· 环形图由内圈和外圈组成，外圈顶部超出画面 5px 被裁切</p>
-  <p class="skip">· 提交百分比的图例在右侧竖排，分类细分和积分细分的图例在底部横排</p>
-  <p class="skip">· 正确/错误提交文字通过 -85px 上移，重叠到环形图底部区域</p>
+  <p class="skip">· 每个环形图容器：400×345px（ECharts 默认高 400px，宽 = 375 − 15×2 padding）</p>
+  <p class="skip">· 标题 fontSize=18、padding=5，总高 28px；top=0 贴容器顶部</p>
+  <p class="skip">· 环形图圆心 Y=168px（42.06%），外圈半径=172.5px（50%×345），外圈顶超出容器 4px 被裁切</p>
+  <p class="skip">· 标题底部(28px)到环形图外圈顶部(−4px)重叠 32px，标题文字叠在环形图上方</p>
+  <p class="skip">· 正确/错误提交文字通过 margin-top:-85px 上移，叠入环形图底部上方约 26px</p>
+  <p class="skip">· 分类细分和积分细分的图例底部留白为近似值，取决于 legend 实际渲染高度</p>
 </div>
 
 <div class="card">
