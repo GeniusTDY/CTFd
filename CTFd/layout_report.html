@@ -129,7 +129,7 @@
 
     <tr><td>图表标题高度</td><td class="val">28px</td><td>statistics.js</td><td>L866</td><td class="skip"><code>const fontSize = ts.fontSize || 18;</code> + ECharts title 默认 padding: 5</td></tr>
 
-    <tr><td>标题与环形图重叠</td><td class="val-hl">−32px</td><td>statistics.js</td><td>L824</td><td class="skip"><code>option.series[0].center = ["50%", "42.06%"];</code> → 圆心 Y=168px，外圈顶 −4px。但外圈超出容器顶部被裁切，视觉上标题底 28px 到环形图可见顶 0px 实际间距 28px，无重叠</td></tr>
+    <tr><td>标题与环形图重叠</td><td class="val-hl">−32px</td><td>statistics.js</td><td>L824</td><td class="skip"><code>option.series[0].center = ["50%", "42.06%"];</code> → 圆心 Y=168px，外圈顶 −4px。但外圈超出容器顶部被裁切，视觉上标题底(28px)到环形图可见顶(0px)实际间距 = 28px，无重叠</td></tr>
 
     <tr><td>环形图外圈直径</td><td class="val">345px</td><td>statistics.js</td><td>L328</td><td class="skip"><code>radius: ["30%", "50%"]</code> — ECharts 的 radius 百分比取容器宽高中较小的一边；容器 400×345，较小边 345px，50% × 345 = 172.5px 半径，直径 345px</td></tr>
 
