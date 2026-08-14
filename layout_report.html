@@ -58,11 +58,11 @@
     <tr><td>├ 环形图下方空白（400 − 168 − 172.5）</td><td class="val">59px</td></tr>
     <tr><td>└ 图例（右侧竖排，不占高度）</td><td class="skip">—</td></tr>
 
-    <tr><td class="arrow">↓ 间距（上移覆盖到环形图底部）</td><td class="val-hl">-85px</td></tr>
+    <tr><td class="arrow">↓ 间距（环形图底→文字块顶，重叠）</td><td class="val-hl">-26px</td></tr>
 
     <tr><td>正确/错误提交文字</td><td class="val">56px</td></tr>
 
-    <tr><td class="arrow">↓ 间距（到下一个环形图）</td><td class="val-hl">92px</td></tr>
+    <tr><td class="arrow">↓ 间距（文字块底→下一个环形图顶）</td><td class="val-hl">92px</td></tr>
 
     <tr><td class="section" colspan="2">━━ 分类细分 内部（容器 400×345px）</td></tr>
     <tr><td>├ 图表标题</td><td class="val">28px</td></tr>
@@ -88,7 +88,8 @@
   <p class="skip">· 标题 fontSize=18、padding=5，总高 28px；top=0 贴容器顶部</p>
   <p class="skip">· 环形图圆心 Y=168px（42.06%），外圈半径=172.5px（50%×345），外圈顶超出容器 4px 被裁切</p>
   <p class="skip">· 标题底部(28px)到环形图外圈顶部(−4px)重叠 32px，标题文字叠在环形图上方</p>
-  <p class="skip">· 正确/错误提交文字通过 margin-top:-85px 上移，叠入环形图底部上方约 26px</p>
+  <p class="skip">· 文字块通过 margin-top: -85px 上移，环形图底距容器底 59px，实际重叠 = 85 − 59 = 26px</p>
+  <p class="skip">· 三个环形图之间：提交百分比→分类细分间隔 63px（含文字块），分类细分→积分细分间隔 0px</p>
   <p class="skip">· 分类细分和积分细分的图例底部留白为近似值，取决于 legend 实际渲染高度</p>
 </div>
 
