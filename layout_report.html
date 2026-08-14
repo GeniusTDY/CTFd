@@ -9,108 +9,85 @@
   body {
     font-family: -apple-system, "Helvetica Neue", sans-serif;
     background: #f5f5f5; color: #333; padding: 16px;
-    font-size: 15px; line-height: 1.7;
+    font-size: 14px; line-height: 1.7;
   }
-  h1 { font-size: 18px; margin-bottom: 14px; }
-  h2 { font-size: 16px; margin: 18px 0 8px; }
+  h1 { font-size: 17px; margin-bottom: 10px; }
   .card {
     background: #fff; border-radius: 10px; padding: 14px; margin-bottom: 12px;
     box-shadow: 0 1px 3px rgba(0,0,0,0.08);
   }
   pre {
-    background: #1e1e1e; color: #d4d4d4; padding: 12px; border-radius: 8px;
+    background: #1e1e1e; color: #d4d4d4; padding: 14px; border-radius: 8px;
     font-size: 12px; overflow-x: auto; line-height: 1.55;
-    white-space: pre-wrap; word-break: break-all;
+    white-space: pre; word-break: normal;
   }
-  .highlight { color: #f0a030; font-weight: bold; }
+  .hl { color: #f0a030; font-weight: bold; }
   .num { color: #4ec9b0; }
-  .comment { color: #6a9955; }
-  table { width: 100%; border-collapse: collapse; margin: 8px 0; font-size: 13px; }
-  th, td { border: 1px solid #e0e0e0; padding: 8px 10px; text-align: left; }
-  th { background: #f0f0f0; font-weight: 600; }
-  td:last-child { text-align: center; font-weight: bold; }
-  .note { font-size: 13px; color: #888; margin-top: 8px; }
-  .tag { display: inline-block; background: #e8e8e8; padding: 2px 6px; border-radius: 4px; font-size: 12px; }
+  .cmt { color: #6a9955; }
+  .note { font-size: 12px; color: #888; margin-top: 10px; }
+  .tag { display: inline-block; background: #e8e8e8; padding: 1px 6px; border-radius: 4px; font-size: 11px; }
 </style>
 </head>
 <body>
 
-<h1>移动端（375px）统计页面 — 环形图布局留白</h1>
+<h1>移动端（max-width: 767.98px）页面布局与留白</h1>
 
-<p class="note">视口 375×812，实际测量</p>
-
-<!-- 布局图 -->
-<h2>完整布局</h2>
 <div class="card">
-<pre><span class="comment">━━</span> &lt;hr&gt; 分隔线
-  <span class="comment">↓</span> <span class="num">80px</span>（hr margin-bottom <span class="num">16</span> + keys-pie margin-top <span class="num">64</span>）
-<span class="comment">━━ 提交百分比</span>（容器 <span class="num">400px</span>）
-  ├ 标题 <span class="num">28px</span>
-  ├ 标题→环形图 <span class="num">140px</span>
-  ├ 环形图高 <span class="num">346px</span>（外圈顶超出 <span class="num">5px</span> 裁切，底距容器底 <span class="num">59px</span>）
-  └ legend：右侧竖排，<span class="num">2</span> 项，高 <span class="num">48px</span>
-  <span class="comment">↓</span> <span class="highlight">-85px</span>（submission-counts margin-top）
-<span class="comment">━━ 正确/错误提交</span>（<span class="num">56px</span>）
-  "139 right submissions"  <span class="num">24px</span>
-  间距 <span class="num">8px</span>
-  "78 wrong submissions"   <span class="num">24px</span>
-  （叠入环形图底部上方 <span class="num">26px</span>）
-  <span class="comment">↓</span> <span class="num">92px</span>（categories-pie margin-top）
-<span class="comment">━━ 分类细分</span>（容器 <span class="num">400px</span>）
-  ├ 标题 <span class="num">28px</span>
-  ├ 标题→环形图 <span class="num">140px</span>
-  ├ 环形图高 <span class="num">346px</span>（上留白 <span class="num">-5px</span>，下留白 <span class="num">59px</span>）
-  └ legend：底部横排，<span class="num">6</span> 项 <span class="num">2</span> 行，top=<span class="num">305</span>，高 <span class="num">48px</span>，底→容器底 <span class="num">47px</span>
-  <span class="comment">↓</span> <span class="num">0px</span>（紧挨）
-<span class="comment">━━ 积分细分</span>（容器 <span class="num">400px</span>）
-  ├ 标题 <span class="num">28px</span>
-  ├ 标题→环形图 <span class="num">140px</span>
-  ├ 环形图高 <span class="num">346px</span>（上留白 <span class="num">-5px</span>，下留白 <span class="num">59px</span>）
-  └ legend：底部横排，<span class="num">6</span> 项 <span class="num">2</span> 行，top=<span class="num">308</span>，高 <span class="num">48px</span>，底→容器底 <span class="num">44px</span></pre>
+<pre><span class="cmt">─────────────────────</span>
+<span class="cmt">上方柱状图</span>
+  <span class="cmt">↓</span>                       <span class="cmt">间隙</span> <span class="num">16px</span>
+<span class="cmt">分隔线</span>                                                         <span class="num">1px</span>
+  <span class="cmt">↓</span>       <span class="cmt">间隙（分隔线到第一个环形图）</span> <span class="hl">80px</span>
+<span class="cmt">三个环形图</span>
+<span class="cmt">━━ 提交百分比 内部（400px）         以 375px 屏宽为例</span>
+  ├ <span class="cmt">图表标题</span>                                                <span class="num">28px</span>
+  ├ <span class="cmt">标题到环形图的间距</span>                               <span class="num">140px</span>
+  ├ <span class="cmt">环形图</span>                                                   <span class="num">346px</span>
+  ├ <span class="cmt">环形图下方空白</span>                                      <span class="num">59px</span>
+  └ <span class="cmt">图例（右侧竖排，不占高度）</span>
+  <span class="cmt">↓</span> <span class="cmt">间距（上移覆盖到环形图底部）</span>              <span class="hl">-85px</span>
+<span class="cmt">正确/错误提交文字</span>                                       <span class="num">56px</span>
+  <span class="cmt">↓</span>           <span class="cmt">间距（到下一个环形图）</span> <span class="hl">92px</span>
+<span class="cmt">━━ 分类细分 内部（400px）</span>
+  ├ <span class="cmt">图表标题</span>                                                <span class="num">28px</span>
+  ├ <span class="cmt">标题到环形图的间距</span>                               <span class="num">140px</span>
+  ├ <span class="cmt">环形图</span>                                                   <span class="num">346px</span>
+  ├ <span class="cmt">环形图下方空白</span>                                      <span class="num">59px</span>
+  └ <span class="cmt">图例（底部横排，含底部空白）</span>              <span class="num">47px</span>
+  <span class="cmt">↓</span>                    <span class="cmt">间距</span> <span class="num">0px</span>（紧挨着）
+<span class="cmt">━━ 积分细分 内部（400px）</span>
+  ├ <span class="cmt">图表标题</span>                                                <span class="num">28px</span>
+  ├ <span class="cmt">标题到环形图的间距</span>                               <span class="num">140px</span>
+  ├ <span class="cmt">环形图</span>                                                   <span class="num">346px</span>
+  ├ <span class="cmt">环形图下方空白</span>                                      <span class="num">59px</span>
+  └ <span class="cmt">图例（底部横排，含底部空白）</span>              <span class="num">44px</span>
+<span class="cmt">─────────────────────</span></pre>
 </div>
 
-<!-- 间距速查 -->
-<h2>相邻间距速查</h2>
-<table>
-  <tr><th>相邻元素</th><th>间距（px）</th></tr>
-  <tr><td>hr → 提交百分比</td><td>80</td></tr>
-  <tr><td>提交百分比底 → 文字块顶</td><td style="color:#e65100">-85（重叠）</td></tr>
-  <tr><td>环形图外圈底 → 文字块顶</td><td style="color:#e65100">26（重叠量）</td></tr>
-  <tr><td>文字块底 → 分类细分</td><td>92</td></tr>
-  <tr><td>分类细分底 → 积分细分</td><td>0</td></tr>
-  <tr><td>环形图外圈底 → 容器底</td><td>59</td></tr>
-</table>
-
-<!-- 共同参数 -->
-<h2>环形图通用参数</h2>
 <div class="card">
-  <pre>容器高度:     <span class="num">400px</span>
-标题高度:     <span class="num">28px</span>（fontSize 18 + padding 5×2）
-标题→环形图:  <span class="num">140px</span>
-环形图高度:   <span class="num">346px</span>
-上留白:       <span class="num">-5px</span>（超出裁切）
-下留白:       <span class="num">59px</span></pre>
+  <pre><span class="cmt">说明：</span>
+<span class="cmt">· 以上数值以 375px 屏幕宽度为参考</span>
+<span class="cmt">· 每个环形图容器高度固定为 400px，标题固定 28px</span>
+<span class="cmt">· 环形图由内圈和外圈组成，外圈顶部超出画面 5px 被裁切</span>
+<span class="cmt">· 提交百分比的图例在右侧竖排，分类细分和积分细分的图例在底部横排</span>
+<span class="cmt">· 正确/错误提交文字通过 -85px 上移，重叠到环形图底部区域</span></pre>
 </div>
 
-<!-- CSS -->
-<h2>CSS 规则</h2>
 <div class="card">
   <span class="tag">statistics.html#L174-L199</span>
-  <pre><span class="comment">@media (max-width: 767.98px)</span> {
-  <span class="highlight">#keys-pie-graph</span>       { <span class="highlight">margin-top: 64px</span>; }
-  <span class="highlight">.submission-counts</span>     { <span class="highlight">margin-top: -85px</span>; }
-  <span class="highlight">#categories-pie-graph</span>  { <span class="highlight">margin-top: 92px</span>; }
+  <pre><span class="cmt">@media (max-width: 767.98px)</span> {
+  <span class="hl">#keys-pie-graph</span>       { <span class="hl">margin-top: 64px</span>; }
+  <span class="hl">.submission-counts</span>     { <span class="hl">margin-top: -85px</span>; }
+  <span class="hl">#categories-pie-graph</span>  { <span class="hl">margin-top: 92px</span>; }
 }</pre>
 </div>
 
-<!-- JS -->
-<h2>JS 配置</h2>
 <div class="card">
   <span class="tag">statistics.js#L824-L831</span>
-  <pre>series[<span class="num">0</span>].center = [<span class="highlight">"50%"</span>, <span class="highlight">"42.06%"</span>];
-<span class="comment">// 分类细分 legend</span>
+  <pre>series[<span class="num">0</span>].center = [<span class="hl">"50%"</span>, <span class="hl">"42.06%"</span>];
+<span class="cmt">// 分类细分 legend</span>
 legend.top = <span class="num">305</span>;
-<span class="comment">// 积分细分 legend</span>
+<span class="cmt">// 积分细分 legend</span>
 legend.top = <span class="num">308</span>;</pre>
 </div>
 
