@@ -36,6 +36,23 @@
   .cmt { color: #6a9955; }
   .note { font-size: 12px; color: #888; margin-top: 10px; }
   .tag { display: inline-block; background: #e8e8e8; padding: 1px 6px; border-radius: 4px; font-size: 11px; }
+  .table-wrap {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    margin: 8px -14px;
+    padding: 0 14px;
+  }
+  .table-wrap table {
+    min-width: 100%;
+    white-space: nowrap;
+  }
+  .table-wrap td, .table-wrap th {
+    white-space: nowrap;
+  }
+  .table-wrap td:last-child {
+    white-space: normal;
+    min-width: 140px;
+  }
 </style>
 </head>
 <body>
@@ -45,6 +62,7 @@
 <div class="card">
   <p class="skip">以 375px 屏幕宽度为参考</p>
 
+  <div class="table-wrap">
   <table>
     <tr><td class="section" colspan="2">上方柱状图</td></tr>
     <tr><td class="arrow">↓ 间隙</td><td class="val">16px</td></tr>
@@ -80,6 +98,7 @@
     <tr><td>├ 环形图下方空白</td><td class="val">59px</td></tr>
     <tr><td>└ 图例（底部横排，含底部空白）</td><td class="val">44px</td></tr>
   </table>
+  </div>
 </div>
 
 <div class="card">
@@ -100,6 +119,7 @@
 
   <p class="skip" style="margin-bottom:14px">以下列出每一项高度/留白数据在源码中的具体位置和计算依据。</p>
 
+  <div class="table-wrap">
   <table>
     <tr><th style="width:36%">数据项</th><th style="width:12%">数值</th><th>源文件</th><th style="width:10%">行号</th><th>源码 / 计算依据</th></tr>
 
@@ -304,6 +324,7 @@
       <td class="skip"><code>window.matchMedia("(max-width: 767.98px)")</code></td>
     </tr>
   </table>
+  </div>
 </div>
 
 <p class="note">数据来源：testall.py 填充后，375×812 视口实测。源文件路径：<br>/workspace/CTFd/themes/admin/templates/statistics.html<br>/workspace/CTFd/themes/admin/assets/js/pages/statistics.js</p>
