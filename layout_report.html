@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>移动端统计页面布局留白分析</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, "Helvetica Neue", sans-serif;
+    background: #f5f5f5; color: #333; padding: 16px;
+    font-size: 15px; line-height: 1.6;
+  }
+  h1 { font-size: 18px; margin-bottom: 12px; }
+  h2 { font-size: 16px; margin: 16px 0 8px; color: #555; }
+  .card {
+    background: #fff; border-radius: 10px; padding: 14px; margin-bottom: 12px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+  }
+  pre {
+    background: #1e1e1e; color: #d4d4d4; padding: 12px; border-radius: 8px;
+    font-size: 12px; overflow-x: auto; line-height: 1.55;
+    white-space: pre-wrap; word-break: break-all;
+  }
+  .highlight { color: #f0a030; font-weight: bold; }
+  .num { color: #4ec9b0; }
+  .comment { color: #6a9955; }
+  table { width: 100%; border-collapse: collapse; margin: 8px 0; font-size: 13px; }
+  th, td { border: 1px solid #e0e0e0; padding: 8px 10px; text-align: left; }
+  th { background: #f0f0f0; font-weight: 600; }
+  td:last-child { text-align: center; font-weight: bold; color: #e06c75; }
+  .tag { display: inline-block; background: #e8e8e8; padding: 2px 6px; border-radius: 4px; font-size: 12px; }
+  .note { font-size: 13px; color: #888; margin-top: 6px; }
+  a { color: #4078c0; text-decoration: none; }
+  hr { border: none; border-top: 1px solid #e0e0e0; margin: 12px 0; }
+</style>
+</head>
+<body>
+
+<h1>移动端 375px — 统计页面环形图布局</h1>
+
+<div class="card">
+<pre><span class="comment">━━</span> &lt;hr&gt; 分隔线
+  <span class="comment">↓</span> <span class="num">80px</span>（hr mb <span class="num">16</span> + margin-top <span class="num">64</span>）
+<span class="comment">━━ 提交百分比</span>（容器 <span class="num">400px</span>）
+  ├ 标题 <span class="num">28px</span>
+  ├ 标题→环形图中心 <span class="num">140px</span>
+  ├ 外圈半径 <span class="num">173px</span>，中心 y=<span class="num">168px</span>（<span class="num">42.06%</span>）
+  ├ 外圈顶部超出容器 <span class="num">5px</span>（被裁切）
+  ├ 外圈底→容器底 <span class="num">59px</span>
+  └ 图例：右侧竖排，<span class="num">2</span> 项，高 <span class="num">48px</span>
+  <span class="comment">↓</span> <span class="highlight">-85px</span>（上移重叠）
+<span class="comment">━━ 正确/错误提交</span>（<span class="num">56px</span>）
+  "139 right submissions"  <span class="num">24px</span>
+  间距 <span class="num">8px</span>
+  "78 wrong submissions"   <span class="num">24px</span>
+  ┆（文字块叠入环形图底部上方 <span class="num">26px</span>）
+  <span class="comment">↓</span> <span class="num">92px</span>
+<span class="comment">━━ 分类细分</span>（容器 <span class="num">400px</span>）
+  ├ 标题 <span class="num">28px</span> → 环形图中心 <span class="num">140px</span>
+  ├ 外圈 <span class="num">173px</span>，底→容器底 <span class="num">59px</span>
+  └ 图例：底部横排，<span class="num">6</span> 项 <span class="num">2</span> 行，top=<span class="num">305</span>，高 <span class="num">48px</span>，底→容器底 <span class="num">47px</span>
+  <span class="comment">↓</span> <span class="num">0px</span>（紧挨）
+<span class="comment">━━ 积分细分</span>（容器 <span class="num">400px</span>）
+  ├ 标题 <span class="num">28px</span> → 环形图中心 <span class="num">140px</span>
+  ├ 外圈 <span class="num">173px</span>，底→容器底 <span class="num">59px</span>
+  └ 图例：底部横排，<span class="num">6</span> 项 <span class="num">2</span> 行，top=<span class="num">308</span>，高 <span class="num">48px</span>，底→容器底 <span class="num">44px</span></pre>
+</div>
+
+<h2>间距速查</h2>
+<table>
+  <tr><th>相邻元素</th><th>间距（px）</th></tr>
+  <tr><td>hr → 提交百分比</td><td>80</td></tr>
+  <tr><td>提交百分比底 → 文字块顶</td><td>-85（重叠）</td></tr>
+  <tr><td>环形图外圈底 → 文字块顶</td><td>26（重叠量）</td></tr>
+  <tr><td>文字块底 → 分类细分</td><td>92</td></tr>
+  <tr><td>分类细分底 → 积分细分</td><td>0</td></tr>
+  <tr><td>环形图外圈底 → 容器底</td><td>59</td></tr>
+</table>
+
+<h2>CSS 规则</h2>
+<div class="card">
+  <span class="tag">statistics.html#L174-L199</span>
+  <pre><span class="comment">@media (max-width: 767.98px)</span> {
+  <span class="highlight">#keys-pie-graph</span>       { <span class="highlight">margin-top: 64px</span>; }
+  <span class="highlight">.submission-counts</span>     { <span class="highlight">margin-top: -85px</span>; }
+  <span class="highlight">#categories-pie-graph</span>  { <span class="highlight">margin-top: 92px</span>; }
+}</pre>
+</div>
+
+<h2>JS 配置</h2>
+<div class="card">
+  <span class="tag">statistics.js#L824-L831</span>
+  <pre>series[<span class="num">0</span>].center = [<span class="highlight">"50%"</span>, <span class="highlight">"42.06%"</span>];
+<span class="comment">// 分类细分图例</span>
+legend.top = <span class="num">305</span>;
+<span class="comment">// 积分细分图例</span>
+legend.top = <span class="num">308</span>;</pre>
+</div>
+
+<h2>环形图通用参数</h2>
+<div class="card">
+  <pre>容器高度:     <span class="num">400px</span>
+内圈半径:     <span class="num">30% → 104px</span>
+外圈半径:     <span class="num">50% → 173px</span>
+中心 X:       <span class="num">50% → 173px</span>
+中心 Y:       <span class="num">42.06% → 168px</span>
+标题高度:     <span class="num">28px</span>（18px 字号 + 5×2 padding）
+标题→中心:    <span class="num">140px</span>
+外圈顶(相对): <span class="num">-5px</span>（超出裁切）
+外圈底→容器底: <span class="num">59px</span></pre>
+</div>
+
+<hr>
+<div class="note">源文件：<a href="https://github.com/GeniusTDY/CTFd/blob/i18n/zh-cn-setup-translation/CTFd/themes/admin/templates/statistics.html" target="_blank">statistics.html</a> · <a href="https://github.com/GeniusTDY/CTFd/blob/i18n/zh-cn-setup-translation/CTFd/themes/admin/assets/js/pages/statistics.js" target="_blank">statistics.js</a> · 实测视口 375×812</div>
+
+</body>
+</html>
