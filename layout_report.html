@@ -11,15 +11,25 @@
     background: #f5f5f5; color: #333; padding: 16px;
     font-size: 14px; line-height: 1.7;
   }
-  h1 { font-size: 17px; margin-bottom: 10px; }
+  h1 { font-size: 17px; margin-bottom: 12px; }
   .card {
     background: #fff; border-radius: 10px; padding: 14px; margin-bottom: 12px;
     box-shadow: 0 1px 3px rgba(0,0,0,0.08);
   }
+  .card h2 { font-size: 15px; margin-bottom: 10px; color: #555; }
+  table {
+    width: 100%; border-collapse: collapse; margin: 8px 0; font-size: 13px;
+  }
+  th, td { border: 1px solid #e0e0e0; padding: 6px 10px; text-align: left; }
+  th { background: #f0f0f0; font-weight: 600; }
+  td.val { text-align: right; font-weight: bold; color: #4ec9b0; white-space: nowrap; }
+  td.val-hl { text-align: right; font-weight: bold; color: #f0a030; white-space: nowrap; }
+  .section { background: #fafafa; font-weight: 600; }
+  .arrow { color: #888; text-align: center; }
+  .skip { color: #999; font-size: 13px; }
   pre {
     background: #1e1e1e; color: #d4d4d4; padding: 14px; border-radius: 8px;
     font-size: 12px; overflow-x: auto; line-height: 1.55;
-    white-space: pre-wrap; word-break: normal;
   }
   .hl { color: #f0a030; font-weight: bold; }
   .num { color: #4ec9b0; }
@@ -33,43 +43,51 @@
 <h1>移动端（max-width: 767.98px）页面布局与留白</h1>
 
 <div class="card">
-<pre><span class="cmt">─────────────────────────────────────</span>
-<span class="cmt">上方柱状图</span>
-  <span class="cmt">↓</span> 间隙 <span class="num">16px</span>
-<span class="cmt">分隔线</span> <span class="num">1px</span>
-  <span class="cmt">↓</span> 间隙（分隔线 → 第一个环形图） <span class="hl">80px</span>
-<span class="cmt">━━ 提交百分比 内部（400px）——— 以 375px 屏宽为例</span>
-  ├ 图表标题                          <span class="num">28px</span>
-  ├ 标题到环形图的间距                <span class="num">140px</span>
-  ├ 环形图                            <span class="num">346px</span>
-  ├ 环形图下方空白                    <span class="num">59px</span>
-  └ 图例（右侧竖排，不占高度）
-  <span class="cmt">↓</span> 间距（上移覆盖环形图底部）      <span class="hl">-85px</span>
-<span class="cmt">正确/错误提交文字</span> <span class="num">56px</span>
-  <span class="cmt">↓</span> 间距（到下一个环形图）          <span class="hl">92px</span>
-<span class="cmt">━━ 分类细分 内部（400px）</span>
-  ├ 图表标题                          <span class="num">28px</span>
-  ├ 标题到环形图的间距                <span class="num">140px</span>
-  ├ 环形图                            <span class="num">346px</span>
-  ├ 环形图下方空白                    <span class="num">59px</span>
-  └ 图例（底部横排，含底部空白）      <span class="num">47px</span>
-  <span class="cmt">↓</span> 间距 <span class="num">0px</span>（紧挨着）
-<span class="cmt">━━ 积分细分 内部（400px）</span>
-  ├ 图表标题                          <span class="num">28px</span>
-  ├ 标题到环形图的间距                <span class="num">140px</span>
-  ├ 环形图                            <span class="num">346px</span>
-  ├ 环形图下方空白                    <span class="num">59px</span>
-  └ 图例（底部横排，含底部空白）      <span class="num">44px</span>
-<span class="cmt">─────────────────────────────────────</span></pre>
+  <p class="skip">以 375px 屏幕宽度为参考</p>
+
+  <table>
+    <tr><td class="section" colspan="2">上方柱状图</td></tr>
+    <tr><td class="arrow">↓ 间隙</td><td class="val">16px</td></tr>
+    <tr><td>分隔线</td><td class="val">1px</td></tr>
+    <tr><td>↓ 间隙（分隔线 → 第一个环形图）</td><td class="val-hl">80px</td></tr>
+
+    <tr><td class="section" colspan="2">━━ 提交百分比 内部（400px）</td></tr>
+    <tr><td>├ 图表标题</td><td class="val">28px</td></tr>
+    <tr><td>├ 标题到环形图的间距</td><td class="val">140px</td></tr>
+    <tr><td>├ 环形图</td><td class="val">346px</td></tr>
+    <tr><td>├ 环形图下方空白</td><td class="val">59px</td></tr>
+    <tr><td>└ 图例（右侧竖排，不占高度）</td><td class="skip">—</td></tr>
+
+    <tr><td class="arrow">↓ 间距（上移覆盖到环形图底部）</td><td class="val-hl">-85px</td></tr>
+
+    <tr><td>正确/错误提交文字</td><td class="val">56px</td></tr>
+
+    <tr><td class="arrow">↓ 间距（到下一个环形图）</td><td class="val-hl">92px</td></tr>
+
+    <tr><td class="section" colspan="2">━━ 分类细分 内部（400px）</td></tr>
+    <tr><td>├ 图表标题</td><td class="val">28px</td></tr>
+    <tr><td>├ 标题到环形图的间距</td><td class="val">140px</td></tr>
+    <tr><td>├ 环形图</td><td class="val">346px</td></tr>
+    <tr><td>├ 环形图下方空白</td><td class="val">59px</td></tr>
+    <tr><td>└ 图例（底部横排，含底部空白）</td><td class="val">47px</td></tr>
+
+    <tr><td class="arrow">↓ 间距（紧挨着）</td><td class="val">0px</td></tr>
+
+    <tr><td class="section" colspan="2">━━ 积分细分 内部（400px）</td></tr>
+    <tr><td>├ 图表标题</td><td class="val">28px</td></tr>
+    <tr><td>├ 标题到环形图的间距</td><td class="val">140px</td></tr>
+    <tr><td>├ 环形图</td><td class="val">346px</td></tr>
+    <tr><td>├ 环形图下方空白</td><td class="val">59px</td></tr>
+    <tr><td>└ 图例（底部横排，含底部空白）</td><td class="val">44px</td></tr>
+  </table>
 </div>
 
 <div class="card">
-  <pre><span class="cmt">说明：</span>
-<span class="cmt">· 以上数值以 375px 屏幕宽度为参考</span>
-<span class="cmt">· 每个环形图容器高度固定为 400px，标题固定 28px</span>
-<span class="cmt">· 环形图由内圈和外圈组成，外圈顶部超出画面 5px 被裁切</span>
-<span class="cmt">· 提交百分比的图例在右侧竖排，分类细分和积分细分的图例在底部横排</span>
-<span class="cmt">· 正确/错误提交文字通过 -85px 上移，重叠到环形图底部区域</span></pre>
+  <h2>说明</h2>
+  <p class="skip">· 每个环形图容器高度固定为 400px，标题固定 28px</p>
+  <p class="skip">· 环形图由内圈和外圈组成，外圈顶部超出画面 5px 被裁切</p>
+  <p class="skip">· 提交百分比的图例在右侧竖排，分类细分和积分细分的图例在底部横排</p>
+  <p class="skip">· 正确/错误提交文字通过 -85px 上移，重叠到环形图底部区域</p>
 </div>
 
 <div class="card">
@@ -90,7 +108,7 @@ legend.top = <span class="num">305</span>;
 legend.top = <span class="num">308</span>;</pre>
 </div>
 
-<p class="note">统计数据来源：testall.py 填充后，在 375×812 视口实测。</p>
+<p class="note">数据来源：testall.py 填充后，375×812 视口实测。</p>
 
 </body>
 </html>
