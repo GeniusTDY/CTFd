@@ -96,24 +96,217 @@
 </div>
 
 <div class="card">
-  <span class="tag">statistics.html#L174-L199</span>
-  <pre><span class="cmt">@media (max-width: 767.98px)</span> {
-  <span class="hl">#keys-pie-graph</span>       { <span class="hl">margin-top: 64px</span>; }
-  <span class="hl">.submission-counts</span>     { <span class="hl">margin-top: -85px</span>; }
-  <span class="hl">#categories-pie-graph</span>  { <span class="hl">margin-top: 92px</span>; }
-}</pre>
+  <h2>源码出处</h2>
+
+  <p class="skip" style="margin-bottom:14px">以下列出每一项高度/留白数据在源码中的具体位置和计算依据。</p>
+
+  <table>
+    <tr><th style="width:36%">数据项</th><th style="width:12%">数值</th><th>源文件</th><th style="width:10%">行号</th><th>源码 / 计算依据</th></tr>
+
+    <tr><td class="section" colspan="5">容器与视口</td></tr>
+    <tr>
+      <td>视口宽度</td><td class="val">375px</td>
+      <td>—</td><td>—</td>
+      <td class="skip">移动端参考宽度，非代码定义</td>
+    </tr>
+    <tr>
+      <td>container-fluid 左右 padding</td><td class="val">15px</td>
+      <td>Bootstrap 4</td><td>—</td>
+      <td class="skip">.container-fluid 默认 padding-left/right: 15px</td>
+    </tr>
+    <tr>
+      <td>环形图容器宽度</td><td class="val">345px</td>
+      <td>—</td><td>—</td>
+      <td class="skip">375 − 15×2 = 345px（col-md-4 在移动端占满宽）</td>
+    </tr>
+    <tr>
+      <td>环形图容器高度</td><td class="val">400px</td>
+      <td>ECharts</td><td>—</td>
+      <td class="skip">ECharts 默认高度，statistics.js 未显式设置 height</td>
+    </tr>
+
+    <tr><td class="section" colspan="5">分隔线 → 第一个环形图（80px）</td></tr>
+    <tr>
+      <td>hr 分隔线</td><td class="val">1px</td>
+      <td>Bootstrap 4</td><td>—</td>
+      <td class="skip">border-top: 1px solid rgba(0,0,0,.1)</td>
+    </tr>
+    <tr>
+      <td>hr margin-bottom</td><td class="val">16px</td>
+      <td>Bootstrap 4</td><td>—</td>
+      <td class="skip">hr 默认 margin: 1rem 0</td>
+    </tr>
+    <tr>
+      <td>#keys-pie-graph margin-top</td><td class="val-hl">64px</td>
+      <td>statistics.html</td><td>L177</td>
+      <td class="skip"><code>#keys-pie-graph { margin-top: 64px !important; }</code></td>
+    </tr>
+    <tr>
+      <td>合计：分隔线 → 第一个环形图</td><td class="val-hl">80px</td>
+      <td colspan="3" class="skip">16 + 64 = 80px（hr 底部到环形图容器顶部）</td>
+    </tr>
+
+    <tr><td class="section" colspan="5">环形图标题（28px）</td></tr>
+    <tr>
+      <td>标题 fontSize 默认值</td><td class="val">18px</td>
+      <td>statistics.js</td><td>L866</td>
+      <td class="skip"><code>const fontSize = ts.fontSize || 18;</code></td>
+    </tr>
+    <tr>
+      <td>标题 padding</td><td class="val">5px</td>
+      <td>ECharts</td><td>—</td>
+      <td class="skip">ECharts title 默认 padding: 5</td>
+    </tr>
+    <tr>
+      <td>标题总高</td><td class="val">28px</td>
+      <td colspan="3" class="skip">18 + 5×2 = 28px；title top=0 贴容器顶部</td>
+    </tr>
+
+    <tr><td class="section" colspan="5">环形图圆心与半径</td></tr>
+    <tr>
+      <td>环形图圆心 Y</td><td class="val">168px</td>
+      <td>statistics.js</td><td>L824</td>
+      <td class="skip"><code>option.series[0].center = ["50%", "42.06%"];</code><br>42.06% × 400 = 168.24 ≈ 168px</td>
+    </tr>
+    <tr>
+      <td>环形图外圈半径</td><td class="val">172.5px</td>
+      <td>statistics.js</td><td>L328</td>
+      <td class="skip"><code>radius: ["30%", "50%"]</code><br>50% × 345 = 172.5px</td>
+    </tr>
+    <tr>
+      <td>环形图外圈直径</td><td class="val">345px</td>
+      <td colspan="3" class="skip">172.5 × 2 = 345px</td>
+    </tr>
+
+    <tr><td class="section" colspan="5">标题与环形图重叠（-32px）</td></tr>
+    <tr>
+      <td>标题底部位置</td><td class="val">28px</td>
+      <td colspan="3" class="skip">title top=0 + 总高 28px = 28px</td>
+    </tr>
+    <tr>
+      <td>环形图外圈顶部</td><td class="val">−4px</td>
+      <td colspan="3" class="skip">圆心 Y=168 − 外圈半径 172.5 = −4.5 ≈ −4px（超出容器被裁切）</td>
+    </tr>
+    <tr>
+      <td>重叠量</td><td class="val-hl">−32px</td>
+      <td colspan="3" class="skip">28 − (−4) = 32px（标题底部到环形图外圈顶）</td>
+    </tr>
+
+    <tr><td class="section" colspan="5">环形图下方空白（59px）</td></tr>
+    <tr>
+      <td>环形图外圈底部</td><td class="val">340.5px</td>
+      <td colspan="3" class="skip">圆心 Y=168 + 外圈半径 172.5 = 340.5px</td>
+    </tr>
+    <tr>
+      <td>容器底部空白</td><td class="val">59px</td>
+      <td colspan="3" class="skip">400 − 340.5 = 59.5 ≈ 59px</td>
+    </tr>
+
+    <tr><td class="section" colspan="5">提交百分比图例（右侧竖排，不占高度）</td></tr>
+    <tr>
+      <td>图例方向</td><td class="skip">vertical</td>
+      <td>statistics.js</td><td>L319</td>
+      <td class="skip"><code>legend: { orient: "vertical", top: "middle", right: 0 }</code></td>
+    </tr>
+    <tr>
+      <td>图例位置</td><td class="skip">右侧居中</td>
+      <td>statistics.js</td><td>L320-321</td>
+      <td class="skip"><code>top: "middle", right: 0</code></td>
+    </tr>
+
+    <tr><td class="section" colspan="5">正确/错误提交文字（24px）</td></tr>
+    <tr>
+      <td>HTML 结构</td><td class="skip">h5 × 2</td>
+      <td>statistics.html</td><td>L106-107</td>
+      <td class="skip"><code>&lt;h5&gt;...right submissions&lt;/h5&gt;</code><br><code>&lt;h5&gt;...wrong submissions&lt;/h5&gt;</code></td>
+    </tr>
+    <tr>
+      <td>移动端布局</td><td class="skip">flex 同行</td>
+      <td>statistics.html</td><td>L184-188</td>
+      <td class="skip"><code>display: flex; gap: 0.5rem 1rem;</code></td>
+    </tr>
+    <tr>
+      <td>文字高度</td><td class="val">24px</td>
+      <td colspan="3" class="skip">h5 在移动端单行渲染，实测 24px</td>
+    </tr>
+    <tr>
+      <td>文字块上移</td><td class="val-hl">−85px</td>
+      <td>statistics.html</td>
+      <td>L191</td>
+      <td class="skip"><code>.submission-counts { margin-top: -85px !important; }</code></td>
+    </tr>
+    <tr>
+      <td>文字块与环形图重叠</td><td class="val-hl">−26px</td>
+      <td colspan="3" class="skip">85 − 59 = 26px（文字块上移 85px，环形图底部空白 59px）</td>
+    </tr>
+
+    <tr><td class="section" colspan="5">文字块 → 分类细分（92px）</td></tr>
+    <tr>
+      <td>#categories-pie-graph margin-top</td><td class="val-hl">92px</td>
+      <td>statistics.html</td>
+      <td>L198</td>
+      <td class="skip"><code>#categories-pie-graph { margin-top: 92px !important; }</code></td>
+    </tr>
+
+    <tr><td class="section" colspan="5">分类细分图例（底部横排，约 47px）</td></tr>
+    <tr>
+      <td>图例方向</td><td class="skip">horizontal</td>
+      <td>statistics.js</td>
+      <td>L399</td>
+      <td class="skip"><code>legend: { orient: "horizontal", top: "bottom" }</code></td>
+    </tr>
+    <tr>
+      <td>移动端 legend.top</td><td class="val">305</td>
+      <td>statistics.js</td>
+      <td>L827</td>
+      <td class="skip"><code>option.legend.top = 305;</code></td>
+    </tr>
+    <tr>
+      <td>图例渲染高度</td><td class="val">≈47px</td>
+      <td colspan="3" class="skip">400 − 305 = 95px 空间，实际文字+间距渲染约 47px</td>
+    </tr>
+
+    <tr><td class="section" colspan="5">分类细分 → 积分细分（0px）</td></tr>
+    <tr>
+      <td>间距</td><td class="val">0px</td>
+      <td colspan="3" class="skip">Bootstrap col-md-4 默认无额外 margin，两个容器紧挨</td>
+    </tr>
+
+    <tr><td class="section" colspan="5">积分细分图例（底部横排，约 44px）</td></tr>
+    <tr>
+      <td>图例方向</td><td class="skip">horizontal</td>
+      <td>statistics.js</td>
+      <td>L499</td>
+      <td class="skip"><code>legend: { orient: "horizontal", top: "bottom" }</code></td>
+    </tr>
+    <tr>
+      <td>移动端 legend.top</td><td class="val">308</td>
+      <td>statistics.js</td>
+      <td>L829</td>
+      <td class="skip"><code>option.legend.top = 308;</code></td>
+    </tr>
+    <tr>
+      <td>图例渲染高度</td><td class="val">≈44px</td>
+      <td colspan="3" class="skip">400 − 308 = 92px 空间，实际文字+间距渲染约 44px</td>
+    </tr>
+
+    <tr><td class="section" colspan="5">移动端判断条件</td></tr>
+    <tr>
+      <td>CSS 媒体查询</td><td class="skip">max-width: 767.98px</td>
+      <td>statistics.html</td>
+      <td>L159</td>
+      <td class="skip"><code>@media (max-width: 767.98px) { ... }</code></td>
+    </tr>
+    <tr>
+      <td>JS 媒体查询</td><td class="skip">max-width: 767.98px</td>
+      <td>statistics.js</td>
+      <td>L819</td>
+      <td class="skip"><code>window.matchMedia("(max-width: 767.98px)")</code></td>
+    </tr>
+  </table>
 </div>
 
-<div class="card">
-  <span class="tag">statistics.js#L824-L831</span>
-  <pre>series[<span class="num">0</span>].center = [<span class="hl">"50%"</span>, <span class="hl">"42.06%"</span>];
-<span class="cmt">// 分类细分 legend</span>
-legend.top = <span class="num">305</span>;
-<span class="cmt">// 积分细分 legend</span>
-legend.top = <span class="num">308</span>;</pre>
-</div>
-
-<p class="note">数据来源：testall.py 填充后，375×812 视口实测。</p>
+<p class="note">数据来源：testall.py 填充后，375×812 视口实测。源文件路径：<br>/workspace/CTFd/themes/admin/templates/statistics.html<br>/workspace/CTFd/themes/admin/assets/js/pages/statistics.js</p>
 
 </body>
 </html>
