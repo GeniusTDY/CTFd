@@ -85,12 +85,14 @@
 <div class="card">
   <h2>说明</h2>
   <p class="skip">· 每个环形图容器：400×345px（ECharts 默认高 400px，宽 = 375 − 15×2 padding）</p>
-  <p class="skip">· 标题 fontSize=18、padding=5，总高 28px；top=0 贴容器顶部</p>
-  <p class="skip">· 环形图圆心 Y=168px（42.06%），外圈半径=172.5px（50%×345），外圈顶超出容器 4px 被裁切</p>
-  <p class="skip">· 标题底部(28px)到环形图外圈顶部(−4px)重叠 32px，标题文字叠在环形图上方</p>
-  <p class="skip">· 文字块通过 margin-top: -85px 上移，环形图底距容器底 59px，实际重叠 = 85 − 59 = 26px</p>
-  <p class="skip">· 三个环形图之间：提交百分比→分类细分间隔 63px（含文字块），分类细分→积分细分间隔 0px</p>
-  <p class="skip">· 分类细分和积分细分的图例底部留白为近似值，取决于 legend 实际渲染高度</p>
+  <p class="skip">· 标题 fontSize=18、padding=5（实测），总高 28px；top=0 贴容器顶部</p>
+  <p class="skip">· 环形图圆心 Y=168px（42.06%），外圈半径=172.5px（50%×345）</p>
+  <p class="skip">· 外圈顶超出容器 4px 被裁切；标题底部(28px)到外圈顶(−4px)重叠 32px</p>
+  <p class="skip">· 文字块 h5 各 24px + gap 8px = 56px（实测）；margin-top:-85px 上移</p>
+  <p class="skip">· 环形图底距容器底 59px，文字块上移 85px → 实际重叠 = 85−59 = 26px</p>
+  <p class="skip">· 三个环形图容器间：提交百分比→分类细分 63px，分类细分→积分细分 0px</p>
+  <p class="skip">· 图例底部留白为近似值（legend 渲染高度约 46−48px）</p>
+  <p class="skip">· 桌面端实测确认：容器 400px、hr 1px/16px、h5 24px+8px、标题 18px+padding 5</p>
 </div>
 
 <div class="card">
