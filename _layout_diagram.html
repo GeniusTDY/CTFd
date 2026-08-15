@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>移动端统计页布局图</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: Menlo, Consolas, monospace; font-size: 12px; background: #f5f5f5; padding: 20px; color: #333; }
+  .diagram { width: 375px; margin: 0 auto; background: #fff; border: 1px solid #ddd; }
+  /* 名称相同但属性不同，不用 CSS 变量 */
+  .label { font-size: 10px; color: #e65100; }
+  .gap { position: relative; display: flex; align-items: center; justify-content: center; }
+  .gap::before { content: ''; position: absolute; left: 50%; width: 1px; background: #e65100; }
+  .gap-tag { background: #fff3e0; color: #e65100; font-size: 11px; font-weight: bold; padding: 1px 6px; border-radius: 3px; border: 1px solid #ffcc80; position: relative; z-index: 1; white-space: nowrap; }
+  .section { border: 2px solid #1976d2; border-radius: 4px; margin: 0 15px; position: relative; }
+  .section-title { background: #1976d2; color: #fff; font-size: 11px; font-weight: bold; padding: 3px 10px; border-radius: 2px 2px 0 0; }
+  .inner-title { background: #e3f2fd; color: #1565c0; font-size: 10px; text-align: center; padding: 2px; border-bottom: 1px dashed #90caf9; }
+  .ring { background: #fafafa; display: flex; align-items: center; justify-content: center; position: relative; }
+  .ring-visual { position: relative; }
+  .ring-outer { border-radius: 50%; border: 2px solid #1976d2; position: absolute; }
+  .ring-inner { border-radius: 50%; border: 2px dashed #64b5f6; position: absolute; background: rgba(25,118,210,0.03); }
+  .ring-label { position: absolute; font-size: 9px; color: #1976d2; white-space: nowrap; }
+  .legend-bar { background: #e8eaf6; text-align: center; font-size: 10px; color: #3949ab; padding: 3px; border-top: 1px dashed #9fa8da; }
+  .subtext { background: #e8f5e9; text-align: center; font-size: 10px; color: #2e7d32; padding: 3px; border-top: 1px dashed #a5d6a7; }
+  .hr-line { border-top: 1px solid #bbb; margin: 0 15px; }
+  .measure { font-size: 9px; color: #888; }
+  .dim { font-size: 9px; color: #999; text-align: center; }
+  .legend-box { display: flex; flex-wrap: wrap; justify-content: center; gap: 2px 8px; padding: 3px; }
+  .legend-item { display: flex; align-items: center; gap: 3px; font-size: 9px; }
+  .legend-dot { width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; }
+</style>
+</head>
+<body>
+<div class="diagram">
+
+  <!-- 分隔线 -->
+  <div class="hr-line" style="margin-top:16px; margin-bottom:16px;"></div>
+  <div style="text-align:center; font-size:10px; color:#999; padding:2px 0">hr 1px · margin 16px 上下</div>
+
+  <!-- 间隙 80px -->
+  <div class="gap" style="height:80px">
+    <div class="gap-tag">80px（16 + 64）</div>
+  </div>
+  <div class="dim">← statistics.html L176-181 #keys-pie-graph margin-top:64px →</div>
+
+  <!-- 提交百分比 -->
+  <div class="section" style="height:400px">
+    <div class="section-title">提交百分比 · 400px 容器</div>
+    <div class="inner-title" style="height:18px; line-height:18px">图表标题 18px · statistics.js L297-301</div>
+    <div class="gap" style="height:50px">
+      <span class="gap-tag" style="font-size:10px">~50px 留白</span>
+    </div>
+    <div class="ring" style="height:172px; position:relative">
+      <div style="width:172px; height:172px; position:relative">
+        <div class="ring-outer" style="width:172px; height:172px; top:0; left:0"></div>
+        <div class="ring-inner" style="width:104px; height:104px; top:34px; left:34px"></div>
+        <div class="ring-label" style="top:72px; right:-55px; font-size:9px">外径 172.6px</div>
+        <div class="ring-label" style="top:55px; left:-55px; font-size:9px">内径 103.6px</div>
+      </div>
+    </div>
+    <div class="dim">环形图 · center 42.06% · radius 30%~50% · statistics.js L824 + L329</div>
+    <div class="gap" style="height:60px">
+      <span class="gap-tag" style="font-size:10px">~60.5px 留白</span>
+    </div>
+    <div class="subtext" style="height:26px; line-height:26px">
+      正确提交 139 · 错误提交 78 · h5 24px×2 @ statistics.html L183-195
+    </div>
+    <div class="dim">submission-counts margin-top:-85px · 56px 文字块</div>
+  </div>
+
+  <!-- 间隙 92px -->
+  <div class="gap" style="height:92px">
+    <div class="gap-tag">92px</div>
+  </div>
+  <div class="dim">← statistics.html L196-199 #categories-pie-graph margin-top:92px →</div>
+
+  <!-- 分类细分 -->
+  <div class="section" style="height:400px">
+    <div class="section-title">分类细分 · 400px 容器</div>
+    <div class="inner-title" style="height:18px; line-height:18px">图表标题 18px · statistics.js L377-380</div>
+    <div class="gap" style="height:50px">
+      <span class="gap-tag" style="font-size:10px">~50px 留白</span>
+    </div>
+    <div class="ring" style="height:172px; position:relative">
+      <div style="width:172px; height:172px; position:relative">
+        <div class="ring-outer" style="width:172px; height:172px; top:0; left:0"></div>
+        <div class="ring-inner" style="width:104px; height:104px; top:34px; left:34px"></div>
+      </div>
+    </div>
+    <div class="dim">环形图 · 同上 center + radius</div>
+    <div class="gap" style="height:50px">
+      <span class="gap-tag" style="font-size:10px">~50px 留白</span>
+    </div>
+    <div class="legend-bar" style="height:48px; line-height:48px">
+      <div class="legend-box">
+        <span class="legend-item"><span class="legend-dot" style="background:#e53935"></span>Crypto</span>
+        <span class="legend-item"><span class="legend-dot" style="background:#43a047"></span>Forensics</span>
+        <span class="legend-item"><span class="legend-dot" style="background:#1e88e5"></span>Misc</span>
+        <span class="legend-item"><span class="legend-dot" style="background:#8e24aa"></span>Pwn</span>
+        <span class="legend-item"><span class="legend-dot" style="background:#f4511e"></span>Reverse</span>
+        <span class="legend-item"><span class="legend-dot" style="background:#00acc1"></span>Web</span>
+      </div>
+    </div>
+    <div class="dim">图例 legend.top=305 · 2行横排 · statistics.js L826-828</div>
+  </div>
+
+  <!-- 间隙 0px -->
+  <div class="gap" style="height:0px; background:#ffe0b2; border:1px dashed #e65100">
+    <div class="gap-tag">0px（无间距）</div>
+  </div>
+  <div class="dim">← 两个 col-md-4 纵向堆叠无 margin →</div>
+
+  <!-- 积分细分 -->
+  <div class="section" style="height:400px">
+    <div class="section-title">积分细分 · 400px 容器</div>
+    <div class="inner-title" style="height:18px; line-height:18px">图表标题 18px · statistics.js L478-481</div>
+    <div class="gap" style="height:50px">
+      <span class="gap-tag" style="font-size:10px">~50px 留白</span>
+    </div>
+    <div class="ring" style="height:172px; position:relative">
+      <div style="width:172px; height:172px; position:relative">
+        <div class="ring-outer" style="width:172px; height:172px; top:0; left:0"></div>
+        <div class="ring-inner" style="width:104px; height:104px; top:34px; left:34px"></div>
+      </div>
+    </div>
+    <div class="dim">环形图 · 同上 center + radius</div>
+    <div class="gap" style="height:53px">
+      <span class="gap-tag" style="font-size:10px">~53px 留白</span>
+    </div>
+    <div class="legend-bar" style="height:48px; line-height:48px">
+      <div class="legend-box">
+        <span class="legend-item"><span class="legend-dot" style="background:#e53935"></span>Crypto</span>
+        <span class="legend-item"><span class="legend-dot" style="background:#43a047"></span>Forensics</span>
+        <span class="legend-item"><span class="legend-dot" style="background:#1e88e5"></span>Misc</span>
+        <span class="legend-item"><span class="legend-dot" style="background:#8e24aa"></span>Pwn</span>
+        <span class="legend-item"><span class="legend-dot" style="background:#f4511e"></span>Reverse</span>
+        <span class="legend-item"><span class="legend-dot" style="background:#00acc1"></span>Web</span>
+      </div>
+    </div>
+    <div class="dim">图例 legend.top=308 · statistics.js L829-830</div>
+  </div>
+
+  <!-- 底部留白 -->
+  <div style="height:20px"></div>
+  <div style="text-align:center; font-size:10px; color:#999; padding:8px; border-top:1px solid #ddd">
+    参考屏幕宽度: 375px · 主画布宽: 345px · 断点: max-width: 767.98px
+  </div>
+</div>
+</body>
+</html>
